@@ -15,4 +15,13 @@
     <string name="invalid_username">사용할 수 없는 이름입니다.</string>
     <string name="invalid_password">비밀번호는 6자 이상이어야합니다.</string>
     <string name="login_failed">로그인에 실패하였습니다.</string>
+    <string name="title_splash">시작 화면</string>
+    <string name="messages_header">테스트용 삭제</string>
+    <string name="sync_header">테스트용 삭제</string>
+    <string name="signature_title">테스트용 삭제</string>
+    <string name="reply_title">테스트용 삭제</string>
+    <string name="sync_title">테스트용 삭제</string>
+    <string name="attachment_title">테스트용 삭제</string>
+    <string name="attachment_summary_on">테스트용 삭제</string>
+    <string name="attachment_summary_off">테스트용 삭제</string>
 </resources>
