@@ -29,4 +29,6 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_splash">Splash</string>
+    <string name="msg_request_login">Login is required to use all functions of the application.</string>
+    <string name="msg_login">Login</string>
 </resources>

@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.sys.gets.R
 import com.sys.gets.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -34,6 +33,7 @@ private var _binding: FragmentHomeBinding? = null
     homeViewModel.text.observe(viewLifecycleOwner, Observer {
       textView.text = it
     })
+
     return root
   }
 

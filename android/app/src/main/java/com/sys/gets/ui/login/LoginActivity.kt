@@ -1,20 +1,20 @@
 package com.sys.gets.ui.login
 
 import android.app.Activity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
-import com.sys.gets.databinding.ActivityLoginBinding
-
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.sys.gets.R
+import com.sys.gets.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 
@@ -64,19 +64,18 @@ class LoginActivity : AppCompatActivity() {
             //Complete and destroy login activity once successful
             finish()
         })
-
-        username.afterTextChanged {
+        username.editText?.doOnTextChanged { text, start, before, count ->
             loginViewModel.loginDataChanged(
-                username.text.toString(),
-                password.text.toString()
+                text.toString(),
+                password.editText?.text.toString()
             )
         }
 
-        password.apply {
-            afterTextChanged {
+        password.editText?.apply {
+            doOnTextChanged { text, start, before, count ->
                 loginViewModel.loginDataChanged(
-                    username.text.toString(),
-                    password.text.toString()
+                    username.editText?.text.toString(),
+                    text.toString()
                 )
             }
 
@@ -84,8 +83,8 @@ class LoginActivity : AppCompatActivity() {
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE ->
                         loginViewModel.login(
-                            username.text.toString(),
-                            password.text.toString()
+                            username.editText?.text.toString(),
+                            password.editText?.text.toString()
                         )
                 }
                 false
@@ -93,7 +92,10 @@ class LoginActivity : AppCompatActivity() {
 
             login.setOnClickListener {
                 loading.visibility = View.VISIBLE
-                loginViewModel.login(username.text.toString(), password.text.toString())
+                loginViewModel.login(
+                    username.editText?.text.toString(),
+                    password.editText?.text.toString()
+                )
             }
         }
     }
