@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.sys.gets.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_category"
+        android:name="com.sys.gets.ui.category.CategoryFragment"
+        android:label="@string/title_category"
+        tools:layout="@layout/fragment_category" />
+
+    <fragment
+        android:id="@+id/navigation_closet"
+        android:name="com.sys.gets.ui.closet.ClosetFragment"
+        android:label="@string/title_closet"
+        tools:layout="@layout/fragment_closet" />
+    <fragment
+        android:id="@+id/navigation_coordination"
+        android:name="com.sys.gets.ui.coordination.CoordinationFragment"
+        android:label="@string/title_coordination"
+        tools:layout="@layout/fragment_coordination" />
+    <fragment
+        android:id="@+id/navigation_more"
+        android:name="com.sys.gets.ui.settings.SettingsFragment"
+        android:label="@string/title_more" />
+</navigation>

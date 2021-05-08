@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gets</string>
+    <string name="title_home">홈</string>
+    <string name="title_category">카테고리</string>
+    <string name="title_closet">옷장</string>
+    <string name="title_coordination">코디</string>
+    <string name="title_more">더보기</string>
+    <string name="title_activity_login">로그인</string>
+    <string name="prompt_email">이메일</string>
+    <string name="prompt_password">비밀번호</string>
+    <string name="action_sign_in">회원 가입</string>
+    <string name="action_sign_in_short">회원 가입</string>
+    <string name="welcome">환영합니다!</string>
+    <string name="invalid_username">사용할 수 없는 이름입니다.</string>
+    <string name="invalid_password">비밀번호는 6자 이상이어야합니다.</string>
+    <string name="login_failed">로그인에 실패하였습니다.</string>
+</resources>
