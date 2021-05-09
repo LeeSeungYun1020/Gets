@@ -31,4 +31,17 @@
     <string name="title_splash">Splash</string>
     <string name="msg_request_login">Login is required to use all functions of the application.</string>
     <string name="msg_login">Login</string>
+    <string name="title_search">Search</string>
+    <string name="weather_clear">Clear</string>
+    <string name="weather_cloudy">Cloudy</string>
+    <string name="weather_partly_cloudy">Partly Cloudy</string>
+    <string name="weather_rain">Rain</string>
+    <string name="weather_rain_heavy">Heavy Rain</string>
+    <string name="weather_rain_light">Light Rain</string>
+    <string name="weather_snow">Snow</string>
+    <string name="weather_snow_light">Light Snow</string>
+    <string name="weather_snow_heavy">Heavy Snow</string>
+    <string name="template_wether_title">17°C, Clear</string>
+    <string name="template_weather_second_text">Busan, high: 19°C low: 15°C</string>
+    <string name="msg_filter">Filter</string>
 </resources>

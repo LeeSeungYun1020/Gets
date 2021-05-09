@@ -34,6 +34,8 @@ private var _binding: FragmentHomeBinding? = null
       textView.text = it
     })
 
+
+
     return root
   }
 

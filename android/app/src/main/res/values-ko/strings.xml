@@ -26,4 +26,17 @@
     <string name="attachment_summary_off">테스트용 삭제</string>
     <string name="msg_request_login">원활한 어플리케이션 사용을 위해 로그인이 필요합니다.</string>
     <string name="msg_login">로그인</string>
+    <string name="title_search">검색</string>
+    <string name="weather_clear">맑음</string>
+    <string name="weather_cloudy">흐림</string>
+    <string name="weather_partly_cloudy">약간 흐림</string>
+    <string name="weather_rain">비</string>
+    <string name="weather_rain_heavy">강한 비</string>
+    <string name="weather_rain_light">약한 비</string>
+    <string name="weather_snow">눈</string>
+    <string name="weather_snow_light">약한 눈</string>
+    <string name="weather_snow_heavy">강한 눈</string>
+    <string name="template_wether_title">17°C, 맑음</string>
+    <string name="template_weather_second_text">부산광역시, 최고: 19°C 최저: 15°C</string>
+    <string name="msg_filter">필터</string>
 </resources>
