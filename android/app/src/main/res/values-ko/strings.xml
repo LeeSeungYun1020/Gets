@@ -39,4 +39,9 @@
     <string name="template_wether_title">17°C, 맑음</string>
     <string name="template_weather_second_text">부산광역시, 최고: 19°C 최저: 15°C</string>
     <string name="msg_filter">필터</string>
+    <string name="closet_tab_label_1">상의</string>
+    <string name="closet_tab_label_2">하의</string>
+    <string name="closet_tab_label_3">아우터</string>
+    <string name="closet_tab_label_4">신발</string>
+    <string name="closet_tab_label_5">악세사리</string>
 </resources>

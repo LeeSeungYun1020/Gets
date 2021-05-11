@@ -44,4 +44,10 @@
     <string name="template_wether_title">17°C, Clear</string>
     <string name="template_weather_second_text">Busan, high: 19°C low: 15°C</string>
     <string name="msg_filter">Filter</string>
+
+    <string name="closet_tab_label_1">Top</string>
+    <string name="closet_tab_label_2">Bottom</string>
+    <string name="closet_tab_label_3">Outer</string>
+    <string name="closet_tab_label_4">Shoes</string>
+    <string name="closet_tab_label_5">Accessories</string>
 </resources>
