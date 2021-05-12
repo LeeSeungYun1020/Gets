@@ -9,7 +9,7 @@
     <string name="title_activity_login">로그인</string>
     <string name="prompt_email">이메일</string>
     <string name="prompt_password">비밀번호</string>
-    <string name="action_sign_in">회원 가입</string>
+    <string name="action_sign_in">로그인</string>
     <string name="action_sign_in_short">회원 가입</string>
     <string name="welcome">환영합니다!</string>
     <string name="invalid_username">사용할 수 없는 이름입니다.</string>
@@ -44,4 +44,8 @@
     <string name="closet_tab_label_3">아우터</string>
     <string name="closet_tab_label_4">신발</string>
     <string name="closet_tab_label_5">악세사리</string>
+    <string name="action_kakao_login" translatable="false">카카오 아이디로 로그인</string>
+    <string name="action_register">회원가입</string>
+    <string name="action_find_id">ID 찾기</string>
+    <string name="action_find_password">pw 찾기</string>
 </resources>
