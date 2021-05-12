@@ -93,4 +93,9 @@
     <string name="address_serch">Search</string>
     <string name="prompt_detail_address">Detail address</string>
     <string name="register_necessary">Necessary</string>
+    <string name="msg_search_length_desc">Enter what you want search.</string>
+    <string name="msg_search_length">Search</string>
+    <string name="msg_ok">OK</string>
+    <string name="msg_cancel">Cancel</string>
+    <string name="title_filter">Open filter</string>
 </resources>

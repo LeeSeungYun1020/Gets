@@ -79,4 +79,9 @@
     <string name="address_serch">주소 검색</string>
     <string name="prompt_detail_address">상세주소</string>
     <string name="register_necessary">필수 입력 정보</string>
+    <string name="msg_search_length">검색</string>
+    <string name="msg_search_length_desc">검색할 내용을 입력하세요.</string>
+    <string name="msg_ok">확인</string>
+    <string name="msg_cancel">취소</string>
+    <string name="title_filter">필터 열기</string>
 </resources>
