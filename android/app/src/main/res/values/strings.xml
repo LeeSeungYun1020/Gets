@@ -84,4 +84,13 @@
     <string name="season_summer">Summer</string>
     <string name="season_fall">Fall</string>
     <string name="season_winter">Winter</string>
+    <string name="prompt_phone_number">Phone number</string>
+    <string name="prompt_name">Name</string>
+    <string name="prompt_birth">Birth</string>
+    <string name="invalid_phone_num">Not a valid phone number</string>
+    <string name="invalid_birth">Not a valid birth</string>
+    <string name="prompt_address">Address</string>
+    <string name="address_serch">Search</string>
+    <string name="prompt_detail_address">Detail address</string>
+    <string name="register_necessary">Necessary</string>
 </resources>
