@@ -55,4 +55,33 @@
     <string name="action_register">Register</string>
     <string name="action_find_id">Find id</string>
     <string name="action_find_password">FInd pw</string>
+    <string name="filter_label_type">Type</string>
+    <string name="filter_label_fiber">Fiber</string>
+    <string name="filter_label_season">Season</string>
+    <string name="filter_label_color">Color</string>
+    <string name="filter_label_price">Price</string>
+    <string name="filter_label_ratings">Ratings</string>
+    <string name="template_filter_price" translatable="false">0-1,000,000</string>
+    <string name="template_filter_rating" translatable="false">0.0</string>
+    <string name="filter_label_custom_size">Fit to my body size</string>
+    <string name="filter_label_age">Age</string>
+    <string name="filter_label_size">Size</string>
+    <string name="filter_label_gender">Gender</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="size_xs" translatable="false">XS</string>
+    <string name="size_s" translatable="false">S</string>
+    <string name="size_m" translatable="false">M</string>
+    <string name="size_l" translatable="false">L</string>
+    <string name="size_xl" translatable="false">XL</string>
+    <string name="age_10">10s</string>
+    <string name="age_20">20s</string>
+    <string name="age_30">30s</string>
+    <string name="age_40">40s</string>
+    <string name="age_50">50s</string>
+    <string name="age_60_over">60s or older</string>
+    <string name="season_spring">Spring</string>
+    <string name="season_summer">Summer</string>
+    <string name="season_fall">Fall</string>
+    <string name="season_winter">Winter</string>
 </resources>

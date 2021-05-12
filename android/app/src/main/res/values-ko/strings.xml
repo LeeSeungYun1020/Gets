@@ -48,4 +48,26 @@
     <string name="action_register">회원가입</string>
     <string name="action_find_id">ID 찾기</string>
     <string name="action_find_password">pw 찾기</string>
+    <string name="filter_label_custom_size">내 체형과 일치</string>
+    <string name="filter_label_type">종류</string>
+    <string name="filter_label_fiber">소재</string>
+    <string name="filter_label_season">계절</string>
+    <string name="filter_label_color">색상</string>
+    <string name="filter_label_price">가격</string>
+    <string name="filter_label_ratings">평점</string>
+    <string name="filter_label_age">나이</string>
+    <string name="filter_label_size">사이즈</string>
+    <string name="filter_label_gender">성별</string>
+    <string name="gender_male">남</string>
+    <string name="gender_female">여</string>
+    <string name="age_10">10대</string>
+    <string name="age_20">20대</string>
+    <string name="age_30">30대</string>
+    <string name="age_40">40대</string>
+    <string name="age_50">50대</string>
+    <string name="age_60_over">60대 이상</string>
+    <string name="season_spring">봄</string>
+    <string name="season_summer">여름</string>
+    <string name="season_fall">가을</string>
+    <string name="season_winter">겨울</string>
 </resources>

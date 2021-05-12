@@ -9,4 +9,9 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+
+    <array name="price_slider_values">
+        <item>0</item>
+        <item>100</item>
+    </array>
 </resources>
