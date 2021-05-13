@@ -122,4 +122,7 @@
     <string name="template_product_name">Product Name</string>
     <string name="template_product_brand">Brand</string>
     <string name="template_product_price">30,000 won</string>
+    <string name="template_review_number" translatable="false">123</string>
+    <string name="review_reviews">reviews</string>
+    <string name="template_date" translatable="false">2021/05/05</string>
 </resources>
