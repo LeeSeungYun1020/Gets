@@ -3,6 +3,5 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.product.ProductListFragment">
-
-</androidx.recyclerview.widget.RecyclerView>
+    tools:context=".ui.product.ProductListFragment"
+    tools:listitem="@layout/card_product"></androidx.recyclerview.widget.RecyclerView>
