@@ -84,4 +84,23 @@
     <string name="msg_ok">확인</string>
     <string name="msg_cancel">취소</string>
     <string name="title_filter">필터 열기</string>
+    <string name="register_male">남자</string>
+    <string name="register_female">여자</string>
+    <string name="register_gender">성별</string>
+    <string name="minimal">미니멀</string>
+    <string name="casual">캐주얼</string>
+    <string name="campus">캠퍼스룩</string>
+    <string name="office">오피스</string>
+    <string name="rock_chic">락시크</string>
+    <string name="street">스트릿</string>
+    <string name="amekaji">아메카지</string>
+    <string name="city_boy">시티보이</string>
+    <string name="feminine">페미닌</string>
+    <string name="lovely">러블리</string>
+    <string name="sexy_glam">섹시글램</string>
+    <string name="height">키</string>
+    <string name="weight">몸무게</string>
+    <string name="register_top_size">상의 사이즈</string>
+    <string name="register_bottop_size">하의 사이즈</string>
+    <string name="action_done">완료</string>
 </resources>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:chipSpacing="10dp" />
+
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_1"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/minimal" />
+
+    <com.google.android.material.chip.Chip
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/casual" />
+
+    <com.google.android.material.chip.Chip
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/campus" />
+
+    <com.google.android.material.chip.Chip
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="4"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/office" />
+
+    <com.google.android.material.chip.Chip
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="5"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/rock_chic" />
+
+    <com.google.android.material.chip.Chip
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:layout_marginLeft="10dp"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/street" />
+
+    <com.google.android.material.chip.Chip
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/amekaji" />
+
+    <com.google.android.material.chip.Chip
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/city_boy" />
+
+    <com.google.android.material.chip.Chip
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/sexy_glam" />
+
+    <com.google.android.material.chip.Chip
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/feminine" />
+
+    <com.google.android.material.chip.Chip
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_column="1"
+        android:layout_marginLeft="10dp"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/lovely" />
+
+</GridLayout>

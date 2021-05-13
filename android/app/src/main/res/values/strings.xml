@@ -98,4 +98,26 @@
     <string name="msg_ok">OK</string>
     <string name="msg_cancel">Cancel</string>
     <string name="title_filter">Open filter</string>
+    <string name="register_male">Male</string>
+    <string name="register_female">Female</string>
+    <string name="register_gender">Gender</string>
+    <string name="minimal">Minimal</string>
+    <string name="casual">Casual</string>
+    <string name="campus">Campus</string>
+    <string name="office">Office look</string>
+    <string name="rock_chic">Rock chic</string>
+    <string name="street">"Street "</string>
+    <string name="amekaji">Amekaji</string>
+    <string name="office">Office</string>
+    <string name="city_boy">City boy</string>
+    <string name="feminine">Feminine</string>
+    <string name="lovely">Lovely</string>
+    <string name="sexy_glam">Sexy glam</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="register_top_size">Top size</string>
+    <string name="register_bottop_size">Bottom size</string>
+    <string name="suffix_cm" translatable="false">cm</string>
+    <string name="suffix_kg" translatable="false">kg</string>
+    <string name="action_done">Done</string>
 </resources>

@@ -5,6 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -16,14 +23,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:startIconDrawable="@drawable/ic_baseline_check_24"
-        app:startIconContentDescription="@string/register_necessary">
+        app:startIconContentDescription="@string/register_necessary"
+        app:startIconDrawable="@drawable/ic_baseline_check_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_name"
             android:inputType="textEmailAddress" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -37,8 +45,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name"
-        app:startIconDrawable="@drawable/ic_baseline_check_24"
-        app:startIconContentDescription="@string/register_necessary">
+        app:startIconContentDescription="@string/register_necessary"
+        app:startIconDrawable="@drawable/ic_baseline_check_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -59,8 +67,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username"
-        app:startIconDrawable="@drawable/ic_baseline_check_24"
-        app:startIconContentDescription="@string/register_necessary">
+        app:startIconContentDescription="@string/register_necessary"
+        app:startIconDrawable="@drawable/ic_baseline_check_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -92,8 +100,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTime"
-        app:startIconDrawable="@drawable/ic_baseline_check_24"
-        app:startIconContentDescription="@string/register_necessary">
+        app:startIconContentDescription="@string/register_necessary"
+        app:startIconDrawable="@drawable/ic_baseline_check_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -111,18 +119,18 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="24dp"
+        app:endIconContentDescription="@string/address_serch"
+        app:endIconDrawable="@drawable/ic_baseline_search_24"
+        app:endIconMode="custom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/birth"
-        app:endIconMode="custom"
-        app:endIconDrawable="@drawable/ic_baseline_search_24"
-        app:endIconContentDescription="@string/address_serch">
+        app:layout_constraintTop_toBottomOf="@+id/birth">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_address"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
