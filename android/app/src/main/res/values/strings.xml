@@ -143,4 +143,5 @@
     <string name="bodyinform">Body Information</string>
     <string name="secession">Secession</string>
     <string name="myreview">My review</string>
+    <string name="register_size">Size</string>
 </resources>
