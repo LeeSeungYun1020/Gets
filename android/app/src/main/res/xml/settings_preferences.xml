@@ -1,35 +1,42 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/messages_header">
+    <PreferenceCategory
+        app:title="@string/account_category">
 
-        <EditTextPreference
-            app:key="signature"
-            app:title="@string/signature_title"
-            app:useSimpleSummaryProvider="true" />
-
-        <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
-            app:useSimpleSummaryProvider="true" />
+        <PreferenceScreen
+            app:title="@string/signature"
+            app:summary=" > CLICK">
+        </PreferenceScreen>
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/sync_header">
+    <PreferenceCategory
+        app:title="@string/activity_category">
+
+        <PreferenceScreen
+            app:title="@string/product"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="@string/setting_category">
+
+        <PreferenceScreen
+            app:title="@string/notice"/>
+
+        <PreferenceScreen
+            app:title="@string/service_center" />
 
         <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title" />
+            app:title="@string/alarm" />
 
-        <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
+        <Preference
+            app:title="@string/version"
+            app:summary="2.37.1 (버전정보설정해야함)"/>
 
     </PreferenceCategory>
 
 </PreferenceScreen>
+
+
