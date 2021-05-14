@@ -107,4 +107,6 @@
     <string name="template_product_brand">브랜드</string>
     <string name="template_product_price">30,000원</string>
     <string name="review_reviews">리뷰</string>
+    <string name="tab_category">" 카테고리"</string>
+    <string name="tab_brand">브랜드</string>
 </resources>

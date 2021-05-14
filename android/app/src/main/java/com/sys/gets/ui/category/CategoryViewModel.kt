@@ -10,4 +10,8 @@ class CategoryViewModel : ViewModel() {
         value = "This is category Fragment"
     }
     val text: LiveData<String> = _text
+
+
 }
+
+//fragment 내 데이터 관리 & mainActivity 와 각 fragment의 중간연결고리

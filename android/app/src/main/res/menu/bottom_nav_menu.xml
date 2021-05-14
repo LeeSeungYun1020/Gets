@@ -8,12 +8,12 @@
 
     <item
         android:id="@+id/navigation_category"
-        android:icon="@drawable/ic_baseline_category_24"
+        android:icon="@drawable/ic_baseline_list_24"
         android:title="@string/title_category"/>
 
     <item
         android:id="@+id/navigation_closet"
-        android:icon="@drawable/ic_baseline_closet_24"
+        android:icon="@drawable/ic_baseline_door_sliding_24"
         android:title="@string/title_closet"/>
 
     <item
