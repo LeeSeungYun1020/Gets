@@ -127,4 +127,19 @@
     <string name="template_date" translatable="false">2021/05/05</string>
     <string name="tab_category">Category</string>
     <string name="tab_brand">Brand</string>
+
+    <!-- 더보기(설정) -->
+    <string name="account_category">My account</string>
+    <string name="signature">__________, dress up pretty today :)</string>
+    <string name="activity_category">Activity</string>
+    <string name="product">Recently viewed product</string>
+    <string name="setting_category">Setting</string>
+    <string name="notice">Notice</string>
+    <string name="service_center">Service Center</string>
+    <string name="alarm">Agree to receive alarm</string>
+    <string name="version">Version</string>
+    <string name="memberinform_modi">Member Information modification</string>
+    <string name="bodyinform">Body Information</string>
+    <string name="secession">Secession</string>
+    <string name="myreview">My review</string>
 </resources>
