@@ -20,8 +20,8 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="title_more">More</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email*</string>
-    <string name="prompt_password">Password*</string>
+    <string name="prompt_email">Email *</string>
+    <string name="prompt_password">Password *</string>
     <string name="action_sign_in">Sign in</string>
 
     <string name="action_sign_in_short">Sign in</string>
@@ -84,9 +84,9 @@
     <string name="season_summer">Summer</string>
     <string name="season_fall">Fall</string>
     <string name="season_winter">Winter</string>
-    <string name="prompt_phone_number">Phone number*</string>
-    <string name="prompt_name">Name*</string>
-    <string name="prompt_birth">Birth*</string>
+    <string name="prompt_phone_number">Phone number *</string>
+    <string name="prompt_name">Name *</string>
+    <string name="prompt_birth">Birth *</string>
     <string name="invalid_phone_num">Not a valid phone number</string>
     <string name="invalid_birth">Not a valid birth</string>
     <string name="prompt_address">Address</string>
