@@ -7,8 +7,8 @@
     <string name="title_coordination">코디</string>
     <string name="title_more">더보기</string>
     <string name="title_activity_login">로그인</string>
-    <string name="prompt_email">이메일</string>
-    <string name="prompt_password">비밀번호</string>
+    <string name="prompt_email">이메일*</string>
+    <string name="prompt_password">비밀번호*</string>
     <string name="action_sign_in">로그인</string>
     <string name="action_sign_in_short">회원 가입</string>
     <string name="welcome">환영합니다!</string>
@@ -70,9 +70,9 @@
     <string name="season_summer">여름</string>
     <string name="season_fall">가을</string>
     <string name="season_winter">겨울</string>
-    <string name="prompt_phone_number">전화번호</string>
-    <string name="prompt_name">이름</string>
-    <string name="prompt_birth">생년월일</string>
+    <string name="prompt_phone_number">전화번호*</string>
+    <string name="prompt_name">이름*</string>
+    <string name="prompt_birth">생년월일*</string>
     <string name="invalid_phone_num">숫자만 입력해주세요.</string>
     <string name="invalid_birth">생년월일을 210521 형태로 입력해주세요.</string>
     <string name="prompt_address">주소</string>
