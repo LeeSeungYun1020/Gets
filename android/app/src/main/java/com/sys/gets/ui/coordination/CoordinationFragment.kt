@@ -30,10 +30,6 @@ class CoordinationFragment : Fragment() {
         _binding = FragmentCoordinationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textCoordination
-        coordinationViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         return root
     }
 
