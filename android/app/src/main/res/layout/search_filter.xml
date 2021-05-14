@@ -17,9 +17,10 @@
         android:id="@+id/filter_type_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/filter_label_type"
-        android:textAppearance="?attr/textAppearanceHeadline5"
+        android:textAppearance="?attr/textAppearanceHeadline6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/filter_divider" />
 
@@ -35,8 +36,9 @@
         app:layout_constraintTop_toBottomOf="@id/filter_type_label">
 
         <AutoCompleteTextView
-            android:layout_width="match_parent"
+            android:layout_width="403dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
             android:inputType="none" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -46,6 +48,7 @@
         layout="@layout/chip_group_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,9 +58,10 @@
         android:id="@+id/filter_fiber_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/filter_label_fiber"
-        android:textAppearance="?attr/textAppearanceHeadline5"
+        android:textAppearance="?attr/textAppearanceHeadline6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/filter_type_chip_scroll_view" />
 
@@ -66,6 +70,7 @@
         layout="@layout/chip_group_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,9 +80,10 @@
         android:id="@+id/filter_season_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/filter_label_season"
-        android:textAppearance="?attr/textAppearanceHeadline5"
+        android:textAppearance="?attr/textAppearanceHeadline6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/filter_fiber_chip_scroll_view" />
 
@@ -87,6 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/filter_season_label">
@@ -128,18 +135,20 @@
         android:id="@+id/filter_color_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/filter_label_color"
-        android:textAppearance="?attr/textAppearanceHeadline5"
+        android:textAppearance="?attr/textAppearanceHeadline6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/filter_season_button_group" />
 
     <include
         android:id="@+id/filter_color_chip_scroll_view"
-        layout="@layout/chip_group_horizontal"
+        layout="@layout/chip_group_colors"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/filter_color_label" />
@@ -148,9 +157,10 @@
         android:id="@+id/filter_price_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/filter_label_price"
-        android:textAppearance="?attr/textAppearanceHeadline5"
+        android:textAppearance="?attr/textAppearanceHeadline6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/filter_color_chip_scroll_view" />
 
@@ -171,6 +181,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:stepSize="1"
         android:valueFrom="0"
         android:valueTo="100"
@@ -183,9 +194,10 @@
         android:id="@+id/filter_ratings_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/filter_label_ratings"
-        android:textAppearance="?attr/textAppearanceHeadline5"
+        android:textAppearance="?attr/textAppearanceHeadline6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/filter_price_slider" />
 
@@ -206,6 +218,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:stepSize="0.1"
         android:value="0.0"
         android:valueFrom="0.0"
