@@ -123,4 +123,5 @@
     <string name="bodyinform">체형정보</string>
     <string name="secession">탈퇴</string>
     <string name="myreview">My 리뷰</string>
+    <string name="register_size">디테일한 정보 등록</string>
 </resources>
