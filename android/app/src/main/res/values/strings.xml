@@ -46,15 +46,15 @@
     <string name="template_weather_second_text">Busan, high: 19°C low: 15°C</string>
     <string name="msg_filter">Filter</string>
 
-    <string name="closet_tab_label_1">Top</string>
-    <string name="closet_tab_label_2">Bottom</string>
-    <string name="closet_tab_label_3">Outer</string>
-    <string name="closet_tab_label_4">Shoes</string>
-    <string name="closet_tab_label_5">Accessories</string>
+    <string name="category_top">TOP</string>
+    <string name="category_bottom">BOTTOM</string>
+    <string name="category_outer">OUTER</string>
+    <string name="category_shoes">SHOES</string>
+    <string name="category_accessory">ACC</string>
     <string name="action_kakao_login">Kakao Login</string>
     <string name="action_register">Register</string>
-    <string name="action_find_id">Find id</string>
-    <string name="action_find_password">FInd pw</string>
+    <string name="action_find_id"><u>Find id</u></string>
+    <string name="action_find_password"><u>Find p/w</u></string>
     <string name="filter_label_type">Type</string>
     <string name="filter_label_fiber">Fiber</string>
     <string name="filter_label_season">Season</string>
@@ -105,7 +105,7 @@
     <string name="casual">Casual</string>
     <string name="campus">Campus</string>
     <string name="rock_chic">Rock chic</string>
-    <string name="street">"Street "</string>
+    <string name="street">Street</string>
     <string name="amekaji">Amekaji</string>
     <string name="office">Office</string>
     <string name="city_boy">City boy</string>
@@ -143,4 +143,8 @@
     <string name="bodyinform">Body Information</string>
     <string name="secession">Secession</string>
     <string name="myreview">My review</string>
+    <string name="register_size">Size</string>
+    <string name="category_skirt">SKIRT</string>
+    <string name="category_onepiece">ONEPIECE</string>
+    <string name="category_bag">BAG</string>
 </resources>

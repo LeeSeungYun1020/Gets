@@ -39,11 +39,11 @@
     <string name="template_wether_title">17°C, 맑음</string>
     <string name="template_weather_second_text">부산광역시, 최고: 19°C 최저: 15°C</string>
     <string name="msg_filter">필터</string>
-    <string name="closet_tab_label_1">상의</string>
-    <string name="closet_tab_label_2">하의</string>
-    <string name="closet_tab_label_3">아우터</string>
-    <string name="closet_tab_label_4">신발</string>
-    <string name="closet_tab_label_5">악세사리</string>
+    <string name="category_top">상의</string>
+    <string name="category_bottom">하의</string>
+    <string name="category_outer">아우터</string>
+    <string name="category_shoes">신발</string>
+    <string name="category_accessory">악세사리</string>
     <string name="action_kakao_login" translatable="false">카카오 아이디로 로그인</string>
     <string name="action_register">회원가입</string>
     <string name="action_find_id">ID 찾기</string>
@@ -123,4 +123,8 @@
     <string name="bodyinform">체형정보</string>
     <string name="secession">탈퇴</string>
     <string name="myreview">My 리뷰</string>
+    <string name="register_size">디테일한 정보 등록</string>
+    <string name="category_skirt">치마</string>
+    <string name="category_onepiece">원피스</string>
+    <string name="category_bag">가방</string>
 </resources>
