@@ -103,6 +103,7 @@
     <string name="register_top_size">상의 사이즈</string>
     <string name="register_bottop_size">하의 사이즈</string>
     <string name="action_done">완료</string>
+    <string name="select_my_style">선호하는 스타일</string>
     <string name="template_product_name">상품명</string>
     <string name="template_product_brand">브랜드</string>
     <string name="template_product_price">30,000원</string>

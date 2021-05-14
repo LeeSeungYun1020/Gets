@@ -108,6 +108,7 @@
     <string name="rock_chic">Rock chic</string>
     <string name="street">"Street "</string>
     <string name="amekaji">Amekaji</string>
+    <string name="office">Office</string>
     <string name="city_boy">City boy</string>
     <string name="feminine">Feminine</string>
     <string name="lovely">Lovely</string>
@@ -119,6 +120,7 @@
     <string name="suffix_cm" translatable="false">cm</string>
     <string name="suffix_kg" translatable="false">kg</string>
     <string name="action_done">Done</string>
+    <string name="select_my_style">My style</string>
     <string name="template_product_name">Product Name</string>
     <string name="template_product_brand">Brand</string>
     <string name="template_product_price">30,000 won</string>
