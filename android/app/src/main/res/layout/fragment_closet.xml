@@ -11,7 +11,7 @@
         android:layout_width="96dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:paddingTop="24dp"
+        android:paddingTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -20,60 +20,93 @@
             android:id="@+id/button1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/clear"
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
-            android:text="@string/closet_tab_label_1" />
+            android:text="@string/category_top"
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/clear"
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
-            android:text="@string/closet_tab_label_2" />
+            android:text="@string/category_bottom"
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/clear"
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
-            android:text="@string/closet_tab_label_3" />
+            android:text="@string/category_outer"
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/clear"
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
-            android:text="@string/closet_tab_label_4" />
+            android:text="@string/category_shoes"
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/button5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/clear"
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
-            android:text="@string/closet_tab_label_5" />
+            android:text="@string/category_accessory"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/skirtButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/clear"
+            android:text="@string/category_skirt"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/shoesButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/clear"
+            android:text="@string/category_shoes"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/onepieceButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/clear"
+            android:text="@string/category_onepiece"
+            android:textColor="@android:color/black" />
 
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/category"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
+
 
         <HorizontalScrollView
             android:id="@+id/downCategory"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="0dp"
+            android:scrollbars="none">
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipGroup"
@@ -135,15 +168,15 @@
             </com.google.android.material.chip.ChipGroup>
         </HorizontalScrollView>
 
-        <include
-            android:id="@+id/clothing_recycler"
-            layout="@layout/fragment_clothing"
-            android:layout_width="match_parent"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/clothing_recyclerview"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/downCategory"
-            tools:layout_editor_absoluteX="16dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/downCategory" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -155,6 +188,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_outline_add_24" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
