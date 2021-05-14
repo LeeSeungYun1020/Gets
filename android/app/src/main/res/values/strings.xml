@@ -53,8 +53,8 @@
     <string name="closet_tab_label_5">Accessories</string>
     <string name="action_kakao_login">Kakao Login</string>
     <string name="action_register">Register</string>
-    <string name="action_find_id">Find id</string>
-    <string name="action_find_password">FInd pw</string>
+    <string name="action_find_id"><u>Find id</u></string>
+    <string name="action_find_password"><u>Find p/w</u></string>
     <string name="filter_label_type">Type</string>
     <string name="filter_label_fiber">Fiber</string>
     <string name="filter_label_season">Season</string>
@@ -105,7 +105,7 @@
     <string name="casual">Casual</string>
     <string name="campus">Campus</string>
     <string name="rock_chic">Rock chic</string>
-    <string name="street">"Street "</string>
+    <string name="street">Street</string>
     <string name="amekaji">Amekaji</string>
     <string name="office">Office</string>
     <string name="city_boy">City boy</string>
