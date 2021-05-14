@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:singleLine="true">
+
+        <!--            app:chipStrokeColor="#000"-->
+<!--            app:chipStrokeWidth="1dp"/>-->
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_black"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#000000"
+            android:checkable="true"
+            android:checked="false"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_white"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:checkable="true"
+            android:checked="false"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_beige"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#F5F5DC"
+            android:checkable="true"
+            android:checked="false"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_brown"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#5B483B"
+            android:checkable="true"
+            android:checked="false"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_red"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF0000"
+            android:checkable="true"
+            android:checked="false"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_pink"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFC0CB"
+            android:checkable="true"
+            android:checked="false"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_orange"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFA500"
+            android:checkable="true"
+            android:checked="false"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_yellow"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFF00"
+            android:checkable="true"
+            android:checked="false"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_mint"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#7FFFD4"
+            android:checkable="true"
+            android:checked="false"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_green"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#008000"
+            android:checkable="true"
+            android:checked="false"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_blue"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#87CEEB"
+            android:checkable="true"
+            android:checked="false"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_navy"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#1a237e"
+            android:checkable="true"
+            android:checked="false"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_lavender"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#d1c4e9"
+            android:checkable="true"
+            android:checked="false"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_burgundy"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#800020"
+            android:checkable="true"
+            android:checked="false"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
+    </com.google.android.material.chip.ChipGroup>
+</HorizontalScrollView>
