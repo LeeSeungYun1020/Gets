@@ -120,4 +120,5 @@
     <string name="suffix_cm" translatable="false">cm</string>
     <string name="suffix_kg" translatable="false">kg</string>
     <string name="action_done">Done</string>
+    <string name="select_my_style">My style</string>
 </resources>
