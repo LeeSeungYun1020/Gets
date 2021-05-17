@@ -1,25 +1,85 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+<head>
+    <meta charset="UTF-8" lang="ko">
+    <title string-from="main_title"></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
     <script src="/node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
     <link href="/node_modules/material-components-web/dist/material-components-web.min.css" rel="stylesheet">
     <script src="/node_modules/material-components-web/dist/material-components-web.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     <script src="javascripts/strings.js"></script>
     <script>
-      $(document).ready(() => {
-        $('footer').load('footer.ejs')
-        getStrings()
-      })
+        $(document).ready(() => {
+            $('footer').load('footer.ejs')
+            getStrings()
+            const tabBar = new mdc.tabBar.MDCTabBar(document.querySelector('.mdc-tab-bar'));
+        })
     </script>
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <p string="test1"></p>
-    <p string="test2"></p>
-    <footer></footer>
-  </body>
+</head>
+<body>
+<header>
+    <div class="mdc-elevation--z2" id="main_header">
+        <div class="title_header">
+<!--            <img class="main_icon" src="">-->
+            <h1 class="main_logo">Gets</h1>
+        </div>
+        <div class="mdc-tab-bar" role="tablist">
+            <div class="mdc-tab-scroller">
+                <div class="mdc-tab-scroller__scroll-area">
+                    <div class="mdc-tab-scroller__scroll-content">
+                        <button class="mdc-tab" id="tab_home" role="tab" aria-selected="true" tabindex="0">
+                            <span class="mdc-tab__content">
+                                <span class="mdc-tab__icon material-icons" aria-hidden="true">home</span>
+                                <span class="mdc-tab__text-label" string-from="home"></span>
+                            </span>
+                            <span class="mdc-tab-indicator">
+                                <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                            </span>
+                            <span class="mdc-tab__ripple"></span>
+                        </button>
+                        <button class="mdc-tab" id="tab_category" role="tab" aria-selected="false" tabindex="1">
+                            <span class="mdc-tab__content">
+                                <span class="mdc-tab__icon material-icons" aria-hidden="true">list</span>
+                                <span class="mdc-tab__text-label" string-from="category"></span>
+                            </span>
+                            <span class="mdc-tab-indicator">
+                                <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                            </span>
+                            <span class="mdc-tab__ripple"></span>
+                        </button>
+                        <button class="mdc-tab" id="tab_closet" role="tab" aria-selected="false" tabindex="2">
+                            <span class="mdc-tab__content">
+                                <span class="mdc-tab__icon material-icons" aria-hidden="true">door_sliding</span>
+                                <span class="mdc-tab__text-label" string-from="closet"></span>
+                            </span>
+                            <span class="mdc-tab-indicator">
+                                <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                            </span>
+                            <span class="mdc-tab__ripple"></span>
+                        </button>
+                        <button class="mdc-tab" id="tab_coordination" role="tab" aria-selected="false" tabindex="3">
+                            <span class="mdc-tab__content">
+                                <span class="mdc-tab__icon material-icons" aria-hidden="true">checkroom</span>
+                                <span class="mdc-tab__text-label" string-from="coordination"></span>
+                            </span>
+                            <span class="mdc-tab-indicator">
+                                <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                            </span>
+                            <span class="mdc-tab__ripple"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div>
+    <section>
+
+    </section>
+</div>
+<footer></footer>
+</body>
 </html>

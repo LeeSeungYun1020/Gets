@@ -6,7 +6,7 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const apiRouter = require('./routes/api');
 
 const app = express();
 
@@ -30,7 +30,7 @@ app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')))
 app.use(express.static(path.join(__dirname, 'node_modules')))
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api', apiRouter);
 app.get('/*.html', (req, res) => {
   res.render(req.params[0] + '.html')
 })

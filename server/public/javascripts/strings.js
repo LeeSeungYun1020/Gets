@@ -1,22 +1,26 @@
 const strings = {
     en: {
-        test1: "A",
-        test2: "B"
+        main_title: "Gets: Custom Fashion Platform",
+        home: "Home",
+        category: "Category",
+        closet: "Closet",
+        coordination: "Coordination"
     },
     ko: {
-        test1: "가",
-        test2: "나"
+        main_title: "Gets: 맟춤형 패션 플랫폼",
+        home: "홈",
+        category: "카테고리",
+        closet: "옷장",
+        coordination: "코디"
     }
 }
 
 function getStrings() {
     let locale = navigator.language.substr(0, 2)
-    console.log(locale)
     if (!(locale in strings))
         locale = "en"
-    const items = document.querySelectorAll("[string]")
+    const items = document.querySelectorAll("[string-from]")
     items.forEach(item => {
-        console.log(item)
-        item.textContent = strings[locale][item.getAttribute("string")]
+        item.textContent = strings[locale][item.getAttribute("string-from")]
     })
 }
