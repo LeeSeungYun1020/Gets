@@ -26,9 +26,17 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')))
+app.use(express.static(path.join(__dirname, 'node_modules')))
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.get('/*.html', (req, res) => {
+  res.render(req.params[0] + '.html')
+})
+app.get('/*.ejs', (req, res) => {
+  res.render(req.params[0] + '.ejs')
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
