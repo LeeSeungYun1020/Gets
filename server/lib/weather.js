@@ -1,3 +1,4 @@
+// 날씨 연산 관련 함수
 
 // 위도 경도를 기상청 x, y좌표로 변경
 function conversion(latitude, longitude){
@@ -58,49 +59,6 @@ function getNearestTimeString(hour){
     else if (23 <= hour)
         time = '2300'
     return time
-}
-// 받아온 날씨 데이터 출력
-function printWeatherData(json, isSet){
-    if (isSet == undefined)
-        isSet = [false, false, false, false, false, false]
-    let type = ['POP', 'PTY', 'SKY', 'REH', 'TMX', 'TMN']
-    let state = false
-    for(let i = 0; i < 100 && state == false; i++){
-        try{
-            let category = json.response.body.items.item[i].category
-            let value = json.response.body.items.item[i].fcstValue
-            for(let j in type){
-                if (!isSet[j] && category == type[j]){
-                    isSet[j] = true
-                    let element = document.getElementById(type[j])
-                    element.innerHTML += convertWeatherData(category, value)
-                }
-            }
-        } finally {
-            for(let k in isSet){
-                if (!isSet[k])
-                    break
-                else if (k == isSet.length - 1)
-                    state = true
-            }
-        }
-    }
-    return [state, isSet]
-}
-// 날씨 데이터 변환
-function convertWeatherData(category, value){
-    const ptyValue = ['없음', '비', '비/눈', '눈', '소나기']
-    const skyValue = ['없음', '맑음', '구름조금', '구름많음', '흐림']
-    if(category == 'POP' || category == 'REH')
-        return value += '%'
-    else if(category == 'TMX' || category == 'TMN')
-        return value += '°C'
-    else if(category == 'PTY')
-        return ptyValue[value]
-    else if(category == 'SKY')
-        return skyValue[value]
-    else
-        return ''
 }
 
 exports.conversion = conversion

@@ -1,4 +1,9 @@
+@use "node_modules/@material/theme" with ($primary: #9c27b0, $secondary: #76ff03, $background: #fff,)
 @use "node_modules/material-components-web/material-components-web"
+@use "node_modules/@material/tab-bar/mdc-tab-bar"
+@use "node_modules/@material/tab-scroller/mdc-tab-scroller"
+@use "node_modules/@material/tab-indicator/mdc-tab-indicator"
+@use "node_modules/@material/tab/mdc-tab"
 
 body, html
   height: 100%
@@ -10,9 +15,3 @@ body
 
 *
   margin: 0
-
-#main_header
-  background-color: coral
-
-.mdc-tab
-  --mdc-theme-primary: black

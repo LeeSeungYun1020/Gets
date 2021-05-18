@@ -19,7 +19,18 @@
             $("#redirect_api_button").click(() => {
                 window.open("/api")
             })
+            changeImage()
         })
+        let imageIndex = 1
+        function changeImage() {
+            setTimeout(() => {
+                imageIndex++
+                if (imageIndex > 3)
+                    imageIndex = 1
+                $("#home_image").attr("src", `images/phone${imageIndex}.jpg`)
+                changeImage()
+            }, 3000)
+        }
     </script>
 </head>
 <body>
@@ -29,7 +40,7 @@
 <!--            <img class="main_icon" src="">-->
             <h1 class="main_logo">Gets</h1>
         </div>
-        <div class="mdc-tab-bar" role="tablist">
+        <div class="mdc-tab-bar mdc-theme--primary mdc-theme--text-primary-on-background" role="tablist">
             <div class="mdc-tab-scroller">
                 <div class="mdc-tab-scroller__scroll-area">
                     <div class="mdc-tab-scroller__scroll-content">
@@ -81,7 +92,11 @@
 </header>
 
 <div>
-    <section class="button_section">
+    <section class="mdc-elevation--z1">
+        <img id="home_image"
+             alt="image" width="100%" src="images/phone1.jpg">
+    </section>
+    <section class="button_section mdc-theme--primary">
         <button id="redirect_api_button" class="mdc-button mdc-button--raised">
             <span class="mdc-button__label" string-from="redirect_api"></span>
         </button>

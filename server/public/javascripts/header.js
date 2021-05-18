@@ -1,11 +1,12 @@
-let tabBar
+//import {mdc} from '../../node_modules/@material'
 
+let tabBar
 $(document).ready(() => {
     initComponents()
     $(".main_logo").click(() => {
         $("#tab_home").trigger("click")
     })
-
+    tabBar.activateTab(0)
     clickTabs()
 })
 
