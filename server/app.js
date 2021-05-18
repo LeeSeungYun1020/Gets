@@ -31,6 +31,15 @@ app.use(express.static(path.join(__dirname, 'node_modules')))
 
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
+app.get('/category', (req, res) => {
+  res.send("카테고리 기능 구현")
+})
+app.get('/closet', (req, res) => {
+  res.send("옷장 기능 구현")
+})
+app.get('/coordination', (req, res) => {
+  res.send("코디 기능 구현")
+})
 app.get('/*.html', (req, res) => {
   res.render(req.params[0] + '.html')
 })

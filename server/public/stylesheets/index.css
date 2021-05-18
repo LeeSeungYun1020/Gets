@@ -1,0 +1,10 @@
+.mdc-button {
+  --mdc-theme-primary: coral;
+  --mdc-theme-background: black;
+  width: 300px; }
+
+.button_section {
+  text-align: center;
+  margin-top: 16px; }
+
+/*# sourceMappingURL=index.css.map */

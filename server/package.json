@@ -10,6 +10,7 @@
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "got": "^11.8.2",
     "http-errors": "~1.6.3",
     "jquery": "^3.6.0",
     "material-components-web": "^11.0.0",
