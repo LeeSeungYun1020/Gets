@@ -1,7 +1,6 @@
 package com.sys.gets.ui.coordination
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,9 +14,6 @@ class CoordinationRecyclerAdapter(val context: Context, val codyList: ArrayList<
    : RecyclerView.Adapter<CoordinationRecyclerAdapter.ViewHolder>() {
 //우리가 보여줄 데이터는 RecyclerView에 직접 넣지 않고 Adapter에 추가된다.
 //RecyclerView는 Adapter를 통해 데이터를 얻고 View를 생성한다.
-
-    //private val image = null
-
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var codyTitle: TextView
