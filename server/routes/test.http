@@ -1,9 +1,8 @@
-POST http://localhost:3000/api/signin
+POST http://localhost:3000/api/signup/check
 Content-Type: application/json
 
 {
-  "id": "ididid",
-  "pw": "password"
+  "email": "example@gmail.com"
 }
 
 ###

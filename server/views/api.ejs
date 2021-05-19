@@ -15,7 +15,6 @@
         $(document).ready(() => {
             $('footer').load('footer.ejs')
             getStrings()
-            const tabBar = new mdc.tabBar.MDCTabBar(document.querySelector('.mdc-tab-bar'));
             $("#redirect_api_button").click(() => {
                 window.open("/api")
             })
@@ -27,7 +26,7 @@
     <div class="mdc-elevation--z2" id="main_header">
         <div class="title_header">
             <!--            <img class="main_icon" src="">-->
-            <h1 class="main_logo">Gets</h1>
+            <h1 class="main_logo mdc-typography--headline1">Gets</h1>
         </div>
         <div class="mdc-tab-bar" role="tablist">
             <div class="mdc-tab-scroller">
@@ -81,10 +80,43 @@
 </header>
 
 <div>
-    <section class="button_section">
-        <button id="redirect_api_button" class="mdc-button mdc-button--raised">
-            <span class="mdc-button__label" string-from="api_weather"></span>
-        </button>
+    <section class="api_description">
+        <div class="mdc-typography--headline3">API Center</div>
+    </section>
+    <section class="api_description">
+        <div class="mdc-typography--headline4" string-from="api_sign"></div>
+        <div class="mdc-typography--headline5" string-from="api_sign_in"></div>
+        <p class="mdc-typography--body1">
+            POST: api/signin
+            <br>
+            return: {result: boolean}
+        </p>
+        <div class="mdc-typography--headline5" string-from="api_sign_up_check"></div>
+        <p class="mdc-typography--body1">
+            POST: api/signup/check
+            <br>
+            return: {result: boolean}
+        </p>
+        <div class="mdc-typography--headline5" string-from="api_sign_up_basic"></div>
+        <p class="mdc-typography--body1">
+            POST: api/signup/basic
+            <br>
+            return: {result: boolean}
+        </p>
+        <div class="mdc-typography--headline5" string-from="api_sign_up_info"></div>
+        <p class="mdc-typography--body1">
+            POST: api/signin/info
+            <br>
+            return: {result: boolean}
+        </p>
+    </section>
+    <section class="api_description">
+        <div class="mdc-typography--headline4" string-from="api_weather"></div>
+        <p class="mdc-typography--body1">
+            POST: api/weather
+            <br>
+            return: {}
+        </p>
     </section>
 </div>
 <footer></footer>
