@@ -14,7 +14,6 @@ router.get('/', function(req, res, next) {
 router.post("/signin", (req, res) => {
   const email = req.body.email
   const pw = req.body.pw
-  res.send(req.body.id)
   connection.query("select `email`, `pw` from `user` where `email`=?",[email], (err, result) => {
     if (err || result.length === 0) // 이메일 없음
       res.send({result: false})
@@ -86,7 +85,7 @@ router.get("/weather", (req, res) => {
     today.hours -= 2
   const date = weather.getDateString(today)
   const time = weather.getNearestTimeString(hour)
-  const pos = weather.conversion(35.1256193, 129.0903112)
+  const pos = weather.conversion(req.body.latitude ?? 35.1256193, req.body.longitude ?? 129.0903112)
   let url = `http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?serviceKey=${key}&pageNo=1&numOfRows=100&dataType=JSON&base_date=${date}&base_time=${time}&nx=${pos.x}&ny=${pos.y}`
   console.log(url);
 
