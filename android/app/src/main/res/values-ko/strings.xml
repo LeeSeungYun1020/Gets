@@ -43,7 +43,6 @@
     <string name="category_bottom">하의</string>
     <string name="category_outer">아우터</string>
     <string name="category_shoes">신발</string>
-    <string name="category_accessory">악세사리</string>
     <string name="action_kakao_login" translatable="false">카카오 아이디로 로그인</string>
     <string name="action_register">회원가입</string>
     <string name="action_find_id">ID 찾기</string>
@@ -125,6 +124,7 @@
     <string name="myreview">My 리뷰</string>
     <string name="register_size">디테일한 정보 등록</string>
     <string name="category_skirt">치마</string>
-    <string name="category_onepiece">원피스</string>
+    <string name="category_set">세트</string>
     <string name="category_bag">가방</string>
+    <string name="category_hat">모자</string>
 </resources>

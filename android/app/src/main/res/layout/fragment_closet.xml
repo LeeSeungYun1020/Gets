@@ -15,29 +15,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <Button
-            android:id="@+id/button1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/clear"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
-            android:text="@string/category_top"
-            android:textColor="@android:color/black" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/clear"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
-            android:text="@string/category_bottom"
-            android:textColor="@android:color/black" />
-
-        <Button
-            android:id="@+id/button3"
+            android:id="@+id/outerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/clear"
@@ -47,23 +26,23 @@
             android:textColor="@android:color/black" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/topButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/clear"
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
-            android:text="@string/category_shoes"
+            android:text="@string/category_top"
             android:textColor="@android:color/black" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/bottomButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/clear"
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
-            android:text="@string/category_accessory"
+            android:text="@string/category_bottom"
             android:textColor="@android:color/black" />
 
         <Button
@@ -75,6 +54,27 @@
             android:textColor="@android:color/black" />
 
         <Button
+            android:id="@+id/setButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/clear"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:text="@string/category_set"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/accButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/clear"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:text="@string/category_hat"
+            android:textColor="@android:color/black" />
+
+
+        <Button
             android:id="@+id/shoesButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,12 +83,21 @@
             android:textColor="@android:color/black" />
 
         <Button
-            android:id="@+id/onepieceButton"
+            android:id="@+id/bagButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/clear"
-            android:text="@string/category_onepiece"
+            android:text="@string/category_bag"
             android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/hatButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/clear"
+            android:text="@string/category_hat"
+            android:textColor="@android:color/black" />
+
 
     </LinearLayout>
 
