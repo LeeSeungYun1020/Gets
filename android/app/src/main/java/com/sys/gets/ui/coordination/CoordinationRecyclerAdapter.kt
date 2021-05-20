@@ -15,14 +15,9 @@ class CoordinationRecyclerAdapter(val context: Context, val codyList: ArrayList<
 //우리가 보여줄 데이터는 RecyclerView에 직접 넣지 않고 Adapter에 추가된다.
 //RecyclerView는 Adapter를 통해 데이터를 얻고 View를 생성한다.
 
-    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        var codyTitle: TextView
-        var codyImage: ImageView
-
-        init {
-            codyTitle = itemView.findViewById(R.id.codyTitle)
-            codyImage = itemView.findViewById(R.id.codyImage)
-        }
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val codyTitle: TextView = itemView.findViewById(R.id.codyTitle)
+        val codyImage: ImageView = itemView.findViewById(R.id.codyImage)
 
         fun bind(cody: CoordinationItem, context: Context) {
             /* codyImage의 setImageResource에 들어갈 이미지의 id를 파일명(String)으로 찾고,
@@ -30,13 +25,14 @@ class CoordinationRecyclerAdapter(val context: Context, val codyList: ArrayList<
             if (cody.imageId != "") {
                 val resourceId =
                     context.resources.getIdentifier(cody.imageId, "drawable", context.packageName)
-                codyImage?.setImageResource(resourceId)
+
+                codyImage.setImageResource(resourceId)
             }
             else {
-                codyImage?.setImageResource(R.mipmap.ic_launcher)
+                codyImage.setImageResource(R.mipmap.ic_launcher)
             }
             /* 나머지 TextView와 String 데이터를 연결한다. */
-            codyTitle?.text = cody.title
+            codyTitle.text = cody.title
         }
     }
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -46,13 +42,12 @@ class CoordinationRecyclerAdapter(val context: Context, val codyList: ArrayList<
         }
 
         override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-            viewHolder?.bind(codyList[position], context)
+            viewHolder.bind(codyList[position], context)
+//            viewHolder.codyTitle.text = codyList[position].title
+//            viewHolder.codyImage.setImageResource(R.drawable.cody_example)
         }
 
-        override fun getItemCount(): Int {
-            return codyList.size
-        }
-
+    override fun getItemCount() = codyList.size
     }
 
 

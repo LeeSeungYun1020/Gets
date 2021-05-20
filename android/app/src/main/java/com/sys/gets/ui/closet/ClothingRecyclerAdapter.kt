@@ -11,38 +11,31 @@ import com.sys.gets.R
 class ClothingRecyclerAdapter(val context: Context, val clothingList: ArrayList<ClothingItem>)
     : RecyclerView.Adapter<ClothingRecyclerAdapter.ViewHolder>(){
 
-    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        var clothingImage: ImageView
-
-        init {
-            clothingImage = itemView.findViewById(R.id.clothingImage)
-        }
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val clothingImage: ImageView = itemView.findViewById(R.id.clothingImage)
 
         fun bind(cody: ClothingItem, context: Context) {
             if (cody.imageId != "") {
                 val resourceId =
                     context.resources.getIdentifier(cody.imageId, "drawable", context.packageName)
-                clothingImage?.setImageResource(resourceId)
-            }
-            else {
-                clothingImage?.setImageResource(R.mipmap.ic_launcher)
+                clothingImage.setImageResource(resourceId)
+            } else {
+                clothingImage.setImageResource(R.mipmap.ic_launcher)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
-    : ClothingRecyclerAdapter.ViewHolder {
+            : ViewHolder {
         val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.clothing_item, parent, false)
         return ViewHolder(v)
     }
 
-    override fun onBindViewHolder(viewHolder: ClothingRecyclerAdapter.ViewHolder, position: Int) {
-        viewHolder?.bind(clothingList[position], context)
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        viewHolder.bind(clothingList[position], context)
     }
 
-    override fun getItemCount(): Int {
-        return clothingList.size
-    }
+    override fun getItemCount() = clothingList.size
 
 }
