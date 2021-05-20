@@ -34,82 +34,77 @@ private var _binding: FragmentCategoryBinding? = null
         get() {
             val listData = HashMap<String, List<String>>()
 
-            val tops = ArrayList<String>()
-            tops.add("Short T-shirt")
-            tops.add("Long T-shirt")
-            tops.add("Short sleeve shirt")
-            tops.add("Long sleeve shirt")
-            tops.add("Sweatshirt")
-            tops.add("Hoodie")
-            tops.add("Knit")
-
-            val bottoms = ArrayList<String>()
-            bottoms.add("Jeans")
-            bottoms.add("Slacks")
-            bottoms.add("Cotton pants")
-            bottoms.add("Shorts")
-            bottoms.add("Training pants")
-            bottoms.add("Wide pants")
-            bottoms.add("Leggings")
-//            bottoms.add("Straight pants")
-//            bottoms.add("Slim pants")
-
             val outers = ArrayList<String>()
-            outers.add("Coat")
-            outers.add("Padded jacket")
-            outers.add("cardigan")
-            outers.add("Blazer")
-            outers.add("Leather jacket")
-            outers.add("Denim jacket")
-            outers.add("Hooded zip-up")
-            outers.add("Fleece")
+            outers.add(getString(R.string.category_outer_coat))
+            outers.add(getString(R.string.category_outer_padded_jacket))
+            outers.add(getString(R.string.category_outer_cardigan))
+            outers.add(getString(R.string.category_outer_blazer))
+            outers.add(getString(R.string.category_outer_jumper))
+            outers.add(getString(R.string.category_outer_jacket))
+            outers.add(getString(R.string.category_outer_hooded_zipup))
+            outers.add(getString(R.string.category_outer_fleece))
+
+            val tops = ArrayList<String>()
+            tops.add(getString(R.string.category_top_t_shirt))
+            tops.add(getString(R.string.category_top_shirt_blouse))
+            tops.add(getString(R.string.category_top_long_sleeve))
+            tops.add(getString(R.string.category_top_sweatshirt))
+            tops.add(getString(R.string.category_top_hoodie))
+            tops.add(getString(R.string.category_top_knit))
+            tops.add(getString(R.string.category_top_sleeveless))
+            tops.add(getString(R.string.category_top_vest))
+
+            val pants = ArrayList<String>()
+            pants.add(getString(R.string.category_pants_jeans))
+            pants.add(getString(R.string.category_pants_slacks))
+            pants.add(getString(R.string.category_pants_cotton_pants))
+            pants.add(getString(R.string.category_pants_training_pants))
+            pants.add(getString(R.string.category_pants_jogger_pants))
+            pants.add(getString(R.string.category_pants_shorts))
+            pants.add(getString(R.string.category_pants_leggings))
 
             val skirts = ArrayList<String>()
-            skirts.add("Mini-skirt")
-            skirts.add("Middle-skirt")
-            skirts.add("Long-skirt")
-            skirts.add("Denim-skirt")
-//            skirts.add("Pleated-skirt")
+            skirts.add(getString(R.string.category_skirt_mini_skirt))
+            skirts.add(getString(R.string.category_skirt_middle_skirt))
+            skirts.add(getString(R.string.category_skirt_long_skirt))
 
-            val onePiece = ArrayList<String>()
-            onePiece.add("Short one-piece")
-            onePiece.add("Middle one-piece")
-            onePiece.add("Long one-piece")
-            onePiece.add("Denim one-piece")
+            val sets = ArrayList<String>()
+            sets.add(getString(R.string.category_set_one_piece))
+            sets.add(getString(R.string.category_set_two_piece))
+            sets.add(getString(R.string.category_set_suit))
+            sets.add(getString(R.string.category_set_jump_suit))
 
             val shoes = ArrayList<String>()
-            shoes.add("Sneakers")
-            shoes.add("Sandals")
-            shoes.add("Loafers")
-            shoes.add("Derby shoes")
-            shoes.add("Boots")
-            shoes.add("Heels/Pumps")
+            shoes.add(getString(R.string.category_shoes_sneakers))
+            shoes.add(getString(R.string.category_shoes_loafers))
+            shoes.add(getString(R.string.category_shoes_boots))
+            shoes.add(getString(R.string.category_shoes_derby))
+            shoes.add(getString(R.string.category_shoes_heels_pumps))
+            shoes.add(getString(R.string.category_shoes_sandals))
+            shoes.add(getString(R.string.category_shoes_slipper))
 
             val bags = ArrayList<String>()
-            bags.add("Backpack")
-            bags.add("Messenger bag")
-            bags.add("Eco bag")
-            bags.add("Leather bag")
+            bags.add(getString(R.string.category_bag_backpack))
+            bags.add(getString(R.string.category_bag_messenger_cross))
+            bags.add(getString(R.string.category_bag_tote))
+            bags.add(getString(R.string.category_bag_eco))
+            bags.add(getString(R.string.category_bag_leather))
 
-//            val accessories = ArrayList<String>()
-//            accessories.add("Hat")
-//            accessories.add("Glasses")
-//            accessories.add("Tie")
-//            accessories.add("Scarf")
-//            accessories.add("Belt")
-//            accessories.add("Watch")
-//            accessories.add("Gloves")
-//            accessories.add("jewelry")
+            val hats = ArrayList<String>()
+            hats.add(getString(R.string.category_hat_cap))
+            hats.add(getString(R.string.category_hat_beanie))
+            hats.add(getString(R.string.category_hat_bucket_hat))
+            hats.add(getString(R.string.category_hat_beret))
 
 
-            listData["Top"] = tops
-            listData["Bottom"] = bottoms
-            listData["Outer"] = outers
-            listData["Skirt"] = skirts
-            listData["One-piece"] = onePiece
-            listData["Shoes"] = shoes
-            listData["Bag"] = bags
-//            listData["Acc"] = accessories
+            listData[getString(R.string.category_outer)] = outers
+            listData[getString(R.string.category_top)] = tops
+            listData[getString(R.string.category_pants)] = pants
+            listData[getString(R.string.category_skirt)] = skirts
+            listData[getString(R.string.category_set)] = sets
+            listData[getString(R.string.category_shoes)] = shoes
+            listData[getString(R.string.category_bag)] = bags
+            listData[getString(R.string.category_hat)] = hats
 
             return listData
         }

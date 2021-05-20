@@ -5,7 +5,7 @@ import com.sys.gets.R
 enum class Category(val code: Int, val resID: Int) {
     OUTER(1, R.string.category_outer),
     TOP(2, R.string.category_top),
-    PANTS(3, R.string.category_bottom),
+    PANTS(3, R.string.category_pants),
     SKIRT(4, R.string.category_skirt),
     SET(5, R.string.category_set),
     SHOES(6, R.string.category_shoes),
@@ -54,9 +54,9 @@ enum class Skirt(val code: Int, val resID: Int) {
 
 enum class Set(val code: Int, val resID: Int) {
     ONE_PIECE(1, R.string.category_set_one_piece),
-    TWO_PIECE(2, R.string.category_skirt_two_piece),
-    SUIT(4, R.string.category_skirt_suit),
-    JUMP_SUIT(8, R.string.category_skirt_jump_suit)
+    TWO_PIECE(2, R.string.category_set_two_piece),
+    SUIT(4, R.string.category_set_suit),
+    JUMP_SUIT(8, R.string.category_set_jump_suit)
 
 }
 
@@ -82,9 +82,9 @@ enum class Bag(val code: Int, val resID: Int) {
 
 enum class Hat(val code: Int, val resID: Int) {
     CAP(1, R.string.category_hat_cap),
-    BEANIE(2, R.string.category_bag_beanie),
-    BUCKET_HAT(4, R.string.category_bag_bucket_hat),
-    BERET(8, R.string.category_bag_beret)
+    BEANIE(2, R.string.category_hat_beanie),
+    BUCKET_HAT(4, R.string.category_hat_bucket_hat),
+    BERET(8, R.string.category_hat_beret)
 
 }
 

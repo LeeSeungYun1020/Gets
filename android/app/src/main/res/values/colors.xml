@@ -12,7 +12,8 @@
     <!-- -->
     <color name="granite_gray">#676767</color>
     <color name="gray">#BEBEBE</color>
-    <color name="beige">#F5F5DC</color>
+    <color name="ivory">#F5F5DC</color>
+    <color name="beige">#DEB887</color>
     <color name="brown">#964B00</color>
     <color name="red">#FF0000</color>
     <color name="pink">	#FFC0CB</color>
