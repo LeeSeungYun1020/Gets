@@ -163,7 +163,7 @@
 
     <include
         android:id="@+id/filter_style_chip"
-        layout="@layout/chip_group_default"
+        layout="@layout/chip_group_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"

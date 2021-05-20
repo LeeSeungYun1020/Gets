@@ -4,26 +4,19 @@
     <string name="title_category">Category</string>
     <string name="title_closet">Closet</string>
     <string name="title_coordination">Coordination</string>
-    <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
     <string name="signature_title">Your signature</string>
     <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
     <string name="sync_title">Sync email periodically</string>
     <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="title_more">More</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email *</string>
     <string name="prompt_password">Password *</string>
     <string name="action_sign_in">Sign in</string>
-
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
@@ -45,7 +38,6 @@
     <string name="template_wether_title">17°C, Clear</string>
     <string name="template_weather_second_text">Busan, high: 19°C low: 15°C</string>
     <string name="msg_filter">Filter</string>
-
     <string name="category_top">Top</string>
     <string name="category_bottom">Pants</string>
     <string name="category_outer">Outer</string>
@@ -100,17 +92,17 @@
     <string name="register_male">Male</string>
     <string name="register_female">Female</string>
     <string name="register_gender">Gender</string>
-    <string name="minimal">Minimal</string>
-    <string name="casual">Casual</string>
-    <string name="campus">Campus</string>
-    <string name="rock_chic">Rock chic</string>
-    <string name="street">Street</string>
-    <string name="amekaji">Amekaji</string>
-    <string name="office">Office</string>
-    <string name="city_boy">City boy</string>
-    <string name="feminine">Feminine</string>
-    <string name="lovely">Lovely</string>
-    <string name="sexy_glam">Sexy glam</string>
+    <string name="style_minimal">Minimal</string>
+    <string name="style_casual">Casual</string>
+    <string name="style_campus">Campus</string>
+    <string name="style_rock_chic">Rock chic</string>
+    <string name="style_street">Street</string>
+    <string name="style_amekaji">Amekaji</string>
+    <string name="style_office">Office</string>
+    <string name="style_city_boy">City boy</string>
+    <string name="style_feminine">Feminine</string>
+    <string name="style_lovely">Lovely</string>
+    <string name="style_sexy_glam">Sexy glam</string>
     <string name="height">Height</string>
     <string name="weight">Weight</string>
     <string name="register_top_size">Top size</string>
@@ -127,8 +119,6 @@
     <string name="template_date" translatable="false">2021/05/05</string>
     <string name="tab_category">Category</string>
     <string name="tab_brand">Brand</string>
-
-    <!-- 더보기(설정) -->
     <string name="account_category">My account</string>
     <string name="signature">__________, dress up pretty today :)</string>
     <string name="activity_category">Activity</string>
@@ -208,4 +198,23 @@
     <string name="fiber_silk">Silk</string>
     <string name="fiber_velvet">Velvet</string>
     <string name="fiber_coduroy">Coduroy</string>
+    <string name="color_black">Black</string>
+    <string name="color_white">White</string>
+    <string name="color_charcoal">Charcoal</string>
+    <string name="color_gray">Gray</string>
+    <string name="color_ivory">Ivory</string>
+    <string name="color_beige">Beige</string>
+    <string name="color_brown">Brown</string>
+    <string name="color_red">Red</string>
+    <string name="color_pink">Pink</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_yellow">Yellow</string>
+    <string name="color_mustard">Mustard</string>
+    <string name="color_mint">Mint</string>
+    <string name="color_green">Green</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_sky_blue">Sky blue</string>
+    <string name="color_navy">Navy</string>
+    <string name="color_purple">Purple</string>
+    <string name="color_burgundy">Burgundy</string>
 </resources>

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:checkable="true"
         android:checked="false"
-        android:text="@string/minimal"
+        android:text="@string/style_minimal"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +25,7 @@
         android:layout_marginLeft="10dp"
         android:checkable="true"
         android:checked="false"
-        android:text="@string/casual"
+        android:text="@string/style_casual"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@id/chip_minimal"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +38,7 @@
         android:layout_marginLeft="10dp"
         android:checkable="true"
         android:checked="false"
-        android:text="@string/campus"
+        android:text="@string/style_campus"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@id/chip_casual"
         app:layout_constraintTop_toTopOf="parent" />
@@ -51,7 +51,7 @@
         android:layout_marginLeft="10dp"
         android:checkable="true"
         android:checked="false"
-        android:text="@string/office"
+        android:text="@string/style_office"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@id/chip_campus"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:checkable="true"
         android:checked="false"
-        android:text="@string/rock_chic"
+        android:text="@string/style_rock_chic"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/chip_casual" />
@@ -76,7 +76,7 @@
         android:layout_marginLeft="10dp"
         android:checkable="true"
         android:checked="false"
-        android:text="@string/street"
+        android:text="@string/style_street"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@id/chip_rock_chic"
         app:layout_constraintTop_toBottomOf="@id/chip_casual" />
@@ -89,7 +89,7 @@
         android:layout_marginLeft="10dp"
         android:checkable="true"
         android:checked="false"
-        android:text="@string/amekaji"
+        android:text="@string/style_amekaji"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@id/chip_street"
         app:layout_constraintTop_toBottomOf="@id/chip_campus" />
@@ -102,7 +102,7 @@
         android:layout_marginLeft="10dp"
         android:checkable="true"
         android:checked="false"
-        android:text="@string/city_boy"
+        android:text="@string/style_city_boy"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@id/chip_amekaji"
         app:layout_constraintTop_toBottomOf="@id/chip_office" />
@@ -114,7 +114,7 @@
         android:layout_height="wrap_content"
         android:checkable="true"
         android:checked="false"
-        android:text="@string/sexy_glam"
+        android:text="@string/style_sexy_glam"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/chip_rock_chic" />
@@ -127,7 +127,7 @@
         android:layout_marginLeft="10dp"
         android:checkable="true"
         android:checked="false"
-        android:text="@string/feminine"
+        android:text="@string/style_feminine"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@id/chip_sexy_glam"
         app:layout_constraintTop_toBottomOf="@id/chip_street" />
@@ -140,7 +140,7 @@
         android:layout_marginLeft="10dp"
         android:checkable="true"
         android:checked="false"
-        android:text="@string/lovely"
+        android:text="@string/style_lovely"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@id/chip_feminine"
         app:layout_constraintTop_toBottomOf="@id/chip_amekaji" />
