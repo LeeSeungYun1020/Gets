@@ -1,4 +1,4 @@
-package com.sys.gets
+package com.sys.gets.ui.product
 
 import androidx.lifecycle.ViewModel
 

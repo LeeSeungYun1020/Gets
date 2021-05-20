@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReviewFragment">
+    tools:context=".ui.product.ReviewFragment">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/review_sort_button"
