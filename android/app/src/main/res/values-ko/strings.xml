@@ -45,8 +45,8 @@
     <string name="category_shoes">신발</string>
     <string name="action_kakao_login" translatable="false">카카오 아이디로 로그인</string>
     <string name="action_register">회원가입</string>
-    <string name="action_find_id">ID 찾기</string>
-    <string name="action_find_password">pw 찾기</string>
+    <string name="action_find_id"><u>ID 찾기</u></string>
+    <string name="action_find_password"><u>PW 찾기</u></string>
     <string name="filter_label_custom_size">내 체형과 일치</string>
     <string name="filter_label_type">종류</string>
     <string name="filter_label_fiber">소재</string>
