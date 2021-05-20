@@ -122,6 +122,7 @@ router.post("/product/list/:page", (req, res) => {
   const search = "%" + (req.body.search ?? "") + "%"
   const type = req.body.type ?? ALL
   const detail = req.body.detail ?? ALL
+  const gender = req.body.gender ?? ALL
   const color = req.body.color ?? ALL
   const fit = req.body.fit ?? ALL
   const season = req.body.season ?? ALL
@@ -133,12 +134,12 @@ router.post("/product/list/:page", (req, res) => {
   const N = 30
   const index = (parseInt(req.params.page, 10) - 1) * N
   connection.query("select * from `product`\
-      where `type`&? != 0 and `detail`&? != 0 and `color`&? != 0 and \
+      where `type`&? != 0 and `detail`&? != 0 and `gender`&? != 0 and `color`&? != 0 and \
       `fit`&? != 0 and `season`&? != 0 and `fiber`&? != 0 and `age` &? != 0 and\
       `style`&? != 0 and ? >= `price` and `price` >= ? and\
       (`name` like ? or `brand` like ? or `code` like ?)\
       limit ?, ?",
-      [type, detail, color, fit, season, fiber, age, style, priceMax, priceMin, search, search, search, index, index + N],
+      [type, detail, gender, color, fit, season, fiber, age, style, priceMax, priceMin, search, search, search, index, index + N],
       (err, result) =>{
         if (err || result.length === 0)
           res.send([{result: false}])
