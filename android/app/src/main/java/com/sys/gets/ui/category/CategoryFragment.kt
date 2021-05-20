@@ -32,7 +32,7 @@ private var _binding: FragmentCategoryBinding? = null
 
     val data: HashMap<String, List<String>>
         get() {
-            val listData = HashMap<String, List<String>>()
+            val listData = LinkedHashMap<String, List<String>>()
 
             val outers = ArrayList<String>()
             outers.add(getString(R.string.category_outer_coat))
