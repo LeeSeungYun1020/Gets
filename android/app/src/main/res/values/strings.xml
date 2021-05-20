@@ -193,4 +193,19 @@
     <string name="category_bag_beanie">Beanie</string>
     <string name="category_bag_bucket_hat">Bucket hat</string>
     <string name="category_bag_beret">Beret</string>
+    <string name="fit_regular">Regular fit</string>
+    <string name="fit_over">Over fit</string>
+    <string name="fit_wide">Wide</string>
+    <string name="fit_semi_wide">Semi wide</string>
+    <string name="fit_straight">Straight</string>
+    <string name="fit_slim">Slim</string>
+    <string name="fit_tapered">Tapered</string>
+    <string name="fit_bootcut">Bootcut</string>
+    <string name="fiber_denim">Denim</string>
+    <string name="fiber_cotton">Cotton</string>
+    <string name="fiber_leather">Leather</string>
+    <string name="fiber_linen">Linen</string>
+    <string name="fiber_silk">Silk</string>
+    <string name="fiber_velvet">Velvet</string>
+    <string name="fiber_coduroy">Coduroy</string>
 </resources>

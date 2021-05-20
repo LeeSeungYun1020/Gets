@@ -173,4 +173,19 @@
     <string name="category_bag_beanie">비니</string>
     <string name="category_bag_bucket_hat">버킷햇</string>
     <string name="category_bag_beret">베레모</string>
+    <string name="fit_regular">레귤러핏</string>
+    <string name="fit_over">오버핏</string>
+    <string name="fit_wide">와이드</string>
+    <string name="fit_semi_wide">세미 와이드</string>
+    <string name="fit_straight">스트레이트</string>
+    <string name="fit_slim">슬림</string>
+    <string name="fit_tapered">테이퍼드</string>
+    <string name="fit_bootcut">부츠컷</string>
+    <string name="fiber_denim">데님</string>
+    <string name="fiber_cotton">면</string>
+    <string name="fiber_leather">가죽</string>
+    <string name="fiber_linen">린넨</string>
+    <string name="fiber_silk">실크</string>
+    <string name="fiber_velvet">벨벳</string>
+    <string name="fiber_coduroy">코듀로이</string>
 </resources>
