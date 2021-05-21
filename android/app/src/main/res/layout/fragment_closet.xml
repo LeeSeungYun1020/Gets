@@ -42,7 +42,7 @@
             android:background="@color/clear"
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
-            android:text="@string/category_bottom"
+            android:text="@string/category_pants"
             android:textColor="@android:color/black" />
 
         <Button

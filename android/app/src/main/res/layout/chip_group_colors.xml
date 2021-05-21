@@ -61,6 +61,18 @@
             app:chipBackgroundColor="@color/white" />
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/chip_ivory"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:chipBackgroundColor="@color/ivory"
+            android:elevation="4dp"
+            android:checkable="true"
+            android:checked="false"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
+        <com.google.android.material.chip.Chip
             android:id="@+id/chip_beige"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
