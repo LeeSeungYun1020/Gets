@@ -12,7 +12,7 @@
         app:singleLine="true">
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip_1"
+            android:id="@+id/chip_denim"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,6 +23,7 @@
             app:checkedIconVisible="true" />
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/chip_cotton"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,6 +34,7 @@
             app:checkedIconVisible="true" />
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/chip_leather"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,6 +45,7 @@
             app:checkedIconVisible="true" />
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/chip_linen"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,6 +56,7 @@
             app:checkedIconVisible="true" />
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/chip_silk"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,7 +65,9 @@
             android:text="@string/fiber_silk"
             app:checkedIcon="@drawable/ic_baseline_check_24"
             app:checkedIconVisible="true" />
+
         <com.google.android.material.chip.Chip
+            android:id="@+id/chip_velvet"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -70,7 +76,9 @@
             android:text="@string/fiber_velvet"
             app:checkedIcon="@drawable/ic_baseline_check_24"
             app:checkedIconVisible="true" />
+
         <com.google.android.material.chip.Chip
+            android:id="@+id/chip_coduroy"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

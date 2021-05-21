@@ -12,89 +12,64 @@
         app:singleLine="true">
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip_reqular_fit"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
             android:checked="false"
-            android:text="@string/fit_regular"
+            android:text="example"
             app:checkedIcon="@drawable/ic_baseline_check_24"
             app:checkedIconVisible="true" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip_over_fit"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
             android:checked="false"
-            android:text="@string/fit_over"
+            android:text="example"
             app:checkedIcon="@drawable/ic_baseline_check_24"
             app:checkedIconVisible="true" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip_wide_fit"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
             android:checked="false"
-            android:text="@string/fit_wide"
+            android:text="example"
             app:checkedIcon="@drawable/ic_baseline_check_24"
             app:checkedIconVisible="true" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip_semi_wide_fit"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
             android:checked="false"
-            android:text="@string/fit_semi_wide"
+            android:text="example"
             app:checkedIcon="@drawable/ic_baseline_check_24"
             app:checkedIconVisible="true" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip_straight_fit"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
             android:checked="false"
-            android:text="@string/fit_straight"
+            android:text="example"
             app:checkedIcon="@drawable/ic_baseline_check_24"
             app:checkedIconVisible="true" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip_slim_fit"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
             android:checked="false"
-            android:text="@string/fit_slim"
+            android:text="example"
             app:checkedIcon="@drawable/ic_baseline_check_24"
             app:checkedIconVisible="true" />
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_tapered_fit"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkable="true"
-            android:checked="false"
-            android:text="@string/fit_tapered"
-            app:checkedIcon="@drawable/ic_baseline_check_24"
-            app:checkedIconVisible="true" />
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_bootcut_fit"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkable="true"
-            android:checked="false"
-            android:text="@string/fit_bootcut"
-            app:checkedIcon="@drawable/ic_baseline_check_24"
-            app:checkedIconVisible="true" />
+
     </com.google.android.material.chip.ChipGroup>
 </HorizontalScrollView>

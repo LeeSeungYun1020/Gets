@@ -45,7 +45,7 @@
 
     <include
         android:id="@+id/filter_type_chip_scroll_view"
-        layout="@layout/chip_group_horizontal"
+        layout="@layout/chip_group_example"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -67,7 +67,7 @@
 
     <include
         android:id="@+id/filter_fiber_chip_scroll_view"
-        layout="@layout/chip_group_horizontal"
+        layout="@layout/chip_group_search_filter_fiber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
