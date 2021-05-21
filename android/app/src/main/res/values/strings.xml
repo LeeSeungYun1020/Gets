@@ -217,4 +217,5 @@
     <string name="color_navy">Navy</string>
     <string name="color_purple">Purple</string>
     <string name="color_burgundy">Burgundy</string>
+    <string name="select_my_fit">My fit</string>
 </resources>

@@ -172,6 +172,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+    <TextView
+        android:id="@+id/textView_fit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/select_my_fit"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filter_style_chip" />
+
+    <include
+        android:id="@+id/filter_fit_chip"
+        layout="@layout/chip_group_fit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_fit" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/done"
         android:layout_width="match_parent"
@@ -184,7 +206,7 @@
         android:text="@string/action_done"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filter_style_chip" />
+        app:layout_constraintTop_toBottomOf="@+id/filter_fit_chip" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
