@@ -17,7 +17,7 @@
         android:id="@+id/filter_type_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/filter_label_type"
         android:textAppearance="?attr/textAppearanceHeadline6"
@@ -38,7 +38,7 @@
         <AutoCompleteTextView
             android:layout_width="403dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:inputType="none" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -58,7 +58,7 @@
         android:id="@+id/filter_fiber_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/filter_label_fiber"
         android:textAppearance="?attr/textAppearanceHeadline6"
@@ -80,7 +80,7 @@
         android:id="@+id/filter_season_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/filter_label_season"
         android:textAppearance="?attr/textAppearanceHeadline6"
@@ -132,15 +132,58 @@
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <TextView
+        android:id="@+id/filter_style_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/filter_label_style"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filter_season_button_group"/>
+    <include
+        android:id="@+id/filter_style_chip_scroll_view"
+        layout="@layout/chip_group_search_filter_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filter_style_label"/>
+
+    <TextView
+        android:id="@+id/filter_fit_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/filter_label_fit"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filter_style_chip_scroll_view"/>
+
+    <include
+        android:id="@+id/filter_fit_chip_scroll_view"
+        layout="@layout/chip_group_search_filter_fit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filter_fit_label"/>
+
+    <TextView
         android:id="@+id/filter_color_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/filter_label_color"
         android:textAppearance="?attr/textAppearanceHeadline6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filter_season_button_group" />
+        app:layout_constraintTop_toBottomOf="@id/filter_fit_chip_scroll_view" />
 
     <include
         android:id="@+id/filter_color_chip_scroll_view"
@@ -157,7 +200,7 @@
         android:id="@+id/filter_price_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/filter_label_price"
         android:textAppearance="?attr/textAppearanceHeadline6"
@@ -194,7 +237,7 @@
         android:id="@+id/filter_ratings_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/filter_label_ratings"
         android:textAppearance="?attr/textAppearanceHeadline6"
