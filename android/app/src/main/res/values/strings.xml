@@ -218,4 +218,6 @@
     <string name="color_purple">Purple</string>
     <string name="color_burgundy">Burgundy</string>
     <string name="select_my_fit">My fit</string>
+    <string name="filter_label_style">Style</string>
+    <string name="filter_label_fit">Fit</string>
 </resources>

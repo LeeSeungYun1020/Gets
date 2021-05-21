@@ -78,10 +78,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="91" y="171" width="1095" height="495" key="AVDManager/0.0.1280.680@0.0.1280.680" timestamp="1620623065551" />
-    <state x="632" y="147" key="FileChooserDialogImpl" timestamp="1621566042066">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="421" y="107" key="FileChooserDialogImpl" timestamp="1621567967181">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1620623064309" />
+    <state x="421" y="107" key="FileChooserDialogImpl/0.0.1280.760@0.0.1280.760" timestamp="1621567967181" />
     <state x="632" y="147" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1621566042066" />
   </component>
 </project>
