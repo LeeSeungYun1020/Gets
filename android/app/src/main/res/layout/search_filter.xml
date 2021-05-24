@@ -67,7 +67,7 @@
 
     <include
         android:id="@+id/filter_material_chip_scroll_view"
-        layout="@layout/chip_group_search_filter_fiber"
+        layout="@layout/chip_group_search_filter_material"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

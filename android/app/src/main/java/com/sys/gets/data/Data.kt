@@ -108,15 +108,15 @@ enum class Season(val code: Int, val resID: Int) {
 
 }
 
-enum class Fiber(val code: Int, val resID: Int) {
+enum class Material(val code: Int, val resID: Int) {
     DENIM(1, R.string.material_denim),
     COTTON(2, R.string.material_cotton),
     LEATHER(4, R.string.material_leather),
     LINEN(8, R.string.material_linen),
     SILK(16, R.string.material_silk),
     VELVET(32, R.string.material_velvet),
-    CODUROY(64, R.string.material_coduroy)
-
+    CODUROY(64, R.string.material_coduroy),
+    SUEDE(128, R.string.material_suede)
 }
 
 enum class Age(val code: Int, val resID: Int) {
@@ -156,9 +156,10 @@ enum class Color(val code: Int, val resID: Int) {
     MUSTARD(2048, R.string.color_mustard),
     MINT(4096, R.string.color_mint),
     GREEN(8192, R.string.color_green),
-    BLUE(16384, R.string.color_blue),
-    SKY_BLUE(32768, R.string.color_sky_blue),
-    NAVY(65536, R.string.color_navy),
-    PURPLE(131072, R.string.color_purple),
-    BURGUNDY(262144, R.string.color_burgundy)
+    KHAKII(16384, R.string.color_khakii),
+    BLUE(32768, R.string.color_blue),
+    SKY_BLUE(65536, R.string.color_sky_blue),
+    NAVY(131072, R.string.color_navy),
+    PURPLE(262144, R.string.color_purple),
+    BURGUNDY(524288, R.string.color_burgundy)
 }

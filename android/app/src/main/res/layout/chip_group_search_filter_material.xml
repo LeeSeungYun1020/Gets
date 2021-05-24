@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:checkable="true"
             android:checked="false"
-            android:text="@string/fiber_denim"
+            android:text="@string/material_denim"
             app:checkedIcon="@drawable/ic_baseline_check_24"
             app:checkedIconVisible="true" />
 
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:checkable="true"
             android:checked="false"
-            android:text="@string/fiber_cotton"
+            android:text="@string/material_cotton"
             app:checkedIcon="@drawable/ic_baseline_check_24"
             app:checkedIconVisible="true" />
 
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:checkable="true"
             android:checked="false"
-            android:text="@string/fiber_leather"
+            android:text="@string/material_leather"
             app:checkedIcon="@drawable/ic_baseline_check_24"
             app:checkedIconVisible="true" />
 
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:checkable="true"
             android:checked="false"
-            android:text="@string/fiber_linen"
+            android:text="@string/material_linen"
             app:checkedIcon="@drawable/ic_baseline_check_24"
             app:checkedIconVisible="true" />
 
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:checkable="true"
             android:checked="false"
-            android:text="@string/fiber_silk"
+            android:text="@string/material_silk"
             app:checkedIcon="@drawable/ic_baseline_check_24"
             app:checkedIconVisible="true" />
 
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:checkable="true"
             android:checked="false"
-            android:text="@string/fiber_velvet"
+            android:text="@string/material_velvet"
             app:checkedIcon="@drawable/ic_baseline_check_24"
             app:checkedIconVisible="true" />
 
@@ -84,7 +84,18 @@
             android:layout_height="wrap_content"
             android:checkable="true"
             android:checked="false"
-            android:text="@string/fiber_coduroy"
+            android:text="@string/material_coduroy"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_suede"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="false"
+            android:text="@string/material_suede"
             app:checkedIcon="@drawable/ic_baseline_check_24"
             app:checkedIconVisible="true" />
 
