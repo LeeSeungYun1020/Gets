@@ -10,11 +10,6 @@
     <string name="prompt_email">이메일 *</string>
     <string name="prompt_password">비밀번호 *</string>
     <string name="action_sign_in">로그인</string>
-    <string name="action_sign_in_short">회원 가입</string>
-    <string name="welcome">환영합니다!</string>
-    <string name="invalid_username">사용할 수 없는 이름입니다.</string>
-    <string name="invalid_password">비밀번호는 6자 이상이어야합니다.</string>
-    <string name="login_failed">로그인에 실패하였습니다.</string>
     <string name="title_splash">시작 화면</string>
     <string name="messages_header">테스트용 삭제</string>
     <string name="sync_header">테스트용 삭제</string>
@@ -43,7 +38,6 @@
     <string name="category_pants">하의</string>
     <string name="category_outer">아우터</string>
     <string name="category_shoes">신발</string>
-    <string name="action_kakao_login" translatable="false">카카오 아이디로 로그인</string>
     <string name="action_register">회원가입</string>
     <string name="action_find_id"><u>ID 찾기</u></string>
     <string name="action_find_password"><u>PW 찾기</u></string>
@@ -210,4 +204,7 @@
     <string name="select_my_fit">선호하는 핏</string>
     <string name="filter_label_style">스타일</string>
     <string name="filter_label_fit">핏</string>
+    <string name="action_kakao_login">카카오 ID로 로그인</string>
+    <string name="invalid_email">올바른 이메일을 입력하세요</string>
+    <string name="invalid_password">올바른 비밀번호를 입력하세요</string>
 </resources>
