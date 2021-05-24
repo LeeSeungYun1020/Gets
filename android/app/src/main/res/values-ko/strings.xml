@@ -210,4 +210,8 @@
     <string name="weather_shower">소나기</string>
     <string name="weather_rain_snow">눈, 비</string>
     <string name="weather_rain_snow_light">약한  눈, 비</string>
+    <string name="msg_login_failed">이메일 또는 비밀번호가 일치하지 않습니다</string>
+    <string name="msg_login_error">로그인 오류</string>
+    <string name="msg_server_disconnected">서버에 연결할 수 없습니다.</string>
+    <string name="msg_server_error">서버 오류</string>
 </resources>

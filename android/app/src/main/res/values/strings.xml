@@ -220,4 +220,8 @@
     <string name="weather_shower">Shower</string>
     <string name="weather_rain_snow">Rain, Snow</string>
     <string name="weather_rain_snow_light">Light Rain, Snow</string>
+    <string name="msg_login_failed">The email or password do not match</string>
+    <string name="msg_login_error">Login Error</string>
+    <string name="msg_server_disconnected">Can\'t connnect to server</string>
+    <string name="msg_server_error">Server Error</string>
 </resources>

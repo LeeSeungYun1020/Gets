@@ -1,14 +1,33 @@
 package com.sys.gets.ui.login
 
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKey
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
 import com.google.android.material.textfield.TextInputLayout
 import com.sys.gets.R
 import com.sys.gets.databinding.ActivityLoginBinding
+import com.sys.gets.network.Network
+import org.json.JSONObject
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+    private val encryptedSharedPreferences by lazy {
+        EncryptedSharedPreferences
+            .create(
+                this.applicationContext,
+                "user",
+                MasterKey.Builder(this, MasterKey.DEFAULT_MASTER_KEY_ALIAS)
+                    .setKeyScheme(MasterKey.KeyScheme.AES256_GCM).build(),
+                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +51,47 @@ class LoginActivity : AppCompatActivity() {
         }
 
         login.setOnClickListener {
-            // TODO 서버 로그인 수행
+            when {
+                email.error != null -> email.requestFocus()
+                password.error != null -> password.requestFocus()
+                else -> {
+                    val emailString = email.editText?.text ?: ""
+                    val passwordString = password.editText?.text ?: ""
+                    val jsonObjectRequest = JsonObjectRequest(
+                        Request.Method.POST, "${Network.BASE_URL}/signin",
+                        JSONObject().apply {
+                            put("email", emailString)
+                            put("pw", passwordString)
+                        },
+                        { response ->
+                            if (response.getBoolean("result")) {
+                                with(encryptedSharedPreferences.edit()) {
+                                    putString("email", emailString.toString())
+                                    putString("password", passwordString.toString())
+                                    apply()
+                                }
+                                finish()
+                            } else {
+                                AlertDialog.Builder(this)
+                                    .setTitle(R.string.msg_login_error)
+                                    .setMessage(R.string.msg_login_failed)
+                                    .setPositiveButton(R.string.msg_ok, null)
+                                    .show()
+                            }
+                        },
+                        { error ->
+                            Log.e("LOGE", "onCreateView: $error")
+                            AlertDialog.Builder(this)
+                                .setTitle(R.string.msg_server_error)
+                                .setMessage(R.string.msg_server_disconnected)
+                                .setPositiveButton(R.string.msg_ok, null)
+                                .show()
+                        }
+                    )
+                    Network.getInstance(this).addToRequestQueue(jsonObjectRequest)
+                }
+            }
+
         }
 
         register.setOnClickListener {
