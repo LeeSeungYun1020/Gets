@@ -24,13 +24,11 @@
     <string name="title_search">검색</string>
     <string name="weather_clear">맑음</string>
     <string name="weather_cloudy">흐림</string>
-    <string name="weather_partly_cloudy">약간 흐림</string>
+    <string name="weather_partly_cloudy">일부 흐림</string>
     <string name="weather_rain">비</string>
-    <string name="weather_rain_heavy">강한 비</string>
     <string name="weather_rain_light">약한 비</string>
     <string name="weather_snow">눈</string>
     <string name="weather_snow_light">약한 눈</string>
-    <string name="weather_snow_heavy">강한 눈</string>
     <string name="template_wether_title">17°C, 맑음</string>
     <string name="template_weather_second_text">부산광역시, 최고: 19°C 최저: 15°C</string>
     <string name="msg_filter">필터</string>
@@ -207,4 +205,9 @@
     <string name="action_kakao_login">카카오 ID로 로그인</string>
     <string name="invalid_email">올바른 이메일을 입력하세요</string>
     <string name="invalid_password">올바른 비밀번호를 입력하세요</string>
+    <string name="weather_max">최고:</string>
+    <string name="weather_min">최저:</string>
+    <string name="weather_shower">소나기</string>
+    <string name="weather_rain_snow">눈, 비</string>
+    <string name="weather_rain_snow_light">약한  눈, 비</string>
 </resources>

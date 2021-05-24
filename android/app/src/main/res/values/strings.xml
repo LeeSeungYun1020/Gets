@@ -25,11 +25,9 @@
     <string name="weather_cloudy">Cloudy</string>
     <string name="weather_partly_cloudy">Partly Cloudy</string>
     <string name="weather_rain">Rain</string>
-    <string name="weather_rain_heavy">Heavy Rain</string>
     <string name="weather_rain_light">Light Rain</string>
     <string name="weather_snow">Snow</string>
     <string name="weather_snow_light">Light Snow</string>
-    <string name="weather_snow_heavy">Heavy Snow</string>
     <string name="template_wether_title">17°C, Clear</string>
     <string name="template_weather_second_text">Busan, high: 19°C low: 15°C</string>
     <string name="msg_filter">Filter</string>
@@ -217,4 +215,9 @@
     <string name="action_kakao_login">Login with Kakao ID</string>
     <string name="invalid_email">Enter a valid email</string>
     <string name="invalid_password">Enter a valid password</string>
+    <string name="weather_max">High:</string>
+    <string name="weather_min">Low:</string>
+    <string name="weather_shower">Shower</string>
+    <string name="weather_rain_snow">Rain, Snow</string>
+    <string name="weather_rain_snow_light">Light Rain, Snow</string>
 </resources>

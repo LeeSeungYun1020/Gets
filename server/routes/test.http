@@ -69,3 +69,13 @@ Content-Type: application/json
   "contents": "테스트 리뷰 입력",
   "image1ID": "2"
 }
+
+###
+
+GET http://localhost:3000/api/weather
+Content-Type: application/json
+
+{
+"longitude": 126,
+  "latitude": 59
+}

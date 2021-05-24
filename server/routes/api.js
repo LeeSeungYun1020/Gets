@@ -78,7 +78,7 @@ router.post("/signup/info", (req, res) => {
 })
 
 // 날씨
-router.get("/weather", (req, res) => {
+router.post("/weather", (req, res) => {
 	const key = 'QlJXfpDq9oWm1PKEG0hZBbX06NXjih1QpY1ZqHXEWqx4aJQ2eqbU1dx4spZGGCR%2FLWwjq9RSXKM0UHFgGjeNTw%3D%3D'
 	const today = new Date()
 	let hour = today.getHours()
@@ -87,6 +87,7 @@ router.get("/weather", (req, res) => {
 	const date = weather.getDateString(today)
 	const time = weather.getNearestTimeString(hour)
 	const pos = weather.conversion(req.body.latitude ?? 35.1304075, req.body.longitude ?? 129.092138)
+	console.log(req.body)
 	const url = `http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?serviceKey=${key}&pageNo=1&numOfRows=100&dataType=JSON&base_date=${date}&base_time=${time}&nx=${pos.x}&ny=${pos.y}`;
 	
 	(async () => {
@@ -97,7 +98,9 @@ router.get("/weather", (req, res) => {
 				res.send({error: true})
 				return
 			}
-			res.send(weather.getData(json))
+			const data = weather.getData(json)
+			data["error"] = false
+			res.send(data)
 			//console.log(json.response.body.items.item)
 		} catch (error) {
 			res.send({error: true})
