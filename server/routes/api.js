@@ -65,9 +65,10 @@ router.post("/signup/info", (req, res) => {
 	const topSize = req.body.top_size
 	const bottomSize = req.body.bottom_size
 	const style = req.body.style
+	const fit = req.body.fit
 	
-	connection.query("update `user` set `gender`=?, `height`=?, `weight`=?, `topSize`=?, `bottomSize`=?, `style`=? where `email`=?",
-		[gender, height, weight, topSize, bottomSize, style, email],
+	connection.query("update `user` set `gender`=?, `height`=?, `weight`=?, `topSize`=?, `bottomSize`=?, `style`=?, `fit`=? where `email`=?",
+		[gender, height, weight, topSize, bottomSize, style, fit, email],
 		(err, result) => {
 			if (err)
 				res.send({result: false})
