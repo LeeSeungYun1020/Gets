@@ -109,13 +109,13 @@ enum class Season(val code: Int, val resID: Int) {
 }
 
 enum class Fiber(val code: Int, val resID: Int) {
-    DENIM(1, R.string.fiber_denim),
-    COTTON(2, R.string.fiber_cotton),
-    LEATHER(4, R.string.fiber_leather),
-    LINEN(8, R.string.fiber_linen),
-    SILK(16, R.string.fiber_silk),
-    VELVET(32, R.string.fiber_velvet),
-    CODUROY(64, R.string.fiber_coduroy)
+    DENIM(1, R.string.material_denim),
+    COTTON(2, R.string.material_cotton),
+    LEATHER(4, R.string.material_leather),
+    LINEN(8, R.string.material_linen),
+    SILK(16, R.string.material_silk),
+    VELVET(32, R.string.material_velvet),
+    CODUROY(64, R.string.material_coduroy)
 
 }
 

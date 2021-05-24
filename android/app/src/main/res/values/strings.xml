@@ -39,7 +39,7 @@
     <string name="action_find_id"><u>Find id</u></string>
     <string name="action_find_password"><u>Find p/w</u></string>
     <string name="filter_label_type">Type</string>
-    <string name="filter_label_fiber">Fiber</string>
+    <string name="filter_label_material">Material</string>
     <string name="filter_label_season">Season</string>
     <string name="filter_label_color">Color</string>
     <string name="filter_label_price">Price</string>
@@ -183,13 +183,13 @@
     <string name="fit_slim">Slim</string>
     <string name="fit_tapered">Tapered</string>
     <string name="fit_bootcut">Bootcut</string>
-    <string name="fiber_denim">Denim</string>
-    <string name="fiber_cotton">Cotton</string>
-    <string name="fiber_leather">Leather</string>
-    <string name="fiber_linen">Linen</string>
-    <string name="fiber_silk">Silk</string>
-    <string name="fiber_velvet">Velvet</string>
-    <string name="fiber_coduroy">Coduroy</string>
+    <string name="material_denim">Denim</string>
+    <string name="material_cotton">Cotton</string>
+    <string name="material_leather">Leather</string>
+    <string name="material_linen">Linen</string>
+    <string name="material_silk">Silk</string>
+    <string name="material_velvet">Velvet</string>
+    <string name="material_coduroy">Coduroy</string>
     <string name="color_black">Black</string>
     <string name="color_white">White</string>
     <string name="color_charcoal">Charcoal</string>
@@ -224,4 +224,6 @@
     <string name="msg_login_error">Login Error</string>
     <string name="msg_server_disconnected">Can\'t connnect to server</string>
     <string name="msg_server_error">Server Error</string>
+    <string name="color_khakii">Khakii</string>
+    <string name="material_suede">Suede</string>
 </resources>

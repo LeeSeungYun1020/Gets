@@ -55,18 +55,18 @@
         app:layout_constraintTop_toBottomOf="@id/filter_type_dropdown" />
 
     <TextView
-        android:id="@+id/filter_fiber_label"
+        android:id="@+id/filter_material_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="@string/filter_label_fiber"
+        android:text="@string/filter_label_material"
         android:textAppearance="?attr/textAppearanceHeadline6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/filter_type_chip_scroll_view" />
 
     <include
-        android:id="@+id/filter_fiber_chip_scroll_view"
+        android:id="@+id/filter_material_chip_scroll_view"
         layout="@layout/chip_group_search_filter_fiber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filter_fiber_label" />
+        app:layout_constraintTop_toBottomOf="@id/filter_material_label" />
 
     <TextView
         android:id="@+id/filter_season_label"
@@ -85,7 +85,7 @@
         android:text="@string/filter_label_season"
         android:textAppearance="?attr/textAppearanceHeadline6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filter_fiber_chip_scroll_view" />
+        app:layout_constraintTop_toBottomOf="@id/filter_material_chip_scroll_view" />
 
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/filter_season_button_group"
