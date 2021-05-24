@@ -91,7 +91,7 @@
             <br>
             params: email, pw
             <br>
-            return: {result: boolean}
+            return: {"result": boolean}
         </p>
         <div class="mdc-typography--headline5" string-from="api_sign_up_check"></div>
         <p class="mdc-typography--body1">
@@ -99,7 +99,7 @@
             <br>
             params: email
             <br>
-            return: {result: boolean}
+            return: {"result": boolean}
         </p>
         <div class="mdc-typography--headline5" string-from="api_sign_up_basic"></div>
         <p class="mdc-typography--body1">
@@ -107,7 +107,7 @@
             <br>
             params: email, pw, name, phone, year, month, day, address, addressDetail
             <br>
-            return: {result: boolean}
+            return: {"result": boolean}
         </p>
         <div class="mdc-typography--headline5" string-from="api_sign_up_info"></div>
         <p class="mdc-typography--body1">
@@ -115,7 +115,7 @@
             <br>
             params: email, gender, height, weight, topSize, bottomSize, style
             <br>
-            return: {result: boolean}
+            return: {"result": boolean}
         </p>
     </section>
     <section class="api_description">
@@ -125,7 +125,12 @@
             <br>
             params: latitude, longitude
             <br>
-            return: {수정 예정}
+            return: {"pop": int, "form": int, "sky": int, "tem": float, "max": float, "min": float}
+            <br>
+            * (
+            "form": 0(undefined), 1(rain), 2(rain_snow), 3(snow), 4(rain_shower), 5(rain_light), 6(rain_snow_light), 7(snow_light),
+            "sky": 1(clear), 3(partly_cloudy), 4(cloudy)
+            )
         </p>
     </section>
     <section class="api_description">

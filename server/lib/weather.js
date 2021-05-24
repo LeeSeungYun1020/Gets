@@ -61,6 +61,43 @@ function getNearestTimeString(hour){
     return time
 }
 
+// 날씨 정보 선별
+function getData(json){
+    let result = {}
+    let checkMin = false
+    let checkMax = false
+    let checkTem = false
+    let checkPop = false
+    let checkForm = false
+    let checkSky = false
+    for (item of json.response.body.items.item){
+        const category = item.category
+        if (category === "TMN" && !checkMin) {
+            result["min"] = item.fcstValue
+            checkMin = true
+        } else if (category === "TMX" && !checkMax) {
+            result["max"] = item.fcstValue
+            checkMax = true
+        } else if (category === "T3H" && !checkTem) {
+            result["tem"] = item.fcstValue
+            checkTem = true
+        } else if (category === "POP" && !checkPop) {
+            result["pop"] = item.fcstValue
+            checkPop = true
+        } else if (category === "PTY" && !checkForm) {
+            result["form"] = item.fcstValue
+            checkForm = true
+        } else if (category === "SKY" && !checkSky) {
+            result["sky"] = item.fcstValue
+            checkSky = true
+        }
+        if (checkMin && checkMax && checkTem && checkPop && checkForm && checkSky)
+            break
+    }
+    return result
+}
+
 exports.conversion = conversion
 exports.getDateString = getDateString
 exports.getNearestTimeString = getNearestTimeString
+exports.getData = getData
