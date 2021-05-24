@@ -17,9 +17,10 @@ router.post("/signin", (req, res) => {
 	connection.query("select `email`, `pw` from `user` where `email`=?", [email], (err, result) => {
 		if (err || result.length === 0) // 이메일 없음
 			res.send({result: false})
-		else if (result[0].pw === pw)
-			res.send({result: true}) // 비밀번호 일치
-		res.send({result: false}) // 비밀번호 불일치
+		else if (result[0].pw === pw) // 비밀번호 일치
+			res.send({result: true})
+		else // 비밀번호 불일치
+			res.send({result: false})
 	})
 })
 
@@ -83,11 +84,10 @@ router.post("/weather", (req, res) => {
 	const today = new Date()
 	let hour = today.getHours()
 	if (hour < 2)
-		today.hours -= 2
+		today.setDate(today.getDate() - 1)
 	const date = weather.getDateString(today)
 	const time = weather.getNearestTimeString(hour)
 	const pos = weather.conversion(req.body.latitude ?? 35.1304075, req.body.longitude ?? 129.092138)
-	console.log(req.body)
 	const url = `http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?serviceKey=${key}&pageNo=1&numOfRows=100&dataType=JSON&base_date=${date}&base_time=${time}&nx=${pos.x}&ny=${pos.y}`;
 	
 	(async () => {

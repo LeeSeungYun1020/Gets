@@ -44,7 +44,7 @@ class HomeFragment : Fragment() {
         }
 
         val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.POST, "http://10.0.2.2:3000/api/weather",
+            Request.Method.POST, "${Network.BASE_URL}/weather",
             JSONObject().apply {
                 put("latitude", 37.5552483)
                 put("longitude", 126.9711526)
@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
             },
             { response ->
                 if (response.getBoolean("error")) {
-
+                    Log.e("LOGE", "onCreateView: weather")
                 } else {
                     val status = getString(
                         when (response.getInt("form")) {
