@@ -1225,7 +1225,11 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>13</Position>
       <DataType>int|0s</DataType>
     </column>
-    <key id="332" parent="286" name="PRIMARY">
+    <column id="332" parent="286" name="fit">
+      <Position>14</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <key id="333" parent="286" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>email</ColNames>
       <Primary>1</Primary>
