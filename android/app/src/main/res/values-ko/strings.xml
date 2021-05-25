@@ -218,4 +218,5 @@
     <string name="msg_server_error">서버 오류</string>
     <string name="material_polyester">폴리에스터</string>
     <string name="material_nylon">나일론</string>
+    <string name="msg_close">닫기</string>
 </resources>

@@ -3,7 +3,6 @@ package com.sys.gets.ui.home
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
+import com.google.android.material.button.MaterialButton
 import com.sys.gets.R
 import com.sys.gets.databinding.FragmentHomeBinding
 import com.sys.gets.network.Network
@@ -52,9 +52,9 @@ class HomeFragment : Fragment() {
             },
             { response ->
                 if (response.getBoolean("error")) {
-                    Log.e("LOGE", "onCreateView: weather")
+                    onServerDisconnected()
                 } else {
-                    val status = getString(
+                    val status =
                         when (response.getInt("form")) {
                             1 -> R.string.weather_rain
                             2 -> R.string.weather_rain_snow
@@ -71,10 +71,10 @@ class HomeFragment : Fragment() {
                                 }
                             }
                         }
-                    )
                     cardList.add(
                         0,
                         Weather(
+                            R.drawable.ic_baseline_server_off_24,
                             status,
                             response.getDouble("tem"),
                             response.getDouble("min"),
@@ -85,7 +85,7 @@ class HomeFragment : Fragment() {
                 }
             },
             { error ->
-                Log.e("LOGE", "onCreateView: $error")
+                onServerDisconnected()
             }
         )
         Network.getInstance(this.requireActivity()).addToRequestQueue(jsonObjectRequest)
@@ -97,37 +97,71 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-}
 
-open class MainItem(val type: Int) {
-    companion object {
-        val TYPE_WEATHER = 1
-        val TYPE_COORDINATION = 2
+    private fun onServerDisconnected() {
+        cardList.add(
+            0,
+            Notice(
+                R.drawable.ic_baseline_server_off_24,
+                R.string.msg_server_error,
+                R.string.msg_server_disconnected,
+                R.string.msg_close
+            )
+        )
+        binding.homeRecyclerview.adapter?.notifyItemInserted(0)
     }
 }
 
+enum class MainItemType(val code: Int) {
+    TYPE_NOTICE(1), TYPE_WEATHER(2), TYPE_COORDINATION(3);
+
+    companion object {
+        fun valueOf(code: Int): MainItemType = when (code) {
+            1 -> TYPE_NOTICE
+            2 -> TYPE_WEATHER
+            else -> TYPE_COORDINATION
+        }
+    }
+}
+
+open class MainItem(val type: MainItemType)
+
+data class Notice(
+    val iconID: Int,
+    val titleID: Int,
+    val subtitleID: Int,
+    val buttonTextID: Int? = null,
+    val buttonIconID: Int? = null
+) : MainItem(MainItemType.TYPE_NOTICE)
+
 data class Weather(
-    // TODO: 아이콘 추가
-    val status: String,
+    val iconID: Int,
+    val statusID: Int,
     val tem: Double,
     val min: Double,
     val max: Double
-) : MainItem(MainItem.TYPE_WEATHER)
+) : MainItem(MainItemType.TYPE_WEATHER)
 
 class MainListAdapter(val context: Context, val list: List<MainItem>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun getItemViewType(position: Int) = list[position].type
+    override fun getItemViewType(position: Int) = list[position].type.code
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
-        when (viewType) {
-            MainItem.TYPE_WEATHER -> {
+        when (MainItemType.valueOf(viewType)) {
+            MainItemType.TYPE_NOTICE -> {
+                NoticeViewHolder(
+                    LayoutInflater.from(viewGroup.context)
+                        .inflate(R.layout.card_weather, viewGroup, false)
+                )
+            }
+            MainItemType.TYPE_WEATHER -> {
                 WeatherViewHolder(
                     LayoutInflater.from(viewGroup.context)
                         .inflate(R.layout.card_weather, viewGroup, false)
                 )
             }
-            else -> {
+            MainItemType.TYPE_COORDINATION -> {
                 // TODO: inflate coordination card
                 WeatherViewHolder(
                     LayoutInflater.from(viewGroup.context)
@@ -141,16 +175,33 @@ class MainListAdapter(val context: Context, val list: List<MainItem>) :
         val data = list[position]
         viewHolder.apply {
             when (data.type) {
-                MainItem.TYPE_WEATHER -> {
-                    if (viewHolder is WeatherViewHolder && data is Weather) {
-                        viewHolder.title.text = "${data.tem}°C, ${data.status}"
-                        viewHolder.subtitle.text =
-                            "${context.getString(R.string.weather_max)} ${data.max}°C, ${
-                                context.getString(R.string.weather_min)
-                            } ${data.min}°C"
+                MainItemType.TYPE_NOTICE -> {
+                    if (viewHolder is NoticeViewHolder && data is Notice) {
+                        with(viewHolder) {
+                            icon.setImageResource(data.iconID)
+                            title.text = context.getText(data.titleID)
+                            subtitle.text = context.getText(data.subtitleID)
+                            data.buttonTextID?.let {
+                                button.visibility = View.VISIBLE
+                                button.text = context.getText(it)
+                            }
+                            data.buttonIconID?.let { button.setIconResource(it) }
+                        }
                     }
                 }
-                else -> {
+                MainItemType.TYPE_WEATHER -> {
+                    if (viewHolder is WeatherViewHolder && data is Weather) {
+                        with(viewHolder) {
+                            icon.setImageResource(data.iconID)
+                            title.text = "${data.tem}°C, ${context.getString(data.statusID)}"
+                            subtitle.text =
+                                "${context.getString(R.string.weather_max)} ${data.max}°C, ${
+                                    context.getString(R.string.weather_min)
+                                } ${data.min}°C"
+                        }
+                    }
+                }
+                MainItemType.TYPE_COORDINATION -> {
                     if (viewHolder is CoordinationViewHolder) {
 
                     }
@@ -161,6 +212,13 @@ class MainListAdapter(val context: Context, val list: List<MainItem>) :
 
     override fun getItemCount() = list.size
 
+}
+
+class NoticeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    val icon: ImageView = view.findViewById(R.id.weather_card_image)
+    val title: TextView = view.findViewById(R.id.weather_card_title)
+    val subtitle: TextView = view.findViewById(R.id.weather_card_subtitle)
+    val button: MaterialButton = view.findViewById(R.id.weather_card_button)
 }
 
 class WeatherViewHolder(view: View) : RecyclerView.ViewHolder(view) {

@@ -228,4 +228,5 @@
     <string name="material_suede">Suede</string>
     <string name="material_polyester">Polyester</string>
     <string name="material_nylon">Nylon</string>
+    <string name="msg_close">Close</string>
 </resources>
