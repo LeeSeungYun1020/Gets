@@ -216,4 +216,6 @@
     <string name="msg_login_error">로그인 오류</string>
     <string name="msg_server_disconnected">서버에 연결할 수 없습니다.</string>
     <string name="msg_server_error">서버 오류</string>
+    <string name="material_polyester">폴리에스터</string>
+    <string name="material_nylon">나일론</string>
 </resources>

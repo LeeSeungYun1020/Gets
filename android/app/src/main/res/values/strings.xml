@@ -226,4 +226,6 @@
     <string name="msg_server_error">Server Error</string>
     <string name="color_khakii">Khakii</string>
     <string name="material_suede">Suede</string>
+    <string name="material_polyester">Polyester</string>
+    <string name="material_nylon">Nylon</string>
 </resources>

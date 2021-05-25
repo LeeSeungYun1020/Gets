@@ -116,7 +116,9 @@ enum class Material(val code: Int, val resID: Int) {
     SILK(16, R.string.material_silk),
     VELVET(32, R.string.material_velvet),
     CODUROY(64, R.string.material_coduroy),
-    SUEDE(128, R.string.material_suede)
+    SUEDE(128, R.string.material_suede),
+    POLYESTER(256,R.string.material_polyester),
+    NYLON(512, R.string.material_nylon)
 }
 
 enum class Age(val code: Int, val resID: Int) {

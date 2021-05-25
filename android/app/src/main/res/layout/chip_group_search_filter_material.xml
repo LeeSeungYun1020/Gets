@@ -99,5 +99,27 @@
             app:checkedIcon="@drawable/ic_baseline_check_24"
             app:checkedIconVisible="true" />
 
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_polyester"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="false"
+            android:text="@string/material_polyester"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_nylon"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="false"
+            android:text="@string/material_nylon"
+            app:checkedIcon="@drawable/ic_baseline_check_24"
+            app:checkedIconVisible="true" />
+
     </com.google.android.material.chip.ChipGroup>
 </HorizontalScrollView>
