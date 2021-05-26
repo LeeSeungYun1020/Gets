@@ -5,12 +5,13 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/size_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
         android:padding="16dp"
+        android:text="TextView"
         android:textAppearance="?attr/textAppearanceSubtitle1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,25 +1,29 @@
 package com.sys.gets.ui.login
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.TextView
 import androidx.core.content.ContentProviderCompat.requireContext
 import com.google.android.material.textfield.TextInputLayout
 import com.sys.gets.R
 
 class DetailRegister : AppCompatActivity() {
-    val textField_top = findViewById<TextInputLayout>(R.id.menu_top)
-    val textField_bottom = findViewById<TextInputLayout>(R.id.menu_top)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_register)
+        val topSize = findViewById<AutoCompleteTextView>(R.id.menu_top)
+        val bottomSize = findViewById<AutoCompleteTextView>(R.id.menu_bottom)
+        val size = listOf("XS", "S", "M", "L", "XL", "2XL")
+//        val adapter = ArrayAdapter(requireContext(), R.layout.list_size, size)
 
-        val items = listOf("XXS", "XS", "S", "M", "L", "XL", "2XL", "3XL")
-        val adapter1 = ArrayAdapter(this, R.layout.list_size, items)
-        (textField_top.editText as? AutoCompleteTextView)?.setAdapter(adapter1)
-        val adapter2 = ArrayAdapter(this, R.layout.list_size, items)
-        (textField_bottom.editText as? AutoCompleteTextView)?.setAdapter(adapter1)
+//        topSize.setAdapter(adapter)
+//        bottomSize.setAdapter(adapter)
     }
-
 }

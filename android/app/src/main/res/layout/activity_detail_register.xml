@@ -208,5 +208,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/filter_fit_chip" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

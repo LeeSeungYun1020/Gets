@@ -1,5 +1,6 @@
 package com.sys.gets.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
@@ -96,7 +97,7 @@ class LoginActivity : AppCompatActivity() {
 
         register.setOnClickListener {
             // TODO 레지스터 엑티비티 추가 및 연결
-            // startActivity(Intent(this, RegisterActivity::class.java))
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 
