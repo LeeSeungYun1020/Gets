@@ -7,6 +7,7 @@ const sassMiddleware = require('node-sass-middleware');
 
 const indexRouter = require('./routes/index');
 const apiRouter = require('./routes/api');
+const inputRouter = require('./routes/input');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'node_modules')))
 
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
+app.use('/input', inputRouter);
 app.get('/category', (req, res) => {
   res.send("카테고리 기능 구현")
 })
