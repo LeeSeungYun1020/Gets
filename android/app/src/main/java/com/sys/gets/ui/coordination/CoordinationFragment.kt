@@ -41,7 +41,7 @@ class CoordinationFragment : Fragment() {
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
         var recycler_view: RecyclerView = itemView.findViewById(R.id.codyRecyclerview)
-        var codyItemList = arrayListOf<CoordinationItem>(
+        var codyItemList:MutableList<CoordinationItem> = mutableListOf<CoordinationItem>(
             //임의 데이터
             CoordinationItem("cody_example","cody1"),
             CoordinationItem("cody_example","cody2"),
