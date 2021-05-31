@@ -25,7 +25,7 @@ class ProductListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentProductListBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         binding.root.apply {
@@ -90,7 +90,8 @@ class ProductListAdapter(private val dataSet: List<ProductSimple>) :
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val data = dataSet[position]
         viewHolder.apply {
-            image.setImageResource(R.drawable.clothing_example)
+            //image.setImageResource(R.drawable.clothing_example)
+            // TODO: 이미지 표시
             name.text = data.name
             brand.text = data.brand
             price.text = data.price
