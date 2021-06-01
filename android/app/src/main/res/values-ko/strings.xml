@@ -219,4 +219,5 @@
     <string name="material_polyester">폴리에스터</string>
     <string name="material_nylon">나일론</string>
     <string name="msg_close">닫기</string>
+    <string name="msg_login_input">아이디 또는 비밀번호를 바르게 입력하십시오.</string>
 </resources>

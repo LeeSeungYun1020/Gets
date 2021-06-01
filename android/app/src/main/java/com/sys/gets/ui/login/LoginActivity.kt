@@ -58,6 +58,14 @@ class LoginActivity : AppCompatActivity() {
                 else -> {
                     val emailString = email.editText?.text ?: ""
                     val passwordString = password.editText?.text ?: ""
+                    if (emailString.isBlank() || passwordString.isBlank()) {
+                        AlertDialog.Builder(this)
+                            .setTitle(R.string.msg_login_error)
+                            .setMessage(R.string.msg_login_input)
+                            .setPositiveButton(R.string.msg_ok, null)
+                            .show()
+                        return@setOnClickListener
+                    }
                     val jsonObjectRequest = JsonObjectRequest(
                         Request.Method.POST, "${Network.BASE_URL}/signin",
                         JSONObject().apply {
@@ -96,7 +104,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
         register.setOnClickListener {
-            // TODO 레지스터 엑티비티 추가 및 연결
             startActivity(Intent(this, RegisterActivity::class.java))
         }
     }

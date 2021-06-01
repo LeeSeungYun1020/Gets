@@ -182,10 +182,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginBottom="96dp"
         android:enabled="true"
         android:text="@string/action_register"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address2" />

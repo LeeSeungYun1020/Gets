@@ -229,4 +229,5 @@
     <string name="material_polyester">Polyester</string>
     <string name="material_nylon">Nylon</string>
     <string name="msg_close">Close</string>
+    <string name="msg_login_input">Please enter your ID or password correctly.</string>
 </resources>
