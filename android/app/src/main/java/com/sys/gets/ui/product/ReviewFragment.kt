@@ -26,7 +26,7 @@ class ReviewFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ReviewViewModel::class.java)
-        // TODO: Use the ViewModel
+
     }
 
 }

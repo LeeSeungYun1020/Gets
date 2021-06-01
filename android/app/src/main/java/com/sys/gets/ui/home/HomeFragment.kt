@@ -162,7 +162,6 @@ class MainListAdapter(val context: Context, val list: List<MainItem>) :
                 )
             }
             MainItemType.TYPE_COORDINATION -> {
-                // TODO: inflate coordination card
                 WeatherViewHolder(
                     LayoutInflater.from(viewGroup.context)
                         .inflate(R.layout.card_weather, viewGroup, false)

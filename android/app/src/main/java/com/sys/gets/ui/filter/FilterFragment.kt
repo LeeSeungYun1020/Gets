@@ -61,7 +61,7 @@ class FilterFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(FilterViewModel::class.java)
-        // TODO: Use the ViewModel
+        // Use the ViewModel
     }
 
     override fun onDestroyView() {
