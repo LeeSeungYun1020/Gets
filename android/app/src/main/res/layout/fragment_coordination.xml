@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
     tools:context=".ui.coordination.CoordinationFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/codyRecyclerview"
+        android:id="@+id/coordination_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="8dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"
-        tools:listitem="@layout/cody_item">
+        tools:listitem="@layout/coordination_item">
 
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <FrameLayout
+        android:id="@+id/coordination_preview_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contextClickable="false">
+
+    </FrameLayout>
 
 </RelativeLayout>

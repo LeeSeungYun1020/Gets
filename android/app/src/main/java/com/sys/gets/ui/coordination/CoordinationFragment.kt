@@ -1,9 +1,12 @@
 package com.sys.gets.ui.coordination
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -15,9 +18,11 @@ class CoordinationFragment : Fragment() {
 
     private lateinit var coordinationViewModel: CoordinationViewModel
     private var _binding: FragmentCoordinationBinding? = null
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
+
+    private var coordinationList: MutableList<CoordinationItem> = mutableListOf()
+    private var coordinationPreviewFragment = CoordinationPreviewFragment()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,6 +35,19 @@ class CoordinationFragment : Fragment() {
         _binding = FragmentCoordinationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        binding.coordinationRecyclerview.apply{
+            layoutManager = GridLayoutManager(activity, 2)
+            adapter = CoordinationRecyclerAdapter(context, coordinationList)
+        }
+
+        for(i in 1..12){
+            coordinationList.add(CoordinationItem(i, "cody_example", "cody${i}"))
+        }
+
+        // TODO: set click listener: show coordination preview fragment
+        for(i in 0 until coordinationList.size){
+        }
+
         return root
     }
 
@@ -38,27 +56,44 @@ class CoordinationFragment : Fragment() {
         _binding = null
     }
 
-    override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(itemView, savedInstanceState)
-        var recycler_view: RecyclerView = itemView.findViewById(R.id.codyRecyclerview)
-        var codyItemList:MutableList<CoordinationItem> = mutableListOf<CoordinationItem>(
-            //임의 데이터
-            CoordinationItem("cody_example","cody1"),
-            CoordinationItem("cody_example","cody2"),
-            CoordinationItem("cody_example","cody3"),
-            CoordinationItem("cody_example","cody4"),
-            CoordinationItem("cody_example","cody5"),
-            CoordinationItem("cody_example","cody6"),
-            CoordinationItem("cody_example","cody7"),
-            CoordinationItem("cody_example","cody8")
-        )
+    fun openCoordinationPreviewFragment(id: Int){
 
-        recycler_view.apply {
-            // set a GridLayoutManager to handle Android
-            // RecyclerView behavior
-            layoutManager = GridLayoutManager(activity, 2)
-            // set the custom adapter to the RecyclerView
-            adapter = CoordinationRecyclerAdapter(context, codyItemList)
+    }
+}
+
+data class CoordinationItem(val coordinationId: Int, val imageId: String, val title: String)
+
+class CoordinationRecyclerAdapter(val context: Context, val codyList: List<CoordinationItem>)
+    : RecyclerView.Adapter<CoordinationRecyclerAdapter.ViewHolder>() {
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val codyTitle: TextView = itemView.findViewById(R.id.codyTitle)
+        val codyImage: ImageView = itemView.findViewById(R.id.codyImage)
+
+        fun bind(cody: CoordinationItem, context: Context) {
+            if (cody.imageId != "") {
+                val resourceId =
+                    context.resources.getIdentifier(cody.imageId, "drawable", context.packageName)
+
+                codyImage.setImageResource(resourceId)
+            }
+            else {
+                codyImage.setImageResource(R.mipmap.ic_launcher)
+            }
+            codyTitle.text = cody.title
         }
     }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val v = LayoutInflater.from(parent.context)
+            .inflate(R.layout.coordination_item, parent, false)
+        return ViewHolder(v)
+    }
+
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        viewHolder.bind(codyList[position], context)
+//            viewHolder.codyTitle.text = codyList[position].title
+//            viewHolder.codyImage.setImageResource(R.drawable.cody_example)
+    }
+
+    override fun getItemCount() = codyList.size
 }
