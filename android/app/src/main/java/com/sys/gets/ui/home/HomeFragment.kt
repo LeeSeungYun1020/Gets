@@ -31,7 +31,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
@@ -106,7 +106,10 @@ class HomeFragment : Fragment() {
                 R.string.msg_server_error,
                 R.string.msg_server_disconnected,
                 R.string.msg_close
-            )
+            ) {
+                if (cardList.removeFirstOrNull() != null)
+                    binding.homeRecyclerview.adapter?.notifyItemRemoved(0)
+            }
         )
         binding.homeRecyclerview.adapter?.notifyItemInserted(0)
     }
@@ -131,7 +134,8 @@ data class Notice(
     val titleID: Int,
     val subtitleID: Int,
     val buttonTextID: Int? = null,
-    val buttonIconID: Int? = null
+    val buttonIconID: Int? = null,
+    val buttonAction: ((View) -> Unit)? = null
 ) : MainItem(MainItemType.TYPE_NOTICE)
 
 data class Weather(
@@ -183,8 +187,10 @@ class MainListAdapter(val context: Context, val list: List<MainItem>) :
                             data.buttonTextID?.let {
                                 button.visibility = View.VISIBLE
                                 button.text = context.getText(it)
+                                button.setOnClickListener(data.buttonAction)
                             }
                             data.buttonIconID?.let { button.setIconResource(it) }
+
                         }
                     }
                 }
@@ -202,7 +208,7 @@ class MainListAdapter(val context: Context, val list: List<MainItem>) :
                 }
                 MainItemType.TYPE_COORDINATION -> {
                     if (viewHolder is CoordinationViewHolder) {
-
+                        // TODO: 메인 코디 카드 표시할 내용 작업
                     }
                 }
             }
