@@ -90,7 +90,7 @@ class ProductListAdapter(private val dataSet: List<ProductSimple>) :
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val data = dataSet[position]
         viewHolder.apply {
-            //image.setImageResource(R.drawable.clothing_example)
+            image.setImageResource(R.drawable.clothing_example_outer)
             // TODO: 이미지 표시
             name.text = data.name
             brand.text = data.brand
