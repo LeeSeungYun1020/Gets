@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.security.crypto.EncryptedSharedPreferences
@@ -29,6 +30,17 @@ class LoginActivity : AppCompatActivity() {
                 EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
             )
     }
+    private val getRegisterActivityResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            when (it.resultCode) {
+                RESULT_OK -> {
+                    val email = it.data?.getStringExtra("email")
+                    val password = it.data?.getStringExtra("password")
+                    if (!email.isNullOrBlank() && !password.isNullOrBlank())
+                        login(email, password)
+                }
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,47 +76,16 @@ class LoginActivity : AppCompatActivity() {
                             .setMessage(R.string.msg_login_input)
                             .setPositiveButton(R.string.msg_ok, null)
                             .show()
-                        return@setOnClickListener
+                    } else {
+                        login(emailString.toString(), passwordString.toString())
                     }
-                    val jsonObjectRequest = JsonObjectRequest(
-                        Request.Method.POST, "${Network.BASE_URL}/signin",
-                        JSONObject().apply {
-                            put("email", emailString)
-                            put("pw", passwordString)
-                        },
-                        { response ->
-                            if (response.getBoolean("result")) {
-                                with(encryptedSharedPreferences.edit()) {
-                                    putString("email", emailString.toString())
-                                    putString("password", passwordString.toString())
-                                    apply()
-                                }
-                                finish()
-                            } else {
-                                AlertDialog.Builder(this)
-                                    .setTitle(R.string.msg_login_error)
-                                    .setMessage(R.string.msg_login_failed)
-                                    .setPositiveButton(R.string.msg_ok, null)
-                                    .show()
-                            }
-                        },
-                        { error ->
-                            Log.e("LOGE", "onCreateView: $error")
-                            AlertDialog.Builder(this)
-                                .setTitle(R.string.msg_server_error)
-                                .setMessage(R.string.msg_server_disconnected)
-                                .setPositiveButton(R.string.msg_ok, null)
-                                .show()
-                        }
-                    )
-                    Network.getInstance(this).addToRequestQueue(jsonObjectRequest)
                 }
             }
 
         }
 
         register.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+            getRegisterActivityResult.launch(Intent(this, RegisterActivity::class.java))
         }
     }
 
@@ -118,5 +99,41 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun login(email: String, password: String) {
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.POST, "${Network.BASE_URL}/signin",
+            JSONObject().apply {
+                put("email", email)
+                put("pw", password)
+            },
+            { response ->
+                if (response.getBoolean("result")) {
+                    with(encryptedSharedPreferences.edit()) {
+                        putString("email", email.toString())
+                        putString("password", password.toString())
+                        apply()
+                    }
+                    // TODO: 로그인 유지 방안 확보
+                    finish()
+                } else {
+                    AlertDialog.Builder(this)
+                        .setTitle(R.string.msg_login_error)
+                        .setMessage(R.string.msg_login_failed)
+                        .setPositiveButton(R.string.msg_ok, null)
+                        .show()
+                }
+            },
+            { error ->
+                Log.e("LOGE", "onCreateView: $error")
+                AlertDialog.Builder(this)
+                    .setTitle(R.string.msg_server_error)
+                    .setMessage(R.string.msg_server_disconnected)
+                    .setPositiveButton(R.string.msg_ok, null)
+                    .show()
+            }
+        )
+        Network.getInstance(this).addToRequestQueue(jsonObjectRequest)
     }
 }

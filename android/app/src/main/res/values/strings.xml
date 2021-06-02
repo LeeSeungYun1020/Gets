@@ -230,4 +230,8 @@
     <string name="material_nylon">Nylon</string>
     <string name="msg_close">Close</string>
     <string name="msg_login_input">Please enter your ID or password correctly.</string>
+    <string name="msg_register_required">* Required field</string>
+    <string name="msg_register_email_duplicate">This email already exists</string>
+    <string name="msg_register_failed">Signup failed. Please try again later.</string>
+    <string name="msg_register_error">Register Error</string>
 </resources>

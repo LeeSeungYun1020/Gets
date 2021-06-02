@@ -220,4 +220,8 @@
     <string name="material_nylon">나일론</string>
     <string name="msg_close">닫기</string>
     <string name="msg_login_input">아이디 또는 비밀번호를 바르게 입력하십시오.</string>
+    <string name="msg_register_required">* 필수 입력 사항입니다</string>
+    <string name="msg_register_email_duplicate">이미 존재하는 이메일입니다</string>
+    <string name="msg_register_failed">회원가입에 실패하였습니다. 잠시후 다시 시도해보세요.</string>
+    <string name="msg_register_error">회원가입 오류</string>
 </resources>
