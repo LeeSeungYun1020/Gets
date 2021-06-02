@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.sys.gets.R
 import com.sys.gets.data.Category
 import com.sys.gets.databinding.FragmentClosetBinding
@@ -22,6 +25,9 @@ class ClosetFragment : Fragment() {
 
     private lateinit var categoryButtons: List<Button>
     private var clothingList: MutableList<ClothingItem> = mutableListOf<ClothingItem>()
+    private lateinit var chipGroup: ChipGroup
+    private var chipList: MutableList<Chip> = mutableListOf<Chip>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,34 +45,61 @@ class ClosetFragment : Fragment() {
             adapter = ClothingRecyclerAdapter(context, clothingList)
         }
 
+        //init
         categoryButtons = listOf(
-            root.findViewById(R.id.outerButton),
-            root.findViewById(R.id.topButton),
-            root.findViewById(R.id.pantsButton),
-            root.findViewById(R.id.skirtButton),
-            root.findViewById(R.id.setButton),
-            root.findViewById(R.id.shoesButton),
-            root.findViewById(R.id.bagButton),
-            root.findViewById(R.id.hatButton)
+            binding.outerButton,
+            binding.topButton,
+            binding.pantsButton,
+            binding.skirtButton,
+            binding.setButton,
+            binding.shoesButton,
+            binding.bagButton,
+            binding.hatButton
         )
+        chipGroup = binding.clothingChipGroup
 
-        for(i in 1..21){ //outer가 default
-            clothingList.add(ClothingItem("clothing_example_outer"))
-        }
+        val clear: Int = ResourcesCompat.getColor(resources, R.color.clear, null)
+        val white: Int = ResourcesCompat.getColor(resources, R.color.white, null)
 
+        // category 버튼에 click listener 지정
         for(i in 0 until categoryButtons.size){
             categoryButtons[i].setOnClickListener{
                 val example: String = Category.values()[i].name.toLowerCase()
                 Toast.makeText(context, "${example} button", Toast.LENGTH_SHORT).show()
 
-                // TODO: 버튼마다 다른 chip 추가
-                // TODO: 선택된 버튼 색상 변경
+                chipGroup.removeAllViews()
+                chipList.clear()
+
+                // TODO: 카테고리 별 하위 카테고리 이름 가져오기
+                for(j in 1..5){
+                    val exampleChip = Chip(context)
+                    exampleChip.text = "${example}_${j}"
+                    exampleChip.isCheckable = true
+                    chipList.add(exampleChip)
+                }
+
+                for(j in 0 until chipList.size)
+                    chipGroup.addView(chipList[j])
+
+                // TODO: chip group checked change listener
+
+
+                // TODO: 색상 오류 수정
+                // 하얀색이 아니라 기본색상이 뜬다...
+                for(j in 0 until categoryButtons.size)
+                    categoryButtons[j].setBackgroundColor(clear)
+                categoryButtons[i].setBackgroundColor(white)
+
                 clothingList.clear()
                 for(i in 1..21){
                     clothingList.add(ClothingItem("clothing_example_${example}"))
                 }
                 binding.clothingRecyclerview.adapter?.notifyDataSetChanged()
+                // TODO: 스크롤 젤 위로 오도록
             }
+
+            //default : outer
+            categoryButtons[0].performClick()
         }
 
         return root
