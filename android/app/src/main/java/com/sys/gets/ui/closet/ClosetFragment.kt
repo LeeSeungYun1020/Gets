@@ -16,21 +16,60 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.sys.gets.R
-import com.sys.gets.data.Category
+import com.sys.gets.data.*
+import com.sys.gets.data.Set
 import com.sys.gets.databinding.FragmentClosetBinding
+import java.util.*
+import kotlin.collections.HashMap
+import kotlin.collections.LinkedHashMap
+import kotlin.collections.List
+import kotlin.collections.MutableList
+import kotlin.collections.listOf
+import kotlin.collections.map
+import kotlin.collections.mutableListOf
+import kotlin.collections.set
+
+class Type(val code: Int, val resID: Int)
 
 class ClosetFragment : Fragment() {
 
     private lateinit var closetViewModel: ClosetViewModel
     private var _binding: FragmentClosetBinding? = null
-    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     private lateinit var categoryButtons: List<Button>
-    private var clothingList: MutableList<ClothingItem> = mutableListOf<ClothingItem>()
     private lateinit var chipGroup: ChipGroup
+    private var clothingList: MutableList<ClothingItem> = mutableListOf<ClothingItem>()
     private var chipList: MutableList<Chip> = mutableListOf<Chip>()
 
+    val categoryList: Array<Int> = arrayOf(
+        R.string.category_outer,
+        R.string.category_top,
+        R.string.category_pants,
+        R.string.category_skirt,
+        R.string.category_set,
+        R.string.category_shoes,
+        R.string.category_bag,
+        R.string.category_hat
+    )
+    val data: HashMap<Int, List<String>>
+        get() {
+            val listData = LinkedHashMap<Int, List<String>>()
+            val titles = arrayOf(
+                Outer.values().map { getString(it.resID) },
+                Top.values().map { getString(it.resID) },
+                Pants.values().map { getString(it.resID) },
+                Skirt.values().map { getString(it.resID) },
+                Set.values().map { getString(it.resID) },
+                Shoes.values().map { getString(it.resID) },
+                Bag.values().map { getString(it.resID) },
+                Hat.values().map { getString(it.resID) }
+            )
+            for(i in 0 until titles.size){
+                listData[i] = titles[i]
+            }
+            return listData
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,21 +101,21 @@ class ClosetFragment : Fragment() {
         chipGroup = binding.clothingChipGroup
 
         val clear: Int = ResourcesCompat.getColor(resources, R.color.clear, null)
+        val black: Int = ResourcesCompat.getColor(resources, R.color.black, null)
         val white: Int = ResourcesCompat.getColor(resources, R.color.white, null)
 
         // category 버튼에 click listener 지정
         for(i in 0 until categoryButtons.size){
             categoryButtons[i].setOnClickListener{
-                val example: String = Category.values()[i].name.toLowerCase()
-                Toast.makeText(context, "${example} button", Toast.LENGTH_SHORT).show()
+                val name = getString(categoryList[i]) // 한글
+                Toast.makeText(context, "${name} button", Toast.LENGTH_SHORT).show()
 
                 chipGroup.removeAllViews()
                 chipList.clear()
 
-                // TODO: 카테고리 별 하위 카테고리 이름 가져오기
-                for(j in 1..5){
+                for(item in data[i]!!){
                     val exampleChip = Chip(context)
-                    exampleChip.text = "${example}_${j}"
+                    exampleChip.text = item.toString()
                     exampleChip.isCheckable = true
                     chipList.add(exampleChip)
                 }
@@ -87,15 +126,20 @@ class ClosetFragment : Fragment() {
                 // TODO: chip group checked change listener
 
 
-                // TODO: 색상 오류 수정
-                // 하얀색이 아니라 기본색상이 뜬다...
-                for(j in 0 until categoryButtons.size)
+                for(j in 0 until categoryButtons.size) {
                     categoryButtons[j].setBackgroundColor(clear)
-                categoryButtons[i].setBackgroundColor(white)
+                    categoryButtons[j].setTextColor(black)
+                }
+                categoryButtons[i].setBackgroundColor(black)
+                categoryButtons[i].setTextColor(white)
 
                 clothingList.clear()
-                for(i in 1..21){
-                    clothingList.add(ClothingItem("clothing_example_${example}"))
+                for(j in 1..21){
+                    clothingList.add(ClothingItem("clothing_example_${i+1}"))
+                    // locale 때문에 name이 한글이 되버려서 파일을 불러올 수가 없어서
+                    // 카테고리를 type no로 처리한 임시 example 파일을 추가하였다.
+                    // TODO: 파일명이 아니라 code(Int)로 가져올 파일 선택하기
+                    // chip group checked change listener에서..?
                 }
                 binding.clothingRecyclerview.adapter?.notifyDataSetChanged()
                 // TODO: 스크롤 젤 위로 오도록
