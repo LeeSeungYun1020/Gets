@@ -111,7 +111,7 @@ router.post("/weather", (req, res) => {
 // 단일 상품 이미지 전송
 router.get("/product/image/:imageID", (req, res) => {
 	const imageID = req.params.imageID
-	const filePath = path.join(__dirname, '../public/images')
+	const filePath = path.join(__dirname, '../product/image')
 	const options = {
 		root: filePath,
 	}
