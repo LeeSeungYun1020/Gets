@@ -19,17 +19,10 @@ import com.sys.gets.R
 import com.sys.gets.data.*
 import com.sys.gets.data.Set
 import com.sys.gets.databinding.FragmentClosetBinding
-import java.util.*
-import kotlin.collections.HashMap
-import kotlin.collections.LinkedHashMap
 import kotlin.collections.List
 import kotlin.collections.MutableList
 import kotlin.collections.listOf
-import kotlin.collections.map
 import kotlin.collections.mutableListOf
-import kotlin.collections.set
-
-class Type(val code: Int, val resID: Int)
 
 class ClosetFragment : Fragment() {
 
@@ -37,39 +30,11 @@ class ClosetFragment : Fragment() {
     private var _binding: FragmentClosetBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var categoryButtons: List<Button>
+    private lateinit var categoryButtons: List<Pair<Button, Category>>
     private lateinit var chipGroup: ChipGroup
     private var clothingList: MutableList<ClothingItem> = mutableListOf<ClothingItem>()
     private var chipList: MutableList<Chip> = mutableListOf<Chip>()
-
-    val categoryList: Array<Int> = arrayOf(
-        R.string.category_outer,
-        R.string.category_top,
-        R.string.category_pants,
-        R.string.category_skirt,
-        R.string.category_set,
-        R.string.category_shoes,
-        R.string.category_bag,
-        R.string.category_hat
-    )
-    val data: HashMap<Int, List<String>>
-        get() {
-            val listData = LinkedHashMap<Int, List<String>>()
-            val titles = arrayOf(
-                Outer.values().map { getString(it.resID) },
-                Top.values().map { getString(it.resID) },
-                Pants.values().map { getString(it.resID) },
-                Skirt.values().map { getString(it.resID) },
-                Set.values().map { getString(it.resID) },
-                Shoes.values().map { getString(it.resID) },
-                Bag.values().map { getString(it.resID) },
-                Hat.values().map { getString(it.resID) }
-            )
-            for(i in 0 until titles.size){
-                listData[i] = titles[i]
-            }
-            return listData
-        }
+    private var code = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -89,14 +54,14 @@ class ClosetFragment : Fragment() {
 
         //init
         categoryButtons = listOf(
-            binding.outerButton,
-            binding.topButton,
-            binding.pantsButton,
-            binding.skirtButton,
-            binding.setButton,
-            binding.shoesButton,
-            binding.bagButton,
-            binding.hatButton
+            binding.outerButton to Category.OUTER,
+            binding.topButton to Category.TOP,
+            binding.pantsButton to Category.PANTS,
+            binding.skirtButton to Category.SKIRT,
+            binding.setButton to Category.SET,
+            binding.shoesButton to Category.SHOES,
+            binding.bagButton to Category.BAG,
+            binding.hatButton to Category.HAT
         )
         chipGroup = binding.clothingChipGroup
 
@@ -106,47 +71,158 @@ class ClosetFragment : Fragment() {
 
         // category 버튼에 click listener 지정
         for(i in 0 until categoryButtons.size){
-            categoryButtons[i].setOnClickListener{
-                val name = getString(categoryList[i]) // 한글
-                Toast.makeText(context, "${name} button", Toast.LENGTH_SHORT).show()
+            categoryButtons[i].first.setOnClickListener{
+                code = 0
+                val categoryTitle = getString(Category.values()[i].resID) //Locale 적용됨
+                Toast.makeText(context, "${categoryTitle} button clicked", Toast.LENGTH_SHORT).show()
 
                 chipGroup.removeAllViews()
                 chipList.clear()
 
-                for(item in data[i]!!){
-                    val exampleChip = Chip(context)
-                    exampleChip.text = item.toString()
-                    exampleChip.isCheckable = true
-                    chipList.add(exampleChip)
+                when(categoryButtons[i].second) {
+                    Category.OUTER -> {
+                        for (item in Outer.values()) {
+                            Chip(context).apply {
+                                text = getString(item.resID)
+                                isCheckable = true
+                                setOnCheckedChangeListener { _, isChecked ->
+                                    if (isChecked)
+                                        code += item.code
+                                    else
+                                        code -= item.code
+                                }
+                                chipList.add(this)
+                            }
+                        }
+                    }
+                    Category.TOP -> {
+                        for (item in Top.values()) {
+                            Chip(context).apply {
+                                text = getString(item.resID)
+                                isCheckable = true
+                                setOnCheckedChangeListener { _, isChecked ->
+                                    if (isChecked)
+                                        code += item.code
+                                    else
+                                        code -= item.code
+                                }
+                                chipList.add(this)
+                            }
+                        }
+                    }
+                    Category.PANTS -> {
+                        for (item in Pants.values()) {
+                            Chip(context).apply {
+                                text = getString(item.resID)
+                                isCheckable = true
+                                setOnCheckedChangeListener { _, isChecked ->
+                                    if (isChecked)
+                                        code += item.code
+                                    else
+                                        code -= item.code
+                                }
+                                chipList.add(this)
+                            }
+                        }
+                    }
+                    Category.SKIRT -> {
+                        for (item in Skirt.values()) {
+                            Chip(context).apply {
+                                text = getString(item.resID)
+                                isCheckable = true
+                                setOnCheckedChangeListener { _, isChecked ->
+                                    if (isChecked)
+                                        code += item.code
+                                    else
+                                        code -= item.code
+                                }
+                                chipList.add(this)
+                            }
+                        }
+                    }
+                    Category.SET -> {
+                        for (item in Set.values()) {
+                            Chip(context).apply {
+                                text = getString(item.resID)
+                                isCheckable = true
+                                setOnCheckedChangeListener { _, isChecked ->
+                                    if (isChecked)
+                                        code += item.code
+                                    else
+                                        code -= item.code
+                                }
+                                chipList.add(this)
+                            }
+                        }
+                    }
+                    Category.SHOES -> {
+                        for (item in Shoes.values()) {
+                            Chip(context).apply {
+                                text = getString(item.resID)
+                                isCheckable = true
+                                setOnCheckedChangeListener { _, isChecked ->
+                                    if (isChecked)
+                                        code += item.code
+                                    else
+                                        code -= item.code
+                                }
+                                chipList.add(this)
+                            }
+                        }
+                    }
+                    Category.BAG -> {
+                        for (item in Bag.values()) {
+                            Chip(context).apply {
+                                text = getString(item.resID)
+                                isCheckable = true
+                                setOnCheckedChangeListener { _, isChecked ->
+                                    if (isChecked)
+                                        code += item.code
+                                    else
+                                        code -= item.code
+                                }
+                                chipList.add(this)
+                            }
+                        }
+                    }
+                    Category.HAT -> {
+                        for (item in Hat.values()) {
+                            Chip(context).apply {
+                                text = getString(item.resID)
+                                isCheckable = true
+                                setOnCheckedChangeListener { _, isChecked ->
+                                    if (isChecked)
+                                        code += item.code
+                                    else
+                                        code -= item.code
+                                }
+                                chipList.add(this)
+                            }
+                        }
+                    }
                 }
 
                 for(j in 0 until chipList.size)
                     chipGroup.addView(chipList[j])
 
-                // TODO: chip group checked change listener
-
-
                 for(j in 0 until categoryButtons.size) {
-                    categoryButtons[j].setBackgroundColor(clear)
-                    categoryButtons[j].setTextColor(black)
+                    categoryButtons[j].first.setBackgroundColor(clear)
+                    categoryButtons[j].first.setTextColor(black)
                 }
-                categoryButtons[i].setBackgroundColor(black)
-                categoryButtons[i].setTextColor(white)
+                categoryButtons[i].first.setBackgroundColor(black)
+                categoryButtons[i].first.setTextColor(white)
 
                 clothingList.clear()
                 for(j in 1..21){
                     clothingList.add(ClothingItem("clothing_example_${i+1}"))
-                    // locale 때문에 name이 한글이 되버려서 파일을 불러올 수가 없어서
-                    // 카테고리를 type no로 처리한 임시 example 파일을 추가하였다.
                     // TODO: 파일명이 아니라 code(Int)로 가져올 파일 선택하기
-                    // chip group checked change listener에서..?
                 }
                 binding.clothingRecyclerview.adapter?.notifyDataSetChanged()
                 // TODO: 스크롤 젤 위로 오도록
             }
 
             //default : outer
-            categoryButtons[0].performClick()
+            categoryButtons[0].first.performClick()
         }
 
         return root
@@ -169,7 +245,6 @@ class ClothingRecyclerAdapter(val context: Context, val clothingList: List<Cloth
         val image: ImageView
 
         init{
-            // Define click listener for the ViewHolder's View.
             image = view.findViewById(R.id.clothing_item_image)
         }
         fun bind(cody: ClothingItem, context: Context){
