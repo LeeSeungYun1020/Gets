@@ -71,10 +71,26 @@ class HomeFragment : Fragment() {
                                 }
                             }
                         }
+                    val icon = when (response.getInt("form")) {
+                        1 -> R.drawable.ic_weather_rain
+                        2 -> R.drawable.ic_weather_rain_snow
+                        3 -> R.drawable.ic_weather_snow
+                        4 -> R.drawable.ic_weather_shower
+                        5 -> R.drawable.ic_weather_rain_light
+                        6 -> R.drawable.ic_weather_rain_snow_light
+                        7 -> R.drawable.ic_weather_snow_light
+                        else -> {
+                            when (response.getInt("sky")) {
+                                1 -> R.drawable.ic_weather_clear
+                                2, 3 -> R.drawable.ic_weather_partly_cloudy
+                                else -> R.drawable.ic_weather_cloudy
+                            }
+                        }
+                    }
                     cardList.add(
                         0,
                         Weather(
-                            R.drawable.ic_baseline_server_off_24,
+                            icon,
                             status,
                             response.getDouble("tem"),
                             response.getDouble("min"),
