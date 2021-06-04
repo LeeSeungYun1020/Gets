@@ -234,4 +234,8 @@
     <string name="msg_register_email_duplicate">This email already exists</string>
     <string name="msg_register_failed">Signup failed. Please try again later.</string>
     <string name="msg_register_error">Register Error</string>
+    <string name="basket">basket</string>
+    <string name="closet">closet</string>
+    <string name="make">make my codi</string>
+    <string name="purchase">purchase</string>
 </resources>

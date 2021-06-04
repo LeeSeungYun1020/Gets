@@ -224,4 +224,8 @@
     <string name="msg_register_email_duplicate">이미 존재하는 이메일입니다</string>
     <string name="msg_register_failed">회원가입에 실패하였습니다. 잠시후 다시 시도해보세요.</string>
     <string name="msg_register_error">회원가입 오류</string>
+    <string name="basket">장바구니</string>
+    <string name="closet">옷장에 추가</string>
+    <string name="make">코디 만들기</string>
+    <string name="purchase">구매하기</string>
 </resources>

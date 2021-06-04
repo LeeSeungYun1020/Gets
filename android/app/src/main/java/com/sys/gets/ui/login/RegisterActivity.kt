@@ -94,6 +94,7 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
         }
+
     }
 
     private fun checkEmail(text: CharSequence, success: () -> Unit) {
