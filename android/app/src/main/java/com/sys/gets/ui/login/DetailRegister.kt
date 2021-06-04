@@ -18,12 +18,11 @@ class DetailRegister : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_register)
-        val topSize = findViewById<AutoCompleteTextView>(R.id.menu_top)
-        val bottomSize = findViewById<AutoCompleteTextView>(R.id.menu_bottom)
+        val topSize = findViewById<TextInputLayout>(R.id.menu_top)
+        val bottomSize = findViewById<TextInputLayout>(R.id.menu_bottom)
         val size = listOf("XS", "S", "M", "L", "XL", "2XL")
-//        val adapter = ArrayAdapter(requireContext(), R.layout.list_size, size)
-
-//        topSize.setAdapter(adapter)
-//        bottomSize.setAdapter(adapter)
+        val adapter = ArrayAdapter(this, R.layout.list_item, size)
+        (topSize.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+        (bottomSize.editText as? AutoCompleteTextView)?.setAdapter(adapter)
     }
 }

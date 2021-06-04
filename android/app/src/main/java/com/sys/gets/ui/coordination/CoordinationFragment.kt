@@ -22,7 +22,7 @@ class CoordinationFragment : Fragment() {
     private val binding get() = _binding!!
 
     private var coordinationList: MutableList<CoordinationItem> = mutableListOf()
-    private var coordinationPreviewFragment = CoordinationPreviewFragment()
+    private var coordinationPreviewFragment = CoordinationFragment()
 
     override fun onCreateView(
         inflater: LayoutInflater,

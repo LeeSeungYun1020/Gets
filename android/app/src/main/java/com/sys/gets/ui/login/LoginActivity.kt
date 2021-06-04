@@ -115,6 +115,7 @@ class LoginActivity : AppCompatActivity() {
                         putString("password", password.toString())
                         apply()
                     }
+
                     // TODO: 로그인 유지 방안 확보
                     finish()
                 } else {
