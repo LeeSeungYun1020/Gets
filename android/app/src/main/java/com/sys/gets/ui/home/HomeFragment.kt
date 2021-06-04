@@ -81,7 +81,7 @@ class HomeFragment : Fragment() {
                             response.getDouble("max")
                         )
                     )
-                    binding.homeRecyclerview.adapter?.notifyItemInserted(0)
+                    _binding?.homeRecyclerview?.adapter?.notifyItemInserted(0)
                 }
             },
             { error ->
@@ -108,10 +108,10 @@ class HomeFragment : Fragment() {
                 R.string.msg_close
             ) {
                 if (cardList.removeFirstOrNull() != null)
-                    binding.homeRecyclerview.adapter?.notifyItemRemoved(0)
+                    _binding?.homeRecyclerview?.adapter?.notifyItemRemoved(0)
             }
         )
-        binding.homeRecyclerview.adapter?.notifyItemInserted(0)
+        _binding?.homeRecyclerview?.adapter?.notifyItemInserted(0)
     }
 }
 
