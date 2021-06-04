@@ -28,13 +28,12 @@ router.get('/', function(req, res, next) {
 			const age = product.getAgeCode(record[18])
 			const style = product.getStyleCode(record[19])
 			const price = record[20]
-			const image = record[22]
-			// console.log(image)
+			const image = record[23].split(",")
 			// TODO: 이미지 처리
 			connection.query("insert into product \
-				(name, brand, code, gender, type, detail, color, fit, season, fiber, age, style, price, image1ID) \
-				values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-				[name, brand, code, gender, type, detail, color, fit, season, fiber, age, style, price, index++],
+				(name, brand, code, gender, type, detail, color, fit, season, fiber, age, style, price, image1ID, image2ID, image3ID) \
+				values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+				[name, brand, code, gender, type, detail, color, fit, season, fiber, age, style, price, image[0], image[1] || null, image[2] || null],
 				(err, result) => {
 				if (err)
 					console.error(err)

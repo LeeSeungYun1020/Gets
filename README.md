@@ -149,23 +149,23 @@ create table user
 
 create table product
 (
-    id       INT PRIMARY KEY AUTO_INCREMENT,
-    name     NVARCHAR(128) NOT NULL,
-    brand    NVARCHAR(128) NOT NULL,
-    code     NVARCHAR(64),
-    gender   INT           NOT NULL,
-    type     INT           NOT NULL,
-    detail   INT           NOT NULL,
-    color    INT           NOT NULL,
-    fit      INT           NOT NULL,
-    season   INT           NOT NULL,
-    fiber    INT           NOT NULL,
-    age      INT           NOT NULL,
-    style    INT           NOT NULL,
-    price    INT           NOT NULL,
-    image1ID INT           NOT NULL,
-    image2ID INT DEFAULT NULL,
-    image3ID INT DEFAULT NULL
+  id       INT PRIMARY KEY AUTO_INCREMENT,
+  name     NVARCHAR(128) NOT NULL,
+  brand    NVARCHAR(128) NOT NULL,
+  code     NVARCHAR(64),
+  gender   INT           NOT NULL,
+  type     INT           NOT NULL,
+  detail   INT           NOT NULL,
+  color    INT           NOT NULL,
+  fit      INT           NOT NULL,
+  season   INT           NOT NULL,
+  fiber    INT           NOT NULL,
+  age      INT           NOT NULL,
+  style    INT           NOT NULL,
+  price    INT           NOT NULL,
+  image1ID VARCHAR(32)   NOT NULL,
+  image2ID VARCHAR(32) DEFAULT NULL,
+  image3ID VARCHAR(32) DEFAULT NULL
 );
 
 create table review
