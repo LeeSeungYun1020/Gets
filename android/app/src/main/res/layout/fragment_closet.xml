@@ -6,96 +6,73 @@
     android:layout_height="match_parent"
     tools:context=".ui.closet.ClosetFragment">
 
-    <LinearLayout
+    <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/category"
-        android:layout_width="96dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:orientation="vertical"
-        android:paddingTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:singleSelection="true">
 
         <Button
             android:id="@+id/outerButton"
-            style="?android:attr/borderlessButtonStyle"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/clear"
-            android:backgroundTintMode="screen"
-            android:text="@string/category_outer"
-            android:textColor="@android:color/black" />
+            android:text="@string/category_outer" />
 
         <Button
             android:id="@+id/topButton"
-            style="?android:attr/borderlessButtonStyle"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/clear"
-            android:backgroundTintMode="screen"
-            android:text="@string/category_top"
-            android:textColor="@android:color/black" />
+            android:text="@string/category_top" />
 
         <Button
             android:id="@+id/pantsButton"
-            style="?android:attr/borderlessButtonStyle"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/clear"
-            android:backgroundTintMode="screen"
-            android:text="@string/category_pants"
-            android:textColor="@android:color/black" />
+            android:text="@string/category_pants" />
 
         <Button
             android:id="@+id/skirtButton"
-            style="?android:attr/borderlessButtonStyle"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/clear"
-            android:backgroundTintMode="screen"
-            android:text="@string/category_skirt"
-            android:textColor="@android:color/black" />
+            android:text="@string/category_skirt" />
 
         <Button
             android:id="@+id/setButton"
-            style="?android:attr/borderlessButtonStyle"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/clear"
-            android:backgroundTintMode="screen"
-            android:text="@string/category_set"
-            android:textColor="@android:color/black" />
+            android:text="@string/category_set" />
 
 
         <Button
             android:id="@+id/shoesButton"
-            style="?android:attr/borderlessButtonStyle"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/clear"
-            android:backgroundTintMode="screen"
-            android:text="@string/category_shoes"
-            android:textColor="@android:color/black" />
+            android:text="@string/category_shoes" />
 
         <Button
             android:id="@+id/bagButton"
-            style="?android:attr/borderlessButtonStyle"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/clear"
-            android:backgroundTintMode="screen"
-            android:text="@string/category_bag"
-            android:textColor="@android:color/black" />
+            android:text="@string/category_bag" />
 
         <Button
             android:id="@+id/hatButton"
-            style="?android:attr/borderlessButtonStyle"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/clear"
-            android:backgroundTintMode="screen"
-            android:text="@string/category_hat"
-            android:textColor="@android:color/black" />
-    </LinearLayout>
+            android:text="@string/category_hat" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
