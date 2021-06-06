@@ -66,16 +66,16 @@ class LoginActivity : AppCompatActivity() {
             password.editText?.text?.length ?: 0 <= 5
         }
 
-        if(MySharedPreferences.getUserId(this).isNullOrBlank()||MySharedPreferences.getUserPass(this).isNullOrBlank()){
-            Log.e(TAG, "자동로그인 안됨")
-        }
-        else {
-            Toast.makeText(this, "${MySharedPreferences.getUserId(this)}님 자동 로그인 되었습니다.", Toast.LENGTH_LONG).show()
-            Log.e(TAG, "자동로그인 됨")
-            var intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        if(MySharedPreferences.getUserId(this).isNullOrBlank()||MySharedPreferences.getUserPass(this).isNullOrBlank()){
+//            Log.e(TAG, "자동로그인 안됨")
+//        }
+//        else {
+//            Toast.makeText(this, "${MySharedPreferences.getUserId(this)}님 자동 로그인 되었습니다.", Toast.LENGTH_LONG).show()
+//            Log.e(TAG, "자동로그인 됨")
+//            var intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
         login.setOnClickListener {
             when {

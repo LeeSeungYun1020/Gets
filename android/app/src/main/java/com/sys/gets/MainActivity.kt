@@ -1,9 +1,12 @@
 package com.sys.gets
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -74,9 +77,16 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(this, LoginActivity::class.java))
                 }
             .show()
+//            Log.e(ContentValues.TAG, "자동로그인 안됨")
         }
         else {
+            Toast.makeText(
+                this,
+                "${MySharedPreferences.getUserId(this)}님 자동 로그인 되었습니다.",
+                Toast.LENGTH_LONG
+            ).show()
 //            Log.e(ContentValues.TAG, "자동로그인 됨")
         }
+
     }
 }
