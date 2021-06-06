@@ -2,6 +2,7 @@ package com.sys.gets.ui.home
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,14 +11,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
+import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.google.android.material.button.MaterialButton
 import com.sys.gets.R
 import com.sys.gets.databinding.FragmentHomeBinding
 import com.sys.gets.network.Network
+import com.sys.gets.ui.coordination.CoordinationItem
 import org.json.JSONObject
 
 class HomeFragment : Fragment() {
@@ -39,9 +43,10 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         binding.homeRecyclerview.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = MainListAdapter(this@HomeFragment.requireContext(), cardList)
+            layoutManager = GridLayoutManager(activity, 2)
+            adapter = MainListAdapter(this@HomeFragment.requireContext(),cardList)
         }
+
 
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.POST, "${Network.BASE_URL}/weather",
@@ -104,7 +109,26 @@ class HomeFragment : Fragment() {
                 onServerDisconnected()
             }
         )
-        Network.getInstance(this.requireActivity()).addToRequestQueue(jsonObjectRequest)
+
+        for(i in 1..6){
+            val codyRequest = ImageRequest("${Network.BASE_URL}/product/image/0_1", {hatBitmap ->
+                Network.getInstance(this.requireContext()).addToRequestQueue(
+                    ImageRequest("${Network.BASE_URL}/product/image/11_1", {topBitmap ->
+                        Network.getInstance(this.requireContext()).addToRequestQueue(
+                            ImageRequest("${Network.BASE_URL}/product/image/59_1", {bottomBitmap ->
+                                Network.getInstance(this.requireContext()).addToRequestQueue(
+                                    ImageRequest("${Network.BASE_URL}/product/image/271_2", {shoesBitmap ->
+                                        cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
+                                        _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
+                                    }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                            }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                    }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+            }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+
+            Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest)
+        }
+
+        Network.getInstance(this.requireContext()).addToRequestQueue(jsonObjectRequest)
 
         return root
     }
@@ -162,6 +186,15 @@ data class Weather(
     val max: Double
 ) : MainItem(MainItemType.TYPE_WEATHER)
 
+data class Cody(
+    val hat: Bitmap,
+    val top: Bitmap,
+    val bottom: Bitmap,
+    val shoes: Bitmap,
+//    val outer:Bitmap,
+//    val set:Bitmap
+) : MainItem(MainItemType.TYPE_COORDINATION)
+
 class MainListAdapter(val context: Context, val list: List<MainItem>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -182,9 +215,9 @@ class MainListAdapter(val context: Context, val list: List<MainItem>) :
                 )
             }
             MainItemType.TYPE_COORDINATION -> {
-                WeatherViewHolder(
+                CoordinationViewHolder(
                     LayoutInflater.from(viewGroup.context)
-                        .inflate(R.layout.card_weather, viewGroup, false)
+                        .inflate(R.layout.card_coordination_clothes, viewGroup, false)
                 )
             }
         }
@@ -223,8 +256,14 @@ class MainListAdapter(val context: Context, val list: List<MainItem>) :
                     }
                 }
                 MainItemType.TYPE_COORDINATION -> {
-                    if (viewHolder is CoordinationViewHolder) {
+                    if (viewHolder is CoordinationViewHolder && data is Cody) {
                         // TODO: 메인 코디 카드 표시할 내용 작업
+                        with(viewHolder) {
+                            hat.setImageBitmap(data.hat)
+                            top.setImageBitmap(data.top)
+                            bottom.setImageBitmap(data.bottom)
+                            shoes.setImageBitmap(data.shoes)
+                        }
                     }
                 }
             }
@@ -250,4 +289,12 @@ class WeatherViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
 class CoordinationViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     // TODO: 메인 코디 카드
+    val hat: ImageView = itemView.findViewById(R.id.card_hat)
+    val top: ImageView = itemView.findViewById(R.id.card_top)
+    val bottom: ImageView = itemView.findViewById(R.id.card_bottom)
+    val shoes: ImageView = itemView.findViewById(R.id.card_shoes)
+    /*val bag: ImageView = itemView.findViewById(R.id.card_bag)
+    val outer: ImageView = itemView.findViewById(R.id.card_outer)
+    val set: ImageView = itemView.findViewById(R.id.card_set)*/
+
 }
