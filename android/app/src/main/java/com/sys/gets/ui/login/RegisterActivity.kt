@@ -1,8 +1,10 @@
 package com.sys.gets.ui.login
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.text.format.DateFormat
+import android.util.Log
 import android.util.Patterns
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -90,6 +92,16 @@ class RegisterActivity : AppCompatActivity() {
 
             if (check) {
                 checkEmail(binding.email.editText?.text ?: "") {
+//                    var id = binding.email.editText?.text.toString()
+//                    var pw = binding.password.editText?.text.toString()
+//
+//                    val sharedPreference = getSharedPreferences("other", 0)
+//                    val editor = sharedPreference.edit()
+//                    editor.putString("id", id)
+//                    editor.putString("pw", pw)
+//                    editor.apply()
+//                    Log.e(TAG, "쉐어드에 저장된 아이디 = " + sharedPreference.getString("id", ""))
+//                    Log.e(TAG, "쉐어드에 저장된 비밀번호 = " + sharedPreference.getString("pw", ""))
                     register()
                 }
             }

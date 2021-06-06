@@ -1,7 +1,9 @@
 package com.sys.gets
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.sys.gets.databinding.ActivityMainBinding
 import com.sys.gets.ui.login.LoginActivity
+import com.sys.gets.ui.login.MySharedPreferences
 
 class MainActivity : AppCompatActivity() {
 
@@ -66,11 +69,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showLoginPrompt() {
-        Snackbar.make(binding.container, R.string.msg_request_login, Snackbar.LENGTH_SHORT)
-            .setAnchorView(binding.navView)
-            .setAction(R.string.msg_login) {
-                startActivity(Intent(this, LoginActivity::class.java))
-            }
+        if (MySharedPreferences.getUserId(this).isNullOrBlank() || MySharedPreferences.getUserPass(this).isNullOrBlank()){
+            Snackbar.make(binding.container, R.string.msg_request_login, Snackbar.LENGTH_SHORT)
+                .setAnchorView(binding.navView)
+                .setAction(R.string.msg_login) {
+                    startActivity(Intent(this, LoginActivity::class.java))
+                }
             .show()
+        }
+        else {
+//            Log.e(ContentValues.TAG, "자동로그인 됨")
+        }
     }
 }
