@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(
                 this,
                 "${MySharedPreferences.getUserId(this)}님 자동 로그인 되었습니다.",
-                Toast.LENGTH_LONG
+                Toast.LENGTH_SHORT
             ).show()
 //            Log.e(ContentValues.TAG, "자동로그인 됨")
         }
