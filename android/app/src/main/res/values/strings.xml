@@ -238,4 +238,33 @@
     <string name="closet">closet</string>
     <string name="make">make my codi</string>
     <string name="purchase">purchase</string>
+    <string name="alphabet_a" translatable="false">A</string>
+    <string name="alphabet_b" translatable="false">B</string>
+    <string name="alphabet_c" translatable="false">C</string>
+    <string name="alphabet_d" translatable="false">D</string>
+    <string name="alphabet_e" translatable="false">E</string>
+    <string name="alphabet_f" translatable="false">F</string>
+    <string name="alphabet_g" translatable="false">G</string>
+    <string name="alphabet_h" translatable="false">H</string>
+    <string name="alphabet_i" translatable="false">I</string>
+    <string name="alphabet_j" translatable="false">J</string>
+    <string name="alphabet_k" translatable="false">K</string>
+    <string name="alphabet_l" translatable="false">L</string>
+    <string name="alphabet_m" translatable="false">M</string>
+    <string name="alphabet_n" translatable="false">N</string>
+    <string name="alphabet_o" translatable="false">O</string>
+    <string name="alphabet_p" translatable="false">P</string>
+    <string name="alphabet_q" translatable="false">Q</string>
+    <string name="alphabet_r" translatable="false">R</string>
+    <string name="alphabet_s" translatable="false">S</string>
+    <string name="alphabet_t" translatable="false">T</string>
+    <string name="alphabet_u" translatable="false">U</string>
+    <string name="alphabet_v" translatable="false">V</string>
+    <string name="alphabet_w" translatable="false">W</string>
+    <string name="alphabet_x" translatable="false">X</string>
+    <string name="alphabet_y" translatable="false">Y</string>
+    <string name="alphabet_z" translatable="false">Z</string>
+    <string name="brand_search">Search Brand</string>
+    <string name="template_brand_total_number">5,000brand</string>
+    <!-- TODO: Remove or change this placeholder text -->
 </resources>

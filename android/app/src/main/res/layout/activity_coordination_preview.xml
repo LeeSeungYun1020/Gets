@@ -14,7 +14,8 @@ tools:context=".ui.coordination.CoordinationPreviewActivity">
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"/>
+    app:layout_constraintEnd_toEndOf="parent">
+</ImageView>
 
 <TextView
     android:id="@+id/coordination_preview_text_view"
