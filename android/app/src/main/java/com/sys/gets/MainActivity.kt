@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             showLoginPrompt()
         }
+        showAutomaticLoginState()
     }
 
     override fun onStart() {
@@ -77,16 +78,18 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(this, LoginActivity::class.java))
                 }
             .show()
-//            Log.e(ContentValues.TAG, "자동로그인 안됨")
+            Log.e(ContentValues.TAG, "자동로그인 안됨")
         }
-        else {
+    }
+
+    private fun showAutomaticLoginState(){
+        if (!MySharedPreferences.getUserId(this).isNullOrBlank() && !MySharedPreferences.getUserPass(this).isNullOrBlank()) {
             Toast.makeText(
                 this,
                 "${MySharedPreferences.getUserId(this)}님 자동 로그인 되었습니다.",
                 Toast.LENGTH_SHORT
             ).show()
-//            Log.e(ContentValues.TAG, "자동로그인 됨")
+            Log.e(ContentValues.TAG, "자동로그인 됨")
         }
-
     }
 }
