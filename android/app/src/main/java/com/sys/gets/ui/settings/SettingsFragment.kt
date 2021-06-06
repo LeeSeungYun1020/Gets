@@ -1,10 +1,13 @@
 package com.sys.gets.ui.settings
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.sys.gets.MainActivity
 import com.sys.gets.R
 import com.sys.gets.SearchActivity
 import com.sys.gets.ui.login.LoginActivity
@@ -21,8 +24,13 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 .commit()
             true
         }
-        findPreference<Preference>("login")?.setOnPreferenceClickListener {
-           // TODO: 로그인 화면으로 이동
+
+        findPreference<Preference>("notice")?.setOnPreferenceClickListener {
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("NOTICE")
+                .setMessage("To celebrate the founding of Gets, we will hold a 40% sale on all items for a month in June. Thank you:)")
+                .setPositiveButton("Ok", null)
+                .show()
             true
         }
         if(MySharedPreferences.getUserId(requireContext()).isNullOrBlank() || MySharedPreferences.getUserPass(requireContext()).isNullOrBlank()) {

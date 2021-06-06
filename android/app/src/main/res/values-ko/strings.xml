@@ -102,14 +102,14 @@
     <string name="tab_category">" 카테고리"</string>
     <string name="tab_brand">브랜드</string>
     <string name="account_category">내 계정</string>
-    <string name="signature">__________님, 오늘도 예쁜코디 하세요 :)</string>
+    <string name="signature">회원님, 오늘도 예쁜코디 하세요 :)</string>
     <string name="activity_category">활동</string>
     <string name="product">최근 본 상품</string>
     <string name="setting_category">설정</string>
     <string name="version">현재버전</string>
     <string name="alarm">알림 수신 동의</string>
     <string name="notice">공지사항</string>
-    <string name="service_center">고객센터</string>
+    <string name="service_center">문의사항</string>
     <string name="memberinform_modi">회원정보 수정</string>
     <string name="bodyinform">체형정보</string>
     <string name="secession">탈퇴</string>

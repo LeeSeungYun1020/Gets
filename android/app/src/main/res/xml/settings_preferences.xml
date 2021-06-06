@@ -1,4 +1,5 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
         app:title="@string/account_category"
@@ -13,12 +14,14 @@
             app:isPreferenceVisible="true">
         </Preference>
         <Preference
-            app:fragment=""
             app:title="@string/setting_login"
             app:iconSpaceReserved="false"
             app:key="login"
             app:summary=" > Login"
             app:isPreferenceVisible="false">
+            <intent
+                android:targetPackage="com.sys.gets"
+                android:targetClass="com.sys.gets.ui.login.LoginActivity"/>
         </Preference>
 
     </PreferenceCategory>
@@ -43,10 +46,11 @@
             app:iconSpaceReserved="false"
             app:title="@string/notice"/>
 
-        <PreferenceScreen
+        <EditTextPreference
             app:key="service_center"
             app:iconSpaceReserved="false"
-            app:title="@string/service_center" />
+            app:title="@string/service_center"
+            />
 
         <SwitchPreferenceCompat
             app:key="alarm"
