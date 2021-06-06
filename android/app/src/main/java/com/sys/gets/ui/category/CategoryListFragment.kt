@@ -58,7 +58,7 @@ class CategoryListFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         categoryViewModel =
             ViewModelProvider(this).get(CategoryViewModel::class.java)
 
