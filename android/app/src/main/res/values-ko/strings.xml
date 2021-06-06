@@ -230,4 +230,5 @@
     <string name="purchase">구매하기</string>
     <string name="brand_search">브랜드명을 입력해주세요</string>
     <string name="template_brand_total_number" translatable="false">5,000개</string>
+    <string name="setting_login">로그인 하지 않았습니다.</string>
 </resources>

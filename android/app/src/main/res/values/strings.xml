@@ -266,5 +266,6 @@
     <string name="alphabet_z" translatable="false">Z</string>
     <string name="brand_search">Search Brand</string>
     <string name="template_brand_total_number">5,000brand</string>
+    <string name="setting_login">You do not log in</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

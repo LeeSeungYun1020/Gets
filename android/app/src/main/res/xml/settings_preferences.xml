@@ -9,20 +9,30 @@
             app:title="@string/signature"
             app:iconSpaceReserved="false"
             app:key="account"
-            app:summary=" > CLICK"></Preference>
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        app:iconSpaceReserved="false"
-        app:title="@string/activity_category">
-
-        <PreferenceScreen
-            app:key="product"
+            app:summary=" > CLICK"
+            app:isPreferenceVisible="true">
+        </Preference>
+        <Preference
+            app:fragment=""
+            app:title="@string/setting_login"
             app:iconSpaceReserved="false"
-            app:title="@string/product"/>
+            app:key="login"
+            app:summary=" > Login"
+            app:isPreferenceVisible="false">
+        </Preference>
 
     </PreferenceCategory>
+
+<!--    <PreferenceCategory-->
+<!--        app:iconSpaceReserved="false"-->
+<!--        app:title="@string/activity_category">-->
+
+<!--        <PreferenceScreen-->
+<!--            app:key="product"-->
+<!--            app:iconSpaceReserved="false"-->
+<!--            app:title="@string/product"/>-->
+
+<!--    </PreferenceCategory>-->
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
@@ -47,7 +57,7 @@
             app:key="version"
             app:title="@string/version"
             app:iconSpaceReserved="false"
-            app:summary="2.37.1 (버전정보설정해야함)"/>
+            app:summary="1.0.0"/>
 
     </PreferenceCategory>
 
