@@ -122,19 +122,26 @@ router.get("/product/image/:imageID", (req, res) => {
 	}))
 })
 
+function fitCode(code) {
+	let fix = code ?? -1
+	if (fix === 0)
+		fix = -1
+	return fix
+}
+
 // 상품 목록 필터
 router.post("/product/list/:page", (req, res) => {
 	const ALL = -1
 	const search = "%" + (req.body.search ?? "") + "%"
-	const type = req.body.type ?? ALL
-	const detail = req.body.detail ?? ALL
-	const gender = req.body.gender ?? ALL
-	const color = req.body.color ?? ALL
-	const fit = req.body.fit ?? ALL
-	const season = req.body.season ?? ALL
-	const fiber = req.body.fiber ?? ALL
-	const age = req.body.age ?? ALL
-	const style = req.body.style ?? ALL
+	const type = fitCode(req.body.type)
+	const detail = fitCode(req.body.detail)
+	const gender = fitCode(req.body.gender)
+	const color = fitCode(req.body.color)
+	const fit = fitCode(req.body.fit)
+	const season = fitCode(req.body.season)
+	const fiber = fitCode(req.body.fiber)
+	const age = fitCode(req.body.age)
+	const style = fitCode(req.body.style)
 	const priceMin = parseInt(req.body.priceMin ?? 0)
 	const priceMax = parseInt(req.body.priceMax ?? 1000000000)
 	const N = 30

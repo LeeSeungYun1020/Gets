@@ -79,3 +79,13 @@ Content-Type: application/json
 "longitude": 126,
   "latitude": 59
 }
+
+###
+
+POST http://localhost:3000/api/product/list/1
+Content-Type: application/json
+
+{
+  "type": 1,
+  "detail": 0
+}
