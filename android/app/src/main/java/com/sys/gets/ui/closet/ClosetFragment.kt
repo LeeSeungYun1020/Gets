@@ -1,21 +1,30 @@
 package com.sys.gets.ui.closet
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.toolbox.ImageRequest
+import com.android.volley.toolbox.JsonArrayRequest
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.sys.gets.R
 import com.sys.gets.data.*
 import com.sys.gets.data.Set
 import com.sys.gets.databinding.FragmentClosetBinding
+import com.sys.gets.network.Network
+import org.json.JSONArray
+import org.json.JSONObject
 
 class ClosetFragment : Fragment() {
 
@@ -26,8 +35,8 @@ class ClosetFragment : Fragment() {
     private lateinit var chipGroup: ChipGroup
     private var clothingList: MutableList<ClothingItem> = mutableListOf() // 표시될 제품 리스트
 
-    private var categoryCode = 0 // 어떤 카테고리 선택?
-    private var detailCode = 0 // 어떤 세부 분류 선택?
+    private var categoryCode: Int = 0 // 어떤 카테고리 선택?
+    private var detailCode: Int = 0 // 어떤 세부 분류 선택?
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,7 +51,7 @@ class ClosetFragment : Fragment() {
 
         binding.clothingRecyclerview.apply {
             layoutManager = GridLayoutManager(requireContext(), 3)
-            adapter = ClothingRecyclerAdapter(context, clothingList)
+            adapter = ClothingListAdapter(this@ClosetFragment.requireContext(), clothingList)
         }
 
         //init
@@ -104,15 +113,8 @@ class ClosetFragment : Fragment() {
                         }
                     }
                 }
-                clothingList.clear()
-                for (i in 1..21) {
-                    clothingList.add(ClothingItem("clothing_example_$categoryCode"))
-                    // TODO: 파일명이 아니라 code(Int)로 가져올 파일 선택하기
-                }
-                binding.clothingRecyclerview.apply {
-                    adapter?.notifyDataSetChanged()
-                    scrollToPosition(0)
-                }
+
+                changeClothingList(this.requireContext())
             }
         }
         binding.outerButton.performClick()
@@ -133,46 +135,81 @@ class ClosetFragment : Fragment() {
                     detailCode += code
                 else
                     detailCode -= code
+
+                changeClothingList(context)
             }
             chipGroup.addView(this)
         }
     }
+
+    fun changeClothingList(context: Context){
+        clothingList.clear()
+        // TODO: 이미지 다 로드되기 전에 또 호출하면 앱 꺼지는 에러
+
+        val productListRequest = JsonArrayRequest(
+            Request.Method.POST, "${Network.BASE_URL}/product/list/1",
+            JSONArray().put(JSONObject().apply {
+                put("type", categoryCode)
+                put("detail",detailCode)
+                Log.d("CLOSET", "request: $this")
+            }),
+            {response ->
+                //Log.d("CLOSET", "response success, category: ${categoryCode}, detail: ${detailCode}")
+
+                for(i in 0.until(response.length())){
+                    val item = response.getJSONObject(i)
+                    val image1ID = item.getString("image1ID")
+
+                    val clothingRequest = ImageRequest("${Network.BASE_URL}/product/image/${image1ID}",
+                        {bitmap ->
+                            clothingList.add(ClothingItem(bitmap))
+                            binding.clothingRecyclerview.adapter?.notifyItemInserted(clothingList.lastIndex)
+                        },
+                        0, 0, ImageView.ScaleType.CENTER_CROP,
+                        Bitmap.Config.RGB_565, {Log.d("CLOSET", "clothingRequest error")})
+
+                    Network.getInstance(requireContext()).addToRequestQueue(clothingRequest)
+
+                }
+            },
+            { error ->
+                Log.e("CLOSET", error.toString())
+                Toast.makeText(context, R.string.msg_server_error, Toast.LENGTH_SHORT).show()
+            })
+
+        Network.getInstance(context).addToRequestQueue(productListRequest)
+
+        binding.clothingRecyclerview.scrollToPosition(0)
+    }
 }
 
 data class ClothingItem(
-    val imageId: String
+    val image: Bitmap
 )
 
-class ClothingRecyclerAdapter(val context: Context, val clothingList: List<ClothingItem>)
-    : RecyclerView.Adapter<ClothingRecyclerAdapter.ViewHolder>(){
+class ClothingListAdapter(val context: Context, val list: List<ClothingItem>)
+    : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val image: ImageView
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return ClothingViewHolder(LayoutInflater.from(viewGroup.context)
+            .inflate(R.layout.clothing_item, viewGroup, false)
+        )
+    }
 
-        init{
-            image = view.findViewById(R.id.clothing_item_image)
-        }
-        fun bind(cody: ClothingItem, context: Context){
-            if (cody.imageId != "") {
-                val resourceId =
-                    context.resources.getIdentifier(cody.imageId, "drawable", context.packageName)
-                image.setImageResource(resourceId)
-            } else {
-                image.setImageResource(R.mipmap.ic_launcher)
+    override fun onBindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
+        val data = list[position]
+        viewHolder.apply{
+            if(viewHolder is ClothingViewHolder) {
+                with(viewHolder) {
+                    icon.setImageBitmap(data.image)
+                }
             }
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int)
-            : ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.clothing_item, viewGroup, false)
-        return ViewHolder(view)
-    }
+    override fun getItemCount() = list.size
+}
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bind(clothingList[position], context)
-    }
-
-    override fun getItemCount() = clothingList.size
+class ClothingViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    val icon: ImageView = view.findViewById(R.id.clothing_item_image)
 }
