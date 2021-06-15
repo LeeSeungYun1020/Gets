@@ -132,22 +132,23 @@ function fitCode(code) {
 // 상품 목록 필터
 router.post("/product/list/:page", (req, res) => {
 	const ALL = -1
-	const search = "%" + (req.body.search ?? "") + "%"
-	const type = fitCode(req.body.type)
-	const detail = fitCode(req.body.detail)
-	const gender = fitCode(req.body.gender)
-	const color = fitCode(req.body.color)
-	const fit = fitCode(req.body.fit)
-	const season = fitCode(req.body.season)
-	const fiber = fitCode(req.body.fiber)
-	const age = fitCode(req.body.age)
-	const style = fitCode(req.body.style)
-	const priceMin = parseInt(req.body.priceMin ?? 0)
-	const priceMax = parseInt(req.body.priceMax ?? 1000000000)
+	let body = req.body[0]
+	const search = "%" + (body.search ?? "") + "%"
+	const type = fitCode(body.type)
+	const detail = fitCode(body.detail)
+	const gender = fitCode(body.gender)
+	const color = fitCode(body.color)
+	const fit = fitCode(body.fit)
+	const season = fitCode(body.season)
+	const fiber = fitCode(body.fiber)
+	const age = fitCode(body.age)
+	const style = fitCode(body.style)
+	const priceMin = parseInt(body.priceMin ?? 0)
+	const priceMax = parseInt(body.priceMax ?? 1000000000)
 	const N = 30
 	const index = (parseInt(req.params.page, 10) - 1) * N
 	connection.query("select * from `product`\
-      where `type`&? != 0 and `detail`&? != 0 and `gender`&? != 0 and `color`&? != 0 and \
+      where `type` = ? and `detail`&? != 0 and `gender`&? != 0 and `color`&? != 0 and \
       `fit`&? != 0 and `season`&? != 0 and `fiber`&? != 0 and `age` &? != 0 and\
       `style`&? != 0 and ? >= `price` and `price` >= ? and\
       (`name` like ? or `brand` like ? or `code` like ?)\
