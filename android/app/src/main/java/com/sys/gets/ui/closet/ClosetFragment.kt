@@ -144,10 +144,12 @@ class ClosetFragment : Fragment() {
 
     fun changeClothingList(context: Context){
         clothingList.clear()
-        // TODO: 이미지 다 로드되기 전에 또 호출하면 앱 꺼지는 에러
+        // 이미지 다 로드되기 전에 또 호출하면 앱 꺼지는 에러
+        // 해당하는 product가 없으면 꺼지는 것 같음
+        // null처리하면 될 것 같음
 
         val productListRequest = JsonArrayRequest(
-            Request.Method.POST, "${Network.BASE_URL}/product/list/1",
+            Request.Method.POST, "${Network.BASE_URL}/product/list",
             JSONArray().put(JSONObject().apply {
                 put("type", categoryCode)
                 put("detail",detailCode)
