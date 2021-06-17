@@ -12,7 +12,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.ImageRequest
@@ -108,6 +107,8 @@ class HomeFragment : Fragment() {
                 onServerDisconnected()
             }
         )
+
+
 
         val codyRequest1 = ImageRequest("${Network.BASE_URL}/product/image/0_1", {hatBitmap ->
             Network.getInstance(this.requireContext()).addToRequestQueue(

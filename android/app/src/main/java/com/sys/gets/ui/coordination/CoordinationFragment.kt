@@ -44,17 +44,16 @@ class CoordinationFragment : Fragment() {
             adapter = CoordinationRecyclerAdapter(context, coordinationList)
         }
 
-        val imageResource=arrayOf("cody_example_1","cody_example_2","cody_example_3","cody_example_4",
-            "cody_example_5","cody_example_6","cody_example_7","cody_example_8","cody_example_9","cody_example_10",
-            "cody_example_11","cody_example_12","cody_example_13","cody_example_14","cody_example_15","cody_example_16",
-            "cody_example_17","cody_example_18","cody_example_19","cody_example_20","cody_example_21","cody_example_22",
-            "cody_example_23","cody_example_24","cody_example_25")
-
-        for(i in 1..10){
-            val random=Random().nextInt(imageResource.size)
-            coordinationList.add(CoordinationItem(i, imageResource[random], "cody${i}"))
-        }
-
+        coordinationList.add(CoordinationItem(1, "cody_example_3", "제니룩"))
+        coordinationList.add(CoordinationItem(2, "cody_example_7", "소개팅룩"))
+        coordinationList.add(CoordinationItem(3, "cody_example_8", "오피스룩"))
+        coordinationList.add(CoordinationItem(4, "cody_example_4", "패피룩"))
+        coordinationList.add(CoordinationItem(5, "cody_example_9", "꾸안꾸룩"))
+        coordinationList.add(CoordinationItem(6, "cody_example_25", "댄디룩"))
+        coordinationList.add(CoordinationItem(7, "cody_example_17", "데이트룩"))
+        coordinationList.add(CoordinationItem(8, "cody_example_5", "꾸안꾸룩"))
+        coordinationList.add(CoordinationItem(9, "cody_example_15", "걸리시룩"))
+        coordinationList.add(CoordinationItem(10, "cody_example_2", "댄디룩"))
 
         return root
     }
