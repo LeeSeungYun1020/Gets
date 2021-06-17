@@ -55,6 +55,8 @@ class CoordinationFragment : Fragment() {
         coordinationList.add(CoordinationItem(9, "cody_example_15", "걸리시룩"))
         coordinationList.add(CoordinationItem(10, "cody_example_2", "댄디룩"))
 
+
+
         return root
     }
 
