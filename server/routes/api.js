@@ -163,6 +163,39 @@ router.post("/product/list/:page", (req, res) => {
 		})
 })
 
+// 상품 목록 필터 (페이지 구분 X)
+router.post("/product/list", (req, res) => {
+	let body = req.body[0]
+	const search = "%" + (body.search ?? "") + "%"
+	const type = fitCode(body.type)
+	const detail = fitCode(body.detail)
+	const gender = fitCode(body.gender)
+	const color = fitCode(body.color)
+	const fit = fitCode(body.fit)
+	const season = fitCode(body.season)
+	const fiber = fitCode(body.fiber)
+	const age = fitCode(body.age)
+	const style = fitCode(body.style)
+	const priceMin = parseInt(body.priceMin ?? 0)
+	const priceMax = parseInt(body.priceMax ?? 1000000000)
+	
+	console.log("/product/list")
+	
+	connection.query("select * from `product`\
+      where `type` = ? and `detail`&? != 0 and `gender`&? != 0 and `color`&? != 0 and \
+      `fit`&? != 0 and `season`&? != 0 and `fiber`&? != 0 and `age` &? != 0 and\
+      `style`&? != 0 and ? >= `price` and `price` >= ? and\
+      (`name` like ? or `brand` like ? or `code` like ?)",
+		[type, detail, gender, color, fit, season, fiber, age, style, priceMax, priceMin, search, search, search],
+		(err, result) => {
+			if (err || result.length === 0)
+				res.send([{result: false}])
+			else {
+				res.send(result)
+			}
+		})
+})
+
 // 단일 상품 조회
 router.post("/product/:id", (req, res) => {
 	const id = req.params.id
