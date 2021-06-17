@@ -21,7 +21,6 @@ import com.google.android.material.button.MaterialButton
 import com.sys.gets.R
 import com.sys.gets.databinding.FragmentHomeBinding
 import com.sys.gets.network.Network
-import com.sys.gets.ui.coordination.CoordinationItem
 import org.json.JSONObject
 
 class HomeFragment : Fragment() {
@@ -111,18 +110,18 @@ class HomeFragment : Fragment() {
         )
 
         val codyRequest1 = ImageRequest("${Network.BASE_URL}/product/image/0_1", {hatBitmap ->
-                Network.getInstance(this.requireContext()).addToRequestQueue(
-                    ImageRequest("${Network.BASE_URL}/product/image/11_1", {topBitmap ->
-                        Network.getInstance(this.requireContext()).addToRequestQueue(
-                            ImageRequest("${Network.BASE_URL}/product/image/59_1", {bottomBitmap ->
-                                Network.getInstance(this.requireContext()).addToRequestQueue(
-                                    ImageRequest("${Network.BASE_URL}/product/image/271_2", {shoesBitmap ->
-                                        cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
-                                        _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
-                                    }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
-                            }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
-                    }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
-            }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+            Network.getInstance(this.requireContext()).addToRequestQueue(
+                ImageRequest("${Network.BASE_URL}/product/image/11_1", {topBitmap ->
+                    Network.getInstance(this.requireContext()).addToRequestQueue(
+                        ImageRequest("${Network.BASE_URL}/product/image/59_1", {bottomBitmap ->
+                            Network.getInstance(this.requireContext()).addToRequestQueue(
+                                ImageRequest("${Network.BASE_URL}/product/image/271_2", {shoesBitmap ->
+                                    cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
+                                    _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
+                                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
 
         Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest1)
 
@@ -144,9 +143,9 @@ class HomeFragment : Fragment() {
 
         val codyRequest3 = ImageRequest("${Network.BASE_URL}/product/image/0_1", {hatBitmap ->
             Network.getInstance(this.requireContext()).addToRequestQueue(
-                ImageRequest("${Network.BASE_URL}/product/image/395_1", {topBitmap ->
+                ImageRequest("${Network.BASE_URL}/product/image/139_1", {topBitmap ->
                     Network.getInstance(this.requireContext()).addToRequestQueue(
-                        ImageRequest("${Network.BASE_URL}/product/image/139_1", {bottomBitmap ->
+                        ImageRequest("${Network.BASE_URL}/product/image/395_1", {bottomBitmap ->
                             Network.getInstance(this.requireContext()).addToRequestQueue(
                                 ImageRequest("${Network.BASE_URL}/product/image/58_1", {shoesBitmap ->
                                     cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
@@ -269,6 +268,246 @@ class HomeFragment : Fragment() {
         }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
 
         Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest10)
+
+        val codyRequest11 = ImageRequest("${Network.BASE_URL}/product/image/264_1", {hatBitmap ->
+            Network.getInstance(this.requireContext()).addToRequestQueue(
+                ImageRequest("${Network.BASE_URL}/product/image/89_1", {topBitmap ->
+                    Network.getInstance(this.requireContext()).addToRequestQueue(
+                        ImageRequest("${Network.BASE_URL}/product/image/94_1", {bottomBitmap ->
+                            Network.getInstance(this.requireContext()).addToRequestQueue(
+                                ImageRequest("${Network.BASE_URL}/product/image/101_1", {shoesBitmap ->
+                                    cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
+                                    _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
+                                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+
+        Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest11)
+
+        val codyRequest12 = ImageRequest("${Network.BASE_URL}/product/image/0_1", {hatBitmap ->
+            Network.getInstance(this.requireContext()).addToRequestQueue(
+                ImageRequest("${Network.BASE_URL}/product/image/122_1", {topBitmap ->
+                    Network.getInstance(this.requireContext()).addToRequestQueue(
+                        ImageRequest("${Network.BASE_URL}/product/image/64_1", {bottomBitmap ->
+                            Network.getInstance(this.requireContext()).addToRequestQueue(
+                                ImageRequest("${Network.BASE_URL}/product/image/154_3", {shoesBitmap ->
+                                    cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
+                                    _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
+                                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+
+        Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest12)
+
+        val codyRequest13 = ImageRequest("${Network.BASE_URL}/product/image/264_1", {hatBitmap ->
+            Network.getInstance(this.requireContext()).addToRequestQueue(
+                ImageRequest("${Network.BASE_URL}/product/image/148_1", {topBitmap ->
+                    Network.getInstance(this.requireContext()).addToRequestQueue(
+                        ImageRequest("${Network.BASE_URL}/product/image/302_1", {bottomBitmap ->
+                            Network.getInstance(this.requireContext()).addToRequestQueue(
+                                ImageRequest("${Network.BASE_URL}/product/image/268_1", {shoesBitmap ->
+                                    cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
+                                    _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
+                                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+
+        Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest13)
+
+        val codyRequest14 = ImageRequest("${Network.BASE_URL}/product/image/325_1", {hatBitmap ->
+            Network.getInstance(this.requireContext()).addToRequestQueue(
+                ImageRequest("${Network.BASE_URL}/product/image/392_1", {topBitmap ->
+                    Network.getInstance(this.requireContext()).addToRequestQueue(
+                        ImageRequest("${Network.BASE_URL}/product/image/392_2", {bottomBitmap ->
+                            Network.getInstance(this.requireContext()).addToRequestQueue(
+                                ImageRequest("${Network.BASE_URL}/product/image/270_2", {shoesBitmap ->
+                                    cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
+                                    _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
+                                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+
+        Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest14)
+
+        val codyRequest15 = ImageRequest("${Network.BASE_URL}/product/image/259_1", {hatBitmap ->
+            Network.getInstance(this.requireContext()).addToRequestQueue(
+                ImageRequest("${Network.BASE_URL}/product/image/202_1", {topBitmap ->
+                    Network.getInstance(this.requireContext()).addToRequestQueue(
+                        ImageRequest("${Network.BASE_URL}/product/image/401_1", {bottomBitmap ->
+                            Network.getInstance(this.requireContext()).addToRequestQueue(
+                                ImageRequest("${Network.BASE_URL}/product/image/262_2", {shoesBitmap ->
+                                    cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
+                                    _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
+                                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+
+        Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest15)
+
+        val codyRequest16 = ImageRequest("${Network.BASE_URL}/product/image/0_1", {hatBitmap ->
+            Network.getInstance(this.requireContext()).addToRequestQueue(
+                ImageRequest("${Network.BASE_URL}/product/image/32_1", {topBitmap ->
+                    Network.getInstance(this.requireContext()).addToRequestQueue(
+                        ImageRequest("${Network.BASE_URL}/product/image/375_1", {bottomBitmap ->
+                            Network.getInstance(this.requireContext()).addToRequestQueue(
+                                ImageRequest("${Network.BASE_URL}/product/image/269_2", {shoesBitmap ->
+                                    cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
+                                    _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
+                                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+
+        Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest16)
+
+        val codyRequest17 = ImageRequest("${Network.BASE_URL}/product/image/323_2", {hatBitmap ->
+            Network.getInstance(this.requireContext()).addToRequestQueue(
+                ImageRequest("${Network.BASE_URL}/product/image/39_1", {topBitmap ->
+                    Network.getInstance(this.requireContext()).addToRequestQueue(
+                        ImageRequest("${Network.BASE_URL}/product/image/383_1", {bottomBitmap ->
+                            Network.getInstance(this.requireContext()).addToRequestQueue(
+                                ImageRequest("${Network.BASE_URL}/product/image/154_3", {shoesBitmap ->
+                                    cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
+                                    _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
+                                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+
+        Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest17)
+
+        val codyRequest18 = ImageRequest("${Network.BASE_URL}/product/image/325_1", {hatBitmap ->
+            Network.getInstance(this.requireContext()).addToRequestQueue(
+                ImageRequest("${Network.BASE_URL}/product/image/345_1", {topBitmap ->
+                    Network.getInstance(this.requireContext()).addToRequestQueue(
+                        ImageRequest("${Network.BASE_URL}/product/image/342_1", {bottomBitmap ->
+                            Network.getInstance(this.requireContext()).addToRequestQueue(
+                                ImageRequest("${Network.BASE_URL}/product/image/269_2", {shoesBitmap ->
+                                    cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
+                                    _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
+                                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+
+        Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest18)
+
+        val codyRequest19 = ImageRequest("${Network.BASE_URL}/product/image/0_1", {hatBitmap ->
+            Network.getInstance(this.requireContext()).addToRequestQueue(
+                ImageRequest("${Network.BASE_URL}/product/image/212_1", {topBitmap ->
+                    Network.getInstance(this.requireContext()).addToRequestQueue(
+                        ImageRequest("${Network.BASE_URL}/product/image/294_1", {bottomBitmap ->
+                            Network.getInstance(this.requireContext()).addToRequestQueue(
+                                ImageRequest("${Network.BASE_URL}/product/image/58_1", {shoesBitmap ->
+                                    cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
+                                    _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
+                                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+
+        Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest19)
+
+        val codyRequest20 = ImageRequest("${Network.BASE_URL}/product/image/204_1", {hatBitmap ->
+            Network.getInstance(this.requireContext()).addToRequestQueue(
+                ImageRequest("${Network.BASE_URL}/product/image/198_1", {topBitmap ->
+                    Network.getInstance(this.requireContext()).addToRequestQueue(
+                        ImageRequest("${Network.BASE_URL}/product/image/193_1", {bottomBitmap ->
+                            Network.getInstance(this.requireContext()).addToRequestQueue(
+                                ImageRequest("${Network.BASE_URL}/product/image/103_1", {shoesBitmap ->
+                                    cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
+                                    _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
+                                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+
+        Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest20)
+
+        val codyRequest21 = ImageRequest("${Network.BASE_URL}/product/image/218_1", {hatBitmap ->
+            Network.getInstance(this.requireContext()).addToRequestQueue(
+                ImageRequest("${Network.BASE_URL}/product/image/358_1", {topBitmap ->
+                    Network.getInstance(this.requireContext()).addToRequestQueue(
+                        ImageRequest("${Network.BASE_URL}/product/image/239_1", {bottomBitmap ->
+                            Network.getInstance(this.requireContext()).addToRequestQueue(
+                                ImageRequest("${Network.BASE_URL}/product/image/186_2", {shoesBitmap ->
+                                    cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
+                                    _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
+                                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+
+        Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest21)
+
+        val codyRequest22 = ImageRequest("${Network.BASE_URL}/product/image/211_1", {hatBitmap ->
+            Network.getInstance(this.requireContext()).addToRequestQueue(
+                ImageRequest("${Network.BASE_URL}/product/image/60_1", {topBitmap ->
+                    Network.getInstance(this.requireContext()).addToRequestQueue(
+                        ImageRequest("${Network.BASE_URL}/product/image/94_1", {bottomBitmap ->
+                            Network.getInstance(this.requireContext()).addToRequestQueue(
+                                ImageRequest("${Network.BASE_URL}/product/image/272_1", {shoesBitmap ->
+                                    cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
+                                    _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
+                                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+
+        Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest22)
+
+        val codyRequest23 = ImageRequest("${Network.BASE_URL}/product/image/139_1", {hatBitmap ->
+            Network.getInstance(this.requireContext()).addToRequestQueue(
+                ImageRequest("${Network.BASE_URL}/product/image/336_1", {topBitmap ->
+                    Network.getInstance(this.requireContext()).addToRequestQueue(
+                        ImageRequest("${Network.BASE_URL}/product/image/382_1", {bottomBitmap ->
+                            Network.getInstance(this.requireContext()).addToRequestQueue(
+                                ImageRequest("${Network.BASE_URL}/product/image/58_1", {shoesBitmap ->
+                                    cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
+                                    _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
+                                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+
+        Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest23)
+
+        val codyRequest24 = ImageRequest("${Network.BASE_URL}/product/image/0_1", {hatBitmap ->
+            Network.getInstance(this.requireContext()).addToRequestQueue(
+                ImageRequest("${Network.BASE_URL}/product/image/20_1", {topBitmap ->
+                    Network.getInstance(this.requireContext()).addToRequestQueue(
+                        ImageRequest("${Network.BASE_URL}/product/image/387_1", {bottomBitmap ->
+                            Network.getInstance(this.requireContext()).addToRequestQueue(
+                                ImageRequest("${Network.BASE_URL}/product/image/106_1", {shoesBitmap ->
+                                    cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
+                                    _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
+                                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+
+        Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest24)
+
+        val codyRequest25 = ImageRequest("${Network.BASE_URL}/product/image/205_1", {hatBitmap ->
+            Network.getInstance(this.requireContext()).addToRequestQueue(
+                ImageRequest("${Network.BASE_URL}/product/image/109_1", {topBitmap ->
+                    Network.getInstance(this.requireContext()).addToRequestQueue(
+                        ImageRequest("${Network.BASE_URL}/product/image/191_1", {bottomBitmap ->
+                            Network.getInstance(this.requireContext()).addToRequestQueue(
+                                ImageRequest("${Network.BASE_URL}/product/image/190_3", {shoesBitmap ->
+                                    cardList.add(Cody(hatBitmap, topBitmap, bottomBitmap, shoesBitmap))
+                                    _binding?.homeRecyclerview?.adapter?.notifyItemInserted(cardList.lastIndex)
+                                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+                }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null))
+        }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+
+        Network.getInstance(this.requireContext()).addToRequestQueue(codyRequest25)
 
         Network.getInstance(this.requireContext()).addToRequestQueue(jsonObjectRequest)
 

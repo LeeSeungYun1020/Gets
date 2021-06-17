@@ -10,15 +10,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.sys.gets.R
-import com.sys.gets.SearchActivity
 import com.sys.gets.databinding.FragmentCoordinationBinding
-import com.sys.gets.ui.settings.AccountSettingsFragment
+import java.util.*
+
 
 class CoordinationFragment : Fragment() {
 
@@ -45,9 +44,17 @@ class CoordinationFragment : Fragment() {
             adapter = CoordinationRecyclerAdapter(context, coordinationList)
         }
 
-        for(i in 1..12){
-            coordinationList.add(CoordinationItem(i, "cody_example", "cody${i}"))
+        val imageResource=arrayOf("cody_example_1","cody_example_2","cody_example_3","cody_example_4",
+            "cody_example_5","cody_example_6","cody_example_7","cody_example_8","cody_example_9","cody_example_10",
+            "cody_example_11","cody_example_12","cody_example_13","cody_example_14","cody_example_15","cody_example_16",
+            "cody_example_17","cody_example_18","cody_example_19","cody_example_20","cody_example_21","cody_example_22",
+            "cody_example_23","cody_example_24","cody_example_25")
+
+        for(i in 1..10){
+            val random=Random().nextInt(imageResource.size)
+            coordinationList.add(CoordinationItem(i, imageResource[random], "cody${i}"))
         }
+
 
         return root
     }
@@ -70,7 +77,7 @@ class CoordinationRecyclerAdapter(val context: Context, val codyList: List<Coord
 
         fun bind(cody: CoordinationItem, context: Context) {
             card.setOnClickListener {
-                Log.e("LOGE", "bind: click ${cody.title}", )
+                Log.e("LOGE", "bind: click ${cody.title}")
                 val intent = Intent(context, CoordinationPreviewActivity::class.java)
                 context.startActivity(intent)
             }
@@ -83,6 +90,7 @@ class CoordinationRecyclerAdapter(val context: Context, val codyList: List<Coord
             else {
                 codyImage.setImageResource(R.mipmap.ic_launcher)
             }
+
             codyTitle.text = cody.title
         }
     }
