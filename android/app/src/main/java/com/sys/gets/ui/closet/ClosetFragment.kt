@@ -124,6 +124,7 @@ class ClosetFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        Network.getInstance(this.requireContext()).requestQueue.cancelAll{ true }
     }
 
     private fun makeChip(resID: Int, code: Int) {
@@ -147,16 +148,15 @@ class ClosetFragment : Fragment() {
         // 이미지 다 로드되기 전에 또 호출하면 앱 꺼지는 에러
         // 해당하는 product가 없으면 꺼지는 것 같음
         // null처리하면 될 것 같음
-
         val productListRequest = JsonArrayRequest(
-            Request.Method.POST, "${Network.BASE_URL}/product/list",
+            Request.Method.POST, "${Network.BASE_URL}/product/list/1",
             JSONArray().put(JSONObject().apply {
                 put("type", categoryCode)
                 put("detail",detailCode)
                 Log.d("CLOSET", "request: $this")
             }),
             {response ->
-                //Log.d("CLOSET", "response success, category: ${categoryCode}, detail: ${detailCode}")
+                Log.d("CLOSET", "response success, ${response.length()} ${response.toString()}")
 
                 for(i in 0.until(response.length())){
                     val item = response.getJSONObject(i)
