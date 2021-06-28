@@ -1,14 +1,103 @@
-.mdc-button {
-  width: 300px; }
+@font-face {
+  font-family: "Apple SD Gothic Neo";
+  src: url("http://db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.eot");
+  /* IE9*/
+  src: url("http://db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.eot?#iefix") format("embedded-opentype"), url("http://db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.woff2") format("woff2"), url("http://db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.woff") format("woff"), url("http://db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.ttf") format("truetype"), url("http://db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.svg#Apple SD Gothic Neo") format("svg");
+  /* iOS 4.1- */ }
 
-.button_section {
+header {
+  background-color: #00200f;
+  position: relative;
+  display: flex;
+  font-family: Apple SD Gothic Neo, sans-serif;
+  font-weight: lighter;
+  align-items: center;
+  width: 100%;
+  height: 9vh; }
+
+body {
+  background-color: #00200f;
+  margin: 0px; }
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+  margin-top: auto;
+  margin-bottom: auto; }
+
+#logo {
+  display: inline-block;
+  font-size: 30px;
+  margin-left: 9vw; }
+
+ul {
+  padding-inline-start: 0px; }
+
+ul li {
+  display: inline-block;
+  margin-left: 5vw;
+  font-family: Roboto; }
+
+ul li a {
+  color: #d3d3d3;
+  font-size: 15px; }
+
+ul li.on {
+  color: #ffffff; }
+
+#top_menu {
+  margin-left: auto;
+  margin-right: 9vw;
+  justify-content: space-between; }
+
+#top_menu a {
+  margin-left: 1.5vw; }
+
+#main {
+  width: 100%;
+  height: auto; }
+
+#title {
+  margin-left: 57vw;
+  margin-top: 448px;
+  object-fit: contain; }
+
+#my_style h1 {
+  color: white;
   text-align: center;
-  margin-top: 16px; }
+  font-family: Apple SD Gothic Neo, sans-serif;
+  font-weight: lighter; }
 
-.main_image_slide {
-  text-align: center; }
+.select_style {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
 
-#home_image {
-  width: 75%; }
+#style {
+  width: 60%;
+  height: 60%;
+  margin: 0 auto; }
+
+#point_left, #point_right {
+  width: 3vw;
+  height: auto; }
+
+#point_left {
+  margin-left: 9vw; }
+
+#point_right {
+  margin-right: 9vw; }
+
+#bar {
+  display: flex;
+  width: 75vw;
+  height: auto;
+  margin: 4vh auto 0; }
+
+#recommend {
+  color: white;
+  text-align: center;
+  font-family: Apple SD Gothic Neo, sans-serif;
+  font-weight: lighter; }
 
 /*# sourceMappingURL=index.css.map */

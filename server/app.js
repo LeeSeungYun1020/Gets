@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
-  indentedSyntax: true, // true = .sass and false = .scss
+  indentedSyntax: false, // true = .sass and false = .scss
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -33,14 +33,11 @@ app.use(express.static(path.join(__dirname, 'node_modules')))
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
 app.use('/input', inputRouter);
-app.get('/category', (req, res) => {
-  res.send("카테고리 기능 구현")
+app.get('/product', (req, res) => {
+  res.send("제품(카테고리) 기능 구현")
 })
 app.get('/closet', (req, res) => {
   res.send("옷장 기능 구현")
-})
-app.get('/coordination', (req, res) => {
-  res.send("코디 기능 구현")
 })
 app.get('/*.html', (req, res) => {
   res.render(req.params[0] + '.html')

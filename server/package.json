@@ -3,10 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-  "dev": "next dev -p 3001",
-  "build": "next build",
-  "start": "next start",
-  "lint": "next lint"
+    "start": "node ./bin/www"
 },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -19,7 +16,6 @@
     "material-components-web": "^11.0.0",
     "morgan": "~1.9.1",
     "mysql2": "^2.2.5",
-    "next": "^11.0.1",
     "node-sass-middleware": "0.11.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
