@@ -11,14 +11,22 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     <script src="/javascripts/strings.js"></script>
     <script>
-
+	    $(document).ready(() => {
+	    	// 기사 사이즈 동적 변경
+	    	$(".main_article").height(($(window).height() - $("header").height() - $("#my_style").height() - 8) * 0.9)
+		    $(window).on('resize', function(){
+			    const win = $(this)
+			    $(".main_article").css({maxHeight: (win.height() - $("header").height() - $("#my_style").height() - 8) * 0.9 + "px"})
+			    // $(".main_article").css({maxWidth: win.width()})
+		    })
+	    })
     </script>
 </head>
 
 <body>
 <header>
     <div id="logo">
-        <a href="/">LOGO</a>
+        <a href="/"><img src="/images/header/logo.png" height="50px"/></a>
     </div>
     <nav>
         <ul>
@@ -36,15 +44,15 @@
 
 </header>
 <div class="magazine">
-    <img id="main" src="/images/home/main_image.png">
+    <img class="main_article" id="main" src="/images/home/main_image.png">
 </div>
 <div id="my_style">
     <h1>#취향 선택</h1>
-</div>
-<div class=select_style>
-    <img id=point_left src="/images/home/left.png">
-    <img id="style" src="/images/home/group.png">
-    <img id=point_right src="/images/home/right.png">
+    <div class=select_style>
+        <img id=point_left src="/images/home/left.png">
+        <img id="style" src="/images/home/group.png">
+        <img id=point_right src="/images/home/right.png">
+    </div>
 </div>
 
 <img id=bar src="/images/home/rectangle.png">

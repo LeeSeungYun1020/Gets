@@ -71,10 +71,10 @@ ul li.on {
   margin-left: 1.5vw;
 }
 
-#main {
-  width: 100%;
-  height: auto;
-}
+//#main {
+//  width: 100%;
+//  height: auto;
+//}
 
 #title {
   margin-left: 57vw;
@@ -126,4 +126,9 @@ ul li.on {
   text-align: center;
   font-family: Apple SD Gothic Neo, sans-serif;
   font-weight: lighter;
+}
+
+.magazine { // 기사 가운데 정렬
+  box-sizing: border-box;
+  text-align: center;
 }

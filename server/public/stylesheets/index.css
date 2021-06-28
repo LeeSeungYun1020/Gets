@@ -53,10 +53,6 @@ ul li.on {
 #top_menu a {
   margin-left: 1.5vw; }
 
-#main {
-  width: 100%;
-  height: auto; }
-
 #title {
   margin-left: 57vw;
   margin-top: 448px;
@@ -99,5 +95,9 @@ ul li.on {
   text-align: center;
   font-family: Apple SD Gothic Neo, sans-serif;
   font-weight: lighter; }
+
+.magazine {
+  box-sizing: border-box;
+  text-align: center; }
 
 /*# sourceMappingURL=index.css.map */
