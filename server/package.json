@@ -3,8 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
-  },
+  "dev": "next dev -p 3001",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint"
+},
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
@@ -16,7 +19,10 @@
     "material-components-web": "^11.0.0",
     "morgan": "~1.9.1",
     "mysql2": "^2.2.5",
-    "node-sass-middleware": "0.11.0"
+    "next": "^11.0.1",
+    "node-sass-middleware": "0.11.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "csv-parse": "^4.15.4"
