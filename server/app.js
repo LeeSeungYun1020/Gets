@@ -34,6 +34,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')))
 app.use(express.static(path.join(__dirname, 'node_modules')))
 
+app.use(function (req, res, next) {
+	let locale = req.acceptsLanguages()[0].substr(0, 2)
+	if (locale !== 'ko' && locale !== 'en')
+		locale = 'en'
+	req.body.locale = locale
+	next();
+});
+
+
 app.use('/', indexRouter)
 app.use('/api', apiRouter)
 app.use('/input', inputRouter)
