@@ -5,9 +5,13 @@ const got = require('got')
 const connection = require('../lib/mysql')
 const weather = require('../lib/weather')
 const fs = require('fs')
+// components
+const commonHead = require('../components/commonHead')
+const string = require('../components/string_api')
+
 // API Center
 router.get('/', function (req, res, next) {
-	res.render("api")
+	res.render("api", {commonHead: commonHead, string: string[req.body.locale]})
 });
 
 // 로그인
