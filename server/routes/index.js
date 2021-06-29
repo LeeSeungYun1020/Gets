@@ -7,7 +7,7 @@ const string = require('../components/string_index')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', {commonHead: commonHead, string: string, locale: req.body.locale})
+  res.render('index', {commonHead: commonHead, string: string[req.body.locale]})
 });
 
 module.exports = router;

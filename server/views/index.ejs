@@ -2,7 +2,7 @@
 <html>
 <head>
     <%- commonHead %>
-    <title><%= string[locale].main_title %></title>
+    <title><%= string.main_title %></title>
     <script>
 		$(document).ready(() => {
 			// 기사 사이즈 동적 변경
@@ -23,7 +23,7 @@
     <img class="main_article" id="main" src="/images/home/main_image.png">
 </div>
 <div id="my_style">
-    <h1>#취향 선택</h1>
+    <h1><%= string.select_style %></h1>
     <div class=select_style>
         <img id=point_left src="/images/home/left.png">
         <img id="style" src="/images/home/group.png">
@@ -33,7 +33,7 @@
 
 <img id=bar src="/images/home/rectangle.png">
 <div id="recommend">
-    <h1>#추천 코디</h1>
+    <h1><%= string.recommend_style %></h1>
     <h3>완성하자</h3>
 </div>
 <%- include('footer'); -%>
