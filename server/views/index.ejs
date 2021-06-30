@@ -11,12 +11,12 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
 		$(document).ready(() => {
-			// 기사 사이즈 동적 변경
-			$(".main_article").height(($(window).height() - $("header").height() - $("#my_style").height() - 8) * 0.9)
-			$(window).on('resize', function () {
-				const win = $(this)
-				$(".main_article").css({maxHeight: (win.height() - $("header").height() - $("#my_style").height() - 8) * 0.9 + "px"})
-			})
+			// // 기사 사이즈 동적 변경
+			// $(".main_article").height(($(window).height() - $("header").height() - $("#my_style").height() - 8) * 0.9)
+			// $(window).on('resize', function () {
+			// 	const win = $(this)
+			// 	$(".main_article").css({maxHeight: (win.height() - $("header").height() - $("#my_style").height() - 8) * 0.9 + "px"})
+			// })
 		})
 		$(document).ready(function () {
 			$(function () {
@@ -62,17 +62,35 @@
 </div>
 
 <div id="my_style">
-    <h1><%= string.select_style %></h1>
-    <div class=select_style>
-        <img id=point_left src="/images/home/left.png">
-        <img id="style" src="/images/home/group.png">
-        <img id=point_right src="/images/home/right.png">
+    <h1><%= string.select_info %></h1>
+    <div id = "select_area">
+        <div>
+            <h2><%= string.gender %></h2>
+            <select id = "gender">
+                <option value = "woman"></option>
+            </select>
+        </div>
+        <div>
+            <h2><%= string.age %></h2>
+        </div>
+        <div>
+            <h2><%= string.body_type %></h2>
+        </div>
+        <div>
+            <h2><%= string.fit %></h2>
+        </div>
     </div>
+
 </div>
 
-<img id=bar src="/images/home/rectangle.png">
+<!--    <div class=select_style>-->
+<!--        <img id=point_left src="/images/home/left.png">-->
+<!--        <img id="style" src="/images/home/group.png">-->
+<!--        <img id=point_right src="/images/home/right.png">-->
+<!--    </div>-->
+
 <div id="recommend">
-    <h1><%= string.recommend_style %></h1>
+    <h1><%= string.select_style %></h1>
     <h3>완성하자</h3>
 </div>
 <%- include('footer'); -%>

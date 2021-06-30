@@ -1,54 +1,9 @@
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900");
-//@font-face
-//  font-family: "Apple SD Gothic Neo", sans-serif
-//  src: url("http://db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.eot"), url("http://db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.woff2") format("woff2"), url("http://db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.woff") format("woff"), url("http://db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.ttf") format("truetype"), url("http://db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.svg#Apple SD Gothic Neo") format("svg")
 
 body {
   background-color: #ffffff;
   margin: 0px;
-}
-
-a {
-  text-decoration: none;
-  color: #ffffff;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-#logo {
-  display: inline-block;
-  font-size: 30px;
-  margin-left: 9vw;
-}
-
-ul {
-  padding-inline-start: 0px;
-}
-
-ul li {
-  display: inline-block;
-  margin-left: 5vw;
-  font-family: Roboto;
-}
-
-ul li a {
-  color: #d3d3d3;
-  font-size: 15px;
-}
-
-ul li.on {
-  color: #ffffff;
-}
-
-#top_menu {
-  margin-left: auto;
-  margin-right: 9vw;
-  justify-content: space-between;
-}
-
-#top_menu a {
-  margin-left: 1.5vw;
 }
 
 //#main {
@@ -63,10 +18,9 @@ ul li.on {
 }
 
 #my_style h1 {
-  color: white;
   text-align: center;
   font-family: 'Noto Sans KR';
-  font-weight: lighter;
+  font-weight: bolder;
 }
 
 .select_style {
@@ -75,23 +29,16 @@ ul li.on {
   justify-content: center;
 }
 
+#select_area {
+  display: flex;
+  justify-content: center;
+  color: #828282;
+}
+
 #style {
   width: 60%;
   height: 60%;
   margin: 0 auto;
-}
-
-#point_left, #point_right {
-  width: 3vw;
-  height: auto;
-}
-
-#point_left {
-  margin-left: 9vw;
-}
-
-#point_right {
-  margin-right: 9vw;
 }
 
 #bar {
@@ -102,10 +49,10 @@ ul li.on {
 }
 
 #recommend {
-  color: white;
+  color: #000000;
   text-align: center;
   font-family: 'Noto Sans KR';
-  font-weight: lighter;
+  font-weight: bolder;
 }
 
 .magazine { // 기사 가운데 정렬
@@ -130,6 +77,7 @@ ul li.on {
   width: 15px;
   height: 15px;
   background: #d4d3d3;
+  opacity: 0.9;
 }
 .swiper-pagination-bullet-active {
   background: black;

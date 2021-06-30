@@ -4,70 +4,30 @@ body {
   background-color: #ffffff;
   margin: 0px; }
 
-a {
-  text-decoration: none;
-  color: #ffffff;
-  margin-top: auto;
-  margin-bottom: auto; }
-
-#logo {
-  display: inline-block;
-  font-size: 30px;
-  margin-left: 9vw; }
-
-ul {
-  padding-inline-start: 0px; }
-
-ul li {
-  display: inline-block;
-  margin-left: 5vw;
-  font-family: Roboto; }
-
-ul li a {
-  color: #d3d3d3;
-  font-size: 15px; }
-
-ul li.on {
-  color: #ffffff; }
-
-#top_menu {
-  margin-left: auto;
-  margin-right: 9vw;
-  justify-content: space-between; }
-
-#top_menu a {
-  margin-left: 1.5vw; }
-
 #title {
   margin-left: 57vw;
   margin-top: 448px;
   object-fit: contain; }
 
 #my_style h1 {
-  color: white;
   text-align: center;
   font-family: 'Noto Sans KR';
-  font-weight: lighter; }
+  font-weight: bolder; }
 
 .select_style {
   display: flex;
   flex-direction: row;
   justify-content: center; }
 
+#select_area {
+  display: flex;
+  justify-content: center;
+  color: #828282; }
+
 #style {
   width: 60%;
   height: 60%;
   margin: 0 auto; }
-
-#point_left, #point_right {
-  width: 3vw;
-  height: auto; }
-
-#point_left {
-  margin-left: 9vw; }
-
-#point_right {
-  margin-right: 9vw; }
 
 #bar {
   display: flex;
@@ -76,10 +36,10 @@ ul li.on {
   margin: 4vh auto 0; }
 
 #recommend {
-  color: white;
+  color: #000000;
   text-align: center;
   font-family: 'Noto Sans KR';
-  font-weight: lighter; }
+  font-weight: bolder; }
 
 .magazine {
   box-sizing: border-box;
@@ -100,7 +60,8 @@ ul li.on {
 .swiper-pagination-bullet {
   width: 15px;
   height: 15px;
-  background: #d4d3d3; }
+  background: #d4d3d3;
+  opacity: 0.9; }
 
 .swiper-pagination-bullet-active {
   background: black; }

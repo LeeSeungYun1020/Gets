@@ -19,6 +19,47 @@ header {
   height: 9vh;
 }
 
+a {
+  text-decoration: none;
+  color: #000;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#logo {
+  display: inline-block;
+  font-size: 30px;
+  margin-left: 9vw;
+}
+
+ul {
+  padding-inline-start: 0px;
+}
+
+ul li {
+  display: inline-block;
+  margin-left: 5vw;
+  font-family: Roboto;
+}
+
+ul li a {
+  color: #d3d3d3;
+  font-size: 15px;
+}
+
+ul li.on {
+  color: #ffffff;
+}
+
+#top_menu {
+  margin-left: auto;
+  margin-right: 9vw;
+  justify-content: space-between;
+}
+
+#top_menu a {
+  margin-left: 1.5vw;
+}
 
 body {
   margin: 0;
