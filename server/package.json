@@ -16,9 +16,11 @@
     "material-components-web": "^11.0.0",
     "morgan": "~1.9.1",
     "mysql2": "^2.2.5",
+    "node-sass": "^4.14.1",
     "node-sass-middleware": "0.11.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "swiper": "^6.7.1"
   },
   "devDependencies": {
     "csv-parse": "^4.15.4"

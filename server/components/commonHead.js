@@ -1,6 +1,6 @@
 const commonHead = `
 <meta charset="UTF-8" lang="ko">
-<link rel='stylesheet' href='/stylesheets/index.css'/>
+<link rel='stylesheet' href='/stylesheets/style.css'/>
 <script src="/node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
 <link href="/node_modules/material-components-web/dist/material-components-web.min.css" rel="stylesheet">
 <script src="/node_modules/material-components-web/dist/material-components-web.min.js"></script>

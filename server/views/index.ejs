@@ -3,6 +3,12 @@
 <head>
     <%- commonHead %>
     <title><%= string.main_title %></title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel='stylesheet' href='/stylesheets/index.css'/>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
 		$(document).ready(() => {
 			// 기사 사이즈 동적 변경
@@ -12,6 +18,20 @@
 				$(".main_article").css({maxHeight: (win.height() - $("header").height() - $("#my_style").height() - 8) * 0.9 + "px"})
 			})
 		})
+		$(document).ready(function () {
+			$(function () {
+				var swiper = new Swiper('.swiper-container', {
+					pagination: {
+						el: '.swiper-pagination',
+						clickable: true,
+					},
+					navigation: {
+						nextEl: '.swiper-button-next',
+						prevEl: '.swiper-button-prev',
+					},
+				});
+			});
+		});
     </script>
 </head>
 
@@ -20,8 +40,27 @@
 <%- include('header'); -%>
 
 <div class="magazine">
-    <img class="main_article" id="main" src="/images/home/main_image.png">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img class="main_article" id="main" src="/images/home/main_image.png">
+            </div>
+            <div class="swiper-slide">
+                <img class="main_article" id="main" src="/images/home/main_image.png">
+            </div>
+            <div class="swiper-slide">
+                <img class="main_article" id="main" src="/images/home/main_image.png">
+            </div>
+            <div class="swiper-slide">
+                <img class="main_article" id="main" src="/images/home/main_image.png">
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
 </div>
+
 <div id="my_style">
     <h1><%= string.select_style %></h1>
     <div class=select_style>
