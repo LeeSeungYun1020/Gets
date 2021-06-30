@@ -27,6 +27,9 @@ a {
   font-size: 30px;
   margin-left: 9vw; }
 
+#logo > a {
+  display: flex; }
+
 ul {
   padding-inline-start: 0px; }
 
@@ -43,6 +46,7 @@ ul li.on {
   color: #ffffff; }
 
 #top_menu {
+  display: flex;
   margin-left: auto;
   margin-right: 9vw;
   justify-content: space-between; }
@@ -57,6 +61,8 @@ body {
 footer {
   background-color: #00200f;
   color: #ffffff;
+  position: absolute;
+  width: 100%;
   font-family: 'Noto Sans KR'; }
 
 footer #footer_layout {
@@ -64,7 +70,8 @@ footer #footer_layout {
 
 footer #footer_logo {
   font-size: 1.5vw;
-  margin-bottom: 4vh; }
+  margin-bottom: 4vh;
+  margin-top: 6.5vh; }
 
 footer #detail {
   display: flex;
@@ -74,7 +81,7 @@ footer .detail_component {
   display: flex;
   flex-direction: column;
   margin-right: 8vw;
-  font-size: 1vw; }
+  font-size: 0.7vw; }
 
 footer .detail_component span {
   margin-bottom: 0.7vh; }
