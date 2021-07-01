@@ -12,7 +12,9 @@ body {
 #my_style h1 {
   text-align: center;
   font-family: 'Noto Sans KR';
-  font-weight: bolder; }
+  font-weight: bolder;
+  margin-top: 8vh;
+  margin-bottom: 9vh; }
 
 .select_style {
   display: flex;
@@ -82,20 +84,19 @@ body {
   color: #000; }
 
 .select-ul {
+  font-family: 'Noto Sans KR';
+  font-weight: bolder;
+  font-size: 15px;
   list-style-type: none;
   overflow-x: hidden;
   overflow-y: auto;
   font-size: 18px;
-  color: #666666;
-  border: 1px solid #b8b8b8;
+  color: #d4d3d3;
   display: none;
   position: absolute;
   background: #FFFFFF;
-  border-top: none; }
-
-.select-ul li {
-  padding: 10px 0 10px 18px;
-  width: 155px; }
+  border-top: none;
+  padding-inline-start: 0px; }
 
 #style_select {
   display: flex;
@@ -113,5 +114,25 @@ body {
   border-left: 2px solid #d4d3d3;
   height: 70%;
   margin-left: 1vw; }
+
+.select-ul > div {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid #828282; }
+
+ul li {
+  width: 7.5vw;
+  margin: 0;
+  padding-left: 0.5vw;
+  padding-top: 0.2vh;
+  padding-bottom: 0.3vh; }
+
+#my_style {
+  height: 40vh;
+  position: relative;
+  z-index: 1; }
+
+.select-ul {
+  margin-block-start: 0; }
 
 /*# sourceMappingURL=index.css.map */

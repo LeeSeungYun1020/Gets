@@ -65,7 +65,7 @@ const string = {
 		age_20: "20대",
 		age_30: "30대",
 		age_40: "40대",
-		age_50: "50대 ~",
+		age_50: "50대 이상",
 		lower_body_fat: "하체 통통",
 		upper_body_fat: "상체 통통",
 		slim : "마른",

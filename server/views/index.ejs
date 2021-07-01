@@ -32,6 +32,163 @@
 				});
 			});
 		});
+
+		$(document).on('click', '#select1', function(){
+            $('#select-wrap1 .select-ul').slideToggle();
+			if($("#select-wrap1 .select-ul").css("display") == "block") {
+				$("#select-wrap1 .select-ul").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
+				$("#select-wrap1").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
+                console.log("그림자 실행됨");
+            }
+			else {
+				$("#select-wrap1 .select-ul").css("box-shadow","none");
+				$("#select-wrap1").css("box-shadow","none");
+				console.log("그림자 숨김");
+            }
+		});
+		//li태그를 눌렀을때, 그니까 옵션을 클릭했을때
+		$(document).on('click', '#select-wrap1 .select-ul li', function(){
+			//누르면 select라는 id를 가진 태그에 선택된 text를 넘겨줌
+			$('#select-wrap1 #select1').text($(this).text());
+			$('#select-wrap1 .select-ul').slideUp();
+			$("#select-wrap1 .select-ul").css("box-shadow","none");
+			$("#select-wrap1").css("box-shadow","none");
+			console.log("그림자 숨김");
+		});
+		$(document).on("click", function(e){
+			if($("#select-wrap1 .select-ul").css("display") == "block") {
+				if ($("#select-wrap1").has(e.target).length == 0) {
+					$("#select-wrap1 .select-ul").slideUp();
+					$("#select-wrap1 .select-ul").css("box-shadow","none");
+					$("#select-wrap1").css("box-shadow","none");
+					console.log("그림자 숨김");
+				}
+			}
+		}); // select-wrap의 밖을 눌렀을 때 ul이 펼쳐져있으면 없어지게 함
+
+		$(document).on('click', '#select2', function(){
+			$('#select-wrap2 .select-ul').slideToggle();
+			if($("#select-wrap2 .select-ul").css("display") == "block") {
+				$("#select-wrap2 .select-ul").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
+				$("#select-wrap2").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
+				console.log("그림자 실행됨");
+			}
+			else {
+				$("#select-wrap2 .select-ul").css("box-shadow","none");
+				$("#select-wrap2").css("box-shadow","none");
+				console.log("그림자 숨김");
+			}
+		});
+		$(document).on('click', '#select-wrap2 .select-ul li', function(){
+			$('#select-wrap2 #select2').text($(this).text());
+			$('#select-wrap2 .select-ul').slideUp();
+			$("#select-wrap2 .select-ul").css("box-shadow","none");
+			$("#select-wrap2").css("box-shadow","none");
+			console.log("그림자 숨김");
+		});
+		$(document).on("click", function(e){
+			if($("#select-wrap2 .select-ul").css("display") == "block") {
+				if ($("#select-wrap2").has(e.target).length == 0) {
+					$("#select-wrap2 .select-ul").slideUp();
+					$("#select-wrap2 .select-ul").css("box-shadow","none");
+					$("#select-wrap2").css("box-shadow","none");
+					console.log("그림자 숨김");
+				}
+			}
+		});
+
+		$(document).on('click', '#select3', function(){
+			$('#select-wrap3 .select-ul').slideToggle();
+			if($("#select-wrap3 .select-ul").css("display") == "block") {
+				$("#select-wrap3 .select-ul").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
+				$("#select-wrap3").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
+				console.log("그림자 실행됨");
+			}
+			else {
+				$("#select-wrap3 .select-ul").css("box-shadow","none");
+				$("#select-wrap3").css("box-shadow","none");
+				console.log("그림자 숨김");
+			}
+		});
+		$(document).on('click', '#select-wrap3 .select-ul li', function(){
+			$('#select-wrap3 #select3').text($(this).text());
+			$('#select-wrap3 .select-ul').slideUp();
+			$("#select-wrap3 .select-ul").css("box-shadow","none");
+			$("#select-wrap3").css("box-shadow","none");
+			console.log("그림자 숨김");
+		});
+		$(document).on("click", function(e){
+			if($("#select-wrap3 .select-ul").css("display") == "block") {
+				if ($("#select-wrap3").has(e.target).length == 0) {
+					$("#select-wrap3 .select-ul").slideUp();
+					$("#select-wrap3 .select-ul").css("box-shadow","none");
+					$("#select-wrap3").css("box-shadow","none");
+					console.log("그림자 숨김");
+				}
+			}
+		});
+
+		$(document).on('click', '#select4', function(){
+			$('#select-wrap4 .select-ul').slideToggle();
+			if($("#select-wrap4 .select-ul").css("display") == "block") {
+				$("#select-wrap4 .select-ul").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
+				$("#select-wrap4").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
+				console.log("그림자 실행됨");
+			}
+			else {
+				$("#select-wrap4 .select-ul").css("box-shadow","none");
+				$("#select-wrap4").css("box-shadow","none");
+				console.log("그림자 숨김");
+			}
+		});
+		$(document).on('click', '#select-wrap4 .select-ul li', function(){
+			$('#select-wrap4 #select4').text($(this).text());
+			$('#select-wrap4 .select-ul').slideUp();
+			$("#select-wrap4 .select-ul").css("box-shadow","none");
+			$("#select-wrap4").css("box-shadow","none");
+			console.log("그림자 숨김");
+		});
+		$(document).on("click", function(e){
+			if($("#select-wrap4 .select-ul").css("display") == "block") {
+				if ($("#select-wrap4").has(e.target).length == 0) {
+					$("#select-wrap4 .select-ul").slideUp();
+					$("#select-wrap4 .select-ul").css("box-shadow","none");
+					$("#select-wrap4").css("box-shadow","none");
+					console.log("그림자 숨김");
+				}
+			}
+		});
+
+		$(document).on('click', '#select5', function(){
+			$('#select-wrap5 .select-ul').slideToggle();
+			if($("#select-wrap5 .select-ul").css("display") == "block") {
+				$("#select-wrap5 .select-ul").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
+				$("#select-wrap5").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
+				console.log("그림자 실행됨");
+			}
+			else {
+				$("#select-wrap5 .select-ul").css("box-shadow","none");
+				$("#select-wrap5").css("box-shadow","none");
+				console.log("그림자 숨김");
+			}
+		});
+		$(document).on('click', '#select-wrap5 .select-ul li', function(){
+			$('#select-wrap5 #select5').text($(this).text());
+			$('#select-wrap5 .select-ul').slideUp();
+			$("#select-wrap5 .select-ul").css("box-shadow","none");
+			$("#select-wrap5").css("box-shadow","none");
+			console.log("그림자 숨김");
+		});
+		$(document).on("click", function(e){
+			if($("#select-wrap5 .select-ul").css("display") == "block") {
+				if ($("#select-wrap5").has(e.target).length == 0) {
+					$("#select-wrap5 .select-ul").slideUp();
+					$("#select-wrap5 .select-ul").css("box-shadow","none");
+					$("#select-wrap5").css("box-shadow","none");
+					console.log("그림자 숨김");
+				}
+			}
+		});
     </script>
 </head>
 
@@ -67,11 +224,13 @@
         <div id = "select_area">
             <div class = "select_box">
                 <h2><%= string.gender %></h2>
-                <div id="select-wrap">
-                    <div id="select" class="select"><%= string.woman%></div>
+                <div id="select-wrap1" class = "select-wrap">
+                    <div id="select1" class="select"><%= string.woman%></div>
                     <ul id="ul" class="select-ul">
-                        <li><%= string.woman%></li>
-                        <li><%= string.man %></li>
+                        <div>
+                            <li><%= string.woman%></li>
+                            <li><%= string.man %></li>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -80,14 +239,16 @@
         <div id = "select_area">
             <div class = "select_box">
                 <h2><%= string.age %></h2>
-                <div id="select-wrap">
-                    <div id="select" class="select"><%= string.age_10%></div>
+                <div id="select-wrap2" class = "select-wrap">
+                    <div id="select2" class="select"><%= string.age_10%></div>
                     <ul id="ul" class="select-ul">
-                        <li><%= string.age_10%></li>
-                        <li><%= string.age_20%></li>
-                        <li><%= string.age_30%></li>
-                        <li><%= string.age_40%></li>
-                        <li><%= string.age_50%></li>
+                        <div>
+                            <li><%= string.age_10%></li>
+                            <li><%= string.age_20%></li>
+                            <li><%= string.age_30%></li>
+                            <li><%= string.age_40%></li>
+                            <li><%= string.age_50%></li>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -96,14 +257,16 @@
         <div id = "select_area">
             <div class = "select_box">
                 <h2><%= string.body_type %></h2>
-                <div id="select-wrap">
-                    <div id="select" class="select"><%= string.lower_body_fat%></div>
+                <div id="select-wrap3" class = "select-wrap">
+                    <div id="select3" class="select"><%= string.lower_body_fat%></div>
                     <ul id="ul" class="select-ul">
-                        <li><%= string.lower_body_fat%></li>
-                        <li><%= string.upper_body_fat%></li>
-                        <li><%= string.slim%></li>
-                        <li><%= string.tall%></li>
-                        <li><%= string.short%></li>
+                        <div>
+                            <li><%= string.lower_body_fat%></li>
+                            <li><%= string.upper_body_fat%></li>
+                            <li><%= string.slim%></li>
+                            <li><%= string.tall%></li>
+                            <li><%= string.short%></li>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -112,16 +275,18 @@
         <div id = "select_area">
             <div class = "select_box">
                 <h2><%= string.fit %></h2>
-                <div id="select-wrap">
-                    <div id="select" class="select"><%= string.fit_regular%></div>
+                <div id="select-wrap4" class = "select-wrap">
+                    <div id="select4" class="select"><%= string.fit_regular%></div>
                     <ul id="ul" class="select-ul">
-                        <li><%= string.fit_regular%></li>
-                        <li><%= string.fit_over%></li>
-                        <li><%= string.fit_wide%></li>
-                        <li><%= string.fit_semi_wide%></li>
-                        <li><%= string.fit_slim%></li>
-                        <li><%= string.fit_tapered%></li>
-                        <li><%= string.fit_bootcut%></li>
+                        <div>
+                            <li><%= string.fit_regular%></li>
+                            <li><%= string.fit_over%></li>
+                            <li><%= string.fit_wide%></li>
+                            <li><%= string.fit_semi_wide%></li>
+                            <li><%= string.fit_slim%></li>
+                            <li><%= string.fit_tapered%></li>
+                            <li><%= string.fit_bootcut%></li>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -130,15 +295,17 @@
         <div id = "select_area">
             <div class = "select_box">
                 <h2><%= string.price %></h2>
-                <div id="select-wrap">
-                    <div id="select" class="select"><%= string.price_100000%></div>
+                <div id="select-wrap5" class = "select-wrap">
+                    <div id="select5" class="select"><%= string.price_100000%></div>
                     <ul id="ul" class="select-ul">
-                        <li><%= string.price_100000%></li>
-                        <li><%= string.price_200000%></li>
-                        <li><%= string.price_300000%></li>
-                        <li><%= string.price_400000%></li>
-                        <li><%= string.price_500000%></li>
-                        <li><%= string.price_expensive%></li>
+                        <div>
+                            <li><%= string.price_100000%></li>
+                            <li><%= string.price_200000%></li>
+                            <li><%= string.price_300000%></li>
+                            <li><%= string.price_400000%></li>
+                            <li><%= string.price_500000%></li>
+                            <li><%= string.price_expensive%></li>
+                        </div>
                     </ul>
                 </div>
             </div>
