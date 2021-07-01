@@ -1,5 +1,7 @@
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap");
 body {
   background-color: #ffffff;
   margin: 0px; }
@@ -9,12 +11,15 @@ body {
   margin-top: 448px;
   object-fit: contain; }
 
+h2 {
+  font-family: 'Nanum Gothic', sans-serif; }
+
 #my_style h1 {
   text-align: center;
-  font-family: 'Noto Sans KR';
+  font-family: 'Nanum Gothic', sans-serif;
   font-weight: bolder;
-  margin-top: 8vh;
-  margin-bottom: 9vh; }
+  margin-top: 3ex;
+  margin-bottom: 3.5ex; }
 
 .select_style {
   display: flex;
@@ -40,7 +45,7 @@ body {
 #recommend {
   color: #000000;
   text-align: center;
-  font-family: 'Noto Sans KR';
+  font-family: 'Nanum Gothic', sans-serif;
   font-weight: bolder; }
 
 .magazine {
@@ -73,7 +78,7 @@ body {
   --swiper-navigation-size: 70px; }
 
 .select {
-  font-family: 'Noto Sans KR';
+  font-family: 'Nanum Gothic', sans-serif;
   font-size: 18px;
   font-weight: bolder;
   width: 8vw;
@@ -84,7 +89,7 @@ body {
   color: #000; }
 
 .select-ul {
-  font-family: 'Noto Sans KR';
+  font-family: 'Nanum Gothic', sans-serif;
   font-weight: bolder;
   font-size: 15px;
   list-style-type: none;
@@ -112,27 +117,40 @@ body {
 
 .line {
   border-left: 2px solid #d4d3d3;
-  height: 70%;
-  margin-left: 1vw; }
+  height: 60%;
+  margin-left: 1.5vw; }
 
 .select-ul > div {
   display: flex;
-  flex-direction: column;
-  border-top: 2px solid #828282; }
+  flex-direction: column; }
+
+.select-ul > div:after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 90%;
+  /* or 100px */
+  border-bottom: 2px solid #828282;
+  left: 50%;
+  transform: translate(-50%, -50%); }
 
 ul li {
   width: 7.5vw;
   margin: 0;
   padding-left: 0.5vw;
-  padding-top: 0.2vh;
-  padding-bottom: 0.3vh; }
+  padding-top: 0.5ex;
+  padding-bottom: 0.5ex;
+  font-family: 'Nanum Gothic', sans-serif; }
 
 #my_style {
-  height: 40vh;
+  height: 40ex;
   position: relative;
   z-index: 1; }
 
 .select-ul {
   margin-block-start: 0; }
+
+h1 {
+  margin-block: 0; }
 
 /*# sourceMappingURL=index.css.map */

@@ -55,7 +55,7 @@ const string = {
 		recommend_style: "#추천 코디",
 		select_info: "#About",
 		gender: "성별",
-		age: "나이",
+		age: "연령",
 		body_type: "체형",
 		fit: "핏",
 		price:"가격",

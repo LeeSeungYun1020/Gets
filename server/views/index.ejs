@@ -34,7 +34,7 @@
 		});
 
 		$(document).on('click', '#select1', function(){
-            $('#select-wrap1 .select-ul').slideToggle();
+            $('#select-wrap1 .select-ul').toggle();
 			if($("#select-wrap1 .select-ul").css("display") == "block") {
 				$("#select-wrap1 .select-ul").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
 				$("#select-wrap1").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
@@ -50,7 +50,7 @@
 		$(document).on('click', '#select-wrap1 .select-ul li', function(){
 			//누르면 select라는 id를 가진 태그에 선택된 text를 넘겨줌
 			$('#select-wrap1 #select1').text($(this).text());
-			$('#select-wrap1 .select-ul').slideUp();
+			$('#select-wrap1 .select-ul').hide();
 			$("#select-wrap1 .select-ul").css("box-shadow","none");
 			$("#select-wrap1").css("box-shadow","none");
 			console.log("그림자 숨김");
@@ -58,7 +58,7 @@
 		$(document).on("click", function(e){
 			if($("#select-wrap1 .select-ul").css("display") == "block") {
 				if ($("#select-wrap1").has(e.target).length == 0) {
-					$("#select-wrap1 .select-ul").slideUp();
+					$("#select-wrap1 .select-ul").hide();
 					$("#select-wrap1 .select-ul").css("box-shadow","none");
 					$("#select-wrap1").css("box-shadow","none");
 					console.log("그림자 숨김");
@@ -67,7 +67,7 @@
 		}); // select-wrap의 밖을 눌렀을 때 ul이 펼쳐져있으면 없어지게 함
 
 		$(document).on('click', '#select2', function(){
-			$('#select-wrap2 .select-ul').slideToggle();
+			$('#select-wrap2 .select-ul').toggle();
 			if($("#select-wrap2 .select-ul").css("display") == "block") {
 				$("#select-wrap2 .select-ul").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
 				$("#select-wrap2").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
@@ -81,7 +81,7 @@
 		});
 		$(document).on('click', '#select-wrap2 .select-ul li', function(){
 			$('#select-wrap2 #select2').text($(this).text());
-			$('#select-wrap2 .select-ul').slideUp();
+			$('#select-wrap2 .select-ul').hide();
 			$("#select-wrap2 .select-ul").css("box-shadow","none");
 			$("#select-wrap2").css("box-shadow","none");
 			console.log("그림자 숨김");
@@ -89,7 +89,7 @@
 		$(document).on("click", function(e){
 			if($("#select-wrap2 .select-ul").css("display") == "block") {
 				if ($("#select-wrap2").has(e.target).length == 0) {
-					$("#select-wrap2 .select-ul").slideUp();
+					$("#select-wrap2 .select-ul").hide();
 					$("#select-wrap2 .select-ul").css("box-shadow","none");
 					$("#select-wrap2").css("box-shadow","none");
 					console.log("그림자 숨김");
@@ -98,7 +98,7 @@
 		});
 
 		$(document).on('click', '#select3', function(){
-			$('#select-wrap3 .select-ul').slideToggle();
+			$('#select-wrap3 .select-ul').toggle();
 			if($("#select-wrap3 .select-ul").css("display") == "block") {
 				$("#select-wrap3 .select-ul").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
 				$("#select-wrap3").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
@@ -112,7 +112,7 @@
 		});
 		$(document).on('click', '#select-wrap3 .select-ul li', function(){
 			$('#select-wrap3 #select3').text($(this).text());
-			$('#select-wrap3 .select-ul').slideUp();
+			$('#select-wrap3 .select-ul').hide();
 			$("#select-wrap3 .select-ul").css("box-shadow","none");
 			$("#select-wrap3").css("box-shadow","none");
 			console.log("그림자 숨김");
@@ -120,7 +120,7 @@
 		$(document).on("click", function(e){
 			if($("#select-wrap3 .select-ul").css("display") == "block") {
 				if ($("#select-wrap3").has(e.target).length == 0) {
-					$("#select-wrap3 .select-ul").slideUp();
+					$("#select-wrap3 .select-ul").hide();
 					$("#select-wrap3 .select-ul").css("box-shadow","none");
 					$("#select-wrap3").css("box-shadow","none");
 					console.log("그림자 숨김");
@@ -129,7 +129,7 @@
 		});
 
 		$(document).on('click', '#select4', function(){
-			$('#select-wrap4 .select-ul').slideToggle();
+			$('#select-wrap4 .select-ul').toggle();
 			if($("#select-wrap4 .select-ul").css("display") == "block") {
 				$("#select-wrap4 .select-ul").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
 				$("#select-wrap4").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
@@ -143,7 +143,7 @@
 		});
 		$(document).on('click', '#select-wrap4 .select-ul li', function(){
 			$('#select-wrap4 #select4').text($(this).text());
-			$('#select-wrap4 .select-ul').slideUp();
+			$('#select-wrap4 .select-ul').hide();
 			$("#select-wrap4 .select-ul").css("box-shadow","none");
 			$("#select-wrap4").css("box-shadow","none");
 			console.log("그림자 숨김");
@@ -151,7 +151,7 @@
 		$(document).on("click", function(e){
 			if($("#select-wrap4 .select-ul").css("display") == "block") {
 				if ($("#select-wrap4").has(e.target).length == 0) {
-					$("#select-wrap4 .select-ul").slideUp();
+					$("#select-wrap4 .select-ul").hide();
 					$("#select-wrap4 .select-ul").css("box-shadow","none");
 					$("#select-wrap4").css("box-shadow","none");
 					console.log("그림자 숨김");
@@ -160,7 +160,7 @@
 		});
 
 		$(document).on('click', '#select5', function(){
-			$('#select-wrap5 .select-ul').slideToggle();
+			$('#select-wrap5 .select-ul').toggle();
 			if($("#select-wrap5 .select-ul").css("display") == "block") {
 				$("#select-wrap5 .select-ul").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
 				$("#select-wrap5").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
@@ -174,7 +174,7 @@
 		});
 		$(document).on('click', '#select-wrap5 .select-ul li', function(){
 			$('#select-wrap5 #select5').text($(this).text());
-			$('#select-wrap5 .select-ul').slideUp();
+			$('#select-wrap5 .select-ul').hide();
 			$("#select-wrap5 .select-ul").css("box-shadow","none");
 			$("#select-wrap5").css("box-shadow","none");
 			console.log("그림자 숨김");
@@ -182,7 +182,7 @@
 		$(document).on("click", function(e){
 			if($("#select-wrap5 .select-ul").css("display") == "block") {
 				if ($("#select-wrap5").has(e.target).length == 0) {
-					$("#select-wrap5 .select-ul").slideUp();
+					$("#select-wrap5 .select-ul").hide();
 					$("#select-wrap5 .select-ul").css("box-shadow","none");
 					$("#select-wrap5").css("box-shadow","none");
 					console.log("그림자 숨김");
@@ -316,7 +316,9 @@
 
 <div id="recommend">
     <h1><%= string.select_style %></h1>
-    <h3>완성하자</h3>
+    <div class = "style">
+    <!--이미지 넣자-->
+    </div>
 </div>
 <%- include('footer'); -%>
 </body>
