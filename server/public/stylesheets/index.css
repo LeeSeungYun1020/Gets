@@ -153,4 +153,24 @@ ul li {
 h1 {
   margin-block: 0; }
 
+.style img {
+  border: 5px solid #d4d3d3;
+  border-radius: 70%;
+  padding: 5px;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  margin-top: 8ex;
+  margin-bottom: 3ex; }
+
+.style {
+  color: #d4d3d3;
+  font-family: 'Roboto';
+  font-size: 16px;
+  display: flex;
+  justify-content: center; }
+
+.style div {
+  display: flex;
+  flex-direction: column; }
+
 /*# sourceMappingURL=index.css.map */
