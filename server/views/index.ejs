@@ -34,86 +34,71 @@
 		});
 
 		$(document).on('click', '.select', function(){
-            $(this).parent(".select-wrap").children(".select-ul").toggle();
-			if($(this).parents(".select-wrap").children(".select-ul").css("display") == "block") {
-				$(this).parents(".select-wrap").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
-				$(this).parents(".select-wrap").css("box-shadow","0 2px 14px 0 rgba(83, 83, 83, 0.5)");
-                console.log("그림자 실행됨");
+            $(this).parent('.select-wrap').children('.select-ul').toggle();
+			if($(this).parents('.select-wrap').children('.select-ul').css('display') == 'block') {
+				$(this).parents('.select-wrap').css('box-shadow','0 2px 14px 0 rgba(83, 83, 83, 0.5)');
+				$(this).parents('.select-wrap').css('box-shadow','0 2px 14px 0 rgba(83, 83, 83, 0.5)');
             }
 			else {
-				$(this).parents(".select-wrap").css("box-shadow","none");
-				$(this).parents(".select-wrap").css("box-shadow","none");
-				console.log("그림자 숨김");
+				$(this).parents('.select-wrap').css('box-shadow','none');
+				$(this).parents('.select-wrap').css('box-shadow','none');
             }
 		});
 
 		//li태그를 눌렀을때, 그니까 옵션을 클릭했을때
 		$(document).on('click', '.select-wrap .select-ul li', function(){
 			//누르면 select라는 id를 가진 태그에 선택된 text를 넘겨줌
-            $(this).parents(".select-wrap").children(".select").text($(this).text());
-			//$('#select-wrap1 #select1').text($(this).text());
-			$(this).parents(".select-wrap").children(".select-ul").hide()
-			$(this).parents(".select-wrap").children(".select-ul").css("box-shadow","none");
+            $(this).parents('.select-wrap').children('.select').text($(this).text());
+			$(this).parents('.select-wrap').children('.select-ul').hide();
+			$(this).parents('.select-wrap').children('.select-ul').css('box-shadow','none');
 			$(this).parents(".select-wrap").css("box-shadow","none");
-			console.log("그림자 숨김");
 		});
 
-		$(document).on("click", function(e){
-			if($("#select-wrap1 .select-ul").css("display") == "block") {
-				if ($("#select-wrap1").has(e.target).length == 0) {
-					$("#select-wrap1 .select-ul").hide();
-					$("#select-wrap1 .select-ul").css("box-shadow", "none");
-					$("#select-wrap1").css("box-shadow", "none");
-					console.log("그림자 숨김");
+		$(document).on("click", function(e) {
+			for (let i = 1; i <= 5; i++) {
+				if ($(`#select-wrap${i} .select-ul`).css("display") == "block") {
+					if ($(`#select-wrap${i}`).has(e.target).length == 0) {
+						$(`#select-wrap${i} .select-ul`).hide();
+						$(`#select-wrap${i} .select-ul`).css("box-shadow", "none");
+						$(`#select-wrap${i}`).css("box-shadow", "none");
+					}
 				}
 			}
-			if($("#select-wrap2 .select-ul").css("display") == "block") {
-				if ($("#select-wrap2").has(e.target).length == 0) {
-					$("#select-wrap2 .select-ul").hide();
-					$("#select-wrap2 .select-ul").css("box-shadow", "none");
-					$("#select-wrap2").css("box-shadow", "none");
-					console.log("그림자 숨김");
-				}
-			}
-			if($("#select-wrap3 .select-ul").css("display") == "block") {
-				if ($("#select-wrap3").has(e.target).length == 0) {
-					$("#select-wrap3 .select-ul").hide();
-					$("#select-wrap3 .select-ul").css("box-shadow", "none");
-					$("#select-wrap3").css("box-shadow", "none");
-					console.log("그림자 숨김");
-				}
-			}
-			if($("#select-wrap4 .select-ul").css("display") == "block") {
-				if ($("#select-wrap4").has(e.target).length == 0) {
-					$("#select-wrap4 .select-ul").hide();
-					$("#select-wrap4 .select-ul").css("box-shadow", "none");
-					$("#select-wrap4").css("box-shadow", "none");
-					console.log("그림자 숨김");
-				}
-			}
-			if($("#select-wrap5 .select-ul").css("display") == "block") {
-				if ($("#select-wrap5").has(e.target).length == 0) {
-					$("#select-wrap5 .select-ul").hide();
-					$("#select-wrap5 .select-ul").css("box-shadow", "none");
-					$("#select-wrap5").css("box-shadow", "none");
-					console.log("그림자 숨김");
-				}
-			}
-        }); // select-wrap의 밖을 눌렀을 때 ul이 펼쳐져있으면 없어지게 함
+		})
 
-		// $(document).on("click", function(e){
-		// 	for(let i = 0; i < 5; i++){
-		// 		let x = document.getElementsByClassName(".select-ul");
-		// 		if (x[i].css("display")=="block") {
-		// 			if(x[i].parents(".select-wrap").has(e.target).length == 0){
-		// 				x[i].hide();
-		// 				x[i].css("box-shadow", "none");
-		// 				x[i].parents(".select-wrap").css("box-shadow", "none");
-		// 				console.log("그림자 숨김");
-		// 			}
-		// 		}
-		// 	}
-		// }); // select-wrap의 밖을 눌렀을 때 ul이 펼쳐져있으면 없어지게 함 , 이거 쓰면 오류남ㅠㅠ
+    $(function(){
+    	$(".style_chip").on('click', function(){
+    		if($(this).hasClass('selected')) {
+			    $(this).css({ border: "5px solid #d4d3d3"})
+			    $(this).next().css({color : "#d4d3d3"});
+			    $(this).removeClass('selected');
+			    $(this).next().removeClass('selected');
+            }
+    		else {
+			    $(this).css({ border: "5px solid #7eb693"})
+			    $(this).next().css({color : "#7eb693"});
+			    $(this).addClass('selected');
+			    $(this).next().addClass('selected');
+            }
+        })
+	    $(".style_text").on('click', function(){
+		    $(this).prev().css({ border: "5px solid #7eb693"})
+		    $(this).css({color : "#7eb693"});
+		    if($(this).attr('class').hasClass('selected')) {
+			    $(this).css({ border: "5px solid #d4d3d3"})
+			    $(this).prev().css({color : "#d4d3d3"});
+			    $(this).prev().removeClass('selected');
+			    $(this).removeClass('selected');
+		    }
+		    else {
+			    $(this).prev().css({ border: "5px solid #7eb693"})
+			    $(this).css({color : "#7eb693"});
+			    $(this).prev().addClass('selected');
+			    $(this).addClass('selected');
+		    }
+	    })
+    });
+
     </script>
 </head>
 
@@ -242,17 +227,17 @@
 <div id="recommend">
     <h1><%= string.select_style %></h1>
     <div class = "style">
-        <div><img src="images/home/Oval_casual.webp">Casual</div>
-        <div><img src="images/home/Oval_campus.webp">Campus</div>
-        <div><img src="images/home/Oval_street.webp">Street</div>
-        <div><img src="images/home/Oval_rockchic.webp">Rock chic</div>
-        <div><img src="images/home/Oval_amekaji.webp">Amekaji</div>
-        <div><img src="images/home/Oval_cityboy.webp">City boy</div>
-        <div><img src="images/home/Oval_office.webp">Office</div>
-        <div><img src="images/home/Oval_sexyglam.webp">Sexy glam</div>
-        <div><img src="images/home/Oval_feminine.png">Feminine</div>
-        <div><img src="images/home/Oval_lovely.webp">Lovely</div>
-        <div><img src="images/home/Oval_minimal.webp">Minimal</div>
+        <div><img class = "style_chip" src="images/home/Oval_casual.webp"><div class = "style_text"><%= string.style_casual%></div></div>
+        <div><img class = "style_chip" src="images/home/Oval_campus.webp"><div class = "style_text"><%= string.style_campus%></div></div>
+        <div><img class = "style_chip" src="images/home/Oval_street.webp"><div class = "style_text"><%= string.style_street%></div></div>
+        <div><img class = "style_chip" src="images/home/Oval_rockchic.webp"><div class = "style_text"><%= string.style_rock_chic%></div></div>
+        <div><img class = "style_chip" src="images/home/Oval_amekaji.webp"><div class = "style_text"><%= string.style_amekaji%></div></div>
+        <div><img class = "style_chip" src="images/home/Oval_cityboy.webp"><div class = "style_text"><%= string.style_city_boy%></div></div>
+        <div><img class = "style_chip" src="images/home/Oval_office.webp"><div class = "style_text"><%= string.style_office%></div></div>
+        <div><img class = "style_chip" src="images/home/Oval_sexyglam.webp"><div class = "style_text"><%= string.style_sexy_glam%></div></div>
+        <div><img class = "style_chip" src="images/home/Oval_feminine.webp"><div class = "style_text"><%= string.style_feminine%></div></div>
+        <div><img class = "style_chip" src="images/home/Oval_lovely.webp"><div class = "style_text"><%= string.style_lovely%></div></div>
+        <div><img class = "style_chip" src="images/home/Oval_minimal.webp"><div class = "style_text"><%= string.style_minimal%></div></div>
     </div>
 </div>
 <%- include('footer'); -%>
