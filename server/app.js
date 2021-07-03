@@ -13,6 +13,7 @@ const closetRouter = require('./routes/closet');
 const productRouter = require('./routes/product');
 const cartRouter = require('./routes/cart');
 const articleRouter = require('./routes/article');
+const aboutRouter = require('./routes/about');
 
 const app = express();
 
@@ -52,6 +53,7 @@ app.use('/product', productRouter)
 app.use('/account', accountRouter)
 app.use('/cart', cartRouter)
 app.use('/article', articleRouter)
+app.use('/about', aboutRouter)
 
 app.get('/*.html', (req, res) => {
 	res.render(req.params[0] + '.html')
