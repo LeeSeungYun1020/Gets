@@ -11,10 +11,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
-import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.google.android.material.button.MaterialButton
@@ -42,8 +41,8 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         binding.homeRecyclerview.apply {
-            layoutManager = GridLayoutManager(activity, 2)
-            adapter = MainListAdapter(this@HomeFragment.requireContext(),cardList)
+            layoutManager = LinearLayoutManager(this@HomeFragment.requireContext())
+            adapter = MainListAdapter(this@HomeFragment.requireContext(), cardList)
         }
 
 
