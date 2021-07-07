@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf7774fd-3fe1-4a90-b3eb-64ce4b46d74b" name="Default Changelist" comment="Add stylesheets">
-      <change afterPath="$PROJECT_DIR$/src/components/HeaderLogo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SimpleTemplate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/link.js" afterDir="false" />
+    <list default="true" id="bf7774fd-3fe1-4a90-b3eb-64ce4b46d74b" name="Default Changelist" comment="Add header">
+      <change afterPath="$PROJECT_DIR$/src/strings/i18n.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/strings/translation.en.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/strings/translation.ko.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +101,7 @@
       <workItem from="1625646365603" duration="2300000" />
       <workItem from="1625661080251" duration="1100000" />
       <workItem from="1625662235489" duration="96000" />
-      <workItem from="1625663309908" duration="3247000" />
+      <workItem from="1625663309908" duration="5600000" />
     </task>
     <task id="LOCAL-00001" summary="Add key concept explanations(cheatsheet)">
       <created>1625626762021</created>
@@ -127,7 +131,28 @@
       <option name="project" value="LOCAL" />
       <updated>1625664016541</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add route link of pages">
+      <created>1625666639010</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1625666639010</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add simple components template">
+      <created>1625666687231</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1625666687231</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add header">
+      <created>1625666762108</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1625666762108</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,7 +177,10 @@
     <MESSAGE value="Add scss(sass) support" />
     <MESSAGE value="Add images" />
     <MESSAGE value="Add stylesheets" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add stylesheets" />
+    <MESSAGE value="Add route link of pages" />
+    <MESSAGE value="Add simple components template" />
+    <MESSAGE value="Add header" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add header" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
