@@ -1,3 +1,14 @@
 {
-  "test": "TEST"
+  "about_title": "About",
+  "about_company": "About company",
+  "feedback_title": "Feedback",
+  "feedback_faq": "FAQ",
+  "feedback_chatting": "1:1 Chatting",
+  "policy_title": "Policy",
+  "policy_privacy": "Privacy",
+  "policy_terms": "Terms",
+  "account_title": "Account",
+  "account_mypage": "My page",
+  "account_mystyle": "My style",
+  "account_order": "Order"
 }

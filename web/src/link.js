@@ -27,6 +27,10 @@ const article = '/article'
 
 // 회사 관련
 const about = '/about'
+const faq = "/about/faq"
+const chatting = "/about/chatting"
+const privacy = "/about/policy"
+const terms = "/about/terms"
 
 const link = {
     home: '/',
@@ -42,5 +46,9 @@ const link = {
     cart: '/cart',
     article: '/article',
     about: '/about',
+    faq: "/about/faq",
+    chatting: "/about/chatting",
+    privacy: "/about/policy",
+    terms: "/about/terms",
 }
 export default link

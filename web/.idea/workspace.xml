@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf7774fd-3fe1-4a90-b3eb-64ce4b46d74b" name="Default Changelist" comment="Add header">
-      <change afterPath="$PROJECT_DIR$/src/strings/i18n.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/strings/translation.en.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/strings/translation.ko.json" afterDir="false" />
+    <list default="true" id="bf7774fd-3fe1-4a90-b3eb-64ce4b46d74b" name="Default Changelist" comment="Add internalization language support">
+      <change afterPath="$PROJECT_DIR$/src/components/Footer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FooterDetail.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FooterDetailItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FooterLogo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/link.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/link.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/strings/translation.en.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/strings/translation.en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/strings/translation.ko.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/strings/translation.ko.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +33,14 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="ProjectId" id="1uvxCW4ee79Lu3D7iqSS8bK373x" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -48,7 +57,9 @@
     <property name="last_opened_file_path" value="$USER_HOME$/IntellijProjects/ccm" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Users\fabi8\gets\web\node_modules\typescript\lib" />
   </component>
@@ -101,7 +112,7 @@
       <workItem from="1625646365603" duration="2300000" />
       <workItem from="1625661080251" duration="1100000" />
       <workItem from="1625662235489" duration="96000" />
-      <workItem from="1625663309908" duration="5600000" />
+      <workItem from="1625663309908" duration="8583000" />
     </task>
     <task id="LOCAL-00001" summary="Add key concept explanations(cheatsheet)">
       <created>1625626762021</created>
@@ -152,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625666762108</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add internalization language support">
+      <created>1625669004374</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1625669004374</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,7 +198,8 @@
     <MESSAGE value="Add route link of pages" />
     <MESSAGE value="Add simple components template" />
     <MESSAGE value="Add header" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add header" />
+    <MESSAGE value="Add internalization language support" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add internalization language support" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

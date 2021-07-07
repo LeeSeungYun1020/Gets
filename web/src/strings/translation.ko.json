@@ -1,3 +1,14 @@
 {
-  "test": "테스트"
+  "about_title": "소개",
+  "about_company": "회사 소개",
+  "feedback_title": "피드백",
+  "feedback_faq": "자주 묻는 질문",
+  "feedback_chatting": "1:1 상담",
+  "policy_title": "정책",
+  "policy_privacy": "개인정보처리방침",
+  "policy_terms": "약관",
+  "account_title": "계정",
+  "account_mypage": "내 정보",
+  "account_mystyle": "내 스타일",
+  "account_order": "주문 조회"
 }
