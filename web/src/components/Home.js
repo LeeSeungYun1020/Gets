@@ -1,7 +1,9 @@
+import '../stylesheets/Home.scss';
 import {useTranslation} from 'react-i18next'
 import HomeMagazine from "./HomeMagazine";
 import HomeStyleSelect from "./HomeStyleSelect";
 import HomeRecommend from "./HomeRecommend";
+
 
 import CasualChip from "../images/home/Oval_casual.webp"
 import CampusChip from "../images/home/Oval_campus.webp"

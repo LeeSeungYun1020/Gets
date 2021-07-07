@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf7774fd-3fe1-4a90-b3eb-64ce4b46d74b" name="Default Changelist" comment="Add footer">
-      <change afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HomeArticle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HomeMagazine.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HomeRecommend.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HomeRecommendItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HomeStyleSelect.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HomeStyleSelectBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../server/views/index.ejs" afterDir="false" />
+    <list default="true" id="bf7774fd-3fe1-4a90-b3eb-64ce4b46d74b" name="Default Changelist" comment="Add home layout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/strings/translation.en.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/strings/translation.en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/strings/translation.ko.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/strings/translation.ko.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +105,7 @@
       <workItem from="1625646365603" duration="2300000" />
       <workItem from="1625661080251" duration="1100000" />
       <workItem from="1625662235489" duration="96000" />
-      <workItem from="1625663309908" duration="12874000" />
+      <workItem from="1625663309908" duration="13052000" />
     </task>
     <task id="LOCAL-00001" summary="Add key concept explanations(cheatsheet)">
       <created>1625626762021</created>
@@ -180,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625672015061</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add home layout">
+      <created>1625676310653</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1625676310653</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,7 +207,8 @@
     <MESSAGE value="Add header" />
     <MESSAGE value="Add internalization language support" />
     <MESSAGE value="Add footer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add footer" />
+    <MESSAGE value="Add home layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add home layout" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
