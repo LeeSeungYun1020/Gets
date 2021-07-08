@@ -187,8 +187,22 @@ h1 {
   margin-block: 0;
 }
 
-.style img {
+//.style img {
+//  border: 5px solid #d4d3d3;
+//  border-radius: 70%;
+//  padding: 5px;
+//  margin: 8ex 1vw 3ex;
+//}
+
+.style_deselected {
   border: 5px solid #d4d3d3;
+  border-radius: 70%;
+  padding: 5px;
+  margin: 8ex 1vw 3ex;
+}
+
+.style_selected {
+  border: 5px solid #00200f;
   border-radius: 70%;
   padding: 5px;
   margin: 8ex 1vw 3ex;

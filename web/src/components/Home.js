@@ -4,6 +4,8 @@ import HomeMagazine from "./HomeMagazine";
 import HomeStyleSelect from "./HomeStyleSelect";
 import HomeRecommend from "./HomeRecommend";
 
+import mainImage from "../images/home/main_image.png"
+
 
 import CasualChip from "../images/home/Oval_casual.webp"
 import CampusChip from "../images/home/Oval_campus.webp"
@@ -19,6 +21,11 @@ import MinimalChip from "../images/home/Oval_minimal.webp"
 
 function Home(props) {
     const {t, i18n} = useTranslation()
+
+    const articleList = [
+        mainImage, mainImage, mainImage
+    ]
+
     const chipList = [
         {image: CasualChip, text: t("style_casual")},
         {image: CampusChip, text: t("style_campus")},
@@ -32,7 +39,7 @@ function Home(props) {
         {image: LovelyChip, text: t("style_lovely")},
         {image: MinimalChip, text: t("style_minimal")},
     ]
-    // <HomeStyleSelectBox title={item.title} index={item.index} default={item.default} list={item.list}/>
+
     const selectAreaList = [
         {title: t("gender"), index: 1, default: t("woman"), list: [t("woman"), t("man")]},
         {
@@ -60,9 +67,10 @@ function Home(props) {
             list: [t("price1"), t("price2"), t("price3"), t("price4"), t("price5"), t("price_expensive"),]
         },
     ]
+
     return (
         <section>
-            <HomeMagazine/>
+            <HomeMagazine list={articleList} interval={2000}/>
             <HomeStyleSelect title={t("select_info")} list={selectAreaList}/>
             <HomeRecommend title={t("select_style")} chips={chipList}/>
         </section>
