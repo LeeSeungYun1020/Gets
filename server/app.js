@@ -8,16 +8,6 @@ const connection = require('./lib/mysql');
 const session = require('express-session');
 const sessionMySQLStore = require('express-mysql-session')(session)
 const flash = require('connect-flash')
-
-const indexRouter = require('./routes/index');
-const apiRouter = require('./routes/api');
-const inputRouter = require('./routes/input');
-const accountRouter = require('./routes/account');
-const closetRouter = require('./routes/closet');
-const productRouter = require('./routes/product');
-const cartRouter = require('./routes/cart');
-const articleRouter = require('./routes/article');
-const aboutRouter = require('./routes/about');
 const helmet = require('helmet');
 
 const app = express();
@@ -68,67 +58,15 @@ app.use(session({
 app.use(flash())
 const passport = require('./lib/passport.js')(app, connection)
 
-// const passport = require('passport')
-// 	, LocalStrategy = require('passport-local').Strategy
-//
-// app.use(passport.initialize())
-// app.use(passport.session())
-//
-// passport.serializeUser(function (user, done) {
-// 	console.log('serializeUser', user.email)
-// 	done(null, user)
-// })
-//
-// passport.deserializeUser(function (id, done) {
-// 	console.log('deserializeUser', id.email)
-// 	done(null, id)
-// })
-//
-// passport.use(new LocalStrategy(
-// 	{
-// 		usernameField: 'email',
-// 		passwordField: 'pwd'
-// 	},
-// 	function (username, password, done) {
-// 		console.log('LocalStrategy', username, password)
-// 		connection.query("select * from user where `email`=?", [username], (err, result) => {
-// 			if (err || result.length === 0) {
-// 				console.log('Not exist')
-// 				return done(null, false, {
-// 					message: 'Incorrect username'
-// 				})
-// 			} else {
-// 				if (result[0].pw !== password) {
-// 					console.log('Wrong password')
-// 					return done(null, false, {
-// 						message: 'Incorrect password'
-// 					})
-// 				} else {
-// 					console.log('Loged in')
-// 					return done(null, result[0])
-// 				}
-// 			}
-// 		})
-// 	}
-// ))
-
-app.post('/account/signin_process',
-	passport.authenticate('local',
-		{failureRedirect: '/account/signin', failureFlash: true}),        //플래시메시지 다시,,,
-	(req, res) => {
-		req.session.save(() => {
-			res.redirect('/')
-		})
-	})
-
-/* //확인
-app.get('/', ((req, res, next) => {
-	console.log(req.user)
-	console.log(req.session)
-	console.log(signData)
-	next()
-}))
-*/
+const indexRouter = require('./routes/index');
+const apiRouter = require('./routes/api');
+const inputRouter = require('./routes/input');
+const accountRouter = require('./routes/account')(passport);
+const closetRouter = require('./routes/closet');
+const productRouter = require('./routes/product');
+const cartRouter = require('./routes/cart');
+const articleRouter = require('./routes/article');
+const aboutRouter = require('./routes/about');
 
 app.use('/', indexRouter)
 app.use('/api', apiRouter)

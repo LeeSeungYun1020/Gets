@@ -30,11 +30,11 @@ module.exports = function (app, mysql) {
 				function (err, result) {
 					const user = result[0]
 					if (err || result.length === 0)
-						return done(err, false)
+						return done(null, false, {message: "username"})
 					else if (user.pw === password) // 로그인
 						return done(null, user)
 					else // 비밀번호 오류
-						return done(null, false)
+						return done(null, false, {message: "password"})
 				})
 		}
 	))
