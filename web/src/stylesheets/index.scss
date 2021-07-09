@@ -1,0 +1,127 @@
+@use "node_modules/@material/theme/index" with ($primary: #7eb693, $secondary: #FFFFFF, $background: #000000);
+//@use "node_modules/@material/button/mdc-button";
+//@use "node_modules/@material/button";
+
+@import url("https://fonts.googleapis.com/earlyaccess/notosanskr.css");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900");
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+header {
+  background-color: #00200f;
+  position: relative;
+  display: flex;
+  font-family: 'Nanum Gothic', sans-serif;
+  align-items: center;
+  width: 100%;
+  height: 9vh;
+}
+
+a {
+  text-decoration: none;
+  color: #FFFFFF;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#logo {
+  display: inline-block;
+  font-size: 30px;
+  margin-left: 9vw;
+}
+
+#logo > a {
+  display: flex;
+}
+
+ul {
+}
+
+ul li {
+  display: inline-block;
+  margin-left: 5vw;
+  font-family: Roboto;
+}
+
+ul li a {
+  color: #d3d3d3;
+  font-size: 15px;
+}
+
+ul li.on {
+  color: #ffffff;
+}
+
+#top_menu {
+  display: flex;
+  margin-left: auto;
+  margin-right: 9vw;
+  justify-content: space-between;
+}
+
+#top_menu a {
+  margin-left: 1.5vw;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+footer {
+  background-color: #00200f;
+  color: #ffffff;
+  position: absolute;
+  width: 100%;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+footer #footer_layout {
+  margin-left: 10vw;
+}
+
+footer #footer_logo {
+  font-size: 3ex;
+  margin-bottom: 4vh;
+  margin-top: 6.5vh;
+}
+
+footer #detail {
+  display: flex;
+  margin-bottom: 6.5vh;
+}
+
+footer .detail_component {
+  display: flex;
+  flex-direction: column;
+  margin-right: 8vw;
+
+}
+
+footer .footer_title {
+  font-size: 2.5ex;
+  font-weight: bolder;
+  margin-bottom: 2.3ex;
+}
+
+.footer_category {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.8ex;
+}
+
+.footer_category > span {
+  margin-bottom: 1.5ex;
+}

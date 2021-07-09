@@ -16,11 +16,10 @@ header {
   height: 9vh; }
 
 a {
-    text-decoration: none;
-    color: #FFFFFF;
-    margin-top: auto;
-    margin-bottom: auto;
-}
+  text-decoration: none;
+  color: #FFFFFF;
+  margin-top: auto;
+  margin-bottom: auto; }
 
 #logo {
   display: inline-block;

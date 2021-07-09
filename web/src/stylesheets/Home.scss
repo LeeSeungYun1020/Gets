@@ -1,0 +1,246 @@
+// 홈 화면 스타일 시트
+
+body {
+  background-color: #ffffff;
+  margin: 0;
+}
+
+//#main {
+//  width: 100%;
+//  height: auto;
+//}
+
+#title {
+  margin-left: 57vw;
+  margin-top: 448px;
+  object-fit: contain;
+}
+
+h2 {
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+#my_style h1 {
+  text-align: center;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: bolder;
+  margin-top: 3ex;
+  margin-bottom: 3.5ex;
+}
+
+.select_style {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#select_area {
+  display: flex;
+  justify-content: center;
+  color: #828282;
+}
+
+#style {
+  width: 60%;
+  height: 60%;
+  margin: 0 auto;
+}
+
+#bar {
+  display: flex;
+  width: 75vw;
+  height: auto;
+  margin: 4vh auto 0;
+}
+
+#recommend {
+  color: #000000;
+  text-align: center;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: bolder;
+}
+
+.magazine { // 기사 가운데 정렬
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.swiper-container {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.swiper-slide {
+  text-align: center !important;
+  font-size: 18px !important;
+  background: #fff !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  background: #d4d3d3 !important;
+  opacity: 0.9 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: black !important;
+}
+
+:root {
+  --swiper-theme-color: #d4d3d3 !important;
+  --swiper-navigation-size: 70px !important;
+}
+
+.select {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 18px;
+  font-weight: bolder;
+  width: 8vw;
+  border: none;
+  background: #FFFFFF url("../images/home/select_nav.webp") no-repeat scroll right center;
+  display: block;
+  overflow: hidden;
+  color: #000;
+}
+
+.select-ul {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: bolder;
+  list-style-type: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: 18px;
+  color: #d4d3d3;
+  display: none;
+  position: absolute;
+  background: #FFFFFF;
+  border-top: none;
+  padding-inline-start: 0;
+}
+
+#style_select {
+  display: flex;
+  justify-content: center;
+}
+
+#select_area {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.select_box {
+  margin-left: 1vw;
+}
+
+.line {
+  border-left: 2px solid #d4d3d3;
+  height: 60%;
+  margin-left: 1.5vw;
+}
+
+.select-ul > div {
+  display: flex;
+  flex-direction: column;
+  // border-top : 2px solid #828282;
+}
+
+.select-ul > div:after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 90%; /* or 100px */
+  border-bottom: 2px solid #828282;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+ul li {
+  width: 7.5vw;
+  margin: 0;
+  padding-left: 0.5vw;
+  padding-top: 0.5ex;
+  padding-bottom: 0.5ex;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+#my_style {
+  height: 40ex;
+  position: relative;
+  z-index: 1;
+}
+
+.select-ul {
+  margin-block-start: 0;
+  //box-shadow: 0 2px 14px 0 rgba(83, 83, 83, 0.5);
+}
+
+.select-wrap {
+  //box-shadow: 0 2px 14px 0 rgba(83, 83, 83, 0.5);
+}
+
+h1 {
+  margin-block: 0;
+}
+
+//.style img {
+//  border: 5px solid #d4d3d3;
+//  border-radius: 70%;
+//  padding: 5px;
+//  margin: 8ex 1vw 3ex;
+//}
+
+.style_deselected {
+  border: 5px solid #d4d3d3;
+  border-radius: 70%;
+  padding: 5px;
+  margin: 8ex 1vw 3ex;
+}
+
+.style_selected {
+  border: 5px solid #7eb693;
+  border-radius: 70%;
+  padding: 5px;
+  margin: 8ex 1vw 3ex;
+  //color : #7eb693;
+}
+
+.style_selected_text {
+  color: #7eb693;
+  font-family: 'Roboto', serif;
+  font-size: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 9ex;
+}
+
+.style_deselected_text {
+  color: #d4d3d3;
+  font-family: 'Roboto', serif;
+  font-size: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 9ex;
+}
+
+
+.style {
+  color: #d4d3d3;
+  font-family: 'Roboto', serif;
+  font-size: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 9ex;
+}
+
+.style div {
+  display: flex;
+  flex-direction: column;
+}
