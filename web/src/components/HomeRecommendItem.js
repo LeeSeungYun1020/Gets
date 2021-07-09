@@ -1,19 +1,28 @@
-function SelectedItemImage(props) {
-    return <img className="style_chip style_selected" src={props.image}/>
+function SelectedItem(props) {
+    return (
+        <div>
+            <img className="style_chip style_selected" src={props.image}/>
+            <div className="style_selected_text">{props.text}</div>
+        </div>
+    )
 }
 
-function DeselectedItemImage(props) {
-    return <img className="style_chip style_deselected" src={props.image}/>
+function DeselectedItem(props) {
+    return (
+        <div>
+            <img className="style_chip style_deselected" src={props.image}/>
+            <div className="style_deselected_text">{props.text}</div>
+        </div>
+    )
 }
 
 function HomeRecommendItem(props) {
-    let itemImage = <DeselectedItemImage image={props.image}/>
+    let item = <DeselectedItem image={props.image} text={props.text}/>
     if (props.selected)
-        itemImage = <SelectedItemImage image={props.image}/>
+        item = <SelectedItem image={props.image} text={props.text}/>
     return (
         <div>
-            {itemImage}
-            <div className="style_text">{props.text}</div>
+            {item}
         </div>
     )
 }

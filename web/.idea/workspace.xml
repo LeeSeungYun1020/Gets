@@ -2,11 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf7774fd-3fe1-4a90-b3eb-64ce4b46d74b" name="Default Changelist" comment="Apply home stylesheet">
+      <change beforePath="$PROJECT_DIR$/../server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/public/stylesheets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../server/public/stylesheets/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/public/stylesheets/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../server/public/stylesheets/style.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../server/views/index.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/HomeMagazine.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeMagazine.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HomeRecommend.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeRecommend.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/HomeRecommendItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeRecommendItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HomeStyleSelectBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeStyleSelectBox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stylesheets/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/stylesheets/App.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/stylesheets/Home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/stylesheets/Home.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,14 +59,19 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/IntellijProjects/ccm" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="C:\Users\fabi8\gets\web\node_modules\typescript\lib" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="ts.external.directory.path" value="C:\Users\kym59\AndroidStudioProjects\Gets\web\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -68,6 +81,17 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -100,6 +124,7 @@
       <workItem from="1625662235489" duration="96000" />
       <workItem from="1625663309908" duration="13266000" />
       <workItem from="1625707405384" duration="6618000" />
+      <workItem from="1625792438818" duration="12088000" />
     </task>
     <task id="LOCAL-00001" summary="Add key concept explanations(cheatsheet)">
       <created>1625626762021</created>
@@ -214,5 +239,23 @@
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/HomeStyleSelectBox.js</url>
+          <line>1</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/HomeStyleSelectBox.js</url>
+          <line>7</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

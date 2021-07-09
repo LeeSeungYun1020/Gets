@@ -2,6 +2,7 @@ function HomeStyleSelectBox(props) {
     const items = props.list.map((text) =>
         <li>{text}</li>
     )
+
     const wrapperID = "select-wrap" + props.index
     const selectID = "select" + props.index
     return (

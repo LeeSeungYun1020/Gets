@@ -5,11 +5,11 @@ import HeaderMenu from "./HeaderMenu";
 function Header() {
     return (
         <header>
-            // 로고
+            {/* 로고 */}
             <HeaderLogo/>
-            // 탭
+            {/* 탭 */}
             <HeaderTab/>
-            // 메뉴
+            {/* 메뉴 */}
             <HeaderMenu/>
         </header>
     )

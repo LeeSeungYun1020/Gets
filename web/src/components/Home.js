@@ -4,9 +4,6 @@ import HomeMagazine from "./HomeMagazine";
 import HomeStyleSelect from "./HomeStyleSelect";
 import HomeRecommend from "./HomeRecommend";
 
-import mainImage from "../images/home/main_image.png"
-
-
 import CasualChip from "../images/home/Oval_casual.webp"
 import CampusChip from "../images/home/Oval_campus.webp"
 import StreetChip from "../images/home/Oval_street.webp"
@@ -21,10 +18,6 @@ import MinimalChip from "../images/home/Oval_minimal.webp"
 
 function Home(props) {
     const {t, i18n} = useTranslation()
-
-    const articleList = [
-        mainImage, mainImage, mainImage
-    ]
 
     const chipList = [
         {image: CasualChip, text: t("style_casual")},
@@ -70,7 +63,7 @@ function Home(props) {
 
     return (
         <section>
-            <HomeMagazine list={articleList} interval={2000}/>
+            <HomeMagazine/>
             <HomeStyleSelect title={t("select_info")} list={selectAreaList}/>
             <HomeRecommend title={t("select_style")} chips={chipList}/>
         </section>

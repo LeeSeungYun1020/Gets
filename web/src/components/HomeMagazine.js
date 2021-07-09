@@ -1,45 +1,33 @@
-import HomeArticle from "./HomeArticle";
+import SwiperCore, {A11y, Autoplay, Navigation, Pagination, Scrollbar} from 'swiper';
 import React from "react";
+import {Swiper, SwiperSlide} from 'swiper/react';
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
+import 'swiper/components/scrollbar/scrollbar.scss';
+import mainImage from "../images/home/main_image.png"
+import '../stylesheets/Home.scss';
 
-class HomeMagazine extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {index: 0};
-    }
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
-    componentDidMount() {
-        this.timerID = setInterval(
-            () => this.tick(),
-            this.props.interval ?? 1000
-        );
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.timerID);
-    }
-
-    tick() {
-        this.setState({
-            index: ((this.state.index + 1) % this.props.list.length)
-        });
-    }
-
-    render() {
-        const articleList = this.props.list.map((item) =>
-            < HomeArticle image={item}/>
-        )
-
-        return (
-            <div className="magazine">
-                <div className="magazine_container">
-                    < HomeArticle image={this.props.list[this.state.index]}/>
-                    <div>{this.state.index + 1}/{this.props.list.length}</div>
-                </div>
-            </div>
-        )
-    }
-
-
+export default () => {
+    return (
+        <Swiper
+            spaceBetween={50}
+            slidesPerView={1}
+            navigation
+            autoplay={{
+                delay: 3000,
+                disableOnInteraction: false
+            }}
+            pagination={{clickable: true}}
+            onSwiper={(swiper) => console.log(swiper)}
+            onSlideChange={() => console.log('slide change')}
+        >
+            <SwiperSlide><img src={mainImage}/></SwiperSlide>
+            <SwiperSlide><img src={mainImage}/></SwiperSlide>
+            <SwiperSlide><img src={mainImage}/></SwiperSlide>
+            <SwiperSlide><img src={mainImage}/></SwiperSlide>
+        </Swiper>
+    )
 }
-
-export default HomeMagazine
