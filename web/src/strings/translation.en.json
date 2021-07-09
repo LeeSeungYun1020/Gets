@@ -57,5 +57,10 @@
   "account_title": "Account",
   "account_mypage": "My page",
   "account_mystyle": "My style",
-  "account_order": "Order"
+  "account_order": "Order",
+  "signin": "Sign in",
+  "email": "E-mail",
+  "password": "Password",
+  "next": "Next",
+  "previous": "Previous"
 }
