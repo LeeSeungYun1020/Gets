@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/title_home"/>
+
+    <item
+        android:id="@+id/navigation_category"
+        android:icon="@drawable/ic_baseline_list_24"
+        android:title="@string/title_category"/>
+
+    <item
+        android:id="@+id/navigation_closet"
+        android:icon="@drawable/ic_baseline_door_sliding_24"
+        android:title="@string/title_closet"/>
+
+    <item
+        android:id="@+id/navigation_coordination"
+        android:icon="@drawable/ic_baseline_coordination_24"
+        android:title="@string/title_coordination"/>
+
+    <item
+        android:id="@+id/navigation_more"
+        android:icon="@drawable/ic_baseline_more_24"
+        android:title="@string/title_more" />
+</menu>

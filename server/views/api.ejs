@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- commonHead %>
+    <title><%= string.api_title %></title>
+    <link rel='stylesheet' href='/stylesheets/api.css'/>
+</head>
+<body>
+
+<%- include('header'); -%>
+
+<div>
+    <section class="api_description">
+        <div class="mdc-typography--headline3">API Center</div>
+    </section>
+    <section class="api_description">
+        <div class="mdc-typography--headline4"><%= string.api_sign %></div>
+        <div class="mdc-typography--headline5"><%= string.api_sign_in %></div>
+        <p class="mdc-typography--body1">
+            POST: api/signin
+            <br>
+            params: email, pw
+            <br>
+            return: {"result": boolean}
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_sign_up_check %></div>
+        <p class="mdc-typography--body1">
+            POST: api/signup/check
+            <br>
+            params: email
+            <br>
+            return: {"result": boolean}
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_sign_up_basic %></div>
+        <p class="mdc-typography--body1">
+            POST: api/signup/basic
+            <br>
+            params: email, pw, name, phone, year, month, day, address, addressDetail
+            <br>
+            return: {"result": boolean}
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_sign_up_info %></div>
+        <p class="mdc-typography--body1">
+            POST: api/signin/info
+            <br>
+            params: email, gender, height, weight, topSize, bottomSize, style, fit
+            <br>
+            return: {"result": boolean}
+        </p>
+    </section>
+    <section class="api_description">
+        <div class="mdc-typography--headline4"><%= string.api_weather %></div>
+        <p class="mdc-typography--body1">
+            POST: api/weather
+            <br>
+            params: latitude, longitude
+            <br>
+            return: {"pop": int, "form": int, "sky": int, "tem": float, "max": float, "min": float}
+            <br>
+            * (
+            "form": 0(undefined), 1(rain), 2(rain_snow), 3(snow), 4(rain_shower), 5(rain_light), 6(rain_snow_light),
+            7(snow_light),
+            "sky": 1(clear), 3(partly_cloudy), 4(cloudy)
+            )
+        </p>
+    </section>
+    <section class="api_description">
+        <div class="mdc-typography--headline4"><%= string.api_product %></div>
+        <div class="mdc-typography--headline5"><%= string.api_product_image %></div>
+        <p class="mdc-typography--body1">
+            POST: api/product/image/:imageID
+            <br>
+            params:
+            <br>
+            return: image file
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_product_list %></div>
+        <p class="mdc-typography--body1">
+            POST: api/product/list/:page
+            <br>
+            params: search, type, detail, gender, color, fit, season, fiber, age, style, priceMin, priceMax
+            <br>
+            return: [{result: boolean}] | list
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_product %></div>
+        <p class="mdc-typography--body1">
+            POST: api/product/:id
+            <br>
+            params:
+            <br>
+            return: {result: boolean} | product
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_review_add %></div>
+        <p class="mdc-typography--body1">
+            POST: api/review/add/:productID
+            <br>
+            params: userEmail, star, contents, image1ID, image2ID, image3ID
+            <br>
+            return: {result: boolean}
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_review_fit %></div>
+        <p class="mdc-typography--body1">
+            POST: api/review/fit/:productID
+            <br>
+            params: userEmail, order, isReverse
+            <br>
+            return: [{result: boolean, error: string}] | list
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_review %></div>
+        <p class="mdc-typography--body1">
+            POST: api/review/:productID
+            <br>
+            params: order, isReverse
+            <br>
+            return: [{result: boolean}] | list
+        </p>
+    </section>
+</div>
+<%- include('footer'); -%>
+</body>
+</html>

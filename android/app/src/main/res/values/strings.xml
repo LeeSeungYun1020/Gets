@@ -1,0 +1,271 @@
+<resources>
+    <string name="app_name">Gets</string>
+    <string name="title_home">Home</string>
+    <string name="title_category">Category</string>
+    <string name="title_closet">Closet</string>
+    <string name="title_coordination">Coordination</string>
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_more">More</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email *</string>
+    <string name="prompt_password">Password *</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="title_splash">Splash</string>
+    <string name="msg_request_login">Login is required to use all functions of the application.</string>
+    <string name="msg_login">Login</string>
+    <string name="title_search">Search</string>
+    <string name="weather_clear">Clear</string>
+    <string name="weather_cloudy">Cloudy</string>
+    <string name="weather_partly_cloudy">Partly Cloudy</string>
+    <string name="weather_rain">Rain</string>
+    <string name="weather_rain_light">Light Rain</string>
+    <string name="weather_snow">Snow</string>
+    <string name="weather_snow_light">Light Snow</string>
+    <string name="template_wether_title">17°C, Clear</string>
+    <string name="template_weather_second_text">Busan, high: 19°C low: 15°C</string>
+    <string name="msg_filter">Filter</string>
+    <string name="category_top">Top</string>
+    <string name="category_pants">Pants</string>
+    <string name="category_outer">Outer</string>
+    <string name="category_shoes">Shoes</string>
+    <string name="action_register">Register</string>
+    <string name="action_find_id"><u>Find id</u></string>
+    <string name="action_find_password"><u>Find p/w</u></string>
+    <string name="filter_label_type">Type</string>
+    <string name="filter_label_material">Material</string>
+    <string name="filter_label_season">Season</string>
+    <string name="filter_label_color">Color</string>
+    <string name="filter_label_price">Price</string>
+    <string name="filter_label_ratings">Ratings</string>
+    <string name="template_filter_price" translatable="false">0-1,000,000</string>
+    <string name="template_filter_rating" translatable="false">0.0</string>
+    <string name="filter_label_custom_size">Fit to my body size</string>
+    <string name="filter_label_age">Age</string>
+    <string name="filter_label_size">Size</string>
+    <string name="filter_label_gender">Gender</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="size_xs" translatable="false">XS</string>
+    <string name="size_s" translatable="false">S</string>
+    <string name="size_m" translatable="false">M</string>
+    <string name="size_l" translatable="false">L</string>
+    <string name="size_xl" translatable="false">XL</string>
+    <string name="age_10">10s</string>
+    <string name="age_20">20s</string>
+    <string name="age_30">30s</string>
+    <string name="age_40">40s</string>
+    <string name="age_50">50s</string>
+    <string name="age_60_over">60s or older</string>
+    <string name="season_spring">Spring</string>
+    <string name="season_summer">Summer</string>
+    <string name="season_fall">Fall</string>
+    <string name="season_winter">Winter</string>
+    <string name="prompt_phone_number">Phone number *</string>
+    <string name="prompt_name">Name *</string>
+    <string name="prompt_birth">Birth *</string>
+    <string name="invalid_phone_num">Not a valid phone number</string>
+    <string name="invalid_birth">Not a valid birth</string>
+    <string name="prompt_address">Address</string>
+    <string name="address_serch">Search</string>
+    <string name="prompt_detail_address">Detail address</string>
+    <string name="register_necessary">Necessary</string>
+    <string name="msg_search_length_desc">Enter what you want search.</string>
+    <string name="msg_search_length">Search</string>
+    <string name="msg_ok">OK</string>
+    <string name="msg_cancel">Cancel</string>
+    <string name="title_filter">Open filter</string>
+    <string name="register_male">Male</string>
+    <string name="register_female">Female</string>
+    <string name="register_gender">Gender</string>
+    <string name="style_minimal">Minimal</string>
+    <string name="style_casual">Casual</string>
+    <string name="style_campus">Campus</string>
+    <string name="style_rock_chic">Rock chic</string>
+    <string name="style_street">Street</string>
+    <string name="style_amekaji">Amekaji</string>
+    <string name="style_office">Office</string>
+    <string name="style_city_boy">City boy</string>
+    <string name="style_feminine">Feminine</string>
+    <string name="style_lovely">Lovely</string>
+    <string name="style_sexy_glam">Sexy glam</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="register_top_size">Top size</string>
+    <string name="register_bottop_size">Bottom size</string>
+    <string name="suffix_cm" translatable="false">cm</string>
+    <string name="suffix_kg" translatable="false">kg</string>
+    <string name="action_done">Done</string>
+    <string name="select_my_style">My style</string>
+    <string name="template_product_name">Product Name</string>
+    <string name="template_product_brand">Brand</string>
+    <string name="template_product_price">30,000 won</string>
+    <string name="template_review_number" translatable="false">123</string>
+    <string name="review_reviews">reviews</string>
+    <string name="template_date" translatable="false">2021/05/05</string>
+    <string name="tab_category">Category</string>
+    <string name="tab_brand">Brand</string>
+    <string name="account_category">My account</string>
+    <string name="signature">dress up pretty today :)</string>
+    <string name="activity_category">Activity</string>
+    <string name="product">Recently viewed product</string>
+    <string name="setting_category">Setting</string>
+    <string name="notice">Notice</string>
+    <string name="service_center">Service Center</string>
+    <string name="alarm">Agree to receive alarm</string>
+    <string name="version">Version</string>
+    <string name="memberinform_modi">Member Information modification</string>
+    <string name="bodyinform">Body Information</string>
+    <string name="secession">Secession</string>
+    <string name="myreview">My review</string>
+    <string name="register_size">Size</string>
+    <string name="category_skirt">Skirt</string>
+    <string name="category_set">Set</string>
+    <string name="category_bag">Bag</string>
+    <string name="category_hat">Hat</string>
+    <string name="category_outer_coat">Coat</string>
+    <string name="category_outer_padded_jacket">Padded jacket</string>
+    <string name="category_outer_cardigan">Cardigan</string>
+    <string name="category_outer_blazer">Blazer</string>
+    <string name="category_outer_jumper">Jumper</string>
+    <string name="category_outer_jacket">Jacket</string>
+    <string name="category_outer_hooded_zipup">Hooded zipup</string>
+    <string name="category_outer_fleece">Fleece</string>
+    <string name="category_top_t_shirt">T-shirt</string>
+    <string name="category_top_shirt_blouse">Shirt/Blouse</string>
+    <string name="category_top_long_sleeve">Long sleeve</string>
+    <string name="category_top_sweatshirt">Sweatshirt</string>
+    <string name="category_top_hoodie">Hoodie</string>
+    <string name="category_top_knit">Knit</string>
+    <string name="category_top_sleeveless">Sleeveless</string>
+    <string name="category_top_vest">Vest</string>
+    <string name="category_pants_jeans">Jeans</string>
+    <string name="category_pants_slacks">Slacks</string>
+    <string name="category_pants_cotton_pants">Cotton pants</string>
+    <string name="category_pants_training_pants">Training pants</string>
+    <string name="category_pants_jogger_pants">Jogger pants</string>
+    <string name="category_pants_shorts">Shorts</string>
+    <string name="category_pants_leggings">Leggings</string>
+    <string name="category_skirt_mini_skirt">Mini-skirt</string>
+    <string name="category_skirt_middle_skirt">Middle_skirt</string>
+    <string name="category_skirt_long_skirt">Long_skirt</string>
+    <string name="category_set_one_piece">One piece</string>
+    <string name="category_set_two_piece">Two piece</string>
+    <string name="category_set_suit">Suit</string>
+    <string name="category_set_jump_suit">Jump suit</string>
+    <string name="category_shoes_sneakers">Sneakers</string>
+    <string name="category_shoes_loafers">Loafers</string>
+    <string name="category_shoes_boots">Boots</string>
+    <string name="category_shoes_derby">Derby</string>
+    <string name="category_shoes_heels_pumps">Heels/Pumps</string>
+    <string name="category_shoes_sandals">Sandals</string>
+    <string name="category_shoes_slipper">Slipper</string>
+    <string name="category_bag_backpack">Backpack</string>
+    <string name="category_bag_messenger_cross">Messenger/cross bag</string>
+    <string name="category_bag_tote">Tote bag</string>
+    <string name="category_bag_eco">Eco bag</string>
+    <string name="category_bag_leather">Leather bag</string>
+    <string name="category_hat_cap">Cap</string>
+    <string name="category_hat_beanie">Beanie</string>
+    <string name="category_hat_bucket_hat">Bucket hat</string>
+    <string name="category_hat_beret">Beret</string>
+    <string name="fit_regular">Regular fit</string>
+    <string name="fit_over">Over fit</string>
+    <string name="fit_wide">Wide</string>
+    <string name="fit_semi_wide">Semi wide</string>
+    <string name="fit_straight">Straight</string>
+    <string name="fit_slim">Slim</string>
+    <string name="fit_tapered">Tapered</string>
+    <string name="fit_bootcut">Bootcut</string>
+    <string name="material_denim">Denim</string>
+    <string name="material_cotton">Cotton</string>
+    <string name="material_leather">Leather</string>
+    <string name="material_linen">Linen</string>
+    <string name="material_silk">Silk</string>
+    <string name="material_velvet">Velvet</string>
+    <string name="material_coduroy">Coduroy</string>
+    <string name="color_black">Black</string>
+    <string name="color_white">White</string>
+    <string name="color_charcoal">Charcoal</string>
+    <string name="color_gray">Gray</string>
+    <string name="color_ivory">Ivory</string>
+    <string name="color_beige">Beige</string>
+    <string name="color_brown">Brown</string>
+    <string name="color_red">Red</string>
+    <string name="color_pink">Pink</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_yellow">Yellow</string>
+    <string name="color_mustard">Mustard</string>
+    <string name="color_mint">Mint</string>
+    <string name="color_green">Green</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_sky_blue">Sky blue</string>
+    <string name="color_navy">Navy</string>
+    <string name="color_purple">Purple</string>
+    <string name="color_burgundy">Burgundy</string>
+    <string name="select_my_fit">My fit</string>
+    <string name="filter_label_style">Style</string>
+    <string name="filter_label_fit">Fit</string>
+    <string name="action_kakao_login">Login with Kakao ID</string>
+    <string name="invalid_email">Enter a valid email</string>
+    <string name="invalid_password">Enter a valid password</string>
+    <string name="weather_max">High:</string>
+    <string name="weather_min">Low:</string>
+    <string name="weather_shower">Shower</string>
+    <string name="weather_rain_snow">Rain, Snow</string>
+    <string name="weather_rain_snow_light">Light Rain, Snow</string>
+    <string name="msg_login_failed">The email or password do not match</string>
+    <string name="msg_login_error">Login Error</string>
+    <string name="msg_server_disconnected">Can\'t connnect to server</string>
+    <string name="msg_server_error">Server Error</string>
+    <string name="color_khakii">Khakii</string>
+    <string name="material_suede">Suede</string>
+    <string name="material_polyester">Polyester</string>
+    <string name="material_nylon">Nylon</string>
+    <string name="msg_close">Close</string>
+    <string name="msg_login_input">Please enter your ID or password correctly.</string>
+    <string name="msg_register_required">* Required field</string>
+    <string name="msg_register_email_duplicate">This email already exists</string>
+    <string name="msg_register_failed">Signup failed. Please try again later.</string>
+    <string name="msg_register_error">Register Error</string>
+    <string name="basket">basket</string>
+    <string name="closet">closet</string>
+    <string name="make">make my codi</string>
+    <string name="purchase">purchase</string>
+    <string name="alphabet_a" translatable="false">A</string>
+    <string name="alphabet_b" translatable="false">B</string>
+    <string name="alphabet_c" translatable="false">C</string>
+    <string name="alphabet_d" translatable="false">D</string>
+    <string name="alphabet_e" translatable="false">E</string>
+    <string name="alphabet_f" translatable="false">F</string>
+    <string name="alphabet_g" translatable="false">G</string>
+    <string name="alphabet_h" translatable="false">H</string>
+    <string name="alphabet_i" translatable="false">I</string>
+    <string name="alphabet_j" translatable="false">J</string>
+    <string name="alphabet_k" translatable="false">K</string>
+    <string name="alphabet_l" translatable="false">L</string>
+    <string name="alphabet_m" translatable="false">M</string>
+    <string name="alphabet_n" translatable="false">N</string>
+    <string name="alphabet_o" translatable="false">O</string>
+    <string name="alphabet_p" translatable="false">P</string>
+    <string name="alphabet_q" translatable="false">Q</string>
+    <string name="alphabet_r" translatable="false">R</string>
+    <string name="alphabet_s" translatable="false">S</string>
+    <string name="alphabet_t" translatable="false">T</string>
+    <string name="alphabet_u" translatable="false">U</string>
+    <string name="alphabet_v" translatable="false">V</string>
+    <string name="alphabet_w" translatable="false">W</string>
+    <string name="alphabet_x" translatable="false">X</string>
+    <string name="alphabet_y" translatable="false">Y</string>
+    <string name="alphabet_z" translatable="false">Z</string>
+    <string name="brand_search">Search Brand</string>
+    <string name="template_brand_total_number">5,000brand</string>
+    <string name="setting_login">You do not log in</string>
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>

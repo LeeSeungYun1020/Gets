@@ -1,0 +1,91 @@
+POST http://localhost:3000/api/signup/check
+Content-Type: application/json
+
+{
+  "email": "example@gmail.com"
+}
+
+###
+
+POST http://localhost:3000/api/signup/basic
+Content-Type: application/json
+
+{
+  "email": "example@gets.com",
+  "pw": "(yourpassword)",
+  "name": "Name",
+  "phone":  "010-1234-5678",
+  "year": 2000,
+  "month": 1,
+  "day": 1,
+  "address": "부산대",
+  "addressDetail": "제6공학관"
+}
+
+###
+
+POST http://localhost:3000/api/product/1
+Content-Type: application/json
+
+###
+
+POST http://localhost:3000/api/product/list/1
+Content-Type: application/json
+
+{
+  "priceMin": "10000",
+  "priceMax": "30000"
+}
+
+###
+
+POST http://localhost:3000/api/product/list/1
+Content-Type: application/json
+
+{
+  "age": 1,
+  "style": 1
+}
+
+###
+
+POST http://localhost:3000/api/review/1
+Content-Type: application/json
+
+{
+  "order": "star",
+  "orderOption": "ASC"
+}
+
+###
+
+POST http://localhost:3000/api/review/add/1
+Content-Type: application/json
+
+{
+  "userEmail": "ileilliat@gmail.com",
+  "productID": 2,
+  "star": 5,
+  "contents": "테스트 리뷰 입력",
+  "image1ID": "2"
+}
+
+###
+
+GET http://localhost:3000/api/weather
+Content-Type: application/json
+
+{
+"longitude": 126,
+  "latitude": 59
+}
+
+###
+
+POST http://localhost:3000/api/product/list/1
+Content-Type: application/json
+
+{
+  "type": 1,
+  "detail": 0
+}

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp">
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_minimal"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/style_minimal"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_casual"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/style_casual"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/chip_minimal"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_campus"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/style_campus"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/chip_casual"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_office"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/style_office"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/chip_campus"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_rock_chic"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/style_rock_chic"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chip_casual" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_street"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/style_street"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/chip_rock_chic"
+        app:layout_constraintTop_toBottomOf="@id/chip_casual" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_amekaji"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/style_amekaji"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/chip_street"
+        app:layout_constraintTop_toBottomOf="@id/chip_campus" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_city_boy"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/style_city_boy"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/chip_amekaji"
+        app:layout_constraintTop_toBottomOf="@id/chip_office" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_sexy_glam"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/style_sexy_glam"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chip_rock_chic" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_feminine"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/style_feminine"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/chip_sexy_glam"
+        app:layout_constraintTop_toBottomOf="@id/chip_street" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_lovely"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:checkable="true"
+        android:checked="false"
+        android:text="@string/style_lovely"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/chip_feminine"
+        app:layout_constraintTop_toBottomOf="@id/chip_amekaji" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

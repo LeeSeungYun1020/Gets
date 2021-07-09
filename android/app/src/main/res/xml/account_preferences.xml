@@ -1,0 +1,30 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/account_category">
+
+        <Preference
+            android:key="memberinform_modi"
+            android:title="@string/memberinform_modi"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="bodyinform"
+            android:title="@string/bodyinform"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="secession"
+            android:title="@string/secession"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="myreview"
+            android:title="@string/myreview"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

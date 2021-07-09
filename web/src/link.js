@@ -1,0 +1,20 @@
+const link = {
+    home: '/',
+    closet: '/closet',
+    product: '/product',
+    account: '/account',
+    signin: '/account/signin',
+    signup: '/account/signup',
+    info: '/account/info',
+    style: '/account/style',
+    order: '/account/order',
+    feedback: '/account/feedback',
+    cart: '/cart',
+    article: '/article',
+    about: '/about',
+    faq: "/about/faq",
+    chatting: "/about/chatting",
+    privacy: "/about/policy",
+    terms: "/about/terms",
+}
+export default link

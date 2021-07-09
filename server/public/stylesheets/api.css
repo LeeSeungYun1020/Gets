@@ -1,0 +1,22 @@
+.mdc-button {
+  width: 300px; }
+
+.button_section {
+  text-align: center;
+  margin-top: 16px; }
+
+section {
+  padding: 16px; }
+
+.mdc-typography--headline5 {
+  margin-top: 8px; }
+
+.mdc-typography--body1 {
+  margin-top: 4px;
+  margin-left: 4px; }
+
+body {
+  color: white;
+  background: mediumseagreen; }
+
+/*# sourceMappingURL=api.css.map */
