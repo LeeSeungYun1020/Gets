@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf7774fd-3fe1-4a90-b3eb-64ce4b46d74b" name="Default Changelist" comment="Apply home stylesheet">
+    <list default="true" id="bf7774fd-3fe1-4a90-b3eb-64ce4b46d74b" name="Default Changelist" comment="Add home recommend selection control">
+      <change afterPath="$PROJECT_DIR$/../server/lib/passport.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/lib/session.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/views/account.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SignIn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SignInBox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SimpleCTemplate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../server/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/public/stylesheets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../server/public/stylesheets/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/public/stylesheets/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../server/public/stylesheets/style.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../server/views/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/routes/account.js" beforeDir="false" afterPath="$PROJECT_DIR$/../server/routes/account.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HomeMagazine.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeMagazine.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HomeRecommendItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeRecommendItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HomeStyleSelectBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeStyleSelectBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stylesheets/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/stylesheets/App.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stylesheets/Home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/stylesheets/Home.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SimpleTemplate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SimpleFTemplate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/link.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/link.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/strings/translation.en.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/strings/translation.en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/strings/translation.ko.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/strings/translation.ko.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +36,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="master" />
+        <entry key="$PROJECT_DIR$/.." value="web/home" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -71,7 +74,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="ts.external.directory.path" value="C:\Users\kym59\AndroidStudioProjects\Gets\web\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Users\fabi8\gets\web\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -81,17 +84,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -125,6 +117,7 @@
       <workItem from="1625663309908" duration="13266000" />
       <workItem from="1625707405384" duration="6618000" />
       <workItem from="1625792438818" duration="12088000" />
+      <workItem from="1625824893886" duration="1756000" />
     </task>
     <task id="LOCAL-00001" summary="Add key concept explanations(cheatsheet)">
       <created>1625626762021</created>
@@ -239,23 +232,5 @@
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/HomeStyleSelectBox.js</url>
-          <line>1</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/HomeStyleSelectBox.js</url>
-          <line>7</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
