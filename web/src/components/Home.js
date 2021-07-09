@@ -3,7 +3,7 @@ import {useTranslation} from 'react-i18next'
 import HomeMagazine from "./HomeMagazine";
 import HomeStyleSelect from "./HomeStyleSelect";
 import HomeRecommend from "./HomeRecommend";
-
+import HomeRecommendStyle from "./HomeRecommendStyle"
 import CasualChip from "../images/home/Oval_casual.webp"
 import CampusChip from "../images/home/Oval_campus.webp"
 import StreetChip from "../images/home/Oval_street.webp"
@@ -65,7 +65,8 @@ function Home(props) {
         <section>
             <HomeMagazine/>
             <HomeStyleSelect title={t("select_info")} list={selectAreaList}/>
-            <HomeRecommend title={t("select_style")} chips={chipList}/>
+            <HomeRecommend title={t("select_style")} chips={chipList} text={t("recommend_button")}/>
+            <HomeRecommendStyle title={t("recommend_style")} content={t("recommend_content")}/>
         </section>
     )
 }
