@@ -8,9 +8,8 @@ const fstring = require('../components/string_footer')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  console.log('/', req.user);
   res.send(auth.statusUI(req, res))
-  //res.render('index', {commonHead: commonHead, string: string[req.body.locale], fstring: fstring[req.body.locale]})
+  // res.render('index', {commonHead: commonHead, string: string[req.body.locale], fstring: fstring[req.body.locale]})
 });
 
 module.exports = router;

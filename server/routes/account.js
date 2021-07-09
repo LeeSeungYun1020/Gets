@@ -37,7 +37,7 @@ router.get('/signin', function (req, res, next) {
 	<div style="color:red;">${feedback}</div>
 	<form action="/account/signin_process" method="post">
 		<p><input type="text" name="email" placeholder="email"> </p>
-		<p><input type="password" name="pwd" placeholder="password" </p>
+		<p><input type="password" name="password" placeholder="password" </p>
 		<p>
 			<input type="submit" value="로그인">
 			<a href="/account/signup">signup</a>

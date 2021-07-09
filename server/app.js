@@ -6,7 +6,7 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const connection = require('./lib/mysql');
 const session = require('express-session');
-const FileStore = require('session-file-store')(session);
+const sessionMySQLStore = require('express-mysql-session')(session)
 const flash = require('connect-flash')
 
 const indexRouter = require('./routes/index');
@@ -50,59 +50,67 @@ app.use(function (req, res, next) {
 	next();
 });
 
+const sessionStore = new sessionMySQLStore({
+	host: 'localhost',
+	port: 3306,
+	user: 'root',
+	password: 'lsy1020',
+	database: 'session'
+})
 
 app.use(session({
-	secret: 'asdlfjjldkjfaskdfhsdhf',
+	key: "session",
+	secret: '6W-b6w5CG-X84m9',
 	resave: false,
 	saveUninitialized: true,
-	store: new FileStore()
+	store: sessionStore
 }))
 app.use(flash())
+const passport = require('./lib/passport.js')(app, connection)
 
-
-var passport = require('passport')
-	, LocalStrategy = require('passport-local').Strategy
-
-app.use(passport.initialize())
-app.use(passport.session())
-
-passport.serializeUser(function (user, done) {
-	console.log('serializeUser', user.email)
-	done(null, user)
-})
-
-passport.deserializeUser(function (id, done) {
-	console.log('deserializeUser', id.email)
-	done(null, id)
-})
-
-passport.use(new LocalStrategy(
-	{
-		usernameField: 'email',
-		passwordField: 'pwd'
-	},
-	function (username, password, done) {
-		console.log('LocalStrategy', username, password)
-		connection.query("select * from user where `email`=?", [username], (err, result) => {
-			if (err || result.length === 0) {
-				console.log('Not exist')
-				return done(null, false, {
-					message: 'Incorrect username'
-				})
-			} else {
-				if (result[0].pw !== password) {
-					console.log('Wrong password')
-					return done(null, false, {
-						message: 'Incorrect password'
-					})
-				} else {
-					console.log('Loged in')
-					return done(null, result[0])
-				}
-			}
-		})
-	}
-))
+// const passport = require('passport')
+// 	, LocalStrategy = require('passport-local').Strategy
+//
+// app.use(passport.initialize())
+// app.use(passport.session())
+//
+// passport.serializeUser(function (user, done) {
+// 	console.log('serializeUser', user.email)
+// 	done(null, user)
+// })
+//
+// passport.deserializeUser(function (id, done) {
+// 	console.log('deserializeUser', id.email)
+// 	done(null, id)
+// })
+//
+// passport.use(new LocalStrategy(
+// 	{
+// 		usernameField: 'email',
+// 		passwordField: 'pwd'
+// 	},
+// 	function (username, password, done) {
+// 		console.log('LocalStrategy', username, password)
+// 		connection.query("select * from user where `email`=?", [username], (err, result) => {
+// 			if (err || result.length === 0) {
+// 				console.log('Not exist')
+// 				return done(null, false, {
+// 					message: 'Incorrect username'
+// 				})
+// 			} else {
+// 				if (result[0].pw !== password) {
+// 					console.log('Wrong password')
+// 					return done(null, false, {
+// 						message: 'Incorrect password'
+// 					})
+// 				} else {
+// 					console.log('Loged in')
+// 					return done(null, result[0])
+// 				}
+// 			}
+// 		})
+// 	}
+// ))
 
 app.post('/account/signin_process',
 	passport.authenticate('local',
