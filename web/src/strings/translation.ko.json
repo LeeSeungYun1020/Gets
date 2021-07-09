@@ -57,5 +57,10 @@
   "account_title": "계정",
   "account_mypage": "내 정보",
   "account_mystyle": "내 스타일",
-  "account_order": "주문 조회"
+  "account_order": "주문 조회",
+  "signin": "로그인",
+  "email": "이메일",
+  "password": "비밀번호",
+  "next": "다음",
+  "previous": "이전"
 }
