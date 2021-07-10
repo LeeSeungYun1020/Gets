@@ -89,3 +89,13 @@ Content-Type: application/json
   "type": 1,
   "detail": 0
 }
+
+###
+
+POST http://localhost:3000/api/signin
+Content-Type: application/json
+
+{
+  "email":"aaaa@ddd.com",
+  "pw":"password"
+}

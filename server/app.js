@@ -59,7 +59,7 @@ app.use(flash())
 const passport = require('./lib/passport.js')(app, connection)
 
 const indexRouter = require('./routes/index');
-const apiRouter = require('./routes/api');
+const apiRouter = require('./routes/api')(passport)
 const inputRouter = require('./routes/input');
 const accountRouter = require('./routes/account')(passport);
 const closetRouter = require('./routes/closet');

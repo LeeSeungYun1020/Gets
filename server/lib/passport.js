@@ -21,7 +21,7 @@ module.exports = function (app, mysql) {
 	
 	passport.use(new LocalStrategy({
 			usernameField: 'email',
-			passwordField: 'password'
+			passwordField: 'pw'
 		},
 		function (username, password, done) {
 			mysql.query(

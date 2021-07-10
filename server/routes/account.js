@@ -8,7 +8,7 @@ module.exports = function (passport) {
 		res.send(auth.statusUI(req, res))
 	});
 
-// 로그인 - email, password로 로그인
+// 로그인 - email, pw로 로그인
 	router.get('/signin', function (req, res, next) {
 		res.render("signin")
 	});
