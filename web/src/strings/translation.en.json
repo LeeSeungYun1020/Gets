@@ -62,5 +62,7 @@
   "email": "E-mail",
   "password": "Password",
   "next": "Next",
-  "previous": "Previous"
+  "previous": "Previous",
+  "recommend_button" : "Get Style!",
+  "recommend_content" : "AI recommends a coordination set that suits your taste"
 }
