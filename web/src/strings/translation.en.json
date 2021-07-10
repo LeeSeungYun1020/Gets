@@ -64,5 +64,7 @@
   "next": "Next",
   "previous": "Previous",
   "recommend_button" : "Get Style!",
-  "recommend_content" : "AI recommends a coordination set that suits your taste"
+  "recommend_content" : "AI recommends a coordination set that suits your taste",
+  "not_found_title": "404. Page not found",
+  "not_found_subtitle": "We can't find that page"
 }
