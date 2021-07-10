@@ -1,4 +1,5 @@
-import React from "react";
+import React from "react"
+import axios from "axios"
 
 class SignInBox extends React.Component {
     constructor(props) {
@@ -29,6 +30,16 @@ class SignInBox extends React.Component {
 
     handlePassword(event) {
         alert(`email=${this.state.email}, password=${this.state.password}`)
+        axios.post('http://localhost:3000/api/signin', {
+            email: this.state.email,
+            pw: this.state.password
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         event.preventDefault();
     }
 
@@ -38,7 +49,7 @@ class SignInBox extends React.Component {
     }
 
     handlePasswordPrevious(event) {
-        this.setState({type: "email", password: "em"})
+        this.setState({type: "email", password: ""})
         event.preventDefault();
     }
 
