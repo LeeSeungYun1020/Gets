@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 // components
 const commonHead = require('../components/commonHead')
 const string = require('../components/string_index')

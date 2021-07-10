@@ -4,16 +4,11 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
-
-const indexRouter = require('./routes/index');
-const apiRouter = require('./routes/api');
-const inputRouter = require('./routes/input');
-const accountRouter = require('./routes/account');
-const closetRouter = require('./routes/closet');
-const productRouter = require('./routes/product');
-const cartRouter = require('./routes/cart');
-const articleRouter = require('./routes/article');
-const aboutRouter = require('./routes/about');
+const connection = require('./lib/mysql');
+const session = require('express-session');
+const sessionMySQLStore = require('express-mysql-session')(session)
+const flash = require('connect-flash')
+const helmet = require('helmet');
 
 const app = express();
 
@@ -23,6 +18,7 @@ app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile)
 
 app.use(logger('dev'));
+app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
@@ -44,6 +40,33 @@ app.use(function (req, res, next) {
 	next();
 });
 
+const sessionStore = new sessionMySQLStore({
+	host: 'localhost',
+	port: 3306,
+	user: 'root',
+	password: 'lsy1020',
+	database: 'session'
+})
+
+app.use(session({
+	key: "session",
+	secret: '6W-b6w5CG-X84m9',
+	resave: false,
+	saveUninitialized: true,
+	store: sessionStore
+}))
+app.use(flash())
+const passport = require('./lib/passport.js')(app, connection)
+
+const indexRouter = require('./routes/index');
+const apiRouter = require('./routes/api')(passport)
+const inputRouter = require('./routes/input');
+const accountRouter = require('./routes/account')(passport);
+const closetRouter = require('./routes/closet');
+const productRouter = require('./routes/product');
+const cartRouter = require('./routes/cart');
+const articleRouter = require('./routes/article');
+const aboutRouter = require('./routes/about');
 
 app.use('/', indexRouter)
 app.use('/api', apiRouter)
