@@ -1,6 +1,7 @@
 import React from "react";
 import HomeRecommendCard from "./HomeRecommendCard";
 import style_example from "../images/home/style_example.jpg"
+import HomeStyleInfoSlick from "./HomeStyleInfoSlick";
 class HomeRecommendStyle extends React.Component {
     constructor(props) {
         super(props);
@@ -12,7 +13,7 @@ class HomeRecommendStyle extends React.Component {
                     <h1>{this.props.title}</h1>
                     <p>{this.props.content}</p>
                 </div>
-                <div>
+                <div id = "style_card_div">
                     <div id = "style_card">
                         <div>
                             <HomeRecommendCard image={style_example}/>
@@ -27,7 +28,9 @@ class HomeRecommendStyle extends React.Component {
                             <HomeRecommendCard image={style_example}/>
                         </div>
                     </div>
+                    <button className="view_more">{this.props.text}</button>
                 </div>
+                <HomeStyleInfoSlick />
             </>
         )
     }

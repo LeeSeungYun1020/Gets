@@ -307,12 +307,71 @@ h1 {
   display: flex !important;
   flex-direction: column !important;
   width:294px !important;
+  padding-left: 1.5vw !important;
+  margin-bottom: 2ex !important;
 }
 
 .MuiTypography-gutterBottom {
   margin-bottom: 0 !important;
 }
 
-.MuiCardContent-root {
-  padding-left: 30px !important;
+.view_more {
+  background: #FFFFFF;
+  font-family: Roboto;
+  font-weight: bolder;
+  font-size: 18px;
+  width: 163px;
+  height: 57px;
+  border : 3px solid black;
+  display: block;
+  margin: auto;
 }
+
+#style_card_div .view_more {
+  margin-bottom: 5ex;
+  margin-top: 3ex;
+}
+
+.MuiCardMedia-root {
+  background-size: 100% !important;
+}
+
+.slick-track {
+  display:flex;
+}
+
+.style_info_img {
+  position:relative;
+  width: 290px;
+  height: 500px;
+  display:flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-content: center !important;
+}
+
+.style_info_img::after {
+  width:100%;
+  height:100%;
+  background-image: url("../images/home/style_info_image.png") !important;
+  background-repeat: no-repeat;
+  content:"";
+  opacity: 0.4;
+  background-size: 100%;
+  position:absolute;
+  z-index: -1;
+}
+
+.style_info_img > h2{
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.style_info_img .view_more {
+  margin-bottom: 0;
+  margin-top: 0;
+  background-color :#000000;
+  color:#ffffff;
+}
+
