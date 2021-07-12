@@ -33,9 +33,9 @@ router.get('/', function(req, res, next) {
 			const image = record[24].split(",")
 			// TODO: 이미지 처리
 			connection.query("insert into product \
-				(id, name, brand, code, gender, type, detail, color, fit, season, fiber, age, style, price, image1ID, image2ID, image3ID) \
-				values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-				[id, name, brand, code, gender, type, detail, color, fit, season, fiber, age, style, price, image[0], image[1] || null, image[2] || null],
+				(id, name, brand, code, gender, type, detail, color, fit, season, fiber, age, style, price, size, image1ID, image2ID, image3ID) \
+				values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+				[id, name, brand, code, gender, type, detail, color, fit, season, fiber, age, style, price, size, image[0], image[1] || null, image[2] || null],
 				(err, result) => {
 					if (err)
 						console.error(err)
