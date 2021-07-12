@@ -243,7 +243,6 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 9ex;
 }
 
 .style div {
@@ -285,4 +284,35 @@ h1 {
   font-family: 'Nanum Gothic', sans-serif;
   font-weight: bolder;
   font-size: 17px;
+  margin-bottom: 3em;
+}
+
+#style_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#style_card div {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3ex;
+}
+
+.MuiTypography-h5 {
+  font-weight: bold !important;
+}
+
+.MuiCardContent-root {
+  display: flex !important;
+  flex-direction: column !important;
+  width:294px !important;
+}
+
+.MuiTypography-gutterBottom {
+  margin-bottom: 0 !important;
+}
+
+.MuiCardContent-root {
+  padding-left: 30px !important;
 }
