@@ -43,7 +43,7 @@ app.use(function (req, res, next) {
 const sessionStore = new sessionMySQLStore({
 	host: 'localhost',
 	port: 3306,
-	user: 'root',
+	user: 'leeseungyun',
 	password: 'lsy1020',
 	database: 'session'
 })
