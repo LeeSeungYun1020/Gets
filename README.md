@@ -139,7 +139,7 @@ create table user
     birthday      DATE,
     address       NVARCHAR(128),
     addressDetail NVARCHAR(128),
-    gender        CHAR(1),
+    gender        INT,
     height        INT,
     weight        INT,
     topSize       INT,
