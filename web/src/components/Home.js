@@ -66,7 +66,7 @@ function Home(props) {
             <HomeMagazine/>
             <HomeStyleSelect title={t("select_info")} list={selectAreaList}/>
             <HomeRecommend title={t("select_style")} chips={chipList} text={t("recommend_button")}/>
-            <HomeRecommendStyle title={t("recommend_style")} content={t("recommend_content")}/>
+            <HomeRecommendStyle title={t("recommend_style")} content={t("recommend_content")} text={t("view_more")}/>
         </section>
     )
 }
