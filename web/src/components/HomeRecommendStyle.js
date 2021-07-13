@@ -16,21 +16,27 @@ class HomeRecommendStyle extends React.Component {
                 <div id = "style_card_div">
                     <div id = "style_card">
                         <div>
-                            <HomeRecommendCard image={style_example}/>
-                            <HomeRecommendCard image={style_example}/>
-                            <HomeRecommendCard image={style_example}/>
-                            <HomeRecommendCard image={style_example}/>
-                        </div>
-                        <div>
-                            <HomeRecommendCard image={style_example}/>
-                            <HomeRecommendCard image={style_example}/>
-                            <HomeRecommendCard image={style_example}/>
-                            <HomeRecommendCard image={style_example}/>
+                            <div>
+                                <HomeRecommendCard image={style_example}/>
+                                <HomeRecommendCard image={style_example}/>
+                            </div>
+                            <div>
+                                <HomeRecommendCard image={style_example}/>
+                                <HomeRecommendCard image={style_example}/>
+                            </div>
+                            <div>
+                                <HomeRecommendCard image={style_example}/>
+                                <HomeRecommendCard image={style_example}/>
+                            </div>
+                            <div>
+                                <HomeRecommendCard image={style_example}/>
+                                <HomeRecommendCard image={style_example}/>
+                            </div>
                         </div>
                     </div>
                     <button className="view_more">{this.props.text}</button>
                 </div>
-                <HomeStyleInfoSlick />
+                {/*<HomeStyleInfoSlick />*/}
             </>
         )
     }
