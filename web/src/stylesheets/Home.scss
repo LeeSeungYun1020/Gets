@@ -204,14 +204,14 @@ h1 {
   border: 5px solid #d4d3d3;
   border-radius: 70%;
   padding: 5px;
-  margin: 8ex 1vw 3ex;
+  margin: 1vw;
 }
 
 .style_selected {
   border: 5px solid #7eb693;
   border-radius: 70%;
   padding: 5px;
-  margin: 8ex 1vw 3ex;
+  margin: 1vw;
   //color : #7eb693;
 }
 
@@ -222,7 +222,6 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 9ex;
 }
 
 .style_deselected_text {
@@ -232,7 +231,6 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 9ex;
 }
 
 
@@ -248,6 +246,8 @@ h1 {
 .style div {
   display: flex;
   flex-direction: column;
+  margin-top:3px;
+  margin-bottom: 3px;
 }
 
 #recommend > button {
@@ -259,6 +259,7 @@ h1 {
   height: 57px;
   border : 3px solid black;
   margin-bottom: 5ex;
+  margin-top: 4ex;
 }
 
 #recommend_line {
@@ -270,6 +271,10 @@ h1 {
 #recommend_style > h1 {
   margin-top:5ex;
   margin-bottom: 1ex;
+}
+
+#recommend > h1 {
+  margin-bottom: 40px;
 }
 
 #recommend_style {
@@ -297,6 +302,7 @@ h1 {
   display: flex;
   justify-content: center;
   margin-bottom: 3ex;
+  flex-wrap: wrap;
 }
 
 .MuiTypography-h5 {

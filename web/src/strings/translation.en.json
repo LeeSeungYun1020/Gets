@@ -68,5 +68,7 @@
   "view_more" : "VIEW MORE",
   "recommend_content" : "AI recommends a coordination set that suits your taste",
   "not_found_title": "404. Page not found",
-  "not_found_subtitle": "We can't find that page"
+  "not_found_subtitle": "We can't find that page",
+  "korean" : "한국어",
+  "english" : "english"
 }
