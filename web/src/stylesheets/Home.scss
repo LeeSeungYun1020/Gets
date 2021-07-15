@@ -381,3 +381,37 @@ h1 {
   color:#ffffff;
 }
 
+#style_select .jylytn {
+  background-color: #ffffff;
+  color: #000000 !important;
+}
+
+#style_select .kmBEJr {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+#style_info_box {
+  display: flex;
+  padding-left: 10px;
+}
+
+#style_info_box .eLUbDq {
+  border: none !important;
+}
+
+#style_info_box .cQOkHd {
+  fill: black !important;
+  stroke: black !important;
+}
+
+#style_info_box h3 {
+  color: #828282;
+}
+
+#info_1, #info_2, #info_3, #info_4 {
+  border-right: 2px solid #d4d3d3;
+  height:70%;
+  margin-top: auto;
+  margin-left: 15px;
+}

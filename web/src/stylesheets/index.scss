@@ -1,9 +1,9 @@
 @use "node_modules/@material/theme/index" with ($primary: #7eb693, $secondary: #FFFFFF, $background: #000000);
 //@use "node_modules/@material/button/mdc-button";
 //@use "node_modules/@material/button";
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 @import url("https://fonts.googleapis.com/earlyaccess/notosanskr.css");
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900");
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
 body {
     margin: 0;
@@ -119,8 +119,6 @@ footer #footer_layout {
 
 footer #footer_logo {
   font-size: 3ex;
-  margin-bottom: 40px;
-  margin-top: 60px;
   margin-left: 10vw;
 }
 #footer_logo > img {
@@ -129,11 +127,22 @@ footer #footer_logo {
 }
 footer #detail {
   display: flex;
-  height: 280px;
+  margin-bottom: 20px;
 }
 
+#footer_top {
+  margin-top: 60px;
+  margin-bottom: 40px;
+  display:flex;
+}
 
+#footer_icon {
+  margin-left: 42vw;
+}
 
+#footer_icon > img {
+  margin-left: 1.5vw;
+}
 footer .detail_component {
   display: flex;
   flex-direction: column;
@@ -155,6 +164,16 @@ footer .footer_title {
 
 .footer_category > span {
   margin-bottom: 1.5ex;
+}
+
+#footer_address {
+  color: #828282;
+  font-family: 'Nanum Gothic', sans-serif;
+  margin-bottom: 30px;
+}
+
+#footer_address div{
+  margin-bottom: 5px;
 }
 
 .not_found_box {
@@ -194,4 +213,9 @@ footer .footer_title {
 
 .gVrQNs {
   padding: 0 0 4px !important;
+}
+
+.cQOkHd {
+  width: 38px !important;
+  height: auto !important;
 }

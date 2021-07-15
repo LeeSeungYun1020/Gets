@@ -1,3 +1,4 @@
+import '../stylesheets/Home.scss';
 import {useTranslation} from 'react-i18next'
 import FooterDetail from "./FooterDetail";
 import link from "../link";
@@ -7,6 +8,7 @@ import i18next from 'i18next';
 import React from "react";
 import { Select, Box, Grommet } from 'grommet';
 import { CaretDownFill } from 'grommet-icons';
+import FooterAddress from "./FooterAddress";
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -74,6 +76,7 @@ function Footer(props) {
                         }
                     ></Select>
                 </div>
+                <FooterAddress phoneNumber={t("phone_number")} address={t("address")}/>
             </div>
 
         </footer>
