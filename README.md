@@ -295,7 +295,7 @@ create table product
 create table question(
                        userEmail   VARCHAR(64) NOT NULL,
                        title   VARCHAR(256),
-                       contents    VARCHAR(4096),
+                       contents    TEXT,
                        FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
