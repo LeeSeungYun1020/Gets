@@ -191,11 +191,11 @@ create table review
 create table article(
                       id        INT PRIMARY KEY AUTO_INCREMENT,
                       title     VARCHAR(256)  NOT NULL,
-                      userEmail VARCHAR(64)   NOT NULL,
+                      userEmail VARCHAR(64),
                       date      DATE          NOT NULL DEFAULT (current_date),
-                      contents  TEXT          NOT NULL,
-                      image1ID  INT           DEFAULT NULL,
-                      image2ID  INT           DEFAULT NULL,
+                      contents  JSON          NOT NULL,
+                      imageID  INT           NOT NULL,
+                      status  BOOLEAN         DEFAULT FALSE,
                       FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
