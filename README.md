@@ -131,21 +131,21 @@ create database gets;
 use gets;
 create table user
 (
-    email         VARCHAR(64) PRIMARY KEY,
-    pw            VARCHAR(32)                        NOT NULL,
-    name          NVARCHAR(16)                       NOT NULL,
-    type          ENUM ('client','manager','editor') NOT NULL DEFAULT 'client',
-    phone         VARCHAR(16),
-    birthday      DATE,
-    address       NVARCHAR(128),
-    addressDetail NVARCHAR(128),
-    gender        INT,
-    height        INT,
-    weight        INT,
-    topSize       INT,
-    bottomSize    INT,
-    style         INT,
-    fit           INT
+  email         VARCHAR(64) PRIMARY KEY,
+  pw            VARCHAR(32)                        NOT NULL,
+  name          NVARCHAR(16)                       NOT NULL,
+  type          ENUM ('client','editor','manager') NOT NULL DEFAULT 'client',
+  phone         VARCHAR(16),
+  birthday      DATE,
+  address       NVARCHAR(128),
+  addressDetail NVARCHAR(128),
+  gender        INT,
+  height        INT,
+  weight        INT,
+  topSize       INT,
+  bottomSize    INT,
+  style         INT,
+  fit           INT
 );
 
 create table product
@@ -166,80 +166,122 @@ create table product
   price    INT           NOT NULL,
   size     VARCHAR(128)  NOT NULL,
   image1ID VARCHAR(32)   NOT NULL,
-  image2ID VARCHAR(32) DEFAULT NULL,
-  image3ID VARCHAR(32) DEFAULT NULL
+  image2ID VARCHAR(32)   DEFAULT NULL,
+  image3ID VARCHAR(32)   DEFAULT NULL
 );
 
 create table review
 (
-    id        INT PRIMARY KEY AUTO_INCREMENT,
-    userEmail VARCHAR(64)   NOT NULL,
-    productID INT           NOT NULL,
-    star      INT           NOT NULL,
-    contents  VARCHAR(2048) NOT NULL,
-    date      DATE          NOT NULL DEFAULT (current_date),
-    image1ID  INT           NOT NULL,
-    image2ID  INT                    DEFAULT NULL,
-    image3ID  INT                    DEFAULT NULL,
-    FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL,
-    FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
+  id        INT PRIMARY KEY AUTO_INCREMENT,
+  userEmail VARCHAR(64)   NOT NULL,
+  productID INT           NOT NULL,
+  star      INT           NOT NULL,
+  contents  VARCHAR(2048) NOT NULL,
+  date      DATE          NOT NULL DEFAULT (current_date),
+  image1ID  INT           NOT NULL,
+  image2ID  INT                    DEFAULT NULL,
+  image3ID  INT                    DEFAULT NULL,
+  FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL,
+  FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 create table article
 (
-    id       INT PRIMARY KEY AUTO_INCREMENT,
-    title    VARCHAR(512),
-    contents JSON
+  id        INT PRIMARY KEY AUTO_INCREMENT,
+  title     VARCHAR(512),
+  userEmail VARCHAR(64),
+  date      DATE         NOT NULL DEFAULT (current_date),
+  contents  JSON,
+  imageID   INT          NOT NULL,
+  status    BOOLEAN      NOT NULL DEFAULT FALSE,
+  FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
-# 아래 파트는 아직 확정되지 않음
+create table userCoordination
+(
+  id        INT PRIMARY KEY AUTO_INCREMENT,
+  userEmail VARCHAR(64) NOT NULL,
+  outerID   INT DEFAULT NULL,
+  topID     INT DEFAULT NULL,
+  bottomID  INT DEFAULT NULL,
+  setID     INT DEFAULT NULL,
+  shoesID   INT DEFAULT NULL,
+  bagID     INT DEFAULT NULL,
+  hatID     INT DEFAULT NULL,
+  FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL,
+  FOREIGN KEY (outerID, topID, bottomID, setID, shoesID, bagID, hatID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
+);
 
 create table coordination
 (
-    id        INT PRIMARY KEY AUTO_INCREMENT,
-    userEmail VARCHAR(64) NOT NULL,
-    outerID   INT DEFAULT NULL,
-    topID     INT DEFAULT NULL,
-    bottomID  INT DEFAULT NULL,
-    setID     INT DEFAULT NULL,
-    shoesID   INT DEFAULT NULL,
-    bagID     INT DEFAULT NULL,
-    hatID     INT DEFAULT NULL,
-    FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL,
-    FOREIGN KEY (outerID, topID, bottomID, setID, shoesID, bagID, hatID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
+  id            INT PRIMARY KEY AUTO_INCREMENT,
+  title         VARCHAR(64),
+  outerID       INT,
+  outerImageID  INT,
+  topID         INT,
+  topImageID    INT,
+  bottomID      INT,
+  bottomImageID INT,
+  skirtID       INT,
+  skirtImageID  INT,
+  setID         INT,
+  setImageID    INT,
+  shoesID       INT,
+  shoesImageID  INT,
+  bagID         INT,
+  bagImageID    INT,
+  hatID         INT,
+  hatImageID    INT,
+  style         INT,
+  gender        INT,
+  age           INT,
+  bodyshape     INT,
+  price         INT,
+  weather       INT,
+  imageID       INT
 );
 
 create table cart
 (
-    id        INT PRIMARY KEY AUTO_INCREMENT,
-    userEmail VARCHAR(64) NOT NULL,
-    productID INT         NOT NULL DEFAULT (current_date),
-    count     INT         NOT NULL DEFAULT 1,
-    size      INT         NOT NULL,
-    FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL,
-    FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
+  id        INT PRIMARY KEY AUTO_INCREMENT,
+  userEmail VARCHAR(64) NOT NULL,
+  productID INT         NOT NULL DEFAULT (current_date),
+  count     INT         NOT NULL DEFAULT 1,
+  size      INT         NOT NULL,
+  FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL,
+  FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-create table closet
+create table userProduct
 (
-    id        INT PRIMARY KEY AUTO_INCREMENT,
-    userEmail VARCHAR(64) NOT NULL,
-    productID INT         NOT NULL,
-    FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL,
-    FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
+  id        INT PRIMARY KEY AUTO_INCREMENT,
+  userEmail VARCHAR(64) NOT NULL,
+  productID INT         NOT NULL,
+  FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL,
+  FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 create table purchase
 (
-    id        INT PRIMARY KEY AUTO_INCREMENT,
-    userEmail VARCHAR(64) NOT NULL,
-    productID INT         NOT NULL,
-    date      DATE        NOT NULL,
-    status    INT         NOT NULL DEFAULT 0,
-    orderNum  INT         NOT NULL,
-    FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL,
-    FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
+  id        INT PRIMARY KEY AUTO_INCREMENT,
+  userEmail VARCHAR(64) NOT NULL,
+  productID INT         NOT NULL,
+  date      DATE        NOT NULL,
+  status    INT         NOT NULL DEFAULT 0,
+  orderNum  INT         NOT NULL,
+  FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL,
+  FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+create table question
+(
+  userEmail VARCHAR(64) NOT NULL,
+  title     VARCHAR(256),
+  contents  TEXT,
+  FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL
+);
+
+create database session;
 ```
 
 ##### 서버 실행
