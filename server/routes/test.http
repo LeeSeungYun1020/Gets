@@ -1,3 +1,11 @@
+POST http://localhost:3000/api/item
+Content-Type: application/json
+{
+"style": "1024",
+"color": "17"
+}
+
+###
 POST http://localhost:3000/api/signup/check
 Content-Type: application/json
 

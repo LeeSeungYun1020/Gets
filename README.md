@@ -164,11 +164,10 @@ create table product
   age      INT           NOT NULL,
   style    INT           NOT NULL,
   price    INT           NOT NULL,
-  size     INT           NOT NULL,
+  size     VARCHAR(128)  NOT NULL,
   image1ID VARCHAR(32)   NOT NULL,
   image2ID VARCHAR(32)   DEFAULT NULL,
-  image3ID VARCHAR(32)   DEFAULT NULL,
-  url      VARCHAR(2048) DEFAULT NULL
+  image3ID VARCHAR(32)   DEFAULT NULL
 );
 
 create table review
@@ -189,12 +188,12 @@ create table review
 create table article
 (
   id        INT PRIMARY KEY AUTO_INCREMENT,
-  title     VARCHAR(256) NOT NULL,
+  title     VARCHAR(512),
   userEmail VARCHAR(64),
   date      DATE         NOT NULL DEFAULT (current_date),
-  contents  JSON         NOT NULL,
+  contents  JSON,
   imageID   INT          NOT NULL,
-  status    BOOLEAN               DEFAULT FALSE,
+  status    BOOLEAN      NOT NULL DEFAULT FALSE,
   FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
@@ -272,28 +271,6 @@ create table purchase
   orderNum  INT         NOT NULL,
   FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL,
   FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-create table product
-(
-  id       INT PRIMARY KEY AUTO_INCREMENT,
-  name     NVARCHAR(128) NOT NULL,
-  brand    NVARCHAR(128) NOT NULL,
-  code     NVARCHAR(64),
-  gender   INT           NOT NULL,
-  type     INT           NOT NULL,
-  detail   INT           NOT NULL,
-  color    INT           NOT NULL,
-  fit      INT           NOT NULL,
-  season   INT           NOT NULL,
-  fiber    INT           NOT NULL,
-  age      INT           NOT NULL,
-  style    INT           NOT NULL,
-  price    INT           NOT NULL,
-  size     VARCHAR(128)  NOT NULL,
-  image1ID VARCHAR(32)   NOT NULL,
-  image2ID VARCHAR(32) DEFAULT NULL,
-  image3ID VARCHAR(32) DEFAULT NULL
 );
 
 create table question
