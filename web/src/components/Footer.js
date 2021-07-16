@@ -1,4 +1,3 @@
-import '../stylesheets/Home.scss';
 import {useTranslation} from 'react-i18next'
 import FooterDetail from "./FooterDetail";
 import link from "../link";
@@ -9,6 +8,7 @@ import React from "react";
 import { Select, Box, Grommet } from 'grommet';
 import { CaretDownFill } from 'grommet-icons';
 import FooterAddress from "./FooterAddress";
+import { hpe } from 'grommet-theme-hpe';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     selectEmpty: {
         marginTop: theme.spacing(2),
     },
-
+    selectBackground: "red"
 }));
 
 function changeLang(lang) {
@@ -57,24 +57,27 @@ function Footer(props) {
                             {title: t("account_mystyle"), link: link.style},
                             {title: t("account_order"), link: link.order},
                         ]}/>
-                    <Select
-                        options={options}
-                        placeholder={t("korean")}
-                        labelKey='label'
-                        valueKey='value'
-                        onChange={({ option }) => {
-                            changeLang(option.value);
-                        }}
-                        alignSelf='start'
-                        style={{
-                            width: '8vw',
-                        }}
-                        icon={
-                            <Box>
-                                <CaretDownFill size="medium" color="#d4d3d3" />
-                            </Box>
-                        }
-                    ></Select>
+                    <Grommet theme={hpe} background={"#00200F"}>
+                        <Select options={options}
+                                placeholder={t("korean")}
+                                labelKey='label'
+                                valueKey='value'
+                                onChange={({ option }) => {
+                                    changeLang(option.value);
+                                }}
+                                alignSelf='start'
+                                style={{
+                                    width: '8vw',
+                                }}
+
+                                icon={
+                                    <Box>
+                                        <CaretDownFill size="medium" color="#d4d3d3" />
+                                    </Box>
+                                }>
+
+                        </Select>
+                    </Grommet>
                 </div>
                 <FooterAddress phoneNumber={t("phone_number")} address={t("address")}/>
             </div>
