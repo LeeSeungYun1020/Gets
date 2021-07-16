@@ -36,7 +36,7 @@ class HomeRecommendStyle extends React.Component {
                     </div>
                     <button className="view_more">{this.props.text}</button>
                 </div>
-                {/*<HomeStyleInfoSlick />*/}
+
             </>
         )
     }
