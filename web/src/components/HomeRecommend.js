@@ -37,7 +37,7 @@ class HomeRecommend extends React.Component {
                     {chips}
                 </div>
                 <button>{this.props.text}</button>
-                <div id="recommend_line"></div>
+                <div class="recommend_line"></div>
             </div>
         )
     }

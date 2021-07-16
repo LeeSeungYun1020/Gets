@@ -70,5 +70,8 @@
   "not_found_title": "404. 페이지를 찾을 수 없음",
   "not_found_subtitle": "해당 페이지를 찾을 수 없습니다.",
   "korean" : "한국어",
-  "english" : "english"
+  "english" : "english",
+  "phone_number" : "TEL : 051-510-3737, 3738, 3624",
+  "address" : "(46241) 부산시 금정구 부산대학로63번길 2 (장전동) 부산대학교 과학기술연구동 405호 ",
+  "style_guide" : "#스타일 가이드"
 }
