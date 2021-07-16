@@ -180,6 +180,13 @@ footer .footer_title {
   text-align: center;
 }
 
+// 언어 선택하는 드롭다운 박스 배경
+.eLUbDq {
+  border:none !important;
+  border-radius: 0px !important;
+  border-bottom: 2px solid #d4d3d3 !important;
+}
+
 // footer 드롭다운 테두리 없앰
 .cNXtw {
   border: none !important;
@@ -190,6 +197,7 @@ footer .footer_title {
   width: 9vw;
 }
 
+// 드롭다운 화살표 아이콘
 // 드롭다운 박스 테두리 준거
 .jAWuzL {
   border-bottom: 2px solid #FFFFFF;
@@ -200,5 +208,20 @@ footer .footer_title {
 }
 
 .cVOXoU {
+  margin: 0px !important;
+}
+
+// 드롭다운 박스 안에 글자 padding
+.gVrQNs {
+  padding: 0 0 4px !important;
   margin: 0 !important;
+}
+
+.gXxxge {
+  font-family: 'Nanum Gothic', sans-serif !important;
+  font-weight: bolder !important;
+}
+
+.grKNhv {
+  font-family: 'Nanum Gothic', sans-serif !important;
 }

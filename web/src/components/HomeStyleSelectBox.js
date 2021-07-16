@@ -1,6 +1,7 @@
 import React from "react";
 import {Box, Select} from "grommet";
 import {CaretDownFill} from "grommet-icons";
+import select_nav from "../images/home/select_nav.webp"
 function HomeStyleSelectBox(props) {
     const [value, setValue] = React.useState(props.default);
     return (

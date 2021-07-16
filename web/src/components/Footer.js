@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
     selectEmpty: {
         marginTop: theme.spacing(2),
     },
-    selectBackground: "red"
 }));
 
 function changeLang(lang) {
@@ -29,6 +28,7 @@ function Footer(props) {
         { label: '한국어', value: 'ko' },
         { label: 'English', value: 'en'}
     ];
+    // const [value, setValue] = React.useState('ko');
     const {t, i18n} = useTranslation()
     return (
         <footer id="main_footer">
