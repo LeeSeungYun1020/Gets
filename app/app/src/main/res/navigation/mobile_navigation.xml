@@ -12,14 +12,19 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.sys.gets.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_closet"
+        android:name="com.sys.gets.ui.closet.ClosetFragment"
+        android:label="@string/title_closet"
+        tools:layout="@layout/fragment_closet" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.sys.gets.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_product"
+        android:name="com.sys.gets.ui.product.ProductFragment"
+        android:label="@string/title_product"
+        tools:layout="@layout/fragment_product" />
+    <fragment
+        android:id="@+id/navigation_magazine"
+        android:name="com.sys.gets.ui.magazine.MagazineFragment"
+        android:label="@string/title_magazine"
+        tools:layout="@layout/fragment_magazine" />
 </navigation>
