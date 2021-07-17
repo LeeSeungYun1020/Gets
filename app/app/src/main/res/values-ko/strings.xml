@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GETs</string>
+    <string name="title_home">홈</string>
+    <string name="title_closet">옷장</string>
+    <string name="title_product">제품</string>
+    <string name="title_magazine">스타일</string>
+</resources>
