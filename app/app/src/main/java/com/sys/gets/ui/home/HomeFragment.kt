@@ -4,20 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
+import com.sys.gets.R
 import com.sys.gets.databinding.FragmentHomeBinding
+
+private const val NUM_PAGES = 5
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var viewPager: ViewPager2
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,16 +31,64 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        viewPager = binding.mainSlider
+        val pagerAdapter = ScreenSlidePagerAdapter(requireActivity())
+        viewPager.adapter = pagerAdapter
+        //viewPager.setPageTransformer(ZoomOutPageTransformer())
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
+        override fun getItemCount(): Int = NUM_PAGES
+
+        override fun createFragment(position: Int): Fragment =
+            SliderFragment.newInstance(position, R.drawable.sl_welcome)
+    }
+}
+
+private const val MIN_SCALE = 0.85f
+private const val MIN_ALPHA = 0.5f
+
+class ZoomOutPageTransformer : ViewPager2.PageTransformer {
+
+    override fun transformPage(view: View, position: Float) {
+        view.apply {
+            val pageWidth = width
+            val pageHeight = height
+            when {
+                position < -1 -> { // [-Infinity,-1)
+                    // This page is way off-screen to the left.
+                    alpha = 0f
+                }
+                position <= 1 -> { // [-1,1]
+                    // Modify the default slide transition to shrink the page as well
+                    val scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position))
+                    val vertMargin = pageHeight * (1 - scaleFactor) / 2
+                    val horzMargin = pageWidth * (1 - scaleFactor) / 2
+                    translationX = if (position < 0) {
+                        horzMargin - vertMargin / 2
+                    } else {
+                        horzMargin + vertMargin / 2
+                    }
+
+                    // Scale the page down (between MIN_SCALE and 1)
+                    scaleX = scaleFactor
+                    scaleY = scaleFactor
+
+                    // Fade the page relative to its size.
+                    alpha = (MIN_ALPHA +
+                            (((scaleFactor - MIN_SCALE) / (1 - MIN_SCALE)) * (1 - MIN_ALPHA)))
+                }
+                else -> { // (1,+Infinity]
+                    // This page is way off-screen to the right.
+                    alpha = 0f
+                }
+            }
+        }
     }
 }
