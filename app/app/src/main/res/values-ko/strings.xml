@@ -26,4 +26,6 @@
     <string name="login_find_id">아이디 찾기</string>
     <string name="login_find_pw">비밀번호 찾기</string>
     <string name="login_find_signup">회원가입</string>
+    <string name="msg_server_error">서버와 통신이 원활하지 않습니다.</string>
+    <string name="msg_signin_error">입력하신 정보가 일치하지 않습니다.</string>
 </resources>

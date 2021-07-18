@@ -26,4 +26,6 @@
     <string name="login_find_id">Find ID</string>
     <string name="login_find_pw">Find PW</string>
     <string name="login_find_signup">Sign up</string>
+    <string name="msg_server_error">The connection with the server is not smooth.</string>
+    <string name="msg_signin_error">The information you entered does not match.</string>
 </resources>
