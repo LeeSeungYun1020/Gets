@@ -1,6 +1,7 @@
 package com.sys.gets.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +12,12 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.sys.gets.R
 import com.sys.gets.databinding.FragmentHomeBinding
+import com.sys.gets.ui.MainViewModel
 
 private const val NUM_PAGES = 5
 
 class HomeFragment : Fragment() {
-
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var mainViewModel: MainViewModel
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewPager: ViewPager2
@@ -26,11 +27,16 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
+        // 초기화 - 바인딩, 뷰모델
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+
+        // 스크롤
+        binding.root.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            mainViewModel.navigationVisibility.value = scrollY <= oldScrollY
+            Log.d("MYTAG", "SCR: $v $scrollY $oldScrollY")
+        }
 
         // 메인 배너
         viewPager = binding.mainSlider
