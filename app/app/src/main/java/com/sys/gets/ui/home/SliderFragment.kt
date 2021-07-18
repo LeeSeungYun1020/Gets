@@ -34,9 +34,7 @@ class SliderFragment : Fragment() {
     ): View? {
         _binding = FragmentSliderBinding.inflate(inflater, container, false)
         binding.sliderImage.setImageDrawable(null)
-        //binding.sliderImage.setImageResource(imageID ?: R.drawable.sl_welcome)
-        //binding.sliderImage.invalidate()
-        binding.sliderImage.setImageDrawable(resources.getDrawable(R.drawable.sl_welcome))
+        binding.sliderImage.setImageResource(imageID ?: R.drawable.sl_welcome)
         Log.d("MYTAG", "setimageresource")
         return inflater.inflate(R.layout.fragment_slider, container, false)
     }
