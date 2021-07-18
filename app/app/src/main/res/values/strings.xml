@@ -20,4 +20,10 @@
     <string name="home_style_guide"># Style guide</string>
     <string name="button_more">More</string>
     <string name="home_style_view"># View style</string>
+    <string name="login_id_field">Email</string>
+    <string name="login_pw_field">Enter your password</string>
+    <string name="login_signin">Sign in</string>
+    <string name="login_find_id">Find ID</string>
+    <string name="login_find_pw">Find PW</string>
+    <string name="login_find_signup">Sign up</string>
 </resources>
