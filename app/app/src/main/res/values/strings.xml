@@ -17,4 +17,7 @@
     <string name="style_lovely">Lovely</string>
     <string name="style_sexy_glam">Sexy glam</string>
     <string name="hint_title" translatable="false"># Title</string>
+    <string name="home_style_guide"># Style guide</string>
+    <string name="button_more">More</string>
+    <string name="home_style_view"># View style</string>
 </resources>

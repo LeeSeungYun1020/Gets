@@ -47,6 +47,9 @@ class HomeFragment : Fragment() {
         // 맞춤 추천
         initCustomRecommendation()
 
+        // 스타일 가이드
+        initStyleGuide()
+
         return root
     }
 
@@ -55,7 +58,7 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    fun initCustomRecommendation() {
+    private fun initCustomRecommendation() {
         binding.customList.apply {
             listTitle.setText(R.string.home_custom_recommendation)
             // TODO: 네트워크 통신하여 서버에서 코디 이미지 가져오기 또는 코디 이미지 아이디 가져오기
@@ -66,6 +69,30 @@ class HomeFragment : Fragment() {
             listItem5.setImageResource(R.drawable.tm_custom)
             listItem6.setImageResource(R.drawable.tm_custom)
 
+        }
+    }
+
+    private fun initStyleGuide() {
+        binding.styleGuide.apply {
+            styleTitle.setText(R.string.home_style_guide)
+            val style = listOf(
+                R.string.style_amekaji,
+                R.string.style_casual,
+                R.string.style_campus,
+                R.string.style_city_boy,
+                R.string.style_feminine,
+                R.string.style_lovely,
+                R.string.style_minimal,
+                R.string.style_office,
+                R.string.style_rock_chic,
+                R.string.style_sexy_glam,
+                R.string.style_street
+            )
+
+            style.forEach {
+                styleTab.addTab(styleTab.newTab().setText(it))
+            }
+            styleLookText.setText(R.string.home_style_view)
         }
     }
 
