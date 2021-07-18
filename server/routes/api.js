@@ -17,21 +17,13 @@ module.exports = function (passport) {
 	});
 	
 	router.post('/signin',
-		passport.authenticate('local',
-			{
-				successRedirect: '/api/signin/success',
-				failureRedirect: '/api/signin/fail'
-			}),
+		passport.authenticate('local', {
+			session: true,
+			failureRedirect: '/api/signin/fail'
+		}),
 		(req, res) => {
-			console.log(req.user)
-		})
-	
-	router.get("/signin/success", (req, res) => {
-		if (req.user)
 			res.send({user: req.user, result: true})
-		else
-			res.send({result: false})
-	})
+		})
 	
 	router.get("/signin/fail", (req, res) => {
 		res.send({result: false})
