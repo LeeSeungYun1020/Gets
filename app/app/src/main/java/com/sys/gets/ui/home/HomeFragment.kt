@@ -31,16 +31,36 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        // 메인 배너
         viewPager = binding.mainSlider
         val pagerAdapter = ScreenSlidePagerAdapter(requireActivity())
         viewPager.adapter = pagerAdapter
-        //viewPager.setPageTransformer(ZoomOutPageTransformer())
+        viewPager.setPageTransformer(ZoomOutPageTransformer())
+
+        // 맞춤 추천
+        initCustomRecommendation()
+
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun initCustomRecommendation() {
+        binding.customList.apply {
+            listTitle.setText(R.string.home_custom_recommendation)
+            // TODO: 네트워크 통신하여 서버에서 코디 이미지 가져오기 또는 코디 이미지 아이디 가져오기
+            listItem1.setImageResource(R.drawable.tm_custom)
+            listItem2.setImageResource(R.drawable.tm_custom)
+            listItem3.setImageResource(R.drawable.tm_custom)
+            listItem4.setImageResource(R.drawable.tm_custom)
+            listItem5.setImageResource(R.drawable.tm_custom)
+            listItem6.setImageResource(R.drawable.tm_custom)
+
+        }
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
@@ -51,8 +71,8 @@ class HomeFragment : Fragment() {
     }
 }
 
-private const val MIN_SCALE = 0.85f
-private const val MIN_ALPHA = 0.5f
+private const val MIN_SCALE = 0.95f
+private const val MIN_ALPHA = 0.7f
 
 class ZoomOutPageTransformer : ViewPager2.PageTransformer {
 
