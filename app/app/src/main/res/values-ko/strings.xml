@@ -5,4 +5,5 @@
     <string name="title_closet">옷장</string>
     <string name="title_product">제품</string>
     <string name="title_magazine">스타일</string>
+    <string name="home_custom_recommendation"># 맞춤 추천</string>
 </resources>
