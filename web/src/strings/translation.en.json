@@ -18,6 +18,7 @@
   "age_50": "50s ~",
   "lower_body_fat": "chubby lower body",
   "upper_body_fat": "chubby upper body",
+  "regular": "regular",
   "slim": "slim",
   "tall": "tall",
   "short": "short",
@@ -73,5 +74,15 @@
   "english" : "english",
   "phone_number" : "TEL : 051-510-3737, 3738, 3624",
   "address" : "2, Busandaehak-ro 63beon-gil, Geumjeong-gu, Busan, Republic of Korea PNU Science and Technology Research Center 405ho ",
-  "style_guide" : "#style guide"
+  "style_guide" : "#style guide",
+  "login" : "LOGIN",
+  "input_id" : "Enter your ID",
+  "input_password" : "Enter your Password",
+  "login_info_1" : "Hello!",
+  "login_info_2" : "This is your convenient online closet,",
+  "login_info_3" : "Gets.",
+  "find_id" : "FIND ID",
+  "find_pw" : "FIND P/W",
+  "register" : "REGISTER",
+  "simple_register" : "Easier login/membership"
 }

@@ -46,7 +46,7 @@ function Home(props) {
             title: t("body_type"),
             index: 3,
             default: t("lower_body_fat"),
-            list: [t("lower_body_fat"), t("upper_body_fat"), t("slim"), t("tall"), t("short")]
+            list: [t("lower_body_fat"), t("upper_body_fat"),t("regular"), t("slim"), t("tall"), t("short")]
         },
         {
             title: t("fit"),
