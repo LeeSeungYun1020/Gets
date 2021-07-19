@@ -50,6 +50,8 @@ class HomeFragment : Fragment() {
         // 스타일 가이드
         initStyleGuide()
 
+        // 인기 항목
+        initTopTrends()
         return root
     }
 
@@ -93,6 +95,19 @@ class HomeFragment : Fragment() {
                 styleTab.addTab(styleTab.newTab().setText(it))
             }
             styleLookText.setText(R.string.home_style_view)
+        }
+    }
+
+    private fun initTopTrends() {
+        binding.topTrendsList.apply {
+            listTitle.setText(R.string.home_top_trends)
+            // TODO: 서버에서 인기 코디 이미지 가져오기
+            listItem1.setImageResource(R.drawable.tm_custom)
+            listItem2.setImageResource(R.drawable.tm_custom)
+            listItem3.setImageResource(R.drawable.tm_custom)
+            listItem4.setImageResource(R.drawable.tm_custom)
+            listItem5.setImageResource(R.drawable.tm_custom)
+            listItem6.setImageResource(R.drawable.tm_custom)
         }
     }
 

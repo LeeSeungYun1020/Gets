@@ -28,4 +28,5 @@
     <string name="login_find_signup">Sign up</string>
     <string name="msg_server_error">The connection with the server is not smooth.</string>
     <string name="msg_signin_error">The information you entered does not match.</string>
+    <string name="home_top_trends"># Top trends</string>
 </resources>
