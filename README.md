@@ -167,7 +167,8 @@ create table product
   size     VARCHAR(128)  NOT NULL,
   image1ID VARCHAR(32)   NOT NULL,
   image2ID VARCHAR(32)   DEFAULT NULL,
-  image3ID VARCHAR(32)   DEFAULT NULL
+  image3ID VARCHAR(32)   DEFAULT NULL,
+  favorite INT           NOT NULL DEFAULT 0
 );
 
 create table review
