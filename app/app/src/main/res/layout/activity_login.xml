@@ -59,11 +59,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/login_signin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pw_field" />
+            app:layout_constraintTop_toBottomOf="@+id/pw_field"
+            app:shapeAppearance="@style/ShapeAppearance.App.SmallComponent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/kakao_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="4dp"
+            android:backgroundTint="#fae100"
+            android:text="@string/login_kakao"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signin_button"
+            app:shapeAppearance="@style/ShapeAppearance.App.SmallComponent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/find_ID_button"
@@ -87,7 +102,7 @@
             android:textColor="@color/signInWhite"
             app:layout_constraintEnd_toStartOf="@+id/divider2"
             app:layout_constraintStart_toEndOf="@+id/divider"
-            app:layout_constraintTop_toBottomOf="@id/signin_button" />
+            app:layout_constraintTop_toBottomOf="@id/kakao_button" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/signup_button"

@@ -31,4 +31,5 @@
     <string name="home_top_trends"># Top trends</string>
     <string name="hint_price" translatable="false">12,300</string>
     <string name="hint_favorite" translatable="false">23</string>
+    <string name="login_kakao">SIgn in with kakao</string>
 </resources>
