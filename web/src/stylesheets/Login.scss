@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900");
+
+#login_state{
+  margin-top: 90px;
+  display:flex;
+  flex-direction:column;
+}
+
+h1 {
+  justify-content: start;
+  margin-bottom: 5px;
+}
+
+#align_login {
+  width: 552px;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+#sign_form input {
+  height: 45px;
+  width: 552px;
+  display: flex;
+  justify-content: center;
+  border-radius:8px;
+  border :2px solid #dbdbdb;
+  margin-bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+input::placeholder {
+  color: #d4d3d3;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  font-weight: bolder;
+  padding-left: 15px;
+}
+#sign_form form {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#sign_form label {
+  display:flex;
+  justify-content: center;
+}
+
+#submit {
+  width:560px !important;
+  height: 60px !important;
+  background-color: #00200f;
+  color: #FFFFFF;
+  border : none !important;
+  font-size: 16px;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin-top: 7px;
+}
+
+#find_or_register a {
+  color: #000000 !important;
+  font-weight: bold;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+#find_or_register {
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+  margin-bottom: 180px;
+}
+
+.find_line {
+  border-right: 2px solid #d4d3d3;
+  height:16px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+//#kakao_info {
+//  display:flex;
+//  justify-content: center;
+//  color: #d4d3d3;
+//  font-weight: 500;
+//  margin-top: 110px;
+//}
+//
+//.kakao_line {
+//  width: 160px;
+//  border-bottom: 2px solid #d4d3d3;
+//  margin-top: auto;
+//  margin-bottom: auto;
+//  margin-right: 21px;
+//  margin-left: 21px;
+//}

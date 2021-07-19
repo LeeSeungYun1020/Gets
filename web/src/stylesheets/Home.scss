@@ -1,7 +1,6 @@
 // 홈 화면 스타일 시트
-@import url("https://fonts.googleapis.com/earlyaccess/notosanskr.css");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900");
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 //@use "@material/card";
 //@include card.core-styles;
 body {
@@ -21,12 +20,12 @@ body {
 }
 
 h2 {
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 #my_style h1 {
   text-align: center;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-weight: bolder;
   margin-top: 3ex;
   margin-bottom: 3.5ex;
@@ -60,7 +59,7 @@ h2 {
 #recommend {
   color: #000000;
   text-align: center;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-weight: bolder;
 }
 
@@ -100,7 +99,7 @@ h2 {
 }
 
 .select {
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size: 18px;
   font-weight: bolder;
   width: 8vw;
@@ -112,7 +111,7 @@ h2 {
 }
 
 .select-ul {
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-weight: bolder;
   list-style-type: none;
   overflow-x: hidden;
@@ -169,7 +168,7 @@ ul li {
   padding-left: 0.5vw;
   padding-top: 0.5ex;
   padding-bottom: 0.5ex;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 #my_style {
@@ -183,22 +182,11 @@ ul li {
   //box-shadow: 0 2px 14px 0 rgba(83, 83, 83, 0.5);
 }
 
-.select-wrap {
-  //box-shadow: 0 2px 14px 0 rgba(83, 83, 83, 0.5);
-}
-
 h1 {
   margin-block: 0;
   display: flex;
   justify-content: center;
 }
-
-//.style img {
-//  border: 5px solid #d4d3d3;
-//  border-radius: 70%;
-//  padding: 5px;
-//  margin: 8ex 1vw 3ex;
-//}
 
 .style_deselected {
   border: 5px solid #d4d3d3;
@@ -281,12 +269,12 @@ h1 {
   display:flex;
   justify-content: center;
   flex-direction: column;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 #recommend_style > p {
   display:flex;
   justify-content: center;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-weight: bolder;
   font-size: 17px;
   margin-bottom: 3em;
@@ -431,7 +419,7 @@ h1 {
 .jylytn, .kmBEJr {
   background-color: #FFFFFF !important;
   color: #828282 !important;
-  font-family: 'Nanum Gothic', sans-serif !important;
+  font-family: 'Noto Sans KR', sans-serif;
   font-weight: bolder !important;
 }
 

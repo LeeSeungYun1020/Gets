@@ -18,6 +18,7 @@
   "age_50": "50대 이상",
   "lower_body_fat": "하체 통통",
   "upper_body_fat": "상체 통통",
+  "regular": "보통",
   "slim": "마른",
   "tall": "키 큰",
   "short": "키 작은",
@@ -73,5 +74,15 @@
   "english" : "english",
   "phone_number" : "TEL : 051-510-3737, 3738, 3624",
   "address" : "(46241) 부산시 금정구 부산대학로63번길 2 (장전동) 부산대학교 과학기술연구동 405호 ",
-  "style_guide" : "#스타일 가이드"
+  "style_guide" : "#스타일 가이드",
+  "login" : "로그인",
+  "input_id" : "아이디 입력",
+  "input_password" : "비밀번호 입력",
+  "login_info_1" : "안녕하세요!",
+  "login_info_2" : "편리한 나만의 온라인 옷장",
+  "login_info_3" : "Gets입니다.",
+  "find_id" : "아이디 찾기",
+  "find_pw" : "비밀번호 찾기",
+  "register" : "회원가입",
+  "simple_register" : "더욱 간편한 로그인/회원가입"
 }
