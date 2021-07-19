@@ -224,20 +224,6 @@ module.exports = function (passport) {
 			})
 	})
 	
-	router.post("/coordination/:id", (req, res) => {
-		const id = req.params.id
-		connection.query("select * from `coordination` where `id`=?",
-			[id],
-			(err, result) => {
-				if (err || result.length === 0)
-					res.send({result: false})
-				else {
-					result[0].result = true
-					res.send(result[0])
-				}
-			})
-	})
-	
 	router.get("/article/list", (req, res) => {
 		connection.query("select `title`,`imageID` from `article` LIMIT 5",
 			(err, result) => {
