@@ -4,7 +4,7 @@
     <string name="title_closet">Closet</string>
     <string name="title_product">Product</string>
     <string name="title_magazine">Magazine</string>
-    <string name="home_custom_recommendation"># Custom Recommendation</string>
+    <string name="home_custom_recommendation"># Recommendation</string>
     <string name="style_minimal">Minimal</string>
     <string name="style_casual">Casual</string>
     <string name="style_campus">Campus</string>
@@ -29,4 +29,6 @@
     <string name="msg_server_error">The connection with the server is not smooth.</string>
     <string name="msg_signin_error">The information you entered does not match.</string>
     <string name="home_top_trends"># Top trends</string>
+    <string name="hint_price" translatable="false">12,300</string>
+    <string name="hint_favorite" translatable="false">23</string>
 </resources>

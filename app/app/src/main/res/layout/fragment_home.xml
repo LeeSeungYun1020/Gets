@@ -40,7 +40,7 @@
 
         <include
             android:id="@+id/top_trends_list"
-            layout="@layout/component_card_list"
+            layout="@layout/component_card_title_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"

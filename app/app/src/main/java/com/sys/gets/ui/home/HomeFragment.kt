@@ -101,13 +101,13 @@ class HomeFragment : Fragment() {
     private fun initTopTrends() {
         binding.topTrendsList.apply {
             listTitle.setText(R.string.home_top_trends)
-            // TODO: 서버에서 인기 코디 이미지 가져오기
-            listItem1.setImageResource(R.drawable.tm_custom)
-            listItem2.setImageResource(R.drawable.tm_custom)
-            listItem3.setImageResource(R.drawable.tm_custom)
-            listItem4.setImageResource(R.drawable.tm_custom)
-            listItem5.setImageResource(R.drawable.tm_custom)
-            listItem6.setImageResource(R.drawable.tm_custom)
+            // TODO: 서버에서 인기 코디 이미지 가져오기 / 별도 지정 필요
+            listOf(listItem1, listItem2, listItem3, listItem4, listItem5, listItem6).forEach {
+                it.apply {
+                    cardImage.setImageResource(R.drawable.tm_custom)
+                    // title, price, like
+                }
+            }
         }
     }
 
