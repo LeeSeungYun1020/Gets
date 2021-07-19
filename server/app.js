@@ -60,6 +60,7 @@ const passport = require('./lib/passport.js')(app, connection)
 
 const indexRouter = require('./routes/index');
 const apiRouter = require('./routes/api')(passport)
+const homeRouter = require('./routes/home')(passport)
 const inputRouter = require('./routes/input');
 const accountRouter = require('./routes/account')(passport);
 const closetRouter = require('./routes/closet');
@@ -70,6 +71,7 @@ const aboutRouter = require('./routes/about');
 
 app.use('/', indexRouter)
 app.use('/api', apiRouter)
+app.use('/home', homeRouter)
 app.use('/input', inputRouter)
 app.use('/closet', closetRouter)
 app.use('/product', productRouter)
