@@ -38,4 +38,12 @@
     <string name="hint_birth">생일 *</string>
     <string name="hint_address">주소</string>
     <string name="hint_address_detail">상세 주소</string>
+    <string name="msg_password_error">비밀번호가 일치하지 않습니다.</string>
+    <string name="msg_password_length_error">비밀번호가 너무 짧습니다.</string>
+    <string name="msg_required_field_error">필수 입력 *</string>
+    <string name="msg_email_format_error">이메일 형식이 정확하지 않습니다.</string>
+    <string name="hint_year">년 *</string>
+    <string name="hint_month">월 *</string>
+    <string name="hint_day">일 *</string>
+    <string name="msg_signup_error">입력을 다시 확인하여주십시오.</string>
 </resources>

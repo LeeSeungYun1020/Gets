@@ -2,7 +2,7 @@ package com.sys.gets
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
@@ -11,11 +11,14 @@ import com.sys.gets.databinding.ActivityLoginBinding
 import com.sys.gets.network.Network
 import org.json.JSONObject
 
-private const val SIGNIN = "SIGNIN"
-private const val ID = "ID"
-private const val PW = "PW"
 
 class LoginActivity : AppCompatActivity() {
+    companion object {
+        const val SIGNIN = "SIGNIN"
+        const val ID = "ID"
+        const val PW = "PW"
+    }
+
     private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,8 +42,13 @@ class LoginActivity : AppCompatActivity() {
         binding.signinButton.setOnClickListener {
             val email = binding.idField.editText?.text.toString()
             val pw = binding.pwField.editText?.text.toString()
-            if (email.isNotBlank() && pw.isNotBlank())
+            (getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager)?.hideSoftInputFromWindow(
+                binding.root.windowToken,
+                0
+            )
+            if (email.isNotBlank() && pw.isNotBlank()) {
                 login(email, pw)
+            }
         }
 
         binding.signupButton.setOnClickListener {
@@ -74,7 +82,6 @@ class LoginActivity : AppCompatActivity() {
                 }
             },
             { error ->
-                Log.e("LOGE", "onCreateView: $error")
                 Snackbar.make(
                     binding.signinButton,
                     R.string.msg_server_error,
