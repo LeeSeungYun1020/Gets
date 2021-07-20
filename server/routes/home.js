@@ -44,5 +44,46 @@ module.exports = function (passport) {
 		})
 	})
 	
+	router.get("/style/6/:styleID", (req, res) => {
+		const style = parseInt(req.params.styleID)
+		var list = []
+		connection.query(`select id, style
+                          from coordination`, (err, result) => {
+			if (err || result.length === 0)
+				res.send({result: false})
+			var temp, digit
+			for (var i = 0; i < result.length; i++) {
+				temp = result[i].style.toString(2)
+				digit = temp.length - 1
+				for (var j = 0; j < temp.length; j++) {
+					if (temp[j] == '1') {
+						// console.log(2**digit)
+						if (2 ** digit === style) {
+							list.push(result[i].id)
+							break
+						}
+					}
+					digit--
+				}
+			}
+			var newList = []
+			if (list.length < 6) {
+				console.log(list.length)
+				res.send(`${list.length}로 자료부족`)
+			} else {
+				for (var i = 0; i < 6; i++) {
+					newList[i] = list[Math.floor(Math.random() * list.length) + 1]
+					for (var j = 0; j < i; j++) {       //중복방지
+						if (newList[i] === newList[j]) {
+							i--
+							break
+						}
+					}
+				}
+				res.send(newList)
+			}
+		})
+	})
+	
 	return router
 }
