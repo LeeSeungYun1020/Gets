@@ -22,14 +22,14 @@
     <string name="home_style_view"># View style</string>
     <string name="login_id_field">Email</string>
     <string name="login_pw_field">Enter your password</string>
-    <string name="login_signin">Sign in</string>
+    <string name="button_signin">Sign in</string>
     <string name="login_find_id">Find ID</string>
     <string name="login_find_pw">Find PW</string>
-    <string name="login_find_signup">Sign up</string>
+    <string name="button_signup">Sign up</string>
     <string name="msg_server_error">The connection with the server is not smooth.</string>
     <string name="msg_signin_error">The information you entered does not match.</string>
     <string name="home_top_trends"># Top trends</string>
     <string name="hint_price" translatable="false">12,300</string>
     <string name="hint_favorite" translatable="false">23</string>
-    <string name="login_kakao">SIgn in with kakao</string>
+    <string name="button_kakao_signin">SIgn in with kakao</string>
 </resources>

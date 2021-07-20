@@ -42,6 +42,10 @@ class LoginActivity : AppCompatActivity() {
             if (email.isNotBlank() && pw.isNotBlank())
                 login(email, pw)
         }
+
+        binding.signupButton.setOnClickListener {
+            startActivity(Intent(this, SignupActivity::class.java))
+        }
     }
 
     private fun login(email: String, password: String) {
@@ -53,15 +57,13 @@ class LoginActivity : AppCompatActivity() {
             },
             { response ->
                 if (response.getBoolean("result")) {
-
-                    var intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-
                     val pref = this.getSharedPreferences(SIGNIN, MODE_PRIVATE)
                     val editor = pref.edit()
                     editor.putString(ID, email)
                     editor.putString(PW, password)
                     editor.apply()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
                     finish()
                 } else {
                     Snackbar.make(
