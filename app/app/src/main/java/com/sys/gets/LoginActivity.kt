@@ -28,17 +28,6 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 아이디/비밀번호 자동 완성
-        val pref = this.getSharedPreferences(SIGNIN, MODE_PRIVATE)
-        val email = pref.getString(ID, "")
-        val password = pref.getString(PW, "")
-
-        if (email?.isNotBlank() == true && password?.isNotBlank() == true) {
-            binding.idField.editText?.setText(email)
-            binding.pwField.editText?.setText(password)
-        }
-
-
         binding.signinButton.setOnClickListener {
             val email = binding.idField.editText?.text.toString()
             val pw = binding.pwField.editText?.text.toString()
@@ -53,6 +42,19 @@ class LoginActivity : AppCompatActivity() {
 
         binding.signupButton.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // 아이디/비밀번호 자동 완성
+        val pref = this.getSharedPreferences(SIGNIN, MODE_PRIVATE)
+        val email = pref.getString(ID, "")
+        val password = pref.getString(PW, "")
+
+        if (email?.isNotBlank() == true && password?.isNotBlank() == true) {
+            binding.idField.editText?.setText(email)
+            binding.pwField.editText?.setText(password)
         }
     }
 
