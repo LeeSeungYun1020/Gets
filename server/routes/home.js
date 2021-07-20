@@ -84,6 +84,19 @@ module.exports = function (passport) {
 			}
 		})
 	})
+	//select id from coordination order by rand() limit 6
 	
+	router.get("/toptrends/6", (req, res) => {
+		connection.query(`select id
+                          from product
+                          order by favorite desc
+                          limit 6`, (err, result) => {
+			if (err || result.length === 0)
+				res.send({result: false})
+			else {
+				res.send(result)
+			}
+		})
+	})
 	return router
 }
