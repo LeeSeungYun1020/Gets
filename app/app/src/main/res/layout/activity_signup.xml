@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="vertical"
-    tools:context=".SignupActivity">
+    tools:context=".sign.SignupActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".SignupActivity">
+        tools:context=".sign.SignupActivity">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/id_field"
