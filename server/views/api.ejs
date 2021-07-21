@@ -90,6 +90,14 @@
             <br>
             return: {result: boolean} | product
         </p>
+        <div class="mdc-typography--headline5"><%= string.api_product_toptrend %></div>
+        <p class="mdc-typography--body1">
+            POST: home/toptrends/:number
+            <br>
+            params:
+            <br>
+            return: {result: boolean} | list
+        </p>
         <div class="mdc-typography--headline5"><%= string.api_review_add %></div>
         <p class="mdc-typography--body1">
             POST: api/review/add/:productID
@@ -111,6 +119,34 @@
             POST: api/review/:productID
             <br>
             params: order, isReverse
+            <br>
+            return: [{result: boolean}] | list
+        </p>
+    </section>
+
+    <section class="api_description">
+        <div class="mdc-typography--headline4"><%= string.api_coordination %></div>
+        <div class="mdc-typography--headline5"><%= string.api_coordination_anything %></div>
+        <p class="mdc-typography--body1">
+            POST: home/custom/:number
+            <br>
+            params: number for representative
+            <br>
+            return: [{result: boolean}] | list
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_coordination_style %></div>
+        <p class="mdc-typography--body1">
+            POST: home/style/6/:styleID
+            <br>
+            params: style
+            <br>
+            return: [{result: boolean}] | list
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_coordination_represent %></div>
+        <p class="mdc-typography--body1">
+            POST: home/representative/style
+            <br>
+            params:
             <br>
             return: [{result: boolean}] | list
         </p>

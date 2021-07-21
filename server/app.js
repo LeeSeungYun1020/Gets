@@ -17,6 +17,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile)
 
+app.use(express.static('product/image'))
 app.use(logger('dev'));
 app.use(helmet());
 app.use(express.json());
