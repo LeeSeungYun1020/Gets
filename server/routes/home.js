@@ -23,8 +23,6 @@ module.exports = function (passport) {
 				res.send({result: false})
 			else {
 				length = parseInt(`${result[0].len}`, length)
-				// console.log(length)
-				
 				for (var i = 0; i < uploadNum; i++) {
 					randomNum[i] = Math.floor(Math.random() * length) + 1
 				}
