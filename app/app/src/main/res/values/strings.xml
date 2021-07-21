@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">GETs</string>
+    <string name="title_home">Home</string>
+    <string name="title_closet">Closet</string>
+    <string name="title_product">Product</string>
+    <string name="title_magazine">Magazine</string>
+    <string name="home_custom_recommendation"># Recommendation</string>
+    <string name="style_minimal">Minimal</string>
+    <string name="style_casual">Casual</string>
+    <string name="style_campus">Campus</string>
+    <string name="style_rock_chic">Rock chic</string>
+    <string name="style_street">Street</string>
+    <string name="style_amekaji">Amekaji</string>
+    <string name="style_office">Office</string>
+    <string name="style_city_boy">City boy</string>
+    <string name="style_feminine">Feminine</string>
+    <string name="style_lovely">Lovely</string>
+    <string name="style_sexy_glam">Sexy glam</string>
+    <string name="hint_title" translatable="false"># Title</string>
+    <string name="home_style_guide"># Style guide</string>
+    <string name="button_more">More</string>
+    <string name="home_style_view"># View style</string>
+    <string name="login_id_field">Email</string>
+    <string name="login_pw_field">Enter your password</string>
+    <string name="button_signin">Sign in</string>
+    <string name="login_find_id">Find ID</string>
+    <string name="login_find_pw">Find PW</string>
+    <string name="button_signup">Sign up</string>
+    <string name="msg_server_error">The connection with the server is not smooth.</string>
+    <string name="msg_signin_error">The information you entered does not match.</string>
+    <string name="home_top_trends"># Top trends</string>
+    <string name="hint_price" translatable="false">12,300</string>
+    <string name="hint_favorite" translatable="false">23</string>
+    <string name="button_kakao_signin">SIgn in with kakao</string>
+    <string name="hint_name">Name *</string>
+    <string name="hint_email">Email *</string>
+    <string name="hint_password">Password *</string>
+    <string name="hint_password_check">Password Check *</string>
+    <string name="hint_phone">Phone number *</string>
+    <string name="hint_birth">Birth *</string>
+    <string name="hint_address">Address</string>
+    <string name="hint_address_detail">Address detail</string>
+    <string name="msg_password_error">Passwords don\'t match</string>
+    <string name="msg_password_length_error">Passwords are too short</string>
+    <string name="msg_required_field_error">Required *</string>
+    <string name="msg_email_format_error">Email format is incorrect</string>
+    <string name="hint_year">Year *</string>
+    <string name="hint_month">Month *</string>
+    <string name="hint_day">Date *</string>
+    <string name="msg_signup_error">Please check your input again</string>
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    <style name="Theme.App" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
+    <!--        ...-->
+    <!--        <item name="colorPrimary">@color/shrine_pink_100</item>-->
+    <!--        <item name="colorOnPrimary">@color/shrine_pink_900</item>-->
+    <!--        <item name="textAppearanceButton">@style/TextAppearance.App.Button</item>-->
+    <!--        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>-->
+    <!--    </style>-->
+
+    <!--    <style name="TextAppearance.App.Button" parent="TextAppearance.MaterialComponents.Button">-->
+    <!--        <item name="fontFamily">@font/rubik</item>-->
+    <!--        <item name="android:fontFamily">@font/rubik</item>-->
+    <!--    </style>-->
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+</resources>
