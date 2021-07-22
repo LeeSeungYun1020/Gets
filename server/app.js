@@ -9,7 +9,6 @@ const session = require('express-session');
 const sessionMySQLStore = require('express-mysql-session')(session)
 const flash = require('connect-flash')
 const helmet = require('helmet');
-const cors = require('cors');
 
 const app = express();
 
@@ -19,7 +18,6 @@ app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile)
 
 app.use(logger('dev'));
-app.use(cors())
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
