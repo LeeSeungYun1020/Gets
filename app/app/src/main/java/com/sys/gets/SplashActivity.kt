@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
+import com.google.android.material.button.MaterialButton
 import com.sys.gets.network.Network
 import com.sys.gets.sign.LoginActivity
 import org.json.JSONObject
@@ -21,6 +22,10 @@ class SplashActivity : AppCompatActivity() {
         }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        findViewById<MaterialButton>(R.id.start_button).setOnClickListener {
+            startLoginActivity()
+        }
     }
 
     private fun login(email: String, password: String) {
@@ -32,22 +37,28 @@ class SplashActivity : AppCompatActivity() {
             },
             { response ->
                 if (response.getBoolean("result")) {
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                    startMainActivity()
                 } else {
-                    val intent = Intent(this, LoginActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                    startLoginActivity()
                 }
             },
             { error ->
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-                finish()
+                startLoginActivity()
             }
         )
         Network.getInstance(this).addToRequestQueue(jsonObjectRequest)
+    }
+
+    private fun startMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun startLoginActivity() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }
