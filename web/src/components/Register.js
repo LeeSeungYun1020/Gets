@@ -17,9 +17,10 @@ function Register() {
                           input_pw = {t("input_password_register")} input_pw_confirm = {t("confirm_password")}
                           enter_phone={t("enter_phone_register")}
                           register = {t("register_submit")}
-                          agree_1 = {t("agree_1")} agree_2 = {t("agree_2")} agree_3 = {t("agree_3")}/>
+                          agree_1 = {t("agree_1")} agree_2 = {t("agree_2")} agree_3 = {t("agree_3")}
+                          year = {t("year")} month = {t("month")} day = {t("day")}/>
 
         </div>
     )
-};
+}
 export default Register
