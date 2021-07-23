@@ -198,19 +198,24 @@ create table article
   FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
-create table userCoordination
-(
-  id        INT PRIMARY KEY AUTO_INCREMENT,
-  userEmail VARCHAR(64) NOT NULL,
-  outerID   INT DEFAULT NULL,
-  topID     INT DEFAULT NULL,
-  bottomID  INT DEFAULT NULL,
-  setID     INT DEFAULT NULL,
-  shoesID   INT DEFAULT NULL,
-  bagID     INT DEFAULT NULL,
-  hatID     INT DEFAULT NULL,
-  FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL,
-  FOREIGN KEY (outerID, topID, bottomID, setID, shoesID, bagID, hatID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
+create table userCoordination(
+   id          INT PRIMARY KEY AUTO_INCREMENT,
+   userEmail   VARCHAR(64) NOT NULL,
+   outerID     INT         DEFAULT NULL,
+   topID       INT         DEFAULT NULL,
+   bottomID    INT         DEFAULT NULL,
+   setID       INT         DEFAULT NULL,
+   shoesID     INT         DEFAULT NULL,
+   bagID       INT         DEFAULT NULL,
+   hatID       INT         DEFAULT NULL,
+   FOREIGN KEY (userEmail) REFERENCES user (email) ON DELETE CASCADE ON UPDATE CASCADE,
+   FOREIGN KEY (outerID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE,
+   FOREIGN KEY (topID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE,
+   FOREIGN KEY (bottomID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE,
+   FOREIGN KEY (setID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE,
+   FOREIGN KEY (shoesID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE,
+   FOREIGN KEY (bagID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE,
+   FOREIGN KEY (hatID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 create table coordination
