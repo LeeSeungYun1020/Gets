@@ -21,7 +21,7 @@
     <string name="button_more">More</string>
     <string name="home_style_view"># View style</string>
     <string name="login_id_field">Email</string>
-    <string name="login_pw_field">Enter your password</string>
+    <string name="login_pw_field">Password</string>
     <string name="button_signin">Sign in</string>
     <string name="login_find_id">Find ID</string>
     <string name="login_find_pw">Find PW</string>
@@ -50,4 +50,5 @@
     <string name="msg_signup_error">Please check your input again</string>
     <string name="msg_catch_phrase" translatable="false">Guess style,\nGet style</string>
     <string name="button_start">Start</string>
+    <string name="login_or">OR</string>
 </resources>
