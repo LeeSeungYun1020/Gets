@@ -12,6 +12,10 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import link from "./link";
 import SignIn from "./components/SignIn";
+import FindId from "./components/FindId";
+import FindPw from "./components/FindPw";
+import FindPwEmail from "./components/FindPwEmail";
+import Register from "./components/Register";
 import NotFound from "./components/NotFound";
 
 export default function App() {
@@ -31,6 +35,18 @@ export default function App() {
                     </Route>
                     <Route path={link.signin}>
                         <SignIn />
+                    </Route>
+                    <Route path={link.findid}>
+                        <FindId />
+                    </Route>
+                    <Route path={link.findpw}>
+                        <FindPw />
+                    </Route>
+                    <Route path={link.findpwemail}>
+                        <FindPwEmail />
+                    </Route>
+                    <Route path={link.register}>
+                        <Register />
                     </Route>
                     <Route path={link.signup}>
                         <h1>구현 예정 - 회원 가입</h1>

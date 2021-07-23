@@ -8,8 +8,8 @@ class SignInBox extends React.Component {
 
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.handleEmail = this.handleEmail.bind(this);
-        this.handlePassword = this.handlePassword.bind(this);
+        // this.handleEmail = this.handleEmail.bind(this);
+        this.handleInfo = this.handleInfo.bind(this);
     }
 
     handleEmailChange(event) {
@@ -20,12 +20,7 @@ class SignInBox extends React.Component {
         this.setState({password: event.target.value});
     }
 
-    handleEmail(event) {
-        alert('Email: ' + this.state.email)
-        this.setState({type: "password"})
-    }
-
-    handlePassword(event) {
+    handleInfo(event) {
         alert(`email=${this.state.email}, password=${this.state.password}`)
         axios.post('http://localhost:3000/api/signin', {
             email: this.state.email,
@@ -43,14 +38,12 @@ class SignInBox extends React.Component {
         let signForm
         signForm = (
             <div id = "sign_form">
-                <form onSubmit={this.handleEmail}>
+                <form onSubmit={this.handleInfo}>
                     <label>
                         <input type="email" name={"email"} value={this.state.email} placeholder={this.props.input_id} onChange={this.handleEmailChange}
                                required/>
                     </label>
-                </form>
 
-                <form onSubmit={this.handlePassword}>
                     <label>
                         <input type="password" name={"password"} placeholder={this.props.input_pw} value={this.state.password}
                                onChange={this.handlePasswordChange} required/>
@@ -59,16 +52,12 @@ class SignInBox extends React.Component {
                 </form>
             </div>
         )
-
         return (
             <div>
-                <h1>{this.props.title}</h1>
                 {signForm}
             </div>
         )
     }
-
-
 }
 
 export default SignInBox
