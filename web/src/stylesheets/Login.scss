@@ -7,20 +7,15 @@
   flex-direction:column;
 }
 
-#align_login h1 {
-  justify-content: start;
-  margin-bottom: 5px;
+#login_state h1 {
+  justify-content: center;
+  padding-bottom: 45px;
+  padding-top: 120px;
 }
 
-#align_login {
-  width: 552px;
-  margin: auto;
-  margin-bottom: 40px;
-}
-
-#sign_form input {
+#sign_form input, #find_id_form input, #find_pw input {
   height: 45px;
-  width: 552px;
+  width: 534px;
   display: flex;
   justify-content: center;
   border-radius:8px;
@@ -28,56 +23,65 @@
   margin-bottom: 10px;
   margin-right: auto;
   margin-left: auto;
+  padding-left: 20px;
+  font-weight: bolder;
+  font-size: 16px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 input::placeholder {
-  color: #d4d3d3;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 15px;
-  font-weight: bolder;
-  padding-left: 15px;
+color: #d4d3d3;
+font-family: 'Noto Sans KR', sans-serif;
+font-size: 15px;
+font-weight: bolder;
 }
 #sign_form form {
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
+display:flex;
+flex-direction: column;
+justify-content: center;
 }
 
 #sign_form label {
-  display:flex;
-  justify-content: center;
+display:flex;
+justify-content: center;
 }
 
 #submit {
-  width:560px !important;
-  height: 60px !important;
-  background-color: #00200f;
-  color: #FFFFFF;
-  border : none !important;
-  font-size: 16px;
-  font-family: 'Noto Sans KR', sans-serif;
-  margin-top: 7px;
+width:560px !important;
+height: 60px !important;
+background-color: #00200f;
+color: #FFFFFF;
+border : none !important;
+font-size: 16px;
+font-family: 'Noto Sans KR', sans-serif;
+margin-top: 7px;
 }
 
 #find_or_register a {
-  color: #000000 !important;
-  font-weight: bold;
-  margin-right: 40px;
-  margin-left: 40px;
+color: #000000 !important;
+font-weight: bold;
+margin-right: 40px;
+margin-left: 40px;
 }
 
 #find_or_register {
-  display: flex;
-  justify-content: center;
-  font-weight: 500;
-  margin-bottom: 180px;
+display: flex;
+justify-content: center;
+font-weight: 500;
+margin-bottom: 180px;
 }
 
 .find_line {
-  border-right: 2px solid #d4d3d3;
-  height:16px;
-  margin-top: auto;
-  margin-bottom: auto;
+border-right: 2px solid #d4d3d3;
+height:16px;
+margin-top: auto;
+margin-bottom: auto;
 }
 
 //#kakao_info {
@@ -96,3 +100,77 @@ input::placeholder {
 //  margin-right: 21px;
 //  margin-left: 21px;
 //}
+
+#find_id h1, #find_pw h1 {
+  padding-top: 110px;
+  margin-top: 90px;
+  margin-bottom: 30px;
+}
+
+#find_id_form #submit #f {
+  margin-top: 25px;
+  padding: 0 !important;
+}
+
+.frame {
+  height: 800px;
+}
+
+#select_type_info {
+  display:flex;
+  justify-content: center;
+}
+#select_type_info h3{
+  width: 278px;
+  display: flex;
+  justify-content: center;
+  border-top: 4px solid #d4d3d3;
+  padding-top: 15px;
+  padding-bottom: 45px;
+}
+
+#select_type_info h3{
+  width: 278px;
+  display: flex;
+  justify-content: center;
+  border-top: 4px solid #d4d3d3;
+  padding-top: 15px;
+  padding-bottom: 45px;
+}
+
+.pw_link {
+  color:#000000;
+}
+
+#select_info_line {
+  padding-top: 40px;
+  width: 556px;
+  border-bottom: 2px solid #d4d3d3;
+  margin: auto;
+}
+
+#select_info_text {
+  width: 556px;
+  color: #828282;
+  height: 220px;
+  background-color: rgba(212, 211, 211, 0.3);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 33px;
+}
+#text_top{
+  padding-top: 30px;
+}
+#select_info_text h4{
+  padding-left: 40px;
+  margin-bottom: 10px;
+  margin-top: 0 !important;
+}
+
+#select_info_text p{
+  padding-left: 40px;
+  margin: 0;
+}
+#text_bottom {
+  margin-bottom: 0;
+}
