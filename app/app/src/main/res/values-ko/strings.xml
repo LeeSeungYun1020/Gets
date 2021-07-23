@@ -21,7 +21,7 @@
     <string name="button_more">자세히</string>
     <string name="home_style_view"># 스타일 보기</string>
     <string name="login_id_field">이메일</string>
-    <string name="login_pw_field">비밀번호 입력</string>
+    <string name="login_pw_field">비밀번호</string>
     <string name="button_signin">로그인</string>
     <string name="login_find_id">아이디 찾기</string>
     <string name="login_find_pw">비밀번호 찾기</string>
@@ -47,4 +47,5 @@
     <string name="hint_day">일 *</string>
     <string name="msg_signup_error">입력을 다시 확인하여주십시오.</string>
     <string name="button_start">시작</string>
+    <string name="login_or">또는</string>
 </resources>
