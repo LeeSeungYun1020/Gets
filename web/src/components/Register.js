@@ -11,7 +11,7 @@ function Register() {
             <div id = "register_line"></div>
             <RegisterBox name= {t("name")} email = {t("email")} password={t("password")}
                           phone = {t("phone")}
-                          birthday = {t("birthday")} address = {t("address")}
+                          birthday = {t("birthday")} address = {t("email_2")}
                           input_email = {t("input_id")}
                           essential = {t("essential")} input_name = {t("enter_name")}
                           input_pw = {t("input_password_register")} input_pw_confirm = {t("confirm_password")}
