@@ -11,9 +11,14 @@ const string = {
 		api_product: "Product",
 		api_product_image: "Product - image",
 		api_product_list: "Product - list",
+		api_product_toptrend: "Product - toptrend",
 		api_review_add: "Review - add",
 		api_review_fit: "Review -fit",
 		api_review: "Review - list",
+		api_coordination: "Coordination",
+		api_coordination_anything: "Coordination - anything",
+		api_coordination_style: "Coordination - style",
+		api_coordination_represent: "Coordination - representative"
 	},
 	ko: {
 		api_title: "Gets: API",
@@ -27,9 +32,14 @@ const string = {
 		api_product: "상품",
 		api_product_image: "상품 - 이미지",
 		api_product_list: "상품 - 목록",
+		api_product_toptrend: "상품 - 탑트랜드",
 		api_review_add: "리뷰 - 추가",
 		api_review_fit: "리뷰 - 맞춤",
 		api_review: "리뷰 - 리스트",
+		api_coordination: "코디",
+		api_coordination_anything: "코디 - 랜덤",
+		api_coordination_style: "코디 - 스타일",
+		api_coordination_represent: "코디 - 대표"
 	}
 }
 

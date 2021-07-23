@@ -12,6 +12,7 @@ module.exports = function (passport) {
 		res.send("home")
 	});
 	
+	//스타일 상관없이 number 수만큼 코디 표시
 	router.get("/custom/:number", (req, res) => {
 		const uploadNum = req.params.number
 		let length
@@ -41,10 +42,11 @@ module.exports = function (passport) {
 		})
 	})
 	
+	//모바일화면_중복없이 스타일에 맞는 코디를 6개 표시
 	router.get("/style/6/:styleID", (req, res) => {
 		const style = parseInt(req.params.styleID)
 		var list = []
-		connection.query(`select id, style from coordination`, (err, result) => {
+		connection.query(`select * from coordination`, (err, result) => {
 			if (err || result.length === 0)
 				res.send({result: false})
 			var temp, digit
@@ -81,7 +83,8 @@ module.exports = function (passport) {
 		})
 	})
 	
-	router.get("/choose/style",(req,res)=>{
+	//각 스타일에 맞는 코디를 대표 1개씩 표시
+	router.get("/representative/style",(req,res)=>{
 		var list=[]
 		var casual=[],minimal=[],campus=[],street=[],rockchic=[],
 			amekaji=[],cityboy=[],office=[],sexyglam=[],feminine=[],lovely=[]
@@ -130,9 +133,10 @@ module.exports = function (passport) {
 		})
 	})
 	
+	//홈화면_탑트렌드에 있는 제품을 number 수만큼표시
 	router.get("/toptrends/:number", (req, res) => {
 		const style = parseInt(req.params.number)
-		connection.query(`select id from product order by favorite desc limit ${style}`,
+		connection.query(`select * from product order by favorite desc limit ${style}`,
 			(err, result) => {
 			if (err || result.length === 0)
 				res.send({result: false})
