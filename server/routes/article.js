@@ -5,10 +5,15 @@ const connection = require('../lib/mysql')
 // components
 const commonHead = require('../components/commonHead')
 const string = require('../components/string_article')
+const fstring = require('../components/string_footer')
 const quill = require('../components/quill')
 
 router.get('/', function (req, res, next) {
-	res.render("articleList", {commonHead: commonHead, string: string[req.body.locale]})
+	res.render("articleList", {
+		commonHead: commonHead,
+		string: string[req.body.locale],
+		fstring: fstring[req.body.locale]
+	})
 })
 
 router.post('/', function (req, res, next) {
@@ -25,7 +30,8 @@ router.get('/read/:id', function (req, res, next) {
 		commonHead: commonHead,
 		quill: quill,
 		string: string[req.body.locale],
-		id: req.params.id
+		fstring: fstring[req.body.locale],
+		id: req.params.id,
 	})
 })
 
@@ -41,7 +47,13 @@ router.post('/read/:id', function (req, res, next) {
 })
 
 router.get('/create', function (req, res, next) {
-	res.render("articleCreate", {commonHead: commonHead, quill: quill, string: string[req.body.locale], id: 0})
+	res.render("articleCreate", {
+		commonHead: commonHead,
+		quill: quill,
+		string: string[req.body.locale],
+		fstring: fstring[req.body.locale],
+		id: 0
+	})
 })
 
 router.get('/create/:id', function (req, res, next) {
@@ -49,6 +61,7 @@ router.get('/create/:id', function (req, res, next) {
 		commonHead: commonHead,
 		quill: quill,
 		string: string[req.body.locale],
+		fstring: fstring[req.body.locale],
 		id: req.params.id
 	})
 })

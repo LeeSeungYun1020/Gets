@@ -7,7 +7,7 @@
     android:background="@drawable/bg_signin"
     android:backgroundTint="#33000000"
     android:backgroundTintMode="src_atop"
-    tools:context=".LoginActivity">
+    tools:context=".sign.LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

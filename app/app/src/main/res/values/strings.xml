@@ -48,4 +48,6 @@
     <string name="hint_month">Month *</string>
     <string name="hint_day">Date *</string>
     <string name="msg_signup_error">Please check your input again</string>
+    <string name="msg_catch_phrase" translatable="false">Guess style,\nGet style</string>
+    <string name="button_start">Start</string>
 </resources>

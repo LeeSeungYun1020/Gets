@@ -1,4 +1,4 @@
-package com.sys.gets
+package com.sys.gets.sign
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.google.android.material.snackbar.Snackbar
+import com.sys.gets.MainActivity
+import com.sys.gets.R
 import com.sys.gets.databinding.ActivityLoginBinding
 import com.sys.gets.network.Network
 import org.json.JSONObject

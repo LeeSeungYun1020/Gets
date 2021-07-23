@@ -1,4 +1,4 @@
-package com.sys.gets
+package com.sys.gets.sign
 
 import android.os.Bundle
 import android.util.Patterns
@@ -8,6 +8,7 @@ import androidx.core.widget.doAfterTextChanged
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.google.android.material.snackbar.Snackbar
+import com.sys.gets.R
 import com.sys.gets.databinding.ActivitySignupBinding
 import com.sys.gets.network.Network
 import org.json.JSONObject
