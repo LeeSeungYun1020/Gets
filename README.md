@@ -244,7 +244,7 @@ create table coordination
   bodyshape     INT,
   price         INT,
   weather       INT,
-  imageID       INT
+  imageID       VARCHAR(32)
 );
 
 create table cart
