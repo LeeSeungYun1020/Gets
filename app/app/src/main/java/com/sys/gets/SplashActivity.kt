@@ -16,15 +16,16 @@ class SplashActivity : AppCompatActivity() {
         val email = pref.getString(LoginActivity.ID, "")
         val password = pref.getString(LoginActivity.PW, "")
         if (email?.isNotBlank() == true && password?.isNotBlank() == true) {
+            super.onCreate(savedInstanceState)
             login(email, password)
         } else {
             setTheme(R.style.Theme_Gets)
-        }
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_splash)
 
-        findViewById<MaterialButton>(R.id.start_button).setOnClickListener {
-            startLoginActivity()
+            findViewById<MaterialButton>(R.id.start_button).setOnClickListener {
+                startLoginActivity()
+            }
         }
     }
 

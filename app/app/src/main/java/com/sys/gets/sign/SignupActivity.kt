@@ -1,6 +1,11 @@
 package com.sys.gets.sign
 
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -25,7 +30,7 @@ class SignupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        setSpan()
         binding.apply {
 
             pwField.editText?.doAfterTextChanged {
@@ -109,11 +114,12 @@ class SignupActivity : AppCompatActivity() {
                 if (!isPhoneChecked) {
                     phoneField.error = getString(R.string.msg_required_field_error)
                     hasError = true
+                } else {
+                    phoneField.error = null
                 }
 
                 listOf(
                     nameField,
-                    phoneField,
                     birthYearField,
                     birthMonthField,
                     birthDayField
@@ -141,6 +147,22 @@ class SignupActivity : AppCompatActivity() {
                 if (!hasError) {
                     signup()
                 }
+            }
+        }
+    }
+
+    private fun setSpan() {
+        binding.apply {
+            listOf(nameText, idText, pwText, phoneText, birthText).forEach {
+                val text = it.text.toString()
+                val spannable = SpannableStringBuilder(text)
+                spannable.setSpan(
+                    ForegroundColorSpan(Color.RED),
+                    text.lastIndex,
+                    text.length,
+                    Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+                )
+                it.text = spannable
             }
         }
     }
@@ -212,6 +234,7 @@ class SignupActivity : AppCompatActivity() {
                 }
             },
             {
+                Log.e("LOGE", "signup: $it")
                 Snackbar.make(
                     binding.signupButton,
                     R.string.msg_server_error,
