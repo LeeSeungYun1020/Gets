@@ -179,4 +179,7 @@
     <string name="season_summer">Summer</string>
     <string name="season_fall">Fall</string>
     <string name="season_winter">Winter</string>
+    <string name="hint_outfit">outfits</string>
+    <string name="hint_style_question_prefix">:What is \'</string>
+    <string name="hint_style_question_postfix">style?\'</string>
 </resources>

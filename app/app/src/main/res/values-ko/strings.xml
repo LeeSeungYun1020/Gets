@@ -170,4 +170,7 @@
     <string name="season_summer">여름</string>
     <string name="season_fall">가을</string>
     <string name="season_winter">겨울</string>
+    <string name="hint_outfit">복장</string>
+    <string name="hint_style_question_prefix">:\'</string>
+    <string name="hint_style_question_postfix">" 스타일'은 무엇일까요?"</string>
 </resources>

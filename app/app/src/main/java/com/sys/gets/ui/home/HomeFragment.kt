@@ -5,16 +5,23 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonArrayRequest
+import com.google.android.material.tabs.TabLayout
 import com.sys.gets.R
+import com.sys.gets.data.Style
 import com.sys.gets.databinding.FragmentHomeBinding
+import com.sys.gets.network.Network
 import com.sys.gets.ui.MainViewModel
 
 private const val NUM_PAGES = 5
+private const val STYLE_TAG = "STYLE"
 
 class HomeFragment : Fragment() {
     private lateinit var mainViewModel: MainViewModel
@@ -60,6 +67,11 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
+    override fun onStop() {
+        super.onStop()
+        Network.getInstance(this.requireContext()).requestQueue.cancelAll(STYLE_TAG)
+    }
+
     private fun initCustomRecommendation() {
         binding.customList.apply {
             listTitle.setText(R.string.home_custom_recommendation)
@@ -77,24 +89,80 @@ class HomeFragment : Fragment() {
     private fun initStyleGuide() {
         binding.styleGuide.apply {
             styleTitle.setText(R.string.home_style_guide)
-            val style = listOf(
-                R.string.style_amekaji,
-                R.string.style_casual,
-                R.string.style_campus,
-                R.string.style_city_boy,
-                R.string.style_feminine,
-                R.string.style_lovely,
-                R.string.style_minimal,
-                R.string.style_office,
-                R.string.style_rock_chic,
-                R.string.style_sexy_glam,
-                R.string.style_street
-            )
-
-            style.forEach {
-                styleTab.addTab(styleTab.newTab().setText(it))
+            Style.values().map {
+                styleTab.addTab(styleTab.newTab().setText(it.resID))
             }
+            styleTab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    val style = Style.values()[tab?.position ?: 0]
+                    styleText.text = "${getString(style.resID)} ${getString(R.string.hint_outfit)}"
+                    styleQuestionText.text =
+                        "${getString(R.string.hint_style_question_prefix)}${getString(style.resID)}${
+                            getString(R.string.hint_style_question_postfix)
+                        }"
+                    styleImage.setImageResource(
+                        when (style) {
+                            Style.AMEKAJI -> R.drawable.bg_amekaji
+                            Style.CAMPUS -> R.drawable.bg_campus
+                            Style.CASUAL -> R.drawable.bg_casual
+                            Style.CITY_BOY -> R.drawable.bg_cityboy
+                            Style.ROCK_CHIC -> R.drawable.bg_rockchic
+                            Style.STREET -> R.drawable.bg_street
+                            else -> R.drawable.bg_casual
+                        }
+                    )
+                    Network.getInstance(this@HomeFragment.requireContext()).requestQueue.cancelAll(
+                        STYLE_TAG
+                    )
+                    val styleRequest = JsonArrayRequest(
+                        Request.Method.POST, "${Network.BASE_URL}/home/style/${style.code}/6",
+                        null,
+                        { response ->
+                            if (response.getJSONObject(0).getBoolean("result")) {
+
+                                for (i in 0 until response.length()) {
+                                    val item = response.getJSONObject(i)
+                                    val id = item.getInt("id")
+                                    val imageID = item.getInt("imageID")
+                                    val target = when (i + 1) {
+                                        1 -> stylePreview1
+                                        2 -> stylePreview2
+                                        3 -> stylePreview3
+                                        4 -> stylePreview4
+                                        5 -> stylePreview5
+                                        else -> stylePreview6
+                                    }
+                                    Log.e("LOGE", "${response.length()}: $id, $imageID")
+                                    // TODO: 코디 이미지 가져와서 렌더링 / 구현 후 주소 확인필
+//                                    val imageRequest = ImageRequest("${Network.BASE_URL}/coordination/image/${imageID}", { bitmap ->
+//                                        target.setImageBitmap(bitmap)
+//                                    }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+//                                    imageRequest.tag = STYLE_TAG
+//                                    Network.getInstance(this@HomeFragment.requireContext()).addToRequestQueue(imageRequest)
+                                }
+                            }
+                        },
+                        {
+
+                        }
+                    )
+                    styleRequest.tag = STYLE_TAG
+                    Network.getInstance(this@HomeFragment.requireContext())
+                        .addToRequestQueue(styleRequest)
+                }
+
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+                    Toast.makeText(this@HomeFragment.context, tab.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+                override fun onTabUnselected(tab: TabLayout.Tab?) {
+                    // Handle tab unselect
+                }
+            })
             styleLookText.setText(R.string.home_style_view)
+
         }
     }
 
