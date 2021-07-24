@@ -96,9 +96,6 @@ class HomeFragment : Fragment() {
         binding.styleGuide.apply {
             styleTitle.setText(R.string.home_style_guide)
             styleLookText.setText(R.string.home_style_view)
-            Style.values().map {
-                styleTab.addTab(styleTab.newTab().setText(it.resID))
-            }
             styleTab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
 
                 override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -174,6 +171,9 @@ class HomeFragment : Fragment() {
 
                 }
             })
+            Style.values().map {
+                styleTab.addTab(styleTab.newTab().setText(it.resID))
+            }
         }
     }
 
