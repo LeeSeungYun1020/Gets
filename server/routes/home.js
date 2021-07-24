@@ -113,6 +113,7 @@ module.exports = function (passport) {
 				if (err || result.length === 0)
 					res.send([{result: false}])
 				else {
+					result[0]["result"] = true
 					res.send(result)
 				}
 			})
