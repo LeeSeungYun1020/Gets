@@ -32,7 +32,7 @@ module.exports = function (passport) {
 	router.get("/style/:styleID/:number", (req, res) => {
 		connection.query(`SELECT *
                           FROM coordination
-                          WHERE (style & ?) = 1
+                          WHERE (style & ?) != 0
                           ORDER BY id desc
                           LIMIT ${req.params.number}`,
 			[req.params.styleID],
