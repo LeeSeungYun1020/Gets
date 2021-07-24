@@ -33,20 +33,7 @@ class SignupActivity : AppCompatActivity() {
         setSpan()
         binding.apply {
 
-            pwField.editText?.doAfterTextChanged {
-                val text = it.toString()
-                if (pwCheckField.editText?.text.toString() != text)
-                    pwCheckField.error = getString(R.string.msg_password_error)
-                else
-                    pwCheckField.error = null
-            }
-            pwCheckField.editText?.doAfterTextChanged {
-                val text = it.toString()
-                if (pwField.editText?.text.toString() != text)
-                    pwCheckField.error = getString(R.string.msg_password_error)
-                else
-                    pwCheckField.error = null
-            }
+            setPasswordCheck()
 
             phoneSendButton.setOnClickListener {
                 val phone = phoneField.editText?.text.toString()
@@ -61,6 +48,16 @@ class SignupActivity : AppCompatActivity() {
 
             phoneCheckButton.setOnClickListener { validateMessage() }
 
+            setBirthDropdown()
+
+            setTermCheckbox()
+
+            signupButton.setOnClickListener { validateData() }
+        }
+    }
+
+    private fun setBirthDropdown() {
+        binding.apply {
             val year = 2021.downTo(1900).toList()
             val month = (1..12).toList()
             val date = (1..31).toList()
@@ -70,7 +67,47 @@ class SignupActivity : AppCompatActivity() {
             (birthYearField.editText as? AutoCompleteTextView)?.setAdapter(yearAdapter)
             (birthMonthField.editText as? AutoCompleteTextView)?.setAdapter(monthAdapter)
             (birthDayField.editText as? AutoCompleteTextView)?.setAdapter(dateAdapter)
+        }
+    }
 
+    private fun setPasswordCheck() {
+        binding.apply {
+            pwField.editText?.doAfterTextChanged {
+                val text = it.toString()
+                if (pwCheckField.editText?.text.toString() != text)
+                    pwCheckField.error = getString(R.string.msg_password_error)
+                else
+                    pwCheckField.error = null
+            }
+
+            pwCheckField.editText?.doAfterTextChanged {
+                val text = it.toString()
+                if (pwField.editText?.text.toString() != text)
+                    pwCheckField.error = getString(R.string.msg_password_error)
+                else
+                    pwCheckField.error = null
+            }
+        }
+    }
+
+    private fun setSpan() {
+        binding.apply {
+            listOf(nameText, idText, pwText, phoneText, birthText).forEach {
+                val text = it.text.toString()
+                val spannable = SpannableStringBuilder(text)
+                spannable.setSpan(
+                    ForegroundColorSpan(Color.RED),
+                    text.lastIndex,
+                    text.length,
+                    Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+                )
+                it.text = spannable
+            }
+        }
+    }
+
+    private fun setTermCheckbox() {
+        binding.apply {
             termAllCheckbox.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     termRequiredCheckbox.isChecked = true
@@ -88,81 +125,6 @@ class SignupActivity : AppCompatActivity() {
                     if (!isChecked)
                         termAllCheckbox.isChecked = false
                 }
-            }
-
-            signupButton.setOnClickListener {
-                var hasError = false
-
-                if (!Patterns.EMAIL_ADDRESS.matcher(idField.editText?.text.toString()).matches()) {
-                    idField.error = getString(R.string.msg_email_format_error)
-                    hasError = true
-                } else
-                    idField.error = null
-
-                if (pwField.editText?.text?.length ?: 0 < 5) {
-                    pwField.error = getString(R.string.msg_password_length_error)
-                    hasError = true
-                } else
-                    pwField.error = null
-
-                if (pwCheckField.editText?.text.toString() != pwField.editText?.text.toString()) {
-                    pwCheckField.error = getString(R.string.msg_password_error)
-                    hasError = true
-                } else
-                    pwCheckField.error = null
-
-                if (!isPhoneChecked) {
-                    phoneField.error = getString(R.string.msg_required_field_error)
-                    hasError = true
-                } else {
-                    phoneField.error = null
-                }
-
-                listOf(
-                    nameField,
-                    birthYearField,
-                    birthMonthField,
-                    birthDayField
-                ).forEach {
-                    if (it.editText?.text.toString().isNullOrBlank()) {
-                        it.error = getString(R.string.msg_required_field_error)
-                        hasError = true
-                    } else
-                        it.error = null
-                }
-
-                if (!termRequiredCheckbox.isChecked || !termInfoCheckbox.isChecked) {
-                    Snackbar.make(
-                        binding.signupButton,
-                        R.string.msg_term_error,
-                        Snackbar.LENGTH_SHORT
-                    ).show()
-                    hasError = true
-                }
-
-                (getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager)?.hideSoftInputFromWindow(
-                    binding.root.windowToken,
-                    0
-                )
-                if (!hasError) {
-                    signup()
-                }
-            }
-        }
-    }
-
-    private fun setSpan() {
-        binding.apply {
-            listOf(nameText, idText, pwText, phoneText, birthText).forEach {
-                val text = it.text.toString()
-                val spannable = SpannableStringBuilder(text)
-                spannable.setSpan(
-                    ForegroundColorSpan(Color.RED),
-                    text.lastIndex,
-                    text.length,
-                    Spannable.SPAN_EXCLUSIVE_INCLUSIVE
-                )
-                it.text = spannable
             }
         }
     }
@@ -199,6 +161,67 @@ class SignupActivity : AppCompatActivity() {
                 phoneSendButton.text = getString(R.string.button_resend)
                 phoneField.isEnabled = true
                 phoneSendButton.isEnabled = true
+            }
+        }
+    }
+
+    private fun validateData() {
+        binding.apply {
+            var hasError = false
+
+            if (!Patterns.EMAIL_ADDRESS.matcher(idField.editText?.text.toString()).matches()) {
+                idField.error = getString(R.string.msg_email_format_error)
+                hasError = true
+            } else
+                idField.error = null
+
+            if (pwField.editText?.text?.length ?: 0 < 5) {
+                pwField.error = getString(R.string.msg_password_length_error)
+                hasError = true
+            } else
+                pwField.error = null
+
+            if (pwCheckField.editText?.text.toString() != pwField.editText?.text.toString()) {
+                pwCheckField.error = getString(R.string.msg_password_error)
+                hasError = true
+            } else
+                pwCheckField.error = null
+
+            if (!isPhoneChecked) {
+                phoneField.error = getString(R.string.msg_required_field_error)
+                hasError = true
+            } else {
+                phoneField.error = null
+            }
+
+            listOf(
+                nameField,
+                birthYearField,
+                birthMonthField,
+                birthDayField
+            ).forEach {
+                if (it.editText?.text.toString().isNullOrBlank()) {
+                    it.error = getString(R.string.msg_required_field_error)
+                    hasError = true
+                } else
+                    it.error = null
+            }
+
+            if (!termRequiredCheckbox.isChecked || !termInfoCheckbox.isChecked) {
+                Snackbar.make(
+                    binding.signupButton,
+                    R.string.msg_term_error,
+                    Snackbar.LENGTH_SHORT
+                ).show()
+                hasError = true
+            }
+
+            (getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager)?.hideSoftInputFromWindow(
+                binding.root.windowToken,
+                0
+            )
+            if (!hasError) {
+                signup()
             }
         }
     }
