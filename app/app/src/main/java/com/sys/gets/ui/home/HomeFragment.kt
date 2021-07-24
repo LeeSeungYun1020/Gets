@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
@@ -89,13 +88,22 @@ class HomeFragment : Fragment() {
     private fun initStyleGuide() {
         binding.styleGuide.apply {
             styleTitle.setText(R.string.home_style_guide)
+            styleLookText.setText(R.string.home_style_view)
             Style.values().map {
                 styleTab.addTab(styleTab.newTab().setText(it.resID))
             }
             styleTab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
 
                 override fun onTabSelected(tab: TabLayout.Tab?) {
+                    // 기존 네트워크 요청 취소
+                    Network.getInstance(this@HomeFragment.requireContext()).requestQueue.cancelAll(
+                        STYLE_TAG
+                    )
+
+                    // 선택한 탭 파악
                     val style = Style.values()[tab?.position ?: 0]
+
+                    // 스타일 이미지 및 텍스트 지정
                     styleText.text = "${getString(style.resID)} ${getString(R.string.hint_outfit)}"
                     styleQuestionText.text =
                         "${getString(R.string.hint_style_question_prefix)}${getString(style.resID)}${
@@ -112,15 +120,14 @@ class HomeFragment : Fragment() {
                             else -> R.drawable.bg_casual
                         }
                     )
-                    Network.getInstance(this@HomeFragment.requireContext()).requestQueue.cancelAll(
-                        STYLE_TAG
-                    )
+
+                    // 스타일 사진 서버에 요청
                     val styleRequest = JsonArrayRequest(
                         Request.Method.POST, "${Network.BASE_URL}/home/style/${style.code}/6",
                         null,
                         { response ->
                             if (response.getJSONObject(0).getBoolean("result")) {
-
+                                // 사진 6개 각각에 대한 요청
                                 for (i in 0 until response.length()) {
                                     val item = response.getJSONObject(i)
                                     val id = item.getInt("id")
@@ -153,16 +160,13 @@ class HomeFragment : Fragment() {
                 }
 
                 override fun onTabReselected(tab: TabLayout.Tab?) {
-                    Toast.makeText(this@HomeFragment.context, tab.toString(), Toast.LENGTH_SHORT)
-                        .show()
+
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab?) {
-                    // Handle tab unselect
+
                 }
             })
-            styleLookText.setText(R.string.home_style_view)
-
         }
     }
 
