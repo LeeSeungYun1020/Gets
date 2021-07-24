@@ -2,7 +2,10 @@ package com.sys.gets.sign
 
 import android.os.Bundle
 import android.util.Patterns
+import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.android.volley.Request
@@ -15,6 +18,8 @@ import org.json.JSONObject
 import java.util.*
 
 class SignupActivity : AppCompatActivity() {
+    private val validateNumber = (100000..999999).random().toString()
+    private var isPhoneChecked = false
     private lateinit var binding: ActivitySignupBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +43,48 @@ class SignupActivity : AppCompatActivity() {
                     pwCheckField.error = null
             }
 
+            phoneSendButton.setOnClickListener {
+                val phone = phoneField.editText?.text.toString()
+                if (phone.length in 10..16 && Patterns.PHONE.matcher(phone).matches()) {
+                    phoneCheckField.visibility = View.VISIBLE
+                    phoneCheckButton.visibility = View.VISIBLE
+                    sendMessage()
+                } else {
+                    phoneField.error = getString(R.string.msg_phone_format_error)
+                }
+            }
+
+            phoneCheckButton.setOnClickListener { validateMessage() }
+
+            val year = 2021.downTo(1900).toList()
+            val month = (1..12).toList()
+            val date = (1..31).toList()
+            val yearAdapter = ArrayAdapter(this@SignupActivity, R.layout.list_item, year)
+            val monthAdapter = ArrayAdapter(this@SignupActivity, R.layout.list_item, month)
+            val dateAdapter = ArrayAdapter(this@SignupActivity, R.layout.list_item, date)
+            (birthYearField.editText as? AutoCompleteTextView)?.setAdapter(yearAdapter)
+            (birthMonthField.editText as? AutoCompleteTextView)?.setAdapter(monthAdapter)
+            (birthDayField.editText as? AutoCompleteTextView)?.setAdapter(dateAdapter)
+
+            termAllCheckbox.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    termRequiredCheckbox.isChecked = true
+                    termInfoCheckbox.isChecked = true
+                    termMarketingCheckbox.isChecked = true
+                }
+            }
+
+            listOf(
+                termRequiredCheckbox,
+                termInfoCheckbox,
+                termMarketingCheckbox
+            ).forEach { checkBox ->
+                checkBox.setOnCheckedChangeListener { _, isChecked ->
+                    if (!isChecked)
+                        termAllCheckbox.isChecked = false
+                }
+            }
+
             signupButton.setOnClickListener {
                 var hasError = false
 
@@ -59,7 +106,10 @@ class SignupActivity : AppCompatActivity() {
                 } else
                     pwCheckField.error = null
 
-
+                if (!isPhoneChecked) {
+                    phoneField.error = getString(R.string.msg_required_field_error)
+                    hasError = true
+                }
 
                 listOf(
                     nameField,
@@ -75,6 +125,15 @@ class SignupActivity : AppCompatActivity() {
                         it.error = null
                 }
 
+                if (!termRequiredCheckbox.isChecked || !termInfoCheckbox.isChecked) {
+                    Snackbar.make(
+                        binding.signupButton,
+                        R.string.msg_term_error,
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                    hasError = true
+                }
+
                 (getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager)?.hideSoftInputFromWindow(
                     binding.root.windowToken,
                     0
@@ -82,6 +141,42 @@ class SignupActivity : AppCompatActivity() {
                 if (!hasError) {
                     signup()
                 }
+            }
+        }
+    }
+
+    private fun sendMessage() {
+        binding.apply {
+            phoneField.isEnabled = false
+            phoneSendButton.isEnabled = false
+            phoneCheckField.editText?.setText(validateNumber)
+        }
+    }
+
+    private fun validateMessage() {
+        if (binding.phoneCheckField.editText?.text.toString() == validateNumber) {
+            Snackbar.make(
+                binding.phoneSendButton,
+                R.string.msg_phone_check_success,
+                Snackbar.LENGTH_SHORT
+            ).show()
+            binding.apply {
+                phoneCheckField.visibility = View.GONE
+                phoneCheckButton.visibility = View.GONE
+                phoneSendButton.text = getString(R.string.button_done)
+                isPhoneChecked = true
+            }
+        } else {
+            Snackbar.make(
+                binding.phoneSendButton,
+                R.string.msg_phone_check_failed,
+                Snackbar.LENGTH_SHORT
+            ).show()
+            binding.apply {
+                phoneCheckField.editText?.setText("")
+                phoneSendButton.text = getString(R.string.button_resend)
+                phoneField.isEnabled = true
+                phoneSendButton.isEnabled = true
             }
         }
     }
@@ -98,8 +193,6 @@ class SignupActivity : AppCompatActivity() {
                 put("year", binding.birthYearField.editText?.text)
                 put("month", binding.birthMonthField.editText?.text)
                 put("day", binding.birthDayField.editText?.text)
-                put("address", binding.addressField.editText?.text)
-                put("addressDetail", binding.addressDetailField.editText?.text)
             },
             { response ->
                 if (response.getBoolean("result")) {
