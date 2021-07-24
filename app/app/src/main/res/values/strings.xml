@@ -67,4 +67,7 @@
     <string name="button_done">Done</string>
     <string name="msg_phone_format_error">Phone format is incorrect</string>
     <string name="msg_term_error">You did not agree to the mandatory terms and conditions.</string>
+    <string name="msg_signin_duplicate">Already registered email</string>
+    <string name="msg_email_check_error">Check email first</string>
+    <string name="msg_email_check_progress">Checking email ...</string>
 </resources>

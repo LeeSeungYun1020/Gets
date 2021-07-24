@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
-import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -25,6 +24,7 @@ import java.util.*
 class SignupActivity : AppCompatActivity() {
     private val validateNumber = (100000..999999).random().toString()
     private var isPhoneChecked = false
+    private var isEmailDuplicated = true
     private lateinit var binding: ActivitySignupBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +32,17 @@ class SignupActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSpan()
         binding.apply {
+
+            idField.editText?.setOnFocusChangeListener { _, hasFocus ->
+                if (!hasFocus)
+                    checkDuplicate()
+
+                Snackbar.make(
+                    binding.signupButton,
+                    "ID: $hasFocus",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
 
             setPasswordCheck()
 
@@ -172,6 +183,14 @@ class SignupActivity : AppCompatActivity() {
             if (!Patterns.EMAIL_ADDRESS.matcher(idField.editText?.text.toString()).matches()) {
                 idField.error = getString(R.string.msg_email_format_error)
                 hasError = true
+            } else if (isEmailDuplicated) {
+                Snackbar.make(
+                    binding.signupButton,
+                    R.string.msg_email_check_error,
+                    Snackbar.LENGTH_SHORT
+                ).show()
+                idField.error = getString(R.string.msg_email_check_progress)
+                checkDuplicate()
             } else
                 idField.error = null
 
@@ -226,6 +245,32 @@ class SignupActivity : AppCompatActivity() {
         }
     }
 
+    private fun checkDuplicate() {
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.POST, "${Network.BASE_URL}/signup/check",
+            JSONObject().apply {
+                put("email", binding.idField.editText?.text)
+            },
+            { response ->
+                if (response.getBoolean("result")) {
+                    isEmailDuplicated = false
+                    binding.idField.error = null
+                } else {
+                    isEmailDuplicated = true
+                    binding.idField.error = getString(R.string.msg_signin_duplicate)
+                }
+            },
+            {
+                Snackbar.make(
+                    binding.signupButton,
+                    R.string.msg_server_error,
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+        )
+        Network.getInstance(this).addToRequestQueue(jsonObjectRequest)
+    }
+
     private fun signup() {
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.POST, "${Network.BASE_URL}/signup/basic",
@@ -257,7 +302,6 @@ class SignupActivity : AppCompatActivity() {
                 }
             },
             {
-                Log.e("LOGE", "signup: $it")
                 Snackbar.make(
                     binding.signupButton,
                     R.string.msg_server_error,

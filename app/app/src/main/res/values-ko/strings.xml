@@ -63,4 +63,7 @@
     <string name="button_done">완료</string>
     <string name="msg_phone_format_error">휴대 전화 형식이 올바르지 않습니다.</string>
     <string name="msg_term_error">필수 약관에 동의하지 않으셨습니다.</string>
+    <string name="msg_signin_duplicate">이미 가입된 메일입니다.</string>
+    <string name="msg_email_check_error">이메일 확인 후 다시 시도하십시오.</string>
+    <string name="msg_email_check_progress">이메일 확인 중</string>
 </resources>
