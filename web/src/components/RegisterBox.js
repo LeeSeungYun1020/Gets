@@ -11,7 +11,7 @@ import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 
 const GetsCheckbox = withStyles({
     root: {
-        color: "#7eb693",
+        color: "#d4d3d3",
         '&$checked': {
             color: "#7eb693",
         },
@@ -41,6 +41,9 @@ class RegisterBox extends React.Component {
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handlePasswordConfirmChange = this.handlePasswordConfirmChange.bind(this);
         this.handlePhoneNumberChange = this.handlePhoneNumberChange.bind(this);
+        this.handleYearChange = this.handleYearChange.bind(this);
+        this.handleMonthChange = this.handleMonthChange.bind(this);
+        this.handleDayChange = this.handleDayChange.bind(this);
     }
 
 
@@ -63,7 +66,17 @@ class RegisterBox extends React.Component {
     handlePhoneNumberChange(event) {
         this.setState({phoneNumber: event.target.value});
     }
+    handleYearChange(event) {
+        this.setState({year: event.target.value});
+    }
 
+    handleMonthChange(event) {
+        this.setState({month: event.target.value});
+    }
+
+    handleDayChange(event) {
+        this.setState({day: event.target.value});
+    }
     render() {
         let registerForm
         registerForm = (
@@ -104,12 +117,20 @@ class RegisterBox extends React.Component {
                         <input type="number" name={"phone"} placeholder={this.props.enter_phone} value={this.state.phoneNumber}
                                onChange={this.handlePhoneNumberChange} required/>
                     </label>
-                    <div>
+                    <label>
                         <div className= "info">
                             <h4 className="essential">{this.props.essential}</h4>
                             <h4>{this.props.birthday}</h4>
                         </div>
-                    </div>
+                        <div id="input_birth">
+                            <input type="number" name={"year"} placeholder={this.props.year} value={this.state.year}
+                                   onChange={this.handleYearChange} required/>
+                            <input type="number" name={"month"} placeholder={this.props.month} value={this.state.month}
+                                   onChange={this.handleMonthChange} required/>
+                            <input type="number" name={"day"} placeholder={this.props.day} value={this.state.day}
+                                   onChange={this.handleDayChange} required/>
+                        </div>
+                    </label>
 
                     <div id = "agree_line"></div>
                     <FormGroup>

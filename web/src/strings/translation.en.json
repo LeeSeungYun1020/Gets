@@ -107,5 +107,8 @@
   "address" : "Address",
   "agree_1": "(Required) Consent to the Terms and Conditions",
   "agree_2": "(Required) Consent to collect/use personal information",
-  "agree_3": "(Optional) Accept Event/Marketing Receipt"
+  "agree_3": "(Optional) Accept Event/Marketing Receipt",
+  "year" : "year",
+  "month" : "month",
+  "day" : "day"
 }
