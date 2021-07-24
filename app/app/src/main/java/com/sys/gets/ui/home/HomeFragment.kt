@@ -149,7 +149,7 @@ class HomeFragment : Fragment() {
                                     }
                                     Log.e("LOGE", "${response.length()}: $id, $imageID")
                                     // TODO: 코디 이미지 가져와서 렌더링 / 구현 후 주소 확인필
-//                                    val imageRequest = ImageRequest("${Network.BASE_URL}/coordination/image/${imageID}", { bitmap ->
+//                                    val imageRequest = ImageRequest("${Network.API_URL}/coordination/image/${imageID}", { bitmap ->
 //                                        target.setImageBitmap(bitmap)
 //                                    }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
 //                                    imageRequest.tag = STYLE_TAG
@@ -180,14 +180,7 @@ class HomeFragment : Fragment() {
     private fun initTopTrends() {
         binding.topTrendsList.apply {
             listTitle.setText(R.string.home_top_trends)
-            // TODO: 서버에서 인기 코디 이미지 가져오기 / 별도 지정 필요
-            listOf(listItem1, listItem2, listItem3, listItem4, listItem5, listItem6).forEach {
-                it.apply {
-                    cardImage.setImageResource(R.drawable.tm_custom)
-                    // title, price, like
-                }
-            }
-
+            // 인기 상품 리스트 요청
             val trendRequest = JsonArrayRequest(
                 Request.Method.POST, "${Network.BASE_URL}/home/toptrends/6",
                 null,
@@ -216,7 +209,7 @@ class HomeFragment : Fragment() {
                                 },
                                 0,
                                 0,
-                                ImageView.ScaleType.CENTER_CROP,
+                                ImageView.ScaleType.FIT_CENTER,
                                 Bitmap.Config.RGB_565,
                                 null
                             )
