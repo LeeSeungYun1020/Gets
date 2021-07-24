@@ -1,16 +1,19 @@
 package com.sys.gets.ui.home
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.android.volley.Request
+import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.JsonArrayRequest
 import com.google.android.material.tabs.TabLayout
 import com.sys.gets.R
@@ -21,6 +24,7 @@ import com.sys.gets.ui.MainViewModel
 
 private const val NUM_PAGES = 5
 private const val STYLE_TAG = "STYLE"
+private const val TREND_TAG = "TREND"
 
 class HomeFragment : Fragment() {
     private lateinit var mainViewModel: MainViewModel
@@ -68,7 +72,10 @@ class HomeFragment : Fragment() {
 
     override fun onStop() {
         super.onStop()
-        Network.getInstance(this.requireContext()).requestQueue.cancelAll(STYLE_TAG)
+        Network.getInstance(this.requireContext()).requestQueue.apply {
+            cancelAll(STYLE_TAG)
+            cancelAll(TREND_TAG)
+        }
     }
 
     private fun initCustomRecommendation() {
@@ -180,6 +187,52 @@ class HomeFragment : Fragment() {
                     // title, price, like
                 }
             }
+
+            val trendRequest = JsonArrayRequest(
+                Request.Method.POST, "${Network.BASE_URL}/home/toptrends/6",
+                null,
+                { response ->
+                    if (response.getJSONObject(0).getBoolean("result")) {
+                        // 사진 6개 각각에 대한 요청
+                        for (i in 0 until response.length()) {
+                            val item = response.getJSONObject(i)
+                            val id = item.getInt("id")
+                            val imageID = item.getString("image1ID")
+                            val target = when (i + 1) {
+                                1 -> binding.topTrendsList.listItem1
+                                2 -> binding.topTrendsList.listItem2
+                                3 -> binding.topTrendsList.listItem3
+                                4 -> binding.topTrendsList.listItem4
+                                5 -> binding.topTrendsList.listItem5
+                                else -> binding.topTrendsList.listItem6
+                            }
+                            target.cardTitle.text = item.getString("name")
+                            target.cardPrice.text = item.getString("price")
+                            target.cardLike.text = item.getString("favorite")
+                            val imageRequest = ImageRequest(
+                                "${Network.API_URL}/product/image/${imageID}",
+                                { bitmap ->
+                                    target.cardImage.setImageBitmap(bitmap)
+                                },
+                                0,
+                                0,
+                                ImageView.ScaleType.CENTER_CROP,
+                                Bitmap.Config.RGB_565,
+                                null
+                            )
+                            imageRequest.tag = TREND_TAG
+                            Network.getInstance(this@HomeFragment.requireContext())
+                                .addToRequestQueue(imageRequest)
+                        }
+                    }
+                },
+                {
+
+                }
+            )
+            trendRequest.tag = TREND_TAG
+            Network.getInstance(this@HomeFragment.requireContext())
+                .addToRequestQueue(trendRequest)
         }
     }
 
