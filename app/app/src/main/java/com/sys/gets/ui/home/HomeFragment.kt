@@ -23,6 +23,7 @@ import com.sys.gets.network.Network
 import com.sys.gets.ui.MainViewModel
 
 private const val NUM_PAGES = 5
+private const val CUSTOM_TAG = "CUSTOM"
 private const val STYLE_TAG = "STYLE"
 private const val TREND_TAG = "TREND"
 
@@ -73,6 +74,7 @@ class HomeFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         Network.getInstance(this.requireContext()).requestQueue.apply {
+            cancelAll(CUSTOM_TAG)
             cancelAll(STYLE_TAG)
             cancelAll(TREND_TAG)
         }
@@ -81,14 +83,42 @@ class HomeFragment : Fragment() {
     private fun initCustomRecommendation() {
         binding.customList.apply {
             listTitle.setText(R.string.home_custom_recommendation)
-            // TODO: 네트워크 통신하여 서버에서 코디 이미지 가져오기 또는 코디 이미지 아이디 가져오기
-            listItem1.setImageResource(R.drawable.tm_custom)
-            listItem2.setImageResource(R.drawable.tm_custom)
-            listItem3.setImageResource(R.drawable.tm_custom)
-            listItem4.setImageResource(R.drawable.tm_custom)
-            listItem5.setImageResource(R.drawable.tm_custom)
-            listItem6.setImageResource(R.drawable.tm_custom)
+            val styleRequest = JsonArrayRequest(
+                Request.Method.POST, "${Network.BASE_URL}/home/custom/6",
+                null,
+                { response ->
+                    if (response.getJSONObject(0).getBoolean("result")) {
+                        // 사진 6개 각각에 대한 요청
+                        for (i in 0 until response.length()) {
+                            val item = response.getJSONObject(i)
+                            val id = item.getInt("id")
+                            val imageID = item.getInt("imageID")
+                            val target = when (i + 1) {
+                                1 -> listItem1
+                                2 -> listItem2
+                                3 -> listItem3
+                                4 -> listItem4
+                                5 -> listItem5
+                                else -> listItem6
+                            }
+                            Log.e("LOGE", "${response.length()}: $id, $imageID")
+                            target.setImageResource(R.drawable.tm_custom)
+                            // TODO: 코디 이미지 가져와서 렌더링 / 구현 후 주소 확인필
+//                                    val imageRequest = ImageRequest("${Network.API_URL}/coordination/image/${imageID}", { bitmap ->
+//                                        target.setImageBitmap(bitmap)
+//                                    }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
+//                                    imageRequest.tag = CUSTOM_TAG
+//                                    Network.getInstance(this@HomeFragment.requireContext()).addToRequestQueue(imageRequest)
+                        }
+                    }
+                },
+                {
 
+                }
+            )
+            styleRequest.tag = CUSTOM_TAG
+            Network.getInstance(this@HomeFragment.requireContext())
+                .addToRequestQueue(styleRequest)
         }
     }
 
