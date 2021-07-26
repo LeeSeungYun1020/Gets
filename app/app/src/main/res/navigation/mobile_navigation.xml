@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.sys.gets.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_closet"
+        android:name="com.sys.gets.ui.closet.ClosetFragment"
+        android:label="@string/title_closet"
+        tools:layout="@layout/fragment_closet" />
+
+    <fragment
+        android:id="@+id/navigation_product"
+        android:name="com.sys.gets.ui.product.ProductFragment"
+        android:label="@string/title_product"
+        tools:layout="@layout/fragment_product" />
+    <fragment
+        android:id="@+id/navigation_magazine"
+        android:name="com.sys.gets.ui.magazine.MagazineFragment"
+        android:label="@string/title_magazine"
+        tools:layout="@layout/fragment_magazine" />
+</navigation>

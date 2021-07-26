@@ -1,28 +1,31 @@
+import React from "react";
+import {Box, Select} from "grommet";
+import {CaretDownFill} from "grommet-icons";
+import select_nav from "../images/home/select_nav.webp"
 function HomeStyleSelectBox(props) {
-    const items = props.list.map((text) =>
-        <li>{text}</li>
-    )
-
-    const wrapperID = "select-wrap" + props.index
-    const selectID = "select" + props.index
+    const [value, setValue] = React.useState(props.default);
     return (
-        <div id="select_area">
-            <div className="select_box">
-                <h2>{props.title}</h2>
-                <div id={wrapperID} className="select-wrap">
-                    <div id={selectID} className="select">
-                        {props.default}
-                    </div>
-                    <ul id="ul" className="select-ul">
-                        <div>
-                            {items}
-                        </div>
-                    </ul>
-                </div>
+        <div id = "style_info_box">
+            <div>
+                <h3>{props.title}</h3>
+                <Select
+                    id = "info_select"
+                    options={props.list}
+                    value={value}
+                    onChange={({ option }) => setValue(option)}
+                    style={{
+                        width: '7vw',
+                    }}
+                    icon={
+                        <Box>
+                            <CaretDownFill size="large" color="#d4d3d3" />
+                        </Box>
+                    }
+                />
             </div>
-            <div className="line"></div>
+            <div id={`info_${props.index}`}></div>
         </div>
-    )
+    );
 }
 
 export default HomeStyleSelectBox

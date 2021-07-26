@@ -1,15 +1,14 @@
 @use "node_modules/@material/theme/index" with ($primary: #7eb693, $secondary: #FFFFFF, $background: #000000);
 //@use "node_modules/@material/button/mdc-button";
 //@use "node_modules/@material/button";
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-@import url("https://fonts.googleapis.com/earlyaccess/notosanskr.css");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900");
 
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'NotoSansKR', sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -23,7 +22,7 @@ header {
   background-color: #00200f;
   position: relative;
   display: flex;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   align-items: center;
   width: 100%;
   height: 80px;
@@ -86,13 +85,13 @@ nav {
   border-bottom:3px solid white;
   opacity: 1;
   color:white !important;
-  padding-bottom:28px;
+  padding-bottom:26px;
 }
 
 .tab:active, .tab.active{
   border-bottom:3px solid white;
   color:white;
-  padding-bottom:28px;
+  padding-bottom:26px;
   opacity: 1;
 }
 .tab:active>a, .tab.active>a{
@@ -102,7 +101,7 @@ nav {
 
 body {
   margin: 0;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 footer {
@@ -110,7 +109,7 @@ footer {
   color: #ffffff;
   position: absolute;
   width: 100%;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 footer #footer_layout {
@@ -119,8 +118,6 @@ footer #footer_layout {
 
 footer #footer_logo {
   font-size: 3ex;
-  margin-bottom: 40px;
-  margin-top: 60px;
   margin-left: 10vw;
 }
 #footer_logo > img {
@@ -129,15 +126,26 @@ footer #footer_logo {
 }
 footer #detail {
   display: flex;
-  height: 280px;
+  margin-bottom: 20px;
 }
 
+#footer_top {
+  margin-top: 60px;
+  margin-bottom: 40px;
+  display:flex;
+}
 
+#footer_icon {
+  margin-left: 49.3vw;
+}
 
+#footer_icon > img {
+  margin-left: 1.5vw;
+}
 footer .detail_component {
   display: flex;
   flex-direction: column;
-  margin-right: 8vw;
+  width: 14vw;
 
 }
 
@@ -157,41 +165,62 @@ footer .footer_title {
   margin-bottom: 1.5ex;
 }
 
+#footer_address {
+  color: #828282;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin-bottom: 30px;
+}
+
+#footer_address div{
+  margin-bottom: 5px;
+}
+
 .not_found_box {
   text-align: center;
 }
 
+// 언어 선택하는 드롭다운 박스 배경
 .eLUbDq {
   border:none !important;
   border-radius: 0px !important;
   border-bottom: 2px solid #d4d3d3 !important;
 }
 
-.jpIwTy {
-  font-size:15px !important;
+// footer 드롭다운 테두리 없앰
+.cNXtw {
+  border: none !important;
 }
 
-.jylytn {
-  background-color: #00200f !important;
-  color: #ffffff !important;
+// 드롭다운 박스 선택된거
+.hZZumW {
+  width: 9vw;
 }
 
-.kmBEJr {
-  background-color: #00200f !important;
-  color: #ffffff !important;
-  padding: 12px 0 0 !important;
+// 드롭다운 화살표 아이콘
+// 드롭다운 박스 테두리 준거
+.jAWuzL {
+  border-bottom: 2px solid #FFFFFF;
 }
 
-.dlVWAo {
-  padding: 0 0 2px !important;
-  font-size:15px!important;
-  font-weight: lighter!important;
+.gXxxge {
+  padding: 0 !important;
 }
 
 .cVOXoU {
   margin: 0px !important;
 }
 
+// 드롭다운 박스 안에 글자 padding
 .gVrQNs {
   padding: 0 0 4px !important;
+  margin: 0 !important;
+}
+
+.gXxxge {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: bolder !important;
+}
+
+.grKNhv {
+  font-family: 'Noto Sans KR', sans-serif;
 }

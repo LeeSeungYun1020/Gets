@@ -12,83 +12,47 @@ module.exports = function (passport) {
 		res.send("home")
 	});
 	
-	//스타일 상관없이 number 수만큼 코디 표시
-	router.get("/custom/:number", (req, res) => {
-		const uploadNum = req.params.number
-		let length
-		var randomNum = []
-		var question = `?,`.repeat(uploadNum)
-		question = question.slice(0, -1)
-		connection.query("select count(*) as `len` from coordination", (err, result) => {
+	// 맞춤 추천 - 스타일 상관없이 number 수만큼 코디 표시
+	router.post("/custom/:number", (req, res) => {
+		connection.query(`SELECT *
+                          FROM coordination
+                          ORDER BY RAND()
+                          LIMIT ${req.params.number}`, (err, result) => {
 			if (err || result.length === 0)
-				res.send({result: false})
+				res.send([{result: false}])
 			else {
-				length = parseInt(`${result[0].len}`, length)
-				for (var i = 0; i < uploadNum; i++) {
-					randomNum[i] = Math.floor(Math.random() * length) + 1
-				}
-				
-				connection.query(`select * from coordination where id in (${question})`,
-					randomNum,
-					(err, result) => {
-						if (err || result.length === 0)
-							res.send({result: false})
-						else {
-							console.log(result)
-							res.send(result)
-						}
-					})
+				result[0]["result"] = true
+				res.send(result)
 			}
+			
 		})
 	})
 	
-	//모바일화면_중복없이 스타일에 맞는 코디를 6개 표시
-	router.get("/style/6/:styleID", (req, res) => {
-		const style = parseInt(req.params.styleID)
-		var list = []
-		connection.query(`select * from coordination`, (err, result) => {
-			if (err || result.length === 0)
-				res.send({result: false})
-			var temp, digit
-			for (var i = 0; i < result.length; i++) {
-				temp = result[i].style.toString(2)
-				digit = temp.length - 1
-				for (var j = 0; j < temp.length; j++) {
-					if (temp[j] == '1') {
-						// console.log(2**digit)
-						if (2 ** digit === style) {
-							list.push(result[i].id)
-							break
-						}
-					}
-					digit--
+	// 스타일(최신순) - 모바일화면_중복없이 스타일에 맞는 코디 표시
+	router.post("/style/:styleID/:number", (req, res) => {
+		connection.query(`SELECT *
+                          FROM coordination
+                          WHERE (style & ?) != 0
+                          ORDER BY id desc
+                          LIMIT ${req.params.number}`,
+			[req.params.styleID],
+			(err, result) => {
+				if (err || result.length === 0)
+					res.send([{result: false}])
+				else {
+					result[0]["result"] = true
+					res.send(result)
 				}
-			}
-			var newList = []
-			if (list.length < 6) {
-				console.log(list.length)
-				res.send(`${list.length}로 자료부족`)
-			} else {
-				for (var i = 0; i < 6; i++) {
-					newList[i] = list[Math.floor(Math.random() * list.length)]
-					for (var j = 0; j < i; j++) {       //중복방지
-						if (newList[i] === newList[j]) {
-							i--
-							break
-						}
-					}
-				}
-				res.send(newList)
-			}
-		})
+			})
 	})
 	
 	//각 스타일에 맞는 코디를 대표 1개씩 표시
-	router.get("/representative/style",(req,res)=>{
-		var list=[]
-		var casual=[],minimal=[],campus=[],street=[],rockchic=[],
-			amekaji=[],cityboy=[],office=[],sexyglam=[],feminine=[],lovely=[]
-		connection.query(`select id,style from coordination`,(err, result) => {
+	router.get("/representative/style", (req, res) => {
+		var list = []
+		var casual = [], minimal = [], campus = [], street = [], rockchic = [],
+			amekaji = [], cityboy = [], office = [], sexyglam = [], feminine = [], lovely = []
+		connection.query(`select id, style
+                          from coordination`, (err, result) => {
 			if (err || result.length === 0)
 				res.send({result: false})
 			var temp, digit
@@ -124,9 +88,15 @@ module.exports = function (passport) {
 					case 5: list[i]=amekaji[Math.floor(Math.random() * amekaji.length)]; break
 					case 6: list[i]=cityboy[Math.floor(Math.random() * cityboy.length)]; break
 					case 7: list[i]=office[Math.floor(Math.random() * office.length)]; break
-					case 8: list[i]=sexyglam[Math.floor(Math.random() * sexyglam.length)]; break
-					case 9: list[i]=feminine[Math.floor(Math.random() * feminine.length)]; break
-					case 10: list[i]=lovely[Math.floor(Math.random() * lovely.length)]; break
+					case 8:
+						list[i] = sexyglam[Math.floor(Math.random() * sexyglam.length)];
+						break
+					case 9:
+						list[i] = feminine[Math.floor(Math.random() * feminine.length)];
+						break
+					case 10:
+						list[i] = lovely[Math.floor(Math.random() * lovely.length)];
+						break
 				}
 			}
 			res.send(list)
@@ -134,16 +104,19 @@ module.exports = function (passport) {
 	})
 	
 	//홈화면_탑트렌드에 있는 제품을 number 수만큼표시
-	router.get("/toptrends/:number", (req, res) => {
-		const style = parseInt(req.params.number)
-		connection.query(`select * from product order by favorite desc limit ${style}`,
+	router.post("/toptrends/:number", (req, res) => {
+		connection.query(`select *
+                          from product
+                          order by favorite desc
+                          limit ${req.params.number}`,
 			(err, result) => {
-			if (err || result.length === 0)
-				res.send({result: false})
-			else {
-				res.send(result)
-			}
-		})
+				if (err || result.length === 0)
+					res.send([{result: false}])
+				else {
+					result[0]["result"] = true
+					res.send(result)
+				}
+			})
 	})
 	return router
 }

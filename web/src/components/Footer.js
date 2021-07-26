@@ -7,6 +7,8 @@ import i18next from 'i18next';
 import React from "react";
 import { Select, Box, Grommet } from 'grommet';
 import { CaretDownFill } from 'grommet-icons';
+import FooterAddress from "./FooterAddress";
+import { hpe } from 'grommet-theme-hpe';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -15,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
     selectEmpty: {
         marginTop: theme.spacing(2),
     },
-
 }));
 
 function changeLang(lang) {
@@ -27,6 +28,7 @@ function Footer(props) {
         { label: '한국어', value: 'ko' },
         { label: 'English', value: 'en'}
     ];
+    // const [value, setValue] = React.useState('ko');
     const {t, i18n} = useTranslation()
     return (
         <footer id="main_footer">
@@ -55,25 +57,29 @@ function Footer(props) {
                             {title: t("account_mystyle"), link: link.style},
                             {title: t("account_order"), link: link.order},
                         ]}/>
-                    <Select
-                        options={options}
-                        placeholder={t("korean")}
-                        labelKey='label'
-                        valueKey='value'
-                        onChange={({ option }) => {
-                            changeLang(option.value);
-                        }}
-                        alignSelf='start'
-                        style={{
-                            width: '8vw',
-                        }}
-                        icon={
-                            <Box>
-                                <CaretDownFill size="medium" color="#d4d3d3" />
-                            </Box>
-                        }
-                    ></Select>
+                    <Grommet theme={hpe} background={"#00200F"}>
+                        <Select options={options}
+                                placeholder={t("korean")}
+                                labelKey='label'
+                                valueKey='value'
+                                onChange={({ option }) => {
+                                    changeLang(option.value);
+                                }}
+                                alignSelf='start'
+                                style={{
+                                    width: '8vw',
+                                }}
+
+                                icon={
+                                    <Box>
+                                        <CaretDownFill size="medium" color="#d4d3d3" />
+                                    </Box>
+                                }>
+
+                        </Select>
+                    </Grommet>
                 </div>
+                <FooterAddress phoneNumber={t("phone_number")} address={t("address")}/>
             </div>
 
         </footer>

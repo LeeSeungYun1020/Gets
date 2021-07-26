@@ -15,6 +15,7 @@ import SexyglamChip from "../images/home/Oval_sexyglam.webp"
 import FeminineChip from "../images/home/Oval_feminine.webp"
 import LovelyChip from "../images/home/Oval_lovely.webp"
 import MinimalChip from "../images/home/Oval_minimal.webp"
+import HomeStyleGuide from "./HomeStyleGuide";
 
 function Home(props) {
     const {t, i18n} = useTranslation()
@@ -45,7 +46,7 @@ function Home(props) {
             title: t("body_type"),
             index: 3,
             default: t("lower_body_fat"),
-            list: [t("lower_body_fat"), t("upper_body_fat"), t("slim"), t("tall"), t("short")]
+            list: [t("lower_body_fat"), t("upper_body_fat"),t("regular"), t("slim"), t("tall"), t("short")]
         },
         {
             title: t("fit"),
@@ -67,6 +68,7 @@ function Home(props) {
             <HomeStyleSelect title={t("select_info")} list={selectAreaList}/>
             <HomeRecommend title={t("select_style")} chips={chipList} text={t("recommend_button")}/>
             <HomeRecommendStyle title={t("recommend_style")} content={t("recommend_content")} text={t("view_more")}/>
+            <HomeStyleGuide title = {t("style_guide")}/>
         </section>
     )
 }

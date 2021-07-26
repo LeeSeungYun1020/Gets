@@ -6,7 +6,7 @@ const connection = require('../lib/mysql')
 const product = require('../lib/product')
 const coordination = require('../lib/coordination')
 
-router.get('/', function(req, res, next) {
+router.get('/product', function (req, res, next) {
 	const processFile = async () => {
 		let records = []
 		let index = 1
@@ -85,7 +85,7 @@ router.get("/coordination", (req, res) => {
 			const bodyshape = coordination.getBodyShapeCode(record[21])
 			const price = coordination.getPriceCode(record[22])
 			const weather = coordination.getSeasonCode(record[23])
-			const imageID = record[24] || 0
+			const imageID = record[24].split(".")[0]
 			// console.error(imageID)
 			connection.query(`insert into coordination \
 	 			(id, title, outerID, outerImageID, topID, topImageID, bottomID, bottomImageID, skirtID, skirtImageID,\
@@ -108,8 +108,14 @@ router.get("/coordination", (req, res) => {
 	})()
 })
 
-router.get("/clear", (req, res) => {
+router.get("/product/clear", (req, res) => {
 	connection.query("delete from product", (err, result) => {
+		res.send(result)
+	})
+})
+
+router.get("/coordination/clear", (req, res) => {
+	connection.query("delete from coordination", (err, result) => {
 		res.send(result)
 	})
 })
