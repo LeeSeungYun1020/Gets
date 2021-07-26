@@ -57,10 +57,10 @@ class RegisterBox extends React.Component {
                     that.setState({checkId: "사용가능한 이메일입니다.", checkId_bool: true})
                 }
                 else if (!response.data.result) {
-                    that.setState({checkId: "중복되는 이메일입니다."})
+                    that.setState({checkId: "중복되는 이메일입니다.", checkId_bool: false})
                 }
                 else {
-                    that.setState({checkId: "사용불가능한 이메일입니다."})
+                    that.setState({checkId: "사용불가능한 이메일입니다.", checkId_bool: false})
                 }
                 })
             .catch(function (error) {
