@@ -7,8 +7,6 @@ const sassMiddleware = require('node-sass-middleware');
 const connection = require('./lib/mysql');
 const session = require('express-session');
 const sessionMySQLStore = require('express-mysql-session')(session)
-const flash = require('connect-flash')
-const helmet = require('helmet');
 
 const app = express();
 
@@ -19,7 +17,6 @@ app.engine('html', require('ejs').renderFile)
 
 app.use(express.static('product/image'))
 app.use(logger('dev'));
-app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
@@ -56,7 +53,6 @@ app.use(session({
 	saveUninitialized: true,
 	store: sessionStore
 }))
-app.use(flash())
 const passport = require('./lib/passport.js')(app, connection)
 
 const indexRouter = require('./routes/index');
