@@ -20,7 +20,8 @@ class Network(context: Context) {
                 }
             }
 
-        const val BASE_URL = "http://10.0.2.2:3000/api"
+        const val BASE_URL = "http://10.0.2.2:3000"
+        const val API_URL = "http://10.0.2.2:3000/api"
         // TODO 서버 URL로 변경
     }
 

@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login(email: String, password: String) {
         val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.POST, "${Network.BASE_URL}/signin",
+            Request.Method.POST, "${Network.API_URL}/signin",
             JSONObject().apply {
                 put("email", email)
                 put("pw", password)

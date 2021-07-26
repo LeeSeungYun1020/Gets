@@ -13,7 +13,7 @@ module.exports = function (passport) {
 	});
 	
 	// 맞춤 추천 - 스타일 상관없이 number 수만큼 코디 표시
-	router.get("/custom/:number", (req, res) => {
+	router.post("/custom/:number", (req, res) => {
 		connection.query(`SELECT *
                           FROM coordination
                           ORDER BY RAND()
@@ -29,10 +29,10 @@ module.exports = function (passport) {
 	})
 	
 	// 스타일(최신순) - 모바일화면_중복없이 스타일에 맞는 코디 표시
-	router.get("/style/:styleID/:number", (req, res) => {
+	router.post("/style/:styleID/:number", (req, res) => {
 		connection.query(`SELECT *
                           FROM coordination
-                          WHERE (style & ?) = 1
+                          WHERE (style & ?) != 0
                           ORDER BY id desc
                           LIMIT ${req.params.number}`,
 			[req.params.styleID],
@@ -88,9 +88,15 @@ module.exports = function (passport) {
 					case 5: list[i]=amekaji[Math.floor(Math.random() * amekaji.length)]; break
 					case 6: list[i]=cityboy[Math.floor(Math.random() * cityboy.length)]; break
 					case 7: list[i]=office[Math.floor(Math.random() * office.length)]; break
-					case 8: list[i]=sexyglam[Math.floor(Math.random() * sexyglam.length)]; break
-					case 9: list[i]=feminine[Math.floor(Math.random() * feminine.length)]; break
-					case 10: list[i]=lovely[Math.floor(Math.random() * lovely.length)]; break
+					case 8:
+						list[i] = sexyglam[Math.floor(Math.random() * sexyglam.length)];
+						break
+					case 9:
+						list[i] = feminine[Math.floor(Math.random() * feminine.length)];
+						break
+					case 10:
+						list[i] = lovely[Math.floor(Math.random() * lovely.length)];
+						break
 				}
 			}
 			res.send(list)
@@ -98,7 +104,7 @@ module.exports = function (passport) {
 	})
 	
 	//홈화면_탑트렌드에 있는 제품을 number 수만큼표시
-	router.get("/toptrends/:number", (req, res) => {
+	router.post("/toptrends/:number", (req, res) => {
 		connection.query(`select *
                           from product
                           order by favorite desc
@@ -107,6 +113,7 @@ module.exports = function (passport) {
 				if (err || result.length === 0)
 					res.send([{result: false}])
 				else {
+					result[0]["result"] = true
 					res.send(result)
 				}
 			})

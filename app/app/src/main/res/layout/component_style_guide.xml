@@ -23,13 +23,40 @@
         app:layout_constraintTop_toBottomOf="@id/style_title"
         app:tabMode="scrollable"></com.google.android.material.tabs.TabLayout>
 
+    <TextView
+        android:id="@+id/style_text"
+        android:layout_width="320dp"
+        android:layout_height="192dp"
+        android:layout_marginTop="128dp"
+        android:background="@color/styleGrey"
+        android:gravity="bottom"
+        android:paddingStart="16dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/style_image" />
+
+    <TextView
+        android:id="@+id/style_question_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="@id/style_text"
+        app:layout_constraintTop_toBottomOf="@id/style_text" />
+
+    <TextView
+        android:layout_width="224dp"
+        android:layout_height="128dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/style_image" />
+
     <ImageView
         android:id="@+id/style_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/tm_style_guide"
+        android:layout_width="272dp"
+        android:layout_height="384dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/bg_casual"
         app:layout_constraintTop_toBottomOf="@id/style_tab" />
 
     <com.google.android.material.button.MaterialButton
