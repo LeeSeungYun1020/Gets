@@ -173,4 +173,5 @@
     <string name="hint_outfit">복장</string>
     <string name="hint_style_question_prefix">:\'</string>
     <string name="hint_style_question_postfix">" 스타일'은 무엇일까요?"</string>
+    <string name="button_detail">상세보기</string>
 </resources>

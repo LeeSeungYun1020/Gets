@@ -311,43 +311,84 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/birth_year_field" />
 
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/term_required_checkbox"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/term_section"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/msg_term_required"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/term_all_checkbox" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/term_info_checkbox"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="24dp"
-            android:text="@string/msg_term_info"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/term_required_checkbox" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/term_marketing_checkbox"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="24dp"
-            android:text="@string/msg_term_marketing"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/term_info_checkbox" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:background="@drawable/bg_box"
-            app:layout_constraintBottom_toBottomOf="@id/term_marketing_checkbox"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/term_required_checkbox" />
+            app:layout_constraintTop_toBottomOf="@id/term_all_checkbox"
+            app:strokeColor="@color/signInGrey"
+            app:strokeWidth="1dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp">
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/term_required_checkbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/msg_term_required"
+                    app:layout_constraintEnd_toStartOf="@id/term_required_detail_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/term_required_detail_button"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_detail"
+                    android:textColor="@color/secondaryColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/term_required_checkbox"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/term_info_checkbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/msg_term_info"
+                    app:layout_constraintEnd_toStartOf="@id/term_info_detail_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/term_required_checkbox" />
+
+                <Button
+                    android:id="@+id/term_info_detail_button"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_detail"
+                    android:textColor="@color/secondaryColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/term_info_checkbox"
+                    app:layout_constraintTop_toTopOf="@id/term_info_checkbox" />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/term_marketing_checkbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/msg_term_marketing"
+                    app:layout_constraintEnd_toStartOf="@id/term_marketing_detail_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/term_info_checkbox" />
+
+                <Button
+                    android:id="@+id/term_marketing_detail_button"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_detail"
+                    android:textColor="@color/secondaryColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/term_marketing_checkbox"
+                    app:layout_constraintTop_toTopOf="@id/term_marketing_checkbox" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/signup_button"
@@ -358,6 +399,6 @@
             android:text="@string/button_signup"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/term_marketing_checkbox" />
+            app:layout_constraintTop_toBottomOf="@id/term_section" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

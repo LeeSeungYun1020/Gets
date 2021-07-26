@@ -55,9 +55,9 @@
     <string name="button_send">Send</string>
     <string name="button_ok">OK</string>
     <string name="msg_term_all">Agree to all terms and conditions</string>
-    <string name="msg_term_required">(Required)  Accept the required terms and conditions</string>
-    <string name="msg_term_info">(Required) Personal Information Collection and Usage Agreement</string>
-    <string name="msg_term_marketing">(Optional) Consent to receive marketing</string>
+    <string name="msg_term_required">(Required)  I agree to the Gets Terms of Service</string>
+    <string name="msg_term_info">(Required) I agree to Information Collection and Usage</string>
+    <string name="msg_term_marketing">(Optional) I agree to receive marketing info</string>
     <string name="msg_password_condition">8 or more letters and numbers</string>
     <string name="button_resend">Resend</string>
     <string name="msg_phone_check_error">Can\'t send message</string>
@@ -182,4 +182,5 @@
     <string name="hint_outfit">outfits</string>
     <string name="hint_style_question_prefix">:What is \'</string>
     <string name="hint_style_question_postfix">style?\'</string>
+    <string name="button_detail">Detail</string>
 </resources>
