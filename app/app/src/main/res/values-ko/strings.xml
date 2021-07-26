@@ -174,4 +174,5 @@
     <string name="hint_style_question_prefix">:\'</string>
     <string name="hint_style_question_postfix">" 스타일'은 무엇일까요?"</string>
     <string name="button_detail">상세보기</string>
+    <string name="msg_terms_and_privacy"><u>개인정보처리방침 및 약관</u></string>
 </resources>

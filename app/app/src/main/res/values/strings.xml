@@ -183,4 +183,5 @@
     <string name="hint_style_question_prefix">:What is \'</string>
     <string name="hint_style_question_postfix">style?\'</string>
     <string name="button_detail">Detail</string>
+    <string name="msg_terms_and_privacy"><u>Terms and Privacy</u></string>
 </resources>
