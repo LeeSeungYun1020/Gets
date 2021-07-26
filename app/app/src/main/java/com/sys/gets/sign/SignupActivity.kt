@@ -1,6 +1,7 @@
 package com.sys.gets.sign
 
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
@@ -30,6 +31,10 @@ class SignupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
+
         setSpan()
         binding.apply {
 
