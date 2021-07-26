@@ -238,6 +238,26 @@ module.exports = function (passport) {
 			})
 	})
 	
+	router.get("/coordination/image/:imageID", (req, res) => {
+		const imageID = req.params.imageID
+		const filePath = path.join(__dirname, '../product/OutfitImage')
+		const options = {
+			root: filePath,
+		}
+		fs.promises.access(`${filePath}/${imageID}.png`, fs.constants.F_OK)
+		.then(() => res.sendFile(`${imageID}.png`, options))
+		.catch(() => res.sendFile(`${imageID}.jpg`, options, err => {
+			res.sendFile(`error.png`, options)
+		}))
+	})
+	
+	function fitCode(code) {
+		let fix = code ?? -1
+		if (fix === 0)
+			fix = -1
+		return fix
+	}
+	
 	router.get("/article/list", (req, res) => {
 		connection.query("select `title`,`imageID` from `article` LIMIT 5",
 			(err, result) => {
