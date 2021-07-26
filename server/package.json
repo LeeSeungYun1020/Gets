@@ -31,6 +31,7 @@
     "swiper": "^6.7.1"
   },
   "devDependencies": {
+    "cors": "^2.8.5",
     "csv-parse": "^4.15.4",
     "trim-newlines": ">=3.0.1"
   }

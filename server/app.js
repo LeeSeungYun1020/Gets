@@ -7,6 +7,7 @@ const sassMiddleware = require('node-sass-middleware');
 const connection = require('./lib/mysql');
 const session = require('express-session');
 const sessionMySQLStore = require('express-mysql-session')(session)
+const cors = require("cors")
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.engine('html', require('ejs').renderFile)
 
 app.use(express.static('product/image'))
 app.use(logger('dev'));
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
