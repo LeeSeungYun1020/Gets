@@ -232,7 +232,7 @@ module.exports = function (passport) {
 	
 	router.get("/coordination/image/:imageID", (req, res) => {
 		const imageID = req.params.imageID
-		const filePath = path.join(__dirname, '../product/OutfitImage')
+		const filePath = path.join(__dirname, '../coordination/image')
 		const options = {
 			root: filePath,
 		}
