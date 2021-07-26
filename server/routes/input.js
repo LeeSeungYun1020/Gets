@@ -58,7 +58,7 @@ router.get("/coordination", (req, res) => {
 		let records = []
 		let index = 1
 		const parser = fs
-		.createReadStream(`./product/coordination.csv`)
+		.createReadStream(`./coordination/coordination.csv`)
 		.pipe(parse({}))
 		for await(const record of parser) {
 			const id = record[0]
