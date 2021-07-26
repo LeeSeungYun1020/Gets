@@ -6,8 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import  { useHistory} from 'react-router';
 
 const GetsCheckbox = withStyles({
     root: {
@@ -34,48 +33,102 @@ class RegisterBox extends React.Component {
             check_1: false,
             check_2: false,
             check_3: false,
+            checkId: "",
+            checkId_bool: false,
+            checkPw:"",
         };
 
-        this.handleNameChange = this.handleNameChange.bind(this);
-        this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.handlePasswordConfirmChange = this.handlePasswordConfirmChange.bind(this);
-        this.handlePhoneNumberChange = this.handlePhoneNumberChange.bind(this);
-        this.handleYearChange = this.handleYearChange.bind(this);
-        this.handleMonthChange = this.handleMonthChange.bind(this);
-        this.handleDayChange = this.handleDayChange.bind(this);
     }
 
 
-    handleNameChange(event) {
+    handleNameChange = event => {
         this.setState({name: event.target.value});
     }
 
-    handleEmailChange(event) {
+    handleEmailChange = event => {
         this.setState({email: event.target.value});
+        let that = this;
+        axios.post('http://localhost:3000/api/signup/check', {
+            email: event.target.value
+        })
+            .then(function (response){
+                console.log(response.data.result)
+                if(response.data.result && event.target.value.indexOf('@') > 0 && event.target.value.indexOf('.') > 0) { // 중복되지않고 이메일 형식일때 사용 가능
+                    that.setState({checkId: "사용가능한 이메일입니다.", checkId_bool: true})
+                }
+                else if (!response.data.result) {
+                    that.setState({checkId: "중복되는 이메일입니다."})
+                }
+                else {
+                    that.setState({checkId: "사용불가능한 이메일입니다."})
+                }
+                })
+            .catch(function (error) {
+                console.log(error)
+                console.log("사용불가능한 이메일입니다.")
+            })
     }
 
-    handlePasswordChange(event) {
+    handlePasswordChange = event => {
         this.setState({password: event.target.value});
+        console.log(event.target.value);
     }
 
-    handlePasswordConfirmChange(event) {
+    handlePasswordConfirmChange = event => {
+        let timer;
+        if (timer) {
+            clearTimeout(timer);
+        }
         this.setState({passwordConfirm: event.target.value});
+        console.log(event.target.value);
+        timer = setTimeout(() => {
+            if (this.state.password !== this.state.passwordConfirm) {
+                this.setState({checkPw: "비밀번호가 일치하지 않습니다."})
+            } else {
+                this.setState({checkPw: ""})
+            }
+        }, 500); // 일정시간이 지난 후 유효성 함수 내에서 비밀번호 확인
     }
 
-    handlePhoneNumberChange(event) {
+    handlePhoneNumberChange = event => {
         this.setState({phoneNumber: event.target.value});
     }
-    handleYearChange(event) {
+    handleYearChange = event => {
         this.setState({year: event.target.value});
     }
 
-    handleMonthChange(event) {
+    handleMonthChange = event => {
         this.setState({month: event.target.value});
     }
 
-    handleDayChange(event) {
+    handleDayChange = event => {
         this.setState({day: event.target.value});
+    }
+
+    handleInfo = () => {
+        if(this.state.password !== this.state.passwordConfirm){
+            return alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.")
+        }
+        if(!this.state.checkId_bool){
+            return alert("사용가능한 이메일을 입력해주세요");
+        }
+        axios.post('http://localhost:3000/api/signup/basic', {
+            email: this.state.email,
+            pw: this.state.password,
+            name: this.state.name,
+            phone: this.state.phoneNumber,
+            year: this.state.year,
+            month: this.state.month,
+            day: this.state.day
+        })
+            .then(function(response) {
+                document.location.href = '/account/signin'
+                console.log(response);
+            })
+            .catch(function (error) {
+
+                console.log(error)
+            })
     }
     render() {
         let registerForm
@@ -98,6 +151,7 @@ class RegisterBox extends React.Component {
                         </div>
                         <input type="email" name={"email"} placeholder={this.props.input_email} value={this.state.email}
                                onChange={this.handleEmailChange} required/>
+                        <span id = "checkId">{this.state.checkId}</span>
                     </label>
                     <label>
                         <div className= "info">
@@ -108,6 +162,7 @@ class RegisterBox extends React.Component {
                                onChange={this.handlePasswordChange} required/>
                         <input type="password" name={"passwordConfirm"} placeholder={this.props.input_pw_confirm} value={this.state.passwordConfirm}
                                onChange={this.handlePasswordConfirmChange} required/>
+                        <span id = "checkPw">{this.state.checkPw}</span>
                     </label>
                     <label>
                         <div className= "info">

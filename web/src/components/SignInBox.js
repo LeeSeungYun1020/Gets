@@ -5,29 +5,23 @@ class SignInBox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {email: "", password: ""};
-
-        this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        // this.handleEmail = this.handleEmail.bind(this);
-        this.handleInfo = this.handleInfo.bind(this);
     }
-
-    handleEmailChange(event) {
+    handleEmailChange = (event) => {
         this.setState({email: event.target.value});
     }
 
-    handlePasswordChange(event) {
+    handlePasswordChange = (event) => {
         this.setState({password: event.target.value});
     }
 
-    handleInfo(event) {
-        alert(`email=${this.state.email}, password=${this.state.password}`)
+    handleInfo = () => {
+        let that = this;
         axios.post('http://localhost:3000/api/signin', {
             email: this.state.email,
             pw: this.state.password
         })
             .then(function (response) {
-                console.log(response);
+                document.location.href = '/'
             })
             .catch(function (error) {
                 console.log(error);
