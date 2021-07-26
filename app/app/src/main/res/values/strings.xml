@@ -28,7 +28,7 @@
     <string name="button_signup">Sign up</string>
     <string name="msg_server_error">The connection with the server is not smooth.</string>
     <string name="msg_signin_error">The information you entered does not match.</string>
-    <string name="home_top_trends"># Top trends</string>
+    <string name="home_top_trends" translatable="false"># Top trends</string>
     <string name="hint_price" translatable="false">12,300</string>
     <string name="hint_favorite" translatable="false">23</string>
     <string name="button_kakao_signin">SIgn in with kakao</string>
@@ -50,7 +50,7 @@
     <string name="msg_signup_error">Please check your input again</string>
     <string name="msg_catch_phrase" translatable="false">Guess style,\nGet style</string>
     <string name="button_start">Start</string>
-    <string name="login_or">OR</string>
+    <string name="login_or" translatable="false">OR</string>
     <string name="hint_time" translatable="false">2:59</string>
     <string name="button_send">Send</string>
     <string name="button_ok">OK</string>
