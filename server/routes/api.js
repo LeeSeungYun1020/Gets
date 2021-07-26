@@ -202,7 +202,7 @@ module.exports = function (passport) {
 	})
 
 // 단일 상품 조회
-	router.post("/product/:id", (req, res) => {
+	router.get("/product/:id", (req, res) => {
 		const id = req.params.id
 		connection.query("select * from `product` where `id`=?",
 			[id],
@@ -215,6 +215,40 @@ module.exports = function (passport) {
 				}
 			})
 	})
+	
+	router.get("/coordination/:id", (req, res) => {
+		const id = req.params.id
+		connection.query("select * from `coordination` where `id`=?",
+			[id],
+			(err, result) => {
+				if (err || result.length === 0)
+					res.send({result: false})
+				else {
+					result[0].result = true
+					res.send(result[0])
+				}
+			})
+	})
+	
+	router.get("/coordination/image/:imageID", (req, res) => {
+		const imageID = req.params.imageID
+		const filePath = path.join(__dirname, '../product/OutfitImage')
+		const options = {
+			root: filePath,
+		}
+		fs.promises.access(`${filePath}/${imageID}.png`, fs.constants.F_OK)
+		.then(() => res.sendFile(`${imageID}.png`, options))
+		.catch(() => res.sendFile(`${imageID}.jpg`, options, err => {
+			res.sendFile(`error.png`, options)
+		}))
+	})
+	
+	function fitCode(code) {
+		let fix = code ?? -1
+		if (fix === 0)
+			fix = -1
+		return fix
+	}
 	
 	router.get("/article/list", (req, res) => {
 		connection.query("select `title`,`imageID` from `article` LIMIT 5",
