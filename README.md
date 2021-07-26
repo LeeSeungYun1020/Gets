@@ -179,9 +179,9 @@ create table review
     contents  VARCHAR(2048) NOT NULL,
     date      DATE          NOT NULL DEFAULT (current_date),
     image1ID  INT           NOT NULL,
-    image2ID  INT                    DEFAULT NULL,
-    image3ID  INT                    DEFAULT NULL,
-    FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL,
+    image2ID  INT           DEFAULT NULL,
+    image3ID  INT           DEFAULT NULL,
+    FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
