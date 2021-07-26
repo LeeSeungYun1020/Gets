@@ -87,10 +87,10 @@ router.get("/coordination", (req, res) => {
 			const weather = coordination.getSeasonCode(record[23])
 			const imageID = record[24] || 0
 			// console.error(imageID)
-			connection.query("insert into coordination \
+			connection.query(`insert into coordination \
 	 			(id, title, outerID, outerImageID, topID, topImageID, bottomID, bottomImageID, skirtID, skirtImageID,\
 	 			setID,setImageID,shoesID,shoesImageID,bagID,bagImageID,hatID,hatImageID,style,gender,age,bodyshape,price,weather,imageID) \
-	 			values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?,?)",
+	 			values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?,?)`,
 				[id, title, outerID, outerImageID, topID, topImageID, bottomID, bottomImageID, skirtID, skirtImageID,
 					setID, setImageID, shoesID, shoesImageID, bagID, bagImageID, hatID, hatImageID, style, gender, age, bodyshape, price, weather, imageID],
 				(err, result) => {

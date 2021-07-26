@@ -210,9 +210,23 @@ module.exports = function (passport) {
 	})
 
 // 단일 상품 조회
-	router.post("/product/:id", (req, res) => {
+	router.get("/product/:id", (req, res) => {
 		const id = req.params.id
 		connection.query("select * from `product` where `id`=?",
+			[id],
+			(err, result) => {
+				if (err || result.length === 0)
+					res.send({result: false})
+				else {
+					result[0].result = true
+					res.send(result[0])
+				}
+			})
+	})
+	
+	router.get("/coordination/:id", (req, res) => {
+		const id = req.params.id
+		connection.query("select * from `coordination` where `id`=?",
 			[id],
 			(err, result) => {
 				if (err || result.length === 0)
