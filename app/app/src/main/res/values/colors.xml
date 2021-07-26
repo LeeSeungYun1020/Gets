@@ -12,5 +12,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="signInWhite">#d7d3d3</color>
+    <color name="signInGrey">#969595</color>
     <color name="styleGrey">#f3f3f3</color>
 </resources>
