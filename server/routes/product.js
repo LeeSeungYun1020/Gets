@@ -23,10 +23,11 @@ module.exports = function (passport) {
 			})
 	});
 	
-	router.post('/heart/:product',(req,res)=>{
+//찜하기, 찜삭제하기
+	router.post('/favorite/:product',(req,res)=>{
 		var user=req.body.email
 		var product=req.params.product
-		connection.query(`insert into heart(userEmail, productID) values(?,?)`,[user,product],
+		connection.query(`insert into favorite(userEmail, productID) values(?,?)`,[user,product],
 			(err,result)=>{
 				if (err)
 					res.send({result: false})
@@ -35,6 +36,19 @@ module.exports = function (passport) {
 					res.send({result: true})
 				}
 		})
+	})
+	
+	router.post('/unfavorite/:product',(req,res)=>{
+		var user=req.body.email
+		var product=req.params.product
+		connection.query(`delete from favorite where userEmail=? and productID=?`,[user,product],
+			(err,result)=>{
+				if (err)
+					res.send({result: false})
+				else{
+					res.send({result: true})
+				}
+			})
 	})
 	
 	return router
