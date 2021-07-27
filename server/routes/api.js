@@ -23,7 +23,7 @@ module.exports = function (passport) {
 		}),
 		(req, res) => {
 			res.send({user: req.user, result: true})
-		})
+	})
 	
 	router.get("/signin/fail", (req, res) => {
 		res.send({result: false})
