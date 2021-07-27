@@ -287,6 +287,13 @@ create table question
   FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
+create table heart(
+                    userEmail   VARCHAR(64) PRIMARY KEY,
+                    productID   INT        NULL,
+                    FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE CASCADE,
+                    FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
 create database session;
 ```
 
