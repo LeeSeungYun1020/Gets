@@ -7,6 +7,8 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.Volley
+import java.net.CookieHandler
+import java.net.CookieManager
 
 
 class Network(context: Context) {
@@ -39,6 +41,7 @@ class Network(context: Context) {
             })
     }
     val requestQueue: RequestQueue by lazy {
+        CookieHandler.setDefault(CookieManager())
         Volley.newRequestQueue(context.applicationContext)
     }
 
