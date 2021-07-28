@@ -19,22 +19,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:hint="@string/hint_title"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/card_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/hint_price"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2" />
+        android:textSize="12sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="12dp"
-            android:layout_height="12dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
             android:src="@drawable/ic_favorite_24" />
 
         <TextView
@@ -43,7 +44,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:hint="@string/hint_favorite"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
     </LinearLayout>
 </LinearLayout>

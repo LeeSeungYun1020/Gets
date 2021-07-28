@@ -11,12 +11,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:hint="@string/hint_title"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
         android:id="@+id/list_item1"
+        android:layout_marginTop="20dp"
         layout="@layout/component_card_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -29,6 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/list_title" />
 
     <include
+        android:layout_marginTop="20dp"
         android:id="@+id/list_item2"
         layout="@layout/component_card_title"
         android:layout_width="0dp"
