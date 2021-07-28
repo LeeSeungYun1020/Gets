@@ -1,57 +1,57 @@
-import React from "react"
+import React, { useState } from "react"
 import axios from "axios"
+import { useHistory } from "react-router-dom"
+const SignInBox = (props) => {
+    const [email, SetEmail] = useState('');
+    const [password, SetPassword] = useState('');
+    const history = useHistory();
 
-class SignInBox extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {email: "", password: ""};
+    const handleEmailChange = (event) => {
+        SetEmail(event.target.value);
     }
-    handleEmailChange = (event) => {
-        this.setState({email: event.target.value});
-    }
+    const handlePasswordChange = (event) => SetPassword(event.target.value)
 
-    handlePasswordChange = (event) => {
-        this.setState({password: event.target.value});
-    }
-
-    handleInfo = () => {
-        let that = this;
+    const handleSubmit = (e) => {
+        e.preventDefault();
         axios.post('http://localhost:3000/api/signin', {
-            email: this.state.email,
-            pw: this.state.password
+            email: email,
+            pw: password
         })
-            .then(function (response) {
-                document.location.href = '/'
+            .then( response => {
+                if (response.data.result) {
+                    console.log(history.goBack());
+                }
+                else {
+                    alert("이메일과 비밀번호를 확인해주세요.")
+                }
             })
             .catch(function (error) {
                 console.log(error);
             });
     }
 
-    render() {
-        let signForm
+    let signForm
         signForm = (
             <div id = "sign_form">
-                <form onSubmit={this.handleInfo}>
+                <form onSubmit={handleSubmit}>
                     <label>
-                        <input type="email" name={"email"} value={this.state.email} placeholder={this.props.input_id} onChange={this.handleEmailChange}
+                        <input type="email" name={"email"} value={email} placeholder={props.input_id} onChange={handleEmailChange}
                                required/>
                     </label>
 
                     <label>
-                        <input type="password" name={"password"} placeholder={this.props.input_pw} value={this.state.password}
-                               onChange={this.handlePasswordChange} required/>
+                        <input type="password" name={"password"} placeholder={props.input_pw} value={password}
+                               onChange={handlePasswordChange} required/>
                     </label>
-                    <input id = "submit" type="submit" value={this.props.login}/>
+                    <input id = "submit" type="submit" value={props.login} />
                 </form>
             </div>
         )
-        return (
-            <div>
-                {signForm}
-            </div>
-        )
-    }
+    return (
+        <div>
+            {signForm}
+        </div>
+    )
 }
 
 export default SignInBox
