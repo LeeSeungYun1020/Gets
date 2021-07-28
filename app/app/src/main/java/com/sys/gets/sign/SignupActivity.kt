@@ -1,7 +1,6 @@
 package com.sys.gets.sign
 
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
@@ -11,8 +10,6 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import android.widget.TextView
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.android.volley.Request
@@ -22,6 +19,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.sys.gets.R
 import com.sys.gets.databinding.ActivitySignupBinding
 import com.sys.gets.network.Network
+import com.sys.gets.ui.setWhiteCenterTitle
 import org.json.JSONObject
 import java.util.*
 
@@ -35,12 +33,7 @@ class SignupActivity : AppCompatActivity() {
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
-        supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-        supportActionBar?.setCustomView(R.layout.component_action_bar)
-        findViewById<TextView>(R.id.title).setText(R.string.button_signup)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setWhiteCenterTitle(R.string.button_signup)
 
         setSpan()
         binding.apply {
