@@ -18,7 +18,7 @@ app.engine('html', require('ejs').renderFile)
 
 app.use(express.static('product/image'))
 app.use(logger('dev'));
-app.use(cors())
+app.use(cors({credentials: true}))
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
