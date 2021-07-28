@@ -25,8 +25,9 @@
             android:id="@+id/name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
             android:text="@string/hint_name_star"
-            app:layout_constraintBottom_toBottomOf="@id/name_field"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/text_box"
             app:layout_constraintTop_toTopOf="@id/name_field" />
 
@@ -34,6 +35,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/name_field"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:errorTextAppearance="@style/LittleCaption"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/signup_horizontal_margin"
@@ -47,6 +49,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:textSize="13sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName" />
@@ -58,7 +61,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hint_email_star"
-            app:layout_constraintBottom_toBottomOf="@id/id_field"
+            android:layout_marginTop="18dp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/text_box"
             app:layout_constraintTop_toTopOf="@id/id_field" />
 
@@ -66,6 +70,7 @@
             android:id="@+id/id_field"
             app:boxBackgroundColor="#00FFFFFF"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:errorTextAppearance="@style/LittleCaption"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/signup_horizontal_margin"
             android:hint="@string/hint_email"
@@ -78,6 +83,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
+                android:textSize="13sp"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress" />
 
@@ -88,7 +94,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hint_password_star"
-            app:layout_constraintBottom_toBottomOf="@id/pw_field"
+            android:layout_marginTop="18dp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/text_box"
             app:layout_constraintTop_toTopOf="@id/pw_field" />
 
@@ -97,19 +104,20 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/signup_horizontal_margin"
-            android:hint="@string/hint_password"
             android:layout_width="0dp"
+            android:hint="@string/msg_password_condition"
             android:textColor="@color/signInWhite"
             app:endIconMode="password_toggle"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:helperText="@string/msg_password_condition"
+            app:errorTextAppearance="@style/LittleCaption"
             app:layout_constraintStart_toEndOf="@id/text_box"
             app:layout_constraintTop_toBottomOf="@id/id_field">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="13sp"
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -121,6 +129,7 @@
             android:layout_marginHorizontal="@dimen/signup_horizontal_margin"
             android:hint="@string/hint_password_check"
             android:textColor="@color/signInWhite"
+            app:errorTextAppearance="@style/LittleCaption"
             app:endIconMode="password_toggle"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -131,6 +140,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="13sp"
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -140,7 +150,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hint_phone_star"
-            app:layout_constraintBottom_toBottomOf="@id/phone_field"
+            android:layout_marginTop="18dp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/text_box"
             app:layout_constraintTop_toTopOf="@id/phone_field" />
 
@@ -152,6 +163,7 @@
             android:layout_marginStart="@dimen/signup_horizontal_margin"
             android:hint="@string/hint_phone"
             android:textColor="@color/signInWhite"
+            app:errorTextAppearance="@style/LittleCaption"
             app:errorEnabled="true"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toStartOf="@id/phone_send_button"
@@ -163,6 +175,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="13sp"
                 android:inputType="phone" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -173,6 +186,7 @@
             android:layout_height="56dp"
             android:layout_marginEnd="@dimen/signup_horizontal_margin"
             android:text="@string/button_send"
+            android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="4"
             app:layout_constraintTop_toTopOf="@id/phone_field" />
@@ -216,7 +230,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hint_birth_star"
-            app:layout_constraintBottom_toBottomOf="@id/birth_year_field"
+            android:layout_marginTop="18dp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/text_box"
             app:layout_constraintTop_toTopOf="@id/birth_year_field" />
 
@@ -232,6 +247,7 @@
             app:layout_constraintEnd_toStartOf="@id/birth_month_field"
             app:layout_constraintHorizontal_weight="7"
             app:layout_constraintStart_toEndOf="@id/text_box"
+            app:errorTextAppearance="@style/LittleCaption"
             app:layout_constraintTop_toBottomOf="@id/phone_check_field">
 
             <AutoCompleteTextView
@@ -253,6 +269,7 @@
             app:helperText="@string/hint_month"
             app:layout_constraintEnd_toStartOf="@id/birth_day_field"
             app:layout_constraintHorizontal_weight="6"
+            app:errorTextAppearance="@style/LittleCaption"
             app:layout_constraintStart_toEndOf="@id/birth_year_field"
             app:layout_constraintTop_toTopOf="@id/birth_year_field">
 
@@ -268,6 +285,7 @@
             android:id="@+id/birth_day_field"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:errorTextAppearance="@style/LittleCaption"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
             android:layout_marginEnd="@dimen/signup_horizontal_margin"
             android:textColor="@color/signInWhite"
@@ -288,13 +306,12 @@
 
         <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/term_all_checkbox"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="16dp"
             android:text="@string/msg_term_all"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/birth_year_field" />
 
         <com.google.android.material.card.MaterialCardView
@@ -311,7 +328,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="128dp"
                 android:layout_margin="8dp">
 
                 <com.google.android.material.checkbox.MaterialCheckBox
@@ -326,7 +343,7 @@
                 <Button
                     android:id="@+id/term_required_detail_button"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="72dp"
                     android:layout_height="wrap_content"
                     android:text="@string/button_detail"
                     android:textColor="@color/secondaryColor"
@@ -339,6 +356,7 @@
                     android:id="@+id/term_info_checkbox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:translationY="-8dp"
                     android:text="@string/msg_term_info"
                     app:layout_constraintEnd_toStartOf="@id/term_info_detail_button"
                     app:layout_constraintStart_toStartOf="parent"
@@ -347,11 +365,12 @@
                 <Button
                     android:id="@+id/term_info_detail_button"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/button_detail"
                     android:textColor="@color/secondaryColor"
                     android:textSize="12sp"
+                    android:layout_width="72dp"
+                    android:translationY="-8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/term_info_checkbox"
                     app:layout_constraintTop_toTopOf="@id/term_info_checkbox" />
@@ -360,6 +379,7 @@
                     android:id="@+id/term_marketing_checkbox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:translationY="-16dp"
                     android:text="@string/msg_term_marketing"
                     app:layout_constraintEnd_toStartOf="@id/term_marketing_detail_button"
                     app:layout_constraintStart_toStartOf="parent"
@@ -368,12 +388,13 @@
                 <Button
                     android:id="@+id/term_marketing_detail_button"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/button_detail"
                     android:textColor="@color/secondaryColor"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:textSize="12sp"
+                    android:layout_width="72dp"
+                    android:translationY="-16dp"
                     app:layout_constraintStart_toEndOf="@id/term_marketing_checkbox"
                     app:layout_constraintTop_toTopOf="@id/term_marketing_checkbox" />
             </androidx.constraintlayout.widget.ConstraintLayout>

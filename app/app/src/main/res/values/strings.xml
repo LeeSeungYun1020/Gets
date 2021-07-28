@@ -34,8 +34,8 @@
     <string name="button_kakao_signin">Sign in with kakao</string>
     <string name="hint_name_star">*Name</string>
     <string name="hint_email_star">*Email</string>
-    <string name="hint_password_star">*Password</string>
-    <string name="hint_password_check_star">*Password Check</string>
+    <string name="hint_password_star">*PW</string>
+    <string name="hint_password_check_star">*PW Check</string>
     <string name="hint_phone_star">*Phone</string>
     <string name="hint_birth_star">*Birth</string>
     <string name="hint_name">Name</string>
@@ -61,9 +61,9 @@
     <string name="button_send">Send</string>
     <string name="button_ok">OK</string>
     <string name="msg_term_all">Agree to all terms and conditions</string>
-    <string name="msg_term_required">(Required)  I agree to the Gets Terms of Service</string>
-    <string name="msg_term_info">(Required) I agree to Information Collection and Usage</string>
-    <string name="msg_term_marketing">(Optional) I agree to receive marketing info</string>
+    <string name="msg_term_required">(Required)  Gets Terms of Service</string>
+    <string name="msg_term_info">(Required) Information Collection and Usage</string>
+    <string name="msg_term_marketing">(Optional) Event and marketing recieve</string>
     <string name="msg_password_condition">8 or more letters and numbers</string>
     <string name="button_resend">Resend</string>
     <string name="msg_phone_check_error">Can\'t send message</string>

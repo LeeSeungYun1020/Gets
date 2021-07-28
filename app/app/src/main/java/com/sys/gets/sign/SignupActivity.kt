@@ -11,6 +11,8 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.TextView
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.android.volley.Request
@@ -33,8 +35,12 @@ class SignupActivity : AppCompatActivity() {
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
+//        actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
         supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
+        supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        supportActionBar?.setCustomView(R.layout.component_action_bar)
+        findViewById<TextView>(R.id.title).setText(R.string.button_signup)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         setSpan()
         binding.apply {
@@ -79,6 +85,18 @@ class SignupActivity : AppCompatActivity() {
             (birthYearField.editText as? AutoCompleteTextView)?.setAdapter(yearAdapter)
             (birthMonthField.editText as? AutoCompleteTextView)?.setAdapter(monthAdapter)
             (birthDayField.editText as? AutoCompleteTextView)?.setAdapter(dateAdapter)
+            birthYearField.editText?.doAfterTextChanged { text ->
+                if (text.toString().isNotEmpty())
+                    birthYearField.helperText = null
+            }
+            birthMonthField.editText?.doAfterTextChanged { text ->
+                if (text.toString().isNotEmpty())
+                    birthMonthField.helperText = null
+            }
+            birthDayField.editText?.doAfterTextChanged { text ->
+                if (text.toString().isNotEmpty())
+                    birthDayField.helperText = null
+            }
         }
     }
 
