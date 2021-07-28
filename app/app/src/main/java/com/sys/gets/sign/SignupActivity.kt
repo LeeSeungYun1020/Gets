@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.sys.gets.R
 import com.sys.gets.databinding.ActivitySignupBinding
@@ -67,6 +68,7 @@ class SignupActivity : AppCompatActivity() {
             setBirthDropdown()
 
             setTermCheckbox()
+            setTermDetailButton()
 
             signupButton.setOnClickListener { validateData() }
         }
@@ -113,8 +115,8 @@ class SignupActivity : AppCompatActivity() {
                 val spannable = SpannableStringBuilder(text)
                 spannable.setSpan(
                     ForegroundColorSpan(Color.RED),
-                    text.lastIndex,
-                    text.length,
+                    0,
+                    1,
                     Spannable.SPAN_EXCLUSIVE_INCLUSIVE
                 )
                 it.text = spannable
@@ -143,6 +145,59 @@ class SignupActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun setTermDetailButton() {
+        binding.apply {
+            termRequiredDetailButton.setOnClickListener {
+                showTermRequiredDialog()
+            }
+            termInfoDetailButton.setOnClickListener {
+                showTermInfoDialog()
+            }
+            termMarketingDetailButton.setOnClickListener {
+                showTermMarketingDialog()
+            }
+        }
+    }
+
+    private fun showTermRequiredDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.tilte_term_required)
+            .setMessage("필수 이용 약관")
+            .setPositiveButton(R.string.button_accept) { _, _ ->
+                binding.termRequiredCheckbox.isChecked = true
+            }
+            .setNegativeButton(R.string.button_deny) { _, _ ->
+                binding.termRequiredCheckbox.isChecked = false
+            }
+            .show()
+    }
+
+    private fun showTermInfoDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.title_term_info)
+            .setMessage("개인 정보 수집 및 이용 동의")
+            .setPositiveButton(R.string.button_accept) { _, _ ->
+                binding.termInfoCheckbox.isChecked = true
+            }
+            .setNegativeButton(R.string.button_deny) { _, _ ->
+                binding.termInfoCheckbox.isChecked = false
+            }
+            .show()
+    }
+
+    private fun showTermMarketingDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.title_term_marketing)
+            .setMessage("이벤트 마케팅 수신 동의")
+            .setPositiveButton(R.string.button_accept) { _, _ ->
+                binding.termMarketingCheckbox.isChecked = true
+            }
+            .setNegativeButton(R.string.button_deny) { _, _ ->
+                binding.termMarketingCheckbox.isChecked = false
+            }
+            .show()
     }
 
     private fun sendMessage() {

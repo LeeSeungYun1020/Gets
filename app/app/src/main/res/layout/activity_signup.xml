@@ -14,7 +14,7 @@
 
         <View
             android:id="@+id/text_box"
-            android:layout_width="56dp"
+            android:layout_width="48dp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/signup_horizontal_margin"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -25,7 +25,7 @@
             android:id="@+id/name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hint_name"
+            android:text="@string/hint_name_star"
             app:layout_constraintBottom_toBottomOf="@id/name_field"
             app:layout_constraintStart_toStartOf="@id/text_box"
             app:layout_constraintTop_toTopOf="@id/name_field" />
@@ -57,7 +57,7 @@
             android:id="@+id/id_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hint_email"
+            android:text="@string/hint_email_star"
             app:layout_constraintBottom_toBottomOf="@id/id_field"
             app:layout_constraintStart_toStartOf="@id/text_box"
             app:layout_constraintTop_toTopOf="@id/id_field" />
@@ -87,7 +87,7 @@
             android:id="@+id/pw_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hint_password"
+            android:text="@string/hint_password_star"
             app:layout_constraintBottom_toBottomOf="@id/pw_field"
             app:layout_constraintStart_toStartOf="@id/text_box"
             app:layout_constraintTop_toTopOf="@id/pw_field" />
@@ -139,7 +139,7 @@
             android:id="@+id/phone_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hint_phone"
+            android:text="@string/hint_phone_star"
             app:layout_constraintBottom_toBottomOf="@id/phone_field"
             app:layout_constraintStart_toStartOf="@id/text_box"
             app:layout_constraintTop_toTopOf="@id/phone_field" />
@@ -215,7 +215,7 @@
             android:id="@+id/birth_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hint_birth"
+            android:text="@string/hint_birth_star"
             app:layout_constraintBottom_toBottomOf="@id/birth_year_field"
             app:layout_constraintStart_toStartOf="@id/text_box"
             app:layout_constraintTop_toTopOf="@id/birth_year_field" />
@@ -230,7 +230,7 @@
             app:errorEnabled="true"
             app:helperText="@string/hint_year"
             app:layout_constraintEnd_toStartOf="@id/birth_month_field"
-            app:layout_constraintHorizontal_weight="6"
+            app:layout_constraintHorizontal_weight="7"
             app:layout_constraintStart_toEndOf="@id/text_box"
             app:layout_constraintTop_toBottomOf="@id/phone_check_field">
 
@@ -238,7 +238,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -252,7 +252,7 @@
             app:errorEnabled="true"
             app:helperText="@string/hint_month"
             app:layout_constraintEnd_toStartOf="@id/birth_day_field"
-            app:layout_constraintHorizontal_weight="5"
+            app:layout_constraintHorizontal_weight="6"
             app:layout_constraintStart_toEndOf="@id/birth_year_field"
             app:layout_constraintTop_toTopOf="@id/birth_year_field">
 
@@ -260,7 +260,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -274,7 +274,7 @@
             app:errorEnabled="true"
             app:helperText="@string/hint_day"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="5"
+            app:layout_constraintHorizontal_weight="6"
             app:layout_constraintStart_toEndOf="@id/birth_month_field"
             app:layout_constraintTop_toTopOf="@id/birth_year_field">
 
@@ -282,7 +282,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -332,6 +332,7 @@
                     android:textColor="@color/secondaryColor"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/term_required_checkbox"
+                    android:textSize="12sp"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.checkbox.MaterialCheckBox
@@ -350,6 +351,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/button_detail"
                     android:textColor="@color/secondaryColor"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/term_info_checkbox"
                     app:layout_constraintTop_toTopOf="@id/term_info_checkbox" />
@@ -371,6 +373,7 @@
                     android:text="@string/button_detail"
                     android:textColor="@color/secondaryColor"
                     app:layout_constraintEnd_toEndOf="parent"
+                    android:textSize="12sp"
                     app:layout_constraintStart_toEndOf="@id/term_marketing_checkbox"
                     app:layout_constraintTop_toTopOf="@id/term_marketing_checkbox" />
             </androidx.constraintlayout.widget.ConstraintLayout>
