@@ -42,12 +42,6 @@ class SignupActivity : AppCompatActivity() {
             idField.editText?.setOnFocusChangeListener { _, hasFocus ->
                 if (!hasFocus)
                     checkDuplicate()
-
-                Snackbar.make(
-                    binding.signupButton,
-                    "ID: $hasFocus",
-                    Snackbar.LENGTH_SHORT
-                ).show()
             }
 
             setPasswordCheck()
