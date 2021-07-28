@@ -442,13 +442,19 @@ h1 {
 
 .slick-prev {
   z-index: 1;
-  padding-top: 295px;
+  //padding-top: 295px;
   padding-left: 50px;
+  transform: translateY(455%);
 }
 
 .slick-next {
   z-index: 1;
-  top: 3435px;
+  //top: 3435px;
   right: 0px;
   padding-right: 50px;
+  transform: translateY(-514%);
+}
+
+.slick-list {
+  margin-bottom: 80px;
 }
