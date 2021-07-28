@@ -103,12 +103,20 @@ class HomeFragment : Fragment() {
                             }
                             Log.e("LOGE", "${response.length()}: $id, $imageID")
                             target.setImageResource(R.drawable.tm_custom)
-                            // TODO: 코디 이미지 가져와서 렌더링 / 구현 후 주소 확인필
-//                                    val imageRequest = ImageRequest("${Network.API_URL}/coordination/image/${imageID}", { bitmap ->
-//                                        target.setImageBitmap(bitmap)
-//                                    }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
-//                                    imageRequest.tag = CUSTOM_TAG
-//                                    Network.getInstance(this@HomeFragment.requireContext()).addToRequestQueue(imageRequest)
+                            val imageRequest = ImageRequest(
+                                "${Network.API_URL}/coordination/image/${imageID}",
+                                { bitmap ->
+                                    target.setImageBitmap(bitmap)
+                                },
+                                0,
+                                0,
+                                ImageView.ScaleType.CENTER_CROP,
+                                Bitmap.Config.RGB_565,
+                                null
+                            )
+                            imageRequest.tag = CUSTOM_TAG
+                            Network.getInstance(this@HomeFragment.requireContext())
+                                .addToRequestQueue(imageRequest)
                         }
                     }
                 },
@@ -175,12 +183,20 @@ class HomeFragment : Fragment() {
                                         else -> stylePreview6
                                     }
                                     Log.e("LOGE", "${response.length()}: $id, $imageID")
-                                    // TODO: 코디 이미지 가져와서 렌더링 / 구현 후 주소 확인필
-//                                    val imageRequest = ImageRequest("${Network.API_URL}/coordination/image/${imageID}", { bitmap ->
-//                                        target.setImageBitmap(bitmap)
-//                                    }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
-//                                    imageRequest.tag = STYLE_TAG
-//                                    Network.getInstance(this@HomeFragment.requireContext()).addToRequestQueue(imageRequest)
+                                    val imageRequest = ImageRequest(
+                                        "${Network.API_URL}/coordination/image/${imageID}",
+                                        { bitmap ->
+                                            target.setImageBitmap(bitmap)
+                                        },
+                                        0,
+                                        0,
+                                        ImageView.ScaleType.CENTER_CROP,
+                                        Bitmap.Config.RGB_565,
+                                        null
+                                    )
+                                    imageRequest.tag = STYLE_TAG
+                                    Network.getInstance(this@HomeFragment.requireContext())
+                                        .addToRequestQueue(imageRequest)
                                 }
                             }
                         },
