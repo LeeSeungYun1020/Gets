@@ -28,16 +28,22 @@
     <string name="button_signup">Sign up</string>
     <string name="msg_server_error">The connection with the server is not smooth.</string>
     <string name="msg_signin_error">The information you entered does not match.</string>
-    <string name="home_top_trends"># Top trends</string>
+    <string name="home_top_trends" translatable="false"># Top trends</string>
     <string name="hint_price" translatable="false">12,300</string>
     <string name="hint_favorite" translatable="false">23</string>
-    <string name="button_kakao_signin">SIgn in with kakao</string>
-    <string name="hint_name">Name*</string>
-    <string name="hint_email">Email*</string>
-    <string name="hint_password">Password*</string>
-    <string name="hint_password_check">Password Check*</string>
-    <string name="hint_phone">Phone*</string>
-    <string name="hint_birth">Birth*</string>
+    <string name="button_kakao_signin">Sign in with kakao</string>
+    <string name="hint_name_star">*Name</string>
+    <string name="hint_email_star">*Email</string>
+    <string name="hint_password_star">*PW</string>
+    <string name="hint_password_check_star">*PW Check</string>
+    <string name="hint_phone_star">*Phone</string>
+    <string name="hint_birth_star">*Birth</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_password_check">Password Check</string>
+    <string name="hint_phone">Phone</string>
+    <string name="hint_birth">Birth</string>
     <string name="hint_address">Address</string>
     <string name="hint_address_detail">Address detail</string>
     <string name="msg_password_error">Passwords don\'t match</string>
@@ -50,14 +56,14 @@
     <string name="msg_signup_error">Please check your input again</string>
     <string name="msg_catch_phrase" translatable="false">Guess style,\nGet style</string>
     <string name="button_start">Start</string>
-    <string name="login_or">OR</string>
+    <string name="login_or" translatable="false">OR</string>
     <string name="hint_time" translatable="false">2:59</string>
     <string name="button_send">Send</string>
     <string name="button_ok">OK</string>
     <string name="msg_term_all">Agree to all terms and conditions</string>
-    <string name="msg_term_required">(Required)  Accept the required terms and conditions</string>
-    <string name="msg_term_info">(Required) Personal Information Collection and Usage Agreement</string>
-    <string name="msg_term_marketing">(Optional) Consent to receive marketing</string>
+    <string name="msg_term_required">(Required)  Gets Terms of Service</string>
+    <string name="msg_term_info">(Required) Information Collection and Usage</string>
+    <string name="msg_term_marketing">(Optional) Event and marketing recieve</string>
     <string name="msg_password_condition">8 or more letters and numbers</string>
     <string name="button_resend">Resend</string>
     <string name="msg_phone_check_error">Can\'t send message</string>
@@ -182,4 +188,11 @@
     <string name="hint_outfit">outfits</string>
     <string name="hint_style_question_prefix">:What is \'</string>
     <string name="hint_style_question_postfix">style?\'</string>
+    <string name="button_detail">Detail</string>
+    <string name="msg_terms_and_privacy"><u>Terms and Privacy</u></string>
+    <string name="button_accept">Accept</string>
+    <string name="button_deny">Deny</string>
+    <string name="tilte_term_required">Terms</string>
+    <string name="title_term_info">Infomation collection and use</string>
+    <string name="title_term_marketing">Receive event and marketing</string>
 </resources>

@@ -21,7 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".sign.SignupActivity" />
+        <activity
+            android:name=".sign.SignupActivity"
+            android:label="@string/button_signup"
+            android:parentActivityName=".sign.LoginActivity"
+            android:theme="@style/Theme.Gets.ActionBar" />
         <activity android:name=".sign.LoginActivity"></activity>
         <activity
             android:name=".MainActivity"

@@ -14,9 +14,9 @@
 
         <View
             android:id="@+id/text_box"
-            android:layout_width="56dp"
+            android:layout_width="48dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/signup_horizontal_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,8 +25,9 @@
             android:id="@+id/name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hint_name"
-            app:layout_constraintBottom_toBottomOf="@id/name_field"
+            android:layout_marginTop="18dp"
+            android:text="@string/hint_name_star"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/text_box"
             app:layout_constraintTop_toTopOf="@id/name_field" />
 
@@ -34,9 +35,10 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/name_field"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:errorTextAppearance="@style/LittleCaption"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="@dimen/signup_horizontal_margin"
             android:layout_marginTop="16dp"
             android:hint="@string/hint_name"
             android:textColor="@color/signInWhite"
@@ -47,6 +49,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:textSize="13sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName" />
@@ -57,8 +60,9 @@
             android:id="@+id/id_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hint_email"
-            app:layout_constraintBottom_toBottomOf="@id/id_field"
+            android:text="@string/hint_email_star"
+            android:layout_marginTop="18dp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/text_box"
             app:layout_constraintTop_toTopOf="@id/id_field" />
 
@@ -66,8 +70,9 @@
             android:id="@+id/id_field"
             app:boxBackgroundColor="#00FFFFFF"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:errorTextAppearance="@style/LittleCaption"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="@dimen/signup_horizontal_margin"
             android:hint="@string/hint_email"
             android:textColor="@color/signInWhite"
             app:errorEnabled="true"
@@ -78,6 +83,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
+                android:textSize="13sp"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress" />
 
@@ -87,8 +93,9 @@
             android:id="@+id/pw_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hint_password"
-            app:layout_constraintBottom_toBottomOf="@id/pw_field"
+            android:text="@string/hint_password_star"
+            android:layout_marginTop="18dp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/text_box"
             app:layout_constraintTop_toTopOf="@id/pw_field" />
 
@@ -96,20 +103,21 @@
             android:id="@+id/pw_field"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:hint="@string/hint_password"
+            android:layout_marginHorizontal="@dimen/signup_horizontal_margin"
             android:layout_width="0dp"
+            android:hint="@string/msg_password_condition"
             android:textColor="@color/signInWhite"
             app:endIconMode="password_toggle"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:helperText="@string/msg_password_condition"
+            app:errorTextAppearance="@style/LittleCaption"
             app:layout_constraintStart_toEndOf="@id/text_box"
             app:layout_constraintTop_toBottomOf="@id/id_field">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="13sp"
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -118,9 +126,10 @@
             android:id="@+id/pw_check_field"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="@dimen/signup_horizontal_margin"
             android:hint="@string/hint_password_check"
             android:textColor="@color/signInWhite"
+            app:errorTextAppearance="@style/LittleCaption"
             app:endIconMode="password_toggle"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -131,6 +140,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="13sp"
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -139,8 +149,9 @@
             android:id="@+id/phone_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hint_phone"
-            app:layout_constraintBottom_toBottomOf="@id/phone_field"
+            android:text="@string/hint_phone_star"
+            android:layout_marginTop="18dp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/text_box"
             app:layout_constraintTop_toTopOf="@id/phone_field" />
 
@@ -149,9 +160,10 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/signup_horizontal_margin"
             android:hint="@string/hint_phone"
             android:textColor="@color/signInWhite"
+            app:errorTextAppearance="@style/LittleCaption"
             app:errorEnabled="true"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toStartOf="@id/phone_send_button"
@@ -163,6 +175,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="13sp"
                 android:inputType="phone" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -171,8 +184,9 @@
             android:id="@+id/phone_send_button"
             android:layout_width="0dp"
             android:layout_height="56dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/signup_horizontal_margin"
             android:text="@string/button_send"
+            android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="4"
             app:layout_constraintTop_toTopOf="@id/phone_field" />
@@ -215,8 +229,9 @@
             android:id="@+id/birth_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hint_birth"
-            app:layout_constraintBottom_toBottomOf="@id/birth_year_field"
+            android:text="@string/hint_birth_star"
+            android:layout_marginTop="18dp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/text_box"
             app:layout_constraintTop_toTopOf="@id/birth_year_field" />
 
@@ -225,25 +240,21 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/signup_horizontal_margin"
             android:textColor="@color/signInWhite"
             app:errorEnabled="true"
             app:helperText="@string/hint_year"
             app:layout_constraintEnd_toStartOf="@id/birth_month_field"
-            app:layout_constraintHorizontal_weight="6"
+            app:layout_constraintHorizontal_weight="7"
             app:layout_constraintStart_toEndOf="@id/text_box"
+            app:errorTextAppearance="@style/LittleCaption"
             app:layout_constraintTop_toBottomOf="@id/phone_check_field">
-            <!--            <com.google.android.material.textfield.TextInputEditText-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:inputType="number"-->
-            <!--                android:maxLength="4" />-->
 
             <AutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -257,20 +268,16 @@
             app:errorEnabled="true"
             app:helperText="@string/hint_month"
             app:layout_constraintEnd_toStartOf="@id/birth_day_field"
-            app:layout_constraintHorizontal_weight="5"
+            app:layout_constraintHorizontal_weight="6"
+            app:errorTextAppearance="@style/LittleCaption"
             app:layout_constraintStart_toEndOf="@id/birth_year_field"
             app:layout_constraintTop_toTopOf="@id/birth_year_field">
-            <!--            <com.google.android.material.textfield.TextInputEditText-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:inputType="number"-->
-            <!--                android:maxLength="2" />-->
 
             <AutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -278,86 +285,133 @@
             android:id="@+id/birth_day_field"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:errorTextAppearance="@style/LittleCaption"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/signup_horizontal_margin"
             android:textColor="@color/signInWhite"
             app:errorEnabled="true"
             app:helperText="@string/hint_day"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="5"
+            app:layout_constraintHorizontal_weight="6"
             app:layout_constraintStart_toEndOf="@id/birth_month_field"
             app:layout_constraintTop_toTopOf="@id/birth_year_field">
-            <!--            <com.google.android.material.textfield.TextInputEditText-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:inputType="number"-->
-            <!--                android:maxLength="2" />-->
 
             <AutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/term_all_checkbox"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="24dp"
+            android:layout_marginHorizontal="30dp"
             android:layout_marginTop="16dp"
             android:text="@string/msg_term_all"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/birth_year_field" />
 
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/term_required_checkbox"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/term_section"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/msg_term_required"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/term_all_checkbox" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/term_info_checkbox"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="24dp"
-            android:text="@string/msg_term_info"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/term_required_checkbox" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/term_marketing_checkbox"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="24dp"
-            android:text="@string/msg_term_marketing"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/term_info_checkbox" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="16dp"
-            android:background="@drawable/bg_box"
-            app:layout_constraintBottom_toBottomOf="@id/term_marketing_checkbox"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/signup_horizontal_margin"
+            android:layout_marginTop="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/term_required_checkbox" />
+            app:layout_constraintTop_toBottomOf="@id/term_all_checkbox"
+            app:strokeColor="@color/signInGrey"
+            app:strokeWidth="1dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="128dp"
+                android:layout_margin="8dp">
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/term_required_checkbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/msg_term_required"
+                    app:layout_constraintEnd_toStartOf="@id/term_required_detail_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/term_required_detail_button"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="72dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_detail"
+                    android:textColor="@color/secondaryColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/term_required_checkbox"
+                    android:textSize="12sp"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/term_info_checkbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:translationY="-8dp"
+                    android:text="@string/msg_term_info"
+                    app:layout_constraintEnd_toStartOf="@id/term_info_detail_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/term_required_checkbox" />
+
+                <Button
+                    android:id="@+id/term_info_detail_button"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_detail"
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="12sp"
+                    android:layout_width="72dp"
+                    android:translationY="-8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/term_info_checkbox"
+                    app:layout_constraintTop_toTopOf="@id/term_info_checkbox" />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/term_marketing_checkbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:translationY="-16dp"
+                    android:text="@string/msg_term_marketing"
+                    app:layout_constraintEnd_toStartOf="@id/term_marketing_detail_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/term_info_checkbox" />
+
+                <Button
+                    android:id="@+id/term_marketing_detail_button"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_detail"
+                    android:textColor="@color/secondaryColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textSize="12sp"
+                    android:layout_width="72dp"
+                    android:translationY="-16dp"
+                    app:layout_constraintStart_toEndOf="@id/term_marketing_checkbox"
+                    app:layout_constraintTop_toTopOf="@id/term_marketing_checkbox" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/signup_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="@dimen/signup_horizontal_margin"
+            android:layout_marginVertical="28dp"
             android:layout_marginTop="8dp"
             android:text="@string/button_signup"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/term_marketing_checkbox" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/term_section" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

@@ -31,7 +31,7 @@
         android:background="@color/styleGrey"
         android:gravity="bottom"
         android:paddingStart="16dp"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/style_image" />
 
