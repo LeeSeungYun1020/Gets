@@ -28,7 +28,13 @@ module.exports = function (passport) {
 	router.get("/signin/fail", (req, res) => {
 		res.send({result: false})
 	})
-
+	
+	router.get("/sign/user", (req, res) => {
+		let user = req.user
+		user["pw"] = null
+		res.send(user)
+	})
+	
 // 회원가입 - 이메일 중복 확인
 	router.post("/signup/check", (req, res) => {
 		const email = req.body.email
