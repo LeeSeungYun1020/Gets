@@ -30,9 +30,12 @@ module.exports = function (passport) {
 	})
 	
 	router.get("/sign/user", (req, res) => {
-		let user = req.user
-		user["pw"] = null
-		res.send(user)
+		if (req.user) {
+			let user = req.user
+			user["pw"] = null
+			user["result"] = true
+			res.send(user)
+		} else res.send({"result": false})
 	})
 	
 // 회원가입 - 이메일 중복 확인
