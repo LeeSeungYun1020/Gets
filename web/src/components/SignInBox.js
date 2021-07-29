@@ -22,9 +22,8 @@ const SignInBox = (props) => {
                     axios.get('http://localhost:3000/api/sign/user',{ withCredentials: true })
                         .then ( response => {
                             console.log(response.data.email)
-                            localStorage.setItem("token", response.data.email);
+                            history.goBack(localStorage.setItem("token", response.data.email));
                         })
-                    history.goBack();
                 }
                 else {
                     alert("이메일과 비밀번호를 확인해주세요.")
