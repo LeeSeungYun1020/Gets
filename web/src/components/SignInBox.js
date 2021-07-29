@@ -16,15 +16,15 @@ const SignInBox = (props) => {
         axios.post('http://localhost:3000/api/signin', {
             email: email,
             pw: password
-        })
+        }, { withCredentials: true })
             .then( response => {
                 if (response.data.result) {
-                    axios.get('http://localhost:3000/api/sign/user')
+                    axios.get('http://localhost:3000/api/sign/user',{ withCredentials: true })
                         .then ( response => {
-                            console.log(response)
-                            localStorage.setItem("token", response.data.user);
+                            console.log(response.data.email)
+                            localStorage.setItem("token", response.data.email);
                         })
-                    // console.log(history.goBack());
+                    history.goBack();
                 }
                 else {
                     alert("이메일과 비밀번호를 확인해주세요.")
