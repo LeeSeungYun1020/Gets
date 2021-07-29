@@ -48,6 +48,7 @@ class HomeFragment : Fragment() {
             mainViewModel.navigationVisibility.value = scrollY <= oldScrollY
             Log.d("MYTAG", "SCR: $v $scrollY $oldScrollY")
         }
+        binding.offlineCard.root.visibility = View.GONE
 
         // 메인 배너
         viewPager = binding.mainSlider
@@ -126,7 +127,7 @@ class HomeFragment : Fragment() {
                     }
                 },
                 {
-
+                    binding.offlineCard.root.visibility = View.VISIBLE
                 }
             )
             styleRequest.tag = CUSTOM_TAG

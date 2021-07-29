@@ -10,6 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include
+            android:id="@+id/offline_card"
+            layout="@layout/component_card_offline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/main_slider"
             android:layout_width="match_parent"

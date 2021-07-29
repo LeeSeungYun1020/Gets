@@ -195,4 +195,5 @@
     <string name="tilte_term_required">Terms</string>
     <string name="title_term_info">Infomation collection and use</string>
     <string name="title_term_marketing">Receive event and marketing</string>
+    <string name="msg_offline_error">You are offline</string>
 </resources>
