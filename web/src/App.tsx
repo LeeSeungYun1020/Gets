@@ -36,6 +36,9 @@ export default function App() {
                     <Route path={link.signin}>
                         <SignIn />
                     </Route>
+                    <Route path={link.logout}>
+                        <h1>구현하기 전까지 못나감ㅋㅋ</h1>
+                    </Route>
                     <Route path={link.findid}>
                         <FindId />
                     </Route>

@@ -45,6 +45,14 @@ a {
   display: flex;
 }
 
+#top_menu p {
+  display:flex;
+  justify-content: center;
+  margin:0;
+  font-size: 10px;
+  font-weight: normal;
+}
+
 ul li {
   display: inline-block;
   margin-left: 5vw;
@@ -218,7 +226,7 @@ footer .footer_title {
 
 .gXxxge {
   font-family: 'Noto Sans KR', sans-serif;
-  font-weight: bolder !important;
+  font-size:16px !important;
 }
 
 .grKNhv {
