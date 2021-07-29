@@ -19,7 +19,12 @@ const SignInBox = (props) => {
         })
             .then( response => {
                 if (response.data.result) {
-                    console.log(history.goBack());
+                    axios.get('http://localhost:3000/api/sign/user')
+                        .then ( response => {
+                            console.log(response)
+                            localStorage.setItem("token", response.data.user);
+                        })
+                    // console.log(history.goBack());
                 }
                 else {
                     alert("이메일과 비밀번호를 확인해주세요.")
@@ -31,22 +36,22 @@ const SignInBox = (props) => {
     }
 
     let signForm
-        signForm = (
-            <div id = "sign_form">
-                <form onSubmit={handleSubmit}>
-                    <label>
-                        <input type="email" name={"email"} value={email} placeholder={props.input_id} onChange={handleEmailChange}
-                               required/>
-                    </label>
+    signForm = (
+        <div id = "sign_form">
+            <form onSubmit={handleSubmit}>
+                <label>
+                    <input type="email" name={"email"} value={email} placeholder={props.input_id} onChange={handleEmailChange}
+                           required/>
+                </label>
 
-                    <label>
-                        <input type="password" name={"password"} placeholder={props.input_pw} value={password}
-                               onChange={handlePasswordChange} required/>
-                    </label>
-                    <input id = "submit" type="submit" value={props.login} />
-                </form>
-            </div>
-        )
+                <label>
+                    <input type="password" name={"password"} placeholder={props.input_pw} value={password}
+                           onChange={handlePasswordChange} required/>
+                </label>
+                <input id = "submit" type="submit" value={props.login} />
+            </form>
+        </div>
+    )
     return (
         <div>
             {signForm}

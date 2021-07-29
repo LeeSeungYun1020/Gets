@@ -22,7 +22,6 @@ export default () => {
             }}
             pagination={{clickable: true}}
             onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log('slide change')}
         >
             <SwiperSlide><img src={mainImage}/></SwiperSlide>
             <SwiperSlide><img src={mainImage}/></SwiperSlide>

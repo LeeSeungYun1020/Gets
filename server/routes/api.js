@@ -32,6 +32,7 @@ module.exports = function (passport) {
 	router.get("/sign/user", (req, res) => {
 		if (req.user) {
 			let user = req.user
+			console.log(user);
 			user["pw"] = null
 			user["result"] = true
 			res.send(user)
