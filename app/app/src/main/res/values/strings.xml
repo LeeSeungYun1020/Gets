@@ -196,4 +196,11 @@
     <string name="title_term_info">Infomation collection and use</string>
     <string name="title_term_marketing">Receive event and marketing</string>
     <string name="msg_offline_error">You are offline</string>
+    <string name="title_account">Account</string>
+    <string name="msg_signout">Sign out</string>
+    <!-- Preference Titles -->
+
+    <!-- Messages Preferences -->
+
+    <!-- Sync Preferences -->
 </resources>

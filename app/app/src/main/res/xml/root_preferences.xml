@@ -1,0 +1,7 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        app:key="signout"
+        app:title="@string/msg_signout" />
+
+</PreferenceScreen>
