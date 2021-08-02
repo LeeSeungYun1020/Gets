@@ -46,7 +46,7 @@ module.exports = function (passport) {
 	});
 
 	//수정
-	router.post('/info/update',(req,res)=>{
+	router.post('/info',(req,res)=>{
 		if (req.user) {
 			const email = req.user.email
 			let pw = req.body.pw
