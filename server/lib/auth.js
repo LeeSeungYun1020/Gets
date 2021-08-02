@@ -7,10 +7,10 @@ module.exports = {
 		}
 	},
 	statusUI: function (request, response) {
-		var authStatusUI = `<a href="/account/signin">signin</a>`
+		var authStatusUI = `<a href="../routes/account/signin">signin</a>`
 		if (this.isOwner(request, response)) {
 			authStatusUI = `${request.user.name} | <a
-			href="/account/signout">signout</a>`
+			href="../routes/account/signout">signout</a>`
 		}
 		return authStatusUI
 	}
