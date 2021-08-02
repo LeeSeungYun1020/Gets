@@ -71,6 +71,7 @@ const cartRouter = require('./routes/cart');
 const articleRouter = require('./routes/article');
 const aboutRouter = require('./routes/about');
 const coordinationRouter=require('./routes/coordination')(passport);
+const authRouter=require('./routes/auth')(passport);
 
 app.use('/', indexRouter)
 app.use('/api', apiRouter)
@@ -82,7 +83,8 @@ app.use('/account', accountRouter)
 app.use('/cart', cartRouter)
 app.use('/article', articleRouter)
 app.use('/about', aboutRouter)
-app.use('coordination',coordinationRouter)
+app.use('/coordination',coordinationRouter)
+app.use('/auth',authRouter)
 
 app.get('/*.html', (req, res) => {
 	res.render(req.params[0] + '.html')
