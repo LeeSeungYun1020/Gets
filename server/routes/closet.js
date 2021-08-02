@@ -8,27 +8,31 @@ module.exports = function (passport) {
 	});
 	
 	router.get('/product/list',(req,res)=>{
-		let user = req.body.email
-		connection.query(`select * from favoriteProduct where userEmail=?`,[user],
-			(err,result)=>{
-				if (err || result.length === 0)
-					res.send({result: false,error:"notMatch"})
-				else {
-					res.send(result)
-				}
-			})
+		if (req.user) {
+			let user = req.user
+			connection.query(`select * from favoriteProduct where userEmail=?`,[user],
+				(err,result)=>{
+					if (err || result.length === 0)
+						res.send({result: false,error:"notMatch"})
+					else {
+						res.send(result)
+					}
+				})
+		} else res.send({"result": false})
 	})
 	
 	router.get('/coordination/list',(req,res)=>{
-		let user = req.body.email
-		connection.query(`select * from favoriteCoordination where userEmail=?`,[user],
-			(err,result)=>{
-				if (err || result.length === 0)
-					res.send({result: false,error:"notMatch"})
-				else {
-					res.send(result)
-				}
-			})
+		if (req.user) {
+			let user = req.user
+			connection.query(`select * from favoriteCoordination where userEmail=?`,[user],
+				(err,result)=>{
+					if (err || result.length === 0)
+						res.send({result: false,error:"notMatch"})
+					else {
+						res.send(result)
+					}
+				})
+		} else res.send({"result": false})
 	})
 	
 	return router
