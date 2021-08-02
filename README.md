@@ -186,15 +186,14 @@ create table review
   FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-create table article
-(
+create table article(
   id        INT PRIMARY KEY AUTO_INCREMENT,
-  title     VARCHAR(512),
+  title     VARCHAR(256)  NOT NULL,
   userEmail VARCHAR(64),
-  date      DATE         NOT NULL DEFAULT (current_date),
-  contents  JSON,
-  imageID   INT          NOT NULL,
-  status    BOOLEAN      NOT NULL DEFAULT FALSE,
+  date      DATE          NOT NULL DEFAULT (current_date),
+  contents  JSON          NOT NULL,
+  imageID  INT           DEFAULT NULL,
+  status  BOOLEAN         DEFAULT FALSE,
   FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
