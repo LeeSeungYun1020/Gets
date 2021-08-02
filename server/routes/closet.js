@@ -13,7 +13,7 @@ module.exports = function (passport) {
 			connection.query(`select * from favoriteProduct where userEmail=?`,[user],
 				(err,result)=>{
 					if (err || result.length === 0)
-						res.send({result: false,error:"notMatch"})
+						res.send({result: false,error:"notMatchProduct"})
 					else {
 						res.send(result)
 					}
@@ -27,7 +27,7 @@ module.exports = function (passport) {
 			connection.query(`select * from favoriteCoordination where userEmail=?`,[user],
 				(err,result)=>{
 					if (err || result.length === 0)
-						res.send({result: false,error:"notMatch"})
+						res.send({result: false,error:"notMatchCoordination"})
 					else {
 						res.send(result)
 					}

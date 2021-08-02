@@ -43,7 +43,7 @@ module.exports = function (passport) {
 	//수정
 	router.post('/info/update',(req,res)=>{
 		if (req.user) {
-			const email = req.user
+			const email = req.user.email
 			let pw = req.body.pw
 			let phone = req.body.phone
 			let year = req.body.year
@@ -51,6 +51,7 @@ module.exports = function (passport) {
 			let day = req.body.day
 			let address = req.body.address
 			let addressDetail = req.body.addressDetail
+			console.log(email)
 			connection.query(`update user set pw=?,phone=?,birthday=?,address=?,addressDetail=? where email=${email}`,
 				[pw,phone,`${year}-${month}-${day}`, address, addressDetail],((err, result) => {
 					res.send({result: true})

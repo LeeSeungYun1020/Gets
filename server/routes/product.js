@@ -16,7 +16,7 @@ module.exports = function (passport) {
 	//상품 찜하기, 찜삭제하기
 	router.post('/favorite/:productID', (req, res) => {
 		if (req.user) {
-			let user = req.user
+			let user = req.user.email
 			let product = req.params.productID
 			connection.query(`insert into favoriteProduct(userEmail, productID)
                           values (?, ?)`, [user, product],
@@ -33,7 +33,7 @@ module.exports = function (passport) {
 	
 	router.post('/unfavorite/:productID', (req, res) => {
 		if (req.user) {
-			let user = req.user
+			let user = req.user.email
 			let product = req.params.productID
 			connection.query(`delete
                           from favoriteProduct

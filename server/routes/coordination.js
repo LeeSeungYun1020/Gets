@@ -12,7 +12,7 @@ module.exports = function (passport) {
 	//코디 찜하기, 찜삭제하기
 	router.post('/favorite/:coordinationID', (req, res) => {
 		if (req.user) {
-			let user = req.user
+			let user = req.user.email
 			let coordination = req.params.coordinationID
 			connection.query(`insert into favoriteCoordination(userEmail, coordinationID)
                           values (?, ?)`, [user, coordination],
@@ -29,7 +29,7 @@ module.exports = function (passport) {
 	
 	router.post('/unfavorite/:coordinationID', (req, res) => {
 		if (req.user) {
-			let user = req.user
+			let user = req.user.email
 			let coordination = req.params.coordinationID
 			connection.query(`delete
                           from favoriteCoordination
