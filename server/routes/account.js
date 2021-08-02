@@ -37,7 +37,12 @@ module.exports = function (passport) {
 
 // 회원 정보
 	router.get('/info', function (req, res, next) {
-		res.send("info")
+		if(req.user){
+			const user = req.user.email
+			connection.query(`select * from user where email=${user}`,(err, result) => {
+				res.send(result)
+			})
+		}else res.send({"result": false})
 	});
 
 	//수정
