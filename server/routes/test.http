@@ -1,8 +1,14 @@
-POST http://localhost:3000/api/item
+POST http://localhost:3000/auth/signin
 Content-Type: application/json
+
 {
-"style": "1024",
-"color": "17"
+"pw": "1024",
+"phone": "01099999999",
+"year":"2000",
+"month":"08",
+"day":"04",
+"address":"부산광역시",
+"addressDetail":"부산대학교"
 }
 
 ###
@@ -117,4 +123,23 @@ Content-Type: application/json
 
 POST http://localhost:3000/api/article/1
 Content-Type: application/json
+
+{
+"title": "나는 장하림",
+"contents": "장하림입니다ㅎ"
+}
+
+###
+POST http://localhost:3000/account/info/update
+Content-Type: application/json
+
+{
+"pw": "1024",
+"phone": "01099999999",
+"year":"2000",
+"month":"08",
+"day":"04",
+"address":"부산광역시",
+"addressDetail":"부산대학교"
+}
 

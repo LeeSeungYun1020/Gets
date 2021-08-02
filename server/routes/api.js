@@ -73,7 +73,7 @@ module.exports = function (passport) {
 
 // 회원가입 - 추가 정보 입력
 	router.post("/signup/info", (req, res) => {
-		const email = req.body.email
+		const email = req.user.email
 		const gender = req.body.gender
 		const height = req.body.height
 		const weight = req.body.weight

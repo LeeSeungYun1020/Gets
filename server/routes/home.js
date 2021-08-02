@@ -29,7 +29,7 @@ module.exports = function (passport) {
 	})
 	
 	// 스타일(최신순) - 모바일화면_중복없이 스타일에 맞는 코디 표시
-	router.post("/style/:styleID/:number", (req, res) => {
+	router.get("/style/:styleID/:number", (req, res) => {
 		connection.query(`SELECT *
                           FROM coordination
                           WHERE (style & ?) != 0
@@ -104,7 +104,7 @@ module.exports = function (passport) {
 	})
 	
 	//홈화면_탑트렌드에 있는 제품을 number 수만큼표시
-	router.post("/toptrends/:number", (req, res) => {
+	router.get("/toptrends/:number", (req, res) => {
 		connection.query(`select *
                           from product
                           order by favorite desc

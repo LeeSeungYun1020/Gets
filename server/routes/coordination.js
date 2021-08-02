@@ -9,22 +9,11 @@ module.exports = function (passport) {
 		res.send("coordination")
 	});
 	
-	router.get('/res/coordi',  (req, res)=> {
-		connection.query("select * from `product` where `id` IN (?,?,?,?,?,?,?,?)",
-			[undefined, 9, 57, undefined, undefined, 269, undefined, undefined], (err, result) => {
-				if (err) {
-					throw err
-				}
-				console.log(result)
-				res.send(result)
-			})
-	});
-	
 	//코디 찜하기, 찜삭제하기
-	router.post('/favoriteCoordination/:coordination', (req, res) => {
+	router.post('/favorite/:coordinationID', (req, res) => {
 		if (req.user) {
-			let user = req.user
-			let coordination = req.params.coordination
+			let user = req.user.email
+			let coordination = req.params.coordinationID
 			connection.query(`insert into favoriteCoordination(userEmail, coordinationID)
                           values (?, ?)`, [user, coordination],
 				(err, result) => {
@@ -38,10 +27,10 @@ module.exports = function (passport) {
 		} else res.send({"result": false})
 	})
 	
-	router.post('/unfavoriteCoordination/:coordination', (req, res) => {
+	router.post('/unfavorite/:coordinationID', (req, res) => {
 		if (req.user) {
-			let user = req.user
-			let coordination = req.params.coordination
+			let user = req.user.email
+			let coordination = req.params.coordinationID
 			connection.query(`delete
                           from favoriteCoordination
                           where userEmail = ?
