@@ -15,34 +15,38 @@ module.exports = function (passport) {
 	
 	//상품 찜하기, 찜삭제하기
 	router.post('/favoriteProduct/:product', (req, res) => {
-		let user = req.body.email
-		let product = req.params.product
-		connection.query(`insert into favoriteProduct(userEmail, productID)
+		if (req.user) {
+			let user = req.user
+			let product = req.params.product
+			connection.query(`insert into favoriteProduct(userEmail, productID)
                           values (?, ?)`, [user, product],
-			(err, result) => {
-				if (err)
-					res.send({result: false})
-				else {
-					console.log(result)
-					res.send({result: true})
-				}
-			})
+				(err, result) => {
+					if (err)
+						res.send({result: false})
+					else {
+						console.log(result)
+						res.send({result: true})
+					}
+				})
+		} else res.send({"result": false})
 	})
 	
 	router.post('/unfavoriteProduct/:product', (req, res) => {
-		let user = req.body.email
-		let product = req.params.product
-		connection.query(`delete
+		if (req.user) {
+			let user = req.user
+			let product = req.params.product
+			connection.query(`delete
                           from favoriteProduct
                           where userEmail = ?
                             and productID = ?`, [user, product],
-			(err, result) => {
-				if (err)
-					res.send({result: false})
-				else {
-					res.send({result: true})
-				}
-			})
+				(err, result) => {
+					if (err)
+						res.send({result: false})
+					else {
+						res.send({result: true})
+					}
+				})
+		} else res.send({"result": false})
 	})
 	
 	/* 아래는 api에서 이동된 것 */
