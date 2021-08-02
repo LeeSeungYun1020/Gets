@@ -1,8 +1,11 @@
 const express = require('express')
 const router = express.Router()
+const connection = require('../lib/mysql')
 
-router.get('/', function (req, res, next) {
-	res.send("closet")
-});
-
-module.exports = router
+module.exports = function (passport) {
+	router.get('/', function (req, res, next) {
+		res.send("closet")
+	});
+	
+	return router
+}

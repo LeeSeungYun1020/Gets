@@ -13,7 +13,7 @@ module.exports = function (passport) {
 	});
 	
 	// 맞춤 추천 - 스타일 상관없이 number 수만큼 코디 표시
-	router.post("/custom/:number", (req, res) => {
+	router.get("/custom/:number", (req, res) => {
 		connection.query(`SELECT *
                           FROM coordination
                           ORDER BY RAND()

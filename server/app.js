@@ -65,11 +65,12 @@ const apiRouter = require('./routes/api')(passport)
 const homeRouter = require('./routes/home')(passport)
 const inputRouter = require('./routes/input');
 const accountRouter = require('./routes/account')(passport);
-const closetRouter = require('./routes/closet');
+const closetRouter = require('./routes/closet')(passport);
 const productRouter = require('./routes/product')(passport);
 const cartRouter = require('./routes/cart');
 const articleRouter = require('./routes/article');
 const aboutRouter = require('./routes/about');
+const coordinationRouter=require('/routes/coordination')(passport);
 
 app.use('/', indexRouter)
 app.use('/api', apiRouter)
@@ -81,6 +82,7 @@ app.use('/account', accountRouter)
 app.use('/cart', cartRouter)
 app.use('/article', articleRouter)
 app.use('/about', aboutRouter)
+app.use('coordination',coordinationRouter)
 
 app.get('/*.html', (req, res) => {
 	res.render(req.params[0] + '.html')

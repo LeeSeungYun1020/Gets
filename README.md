@@ -287,12 +287,20 @@ create table question
   FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
-create table favorite(
-                       userEmail   VARCHAR(64),
-                       productID   INT,
-                       PRIMARY KEY(userEmail,productID),
-                       FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE CASCADE,
-                       FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
+create table favoriteProduct(
+                              userEmail   VARCHAR(64),
+                              productID   INT,
+                              PRIMARY KEY(userEmail,productID),
+                              FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE CASCADE,
+                              FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+create table favoriteCoordination(
+                                   userEmail   VARCHAR(64),
+                                   coordinationID   INT,
+                                   PRIMARY KEY(userEmail,coordinationID),
+                                   FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE CASCADE,
+                                   FOREIGN KEY (coordinationID) REFERENCES coordination (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 create database session;
