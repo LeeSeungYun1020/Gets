@@ -192,7 +192,7 @@ create table article(
   userEmail VARCHAR(64),
   date      DATE          NOT NULL DEFAULT (current_date),
   contents  JSON          NOT NULL,
-  imageID  INT           DEFAULT NULL,
+  imageID  INT            DEFAULT NULL,
   status  BOOLEAN         DEFAULT FALSE,
   FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL
 );
