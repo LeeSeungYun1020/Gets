@@ -15,7 +15,7 @@ module.exports=function(passport){
 		res.send({result: false})
 	})
 	
-	router.post("/sign/user", (req, res) => {
+	router.get("/sign/user", (req, res) => {
 		if (req.user) {
 			let user = req.user
 			user["pw"] = null
