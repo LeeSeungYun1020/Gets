@@ -52,5 +52,31 @@ module.exports = function (passport) {
 			})
 	})
 	
+	router.get("/:id", (req, res) => {
+		const id = req.params.id
+		connection.query("select * from `coordination` where `id`=?",
+			[id],
+			(err, result) => {
+				if (err || result.length === 0)
+					res.send({result: false})
+				else {
+					result[0].result = true
+					res.send(result[0])
+				}
+			})
+	})
+	
+	router.get("/image/:imageID", (req, res) => {
+		const imageID = req.params.imageID
+		const filePath = path.join(__dirname, '../coordination/image')
+		const options = {
+			root: filePath,
+		}
+		fs.promises.access(`${filePath}/${imageID}.png`, fs.constants.F_OK)
+		.then(() => res.sendFile(`${imageID}.png`, options))
+		.catch(() => res.sendFile(`${imageID}.jpg`, options, err => {
+			res.sendFile(`error.png`, options)
+		}))
+	})
 	return router
 }
