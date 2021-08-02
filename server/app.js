@@ -70,7 +70,7 @@ const productRouter = require('./routes/product')(passport);
 const cartRouter = require('./routes/cart');
 const articleRouter = require('./routes/article');
 const aboutRouter = require('./routes/about');
-const coordinationRouter=require('/routes/coordination')(passport);
+const coordinationRouter=require('./routes/coordination')(passport);
 
 app.use('/', indexRouter)
 app.use('/api', apiRouter)
