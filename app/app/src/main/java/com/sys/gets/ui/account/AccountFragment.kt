@@ -1,10 +1,11 @@
 package com.sys.gets.ui.account
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sys.gets.R
+import com.sys.gets.sign.LoginActivity
 
 class AccountFragment : PreferenceFragmentCompat() {
 
@@ -12,7 +13,7 @@ class AccountFragment : PreferenceFragmentCompat() {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
         findPreference<Preference>("signout")?.setOnPreferenceClickListener {
-            MaterialAlertDialogBuilder(requireContext()).setMessage("done!!").show()
+            startActivity(Intent(requireContext(), LoginActivity::class.java))
             true
         }
     }

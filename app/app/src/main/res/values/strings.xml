@@ -198,6 +198,16 @@
     <string name="msg_offline_error">You are offline</string>
     <string name="title_account">Account</string>
     <string name="msg_signout">Sign out</string>
+    <string name="msg_info">My info</string>
+    <string name="msg_my_style">My style</string>
+    <string name="msg_feedback">Feedback</string>
+    <string name="msg_change_password">Change password</string>
+    <string name="title_info">Infomation</string>
+    <string name="summary_signout">Sign out and go to sign in page.</string>
+    <string name="summary_change_password">Change to a new password</string>
+    <string name="summary_my_info">View or change my style information.</string>
+    <string name="summary_my_style">Check out my style analysis.</string>
+    <string name="summary_feedback">Send feedback to developers.</string>
     <!-- Preference Titles -->
 
     <!-- Messages Preferences -->
