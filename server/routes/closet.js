@@ -7,7 +7,7 @@ module.exports = function (passport) {
 		res.send("closet")
 	});
 	
-	router.get('/product/list',(req,res)=>{
+	router.get('/product',(req,res)=>{
 		if (req.user) {
 			let user = req.user
 			connection.query(`select * from favoriteProduct where userEmail=?`,[user],
@@ -21,7 +21,7 @@ module.exports = function (passport) {
 		} else res.send({"result": false})
 	})
 	
-	router.get('/coordination/list',(req,res)=>{
+	router.get('/coordination',(req,res)=>{
 		if (req.user) {
 			let user = req.user
 			connection.query(`select * from favoriteCoordination where userEmail=?`,[user],
