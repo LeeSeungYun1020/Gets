@@ -8,8 +8,8 @@ function Register() {
     return (
         <div>
             <h1 id="register_title">{t("register")}</h1>
-            <div id = "register_line"></div>
-            <RegisterBox name= {t("name")} email = {t("email")} password={t("password")}
+            <div className = "black_line"></div>
+            <RegisterBox name = {t("name")} email = {t("email")} password={t("password")}
                           phone = {t("phone")}
                           birthday = {t("birthday")} address = {t("email_2")}
                           input_email = {t("input_id")}

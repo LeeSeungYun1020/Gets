@@ -33,9 +33,7 @@ const RegisterBox = props => {
     const [checkId, SetCheckId] = useState("");
     const [checkId_bool, SetCheckId_bool] = useState(false);
     const [checkPw, SetCheckPw] = useState("");
-
     const history = useHistory();
-
     const handleNameChange = event => {
         SetName(event.target.value);
     }
@@ -135,7 +133,7 @@ const RegisterBox = props => {
                 day: day
             })
                 .then(function (response) {
-                    history.push("/account/signin")
+                    history.push("/account/afterregister")
                     console.log(response);
                 })
                 .catch(function (error) {

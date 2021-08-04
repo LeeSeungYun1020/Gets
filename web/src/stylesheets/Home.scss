@@ -233,7 +233,7 @@ h1 {
   margin-bottom: 3px;
 }
 
-#recommend > button {
+#getstyle_button {
   background: #FFFFFF;
   font-family: Roboto;
   font-weight: bolder;
@@ -241,8 +241,11 @@ h1 {
   width: 163px;
   height: 57px;
   border : 3px solid black;
-  margin-bottom: 5ex;
-  margin-top: 4ex;
+  margin: 80px auto 50px auto;
+}
+
+#home_getstyle #home_button {
+  display: flex;
 }
 
 .recommend_line {
@@ -404,7 +407,7 @@ h1 {
   padding-left: 10px;
 }
 
-#info_1, #info_2, #info_3, #info_4 {
+#info_1, #info_2, #info_3 {
   border-right: 2px solid #d4d3d3;
   height:70%;
   margin-top: auto;

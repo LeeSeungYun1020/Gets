@@ -22,7 +22,8 @@ const SignInBox = (props) => {
                     axios.get('http://localhost:3000/api/sign/user',{ withCredentials: true })
                         .then ( response => {
                             console.log(response.data.email)
-                            history.goBack(localStorage.setItem("token", response.data.email));
+                            localStorage.setItem("token", response.data.email)
+                            history.push('/'); // 일단 홈으로 가자.... 나중에 수정..........
                         })
                 }
                 else {
