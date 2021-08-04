@@ -105,18 +105,37 @@ module.exports = function (passport) {
 	
 	//홈화면_탑트렌드에 있는 제품을 number 수만큼표시
 	router.get("/toptrends/:number", (req, res) => {
-		connection.query(`select *
-                          from product
-                          order by favorite desc
-                          limit ${req.params.number}`,
-			(err, result) => {
-				if (err || result.length === 0)
-					res.send([{result: false}])
-				else {
-					result[0]["result"] = true
-					res.send(result)
+		connection.query(`select productID,count(productID) as cnt from favoriteProduct
+							group by productID order by cnt desc limit ${req.params.number}`,(err,result)=>{
+			if(err)
+				res.send({result: false})
+			else{
+				let obj=[]
+				for(let i=0;i<result.length;i++){
+					obj.push(result[i].productID)
 				}
-			})
+				console.log(obj)
+				connection.query(`select * from product where id in (${obj}) order by field(id,${obj})`,(err,result)=>{
+					if(err)
+						res.send({result: false})
+					else{
+						res.send(result)
+					}
+				})
+			}
+		})
+		// connection.query(`select *
+        //                   from product
+        //                   order by favorite desc
+        //                   limit ${req.params.number}`,
+		// 	(err, result) => {
+		// 		if (err || result.length === 0)
+		// 			res.send([{result: false}])
+		// 		else {
+		// 			result[0]["result"] = true
+		// 			res.send(result)
+		// 		}
+		// 	})
 	})
 	return router
 }
