@@ -197,4 +197,7 @@
     <string name="summary_my_info">내 스타일 정보를 확인하고 변경합니다.</string>
     <string name="summary_my_style">내 스타일 분석 정보를 확인합니다.</string>
     <string name="summary_feedback">개발자에게 피드백을 전송합니다.</string>
+    <string name="msg_feedback_title">"(문의) GETs: "</string>
+    <string name="msg_feedback_text">아래에 상세 문의 내용을 입력하세요.</string>
+    <string name="msg_feedback_error">피드백을 전송할 수 없습니다.</string>
 </resources>

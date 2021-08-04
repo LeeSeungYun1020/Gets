@@ -208,6 +208,9 @@
     <string name="summary_my_info">View or change my style information.</string>
     <string name="summary_my_style">Check out my style analysis.</string>
     <string name="summary_feedback">Send feedback to developers.</string>
+    <string name="msg_feedback_title">(Feedback) GETs:</string>
+    <string name="msg_feedback_text">Please enter your detailed feedback below.</string>
+    <string name="msg_feedback_error">Can\'t send feedback.</string>
     <!-- Preference Titles -->
 
     <!-- Messages Preferences -->
