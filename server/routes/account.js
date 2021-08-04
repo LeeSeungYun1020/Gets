@@ -37,12 +37,13 @@ module.exports = function (passport) {
 
 // 회원 정보
 	router.get('/info', function (req, res, next) {
-		if(req.user){
-			const user = req.user.email
-			connection.query(`select * from user where email=${user}`,(err, result) => {
+		if(req.user!=null){
+			connection.query(`select * from user where email=?`,[req.user.email],(err, result) => {
+				console.log(err)
 				res.send(result)
 			})
-		}else res.send({"result": false})
+		}else
+			res.send([{result: false}])
 	});
 
 	//수정
@@ -57,26 +58,53 @@ module.exports = function (passport) {
 			let address = req.body.address
 			let addressDetail = req.body.addressDetail
 			console.log(email)
-			connection.query(`update user set pw=?,phone=?,birthday=?,address=?,addressDetail=? where email=${email}`,
-				[pw,phone,`${year}-${month}-${day}`, address, addressDetail],((err, result) => {
+			connection.query(`update user set pw=?,phone=?,birthday=?,address=?,addressDetail=? where email=?`,
+				[pw,phone,`${year}-${month}-${day}`, address, addressDetail,email],(err, result) => {
 					res.send({result: true})
-				}))
-		} else res.send({"result": false})
+				})
+		} else res.send([{result: false}])
 	})
 	
 //스타일
 	router.get('/style', function (req, res, next) {
-		res.send("style")
-	});
-
-// 주문 내역
-	router.get('/order', function (req, res, next) {
-		res.send("order")
-	});
-
-// 문의 사항
-	router.get('/feedback', function (req, res, next) {
-		res.send("feedback")
+		if(req.user){
+			let userStyle={
+				casual : 0, minimal : 0, campus : 0, street : 0, rockchic : 0,
+				amekaji : 0, cityboy : 0, office : 0, sexyglam : 0, feminine : 0, lovely : 0
+			}
+			connection.query(`select style from product where id in (select productID from favoriteProduct where userEmail=?)`,[req.user.email],
+				(err,result)=>{
+				if(err)
+					res.send([{result: false}])
+				else{
+					let temp,digit
+					for(let i=0;i<result.length;i++){
+						temp = result[i].style.toString(2)
+						digit = temp.length - 1
+						for (var j = 0; j < temp.length; j++) {
+							if (temp[j] == '1') {
+								switch (2**digit) {
+									case 1: userStyle.minimal++; break
+									case 2: userStyle.casual++; break
+									case 4: userStyle.campus++; break
+									case 8: userStyle.street++; break
+									case 16: userStyle.rockchic++; break
+									case 32: userStyle.amekaji++; break
+									case 64: userStyle.cityboy++; break
+									case 128: userStyle.office++; break
+									case 256: userStyle.sexyglam++; break
+									case 512: userStyle.feminine++; break
+									default: userStyle.lovely++;
+								}
+							}
+							digit--
+						}
+					}
+					console.log(userStyle)
+					res.send(userStyle)
+				}
+			})
+		}else res.send({result: false})
 	});
 	
 	return router
