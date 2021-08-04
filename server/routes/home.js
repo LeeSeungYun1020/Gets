@@ -124,18 +124,6 @@ module.exports = function (passport) {
 				})
 			}
 		})
-		// connection.query(`select *
-        //                   from product
-        //                   order by favorite desc
-        //                   limit ${req.params.number}`,
-		// 	(err, result) => {
-		// 		if (err || result.length === 0)
-		// 			res.send([{result: false}])
-		// 		else {
-		// 			result[0]["result"] = true
-		// 			res.send(result)
-		// 		}
-		// 	})
 	})
 	return router
 }

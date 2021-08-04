@@ -26,7 +26,7 @@ module.exports = function (passport) {
 		} else res.send({"result": false})
 	})
 	
-	router.post('/unfavorite/:coordinationID', (req, res) => {
+	router.get('/unfavorite/:coordinationID', (req, res) => {
 		if (req.user) {
 			let user = req.user.email
 			let coordination = req.params.coordinationID
