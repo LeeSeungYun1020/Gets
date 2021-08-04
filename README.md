@@ -186,7 +186,8 @@ create table review
 );
 
 create table magazine(
-  title        VARCHAR(256) PRIMARY KEY,
+  id           INT PRIMARY KEY AUTO_INCREMENT,
+  title        VARCHAR(256) NOT NULL,
   keyword      VARCHAR(64) DEFAULT NULL,
   contents     VARCHAR(2048)    NOT NULL,
   imageID      VARCHAR(32)   DEFAULT NULL,
