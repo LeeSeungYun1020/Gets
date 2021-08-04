@@ -44,20 +44,6 @@ module.exports = function (passport) {
 		} else res.send({"result": false})
 	})
 	
-	router.get("/:id", (req, res) => {
-		const id = req.params.id
-		connection.query("select * from `coordination` where `id`=?",
-			[id],
-			(err, result) => {
-				if (err || result.length === 0)
-					res.send({result: false})
-				else {
-					result[0].result = true
-					res.send(result[0])
-				}
-			})
-	})
-	
 	router.get('/count/favorite/:coordinationID',(req,res)=>{
 		connection.query(`select count(coordinationID) from favoriteCoordination where coordinationID=${req.params.coordinationID}`,
 			(err,result)=>{
@@ -80,6 +66,20 @@ module.exports = function (passport) {
 		.catch(() => res.sendFile(`${imageID}.jpg`, options, err => {
 			res.sendFile(`error.png`, options)
 		}))
+	})
+	
+	router.get("/:id", (req, res) => {
+		const id = req.params.id
+		connection.query("select * from `coordination` where `id`=?",
+			[id],
+			(err, result) => {
+				if (err || result.length === 0)
+					res.send({result: false})
+				else {
+					result[0].result = true
+					res.send(result[0])
+				}
+			})
 	})
 	return router
 }
