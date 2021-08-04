@@ -10,7 +10,7 @@ module.exports = function (passport) {
 	});
 	
 	//코디 찜하기, 찜삭제하기
-	router.post('/favorite/:coordinationID', (req, res) => {
+	router.get('/favorite/:coordinationID', (req, res) => {
 		if (req.user) {
 			let user = req.user.email
 			let coordination = req.params.coordinationID
@@ -20,7 +20,13 @@ module.exports = function (passport) {
 					if (err)
 						res.send({result: false})
 					else {
-						console.log(result)
+						connection.query(`select favorite from coordination where id=${coordination}`,(err,result)=>{
+							const change=parseInt(Object.values(result[0]))+1
+							connection.query(`update coordination set favorite=${change} where id=${coordination}`,(err,result)=>{
+								if(err)
+									res.send({result: false})
+							})
+						})
 						res.send({result: true})
 					}
 				})
