@@ -24,13 +24,6 @@ module.exports = function (passport) {
 					if (err)
 						res.send({result: false})
 					else {
-						connection.query(`select favorite from product where id=${product}`,(err,result)=>{
-							const change=parseInt(Object.values(result[0]))+1
-							connection.query(`update product set favorite=${change} where id=${product}`,(err,result)=>{
-								if(err)
-									res.send({result: false})
-							})
-						})
 						res.send({result: true})
 					}
 				})
@@ -53,6 +46,17 @@ module.exports = function (passport) {
 					}
 				})
 		} else res.send({"result": false})
+	})
+	
+	router.get('/count/favorite/:productID',(req,res)=>{
+		connection.query(`select count(productID) from favoriteProduct where productID=${req.params.productID}`,
+			(err,result)=>{
+			if(err)
+				res.send({result:false})
+			else{
+				res.send(result)
+			}
+		})
 	})
 	
 	/* 아래는 api에서 이동된 것 */

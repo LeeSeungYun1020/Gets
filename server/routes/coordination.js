@@ -20,13 +20,6 @@ module.exports = function (passport) {
 					if (err)
 						res.send({result: false})
 					else {
-						connection.query(`select favorite from coordination where id=${coordination}`,(err,result)=>{
-							const change=parseInt(Object.values(result[0]))+1
-							connection.query(`update coordination set favorite=${change} where id=${coordination}`,(err,result)=>{
-								if(err)
-									res.send({result: false})
-							})
-						})
 						res.send({result: true})
 					}
 				})
@@ -61,6 +54,17 @@ module.exports = function (passport) {
 				else {
 					result[0].result = true
 					res.send(result[0])
+				}
+			})
+	})
+	
+	router.get('/count/favorite/:coordinationID',(req,res)=>{
+		connection.query(`select count(coordinationID) from favoriteCoordination where coordinationID=${req.params.coordinationID}`,
+			(err,result)=>{
+				if(err)
+					res.send({result:false})
+				else{
+					res.send(result)
 				}
 			})
 	})
