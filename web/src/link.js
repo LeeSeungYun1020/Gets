@@ -4,7 +4,6 @@ const link = {
     product: '/product',
     account: '/account',
     signin: '/account/signin',
-    logout: '/accout/logout',
     signup: '/account/signup',
     findid: '/account/findid',
     findpw: '/account/findpw',
