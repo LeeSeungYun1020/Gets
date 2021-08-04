@@ -12,6 +12,8 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import link from "./link";
 import SignIn from "./components/SignIn";
+import AfterRegister from "./components/AfterRegister";
+import DetailInfo from "./components/DetailInfo";
 import FindId from "./components/FindId";
 import FindPw from "./components/FindPw";
 import FindPwEmail from "./components/FindPwEmail";
@@ -47,6 +49,12 @@ export default function App() {
                     </Route>
                     <Route path={link.register}>
                         <Register />
+                    </Route>
+                    <Route path={link.afterregister}>
+                        <AfterRegister />
+                    </Route>
+                    <Route path={link.detailinfo}>
+                        <DetailInfo />
                     </Route>
                     <Route path={link.signup}>
                         <h1>구현 예정 - 회원 가입</h1>

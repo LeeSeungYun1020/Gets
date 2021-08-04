@@ -9,6 +9,8 @@ const link = {
     findpw: '/account/findpw',
     findpwemail : '/account/findpwemail',
     register: '/account/register',
+    afterregister: '/account/afterregister',
+    detailinfo:'/account/detailinfo',
     info: '/account/info',
     style: '/account/style',
     order: '/account/order',
