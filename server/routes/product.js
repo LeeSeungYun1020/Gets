@@ -14,7 +14,7 @@ module.exports = function (passport) {
 	});
 	
 	//상품 찜하기, 찜삭제하기
-	router.post('/favorite/:productID', (req, res) => {
+	router.get('/favorite/:productID', (req, res) => {
 		if (req.user) {
 			let user = req.user.email
 			let product = req.params.productID
@@ -24,7 +24,6 @@ module.exports = function (passport) {
 					if (err)
 						res.send({result: false})
 					else {
-						console.log(result)
 						res.send({result: true})
 					}
 				})
@@ -47,6 +46,17 @@ module.exports = function (passport) {
 					}
 				})
 		} else res.send({"result": false})
+	})
+	
+	router.get('/count/favorite/:productID',(req,res)=>{
+		connection.query(`select count(productID) from favoriteProduct where productID=${req.params.productID}`,
+			(err,result)=>{
+			if(err)
+				res.send({result:false})
+			else{
+				res.send(result)
+			}
+		})
 	})
 	
 	/* 아래는 api에서 이동된 것 */

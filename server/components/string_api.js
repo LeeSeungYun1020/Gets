@@ -11,14 +11,22 @@ const string = {
 		api_product: "Product",
 		api_product_image: "Product - image",
 		api_product_list: "Product - list",
+		api_product_list_page: "Product - list by page",
 		api_product_toptrend: "Product - toptrend",
+		api_product_favorite: "Product - favorite",
+		api_product_unfavorite: "Product - unfavorite",
+		api_product_count_favorite : "Product - favorite count",
 		api_review_add: "Review - add",
 		api_review_fit: "Review -fit",
 		api_review: "Review - list",
 		api_coordination: "Coordination",
+		api_coordination_image: "Coordination - image",
 		api_coordination_anything: "Coordination - anything",
 		api_coordination_style: "Coordination - style",
-		api_coordination_represent: "Coordination - representative"
+		api_coordination_represent: "Coordination - representative",
+		api_coordination_favorite: "Coordination - favorite",
+		api_coordination_unfavorite: "Coordination - unfavorite",
+		api_coordination_count_favorite : "Coordination - favorite count"
 	},
 	ko: {
 		api_title: "Gets: API",
@@ -32,14 +40,22 @@ const string = {
 		api_product: "상품",
 		api_product_image: "상품 - 이미지",
 		api_product_list: "상품 - 목록",
+		api_product_list_page: "상품 - 페이지별 목록",
 		api_product_toptrend: "상품 - 탑트랜드",
+		api_product_favorite: "상품 - 찜하기",
+		api_product_unfavorite: "상품 - 찜취소",
+		api_product_count_favorite : "상품 - 찜개수",
 		api_review_add: "리뷰 - 추가",
 		api_review_fit: "리뷰 - 맞춤",
 		api_review: "리뷰 - 리스트",
 		api_coordination: "코디",
+		api_coordination_image: "코디 - 이미지",
 		api_coordination_anything: "코디 - 랜덤",
 		api_coordination_style: "코디 - 스타일",
-		api_coordination_represent: "코디 - 대표"
+		api_coordination_represent: "코디 - 대표",
+		api_coordination_favorite: "코디 - 찜하기",
+		api_coordination_unfavorite: "코디 - 찜취소",
+		api_coordination_count_favorite : "코디 - 찜개수"
 	}
 }
 

@@ -10,7 +10,7 @@ module.exports = function (passport) {
 	});
 	
 	//코디 찜하기, 찜삭제하기
-	router.post('/favorite/:coordinationID', (req, res) => {
+	router.get('/favorite/:coordinationID', (req, res) => {
 		if (req.user) {
 			let user = req.user.email
 			let coordination = req.params.coordinationID
@@ -20,14 +20,13 @@ module.exports = function (passport) {
 					if (err)
 						res.send({result: false})
 					else {
-						console.log(result)
 						res.send({result: true})
 					}
 				})
 		} else res.send({"result": false})
 	})
 	
-	router.post('/unfavorite/:coordinationID', (req, res) => {
+	router.get('/unfavorite/:coordinationID', (req, res) => {
 		if (req.user) {
 			let user = req.user.email
 			let coordination = req.params.coordinationID
@@ -45,16 +44,13 @@ module.exports = function (passport) {
 		} else res.send({"result": false})
 	})
 	
-	router.get("/:id", (req, res) => {
-		const id = req.params.id
-		connection.query("select * from `coordination` where `id`=?",
-			[id],
-			(err, result) => {
-				if (err || result.length === 0)
-					res.send({result: false})
-				else {
-					result[0].result = true
-					res.send(result[0])
+	router.get('/count/favorite/:coordinationID',(req,res)=>{
+		connection.query(`select count(coordinationID) from favoriteCoordination where coordinationID=${req.params.coordinationID}`,
+			(err,result)=>{
+				if(err)
+					res.send({result:false})
+				else{
+					res.send(result)
 				}
 			})
 	})
@@ -70,6 +66,20 @@ module.exports = function (passport) {
 		.catch(() => res.sendFile(`${imageID}.jpg`, options, err => {
 			res.sendFile(`error.png`, options)
 		}))
+	})
+	
+	router.get("/:id", (req, res) => {
+		const id = req.params.id
+		connection.query("select * from `coordination` where `id`=?",
+			[id],
+			(err, result) => {
+				if (err || result.length === 0)
+					res.send({result: false})
+				else {
+					result[0].result = true
+					res.send(result[0])
+				}
+			})
 	})
 	return router
 }

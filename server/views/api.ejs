@@ -68,7 +68,7 @@
         <div class="mdc-typography--headline4"><%= string.api_product %></div>
         <div class="mdc-typography--headline5"><%= string.api_product_image %></div>
         <p class="mdc-typography--body1">
-            POST: api/product/image/:imageID
+            GET: product/image/:imageID
             <br>
             params:
             <br>
@@ -76,7 +76,15 @@
         </p>
         <div class="mdc-typography--headline5"><%= string.api_product_list %></div>
         <p class="mdc-typography--body1">
-            POST: api/product/list/:page
+            POST: product/list
+            <br>
+            params: search, type, detail, gender, color, fit, season, fiber, age, style, priceMin, priceMax
+            <br>
+            return: [{result: boolean}] | list
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_product_list_page %></div>
+        <p class="mdc-typography--body1">
+            POST: product/list/:page
             <br>
             params: search, type, detail, gender, color, fit, season, fiber, age, style, priceMin, priceMax
             <br>
@@ -84,7 +92,7 @@
         </p>
         <div class="mdc-typography--headline5"><%= string.api_product %></div>
         <p class="mdc-typography--body1">
-            POST: api/product/:id
+            GET: product/:id
             <br>
             params:
             <br>
@@ -92,12 +100,38 @@
         </p>
         <div class="mdc-typography--headline5"><%= string.api_product_toptrend %></div>
         <p class="mdc-typography--body1">
-            POST: home/toptrends/:number
+            GET: home/toptrends/:number
             <br>
             params:
             <br>
             return: {result: boolean} | list
         </p>
+
+        <div class="mdc-typography--headline5"><%= string.api_product_favorite %></div>
+        <p class="mdc-typography--body1">
+            GET: product/favorite/:productID
+            <br>
+            params:
+            <br>
+            return: {result: boolean}
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_product_unfavorite %></div>
+        <p class="mdc-typography--body1">
+            GET: product/unfavorite/:productID
+            <br>
+            params:
+            <br>
+            return: {result: boolean}
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_product_count_favorite %></div>
+        <p class="mdc-typography--body1">
+            GET: product/count/favorite/:productID
+            <br>
+            params:
+            <br>
+            return: {result: false} | number of user's favorite
+        </p>
+
         <div class="mdc-typography--headline5"><%= string.api_review_add %></div>
         <p class="mdc-typography--body1">
             POST: api/review/add/:productID
@@ -126,9 +160,17 @@
 
     <section class="api_description">
         <div class="mdc-typography--headline4"><%= string.api_coordination %></div>
+        <div class="mdc-typography--headline5"><%= string.api_coordination_image %></div>
+        <p class="mdc-typography--body1">
+            GET: coordination/image/:imageID
+            <br>
+            params:
+            <br>
+            return: image file
+        </p>
         <div class="mdc-typography--headline5"><%= string.api_coordination_anything %></div>
         <p class="mdc-typography--body1">
-            POST: home/custom/:number
+            GET: home/custom/:number
             <br>
             params:
             <br>
@@ -136,7 +178,7 @@
         </p>
         <div class="mdc-typography--headline5"><%= string.api_coordination_style %></div>
         <p class="mdc-typography--body1">
-            POST: home/style/:styleID/:number
+            GET: home/style/:styleID/:number
             <br>
             params:
             <br>
@@ -144,11 +186,43 @@
         </p>
         <div class="mdc-typography--headline5"><%= string.api_coordination_represent %></div>
         <p class="mdc-typography--body1">
-            POST: home/representative/style
+            GET: home/representative/style
             <br>
             params:
             <br>
             return: [{result: boolean}] | list
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_coordination %></div>
+        <p class="mdc-typography--body1">
+            GET: coordination/:id
+            <br>
+            params:
+            <br>
+            return: {result: boolean} | coordination
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_coordination_favorite %></div>
+        <p class="mdc-typography--body1">
+            GET: coordination/favorite/:coordinationID
+            <br>
+            params:
+            <br>
+            return: {result: boolean}
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_coordination_unfavorite %></div>
+        <p class="mdc-typography--body1">
+            GET: coordination/unfavorite/:coordinationID
+            <br>
+            params:
+            <br>
+            return: {result: boolean}
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_coordination_count_favorite %></div>
+        <p class="mdc-typography--body1">
+            GET: coordination/count/favorite/:coordinationID
+            <br>
+            params:
+            <br>
+            return: return: {result: false} | number of user's favorite
         </p>
     </section>
 </div>

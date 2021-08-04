@@ -148,7 +148,6 @@ create table user
   fit           INT
 );
 
-
 create table product
 (
   id       INT PRIMARY KEY AUTO_INCREMENT,
@@ -168,8 +167,7 @@ create table product
   size     VARCHAR(128)  NOT NULL,
   image1ID VARCHAR(32)   NOT NULL,
   image2ID VARCHAR(32)   DEFAULT NULL,
-  image3ID VARCHAR(32)   DEFAULT NULL,
-  favorite INT           NOT NULL DEFAULT 0
+  image3ID VARCHAR(32)   DEFAULT NULL
 );
 
 create table review
@@ -188,11 +186,12 @@ create table review
 );
 
 create table magazine(
-   title        VARCHAR(256) PRIMARY KEY,
-   keyword      VARCHAR(64) DEFAULT NULL,
-   contents     VARCHAR(2048)    NOT NULL,
-   imageID      VARCHAR(32)   DEFAULT NULL,
-   styleTag     INT DEFAULT NULL
+  id           INT PRIMARY KEY AUTO_INCREMENT,
+  title        VARCHAR(256) NOT NULL,
+  keyword      VARCHAR(64) DEFAULT NULL,
+  contents     VARCHAR(2048)    NOT NULL,
+  imageID      VARCHAR(32)   DEFAULT NULL,
+  styleTag     INT DEFAULT NULL
 );
 
 create table userCoordination(
@@ -216,31 +215,31 @@ create table userCoordination(
 );
 
 create table coordination(
-   id INT PRIMARY KEY AUTO_INCREMENT,
-   title VARCHAR(64),
-   outerID INT,
-   outerImageID    INT,
-   topID INT,
-   topImageID  INT,
-   bottomID    INT,
-   bottomImageID   INT,
-   skirtID INT,
-   skirtImageID    INT,
-   setID   INT,
-   setImageID  INT,
-   shoesID INT,
-   shoesImageID    INT,
-   bagID   INT,
-   bagImageID  INT,
-   hatID   INT,
-   hatImageID  INT,
-   style   INT,
-   gender  INT,
-   age INT,
-   bodyshape  INT,
-   price     INT,
-   weather   INT,
-   imageID   VARCHAR(64)
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(64),
+  outerID INT,
+  outerImageID    INT,
+  topID INT,
+  topImageID  INT,
+  bottomID    INT,
+  bottomImageID   INT,
+  skirtID INT,
+  skirtImageID    INT,
+  setID   INT,
+  setImageID  INT,
+  shoesID INT,
+  shoesImageID    INT,
+  bagID   INT,
+  bagImageID  INT,
+  hatID   INT,
+  hatImageID  INT,
+  style   INT,
+  gender  INT,
+  age INT,
+  bodyshape  INT,
+  price     INT,
+  weather   INT,
+  imageID   VARCHAR(64)
 );
 
 create table cart(
@@ -272,28 +271,6 @@ create table purchase(
   FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-create table product
-(
-  id       INT PRIMARY KEY AUTO_INCREMENT,
-  name     NVARCHAR(128) NOT NULL,
-  brand    NVARCHAR(128) NOT NULL,
-  code     NVARCHAR(64),
-  gender   INT           NOT NULL,
-  type     INT           NOT NULL,
-  detail   INT           NOT NULL,
-  color    INT           NOT NULL,
-  fit      INT           NOT NULL,
-  season   INT           NOT NULL,
-  fiber    INT           NOT NULL,
-  age      INT           NOT NULL,
-  style    INT           NOT NULL,
-  price    INT           NOT NULL,
-  size     VARCHAR(128)  NOT NULL,
-  image1ID VARCHAR(32)   NOT NULL,
-  image2ID VARCHAR(32) DEFAULT NULL,
-  image3ID VARCHAR(32) DEFAULT NULL
-);
-
 create table question(
   userEmail   VARCHAR(64) NOT NULL,
   title       VARCHAR(256),
@@ -302,19 +279,19 @@ create table question(
 );
 
 create table favoriteProduct(
-   userEmail   VARCHAR(64),
-   productID   INT,
-   PRIMARY KEY(userEmail,productID),
-   FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE CASCADE,
-   FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
+  userEmail   VARCHAR(64),
+  productID   INT,
+  PRIMARY KEY(userEmail,productID),
+  FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 create table favoriteCoordination(
-   userEmail   VARCHAR(64),
-   coordinationID   INT,
-   PRIMARY KEY(userEmail,coordinationID),
-   FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE CASCADE,
-   FOREIGN KEY (coordinationID) REFERENCES coordination (id) ON UPDATE CASCADE ON DELETE CASCADE
+  userEmail   VARCHAR(64),
+  coordinationID   INT,
+  PRIMARY KEY(userEmail,coordinationID),
+  FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (coordinationID) REFERENCES coordination (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 create database session;
