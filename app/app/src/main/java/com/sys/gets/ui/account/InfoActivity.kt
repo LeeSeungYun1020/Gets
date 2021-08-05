@@ -1,7 +1,12 @@
 package com.sys.gets.ui.account
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
+import com.sys.gets.R
+import com.sys.gets.data.BodyShape
+import com.sys.gets.data.Size
 import com.sys.gets.databinding.ActivityInfoBinding
 
 class InfoActivity : AppCompatActivity() {
@@ -20,13 +25,21 @@ class InfoActivity : AppCompatActivity() {
             ).forEach {
                 it.setOnClickListener { _ ->
                     it.isChecked = !it.isChecked
-//                        if (it.isChecked) { // 선택된 경우
-//                            it.alpha = 0.7f
-//                        } else {
-//                            it.alpha = 1f
-//                        }
                 }
             }
         }
+
+        val sizeAdapter =
+            ArrayAdapter(this, R.layout.list_item, Size.values().map { getString(it.resID) })
+        (binding.topSizeTextfield.editText as? AutoCompleteTextView)?.setAdapter(sizeAdapter)
+        (binding.bottomSizeTextfield.editText as? AutoCompleteTextView)?.setAdapter(sizeAdapter)
+
+        val bodyShapeAdapter =
+            ArrayAdapter(this, R.layout.list_item, BodyShape.values().map { getString(it.resID) })
+        (binding.shoulderTextfield.editText as? AutoCompleteTextView)?.setAdapter(bodyShapeAdapter)
+        (binding.waistTextfield.editText as? AutoCompleteTextView)?.setAdapter(bodyShapeAdapter)
+        (binding.hipTextfield.editText as? AutoCompleteTextView)?.setAdapter(bodyShapeAdapter)
+        (binding.thighTextfield.editText as? AutoCompleteTextView)?.setAdapter(bodyShapeAdapter)
+
     }
 }
