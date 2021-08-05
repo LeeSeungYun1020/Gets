@@ -211,6 +211,18 @@
     <string name="msg_feedback_title">(Feedback) GETs:</string>
     <string name="msg_feedback_text">Please enter your detailed feedback below.</string>
     <string name="msg_feedback_error">Can\'t send feedback.</string>
+    <string name="hint_info_update">Please enter style information\nfor coordinating recommendations.</string>
+    <string name="hint_gender">Gender</string>
+    <string name="hint_height">Height</string>
+    <string name="hint_weight">Weight</string>
+    <string name="hint_top_size">Top size</string>
+    <string name="hint_bottom_size">Bottom size</string>
+    <string name="hint_shoulder">Shoulder</string>
+    <string name="hint_waist">Waist</string>
+    <string name="hint_hip">Hip</string>
+    <string name="hint_thigh">Thigh</string>
+    <string name="hint_style">Preferred style</string>
+    <string name="hint_multiple_selection">Multiple selection possible</string>
     <!-- Preference Titles -->
 
     <!-- Messages Preferences -->

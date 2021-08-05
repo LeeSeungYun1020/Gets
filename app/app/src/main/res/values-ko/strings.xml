@@ -200,4 +200,16 @@
     <string name="msg_feedback_title">"(문의) GETs: "</string>
     <string name="msg_feedback_text">아래에 상세 문의 내용을 입력하세요.</string>
     <string name="msg_feedback_error">피드백을 전송할 수 없습니다.</string>
+    <string name="hint_info_update">코디 추천을 위한\n스타일 정보를 입력해주세요 :)</string>
+    <string name="hint_gender">성별</string>
+    <string name="hint_height">키</string>
+    <string name="hint_weight">몸무게</string>
+    <string name="hint_top_size">상의 사이즈</string>
+    <string name="hint_bottom_size">하의 사이즈</string>
+    <string name="hint_shoulder">어꺠</string>
+    <string name="hint_waist">허리</string>
+    <string name="hint_hip">엉덩이</string>
+    <string name="hint_thigh">허벅지</string>
+    <string name="hint_style">선호 스타일</string>
+    <string name="hint_multiple_selection">중복 선택 가능</string>
 </resources>

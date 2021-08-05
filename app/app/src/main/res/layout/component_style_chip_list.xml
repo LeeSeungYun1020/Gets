@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:id="@+id/minimal_chip"
+            android:layout_width="256dp"
+            android:layout_height="256dp"
+
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ch_minimal" />
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/style_minimal"
+            android:textColor="@color/signInGrey"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/minimal_chip"
+            app:layout_constraintStart_toStartOf="@id/minimal_chip"
+            app:layout_constraintTop_toBottomOf="@id/minimal_chip" />
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:id="@+id/casual_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="38dp"
+            app:layout_constraintStart_toEndOf="@id/minimal_chip"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ch_casual" />
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/style_casual"
+            android:textColor="@color/signInGrey"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/casual_chip"
+            app:layout_constraintStart_toStartOf="@id/casual_chip"
+            app:layout_constraintTop_toBottomOf="@id/casual_chip" />
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:id="@+id/campus_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="38dp"
+            app:layout_constraintStart_toEndOf="@id/casual_chip"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ch_campus" />
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/style_campus"
+            android:textColor="@color/signInGrey"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/campus_chip"
+            app:layout_constraintStart_toStartOf="@id/campus_chip"
+            app:layout_constraintTop_toBottomOf="@id/campus_chip" />
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:id="@+id/street_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="38dp"
+            app:layout_constraintStart_toEndOf="@id/campus_chip"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ch_street" />
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/style_street"
+            android:textColor="@color/signInGrey"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/street_chip"
+            app:layout_constraintStart_toStartOf="@id/street_chip"
+            app:layout_constraintTop_toBottomOf="@id/street_chip" />
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:id="@+id/rock_chic_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="38dp"
+            app:layout_constraintStart_toEndOf="@id/street_chip"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ch_rock_chic" />
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/style_rock_chic"
+            android:textColor="@color/signInGrey"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/rock_chic_chip"
+            app:layout_constraintStart_toStartOf="@id/rock_chic_chip"
+            app:layout_constraintTop_toBottomOf="@id/rock_chic_chip" />
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:id="@+id/amekaji_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="38dp"
+            app:layout_constraintStart_toEndOf="@id/rock_chic_chip"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ch_amekaji" />
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/style_amekaji"
+            android:textColor="@color/signInGrey"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/amekaji_chip"
+            app:layout_constraintStart_toStartOf="@id/amekaji_chip"
+            app:layout_constraintTop_toBottomOf="@id/amekaji_chip" />
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:id="@+id/city_boy_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="38dp"
+            app:layout_constraintStart_toEndOf="@id/amekaji_chip"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ch_city_boy" />
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/style_city_boy"
+            android:textColor="@color/signInGrey"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/city_boy_chip"
+            app:layout_constraintStart_toStartOf="@id/city_boy_chip"
+            app:layout_constraintTop_toBottomOf="@id/city_boy_chip" />
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:id="@+id/office_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="38dp"
+            app:layout_constraintStart_toEndOf="@id/city_boy_chip"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ch_office" />
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/style_office"
+            android:textColor="@color/signInGrey"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/office_chip"
+            app:layout_constraintStart_toStartOf="@id/office_chip"
+            app:layout_constraintTop_toBottomOf="@id/office_chip" />
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:id="@+id/sexy_glam_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="38dp"
+            app:layout_constraintStart_toEndOf="@id/office_chip"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ch_sexy_glam" />
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/style_sexy_glam"
+            android:textColor="@color/signInGrey"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/sexy_glam_chip"
+            app:layout_constraintStart_toStartOf="@id/sexy_glam_chip"
+            app:layout_constraintTop_toBottomOf="@id/sexy_glam_chip" />
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:id="@+id/feminine_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="38dp"
+            app:layout_constraintStart_toEndOf="@id/sexy_glam_chip"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ch_feminine" />
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/style_feminine"
+            android:textColor="@color/signInGrey"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/feminine_chip"
+            app:layout_constraintStart_toStartOf="@id/feminine_chip"
+            app:layout_constraintTop_toBottomOf="@id/feminine_chip" />
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:id="@+id/lovely_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="38dp"
+            app:layout_constraintStart_toEndOf="@id/feminine_chip"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ch_lovely" />
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/style_lovely"
+            android:textColor="@color/signInGrey"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/lovely_chip"
+            app:layout_constraintStart_toStartOf="@id/lovely_chip"
+            app:layout_constraintTop_toBottomOf="@id/lovely_chip" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</HorizontalScrollView>
