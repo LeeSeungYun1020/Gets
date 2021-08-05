@@ -173,3 +173,9 @@ enum class Size(val code: Int, val resID: Int) {
     L(8, R.string.size_l),
     XL(16, R.string.size_xl)
 }
+
+enum class BodyShape(val code: Int, val resID: Int) {
+    NARROW(1, R.string.size_narrow),
+    NORMAL(2, R.string.size_normal),
+    WIDE(4, R.string.size_wide)
+}

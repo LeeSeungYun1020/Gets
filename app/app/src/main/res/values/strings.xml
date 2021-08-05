@@ -223,6 +223,9 @@
     <string name="hint_thigh">Thigh</string>
     <string name="hint_style">Preferred style</string>
     <string name="hint_multiple_selection">Multiple selection possible</string>
+    <string name="size_narrow">Narrow</string>
+    <string name="size_normal">Normal</string>
+    <string name="size_wide">Wide</string>
     <!-- Preference Titles -->
 
     <!-- Messages Preferences -->

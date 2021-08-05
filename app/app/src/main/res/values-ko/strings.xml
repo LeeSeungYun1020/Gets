@@ -212,4 +212,7 @@
     <string name="hint_thigh">허벅지</string>
     <string name="hint_style">선호 스타일</string>
     <string name="hint_multiple_selection">중복 선택 가능</string>
+    <string name="size_narrow">좁음</string>
+    <string name="size_normal">보통</string>
+    <string name="size_wide">넓음</string>
 </resources>
