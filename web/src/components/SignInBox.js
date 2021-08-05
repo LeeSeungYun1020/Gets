@@ -1,10 +1,12 @@
 import React, { useState } from "react"
 import axios from "axios"
 import { useHistory } from "react-router-dom"
+
 const SignInBox = (props) => {
     const [email, SetEmail] = useState('');
     const [password, SetPassword] = useState('');
     const history = useHistory();
+
 
     const handleEmailChange = (event) => {
         SetEmail(event.target.value);
@@ -21,7 +23,7 @@ const SignInBox = (props) => {
                 if (response.data.result) {
                     axios.get('http://localhost:3000/api/sign/user',{ withCredentials: true })
                         .then ( response => {
-                            console.log(response.data.email)
+                            console.log(response.data)
                             localStorage.setItem("token", response.data.email)
                             history.push('/'); // 일단 홈으로 가자.... 나중에 수정..........
                         })
@@ -49,6 +51,7 @@ const SignInBox = (props) => {
                            onChange={handlePasswordChange} required/>
                 </label>
                 <input id = "submit" type="submit" value={props.login} />
+
             </form>
         </div>
     )

@@ -59,7 +59,6 @@ const DetailInfoItem = props => {
         SetBottomSize(e.target.value);
         console.log(e.target.value);
     }
-
     const onSubmit = (e) => {
         e.preventDefault();
         axios.post('http://localhost:3000/api/signup/info', {
@@ -69,7 +68,7 @@ const DetailInfoItem = props => {
             top_size: topSize,
             bottom_size: bottomSize,
             style: style
-        })
+        },{ withCredentials: true })
             .then(function (response) {
                 history.push("/account/signin")
                 console.log(response);

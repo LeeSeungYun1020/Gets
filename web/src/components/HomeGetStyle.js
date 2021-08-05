@@ -14,9 +14,11 @@ import LovelyChip from "../images/home/Oval_lovely.webp";
 import MinimalChip from "../images/home/Oval_minimal.webp";
 import {useTranslation} from "react-i18next";
 import axios from "axios";
+import HomeRecommendCard from "./HomeRecommendCard";
 
 const HomeGetStyle = (props) => {
     const {t, i18n} = useTranslation()
+    const [ans, setAns] = useState(false);
     const [gender, setGender] = useState(2);
     const [age, setAge] = useState(1);
     const [bodyType, setBodyType] = useState();
@@ -59,36 +61,37 @@ const HomeGetStyle = (props) => {
         },
     ]
 
-    // const hanleGenderClick = e => {
-    //     setGender(e.target.value);
-    // }
-    // const handleAgeClick = e => {
-    //     setAge(e.target.value);
-    // }
-    // const handleFitClick = e => {
-    //     setFit(e.target.value)
-    // }
+    const [recommend, setRecommend] = useState([])
     const onSubmit = e => {
         e.preventDefault();
-        axios.post('http://localhost:3000/custom/8', {
-
-        })
-            .then(function (response) {
-                console.log(response.data.result)
-                console.log(response.data);
-            })
-            .catch(function (error) {
-                console.log(error)
+        axios.get('http://localhost:3000/home/custom/8')
+            .then(({data}) => {setRecommend(data)
+                console.log(data)
+                setAns(true);
             })
     }
     return (
-        <div id = "home_getstyle">
+        <div id="home_getstyle">
             <HomeStyleSelect title={t("select_info")} list={selectAreaList}/>
-            <HomeRecommend title={t("select_style")} chips={chipList} text={t("recommend_button")} style = {style} SetStyle = {setStyle}/>
-            <div id = "home_button">
-                <button id = "getstyle_button" onClick={onSubmit}>{props.text}</button>
+            <HomeRecommend title={t("select_style")} chips={chipList} text={t("recommend_button")} style={style}
+                           SetStyle={setStyle}/>
+            <div id="home_button">
+                <button id="getstyle_button" onClick={onSubmit}>{props.text}</button>
             </div>
-            <div className="recommend_line"></div>
+
+            {ans && <div>
+                <div className="recommend_line"></div>
+                <div id="recommend_style">
+                <h1>{t("recommend_style")}</h1>
+                <p>{t("recommend_content")}</p>
+                </div>
+            </div>}
+
+            <div id = "recommend_card">
+                {recommend.map((recommend, index) => (
+                    <HomeRecommendCard title={recommend.title} cost={recommend.price} image_id={recommend.imageID} />
+                ))}
+            </div>
         </div>
     )
 }
