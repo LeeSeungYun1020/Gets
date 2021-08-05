@@ -25,7 +25,8 @@ const SignInBox = (props) => {
                         .then ( response => {
                             console.log(response.data)
                             localStorage.setItem("token", response.data.email)
-                            history.push('/'); // 일단 홈으로 가자.... 나중에 수정..........
+                            window.location.replace("/")
+                            // 일단 홈으로 가자.... 나중에 수정..........
                         })
                 }
                 else {

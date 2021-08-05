@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import HomeRecommend from "./HomeRecommend";
 import HomeStyleSelect from "./HomeStyleSelect";
 import CasualChip from "../images/home/Oval_casual.webp";
@@ -15,6 +15,7 @@ import MinimalChip from "../images/home/Oval_minimal.webp";
 import {useTranslation} from "react-i18next";
 import axios from "axios";
 import HomeRecommendCard from "./HomeRecommendCard";
+import { MdAdd } from "react-icons/md";
 
 const HomeGetStyle = (props) => {
     const {t, i18n} = useTranslation()
@@ -24,7 +25,7 @@ const HomeGetStyle = (props) => {
     const [bodyType, setBodyType] = useState();
     const [fit, setFit] = useState(1)
     const [style, setStyle] = useState(0);
-
+    const [modify, setModify] = useState(false);
     const chipList = [
         {image: CasualChip, text: t("style_casual")},
         {image: CampusChip, text: t("style_campus")},
@@ -38,6 +39,16 @@ const HomeGetStyle = (props) => {
         {image: LovelyChip, text: t("style_lovely")},
         {image: MinimalChip, text: t("style_minimal")},
     ]
+    useEffect(() => {
+        if (localStorage.getItem("token")) { // 로그인 한 사람은 자동으로 추천코디 띄워줌
+            axios.get('http://localhost:3000/home/custom/8')
+                .then(({data}) => {
+                    setRecommend(data)
+                    console.log(data)
+                    setAns(true);
+                })
+            }
+        }, []) // 화면에 맨 처음 렌더링될 때만 실행
 
     const selectAreaList = [
         {title: t("gender"), index: 1, default: t("woman"), list: [t("woman"), t("man")]},
@@ -70,30 +81,38 @@ const HomeGetStyle = (props) => {
                 setAns(true);
             })
     }
+    const iconClick = () => {
+        setModify(!modify)
+    }
     return (
         <div id="home_getstyle">
-            <HomeStyleSelect title={t("select_info")} list={selectAreaList}/>
-            <HomeRecommend title={t("select_style")} chips={chipList} text={t("recommend_button")} style={style}
-                           SetStyle={setStyle}/>
-            <div id="home_button">
-                <button id="getstyle_button" onClick={onSubmit}>{props.text}</button>
-            </div>
-
-            {ans && <div>
-                <div className="recommend_line"></div>
+            { (localStorage.getItem("token")&&!modify) ? <div className = "modify_option_button"><MdAdd onClick={iconClick}/></div> :
+                <>
+                    { localStorage.getItem("token") && <div className = "modify_option_button"><MdAdd onClick={iconClick}/></div>}
+                    <HomeStyleSelect title={t("select_info")} list={selectAreaList}/>
+                    <HomeRecommend title={t("select_style")} chips={chipList} text={t("recommend_button")} style={style}
+                    SetStyle={setStyle}/>
+                    <div id="home_button">
+                        <button id="getstyle_button" onClick={onSubmit}>{props.text}</button>
+                    </div>
+                    <div className="recommend_line"></div>
+                </>
+            }
+            {(ans||localStorage.getItem("token")) && <div>
                 <div id="recommend_style">
                 <h1>{t("recommend_style")}</h1>
                 <p>{t("recommend_content")}</p>
                 </div>
             </div>}
 
-            <div id = "recommend_card">
+            {(ans||localStorage.getItem("token")) && <><div id = "recommend_card">
                 {recommend.map((recommend, index) => (
                     <HomeRecommendCard title={recommend.title} cost={recommend.price} image_id={recommend.imageID} />
                 ))}
             </div>
+                <div className ="recommend_line"></div></>}
         </div>
     )
-}
+};
 
 export default HomeGetStyle;

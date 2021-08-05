@@ -255,7 +255,7 @@ h1 {
 }
 
 #recommend_style > h1 {
-  margin-top:5ex;
+  margin-top:2ex;
   margin-bottom: 1ex;
 }
 
@@ -476,4 +476,16 @@ h1 {
 
 .MuiTypography-h6 {
   font-family: 'Noto Sans KR', sans-serif !important;
+}
+
+.modify_option_button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.modify_option_button > svg {
+  font-size: 33px;
+  color: #828282;
+  cursor:pointer;
 }
