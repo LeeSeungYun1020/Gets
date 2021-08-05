@@ -1,6 +1,7 @@
 package com.sys.gets.ui.account
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +41,13 @@ class InfoActivity : AppCompatActivity() {
         (binding.waistTextfield.editText as? AutoCompleteTextView)?.setAdapter(bodyShapeAdapter)
         (binding.hipTextfield.editText as? AutoCompleteTextView)?.setAdapter(bodyShapeAdapter)
         (binding.thighTextfield.editText as? AutoCompleteTextView)?.setAdapter(bodyShapeAdapter)
+
+        binding.sendButton.setOnClickListener {
+            val i = BodyShape.values()
+                .filter { getString(it.resID) == binding.shoulderTextfield.editText?.text.toString() }
+                .map { it.code }
+            Log.e("CONSOLE", "onCreate: $i") // [] [1] [2] [4]
+        }
 
     }
 }
