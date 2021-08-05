@@ -13,5 +13,20 @@ class InfoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        binding.styleList.apply {
+            listOf(
+                minimalChip, casualChip, campusChip, streetChip, rockChicChip, amekajiChip,
+                cityBoyChip, officeChip, sexyGlamChip, feminineChip, lovelyChip
+            ).forEach {
+                it.setOnClickListener { _ ->
+                    it.isChecked = !it.isChecked
+//                        if (it.isChecked) { // 선택된 경우
+//                            it.alpha = 0.7f
+//                        } else {
+//                            it.alpha = 1f
+//                        }
+                }
+            }
+        }
     }
 }

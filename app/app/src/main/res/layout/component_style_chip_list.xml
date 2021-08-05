@@ -10,14 +10,20 @@
 
         <com.google.android.material.circularreveal.cardview.CircularRevealCardView
             android:id="@+id/minimal_chip"
-            android:layout_width="256dp"
-            android:layout_height="256dp"
-
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:background="@drawable/ch_minimal"
             android:checkable="true"
             android:clickable="true"
             android:focusable="true"
+            app:cardCornerRadius="38dp"
+            app:checkedIcon="@drawable/ic_check_24"
+            app:checkedIconMargin="24dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:checkedIconTint="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/chip_stroke_color"
+            app:strokeWidth="2dp">
 
             <ImageView
                 android:layout_width="76dp"
@@ -45,7 +51,15 @@
             android:layout_marginStart="8dp"
             app:cardCornerRadius="38dp"
             app:layout_constraintStart_toEndOf="@id/minimal_chip"
-            app:layout_constraintTop_toTopOf="parent">
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:checkedIcon="@drawable/ic_check_24"
+            app:checkedIconMargin="24dp"
+            app:checkedIconTint="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/chip_stroke_color"
+            app:strokeWidth="2dp">
 
             <ImageView
                 android:layout_width="76dp"
@@ -73,7 +87,15 @@
             android:layout_marginStart="8dp"
             app:cardCornerRadius="38dp"
             app:layout_constraintStart_toEndOf="@id/casual_chip"
-            app:layout_constraintTop_toTopOf="parent">
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:checkedIcon="@drawable/ic_check_24"
+            app:checkedIconMargin="24dp"
+            app:checkedIconTint="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/chip_stroke_color"
+            app:strokeWidth="2dp">
 
             <ImageView
                 android:layout_width="76dp"
@@ -101,7 +123,15 @@
             android:layout_marginStart="8dp"
             app:cardCornerRadius="38dp"
             app:layout_constraintStart_toEndOf="@id/campus_chip"
-            app:layout_constraintTop_toTopOf="parent">
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:checkedIcon="@drawable/ic_check_24"
+            app:checkedIconMargin="24dp"
+            app:checkedIconTint="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/chip_stroke_color"
+            app:strokeWidth="2dp">
 
             <ImageView
                 android:layout_width="76dp"
@@ -129,7 +159,15 @@
             android:layout_marginStart="8dp"
             app:cardCornerRadius="38dp"
             app:layout_constraintStart_toEndOf="@id/street_chip"
-            app:layout_constraintTop_toTopOf="parent">
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:checkedIcon="@drawable/ic_check_24"
+            app:checkedIconMargin="24dp"
+            app:checkedIconTint="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/chip_stroke_color"
+            app:strokeWidth="2dp">
 
             <ImageView
                 android:layout_width="76dp"
@@ -157,7 +195,15 @@
             android:layout_marginStart="8dp"
             app:cardCornerRadius="38dp"
             app:layout_constraintStart_toEndOf="@id/rock_chic_chip"
-            app:layout_constraintTop_toTopOf="parent">
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:checkedIcon="@drawable/ic_check_24"
+            app:checkedIconMargin="24dp"
+            app:checkedIconTint="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/chip_stroke_color"
+            app:strokeWidth="2dp">
 
             <ImageView
                 android:layout_width="76dp"
@@ -185,7 +231,15 @@
             android:layout_marginStart="8dp"
             app:cardCornerRadius="38dp"
             app:layout_constraintStart_toEndOf="@id/amekaji_chip"
-            app:layout_constraintTop_toTopOf="parent">
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:checkedIcon="@drawable/ic_check_24"
+            app:checkedIconMargin="24dp"
+            app:checkedIconTint="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/chip_stroke_color"
+            app:strokeWidth="2dp">
 
             <ImageView
                 android:layout_width="76dp"
@@ -213,7 +267,15 @@
             android:layout_marginStart="8dp"
             app:cardCornerRadius="38dp"
             app:layout_constraintStart_toEndOf="@id/city_boy_chip"
-            app:layout_constraintTop_toTopOf="parent">
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:checkedIcon="@drawable/ic_check_24"
+            app:checkedIconMargin="24dp"
+            app:checkedIconTint="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/chip_stroke_color"
+            app:strokeWidth="2dp">
 
             <ImageView
                 android:layout_width="76dp"
@@ -241,7 +303,15 @@
             android:layout_marginStart="8dp"
             app:cardCornerRadius="38dp"
             app:layout_constraintStart_toEndOf="@id/office_chip"
-            app:layout_constraintTop_toTopOf="parent">
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:checkedIcon="@drawable/ic_check_24"
+            app:checkedIconMargin="24dp"
+            app:checkedIconTint="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/chip_stroke_color"
+            app:strokeWidth="2dp">
 
             <ImageView
                 android:layout_width="76dp"
@@ -269,7 +339,15 @@
             android:layout_marginStart="8dp"
             app:cardCornerRadius="38dp"
             app:layout_constraintStart_toEndOf="@id/sexy_glam_chip"
-            app:layout_constraintTop_toTopOf="parent">
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:checkedIcon="@drawable/ic_check_24"
+            app:checkedIconMargin="24dp"
+            app:checkedIconTint="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/chip_stroke_color"
+            app:strokeWidth="2dp">
 
             <ImageView
                 android:layout_width="76dp"
@@ -297,7 +375,15 @@
             android:layout_marginStart="8dp"
             app:cardCornerRadius="38dp"
             app:layout_constraintStart_toEndOf="@id/feminine_chip"
-            app:layout_constraintTop_toTopOf="parent">
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:checkedIcon="@drawable/ic_check_24"
+            app:checkedIconMargin="24dp"
+            app:checkedIconTint="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/chip_stroke_color"
+            app:strokeWidth="2dp">
 
             <ImageView
                 android:layout_width="76dp"
