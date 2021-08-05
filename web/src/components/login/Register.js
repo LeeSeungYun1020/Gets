@@ -1,4 +1,4 @@
-import '../stylesheets/Register.scss';
+import '../../stylesheets/Register.scss';
 import React from "react";
 import RegisterBox from "./RegisterBox";
 import {useTranslation} from "react-i18next";

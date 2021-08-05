@@ -1,4 +1,4 @@
-import '../stylesheets/Login.scss';
+import '../../stylesheets/Login.scss';
 import React from "react";
 import FindIdBox from "./FindIdBox";
 import {useTranslation} from "react-i18next";

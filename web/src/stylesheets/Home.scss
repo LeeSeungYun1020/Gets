@@ -22,7 +22,7 @@ h2 {
   text-align: center;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: bolder;
-  margin-top: 3ex;
+  margin-top: 2ex;
   margin-bottom: 3.5ex;
 }
 
@@ -297,14 +297,14 @@ h1 {
   margin-top: 15px !important;
 }
 
-.MuiCardContent-root {
+#home_getstyle .MuiCardContent-root {
   display: flex !important;
   flex-direction: column !important;
   width:294px !important;
-  padding-left: 1.5vw !important;
+  padding-left: 20px !important;
 }
 
-.MuiTypography-gutterBottom {
+#home_getstyle .MuiTypography-gutterBottom {
   margin-bottom: 0 !important;
 }
 

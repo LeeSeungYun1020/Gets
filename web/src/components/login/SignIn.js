@@ -1,8 +1,8 @@
-import '../stylesheets/Login.scss';
+import '../../stylesheets/Login.scss';
 import React from "react";
 import SignInBox from "./SignInBox";
 import {useTranslation} from "react-i18next";
-import link from "../link";
+import link from "../../link";
 
 function SignIn() {
     const {t, i18n} = useTranslation()

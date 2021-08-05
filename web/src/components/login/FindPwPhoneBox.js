@@ -1,6 +1,6 @@
 import React from "react"
 import axios from "axios"
-import link from "../link";
+import link from "../../link";
 class FindPwPhoneBox extends React.Component {
     constructor(props) {
         super(props);

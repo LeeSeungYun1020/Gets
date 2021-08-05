@@ -1,21 +1,21 @@
 import React, {useEffect, useState} from "react";
 import HomeRecommend from "./HomeRecommend";
 import HomeStyleSelect from "./HomeStyleSelect";
-import CasualChip from "../images/home/Oval_casual.webp";
-import CampusChip from "../images/home/Oval_campus.webp";
-import StreetChip from "../images/home/Oval_street.webp";
-import RockchicChip from "../images/home/Oval_rockchic.webp";
-import AmekajiChip from "../images/home/Oval_amekaji.webp";
-import CityboyChip from "../images/home/Oval_cityboy.webp";
-import OfficeChip from "../images/home/Oval_office.webp";
-import SexyglamChip from "../images/home/Oval_sexyglam.webp";
-import FeminineChip from "../images/home/Oval_feminine.webp";
-import LovelyChip from "../images/home/Oval_lovely.webp";
-import MinimalChip from "../images/home/Oval_minimal.webp";
+import CasualChip from "../../images/home/Oval_casual.webp";
+import CampusChip from "../../images/home/Oval_campus.webp";
+import StreetChip from "../../images/home/Oval_street.webp";
+import RockchicChip from "../../images/home/Oval_rockchic.webp";
+import AmekajiChip from "../../images/home/Oval_amekaji.webp";
+import CityboyChip from "../../images/home/Oval_cityboy.webp";
+import OfficeChip from "../../images/home/Oval_office.webp";
+import SexyglamChip from "../../images/home/Oval_sexyglam.webp";
+import FeminineChip from "../../images/home/Oval_feminine.webp";
+import LovelyChip from "../../images/home/Oval_lovely.webp";
+import MinimalChip from "../../images/home/Oval_minimal.webp";
 import {useTranslation} from "react-i18next";
 import axios from "axios";
 import HomeRecommendCard from "./HomeRecommendCard";
-import { MdAdd } from "react-icons/md";
+import { MdAdd, MdRemove } from "react-icons/md";
 
 const HomeGetStyle = (props) => {
     const {t, i18n} = useTranslation()
@@ -88,7 +88,7 @@ const HomeGetStyle = (props) => {
         <div id="home_getstyle">
             { (localStorage.getItem("token")&&!modify) ? <div className = "modify_option_button"><MdAdd onClick={iconClick}/></div> :
                 <>
-                    { localStorage.getItem("token") && <div className = "modify_option_button"><MdAdd onClick={iconClick}/></div>}
+                    { localStorage.getItem("token") && <div className = "modify_option_button"><MdRemove onClick={iconClick}/></div>}
                     <HomeStyleSelect title={t("select_info")} list={selectAreaList}/>
                     <HomeRecommend title={t("select_style")} chips={chipList} text={t("recommend_button")} style={style}
                     SetStyle={setStyle}/>

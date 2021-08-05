@@ -5,8 +5,8 @@ import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
-import mainImage from "../images/home/main_image.png"
-import '../stylesheets/Home.scss';
+import mainImage from "../../images/home/main_image.png"
+import '../../stylesheets/Home.scss';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 

@@ -1,14 +1,14 @@
 import React from "react";
 import Slider from "react-slick";
 import {useTranslation} from 'react-i18next';
-import casual from "../images/home/casual.webp"
-import campus from "../images/home/campus.webp"
-import street from "../images/home/street.webp"
-import rock_chic from "../images/home/rock_chic.webp"
-import amekaji from "../images/home/amekaji.webp"
-import city_boy from "../images/home/city_boy.webp"
-import leftArrow from "../images/home/elements-point-small-left.svg"
-import rightArrow from "../images/home/elements-point-small-right.svg"
+import casual from "../../images/home/casual.webp"
+import campus from "../../images/home/campus.webp"
+import street from "../../images/home/street.webp"
+import rock_chic from "../../images/home/rock_chic.webp"
+import amekaji from "../../images/home/amekaji.webp"
+import city_boy from "../../images/home/city_boy.webp"
+import leftArrow from "../../images/home/elements-point-small-left.svg"
+import rightArrow from "../../images/home/elements-point-small-right.svg"
 
 const NextArrow = (props) => {
     const { className, style, onClick } = props;

@@ -1,0 +1,41 @@
+.card_info svg {
+  font-size: 24px;
+  color: #ff2a2a;
+  margin-right: 5px;
+}
+
+.card_info {
+  display:flex;
+}
+
+.card_info .MuiTypography-h6 {
+  font-weight: bolder !important;
+}
+
+.card_info .MuiTypography-h5 {
+  margin:0;
+  margin-top:0 !important;
+}
+
+.card_like {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.my_favorit {
+  display:flex;
+  flex-direction: row-reverse;
+}
+
+.product .MuiFormControlLabel-root {
+  margin:0 !important;
+}
+
+.product .MuiTypography-h5{
+  margin-top: 0 !important;
+}
+
+.product .MuiPaper-elevation1 {
+  box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.5) !important;
+}
