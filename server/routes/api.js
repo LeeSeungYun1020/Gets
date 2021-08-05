@@ -73,6 +73,7 @@ module.exports = function (passport) {
 
 // 회원가입 - 추가 정보 입력
 	router.post("/signup/info", (req, res) => {
+		// console.log(req.user.email)
 		const email = req.user.email
 		const gender = req.body.gender
 		const height = req.body.height
@@ -81,7 +82,7 @@ module.exports = function (passport) {
 		const bottomSize = req.body.bottom_size
 		const style = req.body.style
 		const fit = req.body.fit
-		
+		console.log(email)
 		connection.query("update `user` set `gender`=?, `height`=?, `weight`=?, `topSize`=?, `bottomSize`=?, `style`=?, `fit`=? where `email`=?",
 			[gender, height, weight, topSize, bottomSize, style, fit, email],
 			(err, result) => {

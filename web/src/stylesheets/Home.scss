@@ -293,6 +293,8 @@ h1 {
 
 .MuiTypography-h5 {
   font-weight: bold !important;
+  font-family: 'Noto Sans KR', sans-serif !important;
+  margin-top: 15px !important;
 }
 
 .MuiCardContent-root {
@@ -300,7 +302,6 @@ h1 {
   flex-direction: column !important;
   width:294px !important;
   padding-left: 1.5vw !important;
-  margin-bottom: 2ex !important;
 }
 
 .MuiTypography-gutterBottom {
@@ -460,4 +461,19 @@ h1 {
 
 .slick-list {
   margin-bottom: 80px;
+}
+
+#recommend_card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content: center;
+  max-width: 1400px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 60px;
+}
+
+.MuiTypography-h6 {
+  font-family: 'Noto Sans KR', sans-serif !important;
 }
