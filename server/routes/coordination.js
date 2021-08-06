@@ -41,6 +41,21 @@ module.exports = function (passport) {
 		} else res.send({"result": false})
 	})
 	
+	router.get('/count/favorite/:coordinationID', (req, res) => {
+		connection.query(`select count(coordinationID) as favorite
+                          from favoritecoordination
+                          where coordinationID = ?`,
+			[req.params.coordinationID],
+			(err, result) => {
+				if (err || result.length === 0)
+					res.send({result: false})
+				else {
+					result[0]["result"] = true
+					res.send(result[0])
+				}
+			})
+	})
+	
 	router.get("/image/:imageID", (req, res) => {
 		const imageID = req.params.imageID
 		const filePath = path.join(__dirname, '../coordination/image')
