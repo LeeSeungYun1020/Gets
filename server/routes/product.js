@@ -82,6 +82,16 @@ module.exports = function (passport) {
 		return fix
 	}
 
+	router.get("/list/category",(req,res)=>{
+		const type=fitCode(req.body.type)
+		connection.query(`select * from product where type=?`,[type],(err,result)=>{
+			if (err || result.length === 0)
+				res.send([{result: false}])
+			else
+				res.send(result)
+		})
+	})
+	
 // 상품 목록 필터
 	router.post("/list/:page", (req, res) => {
 		const ALL = -1
