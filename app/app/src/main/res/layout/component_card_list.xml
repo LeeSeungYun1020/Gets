@@ -12,7 +12,8 @@
         android:hint="@string/hint_title"
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -26,6 +27,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/list_title"
+        android:layout_marginTop="20dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
         tools:srcCompat="@tools:sample/avatars" />
@@ -34,6 +36,7 @@
         android:id="@+id/list_item2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toTopOf="@+id/list_item4"

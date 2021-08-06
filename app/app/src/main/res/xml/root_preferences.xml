@@ -1,0 +1,43 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:key="account_category"
+        app:title="@string/title_account">
+        <Preference
+            app:icon="@drawable/ic_signout_24"
+            app:key="signout"
+            app:summary="@string/summary_signout"
+            app:title="@string/msg_signout" />
+
+        <Preference
+            app:icon="@drawable/ic_password_24dp"
+            app:key="password"
+            app:summary="@string/summary_change_password"
+            app:title="@string/msg_change_password" />
+
+        <Preference
+            app:icon="@drawable/ic_info_24"
+            app:key="info"
+            app:summary="@string/summary_my_info"
+            app:title="@string/msg_info" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:key="info_category"
+        app:title="@string/title_info">
+        <Preference
+            app:icon="@drawable/ic_chart_24"
+            app:key="style"
+            app:summary="@string/summary_my_style"
+            app:title="@string/msg_my_style" />
+
+        <Preference
+            app:icon="@drawable/ic_feedback_24"
+            app:key="feedback"
+            app:summary="@string/summary_feedback"
+            app:title="@string/msg_feedback" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

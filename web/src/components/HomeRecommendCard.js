@@ -13,22 +13,24 @@ const useStyles = makeStyles({
         borderRadius: 24,
         marginLeft: "1vw",
         marginRight: "1vw",
+        marginBottom: 40,
+        fontFamily: "Noto Sans KR"
     },
     media: {
         height: 294,
-        marginTop: "4ex",
     },
 });
 
 function HomeRecommendCard(props) {
     const classes = useStyles();
-    const {image, title, content, cost } = props
+    const {title, content, cost, image_id } = props
     return (
         <Card elevation={8} className={classes.root}>
+
             <CardActionArea>
                 <CardMedia
                     className={classes.media}
-                    image={image}
+                    image={`http://localhost:3000/coordination/image/${image_id}`}
                     title={title}
                 />
                 <CardContent>

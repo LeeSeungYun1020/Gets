@@ -2,6 +2,10 @@
 <resources>
 
     <style name="Theme.App" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+    </style>
+
+    <style name="Theme.App.Sign" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
         </item>

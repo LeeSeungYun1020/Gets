@@ -165,3 +165,17 @@ enum class Color(val code: Int, val resID: Int) {
     PURPLE(262144, R.string.color_purple),
     BURGUNDY(524288, R.string.color_burgundy)
 }
+
+enum class Size(val code: Int, val resID: Int) {
+    XS(1, R.string.size_xs),
+    S(2, R.string.size_s),
+    M(4, R.string.size_m),
+    L(8, R.string.size_l),
+    XL(16, R.string.size_xl)
+}
+
+enum class BodyShape(val code: Int, val resID: Int) {
+    NARROW(1, R.string.size_narrow),
+    NORMAL(2, R.string.size_normal),
+    WIDE(4, R.string.size_wide)
+}

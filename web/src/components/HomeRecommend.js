@@ -1,48 +1,157 @@
 import HomeRecommendItem from "./HomeRecommendItem";
-import React from "react";
+import React, {useState} from "react";
 
-class HomeRecommend extends React.Component {
-    constructor(props) {
-        super(props);
-        let isSelected = []
-        for (let item of this.props.chips) {
+const HomeRecommend = (props) => {
+    const [selected, SetSelected] = useState([]);
+    let isSelected = []
+    let sum = 0;
+
+    for (let item of props.chips) {
             isSelected[item.text] = item.selected
-        }
-        this.state = {selected: isSelected}
     }
-
-    styleClick(key) {
-        let isSelected = []
-        for (let i = 0; i < this.props.chips.length; i++) {
-            if (this.props.chips[i].text === key) {
-                this.props.chips[i].selected = !this.props.chips[i].selected
+    if((props.style & 1) != 0){
+        for (let i = 0; i < props.chips.length; i++) {
+            if (props.chips[i].text === "Minimal") {
+                props.chips[i].selected = true;
             }
-            isSelected[this.props.chips[i].text] = this.props.chips[i].selected
         }
-        this.setState({
-            selected: isSelected
-        })
     }
+    if((props.style & 2) != 0){
+        for (let i = 0; i < props.chips.length; i++) {
+            if (props.chips[i].text === "Casual") {
+                props.chips[i].selected = true;
+            }
+        }
+    }
+    if((props.style & 4) != 0){
+        for (let i = 0; i < props.chips.length; i++) {
+            if (props.chips[i].text === "Campus") {
+                props.chips[i].selected = true;
+            }
+        }
+    }
+    if((props.style & 8) != 0){
+        for (let i = 0; i < props.chips.length; i++) {
+            if (props.chips[i].text === "Street") {
+                props.chips[i].selected = true;
+            }
+        }
+    }
+    if((props.style & 16) != 0){
+        for (let i = 0; i < props.chips.length; i++) {
+            if (props.chips[i].text === "Rock chic") {
+                props.chips[i].selected = true;
+            }
+        }
+    }
+    if((props.style & 32) != 0){
+        for (let i = 0; i < props.chips.length; i++) {
+            if (props.chips[i].text === "Amekaji") {
+                props.chips[i].selected = true;
+            }
+        }
+    }
+    if((props.style & 64) != 0){
+        for (let i = 0; i < props.chips.length; i++) {
+            if (props.chips[i].text === "City boy") {
+                props.chips[i].selected = true;
+            }
+        }
+    }
+    if((props.style & 128) != 0){
+        for (let i = 0; i < props.chips.length; i++) {
+            if (props.chips[i].text === "Office") {
+                props.chips[i].selected = true;
+            }
+        }
+    }
+    if((props.style & 256) != 0){
+        for (let i = 0; i < props.chips.length; i++) {
+            if (props.chips[i].text === "Sexy glam") {
+                props.chips[i].selected = true;
+            }
+        }
+    }
+    if((props.style & 512) != 0){
+        for (let i = 0; i < props.chips.length; i++) {
+            if (props.chips[i].text === "Feminine") {
+                props.chips[i].selected = true;
+            }
+        }
+    }
+    if((props.style & 1024) != 0){
+        for (let i = 0; i < props.chips.length; i++) {
+            if (props.chips[i].text === "Lovely") {
+                props.chips[i].selected = true;
+            }
+        }
+    }
+    const styleClick = (key) => {
+        sum = 0;
+        let isSelected = []
+        for (let i = 0; i < props.chips.length; i++) {
+            if (props.chips[i].text === key) {
+                props.chips[i].selected = !props.chips[i].selected
+            }
+            isSelected[props.chips[i].text] = props.chips[i].selected // true or false인지 적음
+        }
+        SetSelected(isSelected)
+        console.log(isSelected)
+        // styleSelectCheck(selected)
+        for(let i = 0; i < props.chips.length; i++) {
+            if (isSelected[props.chips[i].text] === true) {
+                if (props.chips[i].text === "Minimal") {
+                    // props.SetStyle(sum + 1);
+                    sum += 1;
+                    console.log(sum);
+                    } else if (props.chips[i].text === "Casual") {
+                        sum += 2;
+                        console.log(sum);
+                    } else if (props.chips[i].text === "Campus") {
+                        sum += 4;
+                        console.log(sum);
+                    } else if (props.chips[i].text === "Street") {
+                        sum += 8;
+                        console.log(sum);
+                    } else if (props.chips[i].text === "Rock chic") {
+                        sum += 16;
+                        console.log(sum);
+                    } else if (props.chips[i].text === "Amekaji") {
+                        sum += 32;
+                        console.log(sum);
+                    } else if (props.chips[i].text === "City boy") {
+                        sum += 64;
+                        console.log(sum);
 
-    render() {
-        const chips = this.props.chips.map((item) =>
-            <div key={item.text} onClick={this.styleClick.bind(this, item.text)}>
+                    } else if (props.chips[i].text === "Office") {
+                        sum += 128;
+                        console.log(sum);
+                    } else if (props.chips[i].text === "Sexy glam") {
+                        sum += 256;
+                        console.log(sum);
+                    } else if (props.chips[i].text === "Feminine") {
+                        sum += 512;
+                        console.log(sum);
+                    } else if (props.chips[i].text === "Lovely") {
+                        sum += 1024;
+                        console.log(sum);
+                }
+                props.SetStyle(sum);
+            }
+        }
+    }
+    const chips = props.chips.map((item) =>
+            <div key={item.text} onClick={() => {styleClick(item.text)}}>
                 <HomeRecommendItem image={item.image} text={item.text} selected={item.selected}/>
+            </div>)
+    return (
+        <div id="recommend">
+            <h1>{props.title}</h1>
+            <div className="style">
+                {chips}
             </div>
-        )
-        return (
-            <div id="recommend">
-                <h1>{this.props.title}</h1>
-                <div className="style">
-                    {chips}
-                </div>
-                <button>{this.props.text}</button>
-                <div class="recommend_line"></div>
-            </div>
-        )
-    }
-
-
+        </div>
+    )
 }
 
 export default HomeRecommend

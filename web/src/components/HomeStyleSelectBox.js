@@ -18,7 +18,7 @@ function HomeStyleSelectBox(props) {
                     }}
                     icon={
                         <Box>
-                            <CaretDownFill size="large" color="#d4d3d3" />
+                            <CaretDownFill size="medium" color="#000000" />
                         </Box>
                     }
                 />
