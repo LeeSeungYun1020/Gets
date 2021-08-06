@@ -188,6 +188,7 @@ h1 {
   border-radius: 70%;
   padding: 5px;
   margin: 1vw;
+  cursor:pointer;
 }
 
 .style_selected {
@@ -195,7 +196,7 @@ h1 {
   border-radius: 70%;
   padding: 5px;
   margin: 1vw;
-  //color : #7eb693;
+  cursor:pointer;
 }
 
 .style_selected_text {
@@ -242,6 +243,7 @@ h1 {
   height: 57px;
   border : 3px solid black;
   margin: 80px auto 50px auto;
+  cursor:pointer;
 }
 
 #home_getstyle #home_button {
@@ -449,6 +451,7 @@ h1 {
   //padding-top: 295px;
   padding-left: 50px;
   transform: translateY(455%);
+  cursor:pointer;
 }
 
 .slick-next {
@@ -457,6 +460,7 @@ h1 {
   right: 0px;
   padding-right: 50px;
   transform: translateY(-514%);
+  cursor:pointer;
 }
 
 .slick-list {

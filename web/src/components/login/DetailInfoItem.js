@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
@@ -39,27 +39,27 @@ const DetailInfoItem = props => {
     const [bottomSize, SetBottomSize] = useState('');
     const [style, SetStyle] = useState(0);
     const [value, SetValue] = useState(0);
-    const handleHeightChange = (e) => {
+    const handleHeightChange = useCallback( (e) => {
         SetHeight(e.target.value);
-    }
-    const handleWeightChange = (e) => {
+    },[]);
+    const handleWeightChange = useCallback( (e) => {
         SetWeight(e.target.value);
-    }
-    const handleManClick = (e) => {
+    },[]);
+    const handleManClick = useCallback( () => {
         SetGender(1);
-    }
-    const handleWomanClick = (e) => {
+    },[]);
+    const handleWomanClick = useCallback(() => {
         SetGender(2);
-    }
-    const handleTopSizeClick = (e) => {
+    },[]);
+    const handleTopSizeClick = useCallback((e) => {
         SetTopSize(e.target.value);
         console.log(e.target.value);
-    }
-    const handleBottomSizeClick = (e) => {
+    },[]);
+    const handleBottomSizeClick = useCallback((e) => {
         SetBottomSize(e.target.value);
         console.log(e.target.value);
-    }
-    const onSubmit = (e) => {
+    },[]);
+    const onSubmit = useCallback((e) => {
         e.preventDefault();
         axios.post('http://localhost:3000/api/signup/info', {
             gender: gender,
@@ -76,8 +76,7 @@ const DetailInfoItem = props => {
             .catch(function (error) {
                 console.log(error)
             })
-
-    }
+    },[])
     return (
         <div id = "detail_info_item">
             <form onSubmit={onSubmit}>
