@@ -8,13 +8,11 @@ import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
 import { MdFavorite } from "react-icons/md";
 
 const useStyles = makeStyles({
     root: {
         width: 230,
-        height: 330
     },
     media: {
         height: 230,
@@ -32,7 +30,7 @@ const ProductCard = (props) => {
                     title={props.title}
                     ><div className = "my_favorit">
                     <FormControlLabel
-                    control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} name="checkedH" />}
+                    control={<Checkbox icon={<Favorite />} checkedIcon={<Favorite />} name="checkedH" />}
                     />
                 </div>
                 </CardMedia>

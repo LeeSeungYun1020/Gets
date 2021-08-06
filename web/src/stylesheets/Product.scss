@@ -1,7 +1,7 @@
 .card_info svg {
-  font-size: 24px;
-  color: #ff2a2a;
-  margin-right: 5px;
+  font-size: 16px;
+  color: #c4c4c4;
+  margin-right: 4px;
 }
 
 .card_info {
@@ -26,10 +26,17 @@
 .my_favorit {
   display:flex;
   flex-direction: row-reverse;
+  padding-top: 15px;
+  padding-right: 15px;
 }
 
+.product .MuiCheckbox-colorSecondary.Mui-checked {
+  color: #ff0000;
+}
 .product .MuiFormControlLabel-root {
   margin:0 !important;
+  background-color: #ffffff;
+  border-radius: 50%;
 }
 
 .product .MuiCardContent-root {
@@ -92,4 +99,13 @@
   cursor: pointer;
   box-shadow: none;
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+.product .MuiSvgIcon-root {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.product .MuiCheckbox-root {
+  color: #c4c4c4;
 }

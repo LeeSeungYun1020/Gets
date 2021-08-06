@@ -85,7 +85,7 @@ const HomeGetStyle = (props) => {
         setModify(!modify)
     },[]);
     return (
-        <div id="home_getstyle">
+        <div className="home_getstyle">
             { (sessionStorage.getItem("token")&&!modify) ? <div className = "modify_option_button"><MdAdd onClick={iconClick}/></div> :
                 <>
                     { sessionStorage.getItem("token") && <div className = "modify_option_button"><MdRemove onClick={iconClick}/></div>}
