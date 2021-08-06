@@ -134,12 +134,45 @@ POST http://localhost:3000/account/info/update
 Content-Type: application/json
 
 {
-"pw": "1024",
-"phone": "01099999999",
-"year":"2000",
-"month":"08",
-"day":"04",
-"address":"부산광역시",
-"addressDetail":"부산대학교"
+  "pw": "1024",
+  "phone": "01099999999",
+  "year": "2000",
+  "month": "08",
+  "day": "04",
+  "address": "부산광역시",
+  "addressDetail": "부산대학교"
 }
 
+###
+POST http://localhost:3000/auth/signup/info
+Content-Type: application/json
+
+{
+  "gender": 1,
+  "weight": 60,
+  "height": 180,
+  "topSize": 4,
+  "bottomSize": 8,
+  "style": 1,
+  "shoulder": 2,
+  "waist": 2,
+  "thigh": 4,
+  "hip": 4
+}
+
+###
+POST http://localhost:3000/auth/signup/address
+Content-Type: application/json
+
+{
+  "address": "address1",
+  "addressDetail": "101-1001"
+}
+
+###
+POST http://localhost:3000/auth/signup/password
+Content-Type: application/json
+
+{
+  "password": "password"
+}

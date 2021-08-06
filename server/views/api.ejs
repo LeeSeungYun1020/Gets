@@ -17,7 +17,7 @@
         <div class="mdc-typography--headline4"><%= string.api_sign %></div>
         <div class="mdc-typography--headline5"><%= string.api_sign_in %></div>
         <p class="mdc-typography--body1">
-            POST: api/signin
+            POST: auth/signin
             <br>
             params: email, pw
             <br>
@@ -25,7 +25,7 @@
         </p>
         <div class="mdc-typography--headline5"><%= string.api_sign_up_check %></div>
         <p class="mdc-typography--body1">
-            POST: api/signup/check
+            POST: auth/signup/check
             <br>
             params: email
             <br>
@@ -33,17 +33,31 @@
         </p>
         <div class="mdc-typography--headline5"><%= string.api_sign_up_basic %></div>
         <p class="mdc-typography--body1">
-            POST: api/signup/basic
+            POST: auth/signup
             <br>
-            params: email, pw, name, phone, year, month, day, address, addressDetail
+            params: email, pw, name, phone, year, month, day
             <br>
             return: {"result": boolean}
         </p>
         <div class="mdc-typography--headline5"><%= string.api_sign_up_info %></div>
         <p class="mdc-typography--body1">
-            POST: api/signin/info
+            POST: auth/signup/info
             <br>
-            params: email, gender, height, weight, topSize, bottomSize, style, fit
+            params: gender, height, weight, topSize, bottomSize, style, shoulder, waist, hip, thigh
+            <br>
+            return: {"result": boolean}
+        </p>
+        <p class="mdc-typography--body1">
+            POST: auth/signup/address
+            <br>
+            params: address, addressDetail
+            <br>
+            return: {"result": boolean}
+        </p>
+        <p class="mdc-typography--body1">
+            POST: auth/signup/password
+            <br>
+            params: password
             <br>
             return: {"result": boolean}
         </p>

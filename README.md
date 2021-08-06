@@ -128,6 +128,7 @@ npm install
 
 ```mysql
 create database gets;
+create database session;
 use gets;
 
 create table user
@@ -144,8 +145,11 @@ create table user
   weight        INT,
   topSize       INT,
   bottomSize    INT,
-  style         INT,
-  fit           INT
+  shoulder      INT,
+  waist         INT,
+  hip           INT,
+  thigh         INT,
+  style         INT
 );
 
 create table product
@@ -293,8 +297,6 @@ create table favoriteCoordination(
   FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (coordinationID) REFERENCES coordination (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
-
-create database session;
 ```
 
 ##### 서버 실행
