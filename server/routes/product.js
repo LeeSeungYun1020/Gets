@@ -82,8 +82,8 @@ module.exports = function (passport) {
 		return fix
 	}
 
-	router.get("/list/category",(req,res)=>{
-		const type=fitCode(req.body.type)
+	router.get("/list/:category",(req,res)=>{
+		const type=req.params.category
 		connection.query(`select * from product where type=?`,[type],(err,result)=>{
 			if (err || result.length === 0)
 				res.send([{result: false}])
