@@ -83,8 +83,8 @@ module.exports = function (passport) {
 	}
 
 	router.get("/list/:category",(req,res)=>{
-		const type=req.params.category
-		connection.query(`select * from product where type=?`,[type],(err,result)=>{
+		const category=req.params.category
+		connection.query(`select * from product where category=?`,[category],(err,result)=>{
 			if (err || result.length === 0)
 				res.send([{result: false}])
 			else

@@ -155,7 +155,7 @@ create table product
   brand    NVARCHAR(128) NOT NULL,
   code     NVARCHAR(64),
   gender   INT           NOT NULL,
-  type     INT           NOT NULL,
+  category     INT           NOT NULL,
   detail   INT           NOT NULL,
   color    INT           NOT NULL,
   fit      INT           NOT NULL,

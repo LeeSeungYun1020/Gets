@@ -21,7 +21,7 @@ router.get('/product', function (req, res, next) {
 			const brand = record[2]
 			const code = record[3]
 			const gender = product.getGenderCode(record[4])
-			const type = product.getTypeCode(record[5])
+			const category = product.getCategoryCode(record[5])
 			const detail = product.getDetailCode(record[6] || record[7] || record[8] || record[9] || record[10] || record[11] || record[12] || record[13])
 			const color = product.getColorCode(record[14])
 			const fit = product.getFitCode(record[15])
@@ -34,9 +34,9 @@ router.get('/product', function (req, res, next) {
 			const image = record[24].split(",")
 			// TODO: 이미지 처리
 			connection.query("insert into product \
-				(id, name, brand, code, gender, type, detail, color, fit, season, fiber, age, style, price, size, image1ID, image2ID, image3ID) \
+				(id, name, brand, code, gender, category, detail, color, fit, season, fiber, age, style, price, size, image1ID, image2ID, image3ID) \
 				values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-				[id, name, brand, code, gender, type, detail, color, fit, season, fiber, age, style, price, size, image[0], image[1] || null, image[2] || null],
+				[id, name, brand, code, gender, category, detail, color, fit, season, fiber, age, style, price, size, image[0], image[1] || null, image[2] || null],
 				(err, result) => {
 					if (err) {
 						console.error(err)

@@ -1,6 +1,6 @@
 const re = /\s*(?:,|$)\s*/;
 
-const Type = Object.freeze({
+const Category = Object.freeze({
 	"아우터": 1,
 	"상의": 2,
 	"하의": 3,
@@ -11,8 +11,8 @@ const Type = Object.freeze({
 	"모자": 8,
 })
 
-function getTypeCode(text) {
-	return Type[text]
+function getCategoryCode(text) {
+	return Category[text]
 }
 
 const Detail = Object.freeze({
@@ -222,7 +222,7 @@ function getGenderCode(text) {
 	return code
 }
 
-exports.getTypeCode = getTypeCode
+exports.getCategoryCode = getCategoryCode
 exports.getDetailCode = getDetailCode
 exports.getColorCode = getColorCode
 exports.getFitCode = getFitCode
