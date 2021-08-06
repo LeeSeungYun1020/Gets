@@ -29,6 +29,13 @@ module.exports = function (passport) {
 		res.send({result: false})
 	})
 	
+	router.get('/signout', function (req, res, next) {
+		req.logout()
+		req.session.save(function () {
+			res.redirect('/');
+		});
+	});
+	
 	router.get("/sign/user", (req, res) => {
 		if (req.user) {
 			let user = req.user
