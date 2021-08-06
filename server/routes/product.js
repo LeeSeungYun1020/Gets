@@ -82,13 +82,24 @@ module.exports = function (passport) {
 		return fix
 	}
 
-	router.get("/list/:type",(req,res)=>{
-		const type=req.params.type
+	router.get("/category/:type/:detail",(req,res)=>{
+		const type = req.params.type
+		const detail = req.params.detail
 		connection.query(`select * from product where type=?`,[type],(err,result)=>{
 			if (err || result.length === 0)
 				res.send([{result: false}])
-			else
-				res.send(result)
+			else{
+				if(detail==null)
+					res.send(result)
+				else{
+					connection.query(`select * from product where type=? and detail=?`,[type,detail],(err,result)=>{
+						if (err || result.length === 0)
+							res.send([{result: false}])
+						else
+							res.send(result)
+					})
+				}
+			}
 		})
 	})
 	
