@@ -62,7 +62,7 @@
             return: {"result": boolean}
         </p>
 
-        <div class="mdc-typography--headline5"><%= string.api_sign_up_info %></div>
+        <div class="mdc-typography--headline5"><%= string.api_user %></div>
         <p class="mdc-typography--body1">
             POST: auth/user
             <br>
@@ -246,6 +246,26 @@
             params:
             <br>
             return: return: {result: false} | number of user's favorite
+        </p>
+    </section>
+
+    <section class="api_description">
+        <div class="mdc-typography--headline4"><%= string.api_closet %></div>
+        <div class="mdc-typography--headline5"><%= string.api_closet_product %></div>
+        <p class="mdc-typography--body1">
+            GET: closet/product
+            <br>
+            params:
+            <br>
+            return: productID list
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_closet_coordination %></div>
+        <p class="mdc-typography--body1">
+            GET: closet/coordination
+            <br>
+            params:
+            <br>
+            return: coordinationID list
         </p>
     </section>
 </div>

@@ -174,21 +174,6 @@ create table product
   image3ID VARCHAR(32)   DEFAULT NULL
 );
 
-create table review
-(
-  id        INT PRIMARY KEY AUTO_INCREMENT,
-  userEmail VARCHAR(64)   NOT NULL,
-  productID INT           NOT NULL,
-  star      INT           NOT NULL,
-  contents  VARCHAR(2048) NOT NULL,
-  date      DATE          NOT NULL DEFAULT (current_date),
-  image1ID  INT           NOT NULL,
-  image2ID  INT           DEFAULT NULL,
-  image3ID  INT           DEFAULT NULL,
-  FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
 create table magazine(
   id           INT PRIMARY KEY AUTO_INCREMENT,
   title        VARCHAR(256) NOT NULL,
@@ -198,88 +183,33 @@ create table magazine(
   styleTag     INT DEFAULT NULL
 );
 
-create table userCoordination(
-  id          INT PRIMARY KEY AUTO_INCREMENT,
-  userEmail   VARCHAR(64) NOT NULL,
-  outerID     INT         DEFAULT NULL,
-  topID       INT         DEFAULT NULL,
-  bottomID    INT         DEFAULT NULL,
-  setID       INT         DEFAULT NULL,
-  shoesID     INT         DEFAULT NULL,
-  bagID       INT         DEFAULT NULL,
-  hatID       INT         DEFAULT NULL,
-  FOREIGN KEY (userEmail) REFERENCES user (email) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (outerID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (topID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (bottomID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (setID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (shoesID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (bagID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (hatID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-create table coordination(
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  title VARCHAR(64),
-  outerID INT,
-  outerImageID    INT,
-  topID INT,
-  topImageID  INT,
-  bottomID    INT,
-  bottomImageID   INT,
-  skirtID INT,
-  skirtImageID    INT,
-  setID   INT,
-  setImageID  INT,
-  shoesID INT,
-  shoesImageID    INT,
-  bagID   INT,
-  bagImageID  INT,
-  hatID   INT,
-  hatImageID  INT,
-  style   INT,
-  gender  INT,
-  age INT,
-  bodyshape  INT,
-  price     INT,
-  weather   INT,
-  imageID   VARCHAR(64)
-);
-
-create table cart(
-  id          INT PRIMARY KEY AUTO_INCREMENT,
-  userEmail   VARCHAR(64) NOT NULL,
-  productID   INT         NOT NULL DEFAULT (current_date),
-  count       INT         NOT NULL DEFAULT 1,
-  size        INT         NOT NULL,
-  FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL,
-  FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-create table userProduct(
-  id          INT PRIMARY KEY AUTO_INCREMENT,
-  userEmail   VARCHAR(64) NOT NULL,
-  productID   INT         NOT NULL,
-  FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL,
-  FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-create table purchase(
-  id          INT PRIMARY KEY AUTO_INCREMENT,
-  userEmail   VARCHAR(64) NOT NULL,
-  productID   INT         NOT NULL,
-  date        DATE        NOT NULL,
-  status      INT         NOT NULL DEFAULT 0,
-  orderNum    INT         NOT NULL,
-  FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL,
-  FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-create table question(
-  userEmail   VARCHAR(64) NOT NULL,
-  title       VARCHAR(256),
-  contents    TEXT,
-  FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE SET NULL
+create table coordination
+(
+  id            INT PRIMARY KEY AUTO_INCREMENT,
+  title         VARCHAR(64),
+  outerID       INT,
+  outerImageID  INT,
+  topID         INT,
+  topImageID    INT,
+  bottomID      INT,
+  bottomImageID INT,
+  skirtID       INT,
+  skirtImageID  INT,
+  setID         INT,
+  setImageID    INT,
+  shoesID       INT,
+  shoesImageID  INT,
+  bagID         INT,
+  bagImageID    INT,
+  hatID         INT,
+  hatImageID    INT,
+  style         INT,
+  gender        INT,
+  age           INT,
+  bodyshape     INT,
+  price         INT,
+  weather       INT,
+  imageID       VARCHAR(64)
 );
 
 create table favoriteProduct(

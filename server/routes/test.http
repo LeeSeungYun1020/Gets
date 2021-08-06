@@ -176,3 +176,11 @@ Content-Type: application/json
 {
   "password": "password"
 }
+
+###
+POST http://localhost:3000/product/list/1
+Content-Type: application/json
+
+{
+  "type": 1
+}
