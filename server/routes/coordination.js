@@ -12,13 +12,11 @@ module.exports = function (passport) {
 	//코디 찜하기, 찜삭제하기
 	router.get('/favorite/:coordinationID', (req, res) => {
 		if (req.user) {
-			let user = req.user.email
-			let coordination = req.params.coordinationID
 			connection.query(`insert into favoriteCoordination(userEmail, coordinationID)
-                          values (?, ?)`, [user, coordination],
+                              values (?, ?)`, [req.user.email, req.params.coordinationID],
 				(err, result) => {
 					if (err)
-						res.send({result: false})
+						res.send({result: false, isDuplicate: err["errno"] === 1062})
 					else {
 						res.send({result: true})
 					}
@@ -28,12 +26,11 @@ module.exports = function (passport) {
 	
 	router.get('/unfavorite/:coordinationID', (req, res) => {
 		if (req.user) {
-			let user = req.user.email
-			let coordination = req.params.coordinationID
 			connection.query(`delete
-                          from favoriteCoordination
-                          where userEmail = ?
-                            and coordinationID = ?`, [user, coordination],
+                              from favoriteCoordination
+                              where userEmail = ?
+                                and coordinationID = ?`,
+				[req.user.email, req.params.coordinationID],
 				(err, result) => {
 					if (err)
 						res.send({result: false})
@@ -42,17 +39,6 @@ module.exports = function (passport) {
 					}
 				})
 		} else res.send({"result": false})
-	})
-	
-	router.get('/count/favorite/:coordinationID',(req,res)=>{
-		connection.query(`select count(coordinationID) from favoriteCoordination where coordinationID=${req.params.coordinationID}`,
-			(err,result)=>{
-				if(err)
-					res.send({result:false})
-				else{
-					res.send(result)
-				}
-			})
 	})
 	
 	router.get("/image/:imageID", (req, res) => {
@@ -70,7 +56,11 @@ module.exports = function (passport) {
 	
 	router.get("/:id", (req, res) => {
 		const id = req.params.id
-		connection.query("select * from `coordination` where `id`=?",
+		connection.query(`SELECT coordination.*, COUNT(favoriteCoordination.coordinationID) as favorite
+                          FROM coordination,
+                               favoritecoordination
+                          WHERE coordinationID = ?
+                            and coordination.id = favoriteCoordination.coordinationID`,
 			[id],
 			(err, result) => {
 				if (err || result.length === 0)
