@@ -9,10 +9,6 @@ module.exports = function (passport) {
 		res.send("product")
 	});
 	
-	router.get('/detail/:productID', function (req, res, next) {
-		res.send("product" + req.params.productID)
-	});
-	
 	//상품 찜하기, 찜삭제하기
 	router.get('/favorite/:productID', (req, res) => {
 		if (req.user) {
@@ -22,7 +18,7 @@ module.exports = function (passport) {
                           values (?, ?)`, [user, product],
 				(err, result) => {
 					if (err)
-						res.send({result: false})
+						res.send({result: false, isDuplicate: err["errno"] === 1062})
 					else {
 						res.send({result: true})
 					}
@@ -30,14 +26,14 @@ module.exports = function (passport) {
 		} else res.send({"result": false})
 	})
 	
-	router.post('/unfavorite/:productID', (req, res) => {
+	router.get('/unfavorite/:productID', (req, res) => {
 		if (req.user) {
 			let user = req.user.email
 			let product = req.params.productID
 			connection.query(`delete
-                          from favoriteProduct
-                          where userEmail = ?
-                            and productID = ?`, [user, product],
+                              from favoriteProduct
+                              where userEmail = ?
+                                and productID = ?`, [user, product],
 				(err, result) => {
 					if (err)
 						res.send({result: false})
@@ -49,14 +45,17 @@ module.exports = function (passport) {
 	})
 	
 	router.get('/count/favorite/:productID',(req,res)=>{
-		connection.query(`select count(productID) from favoriteProduct where productID=${req.params.productID}`,
-			(err,result)=>{
-			if(err)
-				res.send({result:false})
-			else{
-				res.send(result)
-			}
-		})
+		connection.query(`select count(productID) as favorite
+                          from favoriteProduct
+                          where productID = ${req.params.productID}`,
+			(err, result) => {
+				if (err)
+					res.send({result: false})
+				else {
+					result[0]["result"] = true
+					res.send(result[0])
+				}
+			})
 	})
 	
 	/* 아래는 api에서 이동된 것 */
@@ -152,7 +151,13 @@ module.exports = function (passport) {
 // 단일 상품 조회
 	router.get("/:id", (req, res) => {
 		const id = req.params.id
-		connection.query("select * from `product` where `id`=?",
+		connection.query(`
+                    select product.*, COUNT(favoriteProduct.productID) as favorite
+                    from product,
+                         favoriteProduct
+                    where product.id = favoriteProduct.productID
+                      and product.id = ?;
+			`,
 			[id],
 			(err, result) => {
 				if (err || result.length === 0)
