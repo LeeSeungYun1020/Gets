@@ -1,0 +1,86 @@
+.card_info svg {
+  font-size: 24px;
+  color: #ff2a2a;
+  margin-right: 5px;
+}
+
+.card_info {
+  display:flex;
+}
+
+.card_info .MuiTypography-h6 {
+  font-weight: bolder !important;
+}
+
+.card_info .MuiTypography-h5 {
+  margin:0;
+  margin-top:0 !important;
+}
+
+.card_like {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.my_favorit {
+  display:flex;
+  flex-direction: row-reverse;
+}
+
+.product .MuiFormControlLabel-root {
+  margin:0 !important;
+}
+
+.product .MuiCardContent-root {
+  padding : 0 16px 10px 16px;
+}
+
+.product .MuiTypography-h5{
+  margin-top: 0 !important;
+}
+
+.product .MuiPaper-elevation1 {
+  box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.5) !important;
+}
+
+.product {
+  display:flex;
+}
+
+// category 구분 선
+.product .kRcyMg{
+  border-bottom: solid 2px #000000 !important;
+}
+
+.product .jLSzwp {
+  fill: #000000;
+  stroke: #000000;
+}
+
+.category_title {
+  display: flex;
+  justify-content: center;
+  border-bottom: solid 2px #000000;
+}
+
+.product .jcBJPm {
+  padding: 10px 0px 10px 30px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.product .jcBJPm:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.my_location {
+  display: flex;
+}
+.my_location h4 {
+  margin-right: 10px;
+}
+
+.location_arrow {
+  font-weight: 400;
+}

@@ -1,19 +1,19 @@
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
-import HomeRecommend from "./HomeRecommend";
-import CasualChip from "../images/home/Oval_casual.webp";
-import CampusChip from "../images/home/Oval_campus.webp";
-import StreetChip from "../images/home/Oval_street.webp";
-import RockchicChip from "../images/home/Oval_rockchic.webp";
-import AmekajiChip from "../images/home/Oval_amekaji.webp";
-import CityboyChip from "../images/home/Oval_cityboy.webp";
-import OfficeChip from "../images/home/Oval_office.webp";
-import SexyglamChip from "../images/home/Oval_sexyglam.webp";
-import FeminineChip from "../images/home/Oval_feminine.webp";
-import LovelyChip from "../images/home/Oval_lovely.webp";
-import MinimalChip from "../images/home/Oval_minimal.webp";
+import HomeRecommend from "../home/HomeRecommend";
+import CasualChip from "../../images/home/Oval_casual.webp";
+import CampusChip from "../../images/home/Oval_campus.webp";
+import StreetChip from "../../images/home/Oval_street.webp";
+import RockchicChip from "../../images/home/Oval_rockchic.webp";
+import AmekajiChip from "../../images/home/Oval_amekaji.webp";
+import CityboyChip from "../../images/home/Oval_cityboy.webp";
+import OfficeChip from "../../images/home/Oval_office.webp";
+import SexyglamChip from "../../images/home/Oval_sexyglam.webp";
+import FeminineChip from "../../images/home/Oval_feminine.webp";
+import LovelyChip from "../../images/home/Oval_lovely.webp";
+import MinimalChip from "../../images/home/Oval_minimal.webp";
 import OutlineSelectBox from "./OutlineSelectBox";
 
 const DetailInfoItem = props => {
@@ -39,27 +39,27 @@ const DetailInfoItem = props => {
     const [bottomSize, SetBottomSize] = useState('');
     const [style, SetStyle] = useState(0);
     const [value, SetValue] = useState(0);
-    const handleHeightChange = (e) => {
+    const handleHeightChange = useCallback( (e) => {
         SetHeight(e.target.value);
-    }
-    const handleWeightChange = (e) => {
+    },[]);
+    const handleWeightChange = useCallback( (e) => {
         SetWeight(e.target.value);
-    }
-    const handleManClick = (e) => {
+    },[]);
+    const handleManClick = useCallback( () => {
         SetGender(1);
-    }
-    const handleWomanClick = (e) => {
+    },[]);
+    const handleWomanClick = useCallback(() => {
         SetGender(2);
-    }
-    const handleTopSizeClick = (e) => {
+    },[]);
+    const handleTopSizeClick = useCallback((e) => {
         SetTopSize(e.target.value);
         console.log(e.target.value);
-    }
-    const handleBottomSizeClick = (e) => {
+    },[]);
+    const handleBottomSizeClick = useCallback((e) => {
         SetBottomSize(e.target.value);
         console.log(e.target.value);
-    }
-    const onSubmit = (e) => {
+    },[]);
+    const onSubmit = useCallback((e) => {
         e.preventDefault();
         axios.post('http://localhost:3000/api/signup/info', {
             gender: gender,
@@ -76,8 +76,7 @@ const DetailInfoItem = props => {
             .catch(function (error) {
                 console.log(error)
             })
-
-    }
+    },[])
     return (
         <div id = "detail_info_item">
             <form onSubmit={onSubmit}>
@@ -87,8 +86,8 @@ const DetailInfoItem = props => {
                         <h4>{props.gender}</h4>
                     </div>
                     <div className="detail_gender">
-                        <input type="button" id={"man"} value = {t("man")} onClick={handleManClick} />
-                        <input type="button" name={"woman"} value = {t("woman")} onClick={handleWomanClick} />
+                        <input type="button" id={"man"} value = {t("man")} style = {{backgroundColor : gender === 1 ? "#7eb693" :"#ffffff", color : gender === 1 ? "#ffffff" : "#000000" }} onClick={handleManClick} />
+                        <input type="button" name={"woman"} value = {t("woman")} style = {{backgroundColor : gender === 2 ? "#7eb693" :"#ffffff", color : gender === 2 ? "#ffffff" : "#000000" }} onClick={handleWomanClick} />
                     </div>
                 </label>
 

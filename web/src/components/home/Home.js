@@ -1,4 +1,4 @@
-import '../stylesheets/Home.scss';
+import '../../stylesheets/Home.scss';
 import {useTranslation} from 'react-i18next'
 import HomeMagazine from "./HomeMagazine";
 import HomeStyleGuide from "./HomeStyleGuide";
