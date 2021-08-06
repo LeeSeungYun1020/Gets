@@ -11,10 +11,10 @@ const ProductItem = (props) => {
                 <h4>{t("category")}</h4>
                 <h4 className="location_arrow">{'>'}</h4>
                 <h4>{props.location}</h4>
-                { props.isSub &&
+                { true &&
                     <>
                         <h4 className="location_arrow">{'>'}</h4>
-                        <h4>{props.subLocation}</h4>
+                        <h4>{props.detailLocation}</h4>
                     </>
                 }
                 </div>

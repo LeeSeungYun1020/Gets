@@ -64,13 +64,13 @@
   border-bottom: solid 2px #000000;
 }
 
-.product .jcBJPm {
+.product .gZXRTi {
   padding: 10px 0px 10px 30px;
   font-weight: 600;
   cursor: pointer;
 }
 
-.product .jcBJPm:hover {
+.product .gZXRTi:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
@@ -83,4 +83,13 @@
 
 .location_arrow {
   font-weight: 400;
+}
+
+// 선택됐을때
+.product .bmPKDD {
+  padding: 10px 0px 10px 30px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.05);
 }
