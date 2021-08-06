@@ -122,9 +122,8 @@ module.exports=function(passport){
 	
 	router.get("/user", (req, res) => {
 		if (req.user) {
-			console.log(req.user)
 			let user = req.user
-			user["pw"] = null
+			delete (user["pw"])
 			user["result"] = true
 			res.send(user)
 		} else res.send({"result": false})
