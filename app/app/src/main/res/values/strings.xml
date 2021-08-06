@@ -17,7 +17,7 @@
     <string name="style_lovely">Lovely</string>
     <string name="style_sexy_glam">Sexy glam</string>
     <string name="hint_title" translatable="false"># Title</string>
-    <string name="home_style_guide"># Style guide</string>
+    <string name="home_style_guide"># Find my style</string>
     <string name="button_more">More</string>
     <string name="home_style_view"># View style</string>
     <string name="login_id_field">Email</string>
@@ -195,4 +195,40 @@
     <string name="tilte_term_required">Terms</string>
     <string name="title_term_info">Infomation collection and use</string>
     <string name="title_term_marketing">Receive event and marketing</string>
+    <string name="msg_offline_error">You are offline</string>
+    <string name="title_account">Account</string>
+    <string name="msg_signout">Sign out</string>
+    <string name="msg_info">My info</string>
+    <string name="msg_my_style">My style</string>
+    <string name="msg_feedback">Feedback</string>
+    <string name="msg_change_password">Change password</string>
+    <string name="title_info">Infomation</string>
+    <string name="summary_signout">Sign out and go to sign in page.</string>
+    <string name="summary_change_password">Change to a new password</string>
+    <string name="summary_my_info">View or change my style information.</string>
+    <string name="summary_my_style">Check out my style analysis.</string>
+    <string name="summary_feedback">Send feedback to developers.</string>
+    <string name="msg_feedback_title">(Feedback) GETs:</string>
+    <string name="msg_feedback_text">Please enter your detailed feedback below.</string>
+    <string name="msg_feedback_error">Can\'t send feedback.</string>
+    <string name="hint_info_update">Please enter style information\nfor coordinating recommendations.</string>
+    <string name="hint_gender">Gender</string>
+    <string name="hint_height">Height</string>
+    <string name="hint_weight">Weight</string>
+    <string name="hint_top_size">Top size</string>
+    <string name="hint_bottom_size">Bottom size</string>
+    <string name="hint_shoulder">Shoulder</string>
+    <string name="hint_waist">Waist</string>
+    <string name="hint_hip">Hip</string>
+    <string name="hint_thigh">Thigh</string>
+    <string name="hint_style">Preferred style</string>
+    <string name="hint_multiple_selection">Multiple selection possible</string>
+    <string name="size_narrow">Narrow</string>
+    <string name="size_normal">Normal</string>
+    <string name="size_wide">Wide</string>
+    <!-- Preference Titles -->
+
+    <!-- Messages Preferences -->
+
+    <!-- Sync Preferences -->
 </resources>
