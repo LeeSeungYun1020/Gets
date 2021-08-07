@@ -81,6 +81,27 @@ module.exports = function (passport) {
 		return fix
 	}
 
+	router.get("/category/:type/:detail",(req,res)=>{
+		const type = req.params.type
+		const detail = req.params.detail
+		connection.query(`select * from product where type=?`,[type],(err,result)=>{
+			if (err || result.length === 0)
+				res.send([{result: false}])
+			else{
+				if(detail==null)
+					res.send(result)
+				else{
+					connection.query(`select * from product where type=? and detail=?`,[type,detail],(err,result)=>{
+						if (err || result.length === 0)
+							res.send([{result: false}])
+						else
+							res.send(result)
+					})
+				}
+			}
+		})
+	})
+	
 // 상품 목록 필터
 	router.post("/list/:page", (req, res) => {
 		const ALL = -1

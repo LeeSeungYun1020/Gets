@@ -240,7 +240,7 @@ node ./bin/www
 ##### 서버 접속
 
 메인페이지:
-[http://localhost:3000](http://localhost:3000)  
+[http://localhost:4000](http://localhost:3000)  
 API:
 [http://localhost:3000/api](http://localhost:3000/api)
 
@@ -248,16 +248,17 @@ API:
 
 ### 창업
 
-![plan1](./data/plan/1.png)
-![plan2](./data/plan/2.png)
-![plan3](./data/plan/3.png)
-![plan4](./data/plan/4.png)
+![plan1](./image/plan/1.png)
+![plan2](./image/plan/2.png)
+![plan3](./image/plan/3.png)
+![plan4](./image/plan/4.png)
 
 ### 해커톤
 
-![plan1](./data/hackathon/plan001.png)
-![plan1](./data/hackathon/plan002.png)
-![plan1](./data/hackathon/plan003.png)
-![plan1](./data/hackathon/plan004.png)
-![plan1](./data/hackathon/plan005.png)
-![plan1](./data/hackathon/plan006.png)
+![plan1](./image/hackathon/plan001.png)
+![plan1](./image/hackathon/plan002.png)
+![plan1](./image/hackathon/plan003.png)
+![plan1](./image/hackathon/plan004.png)
+![plan1](./image/hackathon/plan005.png)
+![plan1](./image/hackathon/plan006.png)
+

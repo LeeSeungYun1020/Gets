@@ -22,7 +22,7 @@ h2 {
   text-align: center;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: bolder;
-  margin-top: 3ex;
+  margin-top: 2ex;
   margin-bottom: 3.5ex;
 }
 
@@ -188,6 +188,7 @@ h1 {
   border-radius: 70%;
   padding: 5px;
   margin: 1vw;
+  cursor:pointer;
 }
 
 .style_selected {
@@ -195,7 +196,7 @@ h1 {
   border-radius: 70%;
   padding: 5px;
   margin: 1vw;
-  //color : #7eb693;
+  cursor:pointer;
 }
 
 .style_selected_text {
@@ -242,6 +243,7 @@ h1 {
   height: 57px;
   border : 3px solid black;
   margin: 80px auto 50px auto;
+  cursor:pointer;
 }
 
 #home_getstyle #home_button {
@@ -297,14 +299,14 @@ h1 {
   margin-top: 15px !important;
 }
 
-.MuiCardContent-root {
+#home_getstyle .MuiCardContent-root {
   display: flex !important;
   flex-direction: column !important;
   width:294px !important;
-  padding-left: 1.5vw !important;
+  padding-left: 20px !important;
 }
 
-.MuiTypography-gutterBottom {
+#home_getstyle .MuiTypography-gutterBottom {
   margin-bottom: 0 !important;
 }
 
@@ -449,6 +451,7 @@ h1 {
   //padding-top: 295px;
   padding-left: 50px;
   transform: translateY(455%);
+  cursor:pointer;
 }
 
 .slick-next {
@@ -457,6 +460,7 @@ h1 {
   right: 0px;
   padding-right: 50px;
   transform: translateY(-514%);
+  cursor:pointer;
 }
 
 .slick-list {
