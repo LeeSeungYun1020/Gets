@@ -82,30 +82,20 @@ module.exports = function (passport) {
 	}
 
 	router.get("/category/:type/:detail",(req,res)=>{
-		const type = req.params.type
-		const detail = req.params.detail
-		connection.query(`select * from product where type=?`,[type],(err,result)=>{
+		const type = req.params.type ?? -1
+		const detail = req.params.detail ?? -1
+		connection.query(`select * from product where type & ? != 0 and detail & ? != 0`,[type,detail],(err,result)=>{
 			if (err || result.length === 0)
 				res.send([{result: false}])
-			else{
-				if(detail==null)
-					res.send(result)
-				else{
-					connection.query(`select * from product where type=? and detail=?`,[type,detail],(err,result)=>{
-						if (err || result.length === 0)
-							res.send([{result: false}])
-						else
-							res.send(result)
-					})
-				}
-			}
+			else
+				res.send(result)
 		})
 	})
 	
 // 상품 목록 필터
-	router.post("/list/:page", (req, res) => {
+	router.get("/list/:page", (req, res) => {
 		const ALL = -1
-		let body = req.body[0]
+		let body = req.body[0] ?? req.body
 		const search = "%" + (body.search ?? "") + "%"
 		const type = fitCode(body.type)
 		const detail = fitCode(body.detail)
@@ -127,39 +117,6 @@ module.exports = function (passport) {
       (`name` like ? or `brand` like ? or `code` like ?)\
       limit ?, ?",
 			[type, detail, gender, color, fit, season, fiber, age, style, priceMax, priceMin, search, search, search, index, index + N],
-			(err, result) => {
-				if (err || result.length === 0)
-					res.send([{result: false}])
-				else {
-					res.send(result)
-				}
-			})
-	})
-
-// 상품 목록 필터 (페이지 구분 X)
-	router.post("/list", (req, res) => {
-		let body = req.body[0]
-		const search = "%" + (body.search ?? "") + "%"
-		const type = fitCode(body.type)
-		const detail = fitCode(body.detail)
-		const gender = fitCode(body.gender)
-		const color = fitCode(body.color)
-		const fit = fitCode(body.fit)
-		const season = fitCode(body.season)
-		const fiber = fitCode(body.fiber)
-		const age = fitCode(body.age)
-		const style = fitCode(body.style)
-		const priceMin = parseInt(body.priceMin ?? 0)
-		const priceMax = parseInt(body.priceMax ?? 1000000000)
-		
-		console.log("/product/list")
-		
-		connection.query("select * from `product`\
-      where `type` = ? and `detail`&? != 0 and `gender`&? != 0 and `color`&? != 0 and \
-      `fit`&? != 0 and `season`&? != 0 and `fiber`&? != 0 and `age` &? != 0 and\
-      `style`&? != 0 and ? >= `price` and `price` >= ? and\
-      (`name` like ? or `brand` like ? or `code` like ?)",
-			[type, detail, gender, color, fit, season, fiber, age, style, priceMax, priceMin, search, search, search],
 			(err, result) => {
 				if (err || result.length === 0)
 					res.send([{result: false}])
