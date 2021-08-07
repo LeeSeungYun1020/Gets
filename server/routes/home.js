@@ -1,18 +1,13 @@
 const express = require('express')
 const router = express.Router()
 const connection = require('../lib/mysql')
-//components
-const commonHead = require('../components/commonHead')
-const string = require('../components/string_index')
-const fstring = require('../components/string_footer')
-const coordination = require('../lib/coordination')
 
 module.exports = function (passport) {
 	router.get('/', function (req, res, next) {
 		res.send("home")
 	});
 	
-	// 맞춤 추천 - 스타일 상관없이 number 수만큼 코디 표시
+	// 맞춤 추천
 	router.get("/custom/:number", (req, res) => {
 		connection.query(`SELECT *
                           FROM coordination
@@ -28,7 +23,7 @@ module.exports = function (passport) {
 		})
 	})
 	
-	// 스타일(최신순) - 모바일화면_중복없이 스타일에 맞는 코디 표시
+	// 스타일(최신순)
 	router.get("/style/:styleID/:number", (req, res) => {
 		connection.query(`SELECT *
                           FROM coordination

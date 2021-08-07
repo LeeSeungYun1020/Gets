@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- commonHead %>
+
+    <title><%= string.name_title %></title>
+    <script>
+		$(document).ready(() => {
+
+		})
+    </script>
+</head>
+
+<body>
+
+<%- include('header'); -%>
+
+<div class="main_container">
+    <div class="mdc-card main_card main_card1">
+        <div class="mdc-card__primary-action">
+            <div class="mdc-card__media mdc-card__media--square">
+                <div class="mdc-card__media-content mdc-typography--headline2" onclick="location.href = '/input/product';">Product</div>
+            </div>
+            <div class="mdc-card__ripple"></div>
+        </div>
+        <div class="mdc-card__actions">
+            <button class="mdc-button mdc-card__action mdc-card__action--button" onclick="location.href = '/input/product';">
+                <div class="mdc-button__ripple"></div>
+                <span class="mdc-button__label">Move</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="mdc-card main_card main_card2">
+        <div class="mdc-card__primary-action">
+            <div class="mdc-card__media mdc-card__media--square">
+                <div class="mdc-card__media-content mdc-typography--headline2" onclick="location.href = '/input/coordination';">Coordination</div>
+            </div>
+            <div class="mdc-card__ripple"></div>
+        </div>
+        <div class="mdc-card__actions">
+            <button class="mdc-button mdc-card__action mdc-card__action--button" onclick="location.href = '/input/coordination';">
+                <div class="mdc-button__ripple"></div>
+                <span class="mdc-button__label">Move</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="mdc-card main_card main_card3">
+        <div class="mdc-card__primary-action">
+            <div class="mdc-card__media mdc-card__media--square">
+                <div class="mdc-card__media-content mdc-typography--headline2" onclick="location.href = '/input/product/clear';">Init product</div>
+            </div>
+            <div class="mdc-card__ripple"></div>
+        </div>
+        <div class="mdc-card__actions">
+            <button class="mdc-button mdc-card__action mdc-card__action--button" onclick="location.href = '/input/product/clear';">
+                <div class="mdc-button__ripple"></div>
+                <span class="mdc-button__label">Move</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="mdc-card main_card main_card4">
+        <div class="mdc-card__primary-action">
+            <div class="mdc-card__media mdc-card__media--square">
+                <div class="mdc-card__media-content mdc-typography--headline2" onclick="location.href = '/input/coordination/clear';">Init coordination</div>
+            </div>
+            <div class="mdc-card__ripple"></div>
+        </div>
+        <div class="mdc-card__actions">
+            <button class="mdc-button mdc-card__action mdc-card__action--button" onclick="location.href = '/input/coordination/clear';">
+                <div class="mdc-button__ripple"></div>
+                <span class="mdc-button__label">Move</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<%- include('footer'); -%>
+</body>
+</html>
