@@ -240,7 +240,7 @@ node ./bin/www
 ##### 서버 접속
 
 메인페이지:
-[http://localhost:4000](http://localhost:3000)  
+[http://localhost:4000](http://localhost:4000)  
 API:
 [http://localhost:3000/api](http://localhost:3000/api)
 

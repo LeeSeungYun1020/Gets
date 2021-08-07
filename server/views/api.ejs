@@ -14,6 +14,9 @@
         <div class="mdc-typography--headline3">API Center</div>
     </section>
     <section class="api_description">
+        <div class="mdc-typography--body1">/api will be deprecated soon.</div>
+    </section>
+    <section class="api_description">
         <div class="mdc-typography--headline4"><%= string.api_sign %></div>
         <div class="mdc-typography--headline5"><%= string.api_sign_in %></div>
         <p class="mdc-typography--body1">
@@ -99,9 +102,9 @@
         </p>
         <div class="mdc-typography--headline5"><%= string.api_product_list %></div>
         <p class="mdc-typography--body1">
-            POST: product/list
+            POST: product/category/:type/:detail
             <br>
-            params: search, type, detail, gender, color, fit, season, fiber, age, style, priceMin, priceMax
+            params:
             <br>
             return: [{result: boolean}] | list
         </p>
@@ -112,6 +115,8 @@
             params: search, type, detail, gender, color, fit, season, fiber, age, style, priceMin, priceMax
             <br>
             return: [{result: boolean}] | list
+            <br>
+            * required: type
         </p>
         <div class="mdc-typography--headline5"><%= string.api_product %></div>
         <p class="mdc-typography--body1">
@@ -155,30 +160,30 @@
             return: {result: false} | number of user's favorite
         </p>
 
-        <div class="mdc-typography--headline5"><%= string.api_review_add %></div>
-        <p class="mdc-typography--body1">
-            POST: api/review/add/:productID
-            <br>
-            params: userEmail, star, contents, image1ID, image2ID, image3ID
-            <br>
-            return: {result: boolean}
-        </p>
-        <div class="mdc-typography--headline5"><%= string.api_review_fit %></div>
-        <p class="mdc-typography--body1">
-            POST: api/review/fit/:productID
-            <br>
-            params: userEmail, order, isReverse
-            <br>
-            return: [{result: boolean, error: string}] | list
-        </p>
-        <div class="mdc-typography--headline5"><%= string.api_review %></div>
-        <p class="mdc-typography--body1">
-            POST: api/review/:productID
-            <br>
-            params: order, isReverse
-            <br>
-            return: [{result: boolean}] | list
-        </p>
+<!--        <div class="mdc-typography&#45;&#45;headline5"><%= string.api_review_add %></div>-->
+<!--        <p class="mdc-typography&#45;&#45;body1">-->
+<!--            POST: api/review/add/:productID-->
+<!--            <br>-->
+<!--            params: userEmail, star, contents, image1ID, image2ID, image3ID-->
+<!--            <br>-->
+<!--            return: {result: boolean}-->
+<!--        </p>-->
+<!--        <div class="mdc-typography&#45;&#45;headline5"><%= string.api_review_fit %></div>-->
+<!--        <p class="mdc-typography&#45;&#45;body1">-->
+<!--            POST: api/review/fit/:productID-->
+<!--            <br>-->
+<!--            params: userEmail, order, isReverse-->
+<!--            <br>-->
+<!--            return: [{result: boolean, error: string}] | list-->
+<!--        </p>-->
+<!--        <div class="mdc-typography&#45;&#45;headline5"><%= string.api_review %></div>-->
+<!--        <p class="mdc-typography&#45;&#45;body1">-->
+<!--            POST: api/review/:productID-->
+<!--            <br>-->
+<!--            params: order, isReverse-->
+<!--            <br>-->
+<!--            return: [{result: boolean}] | list-->
+<!--        </p>-->
     </section>
 
     <section class="api_description">
