@@ -44,18 +44,22 @@
             app:singleSelection="true">
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/gender_male_button"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/gender_male" />
+                android:text="@string/gender_male"
+                android:textSize="12sp"/>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/gender_female_button"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/gender_female" />
+                android:text="@string/gender_female"
+                android:textSize="12sp"/>
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
         <TextView
@@ -83,7 +87,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textSize="14sp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -112,7 +118,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:inputType="number"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -142,7 +150,8 @@
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:inputType="none"
+                android:textSize="14sp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -170,7 +179,8 @@
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:inputType="none"
+                android:textSize="14sp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <View
@@ -208,7 +218,8 @@
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:inputType="none"
+                android:textSize="14sp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -236,7 +247,8 @@
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:inputType="none"
+                android:textSize="14sp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -264,7 +276,8 @@
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:inputType="none"
+                android:textSize="14sp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -292,7 +305,8 @@
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:inputType="none"
+                android:textSize="14sp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <View
