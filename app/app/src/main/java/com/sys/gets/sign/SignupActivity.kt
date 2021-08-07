@@ -312,7 +312,7 @@ class SignupActivity : AppCompatActivity() {
 
     private fun checkDuplicate() {
         val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.POST, "${Network.API_URL}/signup/check",
+            Request.Method.POST, Network.SIGN_UP_CHECK_URL,
             JSONObject().apply {
                 put("email", binding.idField.editText?.text)
             },
@@ -338,7 +338,7 @@ class SignupActivity : AppCompatActivity() {
 
     private fun signup() {
         val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.POST, "${Network.API_URL}/signup/basic",
+            Request.Method.POST, Network.SIGN_UP_BASIC_URL,
             JSONObject().apply {
                 //email, pw, name, phone, year, month, day, address, addressDetail
                 put("email", binding.idField.editText?.text)
