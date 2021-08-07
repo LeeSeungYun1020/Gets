@@ -10,99 +10,9 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-		$(document).ready(() => {
-			// // 기사 사이즈 동적 변경
-			// $(".main_article").height(($(window).height() - $("header").height() - $("#my_style").height() - 8) * 0.9)
-			// $(window).on('resize', function () {
-			// 	const win = $(this)
-			// 	$(".main_article").css({maxHeight: (win.height() - $("header").height() - $("#my_style").height() - 8) * 0.9 + "px"})
-			// })
-		})
 		$(document).ready(function () {
-			$(function () {
-				let swiper = new Swiper('.swiper-container', {
-					pagination: {
-						el: '.swiper-pagination',
-						clickable: true,
-					},
-					autoplay: {
-						delay: 3000,
-						disableOnInteraction: false,
-					},
-					navigation: {
-						nextEl: '.swiper-button-next',
-						prevEl: '.swiper-button-prev',
-					},
-				});
-			});
+
 		});
-
-		$(document).on('click', '.select', function(){
-            $(this).parent('.select-wrap').children('.select-ul').toggle();
-			if($(this).parents('.select-wrap').children('.select-ul').css('display') == 'block') {
-				$(this).parents('.select-wrap').css('box-shadow','0 2px 14px 0 rgba(83, 83, 83, 0.5)');
-				$(this).parents('.select-wrap').css('box-shadow','0 2px 14px 0 rgba(83, 83, 83, 0.5)');
-            }
-			else {
-				$(this).parents('.select-wrap').css('box-shadow','none');
-				$(this).parents('.select-wrap').css('box-shadow','none');
-            }
-		});
-
-		//li태그를 눌렀을때, 그니까 옵션을 클릭했을때
-		$(document).on('click', '.select-wrap .select-ul li', function(){
-			//누르면 select라는 id를 가진 태그에 선택된 text를 넘겨줌
-            $(this).parents('.select-wrap').children('.select').text($(this).text());
-			$(this).parents('.select-wrap').children('.select-ul').hide();
-			$(this).parents('.select-wrap').children('.select-ul').css('box-shadow','none');
-			$(this).parents(".select-wrap").css("box-shadow","none");
-		});
-
-		$(document).on("click", function(e) {
-			for (let i = 1; i <= 5; i++) {
-				if ($(`#select-wrap${i} .select-ul`).css("display") == "block") {
-					if ($(`#select-wrap${i}`).has(e.target).length == 0) {
-						$(`#select-wrap${i} .select-ul`).hide();
-						$(`#select-wrap${i} .select-ul`).css("box-shadow", "none");
-						$(`#select-wrap${i}`).css("box-shadow", "none");
-					}
-				}
-			}
-		})
-
-    $(function(){
-    	$(".style_chip").on('click', function(){
-    		if($(this).hasClass('selected')) {
-			    $(this).css({ border: "5px solid #d4d3d3"})
-			    $(this).next().css({color : "#d4d3d3"});
-			    $(this).removeClass('selected');
-			    $(this).next().removeClass('selected');
-            }
-    		else {
-			    $(this).css({ border: "5px solid #7eb693"})
-			    $(this).next().css({color : "#7eb693"});
-			    $(this).addClass('selected');
-			    $(this).next().addClass('selected');
-            }
-        })
-	    $(".style_text").on('click', function(){
-		    $(this).prev().css({ border: "5px solid #7eb693"})
-		    $(this).css({color : "#7eb693"});
-		    if($(this).attr('class').hasClass('selected')) {
-			    $(this).css({ border: "5px solid #d4d3d3"})
-			    $(this).prev().css({color : "#d4d3d3"});
-			    $(this).prev().removeClass('selected');
-			    $(this).removeClass('selected');
-		    }
-		    else {
-			    $(this).prev().css({ border: "5px solid #7eb693"})
-			    $(this).css({color : "#7eb693"});
-			    $(this).prev().addClass('selected');
-			    $(this).addClass('selected');
-		    }
-	    })
-    });
-
     </script>
 </head>
 
@@ -110,140 +20,39 @@
 
 <%- include('header'); -%>
 
-<div class="magazine">
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img class="main_article" id="main" src="/images/home/main_image.png">
+<div class="mdc-typography--headline1">GETs API Server</div>
+<div class="main_container">
+    <div class="mdc-card main_card main_card1">
+        <div class="mdc-card__primary-action">
+            <div class="mdc-card__media mdc-card__media--square">
+                <div class="mdc-card__media-content mdc-typography--headline2" onclick="location.href = '/account';">Auth (test)</div>
             </div>
-            <div class="swiper-slide">
-                <img class="main_article" id="main" src="/images/home/main_image.png">
-            </div>
-            <div class="swiper-slide">
-                <img class="main_article" id="main" src="/images/home/main_image.png">
-            </div>
-            <div class="swiper-slide">
-                <img class="main_article" id="main" src="/images/home/main_image.png">
-            </div>
+            <div class="mdc-card__ripple"></div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+        <div class="mdc-card__actions">
+            <button class="mdc-button mdc-card__action mdc-card__action--button" onclick="location.href = '/account';">
+                <div class="mdc-button__ripple"></div>
+                <span class="mdc-button__label">Move</span>
+            </button>
+        </div>
     </div>
-</div>
 
-<div id="my_style">
-    <h1><%= string.select_info %></h1>
-    <div id = "style_select">
-        <div id = "select_area">
-            <div class = "select_box">
-                <h2><%= string.gender %></h2>
-                <div id="select-wrap1" class = "select-wrap">
-                    <div id="select1" class="select"><%= string.woman%></div>
-                    <ul id="ul" class="select-ul">
-                        <div>
-                            <li><%= string.woman%></li>
-                            <li><%= string.man %></li>
-                        </div>
-                    </ul>
-                </div>
+    <div class="mdc-card main_card main_card2">
+        <div class="mdc-card__primary-action">
+            <div class="mdc-card__media mdc-card__media--square">
+                <div class="mdc-card__media-content mdc-typography--headline2" onclick="location.href = '/api';">API description</div>
             </div>
-            <div class = line></div>
+            <div class="mdc-card__ripple"></div>
         </div>
-        <div id = "select_area">
-            <div class = "select_box">
-                <h2><%= string.age %></h2>
-                <div id="select-wrap2" class = "select-wrap">
-                    <div id="select2" class="select"><%= string.age_10%></div>
-                    <ul id="ul" class="select-ul">
-                        <div>
-                            <li><%= string.age_10%></li>
-                            <li><%= string.age_20%></li>
-                            <li><%= string.age_30%></li>
-                            <li><%= string.age_40%></li>
-                            <li><%= string.age_50%></li>
-                        </div>
-                    </ul>
-                </div>
-            </div>
-            <div class = line></div>
-        </div>
-        <div id = "select_area">
-            <div class = "select_box">
-                <h2><%= string.body_type %></h2>
-                <div id="select-wrap3" class = "select-wrap">
-                    <div id="select3" class="select"><%= string.lower_body_fat%></div>
-                    <ul id="ul" class="select-ul">
-                        <div>
-                            <li><%= string.lower_body_fat%></li>
-                            <li><%= string.upper_body_fat%></li>
-                            <li><%= string.slim%></li>
-                            <li><%= string.tall%></li>
-                            <li><%= string.short%></li>
-                        </div>
-                    </ul>
-                </div>
-            </div>
-            <div class = line></div>
-        </div>
-        <div id = "select_area">
-            <div class = "select_box">
-                <h2><%= string.fit %></h2>
-                <div id="select-wrap4" class = "select-wrap">
-                    <div id="select4" class="select"><%= string.fit_regular%></div>
-                    <ul id="ul" class="select-ul">
-                        <div>
-                            <li><%= string.fit_regular%></li>
-                            <li><%= string.fit_over%></li>
-                            <li><%= string.fit_wide%></li>
-                            <li><%= string.fit_semi_wide%></li>
-                            <li><%= string.fit_slim%></li>
-                            <li><%= string.fit_tapered%></li>
-                            <li><%= string.fit_bootcut%></li>
-                        </div>
-                    </ul>
-                </div>
-            </div>
-            <div class = line></div>
-        </div>
-        <div id = "select_area">
-            <div class = "select_box">
-                <h2><%= string.price %></h2>
-                <div id="select-wrap5" class = "select-wrap">
-                    <div id="select5" class="select"><%= string.price_100000%></div>
-                    <ul id="ul" class="select-ul">
-                        <div>
-                            <li><%= string.price_100000%></li>
-                            <li><%= string.price_200000%></li>
-                            <li><%= string.price_300000%></li>
-                            <li><%= string.price_400000%></li>
-                            <li><%= string.price_500000%></li>
-                            <li><%= string.price_expensive%></li>
-                        </div>
-                    </ul>
-                </div>
-            </div>
-            <div class = line></div>
+        <div class="mdc-card__actions">
+            <button class="mdc-button mdc-card__action mdc-card__action--button" onclick="location.href = '/api';">
+                <div class="mdc-button__ripple"></div>
+                <span class="mdc-button__label">Move</span>
+            </button>
         </div>
     </div>
 </div>
 
-<div id="recommend">
-    <h1><%= string.select_style %></h1>
-    <div class = "style">
-        <div><img class = "style_chip" src="images/home/Oval_casual.webp"><div class = "style_text"><%= string.style_casual%></div></div>
-        <div><img class = "style_chip" src="images/home/Oval_campus.webp"><div class = "style_text"><%= string.style_campus%></div></div>
-        <div><img class = "style_chip" src="images/home/Oval_campus.webp"><div class = "style_text"><%= string.style_street%></div></div>
-        <div><img class = "style_chip" src="images/home/Oval_rockchic.webp"><div class = "style_text"><%= string.style_rock_chic%></div></div>
-        <div><img class = "style_chip" src="images/home/Oval_amekaji.webp"><div class = "style_text"><%= string.style_amekaji%></div></div>
-        <div><img class = "style_chip" src="images/home/Oval_cityboy.webp"><div class = "style_text"><%= string.style_city_boy%></div></div>
-        <div><img class = "style_chip" src="images/home/Oval_office.webp"><div class = "style_text"><%= string.style_office%></div></div>
-        <div><img class = "style_chip" src="images/home/Oval_sexyglam.webp"><div class = "style_text"><%= string.style_sexy_glam%></div></div>
-        <div><img class = "style_chip" src="images/home/Oval_feminine.webp"><div class = "style_text"><%= string.style_feminine%></div></div>
-        <div><img class = "style_chip" src="images/home/Oval_lovely.webp"><div class = "style_text"><%= string.style_lovely%></div></div>
-        <div><img class = "style_chip" src="images/home/Oval_minimal.webp"><div class = "style_text"><%= string.style_minimal%></div></div>
-    </div>
-</div>
 <%- include('footer'); -%>
 </body>
 </html>
