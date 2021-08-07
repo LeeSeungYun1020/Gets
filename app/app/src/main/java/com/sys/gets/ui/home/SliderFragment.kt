@@ -24,7 +24,6 @@ class SliderFragment : Fragment() {
             imageID = it.getInt(ARG_IMAGE)
             position = it.getInt(ARG_POS)
         }
-        Log.d("MYTAG", "onCreate: $position: ${imageID == R.drawable.sl_welcome}")
 
     }
 
@@ -35,7 +34,6 @@ class SliderFragment : Fragment() {
         _binding = FragmentSliderBinding.inflate(inflater, container, false)
         binding.sliderImage.setImageDrawable(null)
         binding.sliderImage.setImageResource(imageID ?: R.drawable.sl_welcome)
-        Log.d("MYTAG", "setimageresource")
         return inflater.inflate(R.layout.fragment_slider, container, false)
     }
 
@@ -43,7 +41,6 @@ class SliderFragment : Fragment() {
         @JvmStatic
         fun newInstance(position: Int, imageID: Int) =
             SliderFragment().apply {
-                Log.d("MYTAG", "NI: $position: $imageID")
                 arguments = Bundle().apply {
                     putInt(ARG_POS, position)
                     putInt(ARG_IMAGE, imageID)

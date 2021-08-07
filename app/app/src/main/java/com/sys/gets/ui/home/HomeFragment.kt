@@ -46,7 +46,6 @@ class HomeFragment : Fragment() {
         // 스크롤
         binding.root.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             mainViewModel.navigationVisibility.value = scrollY <= oldScrollY
-            Log.d("MYTAG", "SCR: $v $scrollY $oldScrollY")
         }
         binding.offlineCard.root.visibility = View.GONE
 
@@ -85,7 +84,7 @@ class HomeFragment : Fragment() {
         binding.customList.apply {
             listTitle.setText(R.string.home_custom_recommendation)
             val styleRequest = JsonArrayRequest(
-                Request.Method.POST, "${Network.BASE_URL}/home/custom/6",
+                Request.Method.GET, "${Network.HOME_CUSTOM_URL}/6",
                 null,
                 { response ->
                     if (response.getJSONObject(0).getBoolean("result")) {
@@ -104,10 +103,9 @@ class HomeFragment : Fragment() {
                                 val item = response.getJSONObject(i)
                                 val id = item.getInt("id")
                                 val imageID = item.getInt("imageID")
-                                Log.e("LOGE", "${response.length()}: $id, $imageID")
                                 target.setImageResource(R.drawable.tm_custom)
                                 val imageRequest = ImageRequest(
-                                    "${Network.API_URL}/coordination/image/${imageID}",
+                                    "${Network.COORDINATION_IMAGE_URL}/${imageID}",
                                     { bitmap ->
                                         target.setImageBitmap(bitmap)
                                     },
@@ -174,7 +172,7 @@ class HomeFragment : Fragment() {
 
                     // 스타일 사진 서버에 요청
                     val styleRequest = JsonArrayRequest(
-                        Request.Method.POST, "${Network.BASE_URL}/home/style/${style.code}/6",
+                        Request.Method.GET, "${Network.HOME_STYLE_URL}/${style.code}/6",
                         null,
                         { response ->
                             if (response.getJSONObject(0).getBoolean("result")) {
@@ -193,9 +191,8 @@ class HomeFragment : Fragment() {
                                         val item = response.getJSONObject(i)
                                         val id = item.getInt("id")
                                         val imageID = item.getInt("imageID")
-                                        Log.e("LOGE", "${response.length()}: $id, $imageID")
                                         val imageRequest = ImageRequest(
-                                            "${Network.API_URL}/coordination/image/${imageID}",
+                                            "${Network.COORDINATION_IMAGE_URL}/${imageID}",
                                             { bitmap ->
                                                 target.setImageBitmap(bitmap)
                                             },
@@ -242,7 +239,7 @@ class HomeFragment : Fragment() {
             listTitle.setText(R.string.home_top_trends)
             // 인기 상품 리스트 요청
             val trendRequest = JsonArrayRequest(
-                Request.Method.POST, "${Network.BASE_URL}/home/toptrends/6",
+                Request.Method.GET, "${Network.HOME_TOP_TRENDS_URL}/6",
                 null,
                 { response ->
                     if (response.getJSONObject(0).getBoolean("result")) {
@@ -263,7 +260,7 @@ class HomeFragment : Fragment() {
                             target.cardPrice.text = item.getString("price")
                             target.cardLike.text = item.getString("favorite")
                             val imageRequest = ImageRequest(
-                                "${Network.API_URL}/product/image/${imageID}",
+                                "${Network.PRODUCT_IMAGE_URL}/${imageID}",
                                 { bitmap ->
                                     target.cardImage.setImageBitmap(bitmap)
                                 },
