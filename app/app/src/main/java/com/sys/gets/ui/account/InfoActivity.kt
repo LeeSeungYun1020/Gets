@@ -19,6 +19,7 @@ import com.sys.gets.data.Style
 import com.sys.gets.databinding.ActivityInfoBinding
 import com.sys.gets.network.Network
 import com.sys.gets.sign.LoginActivity
+import com.sys.gets.ui.setWhiteCenterTitle
 import org.json.JSONObject
 import java.lang.Exception
 
@@ -34,6 +35,7 @@ class InfoActivity : AppCompatActivity() {
         binding = ActivityInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.setWhiteCenterTitle(R.string.title_info_detail)
         initComponents()
         initData()
 

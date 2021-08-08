@@ -226,6 +226,7 @@
     <string name="size_narrow">Narrow</string>
     <string name="size_normal">Normal</string>
     <string name="size_wide">Wide</string>
+    <string name="title_info_detail">Detail Info</string>
     <!-- Preference Titles -->
 
     <!-- Messages Preferences -->
