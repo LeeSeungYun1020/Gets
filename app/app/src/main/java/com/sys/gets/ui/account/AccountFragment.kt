@@ -4,9 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
 import com.google.android.material.snackbar.Snackbar
 import com.sys.gets.R
+import com.sys.gets.network.Network
 import com.sys.gets.sign.LoginActivity
+import org.json.JSONObject
 
 class AccountFragment : PreferenceFragmentCompat() {
 
@@ -14,7 +18,29 @@ class AccountFragment : PreferenceFragmentCompat() {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
         findPreference<Preference>("signout")?.setOnPreferenceClickListener {
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
+            val jsonObjectRequest = JsonObjectRequest(
+                Request.Method.GET, Network.SIGN_OUT_URL,
+                null,
+                { response ->
+                    if (response.getBoolean("result")) {
+                        startActivity(Intent(requireContext(), LoginActivity::class.java))
+                    } else {
+                        Snackbar.make(
+                            requireView(),
+                            R.string.msg_signup_error,
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                    }
+                },
+                {
+                    Snackbar.make(
+                        requireView(),
+                        R.string.msg_server_error,
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+            )
+            Network.getInstance(requireContext()).addToRequestQueue(jsonObjectRequest)
             true
         }
 

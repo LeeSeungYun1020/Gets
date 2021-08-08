@@ -25,6 +25,7 @@ class Network(context: Context) {
         const val BASE_URL = "http://10.0.2.2:3000"
         const val API_URL = "$BASE_URL/api"
         const val SIGN_IN_URL = "$BASE_URL/auth/signin"
+        const val SIGN_OUT_URL = "$BASE_URL/auth/signout"
         const val SIGN_UP_CHECK_URL = "$BASE_URL/auth/signup/check"
         const val SIGN_UP_BASIC_URL = "$BASE_URL/auth/signup/basic"
         const val SIGN_UP_INFO_URL = "$BASE_URL/auth/signup/info"
