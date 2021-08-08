@@ -143,6 +143,7 @@
             <br>
             return: {result: boolean, favorite: int}
         </p>
+
         <div class="mdc-typography--headline5"><%= string.api_product_unfavorite %></div>
         <p class="mdc-typography--body1">
             GET: product/unfavorite/:productID
@@ -151,6 +152,7 @@
             <br>
             return: {result: boolean}
         </p>
+
         <div class="mdc-typography--headline5"><%= string.api_product_count_favorite %></div>
         <p class="mdc-typography--body1">
             GET: product/count/favorite/:productID
@@ -158,6 +160,15 @@
             params:
             <br>
             return: {result: false} | number of user's favorite
+        </p>
+
+        <div class="mdc-typography--headline5"><%= string.api_product_check_favorite %></div>
+        <p class="mdc-typography--body1">
+            GET: product/check/favorite/:productID
+            <br>
+            params:
+            <br>
+            return: {result: false}
         </p>
 
 <!--        <div class="mdc-typography&#45;&#45;headline5"><%= string.api_review_add %></div>-->
@@ -251,6 +262,14 @@
             params:
             <br>
             return: {result: boolean} | {favorite: int}
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_coordination_check_favorite %></div>
+        <p class="mdc-typography--body1">
+            GET: coordination/check/favorite/:coordintaionID
+            <br>
+            params:
+            <br>
+            return: {result: false}
         </p>
     </section>
 

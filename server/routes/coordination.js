@@ -43,7 +43,7 @@ module.exports = function (passport) {
 	
 	router.get('/count/favorite/:coordinationID', (req, res) => {
 		connection.query(`select count(coordinationID) as favorite
-                          from favoritecoordination
+                          from favoriteCoordination
                           where coordinationID = ?`,
 			[req.params.coordinationID],
 			(err, result) => {
@@ -54,6 +54,20 @@ module.exports = function (passport) {
 					res.send(result[0])
 				}
 			})
+	})
+	
+	router.get('/check/favorite/:coordinationID', (req, res) => {
+		if (req.user) {
+			connection.query(`select * from favoriteCoordination where userEmail=? and coordinationID=?`,
+				[req.user.email, req.params.coordinationID],
+				(err, result) => {
+					if (err || result.length === 0)
+						res.send({result: false})
+					else
+						res.send({result: true})
+				})
+		} else res.send({"result": false})
+		
 	})
 	
 	router.get("/image/:imageID", (req, res) => {
@@ -73,7 +87,7 @@ module.exports = function (passport) {
 		const id = req.params.id
 		connection.query(`SELECT coordination.*, COUNT(favoriteCoordination.coordinationID) as favorite
                           FROM coordination,
-                               favoritecoordination
+                               favoriteCoordination
                           WHERE coordinationID = ?
                             and coordination.id = favoriteCoordination.coordinationID`,
 			[id],

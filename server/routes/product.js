@@ -58,7 +58,19 @@ module.exports = function (passport) {
 			})
 	})
 	
-	/* 아래는 api에서 이동된 것 */
+	router.get('/check/favorite/:productID', (req, res) => {
+		if (req.user) {
+			connection.query(`select * from favoriteProduct where userEmail=? and productID=?`,
+				[req.user.email, req.params.productID],
+				(err, result) => {
+					if (err || result.length === 0)
+						res.send({result: false})
+					else
+						res.send({result: true})
+				})
+		} else res.send({"result": false})
+		
+	})
 	
 	// 단일 상품 이미지 전송
 	router.get("/image/:imageID", (req, res) => {
