@@ -1,4 +1,4 @@
-package com.sys.gets.sign
+package com.sys.gets.ui.account
 
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +8,8 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.google.android.material.snackbar.Snackbar
 import com.sys.gets.R
 import com.sys.gets.databinding.ActivityPasswordBinding
-import com.sys.gets.databinding.ActivitySignupBinding
 import com.sys.gets.network.Network
+import com.sys.gets.sign.LoginActivity
 import com.sys.gets.ui.setWhiteCenterTitle
 import org.json.JSONObject
 

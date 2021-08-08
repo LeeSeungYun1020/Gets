@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Gets"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".sign.PasswordActivity"
+            android:name=".ui.account.PasswordActivity"
             android:label="@string/msg_change_password"
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.Gets.ActionBar"

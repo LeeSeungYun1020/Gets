@@ -19,7 +19,7 @@
             app:title="@string/msg_change_password" >
             <intent
                 android:targetPackage="com.sys.gets"
-                android:targetClass="com.sys.gets.sign.PasswordActivity"/>
+                android:targetClass="com.sys.gets.ui.account.PasswordActivity"/>
         </Preference>
 
         <Preference
