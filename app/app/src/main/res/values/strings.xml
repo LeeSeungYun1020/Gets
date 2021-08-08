@@ -227,6 +227,8 @@
     <string name="size_normal">Normal</string>
     <string name="size_wide">Wide</string>
     <string name="title_info_detail">Detail Info</string>
+    <string name="hint_new_password_star">*New PW</string>
+    <string name="msg_password_now">Enter your current password</string>
     <!-- Preference Titles -->
 
     <!-- Messages Preferences -->

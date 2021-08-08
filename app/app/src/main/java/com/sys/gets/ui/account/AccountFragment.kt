@@ -18,11 +18,6 @@ class AccountFragment : PreferenceFragmentCompat() {
             true
         }
 
-        findPreference<Preference>("info")?.setOnPreferenceClickListener {
-            startActivity(Intent(requireContext(), InfoActivity::class.java))
-            true
-        }
-
         findPreference<Preference>("feedback")?.setOnPreferenceClickListener {
             val email = Intent(Intent.ACTION_SEND).apply {
                 type = "message/rfc822"

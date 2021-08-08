@@ -264,7 +264,7 @@ class SignupActivity : AppCompatActivity() {
             } else
                 idField.error = null
 
-            if (pwField.editText?.text?.length ?: 0 < 5) {
+            if (pwField.editText?.text?.length ?: 0 < 8) {
                 pwField.error = getString(R.string.msg_password_length_error)
                 hasError = true
             } else
