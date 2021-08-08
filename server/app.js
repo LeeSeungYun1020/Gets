@@ -70,6 +70,7 @@ const productRouter = require('./routes/product');
 const cartRouter = require('./routes/cart');
 const articleRouter = require('./routes/article');
 const aboutRouter = require('./routes/about');
+const modelRouter = require('./routes/model');
 
 app.use('/', indexRouter)
 app.use('/api', apiRouter)
@@ -81,6 +82,7 @@ app.use('/account', accountRouter)
 app.use('/cart', cartRouter)
 app.use('/article', articleRouter)
 app.use('/about', aboutRouter)
+app.use('/model', modelRouter)
 
 app.get('/*.html', (req, res) => {
 	res.render(req.params[0] + '.html')
