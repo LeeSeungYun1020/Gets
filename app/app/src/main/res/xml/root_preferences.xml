@@ -1,4 +1,6 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
@@ -14,13 +16,21 @@
             app:icon="@drawable/ic_password_24dp"
             app:key="password"
             app:summary="@string/summary_change_password"
-            app:title="@string/msg_change_password" />
+            app:title="@string/msg_change_password" >
+            <intent
+                android:targetPackage="com.sys.gets"
+                android:targetClass="com.sys.gets.ui.account.PasswordActivity"/>
+        </Preference>
 
         <Preference
             app:icon="@drawable/ic_info_24"
             app:key="info"
             app:summary="@string/summary_my_info"
-            app:title="@string/msg_info" />
+            app:title="@string/msg_info" >
+            <intent
+                android:targetPackage="com.sys.gets"
+                android:targetClass="com.sys.gets.ui.account.InfoActivity"/>
+        </Preference>
     </PreferenceCategory>
 
     <PreferenceCategory
