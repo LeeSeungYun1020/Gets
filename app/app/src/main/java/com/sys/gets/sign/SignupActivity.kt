@@ -243,6 +243,11 @@ class SignupActivity : AppCompatActivity() {
 
     private fun validateData() {
         binding.apply {
+            (getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager)?.hideSoftInputFromWindow(
+                binding.root.windowToken,
+                0
+            )
+
             var hasError = false
 
             if (!Patterns.EMAIL_ADDRESS.matcher(idField.editText?.text.toString()).matches()) {
@@ -297,15 +302,18 @@ class SignupActivity : AppCompatActivity() {
                     R.string.msg_term_error,
                     Snackbar.LENGTH_SHORT
                 ).show()
-                hasError = true
+                return
             }
 
-            (getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager)?.hideSoftInputFromWindow(
-                binding.root.windowToken,
-                0
-            )
+
             if (!hasError) {
                 signup()
+            } else {
+                Snackbar.make(
+                    binding.signupButton,
+                    R.string.msg_signup_error,
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
         }
     }

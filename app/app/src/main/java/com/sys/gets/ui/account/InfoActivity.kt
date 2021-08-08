@@ -1,5 +1,6 @@
 package com.sys.gets.ui.account
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
@@ -22,6 +23,10 @@ import org.json.JSONObject
 import java.lang.Exception
 
 class InfoActivity : AppCompatActivity() {
+    companion object {
+        const val INFO = "INFO"
+        const val INPUT = "INPUT"
+    }
     private lateinit var binding: ActivityInfoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -193,6 +198,9 @@ class InfoActivity : AppCompatActivity() {
                 },
                 { response ->
                     if (response.getBoolean("result")) {
+                        val editor = this.getSharedPreferences(INFO, MODE_PRIVATE).edit()
+                        editor.putBoolean(INPUT, true)
+                        editor.apply()
                         finish()
                     } else {
                         Snackbar.make(
