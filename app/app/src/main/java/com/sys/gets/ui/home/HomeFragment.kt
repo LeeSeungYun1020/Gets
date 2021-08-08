@@ -1,6 +1,8 @@
 package com.sys.gets.ui.home
 
 import android.graphics.Bitmap
+import android.icu.text.NumberFormat
+import android.icu.util.Currency
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -284,12 +286,31 @@ class HomeFragment : Fragment() {
                                 val imageID = item.getString("image1ID")
 
                                 target.cardTitle.text = item.getString("name")
-                                target.cardPrice.text = item.getString("price")
-                                //target.cardLike.text = item.getString("favorite")
+                                val format = NumberFormat.getCurrencyInstance()
+                                format.maximumFractionDigits = 0
+                                format.currency = Currency.getInstance("KOR")
+                                target.cardPrice.text = format.format(item.getInt("price"))
+                                target.cardBrand.text = item.getString("brand")
+
+                                val favoriteRequest = JsonObjectRequest(
+                                    Request.Method.GET, "${Network.PRODUCT_COUNT_FAVORITE_URL}/$id",
+                                    null,
+                                    { response ->
+                                        if (response.getBoolean("result")) {
+                                            target.cardFavorite.text = response.getString("favorite")
+                                        }
+                                    },
+                                    {
+
+                                    }
+                                )
+                                favoriteRequest.tag = TREND_TAG
+                                Network.getInstance(requireContext()).addToRequestQueue(favoriteRequest)
+
                                 val imageRequest = ImageRequest(
                                     "${Network.PRODUCT_IMAGE_URL}/${imageID}",
                                     { bitmap ->
-                                        target.cardImage.setImageBitmap(bitmap)
+                                        target.cardImage.image.setImageBitmap(bitmap)
                                     },
                                     0,
                                     0,
@@ -300,6 +321,23 @@ class HomeFragment : Fragment() {
                                 imageRequest.tag = TREND_TAG
                                 Network.getInstance(this@HomeFragment.requireContext())
                                     .addToRequestQueue(imageRequest)
+
+                                target.cardImage.favoriteButton.apply {
+                                    setOnClickListener {
+                                        if (!isChecked) { // 체크 안되어있는 경우
+                                            addSimpleRequest(Network.PRODUCT_FAVORITE_URL, id) {
+                                                isChecked = true
+                                            }
+                                        } else { // 체크 되어있는 경우
+                                            addSimpleRequest(Network.PRODUCT_UNFAVORITE_URL, id) {
+                                                isChecked = false
+                                            }
+                                        }
+                                    }
+                                    addSimpleRequest(Network.PRODUCT_CHECK_FAVORITE_URL,id) {
+                                        isChecked = true
+                                    }
+                                }
                             } else {
                                 target.root.visibility = View.INVISIBLE
                             }
