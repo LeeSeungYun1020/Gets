@@ -7,7 +7,7 @@ const ProductItem = (props) => {
     const {t, i18n} = useTranslation()
 
     return (
-        <div style={{ marginTop: 70}}>
+        <div style={{ marginTop: 90}}>
             <div className="my_location">
                 <h4>{t("category")}</h4>
                 <h4 className="location_arrow">{'>'}</h4>
@@ -15,7 +15,6 @@ const ProductItem = (props) => {
                <h4 className="location_arrow">{'>'}</h4>
                 <h4>{props.detailLocation}</h4>
             </div>
-        {/*<ProductItemList />*/}
         </div>
     )
 }

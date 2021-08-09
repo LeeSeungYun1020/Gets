@@ -43,8 +43,14 @@
   padding : 0 16px 10px 16px;
 }
 
+// 상품명
 .product .MuiTypography-h5{
   margin-top: 0 !important;
+  max-height: 32px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow :ellipsis;
+  font-size: 1.3rem;
 }
 
 .product .MuiPaper-elevation1 {
@@ -53,6 +59,7 @@
 
 .product {
   display:flex;
+  justify-content: center;
 }
 
 // category 구분 선
@@ -108,4 +115,21 @@
 
 .product .MuiCheckbox-root {
   color: #c4c4c4;
+}
+
+#product_list {
+  display:flex;
+  flex-direction: column;
+}
+
+.product_card {
+  max-width: 1080px;
+  display:flex;
+  flex-direction: row;
+  flex-wrap:wrap
+}
+
+.card_like .MuiTypography-h5 {
+  display: flex;
+  align-items: center;
 }

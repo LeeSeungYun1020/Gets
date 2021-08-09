@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -9,10 +9,13 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import { MdFavorite } from "react-icons/md";
-
+import axios from "axios";
 const useStyles = makeStyles({
     root: {
+        marginRight: 25,
+        marginBottom: 25,
         width: 230,
+        height: 330
     },
     media: {
         height: 230,
@@ -21,7 +24,38 @@ const useStyles = makeStyles({
 
 const ProductCard = ({item}) => {
     const classes = useStyles();
-    const { brand, name, favorite, price, image1ID } = item;
+    const { brand, name, price, image1ID, id } = item;
+    const [favorite, setFavorite] = useState(0);
+    useEffect(() => {
+        axios.get(`http://localhost:3000/product/count/favorite/${id}`, {withCredentials: true})
+            .then( response => {
+                setFavorite(response.data.favorite)
+            })
+    },[favorite])
+    const onFavoritChange = (e) => {
+        console.log(e.target.checked)
+        if(e.target.checked) {
+            axios.get(`http://localhost:3000/product/favorite/${id}`, { withCredentials: true })
+                .then( response => {
+                    console.log(response.data)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            setFavorite(favorite + 1);
+        }
+        else {
+            axios.get(`http://localhost:3000/product/unfavorite/${id}`, {withCredentials: true})
+                .then(response => {
+                    console.log(response.data)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            setFavorite(favorite - 1);
+        }
+
+    }
     return (
         <Card className={classes.root}>
             <CardActionArea>
@@ -31,12 +65,12 @@ const ProductCard = ({item}) => {
                     image = {`http://localhost:3000/product/image/${image1ID}`}
                     ><div className = "my_favorit">
                     <FormControlLabel
-                    control={<Checkbox icon={<Favorite />} checkedIcon={<Favorite />} name="checkedH" />}
+                    control={<Checkbox icon={<Favorite />} checkedIcon={<Favorite />} name="checkedH" onChange={onFavoritChange}/> }
                     />
                 </div>
                 </CardMedia>
                 <CardContent>
-                    <Typography variant="p" component="p">{brand}</Typography>
+                    <Typography variant="p" component="p" style = {{marginTop: "10px", fontWeight: 600}}>{brand}</Typography>
                     <Typography gutterBottom variant="h5" component="h2">
                         {name}
                     </Typography>
