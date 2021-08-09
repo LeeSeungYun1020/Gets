@@ -94,9 +94,12 @@ module.exports = function (passport) {
 	}
 
 	router.get("/category/:type/:detail",(req,res)=>{
-		const type = req.params.type ?? -1
+		const type = req.params.type
 		const detail = req.params.detail ?? -1
-		connection.query(`select * from product where type & ? != 0 and detail & ? != 0`,[type,detail],(err,result)=>{
+		connection.query(`select *
+                          from product
+                          where type = ?
+                            and (detail & ?) != 0`, [type, detail], (err, result) => {
 			if (err || result.length === 0)
 				res.send([{result: false}])
 			else
