@@ -17,7 +17,7 @@ router.get('/fit/:gender', (req, res) => {
 	const thigh = req.query.thigh;
 	
 	var scriptPath = '../data/BodyShapeToFit/'
-	const result = spawn('python3', [scriptPath + 'main.py', gender, shoulder, waist, hip, thigh])
+	const result = spawn('python', [scriptPath + 'main.py', gender, shoulder, waist, hip, thigh])
 	
 	let fit = ''
 	
