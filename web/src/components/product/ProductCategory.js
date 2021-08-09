@@ -18,59 +18,59 @@ const ProductCategory = (props) => {
         <div className = "category_title"><h2>{t("category")}</h2></div>
         <AccordionPanel label={t("outer")} style={{paddingLeft: 10}} >
             <NavLink activeStyle={activeStyle} to = "/product/outer/all">
-                <Box pad="small" value = {-1} onClick={props.onDetailLocationClickOuter}>
+                <Box pad="small">
                     {t("look_all")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/outer/coat">
-                <Box pad="small" value = {1} onClick={props.onDetailLocationClickOuter}>
+                <Box pad="small">
                     {t("coat")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/outer/padding">
-                <Box pad="small" value = {2} onClick={props.onDetailLocationClickOuter}>
+                <Box pad="small">
                     {t("padding")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/outer/cardigan">
-                <Box pad="small" value = {4} onClick={props.onDetailLocationClickOuter}>
+                <Box pad="small">
                     {t("cardigan")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/outer/blazer">
-            <Box pad="small" value = {8} onClick={props.onDetailLocationClickOuter}>
+            <Box pad="small">
                 {t("blazer")}
             </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/outer/jumper">
-                <Box pad="small" value = {16} onClick={props.onDetailLocationClickOuter}>
+                <Box pad="small">
                     {t("jumper")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/outer/jacket">
-                <Box pad="small" value = {32} onClick={props.onDetailLocationClickOuter}>
+                <Box pad="small">
                     {t("jacket")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/outer/hoodzipup">
-                <Box pad="small" value = {64} onClick={props.onDetailLocationClickOuter}>
+                <Box pad="small">
                     {t("hood_zipup")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/outer/fleece">
-                <Box pad="small" value = {128} onClick={props.onDetailLocationClickOuter}>
+                <Box pad="small">
                     {t("fleece")}
                 </Box>
             </NavLink>
         </AccordionPanel>
         <AccordionPanel label={t("top")} style={{paddingLeft: 10}}>
             <NavLink activeStyle={activeStyle} to = "/product/top/all">
-                <Box pad="small" value = {-1} onClick={props.onDetailLocationClickTop}>
+                <Box pad="small">
                     {t("look_all")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/top/tshirt">
-                <Box pad="small" value = {1} onClick={props.onDetailLocationClickTop}>
+                <Box pad="small">
                     {t("tshirt")}
                 </Box>
             </NavLink>
@@ -99,7 +99,7 @@ const ProductCategory = (props) => {
                     {t("knit")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/top/sleevless">
+            <NavLink activeStyle={activeStyle} to = "/product/top/sleeveless">
                 <Box pad="small" value = {64} onClick={props.onDetailLocationClickTop}>
                     {t("sleeveless")}
                 </Box>

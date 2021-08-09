@@ -11,9 +11,9 @@ const ProductItem = (props) => {
             <div className="my_location">
                 <h4>{t("category")}</h4>
                 <h4 className="location_arrow">{'>'}</h4>
-                <h4>{props.location}</h4>
+                <h4>{props.category}</h4>
                <h4 className="location_arrow">{'>'}</h4>
-                <h4>{props.detailLocation}</h4>
+                <h4>{props.subCategory}</h4>
             </div>
         </div>
     )
