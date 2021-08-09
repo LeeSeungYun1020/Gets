@@ -40,12 +40,14 @@ class Network(context: Context) {
         const val PRODUCT_FAVORITE_URL = "$BASE_URL/product/favorite"
         const val PRODUCT_UNFAVORITE_URL = "$BASE_URL/product/unfavorite"
         const val PRODUCT_COUNT_FAVORITE_URL = "$BASE_URL/product/count/favorite"
+        const val PRODUCT_CHECK_FAVORITE_URL = "$BASE_URL/product/check/favorite"
 
         const val COORDINATION_URL = "$BASE_URL/coordination"
         const val COORDINATION_IMAGE_URL = "$BASE_URL/coordination/image"
         const val COORDINATION_FAVORITE_URL = "$BASE_URL/coordination/favorite"
         const val COORDINATION_UNFAVORITE_URL = "$BASE_URL/coordination/unfavorite"
         const val COORDINATION_COUNT_FAVORITE_URL = "$BASE_URL/coordination/count/favorite"
+        const val COORDINATION_CHECK_FAVORITE_URL = "$BASE_URL/coordination/check/favorite"
 
         const val HOME_TOP_TRENDS_URL = "$BASE_URL/home/toptrends"
         const val HOME_CUSTOM_URL = "$BASE_URL/home/custom"

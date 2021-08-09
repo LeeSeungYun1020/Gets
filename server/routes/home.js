@@ -111,9 +111,10 @@ module.exports = function (passport) {
 				}
 				console.log(obj)
 				connection.query(`select * from product where id in (${obj}) order by field(id,${obj})`,(err,result)=>{
-					if(err)
-						res.send({result: false})
-					else{
+					if (err || result.length === 0)
+						res.send([{result: false}])
+					else {
+						result[0]["result"] = true
 						res.send(result)
 					}
 				})

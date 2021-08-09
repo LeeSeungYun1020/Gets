@@ -1,12 +1,15 @@
 package com.sys.gets.ui.home
 
 import android.graphics.Bitmap
+import android.icu.text.NumberFormat
+import android.icu.util.Currency
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
@@ -15,12 +18,17 @@ import androidx.viewpager2.widget.ViewPager2
 import com.android.volley.Request
 import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.JsonObjectRequest
+import com.google.android.material.circularreveal.cardview.CircularRevealCardView
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.sys.gets.R
 import com.sys.gets.data.Style
 import com.sys.gets.databinding.FragmentHomeBinding
 import com.sys.gets.network.Network
+import com.sys.gets.sign.LoginActivity
 import com.sys.gets.ui.MainViewModel
+import org.json.JSONObject
 
 private const val NUM_PAGES = 5
 private const val CUSTOM_TAG = "CUSTOM"
@@ -54,7 +62,6 @@ class HomeFragment : Fragment() {
         val pagerAdapter = ScreenSlidePagerAdapter(requireActivity())
         viewPager.adapter = pagerAdapter
         viewPager.setPageTransformer(ZoomOutPageTransformer())
-
         // 맞춤 추천
         initCustomRecommendation()
 
@@ -99,15 +106,15 @@ class HomeFragment : Fragment() {
                                 else -> listItem6
                             }
                             if (response.length() > i) {
-                                target.visibility = View.VISIBLE
+                                target.root.visibility = View.VISIBLE
                                 val item = response.getJSONObject(i)
                                 val id = item.getInt("id")
                                 val imageID = item.getInt("imageID")
-                                target.setImageResource(R.drawable.tm_custom)
+                                target.image.setImageResource(R.drawable.tm_custom)
                                 val imageRequest = ImageRequest(
                                     "${Network.COORDINATION_IMAGE_URL}/${imageID}",
                                     { bitmap ->
-                                        target.setImageBitmap(bitmap)
+                                        target.image.setImageBitmap(bitmap)
                                     },
                                     0,
                                     0,
@@ -118,8 +125,26 @@ class HomeFragment : Fragment() {
                                 imageRequest.tag = CUSTOM_TAG
                                 Network.getInstance(this@HomeFragment.requireContext())
                                     .addToRequestQueue(imageRequest)
+
+                                target.favoriteButton.apply {
+                                    setOnClickListener {
+                                        if (!isChecked) { // 체크 안되어있는 경우
+                                            addSimpleRequest(Network.COORDINATION_FAVORITE_URL, id) {
+                                                isChecked = true
+                                            }
+                                        } else { // 체크 되어있는 경우
+                                            addSimpleRequest(Network.COORDINATION_UNFAVORITE_URL, id) {
+                                                isChecked = false
+                                            }
+                                        }
+                                    }
+                                    addSimpleRequest(Network.COORDINATION_CHECK_FAVORITE_URL,id) {
+                                        isChecked = true
+                                    }
+                                }
+
                             } else {
-                                target.visibility = View.GONE
+                                target.root.visibility = View.GONE
                             }
                         }
                     }
@@ -235,6 +260,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initTopTrends() {
+        Log.e("CONSOLE", "top trends")
         binding.topTrendsList.apply {
             listTitle.setText(R.string.home_top_trends)
             // 인기 상품 리스트 요청
@@ -244,10 +270,7 @@ class HomeFragment : Fragment() {
                 { response ->
                     if (response.getJSONObject(0).getBoolean("result")) {
                         // 사진 6개 각각에 대한 요청
-                        for (i in 0 until response.length()) {
-                            val item = response.getJSONObject(i)
-                            val id = item.getInt("id")
-                            val imageID = item.getString("image1ID")
+                        for (i in 0..5) {
                             val target = when (i + 1) {
                                 1 -> binding.topTrendsList.listItem1
                                 2 -> binding.topTrendsList.listItem2
@@ -256,23 +279,68 @@ class HomeFragment : Fragment() {
                                 5 -> binding.topTrendsList.listItem5
                                 else -> binding.topTrendsList.listItem6
                             }
-                            target.cardTitle.text = item.getString("name")
-                            target.cardPrice.text = item.getString("price")
-                            target.cardLike.text = item.getString("favorite")
-                            val imageRequest = ImageRequest(
-                                "${Network.PRODUCT_IMAGE_URL}/${imageID}",
-                                { bitmap ->
-                                    target.cardImage.setImageBitmap(bitmap)
-                                },
-                                0,
-                                0,
-                                ImageView.ScaleType.FIT_CENTER,
-                                Bitmap.Config.RGB_565,
-                                null
-                            )
-                            imageRequest.tag = TREND_TAG
-                            Network.getInstance(this@HomeFragment.requireContext())
-                                .addToRequestQueue(imageRequest)
+                            if (response.length() > i) {
+                                target.root.visibility = View.VISIBLE
+                                val item = response.getJSONObject(i)
+                                val id = item.getInt("id")
+                                val imageID = item.getString("image1ID")
+
+                                target.cardTitle.text = item.getString("name")
+                                val format = NumberFormat.getCurrencyInstance()
+                                format.maximumFractionDigits = 0
+                                format.currency = Currency.getInstance("KOR")
+                                target.cardPrice.text = format.format(item.getInt("price"))
+                                target.cardBrand.text = item.getString("brand")
+
+                                val favoriteRequest = JsonObjectRequest(
+                                    Request.Method.GET, "${Network.PRODUCT_COUNT_FAVORITE_URL}/$id",
+                                    null,
+                                    { response ->
+                                        if (response.getBoolean("result")) {
+                                            target.cardFavorite.text = response.getString("favorite")
+                                        }
+                                    },
+                                    {
+
+                                    }
+                                )
+                                favoriteRequest.tag = TREND_TAG
+                                Network.getInstance(requireContext()).addToRequestQueue(favoriteRequest)
+
+                                val imageRequest = ImageRequest(
+                                    "${Network.PRODUCT_IMAGE_URL}/${imageID}",
+                                    { bitmap ->
+                                        target.cardImage.image.setImageBitmap(bitmap)
+                                    },
+                                    0,
+                                    0,
+                                    ImageView.ScaleType.FIT_CENTER,
+                                    Bitmap.Config.RGB_565,
+                                    null
+                                )
+                                imageRequest.tag = TREND_TAG
+                                Network.getInstance(this@HomeFragment.requireContext())
+                                    .addToRequestQueue(imageRequest)
+
+                                target.cardImage.favoriteButton.apply {
+                                    setOnClickListener {
+                                        if (!isChecked) { // 체크 안되어있는 경우
+                                            addSimpleRequest(Network.PRODUCT_FAVORITE_URL, id) {
+                                                isChecked = true
+                                            }
+                                        } else { // 체크 되어있는 경우
+                                            addSimpleRequest(Network.PRODUCT_UNFAVORITE_URL, id) {
+                                                isChecked = false
+                                            }
+                                        }
+                                    }
+                                    addSimpleRequest(Network.PRODUCT_CHECK_FAVORITE_URL,id) {
+                                        isChecked = true
+                                    }
+                                }
+                            } else {
+                                target.root.visibility = View.INVISIBLE
+                            }
                         }
                     }
                 },
@@ -284,6 +352,22 @@ class HomeFragment : Fragment() {
             Network.getInstance(this@HomeFragment.requireContext())
                 .addToRequestQueue(trendRequest)
         }
+    }
+
+    private fun addSimpleRequest(url:String, id: Int, callback: () -> Unit) {
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET, "$url/$id",
+            null,
+            { response ->
+                if (response.getBoolean("result")) {
+                    callback()
+                }
+            },
+            {
+
+            }
+        )
+        Network.getInstance(requireContext()).addToRequestQueue(jsonObjectRequest)
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {

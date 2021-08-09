@@ -9,7 +9,7 @@
         android:id="@+id/style_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="26dp"
         android:hint="@string/hint_title"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -22,8 +22,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/style_title"
-        android:layout_marginTop="20dp"
-        app:tabMode="scrollable"></com.google.android.material.tabs.TabLayout>
+        android:layout_marginTop="44dp"
+        android:layout_marginStart="26dp"
+        app:tabMode="scrollable"/>
 
     <TextView
         android:id="@+id/style_text"
@@ -32,8 +33,8 @@
         android:layout_marginTop="128dp"
         android:background="@color/styleGrey"
         android:gravity="bottom"
-        android:paddingStart="16dp"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:paddingStart="14dp"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/style_image" />
 
@@ -41,7 +42,7 @@
         android:id="@+id/style_question_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="14dp"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@id/style_text"
         app:layout_constraintTop_toBottomOf="@id/style_text" />
@@ -60,7 +61,8 @@
         android:layout_height="384dp"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/bg_casual"
-        app:layout_constraintTop_toBottomOf="@id/style_tab" />
+        app:layout_constraintTop_toBottomOf="@id/style_tab"
+        android:layout_marginTop="16dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/style_more_button"
@@ -76,7 +78,7 @@
         android:id="@+id/style_look_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="26dp"
         android:hint="@string/hint_title"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -87,7 +89,7 @@
         android:id="@+id/style_look_scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/style_look_text">
@@ -100,7 +102,7 @@
                 android:id="@+id/style_preview1"
                 android:layout_width="128dp"
                 android:layout_height="128dp"
-                android:layout_margin="8dp"
+                android:layout_marginStart="21dp"
                 android:src="@drawable/tm_custom"
                 tools:srcCompat="@tools:sample/avatars" />
 
@@ -108,7 +110,7 @@
                 android:id="@+id/style_preview2"
                 android:layout_width="128dp"
                 android:layout_height="128dp"
-                android:layout_margin="8dp"
+                android:layout_marginStart="21dp"
                 android:src="@drawable/tm_custom"
                 tools:srcCompat="@tools:sample/avatars" />
 
@@ -116,7 +118,7 @@
                 android:id="@+id/style_preview3"
                 android:layout_width="128dp"
                 android:layout_height="128dp"
-                android:layout_margin="8dp"
+                android:layout_marginStart="21dp"
                 android:src="@drawable/tm_custom"
                 tools:srcCompat="@tools:sample/avatars" />
 
@@ -124,7 +126,7 @@
                 android:id="@+id/style_preview4"
                 android:layout_width="128dp"
                 android:layout_height="128dp"
-                android:layout_margin="8dp"
+                android:layout_marginStart="21dp"
                 android:src="@drawable/tm_custom"
                 tools:srcCompat="@tools:sample/avatars" />
 
@@ -132,7 +134,7 @@
                 android:id="@+id/style_preview5"
                 android:layout_width="128dp"
                 android:layout_height="128dp"
-                android:layout_margin="8dp"
+                android:layout_marginStart="21dp"
                 android:src="@drawable/tm_custom"
                 tools:srcCompat="@tools:sample/avatars" />
 
@@ -140,7 +142,8 @@
                 android:id="@+id/style_preview6"
                 android:layout_width="128dp"
                 android:layout_height="128dp"
-                android:layout_margin="8dp"
+                android:layout_marginStart="21dp"
+                android:layout_marginEnd="21dp"
                 android:src="@drawable/tm_custom"
                 tools:srcCompat="@tools:sample/avatars" />
         </LinearLayout>

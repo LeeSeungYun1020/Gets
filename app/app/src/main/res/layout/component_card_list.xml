@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,104 +11,84 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/hint_title"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="26dp"
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <include
         android:id="@+id/list_item1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/list_item3"
-        app:layout_constraintEnd_toStartOf="@+id/list_item2"
-        app:layout_constraintHorizontal_bias="0.5"
+        layout="@layout/component_card_image"
+        app:layout_constraintTop_toBottomOf="@id/list_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_title"
+        app:layout_constraintEnd_toStartOf="@id/list_item2"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="20dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        tools:srcCompat="@tools:sample/avatars" />
+        />
 
-    <ImageView
+    <include
         android:id="@+id/list_item2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/list_item4"
+        layout="@layout/component_card_image"
+        app:layout_constraintTop_toTopOf="@id/list_item1"
+        app:layout_constraintStart_toEndOf="@id/list_item1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/list_item1"
-        app:layout_constraintTop_toBottomOf="@+id/list_title"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="26dp"
+        />
 
-    <ImageView
+    <include
         android:id="@+id/list_item3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/list_item5"
-        app:layout_constraintEnd_toStartOf="@+id/list_item4"
-        app:layout_constraintHorizontal_bias="0.5"
+        layout="@layout/component_card_image"
+        app:layout_constraintTop_toBottomOf="@id/list_item1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_item1"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintEnd_toStartOf="@id/list_item4"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        />
 
-    <ImageView
+    <include
         android:id="@+id/list_item4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/list_item6"
+        layout="@layout/component_card_image"
+        app:layout_constraintTop_toTopOf="@id/list_item3"
+        app:layout_constraintStart_toEndOf="@id/list_item3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/list_item3"
-        app:layout_constraintTop_toBottomOf="@+id/list_item2"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="26dp"
+        />
 
-    <ImageView
+    <include
         android:id="@+id/list_item5"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/list_item6"
-        app:layout_constraintHorizontal_bias="0.5"
+        layout="@layout/component_card_image"
+        app:layout_constraintTop_toBottomOf="@id/list_item3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_item3"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintEnd_toStartOf="@id/list_item6"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        />
 
-    <ImageView
+    <include
         android:id="@+id/list_item6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
+        layout="@layout/component_card_image"
+        app:layout_constraintTop_toTopOf="@id/list_item5"
+        app:layout_constraintStart_toEndOf="@id/list_item5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/list_item5"
-        app:layout_constraintTop_toBottomOf="@+id/list_item4"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        tools:srcCompat="@tools:sample/avatars" />
-
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="26dp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

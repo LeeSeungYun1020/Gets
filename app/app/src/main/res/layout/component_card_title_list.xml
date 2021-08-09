@@ -9,7 +9,7 @@
         android:id="@+id/list_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="26dp"
         android:hint="@string/hint_title"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -18,89 +18,77 @@
 
     <include
         android:id="@+id/list_item1"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         layout="@layout/component_card_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/list_item3"
-        app:layout_constraintEnd_toStartOf="@+id/list_item2"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_title" />
+        app:layout_constraintEnd_toStartOf="@id/list_item2"
+        app:layout_constraintTop_toBottomOf="@id/list_title"
+        />
 
     <include
-        android:layout_marginTop="20dp"
         android:id="@+id/list_item2"
         layout="@layout/component_card_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/list_item4"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="26dp"
+        app:layout_constraintStart_toEndOf="@id/list_item1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/list_item1"
-        app:layout_constraintTop_toBottomOf="@+id/list_title"
+        app:layout_constraintTop_toTopOf="@id/list_item1"
         tools:srcCompat="@tools:sample/avatars" />
 
     <include
         android:id="@+id/list_item3"
+        android:layout_marginTop="20dp"
         layout="@layout/component_card_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/list_item5"
-        app:layout_constraintEnd_toStartOf="@+id/list_item4"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_item1"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintEnd_toStartOf="@id/list_item4"
+        app:layout_constraintTop_toBottomOf="@id/list_item1"
+        />
 
     <include
         android:id="@+id/list_item4"
         layout="@layout/component_card_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/list_item6"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="26dp"
+        app:layout_constraintStart_toEndOf="@id/list_item3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/list_item3"
-        app:layout_constraintTop_toBottomOf="@+id/list_item2"
+        app:layout_constraintTop_toTopOf="@id/list_item3"
         tools:srcCompat="@tools:sample/avatars" />
 
     <include
         android:id="@+id/list_item5"
+        android:layout_marginTop="20dp"
         layout="@layout/component_card_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintEnd_toStartOf="@+id/list_item6"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_item3"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintEnd_toStartOf="@id/list_item6"
+        app:layout_constraintTop_toBottomOf="@id/list_item4"
+        />
 
     <include
         android:id="@+id/list_item6"
         layout="@layout/component_card_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="26dp"
+        app:layout_constraintStart_toEndOf="@id/list_item5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/list_item5"
-        app:layout_constraintTop_toBottomOf="@+id/list_item4"
+        app:layout_constraintTop_toTopOf="@id/list_item5"
         tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
