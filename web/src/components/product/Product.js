@@ -3,49 +3,61 @@ import '../../stylesheets/Product.scss';
 import ProductCategory from "./ProductCategory";
 import {useTranslation} from "react-i18next";
 import ProductItem from "./ProductItem";
+import ProductItemList from "./ProductItemList";
+
 const Product = () => {
     const {t, i18n} = useTranslation()
-    const [location, setLocation] = useState(t("outer"));
-    const [detailLocation, setDetailLocation] = useState(t("look_all"));
+    const [stringCategory, setStringCategory] = useState(t("outer"));
+    const [stringSubCategory, setStringSubCategory] = useState(t("look_all"));
+    const [category, setCategory] = useState(1);
+    const [subCategory, setSubCategory] = useState(1);
     const onDetailLocationClick_outer = e => {
-        console.log(e);
-        setLocation(t("outer"));
-        setDetailLocation(e.target.innerText)
+        setCategory(1);
+        setSubCategory(e.target.attributes[1].nodeValue);
+        setStringCategory(t("outer"));
+        setStringSubCategory(e.target.innerText)
     }
     const onDetailLocationClick_top = e => {
-        console.log(e);
-        setLocation(t("top"));
-        setDetailLocation(e.target.innerText)
+        setCategory(2);
+        setSubCategory(e.target.attributes[1].nodeValue);
+        setStringCategory(t("top"));
+        setStringSubCategory(e.target.innerText)
     }
     const onDetailLocationClick_bottom = e => {
-        console.log(e);
-        setLocation(t("bottom"));
-        setDetailLocation(e.target.innerText)
+        setCategory(3);
+        setSubCategory(e.target.attributes[1].nodeValue);
+        setStringCategory(t("bottom"));
+        setStringSubCategory(e.target.innerText)
     }
     const onDetailLocationClick_skirt = e => {
-        console.log(e);
-        setLocation(t("skirt"));
-        setDetailLocation(e.target.innerText)
+        setCategory(4);
+        setSubCategory(e.target.attributes[1].nodeValue);
+        setStringCategory(t("skirt"));
+        setStringSubCategory(e.target.innerText)
     }
     const onDetailLocationClick_set = e => {
-        console.log(e);
-        setLocation(t("set"));
-        setDetailLocation(e.target.innerText)
+        setCategory(5);
+        setSubCategory(e.target.attributes[1].nodeValue);;
+        setStringCategory(t("set"));
+        setStringSubCategory(e.target.innerText)
     }
     const onDetailLocationClick_shoes = e => {
-        console.log(e);
-        setLocation(t("shoes"));
-        setDetailLocation(e.target.innerText)
+        setCategory(6);
+        setSubCategory(e.target.attributes[1].nodeValue);
+        setStringCategory(t("shoes"));
+        setStringSubCategory(e.target.innerText)
     }
     const onDetailLocationClick_bag = e => {
-        console.log(e);
-        setLocation(t("bag"));
-        setDetailLocation(e.target.innerText)
+        setCategory(7);
+        setSubCategory(e.target.attributes[1].nodeValue);
+        setStringCategory(t("bag"));
+        setStringSubCategory(e.target.innerText)
     }
     const onDetailLocationClick_hat = e => {
-        console.log(e);
-        setLocation(t("hat"));
-        setDetailLocation(e.target.innerText)
+        setCategory(8);
+        setSubCategory(e.target.attributes[1].nodeValue);
+        setStringCategory(t("hat"));
+        setStringSubCategory(e.target.innerText)
     }
     return (
         <div className="product">
@@ -57,7 +69,10 @@ const Product = () => {
                              onDetailLocationClickShoes = {onDetailLocationClick_shoes}
                              onDetailLocationClickBag = {onDetailLocationClick_bag}
                              onDetailLocationClickHat = {onDetailLocationClick_hat}/>
-            <ProductItem location = {location} setLocation = {setLocation} detailLocation = {detailLocation} setDetailLocation = {setDetailLocation}/>
+            <div id = "product_list">
+                <ProductItem location = {stringCategory} setLocation = {setStringCategory} detailLocation = {stringSubCategory} setDetailLocation = {setStringSubCategory}/>
+                <ProductItemList category = {category} subCategory={subCategory} />
+            </div>
         </div>
     )
 }

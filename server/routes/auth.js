@@ -39,7 +39,7 @@ module.exports=function(passport){
 	})
 
 // 회원가입 - 기본 정보 입력
-	router.post("/signup", (req, res) => {
+	router.post("/signup/basic", (req, res) => {
 		const email = req.body.email
 		const pw = req.body.pw
 		const name = req.body.name
