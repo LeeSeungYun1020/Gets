@@ -105,7 +105,6 @@
   font-weight: 600;
   cursor: pointer;
   box-shadow: none;
-  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .product .MuiSvgIcon-root {
@@ -132,4 +131,9 @@
 .card_like .MuiTypography-h5 {
   display: flex;
   align-items: center;
+}
+
+.product a {
+  text-decoration: none !important;
+  color: #000000 !important;
 }

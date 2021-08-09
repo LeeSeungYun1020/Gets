@@ -10,7 +10,7 @@ const Product = () => {
     const [stringCategory, setStringCategory] = useState(t("outer"));
     const [stringSubCategory, setStringSubCategory] = useState(t("look_all"));
     const [category, setCategory] = useState(1);
-    const [subCategory, setSubCategory] = useState(1);
+    const [subCategory, setSubCategory] = useState(-1);
     const onDetailLocationClick_outer = e => {
         setCategory(1);
         setSubCategory(e.target.attributes[1].nodeValue);
