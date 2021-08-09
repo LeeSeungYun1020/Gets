@@ -29,6 +29,13 @@ module.exports = function (passport) {
 		res.send({result: false})
 	})
 	
+	router.get('/signout', function (req, res, next) {
+		req.logout()
+		req.session.save(function () {
+			res.redirect('/');
+		});
+	});
+	
 	router.get("/sign/user", (req, res) => {
 		if (req.user) {
 			let user = req.user
@@ -73,7 +80,8 @@ module.exports = function (passport) {
 
 // 회원가입 - 추가 정보 입력
 	router.post("/signup/info", (req, res) => {
-		const email = req.body.email
+		// console.log(req.user.email)
+		const email = req.user.email
 		const gender = req.body.gender
 		const height = req.body.height
 		const weight = req.body.weight
@@ -81,7 +89,7 @@ module.exports = function (passport) {
 		const bottomSize = req.body.bottom_size
 		const style = req.body.style
 		const fit = req.body.fit
-		
+		console.log(email)
 		connection.query("update `user` set `gender`=?, `height`=?, `weight`=?, `topSize`=?, `bottomSize`=?, `style`=?, `fit`=? where `email`=?",
 			[gender, height, weight, topSize, bottomSize, style, fit, email],
 			(err, result) => {
@@ -224,40 +232,6 @@ module.exports = function (passport) {
 				}
 			})
 	})
-	
-	router.get("/coordination/:id", (req, res) => {
-		const id = req.params.id
-		connection.query("select * from `coordination` where `id`=?",
-			[id],
-			(err, result) => {
-				if (err || result.length === 0)
-					res.send({result: false})
-				else {
-					result[0].result = true
-					res.send(result[0])
-				}
-			})
-	})
-	
-	router.get("/coordination/image/:imageID", (req, res) => {
-		const imageID = req.params.imageID
-		const filePath = path.join(__dirname, '../coordination/image')
-		const options = {
-			root: filePath,
-		}
-		fs.promises.access(`${filePath}/${imageID}.png`, fs.constants.F_OK)
-		.then(() => res.sendFile(`${imageID}.png`, options))
-		.catch(() => res.sendFile(`${imageID}.jpg`, options, err => {
-			res.sendFile(`error.png`, options)
-		}))
-	})
-	
-	function fitCode(code) {
-		let fix = code ?? -1
-		if (fix === 0)
-			fix = -1
-		return fix
-	}
 	
 	router.get("/article/list", (req, res) => {
 		connection.query("select `title`,`imageID` from `article` LIMIT 5",

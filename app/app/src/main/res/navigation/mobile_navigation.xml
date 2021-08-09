@@ -27,4 +27,8 @@
         android:name="com.sys.gets.ui.magazine.MagazineFragment"
         android:label="@string/title_magazine"
         tools:layout="@layout/fragment_magazine" />
+    <fragment
+        android:id="@+id/navigation_account"
+        android:name="com.sys.gets.ui.account.AccountFragment"
+        android:label="@string/title_account" />
 </navigation>

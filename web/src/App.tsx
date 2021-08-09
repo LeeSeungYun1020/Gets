@@ -9,14 +9,17 @@ import {
 import './stylesheets/App.scss';
 import Header from './components/Header.js'
 import Footer from "./components/Footer";
-import Home from "./components/Home";
+import Home from "./components/home/Home";
 import link from "./link";
-import SignIn from "./components/SignIn";
-import FindId from "./components/FindId";
-import FindPw from "./components/FindPw";
-import FindPwEmail from "./components/FindPwEmail";
-import Register from "./components/Register";
+import SignIn from "./components/login/SignIn";
+import AfterRegister from "./components/AfterRegister";
+import DetailInfo from "./components/login/DetailInfo";
+import FindId from "./components/login/FindId";
+import FindPw from "./components/login/FindPw";
+import FindPwEmail from "./components/login/FindPwEmail";
+import Register from "./components/login/Register";
 import NotFound from "./components/NotFound";
+import Product from "./components/product/Product";
 
 export default function App() {
     return (
@@ -31,13 +34,10 @@ export default function App() {
                         <h1>구현 예정 - 옷장</h1>
                     </Route>
                     <Route path={link.product}>
-                        <h1>구현 예정 - 제품</h1>
+                        <Product />
                     </Route>
                     <Route path={link.signin}>
                         <SignIn />
-                    </Route>
-                    <Route path={link.logout}>
-                        <h1>구현하기 전까지 못나감ㅋㅋ</h1>
                     </Route>
                     <Route path={link.findid}>
                         <FindId />
@@ -50,6 +50,12 @@ export default function App() {
                     </Route>
                     <Route path={link.register}>
                         <Register />
+                    </Route>
+                    <Route path={link.afterregister}>
+                        <AfterRegister />
+                    </Route>
+                    <Route path={link.detailinfo}>
+                        <DetailInfo />
                     </Route>
                     <Route path={link.signup}>
                         <h1>구현 예정 - 회원 가입</h1>

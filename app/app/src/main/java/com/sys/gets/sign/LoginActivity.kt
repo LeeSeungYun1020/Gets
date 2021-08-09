@@ -11,6 +11,7 @@ import com.sys.gets.MainActivity
 import com.sys.gets.R
 import com.sys.gets.databinding.ActivityLoginBinding
 import com.sys.gets.network.Network
+import com.sys.gets.ui.account.InfoActivity
 import org.json.JSONObject
 
 
@@ -62,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login(email: String, password: String) {
         val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.POST, "${Network.API_URL}/signin",
+            Request.Method.POST, Network.SIGN_IN_URL,
             JSONObject().apply {
                 put("email", email)
                 put("pw", password)
@@ -74,8 +75,10 @@ class LoginActivity : AppCompatActivity() {
                     editor.putString(ID, email)
                     editor.putString(PW, password)
                     editor.apply()
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(this, MainActivity::class.java))
+                    val infoPref = this.getSharedPreferences(InfoActivity.INFO, MODE_PRIVATE)
+                    if (!infoPref.getBoolean(InfoActivity.INPUT, false))
+                        startActivity(Intent(this, InfoActivity::class.java))
                     finish()
                 } else {
                     Snackbar.make(

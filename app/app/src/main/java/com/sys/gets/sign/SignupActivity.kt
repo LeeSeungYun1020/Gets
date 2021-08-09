@@ -243,6 +243,11 @@ class SignupActivity : AppCompatActivity() {
 
     private fun validateData() {
         binding.apply {
+            (getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager)?.hideSoftInputFromWindow(
+                binding.root.windowToken,
+                0
+            )
+
             var hasError = false
 
             if (!Patterns.EMAIL_ADDRESS.matcher(idField.editText?.text.toString()).matches()) {
@@ -259,7 +264,7 @@ class SignupActivity : AppCompatActivity() {
             } else
                 idField.error = null
 
-            if (pwField.editText?.text?.length ?: 0 < 5) {
+            if (pwField.editText?.text?.length ?: 0 < 8) {
                 pwField.error = getString(R.string.msg_password_length_error)
                 hasError = true
             } else
@@ -297,22 +302,25 @@ class SignupActivity : AppCompatActivity() {
                     R.string.msg_term_error,
                     Snackbar.LENGTH_SHORT
                 ).show()
-                hasError = true
+                return
             }
 
-            (getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager)?.hideSoftInputFromWindow(
-                binding.root.windowToken,
-                0
-            )
+
             if (!hasError) {
                 signup()
+            } else {
+                Snackbar.make(
+                    binding.signupButton,
+                    R.string.msg_signup_error,
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
         }
     }
 
     private fun checkDuplicate() {
         val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.POST, "${Network.API_URL}/signup/check",
+            Request.Method.POST, Network.SIGN_UP_CHECK_URL,
             JSONObject().apply {
                 put("email", binding.idField.editText?.text)
             },
@@ -338,7 +346,7 @@ class SignupActivity : AppCompatActivity() {
 
     private fun signup() {
         val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.POST, "${Network.API_URL}/signup/basic",
+            Request.Method.POST, Network.SIGN_UP_BASIC_URL,
             JSONObject().apply {
                 //email, pw, name, phone, year, month, day, address, addressDetail
                 put("email", binding.idField.editText?.text)
