@@ -89,8 +89,9 @@ module.exports = function (passport) {
 			if (err || result.length === 0)
 				res.send([{result: false}])
 			else{
-				if(detail==null)
+				if(detail===0){
 					res.send(result)
+				}
 				else{
 					connection.query(`select * from product where type=? and detail=?`,[type,detail],(err,result)=>{
 						if (err || result.length === 0)
