@@ -19,15 +19,16 @@ const useStyles = makeStyles({
     },
 });
 
-const ProductCard = (props) => {
+const ProductCard = ({item}) => {
     const classes = useStyles();
-
+    const { brand, name, favorite, price, image1ID } = item;
     return (
         <Card className={classes.root}>
             <CardActionArea>
                 <CardMedia
                     className={classes.media}
-                    title={props.title}
+                    title={name}
+                    image = {`http://localhost:3000/product/image/${image1ID}`}
                     ><div className = "my_favorit">
                     <FormControlLabel
                     control={<Checkbox icon={<Favorite />} checkedIcon={<Favorite />} name="checkedH" />}
@@ -35,16 +36,16 @@ const ProductCard = (props) => {
                 </div>
                 </CardMedia>
                 <CardContent>
-                    <Typography variant="p" component="p">{props.brand}</Typography>
+                    <Typography variant="p" component="p">{brand}</Typography>
                     <Typography gutterBottom variant="h5" component="h2">
-                        {props.title}
+                        {name}
                     </Typography>
                     <div className="card_info">
                         <div className="card_like">
                             <MdFavorite />
-                            <Typography variant="h6" component="h6">{props.like}</Typography>
+                            <Typography variant="h6" component="h6">{favorite}</Typography>
                         </div>
-                            <Typography variant="h5" component="h5" style = {{marginRight: "0", marginLeft:"auto"}}>{props.cost}</Typography>
+                            <Typography variant="h5" component="h5" style = {{marginRight: "0", marginLeft:"auto"}}>{price}</Typography>
                     </div>
 
                 </CardContent>

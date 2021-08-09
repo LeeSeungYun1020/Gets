@@ -1,13 +1,11 @@
 import React, {useCallback, useEffect, useState} from "react";
-import ProductCard from "./ProductCard";
 import axios from "axios";
+import ProductItemList from "./ProductItemList";
 import {useTranslation} from "react-i18next";
 
 const ProductItem = (props) => {
     const {t, i18n} = useTranslation()
-    useEffect(() => {
-        axios.get('http://localhost:3000//list/:type')
-    })
+
     return (
         <div style={{ marginTop: 70}}>
             <div className="my_location">
@@ -17,7 +15,7 @@ const ProductItem = (props) => {
                <h4 className="location_arrow">{'>'}</h4>
                 <h4>{props.detailLocation}</h4>
             </div>
-        <ProductCard />
+        {/*<ProductItemList />*/}
         </div>
     )
 }

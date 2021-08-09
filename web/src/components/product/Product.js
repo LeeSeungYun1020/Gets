@@ -3,49 +3,55 @@ import '../../stylesheets/Product.scss';
 import ProductCategory from "./ProductCategory";
 import {useTranslation} from "react-i18next";
 import ProductItem from "./ProductItem";
+import ProductItemList from "./ProductItemList";
+
 const Product = () => {
     const {t, i18n} = useTranslation()
-    const [location, setLocation] = useState(t("outer"));
-    const [detailLocation, setDetailLocation] = useState(t("look_all"));
+    const [stringCategory, setStringCategory] = useState(t("outer"));
+    const [stringSubCategory, setStringSubCategory] = useState(t("look_all"));
+    const [category, setCategory] = useState(t("outer"));
+    const [subCategory, setSubCategory] = useState(t("look_all"));
     const onDetailLocationClick_outer = e => {
-        console.log(e);
-        setLocation(t("outer"));
-        setDetailLocation(e.target.innerText)
+        setCategory(1);
+        setSubCategory(1);
+        setStringCategory(t("outer"));
+        setStringSubCategory(e.target.innerText)
     }
     const onDetailLocationClick_top = e => {
-        console.log(e);
-        setLocation(t("top"));
-        setDetailLocation(e.target.innerText)
+        setCategory(2);
+        setSubCategory(1);
+        setStringCategory(t("top"));
+        setStringSubCategory(e.target.innerText)
     }
     const onDetailLocationClick_bottom = e => {
         console.log(e);
-        setLocation(t("bottom"));
-        setDetailLocation(e.target.innerText)
+        setStringCategory(t("bottom"));
+        setStringSubCategory(e.target.innerText)
     }
     const onDetailLocationClick_skirt = e => {
         console.log(e);
-        setLocation(t("skirt"));
-        setDetailLocation(e.target.innerText)
+        setStringCategory(t("skirt"));
+        setStringSubCategory(e.target.innerText)
     }
     const onDetailLocationClick_set = e => {
         console.log(e);
-        setLocation(t("set"));
-        setDetailLocation(e.target.innerText)
+        setStringCategory(t("set"));
+        setStringSubCategory(e.target.innerText)
     }
     const onDetailLocationClick_shoes = e => {
         console.log(e);
-        setLocation(t("shoes"));
-        setDetailLocation(e.target.innerText)
+        setStringCategory(t("shoes"));
+        setStringSubCategory(e.target.innerText)
     }
     const onDetailLocationClick_bag = e => {
         console.log(e);
-        setLocation(t("bag"));
-        setDetailLocation(e.target.innerText)
+        setStringCategory(t("bag"));
+        setStringSubCategory(e.target.innerText)
     }
     const onDetailLocationClick_hat = e => {
         console.log(e);
-        setLocation(t("hat"));
-        setDetailLocation(e.target.innerText)
+        setStringCategory(t("hat"));
+        setStringSubCategory(e.target.innerText)
     }
     return (
         <div className="product">
@@ -57,7 +63,8 @@ const Product = () => {
                              onDetailLocationClickShoes = {onDetailLocationClick_shoes}
                              onDetailLocationClickBag = {onDetailLocationClick_bag}
                              onDetailLocationClickHat = {onDetailLocationClick_hat}/>
-            <ProductItem location = {location} setLocation = {setLocation} detailLocation = {detailLocation} setDetailLocation = {setDetailLocation}/>
+            <ProductItem location = {stringCategory} setLocation = {setStringCategory} detailLocation = {stringSubCategory} setDetailLocation = {setStringSubCategory}/>
+            <ProductItemList category = {category} subCategory={subCategory} />
         </div>
     )
 }
