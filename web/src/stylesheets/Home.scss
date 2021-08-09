@@ -22,7 +22,7 @@ h2 {
   text-align: center;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: bolder;
-  margin-top: 3ex;
+  margin-top: 2ex;
   margin-bottom: 3.5ex;
 }
 
@@ -188,6 +188,7 @@ h1 {
   border-radius: 70%;
   padding: 5px;
   margin: 1vw;
+  cursor:pointer;
 }
 
 .style_selected {
@@ -195,7 +196,7 @@ h1 {
   border-radius: 70%;
   padding: 5px;
   margin: 1vw;
-  //color : #7eb693;
+  cursor:pointer;
 }
 
 .style_selected_text {
@@ -233,7 +234,7 @@ h1 {
   margin-bottom: 3px;
 }
 
-#recommend > button {
+#getstyle_button {
   background: #FFFFFF;
   font-family: Roboto;
   font-weight: bolder;
@@ -241,8 +242,12 @@ h1 {
   width: 163px;
   height: 57px;
   border : 3px solid black;
-  margin-bottom: 5ex;
-  margin-top: 4ex;
+  margin: 80px auto 50px auto;
+  cursor:pointer;
+}
+
+#home_getstyle #home_button {
+  display: flex;
 }
 
 .recommend_line {
@@ -252,7 +257,7 @@ h1 {
 }
 
 #recommend_style > h1 {
-  margin-top:5ex;
+  margin-top:2ex;
   margin-bottom: 1ex;
 }
 
@@ -290,17 +295,18 @@ h1 {
 
 .MuiTypography-h5 {
   font-weight: bold !important;
+  font-family: 'Noto Sans KR', sans-serif !important;
+  margin-top: 15px !important;
 }
 
-.MuiCardContent-root {
+#home_getstyle .MuiCardContent-root {
   display: flex !important;
   flex-direction: column !important;
   width:294px !important;
-  padding-left: 1.5vw !important;
-  margin-bottom: 2ex !important;
+  padding-left: 20px !important;
 }
 
-.MuiTypography-gutterBottom {
+#home_getstyle .MuiTypography-gutterBottom {
   margin-bottom: 0 !important;
 }
 
@@ -404,7 +410,7 @@ h1 {
   padding-left: 10px;
 }
 
-#info_1, #info_2, #info_3, #info_4 {
+#info_1, #info_2, #info_3 {
   border-right: 2px solid #d4d3d3;
   height:70%;
   margin-top: auto;
@@ -445,6 +451,7 @@ h1 {
   //padding-top: 295px;
   padding-left: 50px;
   transform: translateY(455%);
+  cursor:pointer;
 }
 
 .slick-next {
@@ -453,8 +460,36 @@ h1 {
   right: 0px;
   padding-right: 50px;
   transform: translateY(-514%);
+  cursor:pointer;
 }
 
 .slick-list {
   margin-bottom: 80px;
+}
+
+#recommend_card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content: center;
+  max-width: 1400px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 60px;
+}
+
+.MuiTypography-h6 {
+  font-family: 'Noto Sans KR', sans-serif !important;
+}
+
+.modify_option_button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.modify_option_button > svg {
+  font-size: 33px;
+  color: #828282;
+  cursor:pointer;
 }

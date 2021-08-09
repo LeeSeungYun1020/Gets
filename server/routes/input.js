@@ -6,6 +6,15 @@ const connection = require('../lib/mysql')
 const product = require('../lib/product')
 const coordination = require('../lib/coordination')
 
+const commonHead = require('../components/commonHead')
+const string = require('../components/string_index')
+const fstring = require('../components/string_footer')
+
+/* GET home page. */
+router.get('/', function (req, res, next) {
+	res.render('input', {commonHead: commonHead, string: string[req.body.locale], fstring: fstring[req.body.locale]})
+});
+
 router.get('/product', function (req, res, next) {
 	const processFile = async () => {
 		let records = []

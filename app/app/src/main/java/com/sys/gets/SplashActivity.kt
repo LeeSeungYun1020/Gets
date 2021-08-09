@@ -8,6 +8,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.google.android.material.button.MaterialButton
 import com.sys.gets.network.Network
 import com.sys.gets.sign.LoginActivity
+import com.sys.gets.ui.account.InfoActivity
 import org.json.JSONObject
 
 class SplashActivity : AppCompatActivity() {
@@ -31,7 +32,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun login(email: String, password: String) {
         val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.POST, "${Network.API_URL}/signin",
+            Request.Method.POST, Network.SIGN_IN_URL,
             JSONObject().apply {
                 put("email", email)
                 put("pw", password)
@@ -51,8 +52,10 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun startMainActivity() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        startActivity(Intent(this, MainActivity::class.java))
+        val pref = this.getSharedPreferences(InfoActivity.INFO, MODE_PRIVATE)
+        if (!pref.getBoolean(InfoActivity.INPUT, false))
+            startActivity(Intent(this, InfoActivity::class.java))
         finish()
     }
 

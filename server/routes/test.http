@@ -1,8 +1,14 @@
-POST http://localhost:3000/api/item
+POST http://localhost:3000/auth/signin
 Content-Type: application/json
+
 {
-"style": "1024",
-"color": "17"
+"pw": "1024",
+"phone": "01099999999",
+"year":"2000",
+"month":"08",
+"day":"04",
+"address":"부산광역시",
+"addressDetail":"부산대학교"
 }
 
 ###
@@ -90,13 +96,23 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3000/api/product/list/1
+GET http://localhost:3000/product/list/1
 Content-Type: application/json
 
 {
   "type": 1,
   "detail": 0
 }
+
+###
+
+GET http://localhost:3000/product/list/1
+Content-Type: application/json
+
+[{
+  "type": 1,
+  "detail": 0
+}]
 
 ###
 
@@ -118,3 +134,63 @@ Content-Type: application/json
 POST http://localhost:3000/api/article/1
 Content-Type: application/json
 
+{
+"title": "나는 장하림",
+"contents": "장하림입니다ㅎ"
+}
+
+###
+POST http://localhost:3000/account/info/update
+Content-Type: application/json
+
+{
+  "pw": "1024",
+  "phone": "01099999999",
+  "year": "2000",
+  "month": "08",
+  "day": "04",
+  "address": "부산광역시",
+  "addressDetail": "부산대학교"
+}
+
+###
+POST http://localhost:3000/auth/signup/info
+Content-Type: application/json
+
+{
+  "gender": 1,
+  "weight": 60,
+  "height": 180,
+  "topSize": 4,
+  "bottomSize": 8,
+  "style": 1,
+  "shoulder": 2,
+  "waist": 2,
+  "thigh": 4,
+  "hip": 4
+}
+
+###
+POST http://localhost:3000/auth/signup/address
+Content-Type: application/json
+
+{
+  "address": "address1",
+  "addressDetail": "101-1001"
+}
+
+###
+POST http://localhost:3000/auth/signup/password
+Content-Type: application/json
+
+{
+  "password": "password"
+}
+
+###
+POST http://localhost:3000/product/list/1
+Content-Type: application/json
+
+{
+  "type": 1
+}

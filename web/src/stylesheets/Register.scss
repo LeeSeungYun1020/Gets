@@ -1,4 +1,4 @@
-#register_form input {
+#register_form input, #detail_info_item input {
   height: 45px;
   width: 534px;
   display: flex;
@@ -14,7 +14,7 @@
   font-family: 'Noto Sans KR', sans-serif;
 }
 
-#register_line {
+.black_line {
   width: 556px;
   border-bottom: 4px solid #000000;
   margin: auto;
@@ -79,7 +79,7 @@
   height:32px !important;
 }
 
-#register_submit {
+#register_submit, #detail_submit {
   margin-top: 35px !important;
   margin-bottom: 150px !important;
   width:560px !important;
@@ -89,6 +89,7 @@
   border : none !important;
   font-size: 16px;
   font-family: 'Noto Sans KR', sans-serif;
+  cursor:pointer;
 }
 
 #input_birth{
@@ -115,4 +116,127 @@
   display: flex;
   margin: auto;
   width: 560px;
+}
+
+#after_register button {
+  height: 56px;
+  width: 560px;
+  border-radius:8px;
+  margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 20px;
+  font-weight: bolder;
+  font-size: 16px;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor:pointer;
+}
+
+#after_register #addinfo {
+  background-color: white;
+  border :3px solid #000000;
+}
+
+#after_register #notadd {
+  background-color: #828282;
+  color: white;
+  border: 3px solid #828282;
+  margin-bottom: 180px;
+}
+
+#info {
+  display:flex;
+  flex-direction: column !important;
+  width: fit-content;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 200px
+}
+
+#info h1 {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.detail_gender {
+  display:flex;
+  justify-content: center;
+}
+
+.detail_gender input {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  width: 264px !important;
+  height: 51px !important;
+  background-color: white;
+  padding: 0 !important;
+  cursor:pointer;
+}
+
+#prefer_info {
+  display: flex;
+  width: 560px;
+}
+
+#detail_info_item h1 {
+  margin: 0px;
+}
+
+#detail_info_item .style {
+  justify-content: normal;
+  margin-bottom: 35px;
+}
+
+#detail_info_item .style_deselected {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+#detail_info_item .style_selected {
+  margin-right: 0;
+  margin-left: 0;
+}
+#detail_info_item #recommend {
+  width:600px;
+}
+
+#detail_info_item .style>div {
+  margin-right:40px
+}
+
+#after_register_button {
+  display:flex;
+  flex-direction: column;
+}
+
+#after_register h1 {
+  margin-top: 210px;
+  margin-bottom: 120px
+}
+
+#detail_selectbox {
+  display:flex;
+}
+
+#size_div{
+  display:flex;
+  flex-direction: row;
+}
+
+.MuiSelect-icon {
+  color: #000000 !important;
+  top: auto !important;
+}
+
+.MuiOutlinedInput-root {
+  border-radius: 8px !important;
+  border: 2px solid #dbdbdb !important;
+}
+
+.PrivateNotchedOutline-root-3 {
+  border-width: 0px !important;
+}
+
+.MuiOutlinedInput-input {
+  padding: 15px 13px !important;
 }

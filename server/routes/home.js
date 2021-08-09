@@ -1,19 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const connection = require('../lib/mysql')
-//components
-const commonHead = require('../components/commonHead')
-const string = require('../components/string_index')
-const fstring = require('../components/string_footer')
-const coordination = require('../lib/coordination')
 
 module.exports = function (passport) {
 	router.get('/', function (req, res, next) {
 		res.send("home")
 	});
 	
-	// 맞춤 추천 - 스타일 상관없이 number 수만큼 코디 표시
-	router.post("/custom/:number", (req, res) => {
+	// 맞춤 추천
+	router.get("/custom/:number", (req, res) => {
 		connection.query(`SELECT *
                           FROM coordination
                           ORDER BY RAND()
@@ -28,8 +23,8 @@ module.exports = function (passport) {
 		})
 	})
 	
-	// 스타일(최신순) - 모바일화면_중복없이 스타일에 맞는 코디 표시
-	router.post("/style/:styleID/:number", (req, res) => {
+	// 스타일(최신순)
+	router.get("/style/:styleID/:number", (req, res) => {
 		connection.query(`SELECT *
                           FROM coordination
                           WHERE (style & ?) != 0
@@ -104,19 +99,26 @@ module.exports = function (passport) {
 	})
 	
 	//홈화면_탑트렌드에 있는 제품을 number 수만큼표시
-	router.post("/toptrends/:number", (req, res) => {
-		connection.query(`select *
-                          from product
-                          order by favorite desc
-                          limit ${req.params.number}`,
-			(err, result) => {
-				if (err || result.length === 0)
-					res.send([{result: false}])
-				else {
-					result[0]["result"] = true
-					res.send(result)
+	router.get("/toptrends/:number", (req, res) => {
+		connection.query(`select productID,count(productID) as cnt from favoriteProduct
+							group by productID order by cnt desc limit ${req.params.number}`,(err,result)=>{
+			if(err)
+				res.send({result: false})
+			else{
+				let obj=[]
+				for(let i=0;i<result.length;i++){
+					obj.push(result[i].productID)
 				}
-			})
+				console.log(obj)
+				connection.query(`select * from product where id in (${obj}) order by field(id,${obj})`,(err,result)=>{
+					if(err)
+						res.send({result: false})
+					else{
+						res.send(result)
+					}
+				})
+			}
+		})
 	})
 	return router
 }

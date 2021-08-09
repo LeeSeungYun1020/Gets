@@ -21,4 +21,9 @@
         android:icon="@drawable/ic_magazine_24"
         android:title="@string/title_magazine" />
 
+    <item
+        android:id="@+id/navigation_account"
+        android:icon="@drawable/ic_account_24"
+        android:title="@string/title_account" />
+
 </menu>

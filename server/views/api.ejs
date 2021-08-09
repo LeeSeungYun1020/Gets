@@ -14,10 +14,13 @@
         <div class="mdc-typography--headline3">API Center</div>
     </section>
     <section class="api_description">
+        <div class="mdc-typography--body1">/api will be deprecated soon.</div>
+    </section>
+    <section class="api_description">
         <div class="mdc-typography--headline4"><%= string.api_sign %></div>
         <div class="mdc-typography--headline5"><%= string.api_sign_in %></div>
         <p class="mdc-typography--body1">
-            POST: api/signin
+            POST: auth/signin
             <br>
             params: email, pw
             <br>
@@ -25,7 +28,7 @@
         </p>
         <div class="mdc-typography--headline5"><%= string.api_sign_up_check %></div>
         <p class="mdc-typography--body1">
-            POST: api/signup/check
+            POST: auth/signup/check
             <br>
             params: email
             <br>
@@ -33,19 +36,42 @@
         </p>
         <div class="mdc-typography--headline5"><%= string.api_sign_up_basic %></div>
         <p class="mdc-typography--body1">
-            POST: api/signup/basic
+            POST: auth/signup
             <br>
-            params: email, pw, name, phone, year, month, day, address, addressDetail
+            params: email, pw, name, phone, year, month, day
             <br>
             return: {"result": boolean}
         </p>
         <div class="mdc-typography--headline5"><%= string.api_sign_up_info %></div>
         <p class="mdc-typography--body1">
-            POST: api/signin/info
+            POST: auth/signup/info
             <br>
-            params: email, gender, height, weight, topSize, bottomSize, style, fit
+            params: gender, height, weight, topSize, bottomSize, style, shoulder, waist, hip, thigh
             <br>
             return: {"result": boolean}
+        </p>
+        <p class="mdc-typography--body1">
+            POST: auth/signup/address
+            <br>
+            params: address, addressDetail
+            <br>
+            return: {"result": boolean}
+        </p>
+        <p class="mdc-typography--body1">
+            POST: auth/signup/password
+            <br>
+            params: password
+            <br>
+            return: {"result": boolean}
+        </p>
+
+        <div class="mdc-typography--headline5"><%= string.api_user %></div>
+        <p class="mdc-typography--body1">
+            POST: auth/user
+            <br>
+            params:
+            <br>
+            return: user
         </p>
     </section>
     <section class="api_description">
@@ -68,7 +94,7 @@
         <div class="mdc-typography--headline4"><%= string.api_product %></div>
         <div class="mdc-typography--headline5"><%= string.api_product_image %></div>
         <p class="mdc-typography--body1">
-            POST: api/product/image/:imageID
+            GET: product/image/:imageID
             <br>
             params:
             <br>
@@ -76,15 +102,25 @@
         </p>
         <div class="mdc-typography--headline5"><%= string.api_product_list %></div>
         <p class="mdc-typography--body1">
-            POST: api/product/list/:page
+            POST: product/category/:type/:detail
+            <br>
+            params:
+            <br>
+            return: [{result: boolean}] | list
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_product_list_page %></div>
+        <p class="mdc-typography--body1">
+            POST: product/list/:page
             <br>
             params: search, type, detail, gender, color, fit, season, fiber, age, style, priceMin, priceMax
             <br>
             return: [{result: boolean}] | list
+            <br>
+            * required: type
         </p>
         <div class="mdc-typography--headline5"><%= string.api_product %></div>
         <p class="mdc-typography--body1">
-            POST: api/product/:id
+            GET: product/:id
             <br>
             params:
             <br>
@@ -92,43 +128,77 @@
         </p>
         <div class="mdc-typography--headline5"><%= string.api_product_toptrend %></div>
         <p class="mdc-typography--body1">
-            POST: home/toptrends/:number
+            GET: home/toptrends/:number
             <br>
             params:
             <br>
             return: {result: boolean} | list
         </p>
-        <div class="mdc-typography--headline5"><%= string.api_review_add %></div>
+
+        <div class="mdc-typography--headline5"><%= string.api_product_favorite %></div>
         <p class="mdc-typography--body1">
-            POST: api/review/add/:productID
+            GET: product/favorite/:productID
             <br>
-            params: userEmail, star, contents, image1ID, image2ID, image3ID
+            params:
+            <br>
+            return: {result: boolean, favorite: int}
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_product_unfavorite %></div>
+        <p class="mdc-typography--body1">
+            GET: product/unfavorite/:productID
+            <br>
+            params:
             <br>
             return: {result: boolean}
         </p>
-        <div class="mdc-typography--headline5"><%= string.api_review_fit %></div>
+        <div class="mdc-typography--headline5"><%= string.api_product_count_favorite %></div>
         <p class="mdc-typography--body1">
-            POST: api/review/fit/:productID
+            GET: product/count/favorite/:productID
             <br>
-            params: userEmail, order, isReverse
+            params:
             <br>
-            return: [{result: boolean, error: string}] | list
+            return: {result: false} | number of user's favorite
         </p>
-        <div class="mdc-typography--headline5"><%= string.api_review %></div>
-        <p class="mdc-typography--body1">
-            POST: api/review/:productID
-            <br>
-            params: order, isReverse
-            <br>
-            return: [{result: boolean}] | list
-        </p>
+
+<!--        <div class="mdc-typography&#45;&#45;headline5"><%= string.api_review_add %></div>-->
+<!--        <p class="mdc-typography&#45;&#45;body1">-->
+<!--            POST: api/review/add/:productID-->
+<!--            <br>-->
+<!--            params: userEmail, star, contents, image1ID, image2ID, image3ID-->
+<!--            <br>-->
+<!--            return: {result: boolean}-->
+<!--        </p>-->
+<!--        <div class="mdc-typography&#45;&#45;headline5"><%= string.api_review_fit %></div>-->
+<!--        <p class="mdc-typography&#45;&#45;body1">-->
+<!--            POST: api/review/fit/:productID-->
+<!--            <br>-->
+<!--            params: userEmail, order, isReverse-->
+<!--            <br>-->
+<!--            return: [{result: boolean, error: string}] | list-->
+<!--        </p>-->
+<!--        <div class="mdc-typography&#45;&#45;headline5"><%= string.api_review %></div>-->
+<!--        <p class="mdc-typography&#45;&#45;body1">-->
+<!--            POST: api/review/:productID-->
+<!--            <br>-->
+<!--            params: order, isReverse-->
+<!--            <br>-->
+<!--            return: [{result: boolean}] | list-->
+<!--        </p>-->
     </section>
 
     <section class="api_description">
         <div class="mdc-typography--headline4"><%= string.api_coordination %></div>
+        <div class="mdc-typography--headline5"><%= string.api_coordination_image %></div>
+        <p class="mdc-typography--body1">
+            GET: coordination/image/:imageID
+            <br>
+            params:
+            <br>
+            return: image file
+        </p>
         <div class="mdc-typography--headline5"><%= string.api_coordination_anything %></div>
         <p class="mdc-typography--body1">
-            POST: home/custom/:number
+            GET: home/custom/:number
             <br>
             params:
             <br>
@@ -136,7 +206,7 @@
         </p>
         <div class="mdc-typography--headline5"><%= string.api_coordination_style %></div>
         <p class="mdc-typography--body1">
-            POST: home/style/:styleID/:number
+            GET: home/style/:styleID/:number
             <br>
             params:
             <br>
@@ -144,11 +214,63 @@
         </p>
         <div class="mdc-typography--headline5"><%= string.api_coordination_represent %></div>
         <p class="mdc-typography--body1">
-            POST: home/representative/style
+            GET: home/representative/style
             <br>
             params:
             <br>
             return: [{result: boolean}] | list
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_coordination %></div>
+        <p class="mdc-typography--body1">
+            GET: coordination/:id
+            <br>
+            params:
+            <br>
+            return: {result: boolean} | coordination
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_coordination_favorite %></div>
+        <p class="mdc-typography--body1">
+            GET: coordination/favorite/:coordinationID
+            <br>
+            params:
+            <br>
+            return: {result: boolean, favorite: int}
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_coordination_unfavorite %></div>
+        <p class="mdc-typography--body1">
+            GET: coordination/unfavorite/:coordinationID
+            <br>
+            params:
+            <br>
+            return: {result: boolean}
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_coordination_count_favorite %></div>
+        <p class="mdc-typography--body1">
+            GET: coordination/count/favorite/:coordinationID
+            <br>
+            params:
+            <br>
+            return: {result: boolean} | {favorite: int}
+        </p>
+    </section>
+
+    <section class="api_description">
+        <div class="mdc-typography--headline4"><%= string.api_closet %></div>
+        <div class="mdc-typography--headline5"><%= string.api_closet_product %></div>
+        <p class="mdc-typography--body1">
+            GET: closet/product
+            <br>
+            params:
+            <br>
+            return: productID list
+        </p>
+        <div class="mdc-typography--headline5"><%= string.api_closet_coordination %></div>
+        <p class="mdc-typography--body1">
+            GET: closet/coordination
+            <br>
+            params:
+            <br>
+            return: coordinationID list
         </p>
     </section>
 </div>

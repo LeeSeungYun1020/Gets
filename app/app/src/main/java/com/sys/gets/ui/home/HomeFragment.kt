@@ -46,8 +46,8 @@ class HomeFragment : Fragment() {
         // 스크롤
         binding.root.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             mainViewModel.navigationVisibility.value = scrollY <= oldScrollY
-            Log.d("MYTAG", "SCR: $v $scrollY $oldScrollY")
         }
+        binding.offlineCard.root.visibility = View.GONE
 
         // 메인 배너
         viewPager = binding.mainSlider
@@ -84,15 +84,12 @@ class HomeFragment : Fragment() {
         binding.customList.apply {
             listTitle.setText(R.string.home_custom_recommendation)
             val styleRequest = JsonArrayRequest(
-                Request.Method.POST, "${Network.BASE_URL}/home/custom/6",
+                Request.Method.GET, "${Network.HOME_CUSTOM_URL}/6",
                 null,
                 { response ->
                     if (response.getJSONObject(0).getBoolean("result")) {
-                        // 사진 6개 각각에 대한 요청
-                        for (i in 0 until response.length()) {
-                            val item = response.getJSONObject(i)
-                            val id = item.getInt("id")
-                            val imageID = item.getInt("imageID")
+                        // 사진 6개에 대한 요청
+                        for (i in 0..5) {
                             val target = when (i + 1) {
                                 1 -> listItem1
                                 2 -> listItem2
@@ -101,19 +98,34 @@ class HomeFragment : Fragment() {
                                 5 -> listItem5
                                 else -> listItem6
                             }
-                            Log.e("LOGE", "${response.length()}: $id, $imageID")
-                            target.setImageResource(R.drawable.tm_custom)
-                            // TODO: 코디 이미지 가져와서 렌더링 / 구현 후 주소 확인필
-//                                    val imageRequest = ImageRequest("${Network.API_URL}/coordination/image/${imageID}", { bitmap ->
-//                                        target.setImageBitmap(bitmap)
-//                                    }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
-//                                    imageRequest.tag = CUSTOM_TAG
-//                                    Network.getInstance(this@HomeFragment.requireContext()).addToRequestQueue(imageRequest)
+                            if (response.length() > i) {
+                                target.visibility = View.VISIBLE
+                                val item = response.getJSONObject(i)
+                                val id = item.getInt("id")
+                                val imageID = item.getInt("imageID")
+                                target.setImageResource(R.drawable.tm_custom)
+                                val imageRequest = ImageRequest(
+                                    "${Network.COORDINATION_IMAGE_URL}/${imageID}",
+                                    { bitmap ->
+                                        target.setImageBitmap(bitmap)
+                                    },
+                                    0,
+                                    0,
+                                    ImageView.ScaleType.CENTER_CROP,
+                                    Bitmap.Config.RGB_565,
+                                    null
+                                )
+                                imageRequest.tag = CUSTOM_TAG
+                                Network.getInstance(this@HomeFragment.requireContext())
+                                    .addToRequestQueue(imageRequest)
+                            } else {
+                                target.visibility = View.GONE
+                            }
                         }
                     }
                 },
                 {
-
+                    binding.offlineCard.root.visibility = View.VISIBLE
                 }
             )
             styleRequest.tag = CUSTOM_TAG
@@ -155,17 +167,17 @@ class HomeFragment : Fragment() {
                         }
                     )
 
+                    // 스크롤 처음으로
+                    styleLookScroll.smoothScrollTo(0, 0)
+
                     // 스타일 사진 서버에 요청
                     val styleRequest = JsonArrayRequest(
-                        Request.Method.POST, "${Network.BASE_URL}/home/style/${style.code}/6",
+                        Request.Method.GET, "${Network.HOME_STYLE_URL}/${style.code}/6",
                         null,
                         { response ->
                             if (response.getJSONObject(0).getBoolean("result")) {
                                 // 사진 6개 각각에 대한 요청
-                                for (i in 0 until response.length()) {
-                                    val item = response.getJSONObject(i)
-                                    val id = item.getInt("id")
-                                    val imageID = item.getInt("imageID")
+                                for (i in 0..5) {
                                     val target = when (i + 1) {
                                         1 -> stylePreview1
                                         2 -> stylePreview2
@@ -174,13 +186,28 @@ class HomeFragment : Fragment() {
                                         5 -> stylePreview5
                                         else -> stylePreview6
                                     }
-                                    Log.e("LOGE", "${response.length()}: $id, $imageID")
-                                    // TODO: 코디 이미지 가져와서 렌더링 / 구현 후 주소 확인필
-//                                    val imageRequest = ImageRequest("${Network.API_URL}/coordination/image/${imageID}", { bitmap ->
-//                                        target.setImageBitmap(bitmap)
-//                                    }, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565, null)
-//                                    imageRequest.tag = STYLE_TAG
-//                                    Network.getInstance(this@HomeFragment.requireContext()).addToRequestQueue(imageRequest)
+                                    if (response.length() > i) {
+                                        target.visibility = View.VISIBLE
+                                        val item = response.getJSONObject(i)
+                                        val id = item.getInt("id")
+                                        val imageID = item.getInt("imageID")
+                                        val imageRequest = ImageRequest(
+                                            "${Network.COORDINATION_IMAGE_URL}/${imageID}",
+                                            { bitmap ->
+                                                target.setImageBitmap(bitmap)
+                                            },
+                                            0,
+                                            0,
+                                            ImageView.ScaleType.CENTER_CROP,
+                                            Bitmap.Config.RGB_565,
+                                            null
+                                        )
+                                        imageRequest.tag = STYLE_TAG
+                                        Network.getInstance(this@HomeFragment.requireContext())
+                                            .addToRequestQueue(imageRequest)
+                                    } else {
+                                        target.visibility = View.GONE
+                                    }
                                 }
                             }
                         },
@@ -212,7 +239,7 @@ class HomeFragment : Fragment() {
             listTitle.setText(R.string.home_top_trends)
             // 인기 상품 리스트 요청
             val trendRequest = JsonArrayRequest(
-                Request.Method.POST, "${Network.BASE_URL}/home/toptrends/6",
+                Request.Method.GET, "${Network.HOME_TOP_TRENDS_URL}/6",
                 null,
                 { response ->
                     if (response.getJSONObject(0).getBoolean("result")) {
@@ -233,7 +260,7 @@ class HomeFragment : Fragment() {
                             target.cardPrice.text = item.getString("price")
                             target.cardLike.text = item.getString("favorite")
                             val imageRequest = ImageRequest(
-                                "${Network.API_URL}/product/image/${imageID}",
+                                "${Network.PRODUCT_IMAGE_URL}/${imageID}",
                                 { bitmap ->
                                     target.cardImage.setImageBitmap(bitmap)
                                 },
