@@ -4,12 +4,10 @@ import android.graphics.Bitmap
 import android.icu.text.NumberFormat
 import android.icu.util.Currency
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
@@ -19,16 +17,12 @@ import com.android.volley.Request
 import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
-import com.google.android.material.circularreveal.cardview.CircularRevealCardView
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.sys.gets.R
 import com.sys.gets.data.Style
 import com.sys.gets.databinding.FragmentHomeBinding
 import com.sys.gets.network.Network
-import com.sys.gets.sign.LoginActivity
 import com.sys.gets.ui.MainViewModel
-import org.json.JSONObject
 
 private const val NUM_PAGES = 5
 private const val CUSTOM_TAG = "CUSTOM"
@@ -260,7 +254,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun initTopTrends() {
-        Log.e("CONSOLE", "top trends")
         binding.topTrendsList.apply {
             listTitle.setText(R.string.home_top_trends)
             // 인기 상품 리스트 요청
