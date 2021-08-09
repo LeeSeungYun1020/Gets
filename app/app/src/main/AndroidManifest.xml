@@ -13,7 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gets"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.account.InfoActivity"></activity>
+        <activity
+            android:name=".ui.account.PasswordActivity"
+            android:label="@string/msg_change_password"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.Gets.ActionBar"
+            />
+        <activity
+            android:name=".ui.account.InfoActivity"
+            android:label="@string/title_info_detail"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.Gets.ActionBar" />
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">

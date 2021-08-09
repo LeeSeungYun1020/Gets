@@ -9,10 +9,6 @@ module.exports = function (passport) {
 		res.send("product")
 	});
 	
-	router.get('/detail/:productID', function (req, res, next) {
-		res.send("product" + req.params.productID)
-	});
-	
 	//상품 찜하기, 찜삭제하기
 	router.get('/favorite/:productID', (req, res) => {
 		if (req.user) {
@@ -22,7 +18,7 @@ module.exports = function (passport) {
                           values (?, ?)`, [user, product],
 				(err, result) => {
 					if (err)
-						res.send({result: false})
+						res.send({result: false, isDuplicate: err["errno"] === 1062})
 					else {
 						res.send({result: true})
 					}
@@ -30,14 +26,14 @@ module.exports = function (passport) {
 		} else res.send({"result": false})
 	})
 	
-	router.post('/unfavorite/:productID', (req, res) => {
+	router.get('/unfavorite/:productID', (req, res) => {
 		if (req.user) {
 			let user = req.user.email
 			let product = req.params.productID
 			connection.query(`delete
-                          from favoriteProduct
-                          where userEmail = ?
-                            and productID = ?`, [user, product],
+                              from favoriteProduct
+                              where userEmail = ?
+                                and productID = ?`, [user, product],
 				(err, result) => {
 					if (err)
 						res.send({result: false})
@@ -49,14 +45,17 @@ module.exports = function (passport) {
 	})
 	
 	router.get('/count/favorite/:productID',(req,res)=>{
-		connection.query(`select count(productID) from favoriteProduct where productID=${req.params.productID}`,
-			(err,result)=>{
-			if(err)
-				res.send({result:false})
-			else{
-				res.send(result)
-			}
-		})
+		connection.query(`select count(productID) as favorite
+                          from favoriteProduct
+                          where productID = ${req.params.productID}`,
+			(err, result) => {
+				if (err)
+					res.send({result: false})
+				else {
+					result[0]["result"] = true
+					res.send(result[0])
+				}
+			})
 	})
 	
 	/* 아래는 api에서 이동된 것 */
@@ -83,30 +82,20 @@ module.exports = function (passport) {
 	}
 
 	router.get("/category/:type/:detail",(req,res)=>{
-		const type = req.params.type
-		const detail = req.params.detail
-		connection.query(`select * from product where type=?`,[type],(err,result)=>{
+		const type = req.params.type ?? -1
+		const detail = req.params.detail ?? -1
+		connection.query(`select * from product where type & ? != 0 and detail & ? != 0`,[type,detail],(err,result)=>{
 			if (err || result.length === 0)
 				res.send([{result: false}])
-			else{
-				if(detail==null)
-					res.send(result)
-				else{
-					connection.query(`select * from product where type=? and detail=?`,[type,detail],(err,result)=>{
-						if (err || result.length === 0)
-							res.send([{result: false}])
-						else
-							res.send(result)
-					})
-				}
-			}
+			else
+				res.send(result)
 		})
 	})
 	
 // 상품 목록 필터
-	router.post("/list/:page", (req, res) => {
+	router.get("/list/:page", (req, res) => {
 		const ALL = -1
-		let body = req.body[0]
+		let body = req.body[0] ?? req.body
 		const search = "%" + (body.search ?? "") + "%"
 		const type = fitCode(body.type)
 		const detail = fitCode(body.detail)
@@ -137,43 +126,16 @@ module.exports = function (passport) {
 			})
 	})
 
-// 상품 목록 필터 (페이지 구분 X)
-	router.post("/list", (req, res) => {
-		let body = req.body[0]
-		const search = "%" + (body.search ?? "") + "%"
-		const type = fitCode(body.type)
-		const detail = fitCode(body.detail)
-		const gender = fitCode(body.gender)
-		const color = fitCode(body.color)
-		const fit = fitCode(body.fit)
-		const season = fitCode(body.season)
-		const fiber = fitCode(body.fiber)
-		const age = fitCode(body.age)
-		const style = fitCode(body.style)
-		const priceMin = parseInt(body.priceMin ?? 0)
-		const priceMax = parseInt(body.priceMax ?? 1000000000)
-		
-		console.log("/product/list")
-		
-		connection.query("select * from `product`\
-      where `type` = ? and `detail`&? != 0 and `gender`&? != 0 and `color`&? != 0 and \
-      `fit`&? != 0 and `season`&? != 0 and `fiber`&? != 0 and `age` &? != 0 and\
-      `style`&? != 0 and ? >= `price` and `price` >= ? and\
-      (`name` like ? or `brand` like ? or `code` like ?)",
-			[type, detail, gender, color, fit, season, fiber, age, style, priceMax, priceMin, search, search, search],
-			(err, result) => {
-				if (err || result.length === 0)
-					res.send([{result: false}])
-				else {
-					res.send(result)
-				}
-			})
-	})
-
 // 단일 상품 조회
 	router.get("/:id", (req, res) => {
 		const id = req.params.id
-		connection.query("select * from `product` where `id`=?",
+		connection.query(`
+                    select product.*, COUNT(favoriteProduct.productID) as favorite
+                    from product,
+                         favoriteProduct
+                    where product.id = favoriteProduct.productID
+                      and product.id = ?;
+			`,
 			[id],
 			(err, result) => {
 				if (err || result.length === 0)

@@ -69,6 +69,7 @@ const closetRouter = require('./routes/closet')(passport);
 const productRouter = require('./routes/product')(passport);
 const coordinationRouter=require('./routes/coordination')(passport);
 const authRouter=require('./routes/auth')(passport);
+const modelRouter = require('./routes/model');
 
 app.use('/', indexRouter)
 app.use('/api', apiRouter)
@@ -77,6 +78,7 @@ app.use('/input', inputRouter)
 app.use('/closet', closetRouter)
 app.use('/product', productRouter)
 app.use('/account', accountRouter)
+app.use('/model', modelRouter)
 app.use('/coordination',coordinationRouter)
 app.use('/auth',authRouter)
 

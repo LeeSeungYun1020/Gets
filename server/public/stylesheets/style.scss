@@ -1,9 +1,7 @@
 @use "node_modules/@material/theme" with ($primary: #9c27b0, $secondary: #76ff03, $background: #fff,);
 @use "node_modules/material-components-web/material-components-web";
-@use "node_modules/@material/tab-bar/mdc-tab-bar";
-@use "node_modules/@material/tab-scroller/mdc-tab-scroller";
-@use "node_modules/@material/tab-indicator/mdc-tab-indicator";
-@use "node_modules/@material/tab/mdc-tab";
+@use "node_modules/@material/card";
+@use "node_modules/@material/card/mdc-card";
 
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900");
@@ -53,17 +51,6 @@ ul li.on {
   color: #ffffff;
 }
 
-#top_menu {
-  display: flex;
-  margin-left: auto;
-  margin-right: 9vw;
-  justify-content: space-between;
-}
-
-#top_menu a {
-  margin-left: 1.5vw;
-}
-
 body {
   margin: 0;
   font-family: 'Nanum Gothic', sans-serif;
@@ -87,30 +74,32 @@ footer #footer_logo{
   margin-top:6.5vh;
 }
 
-footer #detail{
-  display: flex;
-  margin-bottom: 6.5vh;
+.main_card{
+  padding: 16px;
+  margin: 16px;
 }
 
-footer .detail_component{
-  display:flex;
-  flex-direction: column;
-  margin-right: 8vw;
-
+.main_container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
-footer .footer_title{
-  font-size:2.5ex;
-  font-weight: bolder;
-  margin-bottom: 2.3ex;
+.main_card1{
+  grid-column: 2;
+  grid-row: 1;
 }
 
-.footer_category {
-  display: flex;
-  flex-direction: column;
-  font-size:1.8ex;
+.main_card2{
+  grid-column: 3;
+  grid-row: 1;
 }
 
-.footer_category>span{
-  margin-bottom: 1.5ex;
+.main_card3{
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.main_card4{
+  grid-column: 3;
+  grid-row: 2;
 }

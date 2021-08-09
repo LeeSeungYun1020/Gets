@@ -215,4 +215,7 @@
     <string name="size_narrow">좁음</string>
     <string name="size_normal">보통</string>
     <string name="size_wide">넓음</string>
+    <string name="title_info_detail">상세정보</string>
+    <string name="hint_new_password_star">*새\n 비밀번호</string>
+    <string name="msg_password_now">현재 비밀번호 입력</string>
 </resources>

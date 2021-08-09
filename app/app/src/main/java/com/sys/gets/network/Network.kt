@@ -23,8 +23,36 @@ class Network(context: Context) {
             }
 
         const val BASE_URL = "http://10.0.2.2:3000"
-        const val API_URL = "http://10.0.2.2:3000/api"
-        // TODO 서버 URL로 변경
+        const val API_URL = "$BASE_URL/api"
+        const val SIGN_IN_URL = "$BASE_URL/auth/signin"
+        const val SIGN_OUT_URL = "$BASE_URL/auth/signout"
+        const val SIGN_UP_CHECK_URL = "$BASE_URL/auth/signup/check"
+        const val SIGN_UP_BASIC_URL = "$BASE_URL/auth/signup/basic"
+        const val SIGN_UP_INFO_URL = "$BASE_URL/auth/signup/info"
+        const val SIGN_UP_ADDRESS_URL = "$BASE_URL/auth/signup/address"
+        const val SIGN_UP_PASSWORD_URL = "$BASE_URL/auth/signup/password"
+        const val SIGN_USER_URL = "$BASE_URL/auth/user"
+
+        const val PRODUCT_CATEGORY_URL = "$BASE_URL/product/category"
+        const val PRODUCT_LIST_URL = "$BASE_URL/product/list"
+        const val PRODUCT_URL = "$BASE_URL/product"
+        const val PRODUCT_IMAGE_URL = "$BASE_URL/product/image"
+        const val PRODUCT_FAVORITE_URL = "$BASE_URL/product/favorite"
+        const val PRODUCT_UNFAVORITE_URL = "$BASE_URL/product/unfavorite"
+        const val PRODUCT_COUNT_FAVORITE_URL = "$BASE_URL/product/count/favorite"
+
+        const val COORDINATION_URL = "$BASE_URL/coordination"
+        const val COORDINATION_IMAGE_URL = "$BASE_URL/coordination/image"
+        const val COORDINATION_FAVORITE_URL = "$BASE_URL/coordination/favorite"
+        const val COORDINATION_UNFAVORITE_URL = "$BASE_URL/coordination/unfavorite"
+        const val COORDINATION_COUNT_FAVORITE_URL = "$BASE_URL/coordination/count/favorite"
+
+        const val HOME_TOP_TRENDS_URL = "$BASE_URL/home/toptrends"
+        const val HOME_CUSTOM_URL = "$BASE_URL/home/custom"
+        const val HOME_STYLE_URL = "$BASE_URL/home/style"
+
+        const val CLOSET_PRODUCT_URL = "$BASE_URL/closet/product"
+        const val CLOSET_COORDINATION_URL = "$BASE_URL/closet/coordination"
     }
 
     val imageLoader: ImageLoader by lazy {

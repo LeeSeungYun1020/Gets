@@ -179,3 +179,8 @@ enum class BodyShape(val code: Int, val resID: Int) {
     NORMAL(2, R.string.size_normal),
     WIDE(4, R.string.size_wide)
 }
+
+enum class Gender(val code: Int, val resID: Int) {
+    MALE(1, R.string.gender_male),
+    FEMALE(2, R.string.gender_female)
+}
