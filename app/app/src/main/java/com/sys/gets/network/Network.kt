@@ -6,6 +6,7 @@ import androidx.collection.LruCache
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.ImageLoader
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import java.net.CookieHandler
 import java.net.CookieManager
@@ -55,6 +56,22 @@ class Network(context: Context) {
 
         const val CLOSET_PRODUCT_URL = "$BASE_URL/closet/product"
         const val CLOSET_COORDINATION_URL = "$BASE_URL/closet/coordination"
+
+        fun addSimpleRequest(context: Context, url:String, id: Int, callback: () -> Unit) {
+            val jsonObjectRequest = JsonObjectRequest(
+                Request.Method.GET, "$url/$id",
+                null,
+                { response ->
+                    if (response.getBoolean("result")) {
+                        callback()
+                    }
+                },
+                {
+
+                }
+            )
+            Network.getInstance(context).addToRequestQueue(jsonObjectRequest)
+        }
     }
 
     val imageLoader: ImageLoader by lazy {

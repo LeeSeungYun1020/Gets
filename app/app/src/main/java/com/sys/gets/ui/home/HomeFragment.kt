@@ -123,16 +123,16 @@ class HomeFragment : Fragment() {
                                 target.favoriteButton.apply {
                                     setOnClickListener {
                                         if (!isChecked) { // 체크 안되어있는 경우
-                                            addSimpleRequest(Network.COORDINATION_FAVORITE_URL, id) {
+                                            Network.addSimpleRequest(requireContext(), Network.COORDINATION_FAVORITE_URL, id) {
                                                 isChecked = true
                                             }
                                         } else { // 체크 되어있는 경우
-                                            addSimpleRequest(Network.COORDINATION_UNFAVORITE_URL, id) {
+                                            Network.addSimpleRequest(requireContext(), Network.COORDINATION_UNFAVORITE_URL, id) {
                                                 isChecked = false
                                             }
                                         }
                                     }
-                                    addSimpleRequest(Network.COORDINATION_CHECK_FAVORITE_URL,id) {
+                                    Network.addSimpleRequest(requireContext(), Network.COORDINATION_CHECK_FAVORITE_URL,id) {
                                         isChecked = true
                                     }
                                 }
@@ -318,16 +318,16 @@ class HomeFragment : Fragment() {
                                 target.cardImage.favoriteButton.apply {
                                     setOnClickListener {
                                         if (!isChecked) { // 체크 안되어있는 경우
-                                            addSimpleRequest(Network.PRODUCT_FAVORITE_URL, id) {
+                                            Network.addSimpleRequest(requireContext(), Network.PRODUCT_FAVORITE_URL, id) {
                                                 isChecked = true
                                             }
                                         } else { // 체크 되어있는 경우
-                                            addSimpleRequest(Network.PRODUCT_UNFAVORITE_URL, id) {
+                                            Network.addSimpleRequest(requireContext(), Network.PRODUCT_UNFAVORITE_URL, id) {
                                                 isChecked = false
                                             }
                                         }
                                     }
-                                    addSimpleRequest(Network.PRODUCT_CHECK_FAVORITE_URL,id) {
+                                    Network.addSimpleRequest(requireContext(), Network.PRODUCT_CHECK_FAVORITE_URL,id) {
                                         isChecked = true
                                     }
                                 }
@@ -345,22 +345,6 @@ class HomeFragment : Fragment() {
             Network.getInstance(this@HomeFragment.requireContext())
                 .addToRequestQueue(trendRequest)
         }
-    }
-
-    private fun addSimpleRequest(url:String, id: Int, callback: () -> Unit) {
-        val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.GET, "$url/$id",
-            null,
-            { response ->
-                if (response.getBoolean("result")) {
-                    callback()
-                }
-            },
-            {
-
-            }
-        )
-        Network.getInstance(requireContext()).addToRequestQueue(jsonObjectRequest)
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
