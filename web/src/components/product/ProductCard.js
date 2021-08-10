@@ -26,8 +26,20 @@ const ProductCard = ({item}) => {
     const classes = useStyles();
     const { brand, name, price, image1ID, id } = item;
     const [favorite, setFavorite] = useState(0);
+    const [checked, setChecked] = useState(false);
+    useEffect(()=> {
+        axios.get(`http://localhost:3000/product/check/favorite/${id}`, { withCredentials: true })
+            .then( response => {
+                if (response.data.result) {
+                    setChecked(true);
+                }
+                else {
+                    setChecked(false);
+                }
+            })
+    })
     useEffect(() => {
-        axios.get(`http://localhost:3000/product/count/favorite/${id}`, {withCredentials: true})
+        axios.get(`http://localhost:3000/product/count/favorite/${id}`, { withCredentials: true })
             .then( response => {
                 setFavorite(response.data.favorite)
             })
@@ -65,7 +77,7 @@ const ProductCard = ({item}) => {
                     image = {`http://localhost:3000/product/image/${image1ID}`}
                     ><div className = "my_favorit">
                     <FormControlLabel
-                    control={<Checkbox icon={<Favorite />} checkedIcon={<Favorite />} name="checkedH" onChange={onFavoritChange}/> }
+                    control={<Checkbox icon={<Favorite />} checkedIcon={<Favorite />} name="checkedH" onChange={onFavoritChange} checked={checked}/> }
                     />
                 </div>
                 </CardMedia>
