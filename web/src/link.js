@@ -1,6 +1,7 @@
 const link = {
     home: '/',
     closet: '/closet',
+    defaultproduct: '/product',
     product: '/product/:category/:subcategory',
     account: '/account',
     signin: '/account/signin',

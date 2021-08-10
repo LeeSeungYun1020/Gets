@@ -36,6 +36,9 @@ export default function App() {
                     <Route path={link.product}>
                         <Product />
                     </Route>
+                    <Route path={link.defaultproduct}>
+                        <Product />
+                    </Route>
                     <Route path={link.signin}>
                         <SignIn />
                     </Route>

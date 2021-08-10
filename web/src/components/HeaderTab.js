@@ -7,7 +7,7 @@ function HeaderTab() {
             <ul>
                 <NavLink exact to={link.home} className="tab" activeClassName="active" >Home</NavLink>
                 <NavLink to={link.closet} className="tab" activeClassName="active">Closet</NavLink>
-                <NavLink to={link.product} className="tab" activeClassName="active">Product</NavLink>
+                <NavLink to={link.defaultproduct} className="tab" activeClassName="active">Product</NavLink>
                 <NavLink to={link.article} className="tab" activeClassName="active">Article</NavLink>
             </ul>
         </nav>

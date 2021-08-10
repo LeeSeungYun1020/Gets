@@ -9,8 +9,8 @@ import {withRouter} from 'react-router-dom'
 const Product = ({match}) => {
     const {t, i18n} = useTranslation()
     console.log(match.params)
-    const category = match.params.category === ':category' ? 'outer' : match.params.category;
-    const subCategory = match.params.subcategory === ':subcategory' ? 'all' : match.params.subcategory;;
+    const category = match.params.category === undefined ? 'outer' : match.params.category;
+    const subCategory = match.params.subcategory === undefined ? 'all' : match.params.subcategory;;
     return (
         <div className="product">
             <ProductCategory
