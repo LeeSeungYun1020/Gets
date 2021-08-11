@@ -92,7 +92,7 @@ router.get("/coordination", (req, res) => {
 			const gender = coordination.getGenderCode(record[19])
 			const age = coordination.getAgeCode(record[20])
 			const bodyshape = coordination.getBodyShapeCode(record[21])
-			const price = coordination.getPriceCode(record[22])
+			const price = record[22]
 			const weather = coordination.getSeasonCode(record[23])
 			const imageID = record[24].split(".")[0]
 			// console.error(imageID)
