@@ -19,6 +19,8 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.sys.gets.R
 import com.sys.gets.databinding.FragmentProductBinding
 import com.sys.gets.network.Network
+import com.sys.gets.ui.MainViewModel
+import kotlin.math.roundToInt
 
 private const val PRODUCT_TAG = "PRODUCT"
 
@@ -26,6 +28,7 @@ class ProductFragment : Fragment() {
     private var _binding: FragmentProductBinding? = null
     private val binding get() = _binding!!
     private lateinit var productViewModel: ProductViewModel
+    private lateinit var mainViewModel: MainViewModel
     private val productList = mutableListOf<ProductItem>()
 
     override fun onCreateView(
@@ -36,6 +39,7 @@ class ProductFragment : Fragment() {
         _binding = FragmentProductBinding.inflate(inflater, container, false)
         val root: View = binding.root
         productViewModel = ViewModelProvider(requireActivity()).get(ProductViewModel::class.java)
+        mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
         binding.categoryButton.setOnClickListener {
             val transaction = parentFragmentManager.beginTransaction().apply {
@@ -45,6 +49,14 @@ class ProductFragment : Fragment() {
             transaction.commit()
         }
         binding.productRecycler.layoutManager = GridLayoutManager(context, 2)
+        binding.productRecycler.addItemDecoration(
+            GridSpacingItemDecoration(
+                (16 * resources.displayMetrics.density).roundToInt() // dp to px
+            )
+        )
+        binding.productRecycler.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            mainViewModel.navigationVisibility.value = scrollY <= oldScrollY
+        }
         binding.productRecycler.adapter = ProductListAdapter(productList)
         val productRequest = JsonArrayRequest(
             Request.Method.GET,

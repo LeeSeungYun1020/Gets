@@ -1,12 +1,14 @@
 package com.sys.gets.ui.product
 
 import android.graphics.Bitmap
+import android.graphics.Rect
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.google.android.material.circularreveal.cardview.CircularRevealCardView
 import com.sys.gets.R
 import com.sys.gets.network.Network
@@ -73,4 +75,36 @@ class ProductListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val priceView: TextView = view.findViewById(R.id.card_price)
     val favoriteView: TextView = view.findViewById(R.id.card_favorite)
     val favoriteButton: CircularRevealCardView = view.findViewById(R.id.favorite_button)
+}
+
+class GridSpacingItemDecoration(private val spacing: Int = 50) : ItemDecoration() {
+    private val spanCount = 2
+    private val includeEdge = false
+
+    override fun getItemOffsets(
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
+        val position = parent.getChildAdapterPosition(view)
+        val column = position % spanCount
+        if (includeEdge) {
+            outRect.left =
+                spacing - column * spacing / spanCount
+            outRect.right =
+                (column + 1) * spacing / spanCount
+            if (position < spanCount) {
+                outRect.top = spacing
+            }
+            outRect.bottom = spacing
+        } else {
+            outRect.left = column * spacing / spanCount
+            outRect.right =
+                spacing - (column + 1) * spacing / spanCount
+            if (position >= spanCount) {
+                outRect.top = spacing
+            }
+        }
+    }
 }
