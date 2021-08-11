@@ -91,17 +91,17 @@ router.get("/coordination", (req, res) => {
 			const style = coordination.getStyleCode(record[18])
 			const gender = coordination.getGenderCode(record[19])
 			const age = coordination.getAgeCode(record[20])
-			const bodyshape = coordination.getBodyShapeCode(record[21])
+			const fit = coordination.getFitCode(record[21])
 			const price = record[22]
 			const weather = coordination.getSeasonCode(record[23])
 			const imageID = record[24].split(".")[0]
 			// console.error(imageID)
 			connection.query(`insert into coordination \
 	 			(id, title, outerID, outerImageID, topID, topImageID, bottomID, bottomImageID, skirtID, skirtImageID,\
-	 			setID,setImageID,shoesID,shoesImageID,bagID,bagImageID,hatID,hatImageID,style,gender,age,bodyshape,price,weather,imageID) \
+	 			setID,setImageID,shoesID,shoesImageID,bagID,bagImageID,hatID,hatImageID,style,gender,age,fit,price,weather,imageID) \
 	 			values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?,?)`,
 				[id, title, outerID, outerImageID, topID, topImageID, bottomID, bottomImageID, skirtID, skirtImageID,
-					setID, setImageID, shoesID, shoesImageID, bagID, bagImageID, hatID, hatImageID, style, gender, age, bodyshape, price, weather, imageID],
+					setID, setImageID, shoesID, shoesImageID, bagID, bagImageID, hatID, hatImageID, style, gender, age, fit, price, weather, imageID],
 				(err, result) => {
 					if (err) {
 						console.error(err)
