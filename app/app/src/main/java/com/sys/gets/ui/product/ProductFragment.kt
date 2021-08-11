@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.ImageRequest
@@ -22,8 +23,8 @@ private const val PRODUCT_TAG = "PRODUCT"
 
 class ProductFragment : Fragment() {
     private var _binding: FragmentProductBinding? = null
-
     private val binding get() = _binding!!
+    private lateinit var productViewModel: ProductViewModel
     private val productList = mutableListOf<ProductItem>()
 
     override fun onCreateView(
@@ -33,6 +34,8 @@ class ProductFragment : Fragment() {
     ): View? {
         _binding = FragmentProductBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        productViewModel = ViewModelProvider(requireActivity()).get(ProductViewModel::class.java)
+
 
         binding.productRecycler.layoutManager = GridLayoutManager(context, 2)
         binding.productRecycler.adapter = ProductListAdapter(productList)
@@ -40,8 +43,8 @@ class ProductFragment : Fragment() {
             Request.Method.GET, "${Network.PRODUCT_CATEGORY_URL}/1/2",
             null,
             { response ->
-                Log.e("CONSOLE", "${response.getJSONObject(0)}", )
-                if (true){//response.getJSONObject(0).getBoolean("result")) {
+                Log.e("CONSOLE", "${response.getJSONObject(0)}")
+                if (true) {//response.getJSONObject(0).getBoolean("result")) {
                     for (i in 0 until response.length()) {
                         val item = response.getJSONObject(i)
 

@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.core.view.allViews
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.sys.gets.R
 import com.sys.gets.data.*
 import com.sys.gets.data.Set
 import com.sys.gets.databinding.ComponentAccordionBinding
@@ -95,7 +96,11 @@ class CategoryFragment : Fragment() {
                 view.setOnClickListener {
                     productViewModel.type.value = titleID.first
                     productViewModel.detail.value = cts.first
-
+                    val transaction = parentFragmentManager.beginTransaction().apply {
+                        replace(R.id.nav_host_fragment_activity_main, ProductFragment())
+                        addToBackStack(null)
+                    }
+                    transaction.commit()
                 }
                 index++
             }
