@@ -61,7 +61,7 @@ const DetailInfoItem = props => {
     },[]);
     const onSubmit = useCallback((e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/api/signup/info', {
+        axios.post('http://localhost:3000/auth/signup/info', {
             gender: gender,
             height: height,
             weight: weight,

@@ -98,13 +98,9 @@ nav {
 
 .tab:active, .tab.active{
   border-bottom:3px solid white;
-  color:white;
+  color:white !important;
   padding-bottom:26px;
   opacity: 1;
-}
-.tab:active>a, .tab.active>a{
-  opacity:1 !important;
-  color:white !important;
 }
 
 body {
