@@ -44,6 +44,7 @@ class ProductListAdapter(val list: List<ProductItem>)  :
             }
 
             favoriteButton.apply {
+                isChecked = false
                 setOnClickListener {
                     if (!isChecked) { // 체크 안되어있는 경우
                         Network.addSimpleRequest(context, Network.PRODUCT_FAVORITE_URL, data.id) {
