@@ -74,7 +74,7 @@ module.exports = function (passport) {
 	
 	router.get('/user/favorite',(req,res)=>{
 		if(req.user){
-			connection.query(`select * from favoriteProduct where userEmail=?`,[req.user.email],
+			connection.query(`select productID from favoriteProduct where userEmail=?`,[req.user.email],
 				(err,result)=>{
 					if (err || result.length === 0)
 						res.send({result: false})
