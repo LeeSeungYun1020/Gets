@@ -15,13 +15,13 @@ const SignInBox = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/api/signin', {
+        axios.post('http://localhost:3000/auth/signin', {
             email: email,
             pw: password
         }, { withCredentials: true })
             .then( response => {
                 if (response.data.result) {
-                    axios.get('http://localhost:3000/api/sign/user',{ withCredentials: true })
+                    axios.get('http://localhost:3000/auth/user',{ withCredentials: true })
                         .then ( response => {
                             console.log(response.data)
                             sessionStorage.setItem("token", response.data.email)
