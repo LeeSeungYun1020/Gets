@@ -41,7 +41,7 @@ const RegisterBox = props => {
     const handleEmailChange = event => {
         SetEmail(event.target.value);
         let that = this;
-        axios.post('http://localhost:3000/api/signup/check', {
+        axios.post('http://localhost:3000/auth/signup/check', {
             email: event.target.value
         })
             .then(function (response) {
@@ -123,7 +123,7 @@ const RegisterBox = props => {
         } else if (!check_1 || !check_2) {
             alert("필수 이용약관에 동의해주세요")
         } else {
-            axios.post('http://localhost:3000/api/signup/basic', {
+            axios.post('http://localhost:3000/auth/signup/basic', {
                 email: email,
                 pw: password,
                 name: name,

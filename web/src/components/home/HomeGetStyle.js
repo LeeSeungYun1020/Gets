@@ -83,7 +83,7 @@ const HomeGetStyle = (props) => {
     },[]); // 컴포넌트가 처음 렌더링될 때만 함수 생성
     const iconClick = useCallback( () => {
         setModify(!modify)
-    },[]);
+    },[modify]);
     return (
         <div className="home_getstyle">
             { (sessionStorage.getItem("token")&&!modify) ? <div className = "modify_option_button"><MdAdd onClick={iconClick}/></div> :
