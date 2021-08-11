@@ -72,6 +72,18 @@ module.exports = function (passport) {
 		
 	})
 	
+	router.get('/user/favorite',(req,res)=>{
+		if(req.user){
+			connection.query(`select productID from favoriteProduct where userEmail=?`,[req.user.email],
+				(err,result)=>{
+					if (err || result.length === 0)
+						res.send({result: false})
+					else
+						res.send(result)
+				})
+		}else res.send({result:false})
+	})
+	
 	// 단일 상품 이미지 전송
 	router.get("/image/:imageID", (req, res) => {
 		const imageID = req.params.imageID
