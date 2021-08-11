@@ -102,8 +102,10 @@ module.exports = function (passport) {
                             and (detail & ?) != 0`, [type, detail], (err, result) => {
 			if (err || result.length === 0)
 				res.send([{result: false}])
-			else
+			else {
+				result[0]["result"] = true
 				res.send(result)
+			}
 		})
 	})
 	

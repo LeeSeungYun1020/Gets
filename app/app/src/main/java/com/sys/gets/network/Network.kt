@@ -57,7 +57,13 @@ class Network(context: Context) {
         const val CLOSET_PRODUCT_URL = "$BASE_URL/closet/product"
         const val CLOSET_COORDINATION_URL = "$BASE_URL/closet/coordination"
 
-        fun addSimpleRequest(context: Context, url:String, id: Int, callback: () -> Unit) {
+        fun addSimpleRequest(
+            context: Context,
+            tag: String,
+            url: String,
+            id: Int,
+            callback: () -> Unit
+        ) {
             val jsonObjectRequest = JsonObjectRequest(
                 Request.Method.GET, "$url/$id",
                 null,
@@ -70,7 +76,8 @@ class Network(context: Context) {
 
                 }
             )
-            Network.getInstance(context).addToRequestQueue(jsonObjectRequest)
+            jsonObjectRequest.tag = tag
+            getInstance(context).addToRequestQueue(jsonObjectRequest)
         }
     }
 

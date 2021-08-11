@@ -123,16 +123,31 @@ class HomeFragment : Fragment() {
                                 target.favoriteButton.apply {
                                     setOnClickListener {
                                         if (!isChecked) { // 체크 안되어있는 경우
-                                            Network.addSimpleRequest(requireContext(), Network.COORDINATION_FAVORITE_URL, id) {
+                                            Network.addSimpleRequest(
+                                                requireContext(),
+                                                CUSTOM_TAG,
+                                                Network.COORDINATION_FAVORITE_URL,
+                                                id
+                                            ) {
                                                 isChecked = true
                                             }
                                         } else { // 체크 되어있는 경우
-                                            Network.addSimpleRequest(requireContext(), Network.COORDINATION_UNFAVORITE_URL, id) {
+                                            Network.addSimpleRequest(
+                                                requireContext(),
+                                                CUSTOM_TAG,
+                                                Network.COORDINATION_UNFAVORITE_URL,
+                                                id
+                                            ) {
                                                 isChecked = false
                                             }
                                         }
                                     }
-                                    Network.addSimpleRequest(requireContext(), Network.COORDINATION_CHECK_FAVORITE_URL,id) {
+                                    Network.addSimpleRequest(
+                                        requireContext(),
+                                        CUSTOM_TAG,
+                                        Network.COORDINATION_CHECK_FAVORITE_URL,
+                                        id
+                                    ) {
                                         isChecked = true
                                     }
                                 }
@@ -282,7 +297,8 @@ class HomeFragment : Fragment() {
                                 val format = NumberFormat.getCurrencyInstance()
                                 format.maximumFractionDigits = 0
                                 format.currency = Currency.getInstance("KOR")
-                                target.cardPrice.text = format.format(item.getInt("price"))
+                                target.cardPrice.text =
+                                    format.format(item.getInt("price")).replace("KOR", "₩")
                                 target.cardBrand.text = item.getString("brand")
 
                                 val favoriteRequest = JsonObjectRequest(
@@ -290,7 +306,8 @@ class HomeFragment : Fragment() {
                                     null,
                                     { response ->
                                         if (response.getBoolean("result")) {
-                                            target.cardFavorite.text = response.getString("favorite")
+                                            target.cardFavorite.text =
+                                                response.getString("favorite")
                                         }
                                     },
                                     {
@@ -318,16 +335,37 @@ class HomeFragment : Fragment() {
                                 target.cardImage.favoriteButton.apply {
                                     setOnClickListener {
                                         if (!isChecked) { // 체크 안되어있는 경우
-                                            Network.addSimpleRequest(requireContext(), Network.PRODUCT_FAVORITE_URL, id) {
+                                            Network.addSimpleRequest(
+                                                requireContext(),
+                                                TREND_TAG,
+                                                Network.PRODUCT_FAVORITE_URL,
+                                                id
+                                            ) {
                                                 isChecked = true
+                                                target.cardFavorite.text =
+                                                    ((target.cardFavorite.text.toString()
+                                                        .toIntOrNull() ?: 0) + 1).toString()
                                             }
                                         } else { // 체크 되어있는 경우
-                                            Network.addSimpleRequest(requireContext(), Network.PRODUCT_UNFAVORITE_URL, id) {
+                                            Network.addSimpleRequest(
+                                                requireContext(),
+                                                TREND_TAG,
+                                                Network.PRODUCT_UNFAVORITE_URL,
+                                                id
+                                            ) {
                                                 isChecked = false
+                                                target.cardFavorite.text =
+                                                    ((target.cardFavorite.text.toString()
+                                                        .toIntOrNull() ?: 1) - 1).toString()
                                             }
                                         }
                                     }
-                                    Network.addSimpleRequest(requireContext(), Network.PRODUCT_CHECK_FAVORITE_URL,id) {
+                                    Network.addSimpleRequest(
+                                        requireContext(),
+                                        TREND_TAG,
+                                        Network.PRODUCT_CHECK_FAVORITE_URL,
+                                        id
+                                    ) {
                                         isChecked = true
                                     }
                                 }

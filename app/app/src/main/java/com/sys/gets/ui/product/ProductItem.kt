@@ -9,17 +9,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
+import com.android.volley.Request
+import com.android.volley.toolbox.ImageRequest
+import com.android.volley.toolbox.JsonObjectRequest
 import com.google.android.material.circularreveal.cardview.CircularRevealCardView
 import com.sys.gets.R
 import com.sys.gets.network.Network
 
 data class ProductItem(
     val id: Int,
-    var image: Bitmap?,
+    var imageID: String,
     val title: String,
     val brand: String,
-    val price: String,
-    var favorite: Int?
+    val price: String
 )
 
 class ProductListAdapter(val list: List<ProductItem>)  :
@@ -33,32 +35,77 @@ class ProductListAdapter(val list: List<ProductItem>)  :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val data = list[position]
         (holder as? ProductListViewHolder)?.apply {
-            data.image?.run {
-                imageView.setImageBitmap(this)
-            }
+            val imageRequest = ImageRequest(
+                "${Network.PRODUCT_IMAGE_URL}/${data.imageID}",
+                { bitmap ->
+                    bitmap?.run {
+                        imageView.setImageBitmap(bitmap)
+                        // notifyItemChanged(position)
+                    }
+                },
+                0,
+                0,
+                ImageView.ScaleType.FIT_CENTER,
+                Bitmap.Config.RGB_565,
+                null
+            )
+            imageRequest.tag = PRODUCT_TAG
+            Network.getInstance(imageView.context)
+                .addToRequestQueue(imageRequest)
+
             titleView.text = data.title
             brandView.text = data.brand
             priceView.text = data.price
-            data.favorite?.run {
-                favoriteView.text = this.toString()
-            }
+
+            val favoriteRequest = JsonObjectRequest(
+                Request.Method.GET, "${Network.PRODUCT_COUNT_FAVORITE_URL}/${data.id}",
+                null,
+                { response ->
+                    if (response.getBoolean("result")) {
+                        favoriteView.text = response.getInt("favorite").toString()
+                        // notifyItemChanged(position)
+                    }
+                },
+                {
+
+                }
+            )
+            favoriteRequest.tag = PRODUCT_TAG
+            Network.getInstance(favoriteView.context).addToRequestQueue(favoriteRequest)
 
             favoriteButton.apply {
                 isChecked = false
                 setOnClickListener {
                     if (!isChecked) { // 체크 안되어있는 경우
-                        Network.addSimpleRequest(context, Network.PRODUCT_FAVORITE_URL, data.id) {
+                        Network.addSimpleRequest(
+                            context,
+                            PRODUCT_TAG,
+                            Network.PRODUCT_FAVORITE_URL,
+                            data.id
+                        ) {
                             isChecked = true
+                            favoriteView.text =
+                                ((favoriteView.text.toString().toIntOrNull() ?: 0) + 1).toString()
                         }
-                        favoriteView.text = (data.favorite ?: 0 + 1).toString()
                     } else { // 체크 되어있는 경우
-                        Network.addSimpleRequest(context, Network.PRODUCT_UNFAVORITE_URL, data.id) {
+                        Network.addSimpleRequest(
+                            context,
+                            PRODUCT_TAG,
+                            Network.PRODUCT_UNFAVORITE_URL,
+                            data.id
+                        ) {
                             isChecked = false
+                            favoriteView.text =
+                                ((favoriteView.text.toString().toIntOrNull() ?: 1) - 1).toString()
                         }
-                        favoriteView.text = (data.favorite ?: 1 - 1).toString()
                     }
                 }
-                Network.addSimpleRequest(context, Network.PRODUCT_CHECK_FAVORITE_URL, data.id) {
+                Network.addSimpleRequest(
+                    context,
+                    PRODUCT_TAG,
+                    Network.PRODUCT_CHECK_FAVORITE_URL,
+                    data.id
+                ) {
                     isChecked = true
                 }
             }

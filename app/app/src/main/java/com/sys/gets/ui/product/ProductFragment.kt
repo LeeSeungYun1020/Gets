@@ -1,28 +1,23 @@
 package com.sys.gets.ui.product
 
-import android.graphics.Bitmap
 import android.icu.text.NumberFormat
 import android.icu.util.Currency
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.android.volley.Request
-import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.JsonArrayRequest
-import com.android.volley.toolbox.JsonObjectRequest
 import com.sys.gets.R
 import com.sys.gets.databinding.FragmentProductBinding
 import com.sys.gets.network.Network
 import com.sys.gets.ui.MainViewModel
 import kotlin.math.roundToInt
 
-private const val PRODUCT_TAG = "PRODUCT"
+const val PRODUCT_TAG = "PRODUCT"
 
 class ProductFragment : Fragment() {
     private var _binding: FragmentProductBinding? = null
@@ -63,13 +58,7 @@ class ProductFragment : Fragment() {
             "${Network.PRODUCT_CATEGORY_URL}/${productViewModel.type.value}/${productViewModel.detail.value}",
             null,
             { response ->
-                Log.e(
-                    "CONSOLE",
-                    "${Network.PRODUCT_CATEGORY_URL}/${productViewModel.type.value}/${productViewModel.detail.value}\n${
-                        response.getJSONObject(0)
-                    }"
-                )
-                if (true) {//response.getJSONObject(0).getBoolean("result")) {
+                if (response.getJSONObject(0).getBoolean("result")) {
                     for (i in 0 until response.length()) {
                         val item = response.getJSONObject(i)
 
@@ -82,46 +71,12 @@ class ProductFragment : Fragment() {
 
                         productList.add(ProductItem(
                             id,
-                            null,
+                            imageID,
                             item.getString("name"),
                             item.getString("brand"),
-                            format.format(item.getInt("price")),
-                            null
+                            format.format(item.getInt("price"))
                         ))
                         binding.productRecycler.adapter?.notifyItemInserted(i)
-                        val favoriteRequest = JsonObjectRequest(
-                            Request.Method.GET, "${Network.PRODUCT_COUNT_FAVORITE_URL}/$id",
-                            null,
-                            { response ->
-                                if (response.getBoolean("result")) {
-                                    productList[i].favorite = response.getInt("favorite")
-                                    binding.productRecycler.adapter?.notifyItemChanged(i)
-                                }
-                            },
-                            {
-
-                            }
-                        )
-                        favoriteRequest.tag = PRODUCT_TAG
-                        Network.getInstance(requireContext()).addToRequestQueue(favoriteRequest)
-
-                        val imageRequest = ImageRequest(
-                            "${Network.PRODUCT_IMAGE_URL}/${imageID}",
-                            { bitmap ->
-                                bitmap?.run {
-                                    productList[i].image = bitmap
-                                    binding.productRecycler.adapter?.notifyItemChanged(i)
-                                }
-                            },
-                            0,
-                            0,
-                            ImageView.ScaleType.FIT_CENTER,
-                            Bitmap.Config.RGB_565,
-                            null
-                        )
-                        imageRequest.tag = PRODUCT_TAG
-                        Network.getInstance(requireContext())
-                            .addToRequestQueue(imageRequest)
                     }
                 }
             },
