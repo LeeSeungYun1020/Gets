@@ -66,11 +66,11 @@ function getAgeCode(text) {
 
 
 //	체형 객체, 변환함수 구현해야함
-const BodyShape = Object.freeze({
+const Fit = Object.freeze({
 	"하체통통": 1,
 })
 
-function getBodyShapeCode(text) {
+function getFitCode(text) {
 	let code = 0
 	for (const element of text.split(re)) {
 		code += BodyShape[element]
@@ -125,6 +125,6 @@ function getSeasonCode(text) {
 exports.getStyleCode = getStyleCode
 exports.getSeasonCode = getSeasonCode
 exports.getAgeCode = getAgeCode
-exports.getBodyShapeCode = getBodyShapeCode
+exports.getFitCode = getFitCode
 exports.getPriceCode = getPriceCode
 exports.getGenderCode = getGenderCode
