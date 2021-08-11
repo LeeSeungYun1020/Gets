@@ -230,6 +230,7 @@
     <string name="hint_new_password_star">*New PW</string>
     <string name="msg_password_now">Enter your current password</string>
     <string name="title_category">Category</string>
+    <string name="category_all">All</string>
     <!-- TODO: Remove or change this placeholder text -->
     <!-- Preference Titles -->
 

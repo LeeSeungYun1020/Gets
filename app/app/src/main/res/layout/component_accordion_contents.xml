@@ -91,13 +91,36 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/text7"
+        app:layout_constraintTop_toTopOf="@id/text7" />
+
+    <TextView
+        android:id="@+id/text9"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="13dp"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/text10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text7" />
+
+    <TextView
+        android:id="@+id/text10"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="19dp"
         android:textSize="12sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/text7"
-        app:layout_constraintTop_toTopOf="@id/text7"
+        app:layout_constraintStart_toEndOf="@id/text9"
+        app:layout_constraintTop_toTopOf="@id/text9"
         app:layout_goneMarginBottom="19dp" />
 
 

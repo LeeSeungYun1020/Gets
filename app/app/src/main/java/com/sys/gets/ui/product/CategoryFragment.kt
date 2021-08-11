@@ -14,6 +14,9 @@ import com.sys.gets.data.Set
 import com.sys.gets.databinding.ComponentAccordionBinding
 import com.sys.gets.databinding.FragmentCategoryBinding
 import com.sys.gets.network.Network
+import kotlin.collections.List
+import kotlin.collections.lastIndex
+import kotlin.collections.map
 
 private const val CATEGORY_TAG = "CATEGORY"
 
@@ -87,24 +90,33 @@ class CategoryFragment : Fragment() {
             }
         }
         var index = 0
+        var setAll = false
         this.contents.root.visibility = View.GONE
         this.contents.root.allViews.forEach { view ->
-            if (view is TextView && index <= contentsID.lastIndex) {
-                val cts = contentsID[index]
+            if (view is TextView) {
+                var detail = -1
+                if (!setAll) {
+                    view.setText(R.string.category_all)
+                    setAll = true
+                } else if (index <= contentsID.lastIndex) {
+                    val cts = contentsID[index]
+                    detail = cts.first
+                    view.setText(cts.second)
+                    index++
+                } else {
+                    return@forEach
+                }
                 view.visibility = View.VISIBLE
-                view.setText(cts.second)
                 view.setOnClickListener {
                     productViewModel.type.value = titleID.first
-                    productViewModel.detail.value = cts.first
+                    productViewModel.detail.value = detail
                     val transaction = parentFragmentManager.beginTransaction().apply {
                         replace(R.id.nav_host_fragment_activity_main, ProductFragment())
                         addToBackStack(null)
                     }
                     transaction.commit()
                 }
-                index++
             }
-
         }
     }
 }
