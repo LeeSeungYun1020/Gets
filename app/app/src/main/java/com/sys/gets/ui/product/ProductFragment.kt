@@ -16,6 +16,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
+import com.sys.gets.R
 import com.sys.gets.databinding.FragmentProductBinding
 import com.sys.gets.network.Network
 
@@ -36,14 +37,26 @@ class ProductFragment : Fragment() {
         val root: View = binding.root
         productViewModel = ViewModelProvider(requireActivity()).get(ProductViewModel::class.java)
 
-
+        binding.categoryButton.setOnClickListener {
+            val transaction = parentFragmentManager.beginTransaction().apply {
+                replace(R.id.nav_host_fragment_activity_main, CategoryFragment())
+                addToBackStack(null)
+            }
+            transaction.commit()
+        }
         binding.productRecycler.layoutManager = GridLayoutManager(context, 2)
         binding.productRecycler.adapter = ProductListAdapter(productList)
         val productRequest = JsonArrayRequest(
-            Request.Method.GET, "${Network.PRODUCT_CATEGORY_URL}/1/2",
+            Request.Method.GET,
+            "${Network.PRODUCT_CATEGORY_URL}/${productViewModel.type.value}/${productViewModel.detail.value}",
             null,
             { response ->
-                Log.e("CONSOLE", "${response.getJSONObject(0)}")
+                Log.e(
+                    "CONSOLE",
+                    "${Network.PRODUCT_CATEGORY_URL}/${productViewModel.type.value}/${productViewModel.detail.value}\n${
+                        response.getJSONObject(0)
+                    }"
+                )
                 if (true) {//response.getJSONObject(0).getBoolean("result")) {
                     for (i in 0 until response.length()) {
                         val item = response.getJSONObject(i)
@@ -104,6 +117,7 @@ class ProductFragment : Fragment() {
 
             }
         )
+        productRequest.tag = PRODUCT_TAG
         Network.getInstance(requireContext()).addToRequestQueue(productRequest)
 
 
