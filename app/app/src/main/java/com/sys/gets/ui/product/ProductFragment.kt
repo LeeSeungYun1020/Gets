@@ -1,7 +1,5 @@
 package com.sys.gets.ui.product
 
-import android.icu.text.NumberFormat
-import android.icu.util.Currency
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -65,17 +63,13 @@ class ProductFragment : Fragment() {
                         val id = item.getInt("id")
                         val imageID = item.getString("image1ID")
 
-                        val format = NumberFormat.getCurrencyInstance()
-                        format.maximumFractionDigits = 0
-                        format.currency = Currency.getInstance("KOR")
-
                         productList.add(
                             CardItem(
                                 id,
                                 imageID,
                                 item.getString("name"),
                                 item.getString("brand"),
-                                format.format(item.getInt("price"))
+                                item.getInt("price")
                             )
                         )
                         binding.productRecycler.adapter?.notifyItemInserted(i)

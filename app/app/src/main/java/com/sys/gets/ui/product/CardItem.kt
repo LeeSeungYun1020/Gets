@@ -1,5 +1,6 @@
 package com.sys.gets.ui.product
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Rect
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.android.volley.Request
@@ -14,14 +16,16 @@ import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.google.android.material.circularreveal.cardview.CircularRevealCardView
 import com.sys.gets.R
+import com.sys.gets.data.Format
 import com.sys.gets.network.Network
+import com.sys.gets.ui.coordination.CoordinationActivity
 
 data class CardItem(
     val id: Int,
     var imageID: String,
     val title: String,
     val brand: String,
-    val price: String
+    val price: Int
 )
 
 class CardListAdapter(val tag: String, val list: List<CardItem>) :
@@ -62,6 +66,18 @@ class CardListAdapter(val tag: String, val list: List<CardItem>) :
         val data = list[position]
         (holder as? CardListViewHolder)?.apply {
 
+            if (tag == PRODUCT_TAG) {
+
+            } else {
+                root.setOnClickListener {
+                    Intent(it.context, CoordinationActivity::class.java).apply {
+                        putExtra(CoordinationActivity.EXTRA_ID, data.id)
+                        it.context.startActivity(this)
+                    }
+                }
+            }
+
+
             val imageRequest = ImageRequest(
                 "$imageURL/${data.imageID}",
                 { bitmap ->
@@ -83,7 +99,7 @@ class CardListAdapter(val tag: String, val list: List<CardItem>) :
 
             titleView.text = data.title
             brandView.text = data.brand
-            priceView.text = data.price.replace("KOR", "₩")
+            priceView.text = Format.currency(data.price)
 
             val favoriteRequest = JsonObjectRequest(
                 Request.Method.GET, "$countFavoriteURL/${data.id}",
@@ -145,6 +161,7 @@ class CardListAdapter(val tag: String, val list: List<CardItem>) :
 }
 
 class CardListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    val root: ConstraintLayout = view.findViewById(R.id.card_root)
     val imageView: ImageView = view.findViewById(R.id.image)
     val titleView: TextView = view.findViewById(R.id.card_title)
     val brandView: TextView = view.findViewById(R.id.card_brand)

@@ -1,7 +1,5 @@
 package com.sys.gets.ui.closet
 
-import android.icu.text.NumberFormat
-import android.icu.util.Currency
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -66,17 +64,13 @@ class ClosetFragment : Fragment() {
                         val id = item.getInt("id")
                         val imageID = item.getString("imageID")
 
-                        val format = NumberFormat.getCurrencyInstance()
-                        format.maximumFractionDigits = 0
-                        format.currency = Currency.getInstance("KOR")
-
                         itemList.add(
                             CardItem(
                                 id,
                                 imageID,
                                 item.getString("title"),
                                 "",
-                                format.format(item.getInt("price"))
+                                item.getInt("price")
                             )
                         )
                         binding.closetRecycler.adapter?.notifyItemInserted(i)
@@ -112,17 +106,13 @@ class ClosetFragment : Fragment() {
                                         val id = item.getInt("id")
                                         val imageID = item.getString("imageID")
 
-                                        val format = NumberFormat.getCurrencyInstance()
-                                        format.maximumFractionDigits = 0
-                                        format.currency = Currency.getInstance("KOR")
-
                                         itemList.add(
                                             CardItem(
                                                 id,
                                                 imageID,
                                                 item.getString("title"),
                                                 "",
-                                                format.format(item.getInt("price"))
+                                                item.getInt("price")
                                             )
                                         )
                                         binding.closetRecycler.adapter?.notifyItemInserted(i)
@@ -152,26 +142,20 @@ class ClosetFragment : Fragment() {
                                         val id = item.getInt("id")
                                         val imageID = item.getString("image1ID")
 
-                                        val format = NumberFormat.getCurrencyInstance()
-                                        format.maximumFractionDigits = 0
-                                        format.currency = Currency.getInstance("KOR")
-
                                         itemList.add(
                                             CardItem(
                                                 id,
                                                 imageID,
                                                 item.getString("name"),
                                                 item.getString("brand"),
-                                                format.format(item.getInt("price"))
+                                                item.getInt("price")
                                             )
                                         )
                                         binding.closetRecycler.adapter?.notifyItemInserted(i)
                                     }
                                 }
                             },
-                            { error ->
-
-                            }
+                            null
                         )
                         productRequest.tag = PRODUCT_TAG
                         Network.getInstance(requireContext()).addToRequestQueue(productRequest)
