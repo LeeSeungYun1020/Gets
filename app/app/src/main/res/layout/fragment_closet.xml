@@ -37,5 +37,6 @@
         android:layout_marginHorizontal="24dp"
         android:scrollbars="none"
         android:overScrollMode="never"
-        />
+        android:clipToPadding="false"
+        android:paddingBottom="60dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
