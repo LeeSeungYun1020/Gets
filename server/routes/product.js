@@ -158,13 +158,7 @@ module.exports = function (passport) {
 // 단일 상품 조회
 	router.get("/:id", (req, res) => {
 		const id = req.params.id
-		connection.query(`
-                    select product.*, COUNT(favoriteProduct.productID) as favorite
-                    from product,
-                         favoriteProduct
-                    where product.id = favoriteProduct.productID
-                      and product.id = ?;
-			`,
+		connection.query(`select * from product where product.id = ?;`,
 			[id],
 			(err, result) => {
 				if (err || result.length === 0)
