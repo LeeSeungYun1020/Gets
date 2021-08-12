@@ -26,8 +26,7 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/list_item2"
-        app:layout_constraintTop_toBottomOf="@id/list_title"
-        />
+        app:layout_constraintTop_toBottomOf="@id/list_title" />
 
     <include
         android:id="@+id/list_item2"
@@ -51,8 +50,7 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/list_item4"
-        app:layout_constraintTop_toBottomOf="@id/list_item1"
-        />
+        app:layout_constraintTop_toBottomOf="@id/list_item1" />
 
     <include
         android:id="@+id/list_item4"
@@ -76,8 +74,7 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/list_item6"
-        app:layout_constraintTop_toBottomOf="@id/list_item4"
-        />
+        app:layout_constraintTop_toBottomOf="@id/list_item4" />
 
     <include
         android:id="@+id/list_item6"

@@ -59,6 +59,11 @@ class CategoryFragment : Fragment() {
             Bag.values().map { it.code to it.resID })
         binding.accordionHat.setText(Category.HAT.code to Category.HAT.resID,
             Hat.values().map { it.code to it.resID })
+
+        binding.closeButton.setOnClickListener {
+            closeCategory()
+        }
+
         return root
     }
 
@@ -110,13 +115,17 @@ class CategoryFragment : Fragment() {
                 view.setOnClickListener {
                     productViewModel.type.value = titleID.first
                     productViewModel.detail.value = detail
-                    val transaction = parentFragmentManager.beginTransaction().apply {
-                        replace(R.id.nav_host_fragment_activity_main, ProductFragment())
-                        addToBackStack(null)
-                    }
-                    transaction.commit()
+                    closeCategory()
                 }
             }
         }
+    }
+
+    private fun closeCategory() {
+        val transaction = parentFragmentManager.beginTransaction().apply {
+            replace(R.id.nav_host_fragment_activity_main, ProductFragment())
+            addToBackStack(null)
+        }
+        transaction.commit()
     }
 }

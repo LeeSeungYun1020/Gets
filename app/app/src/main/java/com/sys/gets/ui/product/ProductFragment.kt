@@ -24,7 +24,7 @@ class ProductFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var productViewModel: ProductViewModel
     private lateinit var mainViewModel: MainViewModel
-    private val productList = mutableListOf<ProductItem>()
+    private val productList = mutableListOf<CardItem>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,7 +52,7 @@ class ProductFragment : Fragment() {
         binding.productRecycler.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             mainViewModel.navigationVisibility.value = scrollY <= oldScrollY
         }
-        binding.productRecycler.adapter = ProductListAdapter(productList)
+        binding.productRecycler.adapter = CardListAdapter(PRODUCT_TAG, productList)
         val productRequest = JsonArrayRequest(
             Request.Method.GET,
             "${Network.PRODUCT_CATEGORY_URL}/${productViewModel.type.value}/${productViewModel.detail.value}",
@@ -69,13 +69,15 @@ class ProductFragment : Fragment() {
                         format.maximumFractionDigits = 0
                         format.currency = Currency.getInstance("KOR")
 
-                        productList.add(ProductItem(
-                            id,
-                            imageID,
-                            item.getString("name"),
-                            item.getString("brand"),
-                            format.format(item.getInt("price"))
-                        ))
+                        productList.add(
+                            CardItem(
+                                id,
+                                imageID,
+                                item.getString("name"),
+                                item.getString("brand"),
+                                format.format(item.getInt("price"))
+                            )
+                        )
                         binding.productRecycler.adapter?.notifyItemInserted(i)
                     }
                 }
