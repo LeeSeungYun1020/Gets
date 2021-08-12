@@ -24,29 +24,29 @@ data class CardItem(
     val price: String
 )
 
-class CardListAdapter(val tag: String, val list: List<CardItem>)  :
+class CardListAdapter(val tag: String, val list: List<CardItem>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val imageURL = when(tag) {
+    private val imageURL = when (tag) {
         PRODUCT_TAG -> Network.PRODUCT_IMAGE_URL
         else -> Network.COORDINATION_IMAGE_URL
     }
 
-    private val countFavoriteURL = when(tag) {
+    private val countFavoriteURL = when (tag) {
         PRODUCT_TAG -> Network.PRODUCT_COUNT_FAVORITE_URL
         else -> Network.COORDINATION_COUNT_FAVORITE_URL
     }
 
-    private val checkFavoriteURL = when(tag) {
+    private val checkFavoriteURL = when (tag) {
         PRODUCT_TAG -> Network.PRODUCT_CHECK_FAVORITE_URL
         else -> Network.COORDINATION_CHECK_FAVORITE_URL
     }
 
-    private val favoriteURL = when(tag) {
+    private val favoriteURL = when (tag) {
         PRODUCT_TAG -> Network.PRODUCT_FAVORITE_URL
         else -> Network.COORDINATION_FAVORITE_URL
     }
 
-    private val unfavoriteURL = when(tag) {
+    private val unfavoriteURL = when (tag) {
         PRODUCT_TAG -> Network.PRODUCT_UNFAVORITE_URL
         else -> Network.COORDINATION_UNFAVORITE_URL
     }

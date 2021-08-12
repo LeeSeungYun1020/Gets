@@ -315,7 +315,8 @@ class HomeFragment : Fragment() {
                                     }
                                 )
                                 favoriteRequest.tag = TREND_TAG
-                                Network.getInstance(requireContext()).addToRequestQueue(favoriteRequest)
+                                Network.getInstance(requireContext())
+                                    .addToRequestQueue(favoriteRequest)
 
                                 val imageRequest = ImageRequest(
                                     "${Network.PRODUCT_IMAGE_URL}/${imageID}",

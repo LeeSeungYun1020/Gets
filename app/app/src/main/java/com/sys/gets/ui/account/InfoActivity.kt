@@ -1,8 +1,6 @@
 package com.sys.gets.ui.account
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
@@ -18,16 +16,15 @@ import com.sys.gets.data.Size
 import com.sys.gets.data.Style
 import com.sys.gets.databinding.ActivityInfoBinding
 import com.sys.gets.network.Network
-import com.sys.gets.sign.LoginActivity
 import com.sys.gets.ui.setWhiteCenterTitle
 import org.json.JSONObject
-import java.lang.Exception
 
 class InfoActivity : AppCompatActivity() {
     companion object {
         const val INFO = "INFO"
         const val INPUT = "INPUT"
     }
+
     private lateinit var binding: ActivityInfoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,52 +68,66 @@ class InfoActivity : AppCompatActivity() {
     }
 
     private fun initData() {
-        val dataRequest = JsonObjectRequest(Request.Method.GET, Network.SIGN_USER_URL, null, {data ->
-            try {
-                val gender = data.getInt("gender")
-                val height = data.getInt("height")
-                val weight = data.getInt("weight")
-                val topSize= data.getInt("topSize")
-                val bottomSize= data.getInt("bottomSize")
-                val shoulder= data.getInt("shoulder")
-                val waist= data.getInt("waist")
-                val hip= data.getInt("hip")
-                val thigh= data.getInt("thigh")
-                val style= data.getInt("style")
+        val dataRequest =
+            JsonObjectRequest(Request.Method.GET, Network.SIGN_USER_URL, null, { data ->
+                try {
+                    val gender = data.getInt("gender")
+                    val height = data.getInt("height")
+                    val weight = data.getInt("weight")
+                    val topSize = data.getInt("topSize")
+                    val bottomSize = data.getInt("bottomSize")
+                    val shoulder = data.getInt("shoulder")
+                    val waist = data.getInt("waist")
+                    val hip = data.getInt("hip")
+                    val thigh = data.getInt("thigh")
+                    val style = data.getInt("style")
 
-                when(gender) {
-                    Gender.MALE.code -> binding.genderButtonGroup.check(binding.genderMaleButton.id)
-                    Gender.FEMALE.code -> binding.genderButtonGroup.check(binding.genderFemaleButton.id)
+                    when (gender) {
+                        Gender.MALE.code -> binding.genderButtonGroup.check(binding.genderMaleButton.id)
+                        Gender.FEMALE.code -> binding.genderButtonGroup.check(binding.genderFemaleButton.id)
+                    }
+
+                    binding.heightTextfield.editText?.setText(height.toString())
+                    binding.weightTextfield.editText?.setText(weight.toString())
+
+                    binding.topSizeTextfield.editText?.setText(
+                        Size.values().filter { it.code == topSize }.map { it.resID }[0]
+                    )
+                    binding.bottomSizeTextfield.editText?.setText(
+                        Size.values().filter { it.code == bottomSize }.map { it.resID }[0]
+                    )
+                    binding.shoulderTextfield.editText?.setText(
+                        BodyShape.values().filter { it.code == shoulder }.map { it.resID }[0]
+                    )
+                    binding.waistTextfield.editText?.setText(
+                        BodyShape.values().filter { it.code == waist }.map { it.resID }[0]
+                    )
+                    binding.hipTextfield.editText?.setText(
+                        BodyShape.values().filter { it.code == hip }.map { it.resID }[0]
+                    )
+                    binding.thighTextfield.editText?.setText(
+                        BodyShape.values().filter { it.code == thigh }.map { it.resID }[0]
+                    )
+
+                    binding.styleList.run {
+                        minimalChip.isChecked = style.and(Style.MINIMAL.code) != 0
+                        casualChip.isChecked = style.and(Style.CASUAL.code) != 0
+                        campusChip.isChecked = style.and(Style.CAMPUS.code) != 0
+                        streetChip.isChecked = style.and(Style.STREET.code) != 0
+                        rockChicChip.isChecked = style.and(Style.ROCK_CHIC.code) != 0
+                        amekajiChip.isChecked = style.and(Style.AMEKAJI.code) != 0
+                        cityBoyChip.isChecked = style.and(Style.CITY_BOY.code) != 0
+                        officeChip.isChecked = style.and(Style.OFFICE.code) != 0
+                        sexyGlamChip.isChecked = style.and(Style.SEXY_GLAM.code) != 0
+                        feminineChip.isChecked = style.and(Style.FEMININE.code) != 0
+                        lovelyChip.isChecked = style.and(Style.LOVELY.code) != 0
+                    }
+                } catch (e: Exception) {
                 }
 
-                binding.heightTextfield.editText?.setText(height.toString())
-                binding.weightTextfield.editText?.setText(weight.toString())
+            }, {
 
-                binding.topSizeTextfield.editText?.setText(Size.values().filter { it.code == topSize }.map { it.resID }[0])
-                binding.bottomSizeTextfield.editText?.setText(Size.values().filter { it.code == bottomSize }.map { it.resID }[0])
-                binding.shoulderTextfield.editText?.setText(BodyShape.values().filter { it.code == shoulder }.map { it.resID }[0])
-                binding.waistTextfield.editText?.setText(BodyShape.values().filter { it.code == waist }.map { it.resID }[0])
-                binding.hipTextfield.editText?.setText(BodyShape.values().filter { it.code == hip }.map { it.resID }[0])
-                binding.thighTextfield.editText?.setText(BodyShape.values().filter { it.code == thigh }.map { it.resID }[0])
-
-                binding.styleList.run {
-                    minimalChip.isChecked = style.and(Style.MINIMAL.code) != 0
-                    casualChip.isChecked = style.and(Style.CASUAL.code) != 0
-                    campusChip.isChecked = style.and(Style.CAMPUS.code) != 0
-                    streetChip.isChecked = style.and(Style.STREET.code) != 0
-                    rockChicChip.isChecked = style.and(Style.ROCK_CHIC.code) != 0
-                    amekajiChip.isChecked = style.and(Style.AMEKAJI.code) != 0
-                    cityBoyChip.isChecked = style.and(Style.CITY_BOY.code) != 0
-                    officeChip.isChecked = style.and(Style.OFFICE.code) != 0
-                    sexyGlamChip.isChecked = style.and(Style.SEXY_GLAM.code) != 0
-                    feminineChip.isChecked = style.and(Style.FEMININE.code) != 0
-                    lovelyChip.isChecked = style.and(Style.LOVELY.code) != 0
-                }
-            } catch (e: Exception) {}
-
-        }, {
-
-        })
+            })
         Network.getInstance(this).addToRequestQueue(dataRequest)
     }
 
@@ -144,7 +155,7 @@ class InfoActivity : AppCompatActivity() {
             0
         )
 
-        val gender = when(binding.genderButtonGroup.checkedButtonId) {
+        val gender = when (binding.genderButtonGroup.checkedButtonId) {
             -1 -> 0
             binding.genderMaleButton.id -> 1
             else -> 2
@@ -182,7 +193,8 @@ class InfoActivity : AppCompatActivity() {
 
         if (gender != 0 && height.isNotBlank() && weight.isNotBlank() &&
             topSize != 0 && bottomSize != 0 && style != 0 &&
-            shoulder != 0 && waist != 0 && hip != 0 && thigh != 0) {
+            shoulder != 0 && waist != 0 && hip != 0 && thigh != 0
+        ) {
             val jsonObjectRequest = JsonObjectRequest(
                 Request.Method.POST, Network.SIGN_UP_INFO_URL,
                 JSONObject().apply {

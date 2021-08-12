@@ -69,13 +69,15 @@ class ProductFragment : Fragment() {
                         format.maximumFractionDigits = 0
                         format.currency = Currency.getInstance("KOR")
 
-                        productList.add(CardItem(
-                            id,
-                            imageID,
-                            item.getString("name"),
-                            item.getString("brand"),
-                            format.format(item.getInt("price"))
-                        ))
+                        productList.add(
+                            CardItem(
+                                id,
+                                imageID,
+                                item.getString("name"),
+                                item.getString("brand"),
+                                format.format(item.getInt("price"))
+                            )
+                        )
                         binding.productRecycler.adapter?.notifyItemInserted(i)
                     }
                 }

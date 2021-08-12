@@ -12,7 +12,7 @@
         layout="@layout/component_card_image"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/card_brand"
@@ -21,8 +21,7 @@
         android:layout_marginTop="4dp"
         android:textSize="8sp"
         app:layout_constraintTop_toBottomOf="@id/card_image"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/card_title"
@@ -32,8 +31,7 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/card_brand"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/card_price"
@@ -62,5 +60,5 @@
         android:hint="@string/hint_favorite"
         android:textSize="8sp"
         app:layout_constraintTop_toBottomOf="@id/card_title"
-            app:layout_constraintStart_toEndOf="@id/card_favorite_icon"/>
+        app:layout_constraintStart_toEndOf="@id/card_favorite_icon" />
 </androidx.constraintlayout.widget.ConstraintLayout>

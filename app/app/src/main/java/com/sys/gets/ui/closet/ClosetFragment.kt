@@ -58,7 +58,7 @@ class ClosetFragment : Fragment() {
             Network.CLOSET_COORDINATION_URL,
             null,
             { response ->
-                Log.e("CONSOLE", "$response", )
+                Log.e("CONSOLE", "$response")
                 if (response.getJSONObject(0).getBoolean("result")) {
                     for (i in 0 until response.length()) {
                         val item = response.getJSONObject(i)
@@ -86,7 +86,7 @@ class ClosetFragment : Fragment() {
                 }
             },
             { error ->
-                Log.e("CONSOLE", "$error", )
+                Log.e("CONSOLE", "$error")
             }
         )
         coordinationRequest.tag = CLOSET_TAG
@@ -96,7 +96,7 @@ class ClosetFragment : Fragment() {
 
             override fun onTabSelected(tab: TabLayout.Tab) {
                 itemList.clear()
-                when(tab.text.toString()) {
+                when (tab.text.toString()) {
                     getString(R.string.title_coordination) -> {
                         binding.closetRecycler.adapter = coordinationAdapter
                         Network.getInstance(requireContext()).requestQueue.cancelAll(PRODUCT_TAG)
