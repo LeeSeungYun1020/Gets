@@ -20,6 +20,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+        
+        <ImageView
+            android:id="@+id/close_button"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            app:layout_constraintTop_toTopOf="@id/category_text"
+            app:layout_constraintBottom_toBottomOf="@id/category_text"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="27dp"
+            android:src="@drawable/ic_back_24"
+            />
 
         <include
             android:id="@+id/accordion_outer"
