@@ -36,5 +36,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/product_text" />
+        app:layout_constraintTop_toBottomOf="@id/product_text"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
