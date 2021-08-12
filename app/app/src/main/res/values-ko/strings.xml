@@ -220,4 +220,5 @@
     <string name="msg_password_now">현재 비밀번호 입력</string>
     <string name="title_category">카테고리</string>
     <string name="category_all">전체</string>
+    <string name="title_coordination">코디</string>
 </resources>

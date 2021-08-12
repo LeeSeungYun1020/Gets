@@ -16,7 +16,7 @@ import com.google.android.material.circularreveal.cardview.CircularRevealCardVie
 import com.sys.gets.R
 import com.sys.gets.network.Network
 
-data class ProductItem(
+data class CardItem(
     val id: Int,
     var imageID: String,
     val title: String,
@@ -24,19 +24,46 @@ data class ProductItem(
     val price: String
 )
 
-class ProductListAdapter(val list: List<ProductItem>)  :
+class CardListAdapter(val tag: String, val list: List<CardItem>)  :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private val imageURL = when(tag) {
+        PRODUCT_TAG -> Network.PRODUCT_IMAGE_URL
+        else -> Network.COORDINATION_IMAGE_URL
+    }
+
+    private val countFavoriteURL = when(tag) {
+        PRODUCT_TAG -> Network.PRODUCT_COUNT_FAVORITE_URL
+        else -> Network.COORDINATION_COUNT_FAVORITE_URL
+    }
+
+    private val checkFavoriteURL = when(tag) {
+        PRODUCT_TAG -> Network.PRODUCT_CHECK_FAVORITE_URL
+        else -> Network.COORDINATION_CHECK_FAVORITE_URL
+    }
+
+    private val favoriteURL = when(tag) {
+        PRODUCT_TAG -> Network.PRODUCT_FAVORITE_URL
+        else -> Network.COORDINATION_FAVORITE_URL
+    }
+
+    private val unfavoriteURL = when(tag) {
+        PRODUCT_TAG -> Network.PRODUCT_UNFAVORITE_URL
+        else -> Network.COORDINATION_UNFAVORITE_URL
+    }
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ProductListViewHolder(
+        CardListViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.component_card_title, parent, false)
         )
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val data = list[position]
-        (holder as? ProductListViewHolder)?.apply {
+        (holder as? CardListViewHolder)?.apply {
+
             val imageRequest = ImageRequest(
-                "${Network.PRODUCT_IMAGE_URL}/${data.imageID}",
+                "$imageURL/${data.imageID}",
                 { bitmap ->
                     bitmap?.run {
                         imageView.setImageBitmap(bitmap)
@@ -49,7 +76,8 @@ class ProductListAdapter(val list: List<ProductItem>)  :
                 Bitmap.Config.RGB_565,
                 null
             )
-            imageRequest.tag = PRODUCT_TAG
+
+            imageRequest.tag = tag
             Network.getInstance(imageView.context)
                 .addToRequestQueue(imageRequest)
 
@@ -58,7 +86,7 @@ class ProductListAdapter(val list: List<ProductItem>)  :
             priceView.text = data.price
 
             val favoriteRequest = JsonObjectRequest(
-                Request.Method.GET, "${Network.PRODUCT_COUNT_FAVORITE_URL}/${data.id}",
+                Request.Method.GET, "$countFavoriteURL/${data.id}",
                 null,
                 { response ->
                     if (response.getBoolean("result")) {
@@ -70,7 +98,7 @@ class ProductListAdapter(val list: List<ProductItem>)  :
 
                 }
             )
-            favoriteRequest.tag = PRODUCT_TAG
+            favoriteRequest.tag = tag
             Network.getInstance(favoriteView.context).addToRequestQueue(favoriteRequest)
 
             favoriteButton.apply {
@@ -79,8 +107,8 @@ class ProductListAdapter(val list: List<ProductItem>)  :
                     if (!isChecked) { // 체크 안되어있는 경우
                         Network.addSimpleRequest(
                             context,
-                            PRODUCT_TAG,
-                            Network.PRODUCT_FAVORITE_URL,
+                            this@CardListAdapter.tag,
+                            favoriteURL,
                             data.id
                         ) {
                             isChecked = true
@@ -90,8 +118,8 @@ class ProductListAdapter(val list: List<ProductItem>)  :
                     } else { // 체크 되어있는 경우
                         Network.addSimpleRequest(
                             context,
-                            PRODUCT_TAG,
-                            Network.PRODUCT_UNFAVORITE_URL,
+                            this@CardListAdapter.tag,
+                            unfavoriteURL,
                             data.id
                         ) {
                             isChecked = false
@@ -102,8 +130,8 @@ class ProductListAdapter(val list: List<ProductItem>)  :
                 }
                 Network.addSimpleRequest(
                     context,
-                    PRODUCT_TAG,
-                    Network.PRODUCT_CHECK_FAVORITE_URL,
+                    this@CardListAdapter.tag,
+                    checkFavoriteURL,
                     data.id
                 ) {
                     isChecked = true
@@ -116,7 +144,7 @@ class ProductListAdapter(val list: List<ProductItem>)  :
 
 }
 
-class ProductListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class CardListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val imageView: ImageView = view.findViewById(R.id.image)
     val titleView: TextView = view.findViewById(R.id.card_title)
     val brandView: TextView = view.findViewById(R.id.card_brand)

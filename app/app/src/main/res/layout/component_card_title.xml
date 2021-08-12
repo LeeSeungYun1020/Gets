@@ -20,7 +20,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:textSize="8sp"
-        android:hint="@string/hint_title"
         app:layout_constraintTop_toBottomOf="@id/card_image"
         app:layout_constraintStart_toStartOf="parent"
         />
