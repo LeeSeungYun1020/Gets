@@ -83,7 +83,7 @@ class CardListAdapter(val tag: String, val list: List<CardItem>) :
 
             titleView.text = data.title
             brandView.text = data.brand
-            priceView.text = data.price
+            priceView.text = data.price.replace("KOR", "₩")
 
             val favoriteRequest = JsonObjectRequest(
                 Request.Method.GET, "$countFavoriteURL/${data.id}",
