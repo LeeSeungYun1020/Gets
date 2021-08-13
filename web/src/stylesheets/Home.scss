@@ -493,3 +493,18 @@ h1 {
   color: #828282;
   cursor:pointer;
 }
+
+.coordi_favorit {
+  display:flex;
+  flex-direction: row-reverse;
+  padding-top: 15px;
+}
+
+.home_getstyle .MuiCheckbox-colorSecondary.Mui-checked {
+  color: #ff0000;
+}
+
+.home_getstyle .MuiFormControlLabel-root {
+  background-color: #ffffff;
+  border-radius: 50%;
+}

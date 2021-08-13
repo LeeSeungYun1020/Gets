@@ -20,7 +20,7 @@ import FindPwEmail from "./components/login/FindPwEmail";
 import Register from "./components/login/Register";
 import NotFound from "./components/NotFound";
 import Product from "./components/product/Product";
-
+import Closet from "./components/closet/Closet";
 export default function App() {
     return (
         <Router>
@@ -31,7 +31,10 @@ export default function App() {
                         <Home />
                     </Route>
                     <Route path={link.closet}>
-                        <h1>구현 예정 - 옷장</h1>
+                        <Closet />
+                    </Route>
+                    <Route path={link.defaultcloset}>
+                        <Closet />
                     </Route>
                     <Route path={link.product}>
                         <Product />

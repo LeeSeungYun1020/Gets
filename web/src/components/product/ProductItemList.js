@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import ProductItem from "./ProductItem";
 import axios from "axios";
 import {useTranslation} from "react-i18next";
 import ProductCard from "./ProductCard";

@@ -184,5 +184,9 @@
   "beanie": "beanie",
   "bucket_hat": "bucket hat",
   "beret": "beret",
-  "look_all" : "all"
+  "look_all" : "all",
+  "delete": "delete",
+  "modify": "modify",
+  "coordination": "COORDINATION",
+  "product": "PRODUCT"
 }
