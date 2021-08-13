@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -19,11 +19,21 @@ const useStyles = makeStyles({
     },
 });
 
-const ClosetCard = ({item}) => {
+const ClosetCard = ({item, onRemove, category}) => {
+
     const classes = useStyles();
     const {t, i18n} = useTranslation();
     const [anchorEl, setAnchorEl] = useState(null);
     const {id, price} = item
+    const [imageId, setImageId] = useState(`${id}`);
+    useEffect(()=> {
+        if (category === 'product') {
+            setImageId(`${id}_1`)
+        }
+        else {
+            setImageId(`${id}`)
+        }
+    })
     const handleClick = e => {
         setAnchorEl(e.currentTarget);
     }
@@ -31,10 +41,12 @@ const ClosetCard = ({item}) => {
         setAnchorEl(null);
     }
     const handleDeleteClick = () => {
-        axios.get(`http://localhost:3000/product/unfavorite/${id}`, {withCredentials: true})
+        axios.get(`http://localhost:3000/${category}/unfavorite/${id}`, {withCredentials: true})
             .then(response => {
                 console.log(response.data)
                 setAnchorEl(null);
+                {onRemove(id)}
+                console.log(id)
             })
             .catch(function (error) {
                 console.log(error);
@@ -46,7 +58,7 @@ const ClosetCard = ({item}) => {
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
-                        image={`http://localhost:3000/coordination/image/${id}`}
+                        image={`http://localhost:3000/${category}/image/${imageId}`}
                         >
                         <IconButton aria-label="settings" style = {{ display: "flex", marginLeft: "auto"}} onClick = {handleClick}>
                             <MoreVertIcon />

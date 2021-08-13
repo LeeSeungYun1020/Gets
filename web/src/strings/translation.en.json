@@ -186,5 +186,7 @@
   "beret": "beret",
   "look_all" : "all",
   "delete": "delete",
-  "modify": "modify"
+  "modify": "modify",
+  "coordination": "COORDINATION",
+  "product": "PRODUCT"
 }

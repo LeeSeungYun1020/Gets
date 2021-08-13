@@ -1,13 +1,18 @@
 import '../../stylesheets/Closet.scss';
 import React from "react";
 import ClosetList from "./ClosetList";
+import ClosetCategory from "./ClosetCategory";
+import {withRouter} from "react-router-dom";
 
-const Closet = () => {
+const Closet = ({match}) => {
+    console.log(match.params)
+    const category = match.params.category || 'coordination'
     return (
         <div className="closet">
-            <ClosetList />
+            <ClosetCategory category={category}/>
+            <ClosetList category={category} />
         </div>
     )
 }
 
-export default Closet;
+export default withRouter(Closet);

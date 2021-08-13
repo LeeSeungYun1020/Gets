@@ -33,6 +33,9 @@ export default function App() {
                     <Route path={link.closet}>
                         <Closet />
                     </Route>
+                    <Route path={link.defaultcloset}>
+                        <Closet />
+                    </Route>
                     <Route path={link.product}>
                         <Product />
                     </Route>

@@ -1,6 +1,6 @@
-.closet_card .MuiPaper-elevation1 {
-  box-shadow: none;
-}
+//.closet_card .MuiPaper-elevation1 {
+//  box-shadow: none;
+//}
 
 .closet_card svg {
   width: 35px;
@@ -9,4 +9,35 @@
 
 .closet_card h2 {
   margin: 0;
+}
+
+#closet_category {
+  display:flex;
+  max-width: 1320px;
+  margin: auto;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+#closet_category h1 {
+  color: #D4D3D3;
+  width:350px;
+  border-bottom : 6px solid #D4D3D3;
+}
+#closet_category .active h1 {
+  color: #7eb693;
+  width:350px;
+  border-bottom : 6px solid #7eb693;
+}
+
+.closet_card_list {
+  display: flex;
+  max-width: 1320px;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-bottom: 60px;
+}
+
+.closet_card {
+  margin: 20px 10px 5px 10px;
 }

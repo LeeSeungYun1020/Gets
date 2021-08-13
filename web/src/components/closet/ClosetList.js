@@ -1,27 +1,33 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import {useTranslation} from "react-i18next";
 import ClosetCard from "./ClosetCard";
 
-const ClosetList = () => {
+const ClosetList = ({category}) => {
     const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(false);
     const [t, i18n] = useTranslation()
+    const onRemove = useCallback(
+        id => {
+            setItem(item.filter(item => item.id !== id)) // 선택된 id 거름
+
+        },[item]
+    )
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await axios.get('http://localhost:3000/closet/coordination',{ withCredentials: true })
+                const response = await axios.get(`http://localhost:3000/closet/${category}`,{ withCredentials: true })
                 ;
-                console.log(response)
                 setItem(response.data);
+                console.log(response.data);
             } catch(e) {
                 console.log(e)
             }
             setLoading(false);
         }
         fetchData();
-    }, []);
+    },[category]);
 
     // 대기 중일 때
     if(loading) {
@@ -32,9 +38,10 @@ const ClosetList = () => {
         return null;
     }
     return (
-        <div className = "product_card_list">
+        <div className = "closet_card_list">
+            {console.log(item)}
             {item.map(item => (
-                <ClosetCard item = {item} />
+                <ClosetCard item={item} onRemove={onRemove} category={category} />
             ))}
         </div>
     )
