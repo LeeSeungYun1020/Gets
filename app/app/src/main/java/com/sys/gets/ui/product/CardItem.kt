@@ -18,6 +18,7 @@ import com.google.android.material.circularreveal.cardview.CircularRevealCardVie
 import com.sys.gets.R
 import com.sys.gets.data.Format
 import com.sys.gets.network.Network
+import com.sys.gets.ui.closet.CLOSET_TAG
 import com.sys.gets.ui.coordination.CoordinationActivity
 
 data class CardItem(
@@ -28,29 +29,29 @@ data class CardItem(
     val price: Int
 )
 
-class CardListAdapter(val tag: String, val list: List<CardItem>) :
+class CardListAdapter(val type: String, val tag: String, val list: MutableList<CardItem>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val imageURL = when (tag) {
+    private val imageURL = when (type) {
         PRODUCT_TAG -> Network.PRODUCT_IMAGE_URL
         else -> Network.COORDINATION_IMAGE_URL
     }
 
-    private val countFavoriteURL = when (tag) {
+    private val countFavoriteURL = when (type) {
         PRODUCT_TAG -> Network.PRODUCT_COUNT_FAVORITE_URL
         else -> Network.COORDINATION_COUNT_FAVORITE_URL
     }
 
-    private val checkFavoriteURL = when (tag) {
+    private val checkFavoriteURL = when (type) {
         PRODUCT_TAG -> Network.PRODUCT_CHECK_FAVORITE_URL
         else -> Network.COORDINATION_CHECK_FAVORITE_URL
     }
 
-    private val favoriteURL = when (tag) {
+    private val favoriteURL = when (type) {
         PRODUCT_TAG -> Network.PRODUCT_FAVORITE_URL
         else -> Network.COORDINATION_FAVORITE_URL
     }
 
-    private val unfavoriteURL = when (tag) {
+    private val unfavoriteURL = when (type) {
         PRODUCT_TAG -> Network.PRODUCT_UNFAVORITE_URL
         else -> Network.COORDINATION_UNFAVORITE_URL
     }
@@ -66,7 +67,7 @@ class CardListAdapter(val tag: String, val list: List<CardItem>) :
         val data = list[position]
         (holder as? CardListViewHolder)?.apply {
 
-            if (tag == PRODUCT_TAG) {
+            if (type == PRODUCT_TAG) {
                 root.setOnClickListener {
                     Intent(it.context, ProductActivity::class.java).apply {
                         putExtra(ProductActivity.EXTRA_ID, data.id)
@@ -98,7 +99,7 @@ class CardListAdapter(val tag: String, val list: List<CardItem>) :
                 null
             )
 
-            imageRequest.tag = tag
+            imageRequest.tag = this@CardListAdapter.tag
             Network.getInstance(imageView.context)
                 .addToRequestQueue(imageRequest)
 
@@ -119,7 +120,7 @@ class CardListAdapter(val tag: String, val list: List<CardItem>) :
 
                 }
             )
-            favoriteRequest.tag = tag
+            favoriteRequest.tag = this@CardListAdapter.tag
             Network.getInstance(favoriteView.context).addToRequestQueue(favoriteRequest)
 
             favoriteButton.apply {
@@ -146,6 +147,14 @@ class CardListAdapter(val tag: String, val list: List<CardItem>) :
                             isChecked = false
                             favoriteView.text =
                                 ((favoriteView.text.toString().toIntOrNull() ?: 1) - 1).toString()
+
+                            if (this@CardListAdapter.tag == CLOSET_TAG) {
+                                val index = list.indexOf(list.find { it.id == data.id })
+                                if (index >= 0) {
+                                    list.removeAt(index)
+                                    notifyItemRemoved(index)
+                                }
+                            }
                         }
                     }
                 }
