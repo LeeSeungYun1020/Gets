@@ -13,7 +13,9 @@ const Product = ({match}) => {
     const subCategory = match.params.subcategory === undefined ? 'all' : match.params.subcategory;;
     return (
         <div className="product">
-            <ProductCategory />
+            <div id = "product_category">
+                <ProductCategory/>
+            </div>
             <div id = "product_list">
                 <ProductItem category = {category} subCategory={subCategory}/>
                 <ProductItemList category = {category} subCategory={subCategory} />

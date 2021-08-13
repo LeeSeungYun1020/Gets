@@ -44,7 +44,7 @@ const ProductCard = ({item}) => {
                 setFavorite(response.data.favorite)
             })
     },[favorite])
-    const onFavoritChange = (e) => {
+    const onFavoriteChange = (e) => {
         console.log(e.target.checked)
         if(e.target.checked) {
             axios.get(`http://localhost:3000/product/favorite/${id}`, { withCredentials: true })
@@ -66,7 +66,6 @@ const ProductCard = ({item}) => {
                 });
             setFavorite(favorite - 1);
         }
-
     }
     return (
         <Card className={classes.root}>
@@ -77,7 +76,7 @@ const ProductCard = ({item}) => {
                     image = {`http://localhost:3000/product/image/${image1ID}`}
                     ><div className = "my_favorit">
                     <FormControlLabel
-                    control={<Checkbox icon={<Favorite />} checkedIcon={<Favorite />} name="checkedH" onChange={onFavoritChange} checked={checked}/> }
+                    control={<Checkbox icon={<Favorite />} checkedIcon={<Favorite />} name="checkedH" onChange={onFavoriteChange} checked={checked}/> }
                     />
                 </div>
                 </CardMedia>
