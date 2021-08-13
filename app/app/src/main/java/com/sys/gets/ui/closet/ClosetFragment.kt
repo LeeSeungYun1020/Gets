@@ -15,6 +15,7 @@ import com.sys.gets.R
 import com.sys.gets.databinding.FragmentClosetBinding
 import com.sys.gets.network.Network
 import com.sys.gets.ui.MainViewModel
+import com.sys.gets.ui.coordination.COORDINATION_TAG
 import com.sys.gets.ui.product.CardItem
 import com.sys.gets.ui.product.CardListAdapter
 import com.sys.gets.ui.product.GridSpacingItemDecoration
@@ -46,8 +47,8 @@ class ClosetFragment : Fragment() {
         binding.closetRecycler.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             mainViewModel.navigationVisibility.value = scrollY <= oldScrollY
         }
-        val productAdapter = CardListAdapter(PRODUCT_TAG, itemList)
-        val coordinationAdapter = CardListAdapter(CLOSET_TAG, itemList)
+        val productAdapter = CardListAdapter(PRODUCT_TAG, CLOSET_TAG, itemList)
+        val coordinationAdapter = CardListAdapter(COORDINATION_TAG, CLOSET_TAG, itemList)
 
         binding.closetRecycler.adapter = coordinationAdapter
 

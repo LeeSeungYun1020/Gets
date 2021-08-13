@@ -1,5 +1,6 @@
 package com.sys.gets.ui.home
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,6 +23,8 @@ import com.sys.gets.data.Style
 import com.sys.gets.databinding.FragmentHomeBinding
 import com.sys.gets.network.Network
 import com.sys.gets.ui.MainViewModel
+import com.sys.gets.ui.coordination.CoordinationActivity
+import com.sys.gets.ui.product.ProductActivity
 
 private const val NUM_PAGES = 5
 private const val CUSTOM_TAG = "CUSTOM"
@@ -103,6 +106,17 @@ class HomeFragment : Fragment() {
                                 val item = response.getJSONObject(i)
                                 val id = item.getInt("id")
                                 val imageID = item.getInt("imageID")
+
+                                target.root.setOnClickListener {
+                                    Intent(
+                                        requireContext(),
+                                        CoordinationActivity::class.java
+                                    ).apply {
+                                        putExtra(CoordinationActivity.EXTRA_ID, id)
+                                        startActivity(this)
+                                    }
+                                }
+
                                 target.image.setImageResource(R.drawable.tm_custom)
                                 val imageRequest = ImageRequest(
                                     "${Network.COORDINATION_IMAGE_URL}/${imageID}",
@@ -224,6 +238,17 @@ class HomeFragment : Fragment() {
                                         val item = response.getJSONObject(i)
                                         val id = item.getInt("id")
                                         val imageID = item.getInt("imageID")
+
+                                        target.setOnClickListener {
+                                            Intent(
+                                                requireContext(),
+                                                CoordinationActivity::class.java
+                                            ).apply {
+                                                putExtra(CoordinationActivity.EXTRA_ID, id)
+                                                startActivity(this)
+                                            }
+                                        }
+
                                         val imageRequest = ImageRequest(
                                             "${Network.COORDINATION_IMAGE_URL}/${imageID}",
                                             { bitmap ->
@@ -295,6 +320,16 @@ class HomeFragment : Fragment() {
                                 target.cardTitle.text = item.getString("name")
                                 target.cardPrice.text = Format.currency(item.getInt("price"))
                                 target.cardBrand.text = item.getString("brand")
+
+                                target.root.setOnClickListener {
+                                    Intent(
+                                        requireContext(),
+                                        ProductActivity::class.java
+                                    ).apply {
+                                        putExtra(ProductActivity.EXTRA_ID, id)
+                                        startActivity(this)
+                                    }
+                                }
 
                                 val favoriteRequest = JsonObjectRequest(
                                     Request.Method.GET, "${Network.PRODUCT_COUNT_FAVORITE_URL}/$id",
