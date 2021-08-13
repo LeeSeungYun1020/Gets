@@ -9,7 +9,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/hint_title"
-        android:layout_marginStart="26dp"
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -23,7 +22,6 @@
         app:layout_constraintTop_toBottomOf="@id/list_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/list_item2"
-        android:layout_marginStart="26dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="20dp" />
 
@@ -36,7 +34,7 @@
         app:layout_constraintStart_toEndOf="@id/list_item1"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="26dp" />
+        />
 
     <include
         android:id="@+id/list_item3"
@@ -46,7 +44,6 @@
         app:layout_constraintTop_toBottomOf="@id/list_item1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/list_item4"
-        android:layout_marginStart="26dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="20dp" />
 
@@ -58,8 +55,7 @@
         app:layout_constraintTop_toTopOf="@id/list_item3"
         app:layout_constraintStart_toEndOf="@id/list_item3"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="26dp" />
+        android:layout_marginStart="10dp" />
 
     <include
         android:id="@+id/list_item5"
@@ -69,7 +65,6 @@
         app:layout_constraintTop_toBottomOf="@id/list_item3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/list_item6"
-        android:layout_marginStart="26dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="20dp" />
 
@@ -81,6 +76,5 @@
         app:layout_constraintTop_toTopOf="@id/list_item5"
         app:layout_constraintStart_toEndOf="@id/list_item5"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="26dp" />
+        android:layout_marginStart="10dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

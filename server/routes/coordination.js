@@ -97,11 +97,7 @@ module.exports = function (passport) {
 	
 	router.get("/:id", (req, res) => {
 		const id = req.params.id
-		connection.query(`SELECT coordination.*, COUNT(favoriteCoordination.coordinationID) as favorite
-                          FROM coordination,
-                               favoriteCoordination
-                          WHERE coordinationID = ?
-                            and coordination.id = favoriteCoordination.coordinationID`,
+		connection.query(`SELECT * FROM coordination WHERE id = ?`,
 			[id],
 			(err, result) => {
 				if (err || result.length === 0)

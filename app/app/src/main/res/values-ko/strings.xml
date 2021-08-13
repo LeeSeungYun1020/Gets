@@ -221,4 +221,5 @@
     <string name="title_category">카테고리</string>
     <string name="category_all">전체</string>
     <string name="title_coordination">코디</string>
+    <string name="title_virtual_fitting">가상 피팅</string>
 </resources>

@@ -1,8 +1,6 @@
 package com.sys.gets.ui.home
 
 import android.graphics.Bitmap
-import android.icu.text.NumberFormat
-import android.icu.util.Currency
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +17,7 @@ import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.google.android.material.tabs.TabLayout
 import com.sys.gets.R
+import com.sys.gets.data.Format
 import com.sys.gets.data.Style
 import com.sys.gets.databinding.FragmentHomeBinding
 import com.sys.gets.network.Network
@@ -294,11 +293,7 @@ class HomeFragment : Fragment() {
                                 val imageID = item.getString("image1ID")
 
                                 target.cardTitle.text = item.getString("name")
-                                val format = NumberFormat.getCurrencyInstance()
-                                format.maximumFractionDigits = 0
-                                format.currency = Currency.getInstance("KOR")
-                                target.cardPrice.text =
-                                    format.format(item.getInt("price")).replace("KOR", "₩")
+                                target.cardPrice.text = Format.currency(item.getInt("price"))
                                 target.cardBrand.text = item.getString("brand")
 
                                 val favoriteRequest = JsonObjectRequest(
