@@ -10,7 +10,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.sys.gets.R
 import com.sys.gets.network.Network
 import com.sys.gets.sign.LoginActivity
-import org.json.JSONObject
 
 class AccountFragment : PreferenceFragmentCompat() {
 

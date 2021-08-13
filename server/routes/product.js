@@ -72,6 +72,18 @@ module.exports = function (passport) {
 		
 	})
 	
+	router.get('/user/favorite',(req,res)=>{
+		if(req.user){
+			connection.query(`select productID from favoriteProduct where userEmail=?`,[req.user.email],
+				(err,result)=>{
+					if (err || result.length === 0)
+						res.send({result: false})
+					else
+						res.send(result)
+				})
+		}else res.send({result:false})
+	})
+	
 	// 단일 상품 이미지 전송
 	router.get("/image/:imageID", (req, res) => {
 		const imageID = req.params.imageID
@@ -102,8 +114,10 @@ module.exports = function (passport) {
                             and (detail & ?) != 0`, [type, detail], (err, result) => {
 			if (err || result.length === 0)
 				res.send([{result: false}])
-			else
+			else {
+				result[0]["result"] = true
 				res.send(result)
+			}
 		})
 	})
 	
@@ -144,13 +158,7 @@ module.exports = function (passport) {
 // 단일 상품 조회
 	router.get("/:id", (req, res) => {
 		const id = req.params.id
-		connection.query(`
-                    select product.*, COUNT(favoriteProduct.productID) as favorite
-                    from product,
-                         favoriteProduct
-                    where product.id = favoriteProduct.productID
-                      and product.id = ?;
-			`,
+		connection.query(`select * from product where product.id = ?;`,
 			[id],
 			(err, result) => {
 				if (err || result.length === 0)

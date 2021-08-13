@@ -1,15 +1,11 @@
 package com.sys.gets.ui.home
 
 import android.graphics.Bitmap
-import android.icu.text.NumberFormat
-import android.icu.util.Currency
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
@@ -19,16 +15,13 @@ import com.android.volley.Request
 import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
-import com.google.android.material.circularreveal.cardview.CircularRevealCardView
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.sys.gets.R
+import com.sys.gets.data.Format
 import com.sys.gets.data.Style
 import com.sys.gets.databinding.FragmentHomeBinding
 import com.sys.gets.network.Network
-import com.sys.gets.sign.LoginActivity
 import com.sys.gets.ui.MainViewModel
-import org.json.JSONObject
 
 private const val NUM_PAGES = 5
 private const val CUSTOM_TAG = "CUSTOM"
@@ -129,16 +122,31 @@ class HomeFragment : Fragment() {
                                 target.favoriteButton.apply {
                                     setOnClickListener {
                                         if (!isChecked) { // 체크 안되어있는 경우
-                                            addSimpleRequest(Network.COORDINATION_FAVORITE_URL, id) {
+                                            Network.addSimpleRequest(
+                                                requireContext(),
+                                                CUSTOM_TAG,
+                                                Network.COORDINATION_FAVORITE_URL,
+                                                id
+                                            ) {
                                                 isChecked = true
                                             }
                                         } else { // 체크 되어있는 경우
-                                            addSimpleRequest(Network.COORDINATION_UNFAVORITE_URL, id) {
+                                            Network.addSimpleRequest(
+                                                requireContext(),
+                                                CUSTOM_TAG,
+                                                Network.COORDINATION_UNFAVORITE_URL,
+                                                id
+                                            ) {
                                                 isChecked = false
                                             }
                                         }
                                     }
-                                    addSimpleRequest(Network.COORDINATION_CHECK_FAVORITE_URL,id) {
+                                    Network.addSimpleRequest(
+                                        requireContext(),
+                                        CUSTOM_TAG,
+                                        Network.COORDINATION_CHECK_FAVORITE_URL,
+                                        id
+                                    ) {
                                         isChecked = true
                                     }
                                 }
@@ -260,7 +268,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun initTopTrends() {
-        Log.e("CONSOLE", "top trends")
         binding.topTrendsList.apply {
             listTitle.setText(R.string.home_top_trends)
             // 인기 상품 리스트 요청
@@ -286,10 +293,7 @@ class HomeFragment : Fragment() {
                                 val imageID = item.getString("image1ID")
 
                                 target.cardTitle.text = item.getString("name")
-                                val format = NumberFormat.getCurrencyInstance()
-                                format.maximumFractionDigits = 0
-                                format.currency = Currency.getInstance("KOR")
-                                target.cardPrice.text = format.format(item.getInt("price"))
+                                target.cardPrice.text = Format.currency(item.getInt("price"))
                                 target.cardBrand.text = item.getString("brand")
 
                                 val favoriteRequest = JsonObjectRequest(
@@ -297,7 +301,8 @@ class HomeFragment : Fragment() {
                                     null,
                                     { response ->
                                         if (response.getBoolean("result")) {
-                                            target.cardFavorite.text = response.getString("favorite")
+                                            target.cardFavorite.text =
+                                                response.getString("favorite")
                                         }
                                     },
                                     {
@@ -305,7 +310,8 @@ class HomeFragment : Fragment() {
                                     }
                                 )
                                 favoriteRequest.tag = TREND_TAG
-                                Network.getInstance(requireContext()).addToRequestQueue(favoriteRequest)
+                                Network.getInstance(requireContext())
+                                    .addToRequestQueue(favoriteRequest)
 
                                 val imageRequest = ImageRequest(
                                     "${Network.PRODUCT_IMAGE_URL}/${imageID}",
@@ -325,16 +331,37 @@ class HomeFragment : Fragment() {
                                 target.cardImage.favoriteButton.apply {
                                     setOnClickListener {
                                         if (!isChecked) { // 체크 안되어있는 경우
-                                            addSimpleRequest(Network.PRODUCT_FAVORITE_URL, id) {
+                                            Network.addSimpleRequest(
+                                                requireContext(),
+                                                TREND_TAG,
+                                                Network.PRODUCT_FAVORITE_URL,
+                                                id
+                                            ) {
                                                 isChecked = true
+                                                target.cardFavorite.text =
+                                                    ((target.cardFavorite.text.toString()
+                                                        .toIntOrNull() ?: 0) + 1).toString()
                                             }
                                         } else { // 체크 되어있는 경우
-                                            addSimpleRequest(Network.PRODUCT_UNFAVORITE_URL, id) {
+                                            Network.addSimpleRequest(
+                                                requireContext(),
+                                                TREND_TAG,
+                                                Network.PRODUCT_UNFAVORITE_URL,
+                                                id
+                                            ) {
                                                 isChecked = false
+                                                target.cardFavorite.text =
+                                                    ((target.cardFavorite.text.toString()
+                                                        .toIntOrNull() ?: 1) - 1).toString()
                                             }
                                         }
                                     }
-                                    addSimpleRequest(Network.PRODUCT_CHECK_FAVORITE_URL,id) {
+                                    Network.addSimpleRequest(
+                                        requireContext(),
+                                        TREND_TAG,
+                                        Network.PRODUCT_CHECK_FAVORITE_URL,
+                                        id
+                                    ) {
                                         isChecked = true
                                     }
                                 }
@@ -352,22 +379,6 @@ class HomeFragment : Fragment() {
             Network.getInstance(this@HomeFragment.requireContext())
                 .addToRequestQueue(trendRequest)
         }
-    }
-
-    private fun addSimpleRequest(url:String, id: Int, callback: () -> Unit) {
-        val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.GET, "$url/$id",
-            null,
-            { response ->
-                if (response.getBoolean("result")) {
-                    callback()
-                }
-            },
-            {
-
-            }
-        )
-        Network.getInstance(requireContext()).addToRequestQueue(jsonObjectRequest)
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {

@@ -70,6 +70,18 @@ module.exports = function (passport) {
 		
 	})
 	
+	router.get('/user/favorite',(req,res)=>{
+		if(req.user){
+			connection.query(`select coordinationID from favoriteCoordination where userEmail=?`,[req.user.email],
+				(err,result)=>{
+					if (err || result.length === 0)
+						res.send({result: false})
+					else
+						res.send(result)
+				})
+		}else res.send({result:false})
+	})
+	
 	router.get("/image/:imageID", (req, res) => {
 		const imageID = req.params.imageID
 		const filePath = path.join(__dirname, '../coordination/image')
@@ -85,11 +97,7 @@ module.exports = function (passport) {
 	
 	router.get("/:id", (req, res) => {
 		const id = req.params.id
-		connection.query(`SELECT coordination.*, COUNT(favoriteCoordination.coordinationID) as favorite
-                          FROM coordination,
-                               favoriteCoordination
-                          WHERE coordinationID = ?
-                            and coordination.id = favoriteCoordination.coordinationID`,
+		connection.query(`SELECT * FROM coordination WHERE id = ?`,
 			[id],
 			(err, result) => {
 				if (err || result.length === 0)

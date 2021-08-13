@@ -206,7 +206,7 @@ create table coordination
   style         INT,
   gender        INT,
   age           INT,
-  bodyshape     INT,
+  fit     INT,
   price         INT,
   weather       INT,
   imageID       VARCHAR(64)

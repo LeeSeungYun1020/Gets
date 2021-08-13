@@ -33,7 +33,7 @@ router.get('/product', function (req, res, next) {
 			const type = product.getTypeCode(record[5])
 			const detail = product.getDetailCode(record[6] || record[7] || record[8] || record[9] || record[10] || record[11] || record[12] || record[13])
 			const color = product.getColorCode(record[14])
-			const fit = product.getFitCode(record[15])
+			const fit = record[15]//product.getFitCode(record[15])
 			const season = product.getSeasonCode(record[16])
 			const fiber = product.getFiberCode(record[17])
 			const age = product.getAgeCode(record[18])
@@ -91,17 +91,17 @@ router.get("/coordination", (req, res) => {
 			const style = coordination.getStyleCode(record[18])
 			const gender = coordination.getGenderCode(record[19])
 			const age = coordination.getAgeCode(record[20])
-			const bodyshape = coordination.getBodyShapeCode(record[21])
-			const price = coordination.getPriceCode(record[22])
+			const fit = coordination.getFitCode(record[21])
+			const price = record[22]
 			const weather = coordination.getSeasonCode(record[23])
 			const imageID = record[24].split(".")[0]
 			// console.error(imageID)
 			connection.query(`insert into coordination \
 	 			(id, title, outerID, outerImageID, topID, topImageID, bottomID, bottomImageID, skirtID, skirtImageID,\
-	 			setID,setImageID,shoesID,shoesImageID,bagID,bagImageID,hatID,hatImageID,style,gender,age,bodyshape,price,weather,imageID) \
+	 			setID,setImageID,shoesID,shoesImageID,bagID,bagImageID,hatID,hatImageID,style,gender,age,fit,price,weather,imageID) \
 	 			values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?,?)`,
 				[id, title, outerID, outerImageID, topID, topImageID, bottomID, bottomImageID, skirtID, skirtImageID,
-					setID, setImageID, shoesID, shoesImageID, bagID, bagImageID, hatID, hatImageID, style, gender, age, bodyshape, price, weather, imageID],
+					setID, setImageID, shoesID, shoesImageID, bagID, bagImageID, hatID, hatImageID, style, gender, age, fit, price, weather, imageID],
 				(err, result) => {
 					if (err) {
 						console.error(err)

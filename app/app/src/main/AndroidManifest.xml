@@ -14,11 +14,13 @@
         android:theme="@style/Theme.Gets"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.coordination.CoordinationActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.account.PasswordActivity"
             android:label="@string/msg_change_password"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.Gets.ActionBar"
-            />
+            android:theme="@style/Theme.Gets.ActionBar" />
         <activity
             android:name=".ui.account.InfoActivity"
             android:label="@string/title_info_detail"
