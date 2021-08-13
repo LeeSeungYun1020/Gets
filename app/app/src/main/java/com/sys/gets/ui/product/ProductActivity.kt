@@ -11,6 +11,8 @@ import com.sys.gets.data.Format
 import com.sys.gets.databinding.ActivityProductBinding
 import com.sys.gets.network.Network
 
+const val PRODUCT_ACTIVITY_TAG = "p_act"
+
 class ProductActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_ID = "ID"
@@ -51,7 +53,7 @@ class ProductActivity : AppCompatActivity() {
                                 null
                             )
 
-                            imageRequest.tag = PRODUCT_TAG
+                            imageRequest.tag = PRODUCT_ACTIVITY_TAG
                             Network.getInstance(this@ProductActivity)
                                 .addToRequestQueue(imageRequest)
 
@@ -68,7 +70,7 @@ class ProductActivity : AppCompatActivity() {
 
                                 }
                             )
-                            favoriteRequest.tag = PRODUCT_TAG
+                            favoriteRequest.tag = PRODUCT_ACTIVITY_TAG
                             Network.getInstance(this@ProductActivity)
                                 .addToRequestQueue(favoriteRequest)
 
@@ -78,7 +80,7 @@ class ProductActivity : AppCompatActivity() {
                                     if (!isChecked) { // 체크 안되어있는 경우
                                         Network.addSimpleRequest(
                                             context,
-                                            PRODUCT_TAG,
+                                            PRODUCT_ACTIVITY_TAG,
                                             Network.PRODUCT_FAVORITE_URL,
                                             id
                                         ) {
@@ -90,7 +92,7 @@ class ProductActivity : AppCompatActivity() {
                                     } else { // 체크 되어있는 경우
                                         Network.addSimpleRequest(
                                             context,
-                                            PRODUCT_TAG,
+                                            PRODUCT_ACTIVITY_TAG,
                                             Network.PRODUCT_UNFAVORITE_URL,
                                             id
                                         ) {
@@ -103,7 +105,7 @@ class ProductActivity : AppCompatActivity() {
                                 }
                                 Network.addSimpleRequest(
                                     context,
-                                    PRODUCT_TAG,
+                                    PRODUCT_ACTIVITY_TAG,
                                     Network.PRODUCT_CHECK_FAVORITE_URL,
                                     id
                                 ) {
@@ -116,8 +118,15 @@ class ProductActivity : AppCompatActivity() {
                 },
                 null
             )
-            productRequest.tag = PRODUCT_TAG
+            productRequest.tag = PRODUCT_ACTIVITY_TAG
             Network.getInstance(this).addToRequestQueue(productRequest)
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Network.getInstance(this).requestQueue.apply {
+            cancelAll(PRODUCT_ACTIVITY_TAG)
         }
     }
 }

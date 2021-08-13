@@ -67,7 +67,12 @@ class CardListAdapter(val tag: String, val list: List<CardItem>) :
         (holder as? CardListViewHolder)?.apply {
 
             if (tag == PRODUCT_TAG) {
-
+                root.setOnClickListener {
+                    Intent(it.context, ProductActivity::class.java).apply {
+                        putExtra(ProductActivity.EXTRA_ID, data.id)
+                        it.context.startActivity(this)
+                    }
+                }
             } else {
                 root.setOnClickListener {
                     Intent(it.context, CoordinationActivity::class.java).apply {
