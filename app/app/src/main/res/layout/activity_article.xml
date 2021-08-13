@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.article.ArticleActivity">
+
+    <View
+        android:id="@+id/main_contents"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="#76000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/main_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="40dp"
+        android:hint="@string/hint_title"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="@id/main_contents" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="110dp"
+        android:hint="@string/hint_title"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@id/main_contents"
+        app:layout_constraintStart_toStartOf="@id/main_title"
+        app:layout_constraintTop_toBottomOf="@id/main_title" />
+
+    <ImageView
+        android:id="@+id/main_image"
+        android:layout_width="212dp"
+        android:layout_height="300dp"
+        android:layout_marginEnd="-50dp"
+        android:src="@drawable/bg_rockchic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/main_contents" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/main_contents" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/image_slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_contents" />
+
+    <include
+        android:id="@+id/style_list"
+        layout="@layout/component_card_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_slider" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
