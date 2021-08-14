@@ -59,8 +59,15 @@
 
 .product {
   display:flex;
-  justify-content: center;
+  margin-left: 15vw;
 }
+
+@media screen and (max-width: 768px) {
+  #product_category {
+    display: none;
+  }
+}
+
 
 // category 구분 선
 .product .kRcyMg{

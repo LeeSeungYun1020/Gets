@@ -50,7 +50,7 @@ class ProductFragment : Fragment() {
         binding.productRecycler.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             mainViewModel.navigationVisibility.value = scrollY <= oldScrollY
         }
-        binding.productRecycler.adapter = CardListAdapter(PRODUCT_TAG, productList)
+        binding.productRecycler.adapter = CardListAdapter(PRODUCT_TAG, PRODUCT_TAG, productList)
         val productRequest = JsonArrayRequest(
             Request.Method.GET,
             "${Network.PRODUCT_CATEGORY_URL}/${productViewModel.type.value}/${productViewModel.detail.value}",

@@ -107,7 +107,7 @@ const HomeGetStyle = (props) => {
 
             {(ans||sessionStorage.getItem("token")) && <><div id = "recommend_card">
                 {recommend.map((recommend, index) => (
-                    <HomeRecommendCard title={recommend.title} cost={recommend.price} image_id={recommend.imageID} />
+                    <HomeRecommendCard title={recommend.title} cost={recommend.price} image_id={recommend.imageID} id ={recommend.id} />
                 ))}
             </div>
                 <div className ="recommend_line"></div></>}

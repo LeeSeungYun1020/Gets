@@ -1,6 +1,7 @@
 import React from "react"
 import axios from "axios"
 import link from "../../link";
+import {Link} from "react-router-dom"
 class FindPwEmailBox extends React.Component {
     constructor(props) {
         super(props);
@@ -42,8 +43,8 @@ class FindPwEmailBox extends React.Component {
             <div>
 
                 <div id = "select_type_info">
-                    <h3><a className = "pw_link" href = {link.findpw}>{this.props.find_with_phone}</a></h3>
-                    <h3 style = {{borderColor : "#000000"}}><a className = "pw_link" href = {link.findpwemail}>{this.props.find_with_email}</a></h3>
+                    <h3><Link className = "pw_link" to = {link.findpw}>{this.props.find_with_phone}</Link></h3>
+                    <h3 style = {{borderColor : "#000000"}}><Link className = "pw_link" to = {link.findpwemail}>{this.props.find_with_email}</Link></h3>
                 </div>
                 <div>
                     {FindForm}
