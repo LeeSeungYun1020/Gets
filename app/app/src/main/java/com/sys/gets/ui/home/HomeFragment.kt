@@ -23,6 +23,7 @@ import com.sys.gets.data.Style
 import com.sys.gets.databinding.FragmentHomeBinding
 import com.sys.gets.network.Network
 import com.sys.gets.ui.MainViewModel
+import com.sys.gets.ui.article.ArticleActivity
 import com.sys.gets.ui.coordination.CoordinationActivity
 import com.sys.gets.ui.product.ProductActivity
 
@@ -213,6 +214,15 @@ class HomeFragment : Fragment() {
                             else -> R.drawable.bg_casual
                         }
                     )
+                    styleMoreButton.setOnClickListener {
+                        Intent(
+                            requireContext(),
+                            ArticleActivity::class.java
+                        ).apply {
+                            putExtra(ArticleActivity.EXTRA_ID, style.name)
+                            startActivity(this)
+                        }
+                    }
 
                     // 스크롤 처음으로
                     styleLookScroll.smoothScrollTo(0, 0)
