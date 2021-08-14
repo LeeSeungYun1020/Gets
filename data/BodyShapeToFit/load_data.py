@@ -4,9 +4,9 @@ import csv
 def load_fit(gender):
     file_name = ''
     if gender == 1: # male
-        file_name = 'fit_male.csv'
+        file_name = 'data/fit_male.csv'
     elif gender == 2: # female
-        file_name = 'fit_female.csv'
+        file_name = 'data/fit_female.csv'
 
     print('load_fit(gender= {})'.format(gender))
 
