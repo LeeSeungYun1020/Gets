@@ -212,7 +212,7 @@ class HomeFragment : Fragment() {
                             Style.ROCK_CHIC -> R.drawable.bg_rockchic
                             Style.STREET -> R.drawable.bg_street
                             else -> R.drawable.bg_casual
-                        }
+                        } // TODO: 스타일 사진 추가 필요
                     )
                     styleMoreButton.setOnClickListener {
                         Intent(
