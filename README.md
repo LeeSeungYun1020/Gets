@@ -222,11 +222,12 @@ create table favoriteCoordination(
 
 create table article
 (
-  id          INT PRIMARY KEY AUTO_INCREMENT,
-  name        NVARCHAR(128)  NOT NULL,
-  tag         NVARCHAR(128)  NOT NULL,
-  brand       NVARCHAR(128)  NOT NULL,
-  description NVARCHAR(1024) NOT NULL
+  id             INT PRIMARY KEY AUTO_INCREMENT,
+  name           NVARCHAR(128)  NOT NULL,
+  tag            NVARCHAR(128)  NOT NULL,
+  tag_en         NVARCHAR(128)  NOT NULL,
+  description    NVARCHAR(1024) NOT NULL,
+  description_en NVARCHAR(1024) NOT NULL
 );
 
 create table articleImage
