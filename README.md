@@ -198,7 +198,7 @@ create table coordination
   style         INT,
   gender        INT,
   age           INT,
-  fit     INT,
+  fit           INT,
   price         INT,
   weather       INT,
   imageID       VARCHAR(64)
@@ -218,6 +218,23 @@ create table favoriteCoordination(
   PRIMARY KEY(userEmail,coordinationID),
   FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (coordinationID) REFERENCES coordination (id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+create table article
+(
+  id             INT PRIMARY KEY AUTO_INCREMENT,
+  name           NVARCHAR(128)  NOT NULL,
+  tag            NVARCHAR(128)  NOT NULL,
+  tag_en         NVARCHAR(128)  NOT NULL,
+  description    NVARCHAR(1024) NOT NULL,
+  description_en NVARCHAR(1024) NOT NULL
+);
+
+create table articleImage
+(
+  articleID INT,
+  imageID   INT,
+  PRIMARY KEY (articleID, imageID)
 );
 ```
 

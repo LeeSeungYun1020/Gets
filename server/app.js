@@ -70,6 +70,7 @@ const productRouter = require('./routes/product')(passport);
 const coordinationRouter=require('./routes/coordination')(passport);
 const authRouter=require('./routes/auth')(passport);
 const modelRouter = require('./routes/model');
+const articleRouter = require('./routes/article');
 
 app.use('/', indexRouter)
 app.use('/api', apiRouter)
@@ -80,7 +81,8 @@ app.use('/product', productRouter)
 app.use('/account', accountRouter)
 app.use('/model', modelRouter)
 app.use('/coordination',coordinationRouter)
-app.use('/auth',authRouter)
+app.use('/auth', authRouter)
+app.use('/article', articleRouter)
 
 app.get('/*.html', (req, res) => {
 	res.render(req.params[0] + '.html')
