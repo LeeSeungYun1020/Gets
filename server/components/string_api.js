@@ -31,10 +31,13 @@ const string = {
 		api_coordination_unfavorite: "Coordination - unfavorite",
 		api_coordination_count_favorite: "Coordination - favorite count",
 		api_coordination_check_favorite: "Coordination - favorite check",
-		api_coordination_user_favorite:"Coordination - collection of user's favorite",
+		api_coordination_user_favorite: "Coordination - collection of user's favorite",
 		api_closet: "Closet",
 		api_closet_product: "Closet - product list",
 		api_closet_coordination: "Closet - coordination list",
+		api_article: "Article",
+		api_article_read: "Article - read",
+		api_article_image: "Article - image",
 	},
 	ko: {
 		api_title: "Gets: API",
@@ -68,10 +71,13 @@ const string = {
 		api_coordination_unfavorite: "코디 - 찜 취소",
 		api_coordination_count_favorite: "코디 - 찜 개수",
 		api_coordination_check_favorite: "코디 - 찜 확인",
-		api_coordination_user_favorite:"코디 - 사용자 찜 모아보기",
+		api_coordination_user_favorite: "코디 - 사용자 찜 모아보기",
 		api_closet: "옷장",
 		api_closet_product: "옷장 - 제품 리스트",
 		api_closet_coordination: "옷장 - 코디 리스트",
+		api_article: "기사",
+		api_article_read: "기사 - 읽기",
+		api_article_image: "기사 - 이미지",
 	}
 }
 
