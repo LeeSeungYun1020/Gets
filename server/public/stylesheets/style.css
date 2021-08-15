@@ -97,4 +97,14 @@ footer #footer_logo {
     grid-row: 2;
 }
 
+.main_card7 {
+    grid-column: 5;
+    grid-row: 1;
+}
+
+.main_card8 {
+    grid-column: 5;
+    grid-row: 2;
+}
+
 /*# sourceMappingURL=style.css.map */

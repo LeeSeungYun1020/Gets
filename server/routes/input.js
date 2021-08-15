@@ -203,6 +203,137 @@ router.get("/article", (req, res) => {
 	})
 })
 
+router.get("/ready", (req, res) => {
+	connection.query(`
+        create table IF NOT EXISTS user
+        (
+            email         VARCHAR(64) PRIMARY KEY,
+            pw            VARCHAR(32)  NOT NULL,
+            name          NVARCHAR(16) NOT NULL,
+            phone         VARCHAR(16),
+            birthday      DATE,
+            address       NVARCHAR(128),
+            addressDetail NVARCHAR(128),
+            gender        INT,
+            height        INT,
+            weight        INT,
+            topSize       INT,
+            bottomSize    INT,
+            shoulder      INT,
+            waist         INT,
+            hip           INT,
+            thigh         INT,
+            style         INT
+        );
+
+        create table IF NOT EXISTS product
+        (
+            id       INT PRIMARY KEY AUTO_INCREMENT,
+            name     NVARCHAR(128) NOT NULL,
+            brand    NVARCHAR(128) NOT NULL,
+            code     NVARCHAR(64),
+            gender   INT           NOT NULL,
+            type     INT           NOT NULL,
+            detail   INT           NOT NULL,
+            color    INT           NOT NULL,
+            fit      INT           NOT NULL,
+            season   INT           NOT NULL,
+            fiber    INT           NOT NULL,
+            age      INT           NOT NULL,
+            style    INT           NOT NULL,
+            price    INT           NOT NULL,
+            size     VARCHAR(128)  NOT NULL,
+            image1ID VARCHAR(32)   NOT NULL,
+            image2ID VARCHAR(32) DEFAULT NULL,
+            image3ID VARCHAR(32) DEFAULT NULL
+        );
+
+        create table IF NOT EXISTS magazine
+        (
+            id       INT PRIMARY KEY AUTO_INCREMENT,
+            title    VARCHAR(256)  NOT NULL,
+            keyword  VARCHAR(64) DEFAULT NULL,
+            contents VARCHAR(2048) NOT NULL,
+            imageID  VARCHAR(32) DEFAULT NULL,
+            styleTag INT         DEFAULT NULL
+        );
+
+        create table IF NOT EXISTS coordination
+        (
+            id            INT PRIMARY KEY AUTO_INCREMENT,
+            title         VARCHAR(64),
+            outerID       INT,
+            outerImageID  INT,
+            topID         INT,
+            topImageID    INT,
+            bottomID      INT,
+            bottomImageID INT,
+            skirtID       INT,
+            skirtImageID  INT,
+            setID         INT,
+            setImageID    INT,
+            shoesID       INT,
+            shoesImageID  INT,
+            bagID         INT,
+            bagImageID    INT,
+            hatID         INT,
+            hatImageID    INT,
+            style         INT,
+            gender        INT,
+            age           INT,
+            fit           INT,
+            price         INT,
+            weather       INT,
+            imageID       VARCHAR(64)
+        );
+
+        create table IF NOT EXISTS favoriteProduct
+        (
+            userEmail VARCHAR(64),
+            productID INT,
+            PRIMARY KEY (userEmail, productID),
+            FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE CASCADE,
+            FOREIGN KEY (productID) REFERENCES product (id) ON UPDATE CASCADE ON DELETE CASCADE
+        );
+
+        create table IF NOT EXISTS favoriteCoordination
+        (
+            userEmail      VARCHAR(64),
+            coordinationID INT,
+            PRIMARY KEY (userEmail, coordinationID),
+            FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE CASCADE,
+            FOREIGN KEY (coordinationID) REFERENCES coordination (id) ON UPDATE CASCADE ON DELETE CASCADE
+        );
+
+        create table IF NOT EXISTS article
+        (
+            id             INT PRIMARY KEY AUTO_INCREMENT,
+            name           NVARCHAR(128)  NOT NULL,
+            tag            NVARCHAR(128)  NOT NULL,
+            tag_en         NVARCHAR(128)  NOT NULL,
+            description    NVARCHAR(1024) NOT NULL,
+            description_en NVARCHAR(1024) NOT NULL
+        );
+
+        create table IF NOT EXISTS articleImage
+        (
+            articleID INT,
+            imageID   INT,
+            PRIMARY KEY (articleID, imageID)
+        );
+	`, (err, result) => {
+		res.send(result)
+	})
+})
+
+router.get("/clear", (req, res) => {
+	connection.query("drop table articleImage, article;" +
+		"drop table favoriteCoordination, favoriteProduct;" +
+		"drop table product, coordination, user", (err, result) => {
+		res.send(result)
+	})
+})
+
 router.get("/product/clear", (req, res) => {
 	connection.query("delete from product", (err, result) => {
 		res.send(result)
