@@ -186,5 +186,9 @@
   "beanie": "비니",
   "bucket_hat": "버킷햇",
   "beret": "베레모",
-  "look_all" : "전체보기"
+  "look_all" : "전체보기",
+  "delete": "삭제하기",
+  "modify": "수정하기",
+  "coordination": "코디 세트",
+  "product": "제품 선택"
 }

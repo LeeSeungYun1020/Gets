@@ -9,7 +9,6 @@
         android:id="@+id/list_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
         android:hint="@string/hint_title"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -22,12 +21,10 @@
         layout="@layout/component_card_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/list_item2"
-        app:layout_constraintTop_toBottomOf="@id/list_title"
-        />
+        app:layout_constraintTop_toBottomOf="@id/list_title" />
 
     <include
         android:id="@+id/list_item2"
@@ -35,7 +32,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="26dp"
         app:layout_constraintStart_toEndOf="@id/list_item1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/list_item1"
@@ -47,12 +43,10 @@
         layout="@layout/component_card_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/list_item4"
-        app:layout_constraintTop_toBottomOf="@id/list_item1"
-        />
+        app:layout_constraintTop_toBottomOf="@id/list_item1" />
 
     <include
         android:id="@+id/list_item4"
@@ -60,7 +54,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="26dp"
         app:layout_constraintStart_toEndOf="@id/list_item3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/list_item3"
@@ -72,12 +65,10 @@
         layout="@layout/component_card_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/list_item6"
-        app:layout_constraintTop_toBottomOf="@id/list_item4"
-        />
+        app:layout_constraintTop_toBottomOf="@id/list_item4" />
 
     <include
         android:id="@+id/list_item6"
@@ -85,7 +76,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="26dp"
         app:layout_constraintStart_toEndOf="@id/list_item5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/list_item5"

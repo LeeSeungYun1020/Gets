@@ -218,4 +218,8 @@
     <string name="title_info_detail">상세정보</string>
     <string name="hint_new_password_star">*새\n 비밀번호</string>
     <string name="msg_password_now">현재 비밀번호 입력</string>
+    <string name="title_category">카테고리</string>
+    <string name="category_all">전체</string>
+    <string name="title_coordination">코디</string>
+    <string name="title_virtual_fitting">가상 피팅</string>
 </resources>

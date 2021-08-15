@@ -1,8 +1,8 @@
 package com.sys.gets.ui.account
 
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.google.android.material.snackbar.Snackbar
@@ -15,7 +15,7 @@ import org.json.JSONObject
 
 class PasswordActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPasswordBinding
-    private lateinit var pref:SharedPreferences
+    private lateinit var pref: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_password)

@@ -59,8 +59,15 @@
 
 .product {
   display:flex;
-  justify-content: center;
+  margin-left: 15vw;
 }
+
+@media screen and (max-width: 768px) {
+  #product_category {
+    display: none;
+  }
+}
+
 
 // category 구분 선
 .product .kRcyMg{
@@ -78,13 +85,13 @@
   border-bottom: solid 2px #000000;
 }
 
-.product .gZXRTi {
+.product .jcBJPm {
   padding: 10px 0px 10px 30px;
   font-weight: 600;
   cursor: pointer;
 }
 
-.product .gZXRTi:hover {
+.product .jcBJPm:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
@@ -105,7 +112,6 @@
   font-weight: 600;
   cursor: pointer;
   box-shadow: none;
-  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .product .MuiSvgIcon-root {
@@ -132,4 +138,9 @@
 .card_like .MuiTypography-h5 {
   display: flex;
   align-items: center;
+}
+
+.product a {
+  text-decoration: none !important;
+  color: #000000 !important;
 }

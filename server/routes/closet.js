@@ -9,12 +9,14 @@ module.exports = function (passport) {
 	
 	router.get('/product', (req, res) => {
 		if (req.user) {
-			connection.query('select * from favoriteProduct where `userEmail`=?', [req.user.email],
+			connection.query('select * from product where id in \
+				(select productID from favoriteProduct where `userEmail`=?)', [req.user.email],
 				(err, result) => {
 					if (err || result.length === 0)
-						res.send({result: false, error: "notMatchProduct"})
+						res.send([{result: false, error: err}])
 					else {
-						res.send(result.map(it => it["productID"]))
+						result[0]["result"] = true
+						res.send(result)
 					}
 				})
 		} else res.send({"result": false})
@@ -22,14 +24,14 @@ module.exports = function (passport) {
 	
 	router.get('/coordination', (req, res) => {
 		if (req.user) {
-			connection.query(`select *
-                              from favoriteCoordination
-                              where userEmail = ?`, [req.user.email],
+			connection.query('select * from coordination where id in \
+				(select coordinationID from favoriteCoordination where `userEmail`=?)', [req.user.email],
 				(err, result) => {
 					if (err || result.length === 0)
-						res.send({result: false, error: "notMatchCoordination"})
+						res.send([{result: false, error: err}])
 					else {
-						res.send(result.map(it => it["coordinationID"]))
+						result[0]["result"] = true
+						res.send(result)
 					}
 				})
 		} else res.send({"result": false})

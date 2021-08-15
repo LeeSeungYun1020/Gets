@@ -24,7 +24,7 @@
         app:layout_constraintTop_toBottomOf="@id/style_title"
         android:layout_marginTop="44dp"
         android:layout_marginStart="26dp"
-        app:tabMode="scrollable"/>
+        app:tabMode="scrollable" />
 
     <TextView
         android:id="@+id/style_text"
@@ -62,7 +62,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/bg_casual"
         app:layout_constraintTop_toBottomOf="@id/style_tab"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/style_more_button"

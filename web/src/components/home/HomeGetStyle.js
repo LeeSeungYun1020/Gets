@@ -83,7 +83,7 @@ const HomeGetStyle = (props) => {
     },[]); // 컴포넌트가 처음 렌더링될 때만 함수 생성
     const iconClick = useCallback( () => {
         setModify(!modify)
-    },[]);
+    },[modify]);
     return (
         <div className="home_getstyle">
             { (sessionStorage.getItem("token")&&!modify) ? <div className = "modify_option_button"><MdAdd onClick={iconClick}/></div> :
@@ -107,7 +107,7 @@ const HomeGetStyle = (props) => {
 
             {(ans||sessionStorage.getItem("token")) && <><div id = "recommend_card">
                 {recommend.map((recommend, index) => (
-                    <HomeRecommendCard title={recommend.title} cost={recommend.price} image_id={recommend.imageID} />
+                    <HomeRecommendCard title={recommend.title} cost={recommend.price} image_id={recommend.imageID} id ={recommend.id} />
                 ))}
             </div>
                 <div className ="recommend_line"></div></>}
