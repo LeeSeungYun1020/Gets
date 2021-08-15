@@ -20,7 +20,7 @@ router.get('/product', function (req, res, next) {
 		let records = []
 		let index = 1
 		const parser = fs
-		.createReadStream(`./product/product1.csv`)
+		.createReadStream(`./product/product.csv`)
 		.pipe(parse({
 			// CSV options
 		}));
