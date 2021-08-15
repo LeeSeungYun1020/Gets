@@ -1,4 +1,4 @@
-package com.sys.gets.ui.magazine
+package com.sys.gets.ui.article
 
 import android.os.Bundle
 import android.view.LayoutInflater
