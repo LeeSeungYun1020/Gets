@@ -13,8 +13,7 @@ module.exports = function (passport) {
 		res.send('data')
 	});
 	
-	// 체형 정보로 핏 예측
-// TODO: post로 바꾸기..?
+	// 체형 정보로 어울리는 핏 예측
 	router.get('/fit', (req, res) => {
 		const gender = req.query.gender;
 		const shoulder = req.query.shoulder;
@@ -44,20 +43,24 @@ module.exports = function (passport) {
 		})
 	})
 	
-	/*
 	router.get('/favoriteStyleRanking', (req, res) => {
 		if (req.user) {
 			let email = req.user.email
 			let pw = req.user.pw
 			//session?으로 바꾸기??
 			
-			var exePath = '../data/getFavoriteStyleRanking/'
-			const process = exec('cd', [exePath + 'getFavoriteStyleRanking.exe'])
-			console.log(process)
+			let exePath = '../data/getFavoriteStyleRanking/'
+			let myPath = path.resolve(exePath) + '\\'
+			let fileName = 'getFavoriteStyleRanking.exe'
+			//let debugFileName = 'getFavoriteStyleRanking_debug.exe'
+			
+			const process = exec(myPath + fileName + ' ' + email + ' ' + pw)
+			
+			console.log(myPath + fileName + ' ' + email + ' ' + pw)
 			
 			process.stdout.on('data', function(data){
-				console.log('==============================')
-				console.log(data.toString())
+				console.log('==============================\n')
+				console.log(data)
 				console.log('==============================')
 				
 				res.send(data.toString())
@@ -69,7 +72,6 @@ module.exports = function (passport) {
 		} else res.send({"result": false})
 		
 	})
-	*/
 	
 	
 	return router
