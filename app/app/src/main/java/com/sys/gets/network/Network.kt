@@ -57,6 +57,9 @@ class Network(context: Context) {
         const val CLOSET_PRODUCT_URL = "$BASE_URL/closet/product"
         const val CLOSET_COORDINATION_URL = "$BASE_URL/closet/coordination"
 
+        const val ARTICLE_READ_URL = "$BASE_URL/article"
+        const val ARTICLE_IMAGE_URL = "$BASE_URL/article/image"
+
         fun addSimpleRequest(
             context: Context,
             tag: String,
