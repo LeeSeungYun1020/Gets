@@ -233,6 +233,8 @@
     <string name="category_all">All</string>
     <string name="title_coordination">Coordination</string>
     <string name="title_virtual_fitting">Virtual Fitting</string>
+    <string name="article_tag">tag_en</string>
+    <string name="article_description">description_en</string>
     <!-- TODO: Remove or change this placeholder text -->
     <!-- Preference Titles -->
 

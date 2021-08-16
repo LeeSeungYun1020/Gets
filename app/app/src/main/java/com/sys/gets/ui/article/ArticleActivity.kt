@@ -12,6 +12,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.android.volley.Request
 import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.JsonObjectRequest
 import com.google.android.material.chip.Chip
 import com.sys.gets.R
 import com.sys.gets.data.Style
@@ -28,6 +29,7 @@ class ArticleActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityArticleBinding
+    private val list: MutableList<Bitmap> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,17 +51,56 @@ class ArticleActivity : AppCompatActivity() {
             }
         )
 
-        // TODO: 네트워크 통신하여 기사 제목, 내용, 태그(칩) 가져옴
-        binding.chipGroup.addView(Chip(this).apply {
-            text = "TEST"
-        })
-        binding.chipGroup.addView(Chip(this).apply {
-            text = "TEST"
-        })
-        // TODO: 네트워크 통신하여 사진 가져와 표시(뷰 페이저)
+        val articleRequest = JsonObjectRequest(
+            Request.Method.GET, "${Network.ARTICLE_READ_URL}/${style.code}",
+            null,
+            { response ->
+                if (response.getBoolean("result")) {
+                    response.getString(getString(R.string.article_tag)).split(", ").forEach {
+                        binding.chipGroup.addView(Chip(this).apply {
+                            text = it
+                        })
+
+                        binding.mainDescription.text =
+                            response.getString(getString(R.string.article_description))
+                    }
+                }
+            }, null
+        )
+        articleRequest.tag = ARTICLE_TAG
+        Network.getInstance(this).addToRequestQueue(articleRequest)
+
+
         val viewPager = binding.imageSlider
         val pagerAdapter = ScreenSlidePagerAdapter(this)
         viewPager.adapter = pagerAdapter
+        val articleImageListRequest = JsonArrayRequest(
+            Request.Method.POST, "${Network.ARTICLE_IMAGE_URL}/${style.code}",
+            null,
+            { response ->
+                if (response.getJSONObject(0).getBoolean("result")) {
+                    for (i in 0 until response.length()) {
+                        val imageID = response.getJSONObject(i).getString("imageID")
+                        val imageRequest = ImageRequest(
+                            "${Network.ARTICLE_IMAGE_URL}/${imageID}",
+                            { bitmap ->
+                                list.add(bitmap)
+                                pagerAdapter.notifyItemInserted(list.lastIndex)
+                            },
+                            0,
+                            0,
+                            ImageView.ScaleType.CENTER_CROP,
+                            Bitmap.Config.RGB_565,
+                            null
+                        )
+                        imageRequest.tag = ARTICLE_TAG
+                        Network.getInstance(this).addToRequestQueue(imageRequest)
+                    }
+                }
+            }, null
+        )
+        articleRequest.tag = ARTICLE_TAG
+        Network.getInstance(this).addToRequestQueue(articleImageListRequest)
 
         binding.styleList.listTitle.text =
             "${getString(style.resID)} ${getString(R.string.hint_outfit)}"
@@ -165,9 +206,11 @@ class ArticleActivity : AppCompatActivity() {
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
-        override fun getItemCount(): Int = 2
+        override fun getItemCount(): Int = list.size
 
-        override fun createFragment(position: Int): Fragment =
-            SliderFragment.newInstance(position, R.drawable.sl_welcome)
+        override fun createFragment(position: Int): Fragment {
+            return SliderFragment.newInstance(position, list[position])
+        }
+
     }
 }
