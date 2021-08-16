@@ -16,10 +16,10 @@
         android:icon="@drawable/ic_product_24"
         android:title="@string/title_product" />
 
-    <item
-        android:id="@+id/navigation_magazine"
-        android:icon="@drawable/ic_magazine_24"
-        android:title="@string/title_magazine" />
+    <!--    <item-->
+    <!--        android:id="@+id/navigation_magazine"-->
+    <!--        android:icon="@drawable/ic_magazine_24"-->
+    <!--        android:title="@string/title_magazine" />-->
 
     <item
         android:id="@+id/navigation_account"
