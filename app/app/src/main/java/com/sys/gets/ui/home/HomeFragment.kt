@@ -23,6 +23,7 @@ import com.sys.gets.data.Style
 import com.sys.gets.databinding.FragmentHomeBinding
 import com.sys.gets.network.Network
 import com.sys.gets.ui.MainViewModel
+import com.sys.gets.ui.article.ArticleActivity
 import com.sys.gets.ui.coordination.CoordinationActivity
 import com.sys.gets.ui.product.ProductActivity
 
@@ -211,8 +212,17 @@ class HomeFragment : Fragment() {
                             Style.ROCK_CHIC -> R.drawable.bg_rockchic
                             Style.STREET -> R.drawable.bg_street
                             else -> R.drawable.bg_casual
-                        }
+                        } // TODO: 스타일 사진 추가 필요
                     )
+                    styleMoreButton.setOnClickListener {
+                        Intent(
+                            requireContext(),
+                            ArticleActivity::class.java
+                        ).apply {
+                            putExtra(ArticleActivity.EXTRA_ID, style.name)
+                            startActivity(this)
+                        }
+                    }
 
                     // 스크롤 처음으로
                     styleLookScroll.smoothScrollTo(0, 0)

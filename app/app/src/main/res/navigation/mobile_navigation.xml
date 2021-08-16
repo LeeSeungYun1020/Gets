@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_product" />
     <fragment
         android:id="@+id/navigation_magazine"
-        android:name="com.sys.gets.ui.magazine.MagazineFragment"
+        android:name="com.sys.gets.ui.article.MagazineFragment"
         android:label="@string/title_magazine"
         tools:layout="@layout/fragment_magazine" />
     <fragment

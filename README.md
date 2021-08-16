@@ -1,42 +1,33 @@
-# Gets
+# GETs
 
 ## 프로젝트 개요
 
-### 1. 패션 플랫폼
+### 1. GETs
+- 개인 맞춤형 패션 플랫폼  
+- Guess Style, Get Style
+
+맞춤 추천과 가상 피팅 기능 중점, 사용자 맞춤형 기능 제공 목표
 
 ### 2. 구현 예정 사항
 
-#### Android application
-
 - 홈
-    - 스타일 추천
-    - 미리 보기
-- 카테고리
+    - 맞춤 추천
+    - 스타일 찾기
+    - 트렌드
+- 제품
     - 종류별 탐색
-    - 상세 검색
+    - 제품 검색
     - 제품 정보
-    - 제품 리뷰
 - 옷장
-    - 내 옷 종류별 표시
-    - 좋아요 선택 옷 종류별 표시
-- 코디
-    - 사용자 정의 코디
-- 설정
-    - 계정 설정
-    - 정보 수정
+    - 제품 목록 (좋아요 선택한 항목)
+    - 코디 목록 (좋아요 선택한 항목)
+    - 가상 피팅
 - 계정
     - 로그인
     - 회원 가입
+    - 정보 수정
     - 상세 정보 입력
-
-#### Data server
-
-- 제품
-- 사용자 정보
-
-#### Web application
-
-- android 및 서버 개발 이후 진행
+    - 스타일 분석
 
 ### 3. 개발 진행 사항
 
@@ -46,19 +37,19 @@
 |------------------------------|----------|----------|-----|
 |제공 서비스 선별/확립            |2021/05/03|2021/05/07|완료|
 |안드로이드 레이아웃 설계          |2021/05/07|2021/05/21|완료|
-|의류 데이터 수집                |2021/05/14|2021/05/28|진행|
+|기초 의류 데이터 수집            |2021/05/14|2021/05/28|완료|
 |데이터 서버 설계               |2021/05/14|2021/05/21|완료|
 |데이터베이스 설계                |2021/05/14|2021/05/24|완료|
-|사업계획서 작성                 |2021/05/24|2021/06/04|진행|
-|안드로이드 레이아웃 제작          |-|-|예정|
-|데이터 서버 제작                 |-|-|예정|
-|데이터베이스 제작                 |-|-|예정|
-|안드로이드 제공 서비스 제작        |-|-|예정|
-|웹 레이아웃 설계                 |-|-|예정|
-|웹 레이아웃 제작                 |-|-|예정|
-|웹 제공 서비스 제작              |-|-|예정|
-|착수 보고                        |2021/07/09|2021/07/09|예정|
-|중간 보고                        |2021/08/06|2021/08/06|예정|
+|사업계획서 작성                 |2021/05/24|2021/07/20|완료|
+|안드로이드 레이아웃 제작          |2021/06/21|2021/08/15|완료|
+|데이터 서버 제작                 |2021/06/21|2021/08/15|완료|
+|데이터베이스 제작                 |2021/06/21|2021/08/15|완료|
+|안드로이드 제공 서비스 제작        |2021/06/23|-|진행|
+|웹 레이아웃 설계                 |2021/06/23|2021/08/06|완료|
+|웹 레이아웃 제작                 |2021/06/23|-|진행|
+|웹 제공 서비스 제작              |2021/06/30|-|진행|
+|착수 보고                        |2021/07/09|2021/07/09|완료|
+|중간 보고                        |2021/08/06|2021/08/06|완료|
 |최종 보고 및 창업                 |2021/09/03|2021/09/03|예정|
 |포스터 제작 및 발표                |2021/09/09|2021/09/10|예정|
 |최종 발표                        |2021/09/11|2021/09/11|예정|
@@ -109,7 +100,7 @@
 
 #### Android application
 
-- 요구 사항을 만족하는 emulator
+- emulator 또는 휴대 전화에서 실행
 
 #### Data server
 
@@ -120,6 +111,7 @@
 
 ##### node.js 모듈 설치
 
+- server 파일과 web 파일에서 각각
 ```text
 npm install
 ```
@@ -206,7 +198,7 @@ create table coordination
   style         INT,
   gender        INT,
   age           INT,
-  fit     INT,
+  fit           INT,
   price         INT,
   weather       INT,
   imageID       VARCHAR(64)
@@ -227,14 +219,37 @@ create table favoriteCoordination(
   FOREIGN KEY (userEmail) REFERENCES user (email) ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (coordinationID) REFERENCES coordination (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+create table article
+(
+  id             INT PRIMARY KEY AUTO_INCREMENT,
+  name           NVARCHAR(128)  NOT NULL,
+  tag            NVARCHAR(128)  NOT NULL,
+  tag_en         NVARCHAR(128)  NOT NULL,
+  description    NVARCHAR(1024) NOT NULL,
+  description_en NVARCHAR(1024) NOT NULL
+);
+
+create table articleImage
+(
+  articleID INT,
+  imageID   INT,
+  PRIMARY KEY (articleID, imageID)
+);
 ```
 
 ##### 서버 실행
 
-server 파일에서
+- server 파일에서
 
 ```text
 node ./bin/www
+```
+
+- web 파일에서
+
+```text
+node start
 ```
 
 ##### 서버 접속
@@ -244,21 +259,45 @@ node ./bin/www
 API:
 [http://localhost:3000/api](http://localhost:3000/api)
 
-## 계획안
+## 발표 자료
 
-### 창업
+### 사업계획서
 
 ![plan1](./image/plan/1.png)
 ![plan2](./image/plan/2.png)
 ![plan3](./image/plan/3.png)
 ![plan4](./image/plan/4.png)
+![plan4](./image/plan/5.png)
+![plan4](./image/plan/6.png)
+![plan4](./image/plan/7.png)
+![plan4](./image/plan/8.png)
+![plan4](./image/plan/9.png)
+![plan4](./image/plan/10.png)
+
 
 ### 해커톤
 
-![plan1](./image/hackathon/plan001.png)
-![plan1](./image/hackathon/plan002.png)
-![plan1](./image/hackathon/plan003.png)
-![plan1](./image/hackathon/plan004.png)
-![plan1](./image/hackathon/plan005.png)
-![plan1](./image/hackathon/plan006.png)
+![plan1](./image/hackathon/1.PNG)
+![plan1](./image/hackathon/2.PNG)
+![plan1](./image/hackathon/3.PNG)
+![plan1](./image/hackathon/4.PNG)
+![plan1](./image/hackathon/5.PNG)
+![plan1](./image/hackathon/6.PNG)
+![plan1](./image/hackathon/7.PNG)
+![plan1](./image/hackathon/8.PNG)
+![plan1](./image/hackathon/9.PNG)
+![plan1](./image/hackathon/10.PNG)
+![plan1](./image/hackathon/11.PNG)
+![plan1](./image/hackathon/12.PNG)
+![plan1](./image/hackathon/13.PNG)
+![plan1](./image/hackathon/14.PNG)
+![plan1](./image/hackathon/15.PNG)
+![plan1](./image/hackathon/16.PNG)
+![plan1](./image/hackathon/17.PNG)
+![plan1](./image/hackathon/18.PNG)
+![plan1](./image/hackathon/19.PNG)
+![plan1](./image/hackathon/20.PNG)
+![plan1](./image/hackathon/21.PNG)
+![plan1](./image/hackathon/22.PNG)
+![plan1](./image/hackathon/23.PNG)
 

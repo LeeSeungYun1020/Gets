@@ -81,7 +81,7 @@ footer #footer_logo{
 
 .main_container{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .main_card1{
@@ -89,17 +89,37 @@ footer #footer_logo{
   grid-row: 1;
 }
 
-.main_card2{
+.main_card2 {
   grid-column: 3;
   grid-row: 1;
 }
 
-.main_card3{
+.main_card3 {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.main_card4 {
   grid-column: 2;
   grid-row: 2;
 }
 
-.main_card4{
+.main_card5 {
   grid-column: 3;
+  grid-row: 2;
+}
+
+.main_card6 {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+.main_card7 {
+  grid-column: 5;
+  grid-row: 1;
+}
+
+.main_card8 {
+  grid-column: 5;
   grid-row: 2;
 }
