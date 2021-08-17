@@ -84,6 +84,12 @@ class CardListAdapter(val type: String, val tag: String, val list: MutableList<C
             }
 
 
+            titleView.text = data.title
+            imageView.setImageResource(R.drawable.tm_default)
+            brandView.text = data.brand
+            priceView.text = Format.currency(data.price)
+
+
             val imageRequest = ImageRequest(
                 "$imageURL/${data.imageID}",
                 { bitmap ->
@@ -102,10 +108,6 @@ class CardListAdapter(val type: String, val tag: String, val list: MutableList<C
             imageRequest.tag = this@CardListAdapter.tag
             Network.getInstance(imageView.context)
                 .addToRequestQueue(imageRequest)
-
-            titleView.text = data.title
-            brandView.text = data.brand
-            priceView.text = Format.currency(data.price)
 
             val favoriteRequest = JsonObjectRequest(
                 Request.Method.GET, "$countFavoriteURL/${data.id}",

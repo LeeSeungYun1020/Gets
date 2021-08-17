@@ -118,7 +118,7 @@ class HomeFragment : Fragment() {
                                     }
                                 }
 
-                                target.image.setImageResource(R.drawable.tm_custom)
+                                target.image.setImageResource(R.drawable.tm_default)
                                 val imageRequest = ImageRequest(
                                     "${Network.COORDINATION_IMAGE_URL}/${imageID}",
                                     { bitmap ->
