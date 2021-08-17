@@ -16,55 +16,70 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="-24dp"
-            android:background="#76000000"
+            android:background="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:minHeight="400dp"
             app:layout_constraintBottom_toBottomOf="@id/chip_group"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/main_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:layout_marginRight="38dp"
+            android:src="@drawable/tx_minimal"
+            app:layout_constraintEnd_toEndOf="@id/main_contents"
+            app:layout_constraintTop_toTopOf="@id/main_contents" />
+
         <TextView
             android:id="@+id/main_title"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="148dp"
+            android:layout_marginTop="120dp"
             android:hint="@string/hint_title"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:layout_marginEnd="20dp"
+            android:textSize="33sp"
+            app:layout_constraintEnd_toEndOf="@id/main_contents"
+            app:layout_constraintStart_toStartOf="@id/main_contents"
             app:layout_constraintTop_toTopOf="@id/main_contents" />
 
         <TextView
             android:id="@+id/main_description"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:minHeight="200dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="110dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginEnd="20dp"
             android:hint="@string/hint_title"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@id/main_contents"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/main_contents"
             app:layout_constraintStart_toStartOf="@id/main_title"
             app:layout_constraintTop_toBottomOf="@id/main_title" />
 
         <ImageView
             android:id="@+id/main_image"
             android:layout_width="212dp"
-            android:layout_height="300dp"
-            android:layout_marginEnd="-50dp"
+            android:layout_height="370dp"
+            android:layout_marginStart="-32dp"
+            android:alpha="0.51"
             android:src="@drawable/bg_rockchic"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/main_contents"
             app:layout_constraintTop_toTopOf="@id/main_title" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chip_group"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginStart="148dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="42dp"
             app:layout_constraintEnd_toEndOf="@id/main_contents"
             app:layout_constraintStart_toStartOf="@id/main_contents"
             app:layout_constraintTop_toBottomOf="@id/main_description" />
