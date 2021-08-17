@@ -21,54 +21,36 @@ import Register from "./components/login/Register";
 import NotFound from "./components/NotFound";
 import Product from "./components/product/Product";
 import Closet from "./components/closet/Closet";
+import DetailInfoPage from "./components/closet/DetailInfoPage";
+import ScrollToTop from "./components/ScrollToTop";
+import PublicRoute from "./lib/PublicRoute";
+import PrivateRoute from "./lib/PrivateRoute";
 export default function App() {
     return (
         <Router>
             <div className="App">
                 <Header />
+                <ScrollToTop />
                 <Switch>
-                    <Route exact path={link.home}>
-                        <Home />
-                    </Route>
-                    <Route path={link.closet}>
-                        <Closet />
-                    </Route>
-                    <Route path={link.defaultcloset}>
-                        <Closet />
-                    </Route>
-                    <Route path={link.product}>
-                        <Product />
-                    </Route>
-                    <Route path={link.defaultproduct}>
-                        <Product />
-                    </Route>
-                    <Route path={link.signin}>
-                        <SignIn />
-                    </Route>
-                    <Route path={link.findid}>
-                        <FindId />
-                    </Route>
-                    <Route path={link.findpw}>
-                        <FindPw />
-                    </Route>
-                    <Route path={link.findpwemail}>
-                        <FindPwEmail />
-                    </Route>
-                    <Route path={link.register}>
-                        <Register />
-                    </Route>
-                    <Route path={link.afterregister}>
-                        <AfterRegister />
-                    </Route>
-                    <Route path={link.detailinfo}>
-                        <DetailInfo />
-                    </Route>
-                    <Route path={link.signup}>
-                        <h1>구현 예정 - 회원 가입</h1>
-                    </Route>
-                    <Route path={link.info}>
-                        <h1>구현 예정 - 내 정보</h1>
-                    </Route>
+                    {/*publicRoute : 권한없으면 못들어감 restricted가 있으면 로그인했을때 못들어감 없으면 그냥 다 들어갈 수 있음 홈으로 리다이렉트 */}
+                    {/*privateRoute : 로그인 안했을 때 못들어감*/}
+                    <PublicRoute restricted = {false} component = {Home} exact path={link.home} />
+                    <PrivateRoute component={Closet} exact path={link.closet}/>
+                    <PrivateRoute component={Closet} exact path={link.defaultcloset} />
+                    <PublicRoute restricted = {false} component = {Product} exact path={link.product} />
+                    <PublicRoute restricted = {false} component= {Product} exact path={link.defaultproduct} />
+                    <PublicRoute restricted = {false} path = {link.detailcoordination} component = {DetailInfoPage} />
+                    <PublicRoute restricted component = {SignIn} path={link.signin} />
+                    <PublicRoute restricted component={FindId} path={link.findid} />
+                    <PublicRoute restricted component={FindPw} path={link.findpw} />
+                    <PublicRoute restricted component={FindPwEmail} path = {link.findpwemail} />
+                    <PublicRoute restricted component={Register} path={link.register} />
+                    <PrivateRoute component={AfterRegister} path={link.afterregister} />
+                    <PrivateRoute component = {DetailInfo} path={link.detailinfo} />
+                    <PrivateRoute component = {'#'} path={link.info}></PrivateRoute>
+                    {/*<Route path={link.info}>*/}
+                    {/*    <h1>구현 예정 - 내 정보</h1>*/}
+                    {/*</Route>*/}
                     <Route path={link.style}>
                         <h1>구현 예정 - 내 스타일</h1>
                     </Route>

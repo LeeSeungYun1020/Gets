@@ -20,17 +20,17 @@ const DetailInfoItem = props => {
     const {t, i18n} = useTranslation()
     const history = useHistory()
     const chipList = [
-        {image: CasualChip, text: t("style_casual")},
-        {image: CampusChip, text: t("style_campus")},
-        {image: StreetChip, text: t("style_street")},
-        {image: RockchicChip, text: t("style_rock_chic")},
-        {image: AmekajiChip, text: t("style_amekaji")},
-        {image: CityboyChip, text: t("style_city_boy")},
-        {image: OfficeChip, text: t("style_office")},
-        {image: SexyglamChip, text: t("style_sexy_glam")},
-        {image: FeminineChip, text: t("style_feminine")},
-        {image: LovelyChip, text: t("style_lovely")},
-        {image: MinimalChip, text: t("style_minimal")},
+        {image: CasualChip, text: t("casual")},
+        {image: CampusChip, text: t("campus")},
+        {image: StreetChip, text: t("street")},
+        {image: RockchicChip, text: t("rock_chic")},
+        {image: AmekajiChip, text: t("amekaji")},
+        {image: CityboyChip, text: t("city_boy")},
+        {image: OfficeChip, text: t("office")},
+        {image: SexyglamChip, text: t("sexy_glam")},
+        {image: FeminineChip, text: t("feminine")},
+        {image: LovelyChip, text: t("lovely")},
+        {image: MinimalChip, text: t("minimal")},
     ]
     const [gender, SetGender] = useState('');
     const [height, SetHeight] = useState('');
