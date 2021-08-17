@@ -73,7 +73,7 @@ const Fit = Object.freeze({
 function getFitCode(text) {
 	let code = 0
 	for (const element of text.split(re)) {
-		code += BodyShape[element]
+		code += Fit[element]
 		if (code == NaN) {
 			console.log(element)
 			break
