@@ -19,6 +19,7 @@ import com.sys.gets.R
 import com.sys.gets.data.Format
 import com.sys.gets.network.Network
 import com.sys.gets.ui.closet.CLOSET_TAG
+import com.sys.gets.ui.coordination.COORDINATION_TAG
 import com.sys.gets.ui.coordination.CoordinationActivity
 
 data class CardItem(
@@ -57,11 +58,17 @@ class CardListAdapter(val type: String, val tag: String, val list: MutableList<C
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        CardListViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = when (type) {
+        COORDINATION_TAG -> CardListViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.component_card_title_revert, parent, false)
+        )
+        else -> CardListViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.component_card_title, parent, false)
         )
+    }
+
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val data = list[position]
