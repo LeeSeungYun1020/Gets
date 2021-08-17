@@ -25,22 +25,22 @@ router.get('/product', function (req, res, next) {
 			// CSV options
 		}));
 		for await (const record of parser) {
-			const id = record[0]
-			const name = record[1]
-			const brand = record[2]
-			const code = record[3]
-			const gender = product.getGenderCode(record[4])
-			const type = product.getTypeCode(record[5])
-			const detail = product.getDetailCode(record[6] || record[7] || record[8] || record[9] || record[10] || record[11] || record[12] || record[13])
-			const color = product.getColorCode(record[14])
-			const fit = product.getFitCode(record[15])
-			const season = product.getSeasonCode(record[16])
-			const fiber = product.getFiberCode(record[17])
-			const age = product.getAgeCode(record[18])
-			const style = product.getStyleCode(record[19])
-			const price = record[20]
-			const size = record[21]
-			const image = record[24].split(",")
+			const id = record[1]
+			const name = record[2]
+			const brand = record[3]
+			const code = record[4]
+			const gender = product.getGenderCode(record[5])
+			const type = product.getTypeCode(record[6])
+			const detail = product.getDetailCode(record[7] || record[9] || record[11] || record[13] || record[15] || record[17] || record[18] || record[19])
+			const color = product.getColorCode(record[21])
+			const fit = product.getFitCode(record[8] || record[10] || record[12] || record[14] || record[16])
+			const season = product.getSeasonCode(record[23])
+			const fiber = product.getFiberCode(record[20])
+			const age = product.getAgeCode(record[24])
+			const style = product.getStyleCode(record[22])
+			const price = record[26]
+			const size = record[29]
+			const image = record[28].split(",")
 			// TODO: 이미지 처리
 			connection.query("insert into product \
 				(id, name, brand, code, gender, type, detail, color, fit, season, fiber, age, style, price, size, image1ID, image2ID, image3ID) \
