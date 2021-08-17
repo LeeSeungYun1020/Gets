@@ -9,7 +9,7 @@ class Format {
             val format = NumberFormat.getCurrencyInstance()
             format.maximumFractionDigits = 0
             format.currency = Currency.getInstance("KOR")
-            return format.format(number).replace("KOR", "₩")
+            return format.format(number).replace("KOR", "")
         }
     }
 }

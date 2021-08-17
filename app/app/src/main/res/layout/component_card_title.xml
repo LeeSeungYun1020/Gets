@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:textSize="8sp"
+        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/card_image"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -31,6 +32,7 @@
         android:hint="@string/hint_title"
         android:textSize="14sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/card_brand"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -39,7 +41,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/hint_price"
-        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/card_title"
         app:layout_constraintEnd_toEndOf="parent" />
 

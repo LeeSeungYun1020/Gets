@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.sys.gets.R
+import com.sys.gets.data.Category
 import com.sys.gets.databinding.FragmentProductBinding
 import com.sys.gets.network.Network
 import com.sys.gets.ui.MainViewModel
@@ -34,6 +35,10 @@ class ProductFragment : Fragment() {
         productViewModel = ViewModelProvider(requireActivity()).get(ProductViewModel::class.java)
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
+
+        Category.values().firstOrNull { it.code == productViewModel.type.value }?.let {
+            binding.productText.setText(it.resID)
+        }
         binding.categoryButton.setOnClickListener {
             val transaction = parentFragmentManager.beginTransaction().apply {
                 replace(R.id.nav_host_fragment_activity_main, CategoryFragment())
