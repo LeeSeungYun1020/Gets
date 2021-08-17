@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/fabi8/gets/app/app/src/main/res/drawable/ic_account_24.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/fabi8/gets/app/app/src/main/res/drawable/ic_closet_24.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/fabi8/gets/app/app/src/main/res/drawable/ic_home_24.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/fabi8/gets/app/app/src/main/res/drawable/ic_pants_21.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/fabi8/gets/app/app/src/main/res/drawable/ic_skirt_21.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/fabi8/gets/app/app/src/main/res/layout/activity_article.xml" value="0.1381340579710145" />
@@ -23,6 +26,7 @@
         <entry key="..\:/Users/fabi8/gets/app/app/src/main/res/layout/fragment_home.xml" value="0.16893115942028986" />
         <entry key="..\:/Users/fabi8/gets/app/app/src/main/res/layout/fragment_magazine.xml" value="0.16893115942028986" />
         <entry key="..\:/Users/fabi8/gets/app/app/src/main/res/layout/fragment_product.xml" value="0.4" />
+        <entry key="..\:/Users/fabi8/gets/app/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/fabi8/gets/app/app/src/main/res/xml/root_preferences.xml" value="0.16893115942028986" />
         <entry key="..\:/Users/fabi8/project/Gets/app/app/src/main/res/drawable/ic_favorite_24.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/fabi8/project/Gets/app/app/src/main/res/layout/activity_article.xml" value="0.2966485507246377" />

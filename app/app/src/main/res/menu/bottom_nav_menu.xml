@@ -3,18 +3,18 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_24dp"
+        android:icon="@drawable/ic_home_24"
         android:title="@string/title_home" />
-
-    <item
-        android:id="@+id/navigation_closet"
-        android:icon="@drawable/ic_closet_24dp"
-        android:title="@string/title_closet" />
 
     <item
         android:id="@+id/navigation_product"
         android:icon="@drawable/ic_product_24"
         android:title="@string/title_product" />
+
+    <item
+        android:id="@+id/navigation_closet"
+        android:icon="@drawable/ic_closet_24"
+        android:title="@string/title_closet" />
 
     <!--    <item-->
     <!--        android:id="@+id/navigation_magazine"-->
