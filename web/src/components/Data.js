@@ -60,5 +60,18 @@ const SubCategory = {
     "beret": 8,
 }
 
+const NumToStringStyle = {
+    1: "minimal",
+    2: "casual",
+    4: "campus",
+    8: "street",
+    16: "rock_chic",
+    32: "amekaji",
+    64: "city_boy",
+    128: "office",
+    256: "sexy_glam",
+    512: "feminine",
+    1024: "lovely"
+}
 
-export { Category, SubCategory }
+export { Category, SubCategory, NumToStringStyle }

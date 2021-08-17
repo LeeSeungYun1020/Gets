@@ -72,47 +72,47 @@ const HomeStyleInfoSlick = () => {
         <div id ="style_info">
             <Slider {...settings}>
                     <div className = "style_info_img">
-                        <h2>{t("style_casual")}</h2>
+                        <h2>{t("casual")}</h2>
                         <img src={casual} />
                     </div>
                     <div className = "style_info_img">
-                        <h2>{t("style_campus")}</h2>
+                        <h2>{t("campus")}</h2>
                         <img src={campus} />
                     </div>
                     <div className = "style_info_img">
-                        <h2>{t("style_street")}</h2>
+                        <h2>{t("street")}</h2>
                         <img src={street} />
                     </div>
                     <div className = "style_info_img">
-                        <h2>{t("style_rock_chic")}</h2>
+                        <h2>{t("rock_chic")}</h2>
                         <img src={rock_chic} />
                     </div>
                     <div className = "style_info_img">
-                        <h2>{t("style_amekaji")}</h2>
+                        <h2>{t("amekaji")}</h2>
                         <img src={amekaji} />
                     </div>
                     <div className = "style_info_img">
-                        <h2>{t("style_city_boy")}</h2>
+                        <h2>{t("city_boy")}</h2>
                         <img src={city_boy} />
                     </div>
                     <div className="style_info_img">
-                        <h2>{t("style_office")}</h2>
+                        <h2>{t("office")}</h2>
                         <img src={casual}/>
                     </div>
                     <div className="style_info_img">
-                        <h2>{t("style_sexy_glam")}</h2>
+                        <h2>{t("sexy_glam")}</h2>
                         <img src={casual}/>
                     </div>
                     <div className="style_info_img">
-                        <h2>{t("style_feminine")}</h2>
+                        <h2>{t("feminine")}</h2>
                         <img src={casual}/>
                     </div>
                     <div className="style_info_img">
-                        <h2>{t("style_lovely")}</h2>
+                        <h2>{t("lovely")}</h2>
                         <img src={casual}/>
                     </div>
                     <div className="style_info_img">
-                        <h2>{t("style_minimal")}</h2>
+                        <h2>{t("minimal")}</h2>
                         <img src={casual}/>
                     </div>
             </Slider>

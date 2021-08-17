@@ -8,8 +8,9 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import axios from "axios";
 import { Menu, MenuItem} from "@material-ui/core";
 import {useTranslation} from "react-i18next";
-
+import {Link, Route, Switch, useHistory} from 'react-router-dom';
 const useStyles = makeStyles({
+
     root: {
         width: 310,
         borderRadius: 10,
@@ -20,9 +21,9 @@ const useStyles = makeStyles({
 });
 
 const ClosetCard = ({item, onRemove, category}) => {
-
     const classes = useStyles();
     const {t, i18n} = useTranslation();
+    const history = useHistory();
     const [anchorEl, setAnchorEl] = useState(null);
     const {id, price} = item
     const [imageId, setImageId] = useState(`${id}`);
@@ -34,6 +35,15 @@ const ClosetCard = ({item, onRemove, category}) => {
             setImageId(`${id}`)
         }
     })
+    const onCardClick = () => {
+        if(category !== 'product') {
+            history.push({
+                pathname:`/closet/coordination/${id}`
+            }
+        )
+        }
+    }
+
     const handleClick = e => {
         setAnchorEl(e.currentTarget);
     }
@@ -43,10 +53,8 @@ const ClosetCard = ({item, onRemove, category}) => {
     const handleDeleteClick = () => {
         axios.get(`http://localhost:3000/${category}/unfavorite/${id}`, {withCredentials: true})
             .then(response => {
-                console.log(response.data)
                 setAnchorEl(null);
                 {onRemove(id)}
-                console.log(id)
             })
             .catch(function (error) {
                 console.log(error);
@@ -54,7 +62,7 @@ const ClosetCard = ({item, onRemove, category}) => {
     }
     return (
         <div className="closet_card">
-            <Card className={classes.root}>
+            <Card className={classes.root} onClick = {onCardClick}>
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
@@ -69,8 +77,12 @@ const ClosetCard = ({item, onRemove, category}) => {
                             keepMounted
                             open={Boolean(anchorEl)}
                             onClose={handleClose}
+
                             >
-                            <MenuItem onClick = {handleDeleteClick}>{t("delete")}</MenuItem>
+                            <MenuItem onClick = {handleDeleteClick} style = {{
+                                fontFamily: 'Noto Sans KR',
+                                fontSize: '1.25rem'
+                            }}>{t("delete")}</MenuItem>
                             {/*<MenuItem onClick = {handleModifyClick}>{t("modify")}</MenuItem>*/}
                         </Menu>
                     </CardMedia>
