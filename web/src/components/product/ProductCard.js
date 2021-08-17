@@ -49,20 +49,16 @@ const ProductCard = ({item}) => {
         if(e.target.checked) {
             axios.get(`http://localhost:3000/product/favorite/${id}`, { withCredentials: true })
                 .then( response => {
-                    console.log(response.data)
                 })
                 .catch(function (error) {
-                    console.log(error);
                 });
             setFavorite(favorite + 1);
         }
         else {
             axios.get(`http://localhost:3000/product/unfavorite/${id}`, {withCredentials: true})
                 .then(response => {
-                    console.log(response.data)
                 })
                 .catch(function (error) {
-                    console.log(error);
                 });
             setFavorite(favorite - 1);
         }

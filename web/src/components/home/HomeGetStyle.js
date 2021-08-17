@@ -27,17 +27,17 @@ const HomeGetStyle = (props) => {
     const [style, setStyle] = useState(0);
     const [modify, setModify] = useState(false);
     const chipList = [
-        {image: CasualChip, text: t("style_casual")},
-        {image: CampusChip, text: t("style_campus")},
-        {image: StreetChip, text: t("style_street")},
-        {image: RockchicChip, text: t("style_rock_chic")},
-        {image: AmekajiChip, text: t("style_amekaji")},
-        {image: CityboyChip, text: t("style_city_boy")},
-        {image: OfficeChip, text: t("style_office")},
-        {image: SexyglamChip, text: t("style_sexy_glam")},
-        {image: FeminineChip, text: t("style_feminine")},
-        {image: LovelyChip, text: t("style_lovely")},
-        {image: MinimalChip, text: t("style_minimal")},
+        {image: CasualChip, text: t("casual")},
+        {image: CampusChip, text: t("campus")},
+        {image: StreetChip, text: t("street")},
+        {image: RockchicChip, text: t("rock_chic")},
+        {image: AmekajiChip, text: t("amekaji")},
+        {image: CityboyChip, text: t("city_boy")},
+        {image: OfficeChip, text: t("office")},
+        {image: SexyglamChip, text: t("sexy_glam")},
+        {image: FeminineChip, text: t("feminine")},
+        {image: LovelyChip, text: t("lovely")},
+        {image: MinimalChip, text: t("minimal")},
     ]
     useEffect(() => {
         if (sessionStorage.getItem("token")) { // 로그인 한 사람은 자동으로 추천코디 띄워줌
@@ -77,7 +77,6 @@ const HomeGetStyle = (props) => {
         e.preventDefault();
         axios.get('http://localhost:3000/home/custom/8')
             .then(({data}) => {setRecommend(data)
-                console.log(data)
                 setAns(true);
             })
     },[]); // 컴포넌트가 처음 렌더링될 때만 함수 생성

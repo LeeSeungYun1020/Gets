@@ -1,13 +1,10 @@
 import React, { useState } from "react"
 import axios from "axios"
 import { useHistory } from "react-router-dom"
-
 const SignInBox = (props) => {
     const [email, SetEmail] = useState('');
     const [password, SetPassword] = useState('');
     const history = useHistory();
-
-
     const handleEmailChange = (event) => {
         SetEmail(event.target.value);
     }
@@ -25,8 +22,8 @@ const SignInBox = (props) => {
                         .then ( response => {
                             console.log(response.data)
                             sessionStorage.setItem("token", response.data.email)
-                            window.location.replace("/")
-                            // 일단 홈으로 가자.... 나중에 수정..........
+                            history.goBack()
+                            window.location.replace(document.referrer)
                         })
                 }
                 else {

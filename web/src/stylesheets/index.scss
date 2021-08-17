@@ -51,6 +51,7 @@ a {
   margin:0;
   font-size: 10px;
   font-weight: normal;
+  color: #ffffff;
 }
 
 ul li {
@@ -85,8 +86,9 @@ nav {
   justify-content: space-between;
 }
 
-#top_menu a {
+#top_menu a, #logout {
   margin-left: 1.5vw;
+  cursor: pointer;
 }
 
 .tab:hover{

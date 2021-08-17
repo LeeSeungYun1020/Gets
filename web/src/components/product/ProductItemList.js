@@ -14,11 +14,8 @@ const ProductItemList = ({category, subCategory}) => {
             try {
                     const query_1 = `${category}`;
                     const query_2 = `${subCategory}`;
-                    console.log(`${category}`)
-                    console.log(`${subCategory}`)
                     const response = await axios.get(`http://localhost:3000/product/category/${Category[query_1]}/${SubCategory[query_2]}`,{ withCredentials: true })
                     ;
-                    console.log(`http://localhost:3000/product/category/${Category[query_1]}/${SubCategory[query_2]}`)
                     setItem(response.data);
             } catch(e) {
                 console.log(e)

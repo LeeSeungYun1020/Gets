@@ -33,7 +33,6 @@ const HomeRecommendCard = (props) => {
             .then( response => {
                 if (response.data.result) {
                     setChecked(true);
-                    console.log(response.data.result);
                 }
                 else {
                     setChecked(false);
@@ -46,8 +45,6 @@ const HomeRecommendCard = (props) => {
             axios.get(`http://localhost:3000/coordination/favorite/${id}`, { withCredentials: true })
                 .then( response => {
                     setChecked(true);
-                    console.log("찜!!!")
-                    console.log(checked)
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -57,8 +54,6 @@ const HomeRecommendCard = (props) => {
             axios.get(`http://localhost:3000/coordination/unfavorite/${id}`, {withCredentials: true})
                 .then(response => {
                     setChecked(false);
-                    console.log("찜취소~!!!!")
-                    console.log(checked)
                 })
                 .catch(function (error) {
                     console.log(error);
