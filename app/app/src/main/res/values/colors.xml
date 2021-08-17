@@ -17,5 +17,6 @@
     <color name="chipGrey">#d4d3d3</color>
     <color name="favoriteRed">#ed0000</color>
     <color name="favoriteGrey">#c4c4c4</color>
+    <color name="IconGrey">#979797</color>
 
 </resources>

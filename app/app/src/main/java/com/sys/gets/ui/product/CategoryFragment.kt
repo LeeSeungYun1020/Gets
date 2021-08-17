@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getColor
 import androidx.core.view.allViews
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -35,13 +36,28 @@ class CategoryFragment : Fragment() {
         productViewModel = ViewModelProvider(requireActivity()).get(ProductViewModel::class.java)
 
         binding.accordionOuter.title.text.setText(Category.OUTER.resID)
+        binding.accordionOuter.title.icon.setImageResource(R.drawable.ic_outer_21)
+
         binding.accordionTop.title.text.setText(Category.TOP.resID)
+        binding.accordionTop.title.icon.setImageResource(R.drawable.ic_top_21)
+
         binding.accordionPants.title.text.setText(Category.PANTS.resID)
+        binding.accordionPants.title.icon.setImageResource(R.drawable.ic_pants_21)
+
         binding.accordionSkirt.title.text.setText(Category.SKIRT.resID)
+        binding.accordionSkirt.title.icon.setImageResource(R.drawable.ic_skirt_21)
+
         binding.accordionSet.title.text.setText(Category.SET.resID)
+        binding.accordionSet.title.icon.setImageResource(R.drawable.ic_set_21)
+
         binding.accordionShoes.title.text.setText(Category.SHOES.resID)
+        binding.accordionShoes.title.icon.setImageResource(R.drawable.ic_shoes_21)
+
         binding.accordionBag.title.text.setText(Category.BAG.resID)
+        binding.accordionBag.title.icon.setImageResource(R.drawable.ic_bag_21)
+
         binding.accordionHat.title.text.setText(Category.HAT.resID)
+        binding.accordionHat.title.icon.setImageResource(R.drawable.ic_hat_21)
 
         binding.accordionOuter.setText(Category.OUTER.code to Category.OUTER.resID,
             Outer.values().map { it.code to it.resID })
@@ -90,8 +106,16 @@ class CategoryFragment : Fragment() {
         this.title.expandButton.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 this.contents.root.visibility = View.VISIBLE
+                this.title.icon.setColorFilter(
+                    getColor(requireContext(), R.color.secondaryColor),
+                    android.graphics.PorterDuff.Mode.SRC_IN
+                )
             } else {
                 this.contents.root.visibility = View.GONE
+                this.title.icon.setColorFilter(
+                    getColor(requireContext(), R.color.IconGrey),
+                    android.graphics.PorterDuff.Mode.SRC_IN
+                )
             }
         }
         var index = 0
