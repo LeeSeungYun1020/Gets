@@ -39,7 +39,7 @@ export default function App() {
                     <PrivateRoute component={Closet} exact path={link.defaultcloset} />
                     <PublicRoute restricted = {false} component = {Product} exact path={link.product} />
                     <PublicRoute restricted = {false} component= {Product} exact path={link.defaultproduct} />
-                    <PublicRoute restricted path = {link.detailcoordination} component = {DetailInfoPage} />
+                    <PublicRoute restricted = {false} path = {link.detailcoordination} component = {DetailInfoPage} />
                     <PublicRoute restricted component = {SignIn} path={link.signin} />
                     <PublicRoute restricted component={FindId} path={link.findid} />
                     <PublicRoute restricted component={FindPw} path={link.findpw} />
