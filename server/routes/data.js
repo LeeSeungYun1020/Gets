@@ -74,5 +74,21 @@ module.exports = function (passport) {
 	})
 	
 	
+	router.get('/coordination/filter/gender/:gender', (req,res) => {
+		let gender = req.params.gender
+		
+		console.log('/data/coordination/filter/gender/' + gender)
+		
+		if(req.user){
+			connection.query(`select id, gender, style, fit, weather from coordination where (gender&?)=?`,[gender, gender],
+				(err,result)=>{
+					if (err || result.length === 0)
+						res.send({result: false})
+					else
+						res.send(result)
+				})
+		}else res.send({result:false})
+	})
+	
 	return router
 }
