@@ -5,6 +5,14 @@ import url as URL
 from auth import signin, signout
 from get_favorite_style import getStyleRanking
 
+def is_json_key_present(json, key):
+    try:
+        buf = json[key]
+    except KeyError:
+        return False
+
+    return True
+
 if __name__ == '__main__':
     # ================================
     lastIndex = len(sys.argv)-1
@@ -31,14 +39,20 @@ if __name__ == '__main__':
 
 
     response = session.get(URL.favorite_product_url).json()
+
     favoriteProductList = []
-    for res in response:
-        favoriteProductList.append(res.get('productID'))
+    if not 'result' in response:
+        for res in response:
+            favoriteProductList.append(res['productID'])
+
 
     response = session.get(URL.favorite_coordination_url).json()
+
     favoriteCoordinationList = []
-    for res in response:
-        favoriteCoordinationList.append(res.get('coordinationID'))
+    if not 'result' in response:
+        for res in response:
+            print(res)
+            favoriteCoordinationList.append(res.get('coordinationID'))
 
     userStyleRanking = getStyleRanking(favoriteProductList, favoriteCoordinationList)
 
