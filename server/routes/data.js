@@ -3,7 +3,7 @@ const router = express.Router()
 const path = require('path')
 const connection = require('../lib/mysql')
 const fs = require('fs')
-const exec = require('child_process').exec
+//const exec = require('child_process').exec
 const spawn = require('child_process').spawn
 
 
@@ -49,14 +49,19 @@ module.exports = function (passport) {
 			let pw = req.user.pw
 			//session?으로 바꾸기??
 			
+			scriptPath = '../data/getFavoriteStyleRanking/'
+			scriptName = 'main.py'
+			const process = spawn('python', ['-O', scriptPath + scriptName, email, pw])
+			
+			/*
 			let exePath = '../data/getFavoriteStyleRanking/'
 			let myPath = path.resolve(exePath) + '\\'
 			let fileName = 'getFavoriteStyleRanking.exe'
 			//let debugFileName = 'getFavoriteStyleRanking_debug.exe'
 			
 			const process = exec(myPath + fileName + ' ' + email + ' ' + pw)
-			
 			console.log(myPath + fileName + ' ' + email + ' ' + pw)
+			 */
 			
 			process.stdout.on('data', function(data){
 				console.log('==============================\n')
@@ -80,7 +85,7 @@ module.exports = function (passport) {
 		console.log('/data/coordination/filter/gender/' + gender)
 		
 		if(req.user){
-			connection.query(`select id, gender, style, fit, weather from coordination where (gender&?)=?`,[gender, gender],
+			connection.query(`select id, style, fit, weather from coordination where (gender&?)=?`,[gender, gender],
 				(err,result)=>{
 					if (err || result.length === 0)
 						res.send({result: false})
