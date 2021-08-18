@@ -46,8 +46,26 @@ class ArticleActivity : AppCompatActivity() {
                 Style.CITY_BOY -> R.drawable.bg_cityboy
                 Style.ROCK_CHIC -> R.drawable.bg_rockchic
                 Style.STREET -> R.drawable.bg_street
-                else -> R.drawable.bg_casual
-                // TODO: 스타일 사진 추가 필요
+                Style.MINIMAL -> R.drawable.bg_minimal
+                Style.OFFICE -> R.drawable.bg_office
+                Style.SEXY_GLAM -> R.drawable.bg_sexy_glam
+                Style.FEMININE -> R.drawable.bg_feminine
+                Style.LOVELY -> R.drawable.bg_lovely
+            }
+        )
+        binding.mainLogo.setImageResource(
+            when (style) {
+                Style.MINIMAL -> R.drawable.tx_minimal
+                Style.CASUAL -> R.drawable.tx_casual
+                Style.CAMPUS -> R.drawable.tx_campus
+                Style.STREET -> R.drawable.tx_street
+                Style.ROCK_CHIC -> R.drawable.tx_rock_chic
+                Style.AMEKAJI -> R.drawable.tx_amekaji
+                Style.CITY_BOY -> R.drawable.tx_city_boy
+                Style.OFFICE -> R.drawable.tx_office
+                Style.SEXY_GLAM -> R.drawable.tx_sexy_glam
+                Style.FEMININE -> R.drawable.tx_feminine
+                Style.LOVELY -> R.drawable.tx_lovely
             }
         )
 
