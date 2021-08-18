@@ -98,7 +98,7 @@ router.get("/coordination", (req, res) => {
 			console.log(fit)
 			connection.query(`insert into coordination \
 	 			(id, title, outerID, outerImageID, topID, topImageID, bottomID, bottomImageID, skirtID, skirtImageID,\
-	 			setID,setImageID,shoesID,shoesImageID,bagID,bagImageID,hatID,hatImageID,style,gender,age,season,fit,price,imageID) \
+	 			setID,setImageID,shoesID,shoesImageID,bagID,bagImageID,hatID,hatImageID,style,gender,age,weather,fit,price,imageID) \
 	 			values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?,?)`,
 				[id, title, outerID, outerImageID, topID, topImageID, bottomID, bottomImageID, skirtID, skirtImageID,
 					setID, setImageID, shoesID, shoesImageID, bagID, bagImageID, hatID, hatImageID, style, gender, age, season, fit, price, imageID],
