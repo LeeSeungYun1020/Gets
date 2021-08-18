@@ -25,6 +25,8 @@ import DetailInfoPage from "./components/closet/DetailInfoPage";
 import ScrollToTop from "./components/ScrollToTop";
 import PublicRoute from "./lib/PublicRoute";
 import PrivateRoute from "./lib/PrivateRoute";
+import ArticlePage from "./components/Article/ArticlePage";
+import ProductDetailPage from "./components/product/ProductDetailPage";
 export default function App() {
     return (
         <Router>
@@ -40,17 +42,17 @@ export default function App() {
                     <PublicRoute restricted = {false} component = {Product} exact path={link.product} />
                     <PublicRoute restricted = {false} component= {Product} exact path={link.defaultproduct} />
                     <PublicRoute restricted = {false} path = {link.detailcoordination} component = {DetailInfoPage} />
+                    <PublicRoute restricted = {false} path = {link.detailarticle} component = {ArticlePage} />
+                    <PublicRoute restricted = {false} path = {link.detailproduct} component = {ProductDetailPage} />
                     <PublicRoute restricted component = {SignIn} path={link.signin} />
                     <PublicRoute restricted component={FindId} path={link.findid} />
                     <PublicRoute restricted component={FindPw} path={link.findpw} />
                     <PublicRoute restricted component={FindPwEmail} path = {link.findpwemail} />
                     <PublicRoute restricted component={Register} path={link.register} />
-                    <PrivateRoute component={AfterRegister} path={link.afterregister} />
+                    <PublicRoute restricted={false} component={AfterRegister} path={link.afterregister} />
                     <PrivateRoute component = {DetailInfo} path={link.detailinfo} />
-                    <PrivateRoute component = {'#'} path={link.info}></PrivateRoute>
-                    {/*<Route path={link.info}>*/}
-                    {/*    <h1>구현 예정 - 내 정보</h1>*/}
-                    {/*</Route>*/}
+                    <PrivateRoute component = {DetailInfo} path={link.info} />
+                    <PublicRoute restricted={false} component={ArticlePage} path={link.article} />
                     <Route path={link.style}>
                         <h1>구현 예정 - 내 스타일</h1>
                     </Route>

@@ -16,7 +16,7 @@ const DetailInfoCard = ({id}) => {
     const [loading, setLoading] = useState(false);
     const all = [outer, top, bottom, bag, style, hat, shoes, skirt]
     let realAll = [];
-    const [t, i18n] = useTranslation()
+    const {i18n, t} = useTranslation()
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);

@@ -1,6 +1,7 @@
-//.closet_card .MuiPaper-elevation1 {
-//  box-shadow: none;
-//}
+.closet_card .MuiPaper-elevation1 {
+  box-shadow: none;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.32));
+}
 
 .closet_card svg {
   width: 35px;

@@ -4,7 +4,7 @@ import SignInBox from "./SignInBox";
 import {useTranslation} from "react-i18next";
 import link from "../../link";
 
-function SignIn() {
+function SignIn({login, setLogin}) {
     const {t, i18n} = useTranslation()
 
     return (
@@ -12,7 +12,7 @@ function SignIn() {
             <div id = "login_state">
                 <h1>{t("login_info")}</h1>
             </div>
-            <SignInBox login = {t("login")} input_id = {t("input_id")} input_pw = {t("input_password")}/>
+            <SignInBox login = {t("login")} input_id = {t("input_id")} input_pw = {t("input_password")} state_login = {login} setLogin = {setLogin}/>
             <div id = "find_or_register">
                 <p><a href={link.findid}>{t("find_id")}</a></p>
                 <div className = "find_line"></div>

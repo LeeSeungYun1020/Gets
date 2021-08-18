@@ -9,6 +9,7 @@ import axios from "axios";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Favorite from "@material-ui/icons/Favorite";
+import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles({
     root: {
@@ -26,6 +27,7 @@ const useStyles = makeStyles({
 
 const HomeRecommendCard = (props) => {
     const classes = useStyles();
+    const history = useHistory();
     const {title, content, cost, image_id, id } = props
     const [checked, setChecked] = useState(false)
     useEffect(()=> {
@@ -39,6 +41,11 @@ const HomeRecommendCard = (props) => {
                 }
             })
     })
+    const onCardClick = () => {
+        history.push({
+            pathname:`/closet/coordination/${id}`
+        })
+    }
     const onFavoriteChange = (e) => {
         console.log(e.target.checked)
         if(e.target.checked) {
@@ -63,16 +70,22 @@ const HomeRecommendCard = (props) => {
     return (
         <Card elevation={8} className={classes.root}>
             <CardActionArea>
+                <div className = "coordi_favorit">
+                    <FormControlLabel
+                        control={<Checkbox icon={<Favorite />} checkedIcon={<Favorite />} name="checkedH" onChange = {onFavoriteChange} checked={checked}
+                                           style = {{ position:"absolute", zIndex: 1, right: 9, top: 9, borderRadius: "50%",
+                                               background: "#ffffff"}}/> }
+                    />
+                </div>
                 <CardMedia
                     className={classes.media}
                     image={`http://localhost:3000/coordination/image/${image_id}`}
                     title={title}
-                >
-                    <div className = "coordi_favorit">
-                    <FormControlLabel
-                        control={<Checkbox icon={<Favorite />} checkedIcon={<Favorite />} name="checkedH" onChange = {onFavoriteChange} checked={checked}/> }
-                    />
-                    </div>
+                    onClick={onCardClick}
+                    style = {{
+                        position: 'relative'
+                    }}
+                    >
                 </CardMedia>
                 <CardContent>
                     <Typography gutterBottom variant="h6" component="h6">

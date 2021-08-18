@@ -10,6 +10,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import { MdFavorite } from "react-icons/md";
 import axios from "axios";
+import {useHistory} from "react-router-dom";
 const useStyles = makeStyles({
     root: {
         marginRight: 25,
@@ -23,6 +24,7 @@ const useStyles = makeStyles({
 });
 
 const ProductCard = ({item}) => {
+    const history = useHistory();
     const classes = useStyles();
     const { brand, name, price, image1ID, id } = item;
     const [favorite, setFavorite] = useState(0);
@@ -63,18 +65,29 @@ const ProductCard = ({item}) => {
             setFavorite(favorite - 1);
         }
     }
+    const onCardClick = () => {
+        history.push({
+            pathname: `/product/${id}`
+        })
+    }
     return (
         <Card className={classes.root}>
             <CardActionArea>
+                <div className = "my_favorit">
+                    <FormControlLabel
+                        style={{ position:"absolute", zIndex:1}}
+                        control={<Checkbox icon={<Favorite />} checkedIcon={<Favorite />} name="checkedH" onChange={onFavoriteChange} checked={checked}/> }
+                    />
+                </div>
                 <CardMedia
                     className={classes.media}
                     title={name}
                     image = {`http://localhost:3000/product/image/${image1ID}`}
-                    ><div className = "my_favorit">
-                    <FormControlLabel
-                    control={<Checkbox icon={<Favorite />} checkedIcon={<Favorite />} name="checkedH" onChange={onFavoriteChange} checked={checked}/> }
-                    />
-                </div>
+                    onClick={onCardClick}
+                    style = {{
+                        position: 'relative'
+                    }}
+                >
                 </CardMedia>
                 <CardContent>
                     <Typography variant="p" component="p" style = {{marginTop: "10px", fontWeight: 600}}>{brand}</Typography>
