@@ -166,15 +166,6 @@ create table product
   image3ID VARCHAR(32)   DEFAULT NULL
 );
 
-create table magazine(
-  id           INT PRIMARY KEY AUTO_INCREMENT,
-  title        VARCHAR(256) NOT NULL,
-  keyword      VARCHAR(64) DEFAULT NULL,
-  contents     VARCHAR(2048)    NOT NULL,
-  imageID      VARCHAR(32)   DEFAULT NULL,
-  styleTag     INT DEFAULT NULL
-);
-
 create table coordination
 (
   id            INT PRIMARY KEY AUTO_INCREMENT,

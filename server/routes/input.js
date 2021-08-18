@@ -244,16 +244,6 @@ router.get("/ready", (req, res) => {
             image3ID VARCHAR(32) DEFAULT NULL
         );
 
-        create table IF NOT EXISTS magazine
-        (
-            id       INT PRIMARY KEY AUTO_INCREMENT,
-            title    VARCHAR(256)  NOT NULL,
-            keyword  VARCHAR(64) DEFAULT NULL,
-            contents VARCHAR(2048) NOT NULL,
-            imageID  VARCHAR(32) DEFAULT NULL,
-            styleTag INT         DEFAULT NULL
-        );
-
         create table IF NOT EXISTS coordination
         (
             id            INT PRIMARY KEY AUTO_INCREMENT,
@@ -279,7 +269,7 @@ router.get("/ready", (req, res) => {
             age           INT,
             fit           INT,
             price         INT,
-            weather       INT,
+            season        INT,
             imageID       VARCHAR(64)
         );
 
