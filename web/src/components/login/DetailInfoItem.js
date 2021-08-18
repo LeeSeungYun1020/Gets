@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
@@ -15,6 +15,7 @@ import FeminineChip from "../../images/home/Oval_feminine.webp";
 import LovelyChip from "../../images/home/Oval_lovely.webp";
 import MinimalChip from "../../images/home/Oval_minimal.webp";
 import OutlineSelectBox from "./OutlineSelectBox";
+import OutlineSelectShapeBox from "./OutlineSelectShapeBox";
 
 const DetailInfoItem = props => {
     const {t, i18n} = useTranslation()
@@ -38,7 +39,11 @@ const DetailInfoItem = props => {
     const [topSize, SetTopSize] = useState('');
     const [bottomSize, SetBottomSize] = useState('');
     const [style, SetStyle] = useState(0);
-    const [value, SetValue] = useState(0);
+    const [shoulderSize, setShoulderSize] = useState('');
+    const [waistSize, setWaistSize] = useState('');
+    const [hipSize, setHipSize] = useState('');
+    const [thighSize, setThighSize] = useState('');
+
     const handleHeightChange = useCallback( (e) => {
         SetHeight(e.target.value);
     },[]);
@@ -59,7 +64,24 @@ const DetailInfoItem = props => {
         SetBottomSize(e.target.value);
         console.log(e.target.value);
     },[]);
-    const onSubmit = useCallback((e) => {
+    const handleShoulderClick = useCallback((e) => {
+        setShoulderSize(e.target.value);
+        console.log(e.target.value);
+    },[]);
+    const handleWaistClick = useCallback((e) => {
+        setWaistSize(e.target.value);
+        console.log(e.target.value);
+    },[]);
+    const handleHipClick = useCallback((e) => {
+        setHipSize(e.target.value);
+        console.log(e.target.value);
+    },[]);
+    const handleThighClick = useCallback((e) => {
+        setThighSize(e.target.value);
+        console.log(e.target.value);
+    },[]);
+    const onSubmit = (e) => {
+        console.log(gender)
         e.preventDefault();
         axios.post('http://localhost:3000/auth/signup/info', {
             gender: gender,
@@ -67,16 +89,20 @@ const DetailInfoItem = props => {
             weight: weight,
             top_size: topSize,
             bottom_size: bottomSize,
-            style: style
+            style: style,
+            shoulder: shoulderSize,
+            waist: waistSize,
+            hip: hipSize,
+            thigh: thighSize
         },{ withCredentials: true })
             .then(function (response) {
-                history.push("/account/signin")
+                history.goBack()
                 console.log(response);
             })
             .catch(function (error) {
                 console.log(error)
             })
-    },[])
+    }
     return (
         <div id = "detail_info_item">
             <form onSubmit={onSubmit}>
@@ -116,8 +142,18 @@ const DetailInfoItem = props => {
                             <h4 style={{marginBottom: "0", marginTop: "0"}}>{props.size}</h4>
                         </div>
                         <div id = "detail_selectbox">
-                            <OutlineSelectBox info={t("top_size")} event={handleTopSizeClick} value = {topSize} />
-                            <OutlineSelectBox info={t("bottom_size")} event={handleBottomSizeClick} value = {bottomSize} />
+                            <div className= "detailbox_div">
+                                <OutlineSelectBox info={t("top_size")} event={handleTopSizeClick} value = {topSize} />
+                                <OutlineSelectBox info={t("bottom_size")} event={handleBottomSizeClick} value = {bottomSize} />
+                            </div>
+                            <div className= "detailbox_div">
+                                <OutlineSelectShapeBox info = {t("shoulder")} event={handleShoulderClick} value = {shoulderSize}/>
+                                <OutlineSelectShapeBox info = {t("waist")} event={handleWaistClick} value = {waistSize}/>
+                            </div>
+                            <div className= "detailbox_div">
+                                <OutlineSelectShapeBox info = {t("hip")} event={handleHipClick} value = {hipSize}/>
+                                <OutlineSelectShapeBox info = {t("thigh")} event={handleThighClick} value = {thighSize}/>
+                            </div>
                         </div>
                     </div>
                 </label>

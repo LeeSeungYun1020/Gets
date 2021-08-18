@@ -52,7 +52,7 @@ const ProductCategory = (props) => {
                     {t("jacket")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/outer/hoodzipup">
+            <NavLink activeStyle={activeStyle} to = "/product/outer/hood_zipup">
                 <Box pad="small">
                     {t("hood_zipup")}
                 </Box>
@@ -74,12 +74,12 @@ const ProductCategory = (props) => {
                     {t("tshirt")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/top/shirts">
+            <NavLink activeStyle={activeStyle} to = "/product/top/shirts_blouse">
                 <Box pad="small">
                     {t("shirts_blouse")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/top/longsleeve">
+            <NavLink activeStyle={activeStyle} to = "/product/top/long_sleeve">
                 <Box pad="small">
                     {t("long_sleeve")}
                 </Box>
@@ -126,17 +126,17 @@ const ProductCategory = (props) => {
                     {t("slacks")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/bottom/cotton">
+            <NavLink activeStyle={activeStyle} to = "/product/bottom/cotton_pants">
                 <Box pad="small">
                     {t("cotton_pants")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/bottom/training">
+            <NavLink activeStyle={activeStyle} to = "/product/bottom/training_pants">
                 <Box pad="small">
                     {t("training_pants")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/bottom/jogger">
+            <NavLink activeStyle={activeStyle} to = "/product/bottom/jogger_pants">
                 <Box pad="small">
                     {t("jogger_pants")}
                 </Box>
@@ -158,17 +158,17 @@ const ProductCategory = (props) => {
                     {t("look_all")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/skirt/mini">
+            <NavLink activeStyle={activeStyle} to = "/product/skirt/mini_skirt">
                 <Box pad="small">
                     {t("mini_skirt")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/skirt/middle">
+            <NavLink activeStyle={activeStyle} to = "/product/skirt/middle_skirt">
                 <Box pad="small">
                     {t("middle_skirt")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/skirt/long">
+            <NavLink activeStyle={activeStyle} to = "/product/skirt/long_skirt">
                 <Box pad="small">
                     {t("long_skirt")}
                 </Box>
@@ -180,12 +180,12 @@ const ProductCategory = (props) => {
                     {t("look_all")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/set/onepiece">
+            <NavLink activeStyle={activeStyle} to = "/product/set/one_piece">
                 <Box pad="small">
                     {t("one_piece")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/set/twopiece">
+            <NavLink activeStyle={activeStyle} to = "/product/set/two_piece">
                 <Box pad="small">
                     {t("two_piece")}
                 </Box>
@@ -227,7 +227,7 @@ const ProductCategory = (props) => {
                     {t("derby")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/shoes/heels">
+            <NavLink activeStyle={activeStyle} to = "/product/shoes/heels_pumps">
                 <Box pad="small">
                     {t("heels_pumps")}
                 </Box>
@@ -254,22 +254,22 @@ const ProductCategory = (props) => {
                     {t("backpack")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/bag/massenger">
+            <NavLink activeStyle={activeStyle} to = "/product/bag/massenger_crossbag">
                 <Box pad="small">
                     {t("massenger_crossbag")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/bag/dot">
+            <NavLink activeStyle={activeStyle} to = "/product/bag/dotbag">
                 <Box pad="small">
                     {t("dotbag")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/bag/eco">
+            <NavLink activeStyle={activeStyle} to = "/product/bag/ecobag">
                 <Box pad="small">
                     {t("ecobag")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/bag/leather">
+            <NavLink activeStyle={activeStyle} to = "/product/bag/leatherbag">
                 <Box pad="small">
                     {t("leatherbag")}
                 </Box>
@@ -291,7 +291,7 @@ const ProductCategory = (props) => {
                     {t("beanie")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/hat/bucket">
+            <NavLink activeStyle={activeStyle} to = "/product/hat/bucket_hat">
                 <Box pad="small">
                     {t("bucket_hat")}
                 </Box>

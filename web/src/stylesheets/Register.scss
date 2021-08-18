@@ -192,6 +192,10 @@
   margin-left: 0;
 }
 
+.detailbox_div {
+  display:flex;
+}
+
 #detail_info_item .style_selected {
   margin-right: 0;
   margin-left: 0;
@@ -216,6 +220,7 @@
 
 #detail_selectbox {
   display:flex;
+  flex-direction: column;
 }
 
 #size_div{

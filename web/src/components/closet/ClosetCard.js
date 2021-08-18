@@ -36,11 +36,15 @@ const ClosetCard = ({item, onRemove, category}) => {
         }
     })
     const onCardClick = () => {
-        if(category !== 'product') {
+        if(category === 'product') {
+            history.push({
+                pathname: `/product/${id}`
+            })
+        }
+        else {
             history.push({
                 pathname:`/closet/coordination/${id}`
-            }
-        )
+            })
         }
     }
 
@@ -62,29 +66,33 @@ const ClosetCard = ({item, onRemove, category}) => {
     }
     return (
         <div className="closet_card">
-            <Card className={classes.root} onClick = {onCardClick}>
+            <Card className={classes.root}>
                 <CardActionArea>
+                    <IconButton aria-label="settings" style = {{ color: "black", position:"absolute", zIndex: 1, right: 0 }} onClick = {handleClick}>
+                        <MoreVertIcon />
+                    </IconButton>
+                    <Menu
+                        id = "option_menu"
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+
+                    >
+                        <MenuItem onClick = {handleDeleteClick} style = {{
+                            fontFamily: 'Noto Sans KR',
+                            fontSize: '1.25rem'
+                        }}>{t("delete")}</MenuItem>
+                        {/*<MenuItem onClick = {handleModifyClick}>{t("modify")}</MenuItem>*/}
+                    </Menu>
                     <CardMedia
                         className={classes.media}
                         image={`http://localhost:3000/${category}/image/${imageId}`}
+                        onClick = {onCardClick}
+                        style = {{
+                            position: 'relative'
+                        }}
                         >
-                        <IconButton aria-label="settings" style = {{ display: "flex", marginLeft: "auto"}} onClick = {handleClick}>
-                            <MoreVertIcon />
-                        </IconButton>
-                        <Menu
-                            id = "option_menu"
-                            anchorEl={anchorEl}
-                            keepMounted
-                            open={Boolean(anchorEl)}
-                            onClose={handleClose}
-
-                            >
-                            <MenuItem onClick = {handleDeleteClick} style = {{
-                                fontFamily: 'Noto Sans KR',
-                                fontSize: '1.25rem'
-                            }}>{t("delete")}</MenuItem>
-                            {/*<MenuItem onClick = {handleModifyClick}>{t("modify")}</MenuItem>*/}
-                        </Menu>
                     </CardMedia>
                 </CardActionArea>
             </Card>

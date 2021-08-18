@@ -7,7 +7,7 @@ import { Category, SubCategory } from "../Data";
 const ProductItemList = ({category, subCategory}) => {
     const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [t, i18n] = useTranslation()
+    const {t, i18n} = useTranslation()
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
