@@ -15,6 +15,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.article.ArticleActivity"
+            android:theme="@style/Theme.App.StyleGuide"
             android:exported="true" />
         <activity
             android:name=".ui.product.ProductActivity"

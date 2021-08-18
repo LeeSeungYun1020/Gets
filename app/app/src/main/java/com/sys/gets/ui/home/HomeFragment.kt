@@ -118,7 +118,7 @@ class HomeFragment : Fragment() {
                                     }
                                 }
 
-                                target.image.setImageResource(R.drawable.tm_custom)
+                                target.image.setImageResource(R.drawable.tm_default)
                                 val imageRequest = ImageRequest(
                                     "${Network.COORDINATION_IMAGE_URL}/${imageID}",
                                     { bitmap ->
@@ -211,8 +211,12 @@ class HomeFragment : Fragment() {
                             Style.CITY_BOY -> R.drawable.bg_cityboy
                             Style.ROCK_CHIC -> R.drawable.bg_rockchic
                             Style.STREET -> R.drawable.bg_street
-                            else -> R.drawable.bg_casual
-                        } // TODO: 스타일 사진 추가 필요
+                            Style.MINIMAL -> R.drawable.bg_minimal
+                            Style.OFFICE -> R.drawable.bg_office
+                            Style.SEXY_GLAM -> R.drawable.bg_sexy_glam
+                            Style.FEMININE -> R.drawable.bg_feminine
+                            Style.LOVELY -> R.drawable.bg_lovely
+                        }
                     )
                     styleMoreButton.setOnClickListener {
                         Intent(
