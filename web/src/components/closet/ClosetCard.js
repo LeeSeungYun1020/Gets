@@ -36,15 +36,20 @@ const ClosetCard = ({item, onRemove, category}) => {
         }
     })
     const onCardClick = () => {
-        if(category === 'product') {
-            history.push({
-                pathname: `/product/${id}`
-            })
+        if(id !== undefined) {
+            if(category === 'product') {
+                history.push({
+                    pathname: `/product/${id}`
+                })
+            }
+            else {
+                history.push({
+                    pathname:`/closet/coordination/${id}`
+                })
+            }
         }
         else {
-            history.push({
-                pathname:`/closet/coordination/${id}`
-            })
+            alert("내 옷장에 코디를 추가하고 상세정보를 확인해보세요!")
         }
     }
 
@@ -55,14 +60,21 @@ const ClosetCard = ({item, onRemove, category}) => {
         setAnchorEl(null);
     }
     const handleDeleteClick = () => {
-        axios.get(`http://localhost:3000/${category}/unfavorite/${id}`, {withCredentials: true})
-            .then(response => {
-                setAnchorEl(null);
-                {onRemove(id)}
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        if(id !== undefined) {
+            axios.get(`http://localhost:3000/${category}/unfavorite/${id}`, {withCredentials: true})
+                .then(response => {
+                    setAnchorEl(null);
+                    {
+                        onRemove(id)
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+        else {
+            alert("내 옷장에 코디를 추가하고 상세정보를 확인해보세요!")
+        }
     }
     return (
         <div className="closet_card">
@@ -96,7 +108,7 @@ const ClosetCard = ({item, onRemove, category}) => {
                     </CardMedia>
                 </CardActionArea>
             </Card>
-            <h2>{price}</h2>
+            <h2>{price ? price.toLocaleString() : ""}</h2>
         </div>
     );
 }

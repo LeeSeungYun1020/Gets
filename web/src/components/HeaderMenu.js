@@ -21,7 +21,6 @@ const HeaderMenu = ({login, setLogin}) => {
                             if(response.data.result) {
                                 sessionStorage.clear();
                                 setLogin(false);
-                                history.go(0);
                             }
                         })
                 }} src={logoutIcon}/><p>log out</p></div> :

@@ -14,7 +14,7 @@ function SignIn() {
             </div>
             <LoginContainer />
             <div id = "find_or_register">
-                <p><Link href={link.findid}>{t("find_id")}</Link></p>
+                <p><Link to ={link.findid}>{t("find_id")}</Link></p>
                 <div className = "find_line"></div>
                 <p><Link to = {link.findpw}>{t("find_pw")}</Link></p>
                 <div className="find_line"></div>

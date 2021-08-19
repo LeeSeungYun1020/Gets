@@ -105,7 +105,7 @@ const ProductDetailPageItem = ({item}) => {
                 setAllAge(allAge => [...allAge, 2**i])
             }
         }
-    },[])
+    },[style])
     return (
     <div className = "detail-product">
         <div id = "detail-div">
@@ -124,7 +124,7 @@ const ProductDetailPageItem = ({item}) => {
             <h3 style={{marginTop: '50px', marginBottom: '7px'}}>{brand}</h3>
             <h2 style={{marginBottom: '7px'}}>{name}</h2>
             <div id = "money-div" style={{display: 'flex', alignContent: 'center'}}>
-                <h1>{price}</h1>
+                <h1>{price.toLocaleString()}</h1>
                 <h2>{t("won")}</h2>
             </div>
             <div className="detail-line" />
