@@ -3,7 +3,6 @@ const router = express.Router()
 const path = require('path')
 const connection = require('../lib/mysql')
 const fs = require('fs')
-//const exec = require('child_process').exec
 const spawn = require('child_process').spawn
 
 
@@ -38,61 +37,65 @@ module.exports = function (passport) {
 			res.send(data.toString())
 		})
 		process.stderr.on('data', function(data){
+			console.log({'result': false})
 			console.log(data.toString())
-			res.send(data.toString())
+			res.send({'result':false})
 		})
 	})
 	
-	router.get('/favoriteStyleRanking', (req, res) => {
+	router.get('/stylePreference', (req, res) => {
+		// favoriteStyleRanking -> stylePreference
+		
 		if (req.user) {
+			//email, pw 대신 session?으로 바꾸기??
 			let email = req.user.email
 			let pw = req.user.pw
-			//session?으로 바꾸기??
 			
-			scriptPath = '../data/getFavoriteStyleRanking/'
-			scriptName = 'main.py'
+			let scriptPath = '../data/StylePreference/'
+			let scriptName = 'main.py'
+			
 			const process = spawn('python', ['-O', scriptPath + scriptName, email, pw])
 			
-			/*
-			let exePath = '../data/getFavoriteStyleRanking/'
-			let myPath = path.resolve(exePath) + '\\'
-			let fileName = 'getFavoriteStyleRanking.exe'
-			//let debugFileName = 'getFavoriteStyleRanking_debug.exe'
-			
-			const process = exec(myPath + fileName + ' ' + email + ' ' + pw)
-			console.log(myPath + fileName + ' ' + email + ' ' + pw)
-			 */
-			
 			process.stdout.on('data', function(data){
-				console.log('==============================\n')
-				console.log(data)
-				console.log('==============================')
-				
-				res.send(data.toString())
+				tmp = {'data': data.toString(), 'result': true}
+				console.log(tmp)
+				res.send(tmp)
 			})
 			process.stderr.on('data', function(data){
-				console.log(data.toString())
-				res.send(data.toString())
+				console.log({'result': false})
+				res.send({'result': false})
 			})
-		} else res.send({"result": false})
-		
+		} else {
+			let scriptPath = '../data/StylePreference/'
+			let scriptName = 'main.py'
+			
+			const process = spawn('python', ['-O', scriptPath + scriptName])
+			
+			process.stdout.on('data', function(data){
+				tmp = {'data': data.toString(), 'result': true}
+				console.log(tmp)
+				res.send(tmp)
+			})
+			process.stderr.on('data', function(data){
+				console.log({'result': false})
+				res.send({'result': false})
+			})
+		}
 	})
-	
 	
 	router.get('/coordination/filter/gender/:gender', (req,res) => {
 		let gender = req.params.gender
 		
 		console.log('/data/coordination/filter/gender/' + gender)
-		
-		if(req.user){
-			connection.query(`select id, style, fit, weather from coordination where (gender&?)=?`,[gender, gender],
-				(err,result)=>{
-					if (err || result.length === 0)
-						res.send({result: false})
-					else
-						res.send(result)
-				})
-		}else res.send({result:false})
+		connection.query(`select id, gender, fit, age, weather, style from coordination where (gender&?)=?`,[gender, gender],
+			(err,result)=>{
+				if(result.length === 0)
+					res.send({})
+				else if (err)
+					res.send({result: false})
+				else
+					res.send(result)
+			})
 	})
 	
 	return router
