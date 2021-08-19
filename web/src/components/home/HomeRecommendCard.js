@@ -95,7 +95,7 @@ const HomeRecommendCard = (props) => {
                         {content}
                     </Typography>
                     <Typography gutterBottom variant="h5" component="h5" fontWeight="bold">
-                        {cost}
+                        {cost.toLocaleString()}
                     </Typography>
                 </CardContent>
             </CardActionArea>

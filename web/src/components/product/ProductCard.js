@@ -99,7 +99,7 @@ const ProductCard = ({item}) => {
                             <MdFavorite />
                             <Typography variant="h6" component="h6">{favorite}</Typography>
                         </div>
-                            <Typography variant="h5" component="h5" style = {{marginRight: "0", marginLeft:"auto"}}>{price}</Typography>
+                            <Typography variant="h5" component="h5" style = {{marginRight: "0", marginLeft:"auto"}}>{price.toLocaleString()}</Typography>
                     </div>
 
                 </CardContent>

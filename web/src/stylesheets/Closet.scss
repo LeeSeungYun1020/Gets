@@ -46,15 +46,15 @@
 }
 
 .detail_item_img {
-  width: 124px;
-  heght: 124px;
+  width: 223px;
+  heght: 223px;
+  box-shadow: 3px 5px 12px 0 rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.detail-div {
+  display: flex;
 }
 
-.img_box {
-  display: flex;
-  max-width: 410px;
-  flex-wrap: wrap;
-}
 .detail_coordi_card p {
   font-weight: 600;
   margin-right: 90px;
@@ -63,8 +63,27 @@
 
 .item_info {
   display: flex;
+  flex-direction: column;
+  max-width: 223px;
+  margin-left: 24px;
+  margin-bottom: 20px;
 }
 
+.item_info h3 {
+  height: 57px;
+  margin-bottom: 5px;
+}
+.item_info p {
+  width: 223px;
+  font-weight: normal;
+  margin:0
+}
+
+.item_list {
+  display: flex;
+  width: 988px;
+  flex-wrap: wrap;
+}
 #detail_page {
   display: flex;
   justify-content: center;
@@ -84,14 +103,28 @@
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 21px;
   font-weight: bolder;
-  margin-bottom: 150px;
+  margin-bottom: 120px;
   margin-top: 80px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .coordi_card {
   display: flex;
+  flex-direction: column;
 }
 
-.coordi_img img {
-  width: 830px;
+.coordi_img {
+  display: flex;
+  align-items: center;
+  width: 455px;
+  height: 723px;
+  margin-left: 40px;
+  box-shadow: 3px 5px 12px 0 rgba(0, 0, 0, 0.3);
+}
+
+.coordi_card h1 {
+  justify-content: start;
+  margin-left: 24px;
+  margin-bottom: 20px;
 }

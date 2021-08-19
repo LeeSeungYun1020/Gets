@@ -2,8 +2,10 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useTranslation} from "react-i18next";
 import ClosetCard from "./ClosetCard";
+import {useHistory} from "react-router-dom";
 
 const DetailInfoCard = ({id}) => {
+    const history = useHistory();
     const [item, setItem] = useState(null);
     const [outer, setOuter] = useState(null);
     const [top, setTop] = useState(null);
@@ -61,31 +63,37 @@ const DetailInfoCard = ({id}) => {
     else {
         realAll = all.filter(item => item.data.result !== false)
     }
+    const onCardClick = (e) => {
+        history.push({
+            pathname: `/product/${e}`
+        })
+    }
     return (
         <div className = "coordi_card">
-            <div className = "detail_coordi_card">
-                <h1>{item.title}</h1>
-                {console.log(realAll)}
-                <div>
-                    {realAll.map(all => (
-                        <div className="item_info">
-                            <p>{all.data.name}</p>
-                            <p>{all.data.price}</p>
-                        </div>
-                    ))}
+            <h1>{item.title}</h1>
+            <div className= "detail-div">
+                <div className = "detail_coordi_card">
+                    {/*{console.log(realAll)}*/}
+                    <div className = "item_list">
+                        {realAll.map(all => (
+                            <div className="item_info">
+                                <img onClick={() => onCardClick(all.data.id)} className = "detail_item_img" src = {`http://localhost:3000/product/image/${all.data.image1ID}`}/>
+                                <h3>{all.data.name}</h3>
+                                <p style = {{
+                                    color: '#828282'}}>{all.data.brand}</p>
+                                <p style = {{
+                                    display: 'flex',
+                                    flexDirection: 'row-reverse'
+                                }}>{all.data.price.toLocaleString()}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-                <div className= "img_box">
-                    {realAll.map(all => (
-                        <div>
-                            <img className = "detail_item_img" src = {`http://localhost:3000/product/image/${all.data.image1ID}`}/>
-                        </div>
-                    ))}
+                <div className = "coordi_img">
+                    <img style={{width: 455, height: 455}} src = {`http://localhost:3000/coordination/image/${item.id}`} />
                 </div>
-                <button id ="virtualFitting-button">{t("virtual_fitting")}</button>
             </div>
-            <div className = "coordi_img">
-                <img src = {`http://localhost:3000/coordination/image/${item.id}`} />
-            </div>
+            <button id ="virtualFitting-button">{t("virtual_fitting")}</button>
         </div>
     )
 };
