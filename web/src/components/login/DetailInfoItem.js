@@ -16,6 +16,7 @@ import LovelyChip from "../../images/home/Oval_lovely.webp";
 import MinimalChip from "../../images/home/Oval_minimal.webp";
 import OutlineSelectBox from "./OutlineSelectBox";
 import OutlineSelectShapeBox from "./OutlineSelectShapeBox";
+import link from "../../link";
 
 const DetailInfoItem = props => {
     const {t, i18n} = useTranslation()
@@ -96,8 +97,7 @@ const DetailInfoItem = props => {
             thigh: thighSize
         },{ withCredentials: true })
             .then(function (response) {
-                history.goBack()
-                console.log(response);
+                history.replace('/')
             })
             .catch(function (error) {
                 console.log(error)
