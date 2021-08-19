@@ -1,24 +1,24 @@
 import '../../stylesheets/Login.scss';
 import React from "react";
-import SignInBox from "./SignInBox";
 import {useTranslation} from "react-i18next";
 import link from "../../link";
+import {Link} from "react-router-dom";
+import LoginContainer from "./LoginContainer";
 
-function SignIn({login, setLogin}) {
+function SignIn() {
     const {t, i18n} = useTranslation()
-
     return (
         <div className = "frame">
             <div id = "login_state">
                 <h1>{t("login_info")}</h1>
             </div>
-            <SignInBox login = {t("login")} input_id = {t("input_id")} input_pw = {t("input_password")} state_login = {login} setLogin = {setLogin}/>
+            <LoginContainer />
             <div id = "find_or_register">
-                <p><a href={link.findid}>{t("find_id")}</a></p>
+                <p><Link href={link.findid}>{t("find_id")}</Link></p>
                 <div className = "find_line"></div>
-                <p><a href = {link.findpw}>{t("find_pw")}</a></p>
+                <p><Link to = {link.findpw}>{t("find_pw")}</Link></p>
                 <div className="find_line"></div>
-                <p><a href ={link.register}>{t("register")}</a></p>
+                <p><Link to ={link.register}>{t("register")}</Link></p>
             </div>
             {/*<div id = "kakao_info">*/}
             {/*    <div class = "kakao_line"></div>*/}

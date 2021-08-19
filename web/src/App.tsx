@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link
 } from "react-router-dom";
-
+import Store from "./Store/store";
 import './stylesheets/App.scss';
 import Header from './components/Header.js'
 import Footer from "./components/Footer";
@@ -27,11 +27,14 @@ import PublicRoute from "./lib/PublicRoute";
 import PrivateRoute from "./lib/PrivateRoute";
 import ArticlePage from "./components/Article/ArticlePage";
 import ProductDetailPage from "./components/product/ProductDetailPage";
+import isLogin from "./lib/isLogin";
 export default function App() {
+    const [login, setLogin] = useState(isLogin);
     return (
+        <Store.Provider value={{login: login, setLogin: setLogin}}>
         <Router>
             <div className="App">
-                <Header />
+                <Header login={login} setLogin={setLogin}/>
                 <ScrollToTop />
                 <Switch>
                     {/*publicRoute : 권한없으면 못들어감 restricted가 있으면 로그인했을때 못들어감 없으면 그냥 다 들어갈 수 있음 홈으로 리다이렉트 */}
@@ -87,5 +90,6 @@ export default function App() {
                 <Footer />
             </div>
         </Router>
+        </Store.Provider>
     )
 }

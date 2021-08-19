@@ -7,9 +7,8 @@ import axios from "axios";
 import {Link, useHistory} from 'react-router-dom';
 import {useEffect, useState} from "react";
 import isLogin from "../lib/isLogin";
-const HeaderMenu = ({match}) => {
+const HeaderMenu = ({login, setLogin}) => {
     const history = useHistory();
-    const [login, setLogin] = useState(isLogin);
     return (
         <div id="top_menu">
             <Link to = {link.cart}><img src={cartIcon}/><p>cart</p></Link>

@@ -1,9 +1,8 @@
 import HeaderTab from './HeaderTab'
 import HeaderLogo from "./HeaderLogo";
 import HeaderMenu from "./HeaderMenu";
-import {useHistory} from "react-router-dom"
-function Header() {
-    const history = useHistory()
+import HeaderContainer from "./HeaderContainer";
+function Header({login, setLogin}) {
     return (
         <header>
             {/* 로고 */}
@@ -11,7 +10,7 @@ function Header() {
             {/* 탭 */}
             <HeaderTab/>
             {/* 메뉴 */}
-            <HeaderMenu/>
+            <HeaderContainer />
         </header>
     )
 }
