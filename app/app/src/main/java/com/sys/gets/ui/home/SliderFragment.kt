@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.sys.gets.R
 import com.sys.gets.databinding.FragmentSliderBinding
@@ -35,12 +36,12 @@ class SliderFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSliderBinding.inflate(inflater, container, false)
-        binding.sliderImage.setImageDrawable(null)
-        if (bitmap != null)
+        if (bitmap != null) {
             binding.sliderImage.setImageBitmap(bitmap)
-        else
+            binding.sliderImage.scaleType = ImageView.ScaleType.CENTER_CROP
+        } else {
             binding.sliderImage.setImageResource(imageID ?: R.drawable.sl_welcome)
-
+        }
         return binding.root
     }
 
