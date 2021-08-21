@@ -1,6 +1,7 @@
 module.exports = function (app, mysql) {
 	const passport = require('passport')
-	const LocalStrategy = require('passport-local').Strategy;
+	const LocalStrategy = require('passport-local').Strategy
+	const bcrypt = require('bcrypt')
 	
 	app.use(passport.initialize());
 	app.use(passport.session());
@@ -31,10 +32,15 @@ module.exports = function (app, mysql) {
 					const user = result[0]
 					if (err || result.length === 0)
 						return done(null, false, {message: "username"})
-					else if (user.pw === password) // 로그인
-						return done(null, user)
-					else // 비밀번호 오류
-						return done(null, false, {message: "password"})
+					else {
+						bcrypt.compare(password, user.pw, function(err, result) {
+							if (result === true) {
+								return done(null, user)
+							} else {
+								return done(null, false, {message: "password"})
+							}
+						})
+					}
 				})
 		}
 	))
