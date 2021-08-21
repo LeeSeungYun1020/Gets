@@ -85,16 +85,93 @@ module.exports = function (passport) {
 	
 	router.get('/coordination/filter/gender/:gender', (req,res) => {
 		let gender = req.params.gender
-		
 		console.log('/data/coordination/filter/gender/' + gender)
-		connection.query(`select id, gender, fit, age, weather, style from coordination where (gender&?)=?`,[gender, gender],
-			(err,result)=>{
-				if(result.length === 0)
-					res.send({})
-				else if (err)
+		
+		if(gender!==1 && gender!==2){ // 남자도 여자도 아니라면
+			connection.query(`SELECT id, gender, fit, age, weather, style FROM coordination`,
+				(err, result) => {
+					if(result.length === 0)
+						res.send({})
+					else if (err)
+						res.send({result: false})
+					else
+						res.send(result)
+				})
+		}
+		else{
+			connection.query(`select id, gender, fit, age, weather, style from coordination where (gender&?)=?`,[gender, gender],
+				(err,result)=>{
+					if(result.length === 0)
+						res.send({})
+					else if (err)
+						res.send({result: false})
+					else
+						res.send(result)
+				})
+		}
+	})
+	
+	router.get('/coordination/recommendation/:count', (req, res) => {
+		let count = req.params.count
+		
+		console.log('/data/coordination/recommendation/' + count)
+		
+		let scriptPath = '../data/CoordinationRecommendation/'
+		let scriptName = 'main.py'
+		
+		if(req.user){
+			console.log('signinState = true')
+			let email = req.user.email
+			let pw = req.user.pw
+			
+			const process = spawn('python', ['-O', scriptPath + scriptName, email, pw, count])
+			
+			process.stdout.on('data', function(data){
+				res.send(data.toString())
+				//let tmp = {'data': data.toString().trim(), 'result': true}
+				//console.log(tmp)
+				//res.send(tmp)
+			})
+			process.stderr.on('data', function(data){
+				console.log({'result': false}, 1)
+				res.send({'result': false})
+			})
+		}
+		else{
+			let style = req.query.style
+			
+			if(isNaN(style)){
+				style = 1 << 11 - 1 // 모든 스타일
+			}
+			
+			console.log(style, count)
+			console.log('signinState = false')
+			
+			const process = spawn('python', ['-O', scriptPath + scriptName, style, count])
+			
+			process.stdout.on('data', function(data){
+				res.send(data.toString())
+				//tmp = {'data': data.toString().trim(), 'result': true}
+				//console.log(tmp)
+				//res.send(tmp)
+			})
+			process.stderr.on('data', function(data){
+				console.log({'result': false}, 2)
+				res.send({'result': false})
+			})
+		}
+	})
+	
+	router.get("/coordination/all", (req, res) => {
+		connection.query(`SELECT id, gender, fit, age, weather, style FROM coordination`,
+			(err, result) => {
+				if (err || result.length === 0)
 					res.send({result: false})
-				else
-					res.send(result)
+				else {
+					let tmp = {'data': result, 'result': true}
+					console.log(tmp)
+					res.send(tmp)
+				}
 			})
 	})
 	
