@@ -49,7 +49,6 @@ def getStylePreference(session, style): # stylePreference를 구한다. ########
     if __debug__:
         print(response)
 
-    print(response.get('result'))
     if response.get('result'):
         result = {}
         for t in ast.literal_eval(response.get('data')):
