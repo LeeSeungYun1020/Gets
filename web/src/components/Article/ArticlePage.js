@@ -6,7 +6,7 @@ import DetailArticle from "./DetailArticle";
 
 const ArticlePage = ({match}) => {
     const {i18n, t} = useTranslation()
-    const what = match.params.id ? "casual" : match.params.id; // undefined면 케쥬얼로 이동이동
+    const what = match.params.id || "casual"; // undefined면 케쥬얼로 이동이동
     return (
         <div id = "article-page">
             <DetailArticle what = {what} />
