@@ -47,7 +47,7 @@ const ProductCard = ({item}) => {
             })
     },[favorite])
     const onFavoriteChange = (e) => {
-        console.log(e.target.checked)
+        // console.log(e.target.checked)
         if(e.target.checked) {
             axios.get(`http://localhost:3000/product/favorite/${id}`, { withCredentials: true })
                 .then( response => {

@@ -8,7 +8,7 @@ function Home(props) {
     const {t, i18n} = useTranslation()
 
     return (
-        <section>
+        <section className="home">
             <HomeMagazine/>
             <HomeGetStyle text={t("recommend_button")}/>
             <HomeStyleGuide title = {t("style_guide")}/>

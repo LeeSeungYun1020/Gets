@@ -164,6 +164,20 @@ const NumToStringStyle = {
     1024: "lovely"
 }
 
+const StringToNumStyle = {
+    "minimal": 1,
+    "casual": 2,
+    "campus": 4,
+    "street": 8,
+    "rock_chic": 16,
+    "amekaji": 32,
+    "city_boy": 64,
+    "office": 128,
+    "sexy_glam": 256,
+    "feminine": 512,
+    "lovely": 1024
+}
+
 const NumToStringKrStyle = {
     1: "kr_minimal",
     2: "kr_casual",
@@ -233,6 +247,48 @@ const NumToStringGender = {
     2: "woman",
     3: "unisex"
 }
+
+const StringToNumGender = {
+    "man": 1,
+    "남자": 1,
+    "woman": 2,
+    "여자": 2,
+    "unisex": 3,
+    "공용": 3,
+}
+
+const StringToNumAge = {
+    "10s": 1,
+    "20s": 2,
+    "30s": 4,
+    "40s": 8,
+    "50s ~": 16,
+    "10대": 1,
+    "20대": 2,
+    "30대": 4,
+    "40대": 8,
+    "50대 이상": 16
+}
+
+const StringToNumFit = {
+    "regular": 1,
+    "레귤러": 1,
+    "over": 2,
+    "오버핏": 2,
+    "wide": 4,
+    "와이드": 4,
+    "semi wide": 8,
+    "세미 와이드": 8,
+    "straight": 16,
+    "스트레이트": 16,
+    "slim": 32,
+    "슬림": 32,
+    "tapered": 64,
+    "테이퍼드": 64,
+    "bootcut": 128,
+    "부츠컷": 128
+}
 export { Category, SubCategory, NumToStringStyle, NumToStringColor, NumToStringSeason,
     NumToStringAge, NumToStringFiber,NumToStringCategory, NumToStringKrStyle, NumToStringGender,
-    NumToStringOuter, NumToStringTop, NumToStringBottom, NumToStringBag, NumToStringSet, NumToStringHat, NumToStringShoes, NumToStringSkirt}
+    NumToStringOuter, NumToStringTop, NumToStringBottom, NumToStringBag, NumToStringSet, NumToStringHat, NumToStringShoes, NumToStringSkirt,
+    StringToNumStyle, StringToNumAge, StringToNumFit, StringToNumGender}

@@ -14,7 +14,6 @@ const ProductDetailPage = ({match}) => {
             try {
                 const response = await axios.get(`http://localhost:3000/product/${id}`,{ withCredentials: true });
                 setItem(response.data);
-                console.log(response.data);
 
             } catch(e) {
                 console.log(e)

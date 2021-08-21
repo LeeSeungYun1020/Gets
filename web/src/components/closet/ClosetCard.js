@@ -10,7 +10,6 @@ import { Menu, MenuItem} from "@material-ui/core";
 import {useTranslation} from "react-i18next";
 import {Link, Route, Switch, useHistory} from 'react-router-dom';
 const useStyles = makeStyles({
-
     root: {
         width: 310,
         borderRadius: 10,

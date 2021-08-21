@@ -40,7 +40,7 @@ const ClosetList = ({category}) => {
     }
     return (
         <div className = "closet_card_list">
-            {console.log(item)}
+            {/*{console.log(item)}*/}
             {item.map(item => (
                 <ClosetCard item={item} onRemove={onRemove} category={category}/>
             ))}

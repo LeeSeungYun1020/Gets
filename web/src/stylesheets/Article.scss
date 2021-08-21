@@ -1,0 +1,151 @@
+//@font-face {
+//  font-family: 'SavoyeLetPlain';
+//  src: url('../font/SavoyeLETPlain.ttf');
+//}
+@import url(//db.onlinewebfonts.com/c/005369b1bccd49c6f752348e3261eec3?family=Savoye+LET);
+.style-coordi-card-list {
+  display: flex;
+  max-width: 1320px;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-top: 150px;
+}
+.style-coordi-card {
+  width: 300px;
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-bottom: 50px;
+  box-shadow: 3px 5px 12px 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.style-coordi-card img {
+  width: 300px;
+}
+
+#casual-0 {
+  max-width: 460px
+}
+.article_casual {
+  font-weight: 500;
+}
+.article-div p {
+  margin: 0;
+  color: #ffffff;
+}
+
+.article-tag {
+  display: flex;
+  margin-top: 30px;
+}
+
+.article-each-tag {
+  font-size: 18px;
+  font-weight: lighter;
+  color: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #ffffff;
+  padding: 5px 30px 5px 30px;
+  margin-right: 20px;
+}
+
+.article-info {
+  height: 560px;
+  background-color: #000000;
+  margin-top: 90px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+
+.just-div {
+  position: relative;
+}
+.article-name {
+  color: #ffffff;
+  display: block;
+  margin-top: 170px;
+  font-weight: 500;
+}
+
+.english-article-name {
+  position:absolute;
+  top: 90px;
+  left: 52px;
+  margin: 0;
+  display:inline-block;
+  color: rgba(255, 255, 255, 0.3);
+  font-family: "Savoye LET";
+  font-size: 150px;
+  font-weight: 100;
+}
+
+.slider-module {
+  display: flex !important;
+}
+//
+//.article-slider {
+//  display: flex;
+//}
+
+.article-slider .slick-track > div:nth-child(odd) > div > div {
+  justify-content: flex-end;
+}
+.article-slider .slick-track > div:nth-child(even) {
+  justify-content: flex-start;
+}
+
+#article-slick-background {
+  background: linear-gradient(to top, rgba(0, 32, 15, 0.65) 75%, #fff 25%);
+}
+
+//#just-slick-background {
+//  background: rgba(0, 32, 15, 0.65);
+//  height: 50px;
+//  width: 100%
+//}
+.article-slider {
+  height: 700px;
+}
+
+.article-slider .slick-prev {
+  left:50px !important;
+  z-index: 1;
+  top: 40% !important;
+}
+
+.article-slider .slick-next {
+  right:75px !important;
+  top: 40% !important;
+}
+
+#capmus-0 {
+  max-width: 435px
+}
+#campus-2 {
+  max-width: 620px;
+}
+#street-6 {
+  max-width: 800px;
+}
+#rock_chic-6 {
+  max-width: 555px;
+}
+#amekaji-0 {
+  max-width: 490px;
+}
+#amekaji-4 {
+  max-width: 495px;
+}
+#city_boy-0 {
+  max-width: 505px;
+}
+#office-2 {
+  max-width: 675px;
+}
+#sexy_glam-0 {
+  max-width: 650px;
+}
+#sexy_glam-2 {
+  max-width: 725px;
+}

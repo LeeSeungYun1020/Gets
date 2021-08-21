@@ -40,12 +40,10 @@ const RegisterBox = props => {
 
     const handleEmailChange = event => {
         SetEmail(event.target.value);
-        let that = this;
         axios.post('http://localhost:3000/auth/signup/check', {
             email: event.target.value
         })
             .then(function (response) {
-                console.log(response.data.result)
                 if (response.data.result && event.target.value.indexOf('@') > 0 && event.target.value.indexOf('.') > 0) { // 중복되지않고 이메일 형식일때 사용 가능
                     SetCheckId("사용가능한 이메일입니다.");
                     SetCheckId_bool(true);
@@ -59,7 +57,6 @@ const RegisterBox = props => {
             })
             .catch(function (error) {
                 console.log(error)
-                console.log("사용불가능한 이메일입니다.")
             })
     }
 
@@ -134,7 +131,6 @@ const RegisterBox = props => {
             })
                 .then(function (response) {
                     history.push("/account/afterregister")
-                    console.log(response);
                 })
                 .catch(function (error) {
                     console.log(error)

@@ -16,14 +16,15 @@ import {useTranslation} from "react-i18next";
 import axios from "axios";
 import HomeRecommendCard from "./HomeRecommendCard";
 import { MdAdd, MdRemove } from "react-icons/md";
+import {StringToNumAge, StringToNumGender, StringToNumFit} from "../Data";
 
 const HomeGetStyle = (props) => {
     const {t, i18n} = useTranslation()
     const [ans, setAns] = useState(false);
     const [gender, setGender] = useState(2);
     const [age, setAge] = useState(1);
-    const [bodyType, setBodyType] = useState();
-    const [fit, setFit] = useState(1)
+    const [topFit, setTopFit] = useState(1);
+    const [bottomFit, setBottomFit] = useState(1)
     const [style, setStyle] = useState(0);
     const [modify, setModify] = useState(false);
     const chipList = [
@@ -44,42 +45,45 @@ const HomeGetStyle = (props) => {
             axios.get('http://localhost:3000/home/custom/8')
                 .then(({data}) => {
                     setRecommend(data)
-                    console.log(data)
                     setAns(true);
                 })
             }
         }, []) // 화면에 맨 처음 렌더링될 때만 실행
 
     const selectAreaList = [
-        {title: t("gender"), index: 1, default: t("woman"), list: [t("woman"), t("man")]},
+        {title: t("gender"), index: 1, default: t("woman"), list: [t("woman"), t("man")], setType: setGender},
         {
             title: t("age"),
             index: 2,
             default: t("age_10"),
             list: [t("age_10"), t("age_20"), t("age_30"), t("age_40"), t("age_50")],
+            setType: setAge
         },
         {
             title: t("top_fit"),
             index: 3,
             default: t("fit_regular"),
             list: [t("fit_slim"), t("fit_regular"), t("fit_over")],
+            setType: setTopFit
         },
         {
             title: t("bottom_fit"),
             index: 4,
             default: t("fit_regular"),
             list: [t("fit_regular"), t("fit_over"), t("fit_wide"), t("fit_semi_wide"), t("fit_slim"), t("fit_tapered"), t("fit_bootcut"),],
+            setType: setBottomFit
         },
     ]
 
     const [recommend, setRecommend] = useState([])
     const onSubmit = useCallback(e => {
+        console.log(StringToNumGender[gender], StringToNumAge[age], StringToNumFit[topFit], StringToNumFit[bottomFit], style)
         e.preventDefault();
         axios.get('http://localhost:3000/home/custom/8')
             .then(({data}) => {setRecommend(data)
                 setAns(true);
             })
-    },[]); // 컴포넌트가 처음 렌더링될 때만 함수 생성
+    },[gender, age, topFit, bottomFit, style]);
     const iconClick = useCallback( () => {
         setModify(!modify)
     },[modify]);
