@@ -126,7 +126,7 @@ use gets;
 create table user
 (
   email         VARCHAR(64) PRIMARY KEY,
-  pw            VARCHAR(32)  NOT NULL,
+  pw            VARCHAR(64)  NOT NULL,
   name          NVARCHAR(16) NOT NULL,
   phone         VARCHAR(16),
   birthday      DATE,
