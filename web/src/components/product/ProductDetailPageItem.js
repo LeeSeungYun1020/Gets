@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next";
 import {NumToStringSeason, NumToStringAge, NumToStringColor, NumToStringStyle, NumToStringFiber,
     NumToStringKrStyle, NumToStringGender,
     NumToStringCategory, NumToStringBottom, NumToStringTop, NumToStringOuter, NumToStringSet, NumToStringSkirt, NumToStringBag, NumToStringShoes, NumToStringHat} from "../Data";
-import { MdFavorite } from "react-icons/md";
+import Favorite from "@material-ui/icons/Favorite";
 import axios from "axios";
 import {useHistory} from "react-router-dom";
 import isLogin from "../../lib/isLogin";
@@ -24,12 +24,12 @@ const ProductDetailPageItem = ({item}) => {
         else {
             axios.get(`http://localhost:3000/product/favorite/${id}`, {withCredentials: true})
                 .then(response => {
-                    console.log(response)
+                    // console.log(response)
                     if (response.data.result) {
                         alert("내 옷장에 추가되었습니다!")
                     } else {
                         alert("이미 내 옷장에 존재하는 옷입니다!")
-                        console.log(response)
+                        // console.log(response)
                     }
                 })
                 .catch(function (error) {
@@ -105,7 +105,7 @@ const ProductDetailPageItem = ({item}) => {
                 setAllAge(allAge => [...allAge, 2**i])
             }
         }
-    },[style])
+    },[])
     return (
     <div className = "detail-product">
         <div id = "detail-div">
@@ -171,7 +171,7 @@ const ProductDetailPageItem = ({item}) => {
                 </div>
             </div>
             <div className="detail-line" />
-            <button onClick={onButtonClick} id = "add-closet"><MdFavorite/>{t("inmycloset")}</button>
+            <button onClick={onButtonClick} id = "add-closet"><Favorite />{t("inmycloset")}</button>
         </div>
     </div>
     )

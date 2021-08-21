@@ -3,8 +3,7 @@ import ArticlePage from "./ArticlePage";
 
 const Article = () => {
     return (
-        <></>
-        // <ArticlePage />
+        <ArticlePage />
     )
 }
 

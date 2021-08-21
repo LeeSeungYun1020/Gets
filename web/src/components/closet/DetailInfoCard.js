@@ -3,6 +3,8 @@ import axios from "axios";
 import {useTranslation} from "react-i18next";
 import ClosetCard from "./ClosetCard";
 import {useHistory} from "react-router-dom";
+import {MdFavorite} from "react-icons/md";
+import isLogin from "../../lib/isLogin";
 
 const DetailInfoCard = ({id}) => {
     const history = useHistory();
@@ -11,12 +13,13 @@ const DetailInfoCard = ({id}) => {
     const [top, setTop] = useState(null);
     const [bottom, setBottom] = useState(null);
     const [bag, setBag] = useState(null);
-    const [style, setStyle] = useState([]);
     const [hat, setHat] = useState(null);
     const [shoes, setShoes] = useState(null);
     const [skirt, setSkirt] = useState(null);
+    const [set, setSet] = useState(null);
     const [loading, setLoading] = useState(false);
-    const all = [outer, top, bottom, bag, style, hat, shoes, skirt]
+    const [style, setStyle] = useState([]);
+    const all = [outer, top, bottom, set, bag, hat, shoes, skirt]
     let realAll = [];
     const {i18n, t} = useTranslation()
     useEffect(() => {
@@ -25,21 +28,20 @@ const DetailInfoCard = ({id}) => {
             try {
                 const response = await axios.get(`http://localhost:3000/coordination/${id}`,{ withCredentials: true });
                 setItem(response.data);
-                console.log(response.data);
                 const response_top = await axios.get(`http://localhost:3000/product/${response.data.topID}`,{ withCredentials: true });
                 const response_outer = await axios.get(`http://localhost:3000/product/${response.data.outerID}`,{ withCredentials: true });
                 const response_bottom = await axios.get(`http://localhost:3000/product/${response.data.bottomID}`,{ withCredentials: true });
                 const response_bag = await axios.get(`http://localhost:3000/product/${response.data.bagID}`,{ withCredentials: true });
+                const response_set = await axios.get(`http://localhost:3000/product/${response.data.setID}`,{ withCredentials: true });
                 const response_style = await axios.get(`http://localhost:3000/product/${response.data.style}`,{ withCredentials: true });
                 const response_hat = await axios.get(`http://localhost:3000/product/${response.data.hatID}`,{ withCredentials: true });
                 const response_shoes = await axios.get(`http://localhost:3000/product/${response.data.shoesID}`,{ withCredentials: true });
                 const response_skirt = await axios.get(`http://localhost:3000/product/${response.data.skirtID}`,{ withCredentials: true });
-                console.log(response_top.data)
-                console.log(response_outer.data)
                 setTop(response_top);
                 setOuter(response_outer);
                 setBottom(response_bottom);
                 setBag(response_bag);
+                setSet(response_set);
                 setStyle(response_style);
                 setHat(response_hat);
                 setShoes(response_shoes);
@@ -68,6 +70,23 @@ const DetailInfoCard = ({id}) => {
             pathname: `/product/${e}`
         })
     }
+    const onCoordiClick = () => {
+        if (!isLogin()) {
+            history.push('/account/signin')
+        } else {
+            axios.get(`http://localhost:3000/coordination/favorite/${id}`, {withCredentials: true})
+                .then(response => {
+                    if (response.data.result) {
+                        alert("내 옷장에 추가되었습니다!")
+                    } else {
+                        alert("이미 내 옷장에 존재하는 코디입니다!")
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+    }
     return (
         <div className = "coordi_card">
             <h1>{item.title}</h1>
@@ -93,7 +112,10 @@ const DetailInfoCard = ({id}) => {
                     <img style={{width: 455, height: 455}} src = {`http://localhost:3000/coordination/image/${item.id}`} />
                 </div>
             </div>
-            <button id ="virtualFitting-button">{t("virtual_fitting")}</button>
+            <div className="add-button-div">
+                <button className="virtualFitting-button" onClick = {onCoordiClick}><MdFavorite/>{t("inmycloset2")}</button>
+                <button className="virtualFitting-button">{t("virtual_fitting")}</button>
+            </div>
         </div>
     )
 };

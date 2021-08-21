@@ -59,30 +59,23 @@ const DetailInfoItem = props => {
     },[]);
     const handleTopSizeClick = useCallback((e) => {
         SetTopSize(e.target.value);
-        console.log(e.target.value);
     },[]);
     const handleBottomSizeClick = useCallback((e) => {
         SetBottomSize(e.target.value);
-        console.log(e.target.value);
     },[]);
     const handleShoulderClick = useCallback((e) => {
         setShoulderSize(e.target.value);
-        console.log(e.target.value);
     },[]);
     const handleWaistClick = useCallback((e) => {
         setWaistSize(e.target.value);
-        console.log(e.target.value);
     },[]);
     const handleHipClick = useCallback((e) => {
         setHipSize(e.target.value);
-        console.log(e.target.value);
     },[]);
     const handleThighClick = useCallback((e) => {
         setThighSize(e.target.value);
-        console.log(e.target.value);
     },[]);
     const onSubmit = (e) => {
-        console.log(gender)
         e.preventDefault();
         axios.post('http://localhost:3000/auth/signup/info', {
             gender: gender,

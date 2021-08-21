@@ -15,7 +15,8 @@ import sexy_glam from "../../images/home/sexy_glam.png"
 import leftArrow from "../../images/home/elements-point-small-left.svg"
 import rightArrow from "../../images/home/elements-point-small-right.svg"
 import {useHistory} from "react-router-dom";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 const NextArrow = (props) => {
     const { className, style, onClick } = props;
     return (
@@ -48,7 +49,7 @@ const HomeStyleInfoSlick = () => {
         infinite: false,
         speed: 500,
         slidesToShow: 6,
-        slidesToScroll: 1,
+        draggable: true,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
         responsive: [
@@ -77,56 +78,54 @@ const HomeStyleInfoSlick = () => {
         ]
     };
     const onArticleClick = (e) => {
-        const location = e.target.attributes[1].value
-        console.log(location)
-        history.push(`/article/${location}`)
+        history.push(`/article/${e}`)
     }
     return (
         <div id ="style_info">
             <Slider {...settings}>
-                    <div className = "style_info_img" onClick={onArticleClick} >
+                    <div className = "style_info_img" onClick={() => onArticleClick("casual")} >
                         <h2>{t("casual")}</h2>
-                        <img src={casual} value={"casual"}/>
+                        <img src={casual}/>
                     </div>
-                    <div className = "style_info_img" onClick={onArticleClick}>
+                    <div className = "style_info_img" onClick={() => onArticleClick("campus")}>
                         <h2>{t("campus")}</h2>
-                        <img src={campus} value = {"campus"}/>
+                        <img src={campus}/>
                     </div>
-                    <div className = "style_info_img" onClick={onArticleClick}>
+                    <div className = "style_info_img" onClick={() => onArticleClick("street")}>
                         <h2>{t("street")}</h2>
-                        <img src={street} value = {"street"}/>
+                        <img src={street}/>
                     </div>
-                    <div className = "style_info_img" onClick={onArticleClick}>
+                    <div className = "style_info_img" onClick={() => onArticleClick("rock_chic")}>
                         <h2>{t("rock_chic")}</h2>
-                        <img src={rock_chic} value = "rock_chic"/>
+                        <img src={rock_chic}/>
                     </div>
-                    <div className = "style_info_img" onClick={onArticleClick}>
+                    <div className = "style_info_img" onClick={() => onArticleClick("amekaji")}>
                         <h2>{t("amekaji")}</h2>
-                        <img src={amekaji} value = {"amekaji"} />
+                        <img src={amekaji}/>
                     </div>
-                    <div className = "style_info_img" onClick={onArticleClick}>
+                    <div className = "style_info_img" onClick={() => onArticleClick("city_boy")}>
                         <h2>{t("city_boy")}</h2>
-                        <img src={city_boy} value = {"city_boy"}/>
+                        <img src={city_boy}/>
                     </div>
-                    <div className="style_info_img" onClick={onArticleClick}>
+                    <div className="style_info_img" onClick={() => onArticleClick("office")}>
                         <h2>{t("office")}</h2>
-                        <img src={office} value = {"office"}/>
+                        <img src={office}/>
                     </div>
-                    <div className="style_info_img" onClick={onArticleClick}>
+                    <div className="style_info_img" onClick={() => onArticleClick("sexy_glam")}>
                         <h2>{t("sexy_glam")}</h2>
-                        <img src={sexy_glam} value = {"sexy_glam"}/>
+                        <img src={sexy_glam}/>
                     </div>
-                    <div className="style_info_img" onClick={onArticleClick}>
+                    <div className="style_info_img" onClick={() => onArticleClick("feminine")}>
                         <h2>{t("feminine")}</h2>
-                        <img src={feminine} value = {"feminine"}/>
+                        <img src={feminine}/>
                     </div>
-                    <div className="style_info_img" onClick={onArticleClick}>
+                    <div className="style_info_img" onClick={() => onArticleClick("lovely")}>
                         <h2>{t("lovely")}</h2>
-                        <img src={lovely} value = {"lovely"}/>
+                        <img src={lovely}/>
                     </div>
-                    <div className="style_info_img" onClick={onArticleClick}>
+                    <div className="style_info_img" onClick={() => onArticleClick("minimal")}>
                         <h2>{t("minimal")}</h2>
-                        <img src={minimal} value = {"minimal"}/>
+                        <img src={minimal}/>
                     </div>
             </Slider>
         </div>

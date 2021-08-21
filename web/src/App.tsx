@@ -28,6 +28,7 @@ import PrivateRoute from "./lib/PrivateRoute";
 import ArticlePage from "./components/Article/ArticlePage";
 import ProductDetailPage from "./components/product/ProductDetailPage";
 import isLogin from "./lib/isLogin";
+import Article from "./components/Article/Article";
 export default function App() {
     const [login, setLogin] = useState(isLogin);
     return (
@@ -56,9 +57,7 @@ export default function App() {
                     <PrivateRoute component = {DetailInfo} path={link.detailinfo} />
                     <PrivateRoute component = {DetailInfo} path={link.info} />
                     <PublicRoute restricted={false} component={ArticlePage} path={link.article} />
-                    <Route path={link.style}>
-                        <h1>구현 예정 - 내 스타일</h1>
-                    </Route>
+                    <PublicRoute restricted = {false} component = {Article} path={link.style} />
                     <Route path={link.order}>
                         <h1>구현 예정 - 주문 내역</h1>
                     </Route>

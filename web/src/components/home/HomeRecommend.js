@@ -96,45 +96,33 @@ const HomeRecommend = (props) => {
             isSelected[props.chips[i].text] = props.chips[i].selected // true or false인지 적음
         }
         SetSelected(isSelected)
-        console.log(isSelected)
         // styleSelectCheck(selected)
         for(let i = 0; i < props.chips.length; i++) {
             if (isSelected[props.chips[i].text] === true) {
                 if (props.chips[i].text === "Minimal") {
                     // props.SetStyle(sum + 1);
                     sum += 1;
-                    console.log(sum);
                     } else if (props.chips[i].text === "Casual") {
                         sum += 2;
-                        console.log(sum);
                     } else if (props.chips[i].text === "Campus") {
                         sum += 4;
-                        console.log(sum);
                     } else if (props.chips[i].text === "Street") {
                         sum += 8;
-                        console.log(sum);
                     } else if (props.chips[i].text === "Rock chic") {
                         sum += 16;
-                        console.log(sum);
                     } else if (props.chips[i].text === "Amekaji") {
                         sum += 32;
-                        console.log(sum);
                     } else if (props.chips[i].text === "City boy") {
                         sum += 64;
-                        console.log(sum);
 
                     } else if (props.chips[i].text === "Office") {
                         sum += 128;
-                        console.log(sum);
                     } else if (props.chips[i].text === "Sexy glam") {
                         sum += 256;
-                        console.log(sum);
                     } else if (props.chips[i].text === "Feminine") {
                         sum += 512;
-                        console.log(sum);
                     } else if (props.chips[i].text === "Lovely") {
                         sum += 1024;
-                        console.log(sum);
                 }
                 props.SetStyle(sum);
             }

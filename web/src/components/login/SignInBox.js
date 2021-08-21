@@ -23,7 +23,6 @@ const SignInBox = ({login, setLogin}) => {
                 if (response.data.result) {
                     axios.get('http://localhost:3000/auth/user',{ withCredentials: true })
                         .then ( response => {
-                            console.log(response.data)
                             setLogin(response.data.result)
                             sessionStorage.setItem("token", response.data.email)
                             history.goBack()

@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Box, Select} from "grommet";
 import {CaretDownFill} from "grommet-icons";
-import select_nav from "../../images/home/select_nav.webp"
-function HomeStyleSelectBox(props) {
-    const [value, setValue] = React.useState(props.default);
+
+const  HomeStyleSelectBox = (props) => {
+    const [value, setValue] = useState(props.default);
+    useEffect(() => {
+        props.setType(value)
+    },[value])
     return (
         <div id = "style_info_box">
             <div>

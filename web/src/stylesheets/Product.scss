@@ -212,6 +212,9 @@
 }
 
 #add-closet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
   width: 700px;
   height: 40px;
@@ -226,4 +229,5 @@
 #add-closet svg {
   color: #ff0000;
   margin-right: 20px;
+  width: 14px;
 }
