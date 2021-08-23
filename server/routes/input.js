@@ -195,7 +195,49 @@ router.get("/article", (req, res) => {
                 "date look, girl friend", \
                 "원피스, 블라우스와 같은 풍성하면서 하늘하늘한 재질의 의류를 활용한 코디로써, 러블리한 느낌을 주는 코디 스타일링", \
                 "Coordination styling that gives a lovely feeling by coordinating clothes made of rich and airy materials such as dresses and blouses." \
-               );`.trim(), (err, result) => {
+               ); \
+		insert into articleImage values (2, 1); \
+		insert into articleImage values (2, 2); \
+		insert into articleImage values (2, 3); \
+		insert into articleImage values (2, 4); \
+		insert into articleImage values (4, 5); \
+		insert into articleImage values (4, 6); \
+		insert into articleImage values (4, 7); \
+		insert into articleImage values (4, 8); \
+		insert into articleImage values (8, 9); \
+		insert into articleImage values (8, 10); \
+		insert into articleImage values (8, 11); \
+		insert into articleImage values (8, 12); \
+		insert into articleImage values (32, 13); \
+		insert into articleImage values (32, 14); \
+		insert into articleImage values (32, 15); \
+		insert into articleImage values (64, 16); \
+		insert into articleImage values (64, 17); \
+		insert into articleImage values (64, 18); \
+		insert into articleImage values (64, 19); \
+		insert into articleImage values (16, 20); \
+		insert into articleImage values (16, 21); \
+		insert into articleImage values (16, 22); \
+		insert into articleImage values (16, 23); \
+		insert into articleImage values (128, 24); \
+		insert into articleImage values (128, 25); \
+		insert into articleImage values (128, 26); \
+		insert into articleImage values (128, 27); \
+		insert into articleImage values (1024, 28); \
+		insert into articleImage values (1024, 29); \
+		insert into articleImage values (256, 30); \
+		insert into articleImage values (256, 31); \
+		insert into articleImage values (256, 32); \
+		insert into articleImage values (256, 33); \
+		insert into articleImage values (512, 34); \
+		insert into articleImage values (512, 35); \
+		insert into articleImage values (512, 36); \
+		insert into articleImage values (512, 37); \
+		insert into articleImage values (1, 38); \
+		insert into articleImage values (1, 39); \
+		insert into articleImage values (1, 40); \
+		insert into articleImage values (1, 41); \
+	`.trim(), (err, result) => {
 		res.send(err || result)
 	})
 })
@@ -334,7 +376,7 @@ router.get("/coordination/clear", (req, res) => {
 })
 
 router.get("/article/clear", (req, res) => {
-	connection.query("delete from article", (err, result) => {
+	connection.query("delete from article; delete from articleImage", (err, result) => {
 		res.send(result)
 	})
 })
