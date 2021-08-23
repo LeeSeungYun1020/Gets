@@ -199,7 +199,7 @@
     <string name="title_account">Account</string>
     <string name="msg_signout">Sign out</string>
     <string name="msg_info">My info</string>
-    <string name="msg_my_style">My style</string>
+    <string name="msg_style_analysis">Style analysis</string>
     <string name="msg_feedback">Feedback</string>
     <string name="msg_change_password">Change password</string>
     <string name="title_info">Infomation</string>
@@ -235,6 +235,7 @@
     <string name="title_virtual_fitting">Virtual Fitting</string>
     <string name="article_tag">tag_en</string>
     <string name="article_description">description_en</string>
+    <string name="title_settings">Settings</string>
     <!-- TODO: Remove or change this placeholder text -->
     <!-- Preference Titles -->
 

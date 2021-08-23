@@ -188,7 +188,7 @@
     <string name="title_account">계정</string>
     <string name="msg_signout">로그아웃</string>
     <string name="msg_info">내 정보</string>
-    <string name="msg_my_style">내 스타일</string>
+    <string name="msg_style_analysis">스타일 분석</string>
     <string name="msg_feedback">문의</string>
     <string name="msg_change_password">비밀번호 변경</string>
     <string name="title_info">정보</string>
@@ -224,4 +224,5 @@
     <string name="title_virtual_fitting">가상 피팅</string>
     <string name="article_tag">tag</string>
     <string name="article_description">description</string>
+    <string name="title_settings">설정</string>
 </resources>

@@ -1,6 +1,9 @@
 package com.sys.gets.ui.account
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -10,6 +13,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.sys.gets.R
 import com.sys.gets.network.Network
 import com.sys.gets.sign.LoginActivity
+
 
 class AccountFragment : PreferenceFragmentCompat() {
 
@@ -64,5 +68,13 @@ class AccountFragment : PreferenceFragmentCompat() {
             }
             true
         }
+    }
+
+    override fun setDividerHeight(height: Int) {
+        super.setDividerHeight(0)
+    }
+
+    override fun setDivider(divider: Drawable?) {
+        super.setDivider(ColorDrawable(Color.TRANSPARENT))
     }
 }
