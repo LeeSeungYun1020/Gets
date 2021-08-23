@@ -56,9 +56,11 @@
   display: flex;
   justify-content: center;
   margin-bottom: 100px;
+  overflow: hidden;
 }
 
 .just-div {
+  display: flex;
   position: relative;
 }
 .article-name {
@@ -148,4 +150,13 @@
 }
 #sexy_glam-2 {
   max-width: 725px;
+}
+.article-img {
+  overflow: hidden;
+}
+.article-img img {
+  position: absolute;
+  top: -450px;
+  left: 560px;
+  opacity: 0.5;
 }

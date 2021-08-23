@@ -16,6 +16,7 @@ const ProductDetailPageItem = ({item}) => {
     const [allColor, setAllColor] = useState([]) // 너도 배열로 가자!!!
     const [allFiber, setAllFiber] = useState([]) // 너도 배열로 가자!!!!!
     const [allAge, setAllAge] = useState([]) // 너도 배열로 가아아아아아아아아ㅏ아아아
+    let allSize = `${size}`.split(',');
     const history = useHistory()
     const onButtonClick = () => {
         if(!isLogin()){
@@ -143,7 +144,8 @@ const ProductDetailPageItem = ({item}) => {
             <div className = "detail-module">
                 <h4 className="module-title">{t("size")}</h4>
                 <div className="detail-module-right">
-                    <h4>{size}</h4>
+                    {console.log(allSize)}
+                    {allSize.map(item => <h4>{item}</h4>) }
                 </div>
             </div>
             <div className = "detail-module">

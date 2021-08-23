@@ -10,7 +10,7 @@ const ProductCategory = (props) => {
     const {t,i18n} = useTranslation()
     return (
     <Accordion style={{
-        width: 200,
+        width: 220,
         marginRight: 120,
         marginTop: 150,
         marginBottom: 90

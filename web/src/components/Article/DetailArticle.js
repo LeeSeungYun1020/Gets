@@ -4,12 +4,25 @@ import axios from "axios";
 import {useTranslation} from "react-i18next";
 import DetailArticleList from "./DetailArticleList";
 import ArticleSlick from "./ArticleSlick";
+import casual from "../../images/article/casual.png";
+import campus from "../../images/article/campus.png";
+import amekaji from "../../images/article/amekaji.png";
+import city_boy from "../../images/article/city_boy.png";
+import feminine from "../../images/article/feminine.png";
+import lovely from "../../images/article/lovely.png";
+import minimal from "../../images/article/minimal.png";
+import office from "../../images/article/office.png";
+import rock_chic from "../../images/article/rock_chic.png";
+import sexy_glam from "../../images/article/sexy_glam.png";
+import street from "../../images/article/street.png";
+
 const DetailArticle = ({what}) => {
     const {t, i18n} = useTranslation()
     const [article, setArticle] = useState(null);
     const [loading, setLoading] = useState(false);
     const [imageID, setImageID] = useState([]);
     let tag = [];
+    let styleImage;
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
@@ -41,16 +54,58 @@ const DetailArticle = ({what}) => {
     }
     else {
         tag = `${article.tag}`.split(',')
+        switch (article.name) {
+            case "minimal":
+                styleImage = minimal
+                break;
+            case "casual":
+                styleImage = casual
+                break;
+            case "campus":
+                styleImage = campus
+                break;
+            case "amekaji":
+                styleImage = amekaji
+                break;
+            case "city_boy":
+                styleImage = city_boy
+                break;
+            case "feminine":
+                styleImage = feminine
+                break;
+            case "rock_chic":
+                styleImage = rock_chic
+                break;
+            case "lovely":
+                styleImage = lovely
+                break;
+            case "office":
+                styleImage = office
+                break;
+            case "sexy_glam":
+                styleImage = sexy_glam
+                break;
+            case "street":
+                styleImage = street
+                break;
+            default :
+                styleImage = casual
+        }
     }
     return (
         <div className = "article-div">
             <div className = "article-info">
                 <div className="just-div">
-                    <h1 className="article-name">{t(`kr_${article.name}`)}</h1>
-                    <h1 className="english-article-name">{t(`${article.name}`)}</h1>
-                    <div style={{marginTop: 50}}>{article.description.split("\n").map((item, index) => <p className = {`article_${article.name}`}id={`${article.name}-${index}`}>{item}</p>)}</div>
-                    <div className = "article-tag">
-                        {tag.map(item => <div className="article-each-tag">{item}</div>)}
+                    <div className="just-div2">
+                        <h1 className="article-name">{t(`kr_${article.name}`)}</h1>
+                        <h1 className="english-article-name">{t(`${article.name}`)}</h1>
+                        <div style={{marginTop: 50}}>{article.description.split("\n").map((item, index) => <p className = {`article_${article.name}`}id={`${article.name}-${index}`}>{item}</p>)}</div>
+                        <div className = "article-tag">
+                            {tag.map(item => <div className="article-each-tag">{item}</div>)}
+                        </div>
+                    </div>
+                    <div className="article-img">
+                        <img src = {styleImage} />
                     </div>
                 </div>
             </div>
