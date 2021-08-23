@@ -84,10 +84,21 @@
             app:layout_constraintStart_toStartOf="@id/main_contents"
             app:layout_constraintTop_toBottomOf="@id/main_description" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="-18dp"
+            android:background="#a600200f"
+            app:layout_constraintBottom_toBottomOf="@id/image_slider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/image_slider" />
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/image_slider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="324dp"
+            android:layout_height="210dp"
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="26dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="84dp"
             android:layout_marginBottom="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
