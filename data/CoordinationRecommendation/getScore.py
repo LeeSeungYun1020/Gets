@@ -57,7 +57,7 @@ def getCoordinationScore(coordi, userData):
     # coordination data (one-hot encoding)
     coordiFit           = oneHotVector(int(coordi.get('fit')), len(data.CoordinationFit))
     coordiAge           = oneHotVector(int(coordi.get('age')), len(data.Age))
-    coordiSeason        = oneHotVector(int(coordi.get('weather')), len(data.Season))
+    coordiSeason        = oneHotVector(int(coordi.get('season')), len(data.Season))
     coordiStyle         = oneHotVector(int(coordi.get('style')), len(data.StyleList))
 
     # user data (one-hot encoding)
