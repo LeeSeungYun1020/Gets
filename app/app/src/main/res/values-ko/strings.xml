@@ -225,4 +225,12 @@
     <string name="article_tag">tag</string>
     <string name="article_description">description</string>
     <string name="title_settings">설정</string>
+    <string name="season">계절</string>
+    <string name="gender">성별</string>
+    <string name="size">사이즈</string>
+    <string name="color">색상</string>
+    <string name="material">소재</string>
+    <string name="age">연령</string>
+    <string name="style">스타일</string>
+    <string name="msg_add_closet">내 옷장 담기</string>
 </resources>

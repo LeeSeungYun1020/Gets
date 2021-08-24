@@ -236,10 +236,12 @@
     <string name="article_tag">tag_en</string>
     <string name="article_description">description_en</string>
     <string name="title_settings">Settings</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <!-- Preference Titles -->
-
-    <!-- Messages Preferences -->
-
-    <!-- Sync Preferences -->
+    <string name="season">Season</string>
+    <string name="gender">Genger</string>
+    <string name="size">Size</string>
+    <string name="color">Color</string>
+    <string name="material">Material</string>
+    <string name="age">Age</string>
+    <string name="style">Style</string>
+    <string name="msg_add_closet">Add to my closet</string>
 </resources>
