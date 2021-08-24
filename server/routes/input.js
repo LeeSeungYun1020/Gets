@@ -69,39 +69,41 @@ router.get("/coordination", (req, res) => {
 		.createReadStream(`./coordination/coordination.csv`)
 		.pipe(parse({}))
 		for await(const record of parser) {
-			const id = record[1]
-			const outerID = record[2] || 0
-			const outerImageID = record[3] || 0
-			const topID = record[4] || 0
-			const topImageID = record[5] || 0
-			const bottomID = record[6] || 0
-			const bottomImageID = record[7] || 0
-			const skirtID = record[8] || 0
-			const skirtImageID = record[9] || 0
-			const setID = record[10] || 0
-			const setImageID = record[11] || 0
-			const shoesID = record[12] || 0
-			const shoesImageID = record[13] || 0
-			const bagID = record[14] || 0
-			const bagImageID = record[15] || 0
-			const hatID = record[16] || 0
-			const hatImageID = record[17] || 0
-			const title = record[18]
-			const style = coordination.getStyleCode(record[19])
-			const gender = coordination.getGenderCode(record[20])
-			const age = coordination.getAgeCode(record[21])
-			const season = coordination.getSeasonCode(record[22])
-			const fit = record[23] //coordination.getFitCode(record[23])
-			const price = record[24]
-			const imageID = record[25].split(".")[0]
+			const id            = record[1]
+			const outerID       = record[2] || 0
+			const outerImageID  = record[3] || 0
+			const topID         = record[4] || 0
+			const topImageID    = record[5] || 0
+			const top2ID        = record[6] || 0
+			const top2ImageID   = record[7] || 0
+			const bottomID      = record[8] || 0
+			const bottomImageID = record[9] || 0
+			const skirtID       = record[10] || 0
+			const skirtImageID  = record[11] || 0
+			const setID         = record[12] || 0
+			const setImageID    = record[13] || 0
+			const shoesID       = record[14] || 0
+			const shoesImageID  = record[15] || 0
+			const bagID         = record[16] || 0
+			const bagImageID    = record[17] || 0
+			const hatID         = record[18] || 0
+			const hatImageID    = record[19] || 0
+			const title         = record[20]
+			const style         = coordination.getStyleCode(record[21])
+			const gender        = coordination.getGenderCode(record[22])
+			const age           = coordination.getAgeCode(record[23])
+			const season        = coordination.getSeasonCode(record[24])
+			const fit           = record[25] //coordination.getFitCode(record[23])
+			const price         = record[26]
+			const imageID       = record[27] //record[27].split(".")[0]
 			console.log(fit)
 			connection.query(`insert into coordination
-                              (id, title, outerID, outerImageID, topID, topImageID, bottomID, bottomImageID, skirtID,
-                               skirtImageID,
+                              (id, title, outerID, outerImageID, topID, topImageID, top2ID, top2ImageID,
+                               bottomID, bottomImageID, skirtID,skirtImageID,
                                setID, setImageID, shoesID, shoesImageID, bagID, bagImageID, hatID, hatImageID, style,
                                gender, age, season, fit, price, imageID)
-                              values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-				[id, title, outerID, outerImageID, topID, topImageID, bottomID, bottomImageID, skirtID, skirtImageID,
+                              values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+				[id, title, outerID, outerImageID, topID, topImageID, top2ID, top2ImageID, bottomID, bottomImageID, skirtID, skirtImageID,
 					setID, setImageID, shoesID, shoesImageID, bagID, bagImageID, hatID, hatImageID, style, gender, age, season, fit, price, imageID],
 				(err, result) => {
 					if (err) {
@@ -253,6 +255,8 @@ router.get("/ready", (req, res) => {
             outerImageID  INT,
             topID         INT,
             topImageID    INT,
+            top2ID		  INT,
+            top2ImageID	  INT,
             bottomID      INT,
             bottomImageID INT,
             skirtID       INT,
