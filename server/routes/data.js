@@ -87,9 +87,11 @@ module.exports = function (passport) {
 		console.log('/data/coordination/filter/gender/' + gender)
 		
 		if(gender!==1 && gender!==2){ // 남자도 여자도 아니라면
+
 			connection.query(`SELECT id, gender, fit, age, season, style FROM coordination`,
+
 				(err, result) => {
-					if(result.length === 0)
+					if (result.length === 0)
 						res.send({})
 					else if (err)
 						res.send({result: false})
@@ -101,6 +103,7 @@ module.exports = function (passport) {
 			connection.query(`select id, gender, fit, age, season, style from coordination where (gender&?)=?`,[gender, gender],
 				(err,result)=>{
 					if(result.length === 0)
+
 						res.send({})
 					else if (err)
 						res.send({result: false})
@@ -162,7 +165,7 @@ module.exports = function (passport) {
 			res.send({'result': false})
 		})
 	})
-	
+  
 	return router
 }
 

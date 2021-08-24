@@ -1,20 +1,25 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory
+        android:layout="@layout/preference_title_layout"
+        app:title="@string/title_settings" />
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:key="account_category"
+        android:layout="@layout/preference_category_layout"
         app:title="@string/title_account">
         <Preference
-            app:icon="@drawable/ic_signout_24"
+            android:layout="@layout/preference_layout"
             app:key="signout"
-            app:summary="@string/summary_signout"
+            app:iconSpaceReserved="false"
             app:title="@string/msg_signout" />
 
+
         <Preference
-            app:icon="@drawable/ic_password_24dp"
+            android:layout="@layout/preference_layout"
             app:key="password"
-            app:summary="@string/summary_change_password"
+            app:iconSpaceReserved="false"
             app:title="@string/msg_change_password">
             <intent
                 android:targetPackage="com.sys.gets"
@@ -22,9 +27,9 @@
         </Preference>
 
         <Preference
-            app:icon="@drawable/ic_info_24"
+            android:layout="@layout/preference_layout"
             app:key="info"
-            app:summary="@string/summary_my_info"
+            app:iconSpaceReserved="false"
             app:title="@string/msg_info">
             <intent
                 android:targetPackage="com.sys.gets"
@@ -35,17 +40,18 @@
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:key="info_category"
+        android:layout="@layout/preference_category_layout"
         app:title="@string/title_info">
         <Preference
-            app:icon="@drawable/ic_chart_24"
+            android:layout="@layout/preference_layout"
             app:key="style"
-            app:summary="@string/summary_my_style"
-            app:title="@string/msg_my_style" />
+            app:iconSpaceReserved="false"
+            app:title="@string/msg_style_analysis" />
 
         <Preference
-            app:icon="@drawable/ic_feedback_24"
+            android:layout="@layout/preference_layout"
             app:key="feedback"
-            app:summary="@string/summary_feedback"
+            app:iconSpaceReserved="false"
             app:title="@string/msg_feedback" />
     </PreferenceCategory>
 
