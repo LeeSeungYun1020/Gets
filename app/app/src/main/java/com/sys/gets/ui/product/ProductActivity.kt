@@ -41,25 +41,29 @@ class ProductActivity : AppCompatActivity() {
                     if (response.getBoolean("result")) {
 
                         binding.apply {
+                            category.text = Category.values()
+                                .filter { response.getInt("type") == it.code }
+                                .map { getString(it.resID) }.first()
+
                             name.text = response.getString("name")
                             brand.text = response.getString("brand")
                             price.text = Format.currency(response.getInt("price"))
                             season.text = Season.values()
                                 .filter { (response.getInt("season") and it.code) != 0 }
-                                .joinToString(" ") { getString(it.resID) }
+                                .joinToString { getString(it.resID) }
                             gender.text = Gender.values()
                                 .filter { (response.getInt("gender") and it.code) != 0 }
-                                .joinToString(" ") { getString(it.resID) }
-                            size.text = response.getString("size").replace(',', ' ')
+                                .joinToString { getString(it.resID) }
+                            size.text = response.getString("size").replace(",", ", ")
                             color.text = Color.values()
                                 .filter { (response.getInt("color") and it.code) != 0 }
-                                .joinToString(" ") { getString(it.resID) }
+                                .joinToString { getString(it.resID) }
                             material.text = Material.values()
                                 .filter { (response.getInt("fiber") and it.code) != 0 }
-                                .joinToString(" ") { getString(it.resID) }
+                                .joinToString { getString(it.resID) }
                             age.text =
                                 Age.values().filter { (response.getInt("age") and it.code) != 0 }
-                                    .joinToString(" ") { getString(it.resID) }
+                                    .joinToString { getString(it.resID) }
                             Style.values().filter { (response.getInt("style") and it.code) != 0 }
                                 .forEach {
                                     style.addView(Chip(this@ProductActivity).apply { setText(it.resID) })
