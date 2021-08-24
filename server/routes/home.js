@@ -1,25 +1,52 @@
 const express = require('express')
 const router = express.Router()
 const connection = require('../lib/mysql')
+const spawn = require('child_process').spawn
 
 module.exports = function (passport) {
 	router.get('/', function (req, res, next) {
 		res.send("home")
 	});
 	
-	// 맞춤 추천
+	// 맞춤 추천 // data/coordination/recommendation/:number 와 동일
 	router.get("/custom/:number", (req, res) => {
-		connection.query(`SELECT *
-                          FROM coordination
-                          ORDER BY RAND()
-                          LIMIT ${req.params.number}`, (err, result) => {
-			if (err || result.length === 0)
-				res.send([{result: false}])
-			else {
-				result[0]["result"] = true
-				res.send(result)
+		let number = req.params.number
+		console.log('home/custom/' + number)
+		
+		let scriptPath = '../data/CoordinationRecommendation/'
+		let scriptName = 'main.py'
+		let process
+		
+		if(req.user){
+			console.log('signInState = true')
+			
+			let email = req.user.email
+			let pw = req.user.pw
+			
+			process = spawn('python', ['-O', scriptPath + scriptName, email, pw, number])
+		}else{
+			console.log('signInState = false')
+			
+			let style = req.query.style // TODO : 스타일 받아오기
+			if(isNaN(style)){
+				style = (1 << 11) - 1 // 모든 스타일
 			}
 			
+			process = spawn('python', ['-O', scriptPath + scriptName, style, number])
+		}
+		
+		process.stdout.on('data', function(data){
+			console.log('process.stdout')
+			str = data.toString().trim()
+			console.log(str)
+			sql(str).then(function(result){
+				//console.log(result)
+				res.send(result)
+			})
+		})
+		process.stderr.on('data', function(){
+			console.log('process.stderr')
+			res.send([{result: false}])
 		})
 	})
 	
@@ -122,4 +149,30 @@ module.exports = function (passport) {
 		})
 	})
 	return router
+}
+
+function sql(str){
+	console.log('sql()')
+	let idList = str.trim().split(',')
+	
+	let whereCluase = ``
+	
+	i = 0
+	for(id of idList){ // where절 생성
+		if(i++ !== 0)
+			whereCluase += ` or `
+		whereCluase += `id = ${id}`
+	}
+	
+	let query = `SELECT * FROM coordination WHERE ` + whereCluase
+	console.log(query)
+	
+	return new Promise(resolve => {
+		connection.query(query,
+			(err, result) => {
+				if(err || result.length===0)
+					result = [{result: false}]
+				resolve(result)
+			})
+	})
 }

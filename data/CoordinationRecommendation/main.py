@@ -109,6 +109,7 @@ if __name__ == '__main__':
         count = len(coordinationScoreList)
     
     IDList = []
+
     for i in range(count):
         IDList.append(coordinationScoreList[i][0])
 
@@ -119,7 +120,10 @@ if __name__ == '__main__':
     if __debug__:
         print('IDList: {}'.format(IDList))
 
+    result = '{}'.format(IDList)[1:-1]
+    print(result) # id 리스트를 반환하고 코디 정보는 node에서 mysql로 구함
 
+    '''
     # ID를 사용하여 상위 {count}개의 코디 정보를 가져온다. #####################
     result = []
     for i, ID in enumerate(IDList):
@@ -131,3 +135,4 @@ if __name__ == '__main__':
 
     # 최종 결과값
     print(result)
+    '''

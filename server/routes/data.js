@@ -9,7 +9,6 @@ const spawn = require('child_process').spawn
 module.exports = function (passport) {
 	router.get('/', function (req, res, next) {
 		console.log(req.user)
-		res.send('data')
 	});
 	
 	// 체형 정보로 어울리는 핏 예측
@@ -88,8 +87,9 @@ module.exports = function (passport) {
 		console.log('/data/coordination/filter/gender/' + gender)
 		
 		if(gender!==1 && gender!==2){ // 남자도 여자도 아니라면
-			connection.query(`SELECT id, gender, fit, age, season, style
-                              FROM coordination`,
+
+			connection.query(`SELECT id, gender, fit, age, season, style FROM coordination`,
+
 				(err, result) => {
 					if (result.length === 0)
 						res.send({})
@@ -100,74 +100,21 @@ module.exports = function (passport) {
 				})
 		}
 		else{
-			connection.query(`select id, gender, fit, age, season, style
-                              from coordination
-                              where (gender & ?) = ?`, [gender, gender],
-				(err, result) => {
-					if (result.length === 0)
+			connection.query(`select id, gender, fit, age, season, style from coordination where (gender&?)=?`,[gender, gender],
+				(err,result)=>{
+					if(result.length === 0)
+
 						res.send({})
 					else if (err)
 						res.send({result: false})
 					else
 						res.send(result)
 				})
-		}
-	})
-	
-	router.get('/coordination/recommendation/:count', (req, res) => {
-		let count = req.params.count
-		
-		console.log('/data/coordination/recommendation/' + count)
-		
-		let scriptPath = '../data/CoordinationRecommendation/'
-		let scriptName = 'main.py'
-		
-		if(req.user){
-			console.log('signinState = true')
-			let email = req.user.email
-			let pw = req.user.pw
-			
-			const process = spawn('python', ['-O', scriptPath + scriptName, email, pw, count])
-			
-			process.stdout.on('data', function(data){
-				res.send(data.toString())
-				//let tmp = {'data': data.toString().trim(), 'result': true}
-				//console.log(tmp)
-				//res.send(tmp)
-			})
-			process.stderr.on('data', function(data){
-				console.log({'result': false}, 1)
-				res.send({'result': false})
-			})
-		}
-		else{
-			let style = req.query.style
-			
-			if(isNaN(style)){
-				style = 1 << 11 - 1 // 모든 스타일
-			}
-			
-			console.log(style, count)
-			console.log('signinState = false')
-			
-			const process = spawn('python', ['-O', scriptPath + scriptName, style, count])
-			
-			process.stdout.on('data', function(data){
-				res.send(data.toString())
-				//tmp = {'data': data.toString().trim(), 'result': true}
-				//console.log(tmp)
-				//res.send(tmp)
-			})
-			process.stderr.on('data', function(data){
-				console.log({'result': false}, 2)
-				res.send({'result': false})
-			})
 		}
 	})
 	
 	router.get("/coordination/all", (req, res) => {
-		connection.query(`SELECT id, gender, fit, age, season, style
-                          FROM coordination`,
+		connection.query(`SELECT id, gender, fit, age, season, style FROM coordination`,
 			(err, result) => {
 				if (err || result.length === 0)
 					res.send({result: false})
@@ -179,5 +126,71 @@ module.exports = function (passport) {
 			})
 	})
 	
+	router.get('/coordination/recommendation/:number', (req, res) => {
+		let number = req.params.number
+		console.log(`/coordination/recommendation/${number}`)
+		
+		let scriptPath = '../data/CoordinationRecommendation/'
+		let scriptName = 'main.py'
+		let process
+		
+		if(req.user){
+			console.log('signInState = true')
+			let email = req.user.email
+			let pw = req.user.pw
+			
+			process = spawn('python', ['-O', scriptPath + scriptName, email, pw, number])
+		}else{
+			console.log('signInState = false')
+			
+			let style = req.query.style
+			if(isNaN(style)){
+				style = (1 << 11) - 1 // 모든 스타일
+			}
+			
+			process = spawn('python', ['-O', scriptPath + scriptName, style, number])
+		}
+		
+		process.stdout.on('data', function(data){
+			console.log('process.stdout')
+			str = data.toString().trim()
+			console.log(str)
+			sql(str).then(function(result){
+				//console.log(result)
+				res.send(result)
+			})
+		})
+		process.stderr.on('data', function(){
+			console.log('process.stderr')
+			res.send({'result': false})
+		})
+	})
+  
 	return router
+}
+
+function sql(str){
+	console.log('sql()')
+	let idList = str.trim().split(',')
+	
+	let whereCluase = ``
+	
+	i = 0
+	for(id of idList){ // where절 생성
+		if(i++ !== 0)
+			whereCluase += ` or `
+		whereCluase += `id = ${id}`
+	}
+	
+	let query = `SELECT * FROM coordination WHERE ` + whereCluase
+	console.log(query)
+	
+	return new Promise(resolve => {
+		connection.query(query,
+			(err, result) => {
+				if(err || result.length===0)
+					result = [{result: false}]
+				resolve(result)
+			})
+	})
 }

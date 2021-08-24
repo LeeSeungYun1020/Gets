@@ -174,6 +174,8 @@ create table coordination
   outerImageID      INT,
   topID             INT,
   topImageID        INT,
+  top2ID            INT,
+  top2ImageID       Int,
   bottomID          INT,
   bottomImageID     INT,
   skirtID           INT,

@@ -13,7 +13,6 @@ def oneHotVector(encoded, len):
     vector = []
 
     for i in range(len):
-        #vector.insert(0, encoded%2)
         vector.append(encoded%2)
         encoded = encoded >> 1
 
