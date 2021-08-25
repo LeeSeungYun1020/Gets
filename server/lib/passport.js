@@ -32,8 +32,10 @@ module.exports = function (app, mysql) {
 					const user = result[0]
 					if (err || result.length === 0)
 						return done(null, false, {message: "username"})
-					else {
-						bcrypt.compare(password, user.pw, function(err, result) {
+					else if (password === user.pw) {
+						return done(null, user)
+					} else {
+						bcrypt.compare(password, user.pw, function (err, result) {
 							if (result === true) {
 								return done(null, user)
 							} else {
