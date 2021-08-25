@@ -2,6 +2,7 @@ package com.sys.gets.ui.coordination
 
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
@@ -113,139 +114,93 @@ class CoordinationActivity : AppCompatActivity() {
                             }
                         }
 
-//                        val priceList = listOf(
-//                            Triple(
-//                                binding.priceList.item1,
-//                                binding.priceList.price1,
-//                                binding.productList.listItem1
-//                            ),
-//                            Triple(
-//                                binding.priceList.item2,
-//                                binding.priceList.price2,
-//                                binding.productList.listItem2
-//                            ),
-//                            Triple(
-//                                binding.priceList.item3,
-//                                binding.priceList.price3,
-//                                binding.productList.listItem3
-//                            ),
-//                            Triple(
-//                                binding.priceList.item4,
-//                                binding.priceList.price4,
-//                                binding.productList.listItem4
-//                            ),
-//                            Triple(
-//                                binding.priceList.item5,
-//                                binding.priceList.price5,
-//                                binding.productList.listItem5
-//                            ),
-//                            Triple(
-//                                binding.priceList.item6,
-//                                binding.priceList.price6,
-//                                binding.productList.listItem6
-//                            ),
-//                        )
-//                        var index = 0
-//                        val productList = listOf(
-//                            response.getInt("outerID"), response.getInt("topID"),
-//                            response.getInt("bottomID"), response.getInt("skirtID"),
-//                            response.getInt("setID"), response.getInt("shoesID"),
-//                            response.getInt("bagID"), response.getInt("hatID")
-//                        ).filter { it != 0 }
-//
-//                        var isFirst = true
-//                        for (i in (productList.size)..5) {
-//                            if (i % 2 == 1 && isFirst) {
-//                                priceList[i].third.root.visibility = View.INVISIBLE
-//                                isFirst = false
-//                            } else
-//                                priceList[i].third.root.visibility = View.GONE
-//                            binding.productList.listItem1.root.visibility = View.GONE
-//                        }
-//
-//                        for (product in productList) {
-//                            if (product != 0 && index < 6) {
-//                                val request = JsonObjectRequest(
-//                                    Request.Method.GET, "${Network.PRODUCT_URL}/${product}",
-//                                    null,
-//                                    { response ->
-//                                        if (response.getBoolean("result")) {
-//                                            val i = index
-//                                            priceList[i].first.visibility = View.VISIBLE
-//                                            priceList[i].first.text = response.getString("name")
-//                                            priceList[i].second.visibility = View.VISIBLE
-//                                            priceList[i].second.text = Format.currency(
-//                                                response.getString("price").toIntOrNull() ?: 0
-//                                            )
-//                                            priceList[i].third.root.visibility = View.VISIBLE
-//                                            priceList[i].third.favoriteButton.apply {
-//                                                setOnClickListener {
-//                                                    if (!isChecked) { // 체크 안되어있는 경우
-//                                                        Network.addSimpleRequest(
-//                                                            context,
-//                                                            COORDINATION_TAG,
-//                                                            Network.PRODUCT_FAVORITE_URL,
-//                                                            product
-//                                                        ) {
-//                                                            isChecked = true
-//                                                        }
-//                                                    } else { // 체크 되어있는 경우
-//                                                        Network.addSimpleRequest(
-//                                                            context,
-//                                                            COORDINATION_TAG,
-//                                                            Network.PRODUCT_UNFAVORITE_URL,
-//                                                            product
-//                                                        ) {
-//                                                            isChecked = false
-//                                                        }
-//                                                    }
-//                                                }
-//                                                Network.addSimpleRequest(
-//                                                    context,
-//                                                    COORDINATION_TAG,
-//                                                    Network.PRODUCT_CHECK_FAVORITE_URL,
-//                                                    product
-//                                                ) {
-//                                                    isChecked = true
-//                                                }
-//                                            }
-//
-//
-//                                            val imageRequest = ImageRequest(
-//                                                "${Network.PRODUCT_IMAGE_URL}/${response.getString("image1ID")}",
-//                                                { bitmap ->
-//                                                    bitmap?.run {
-//                                                        priceList[i].third.image.setImageBitmap(
-//                                                            bitmap
-//                                                        )
-//                                                    }
-//                                                },
-//                                                0,
-//                                                0,
-//                                                ImageView.ScaleType.FIT_CENTER,
-//                                                Bitmap.Config.RGB_565,
-//                                                null
-//                                            )
-//
-//                                            imageRequest.tag = COORDINATION_TAG
-//                                            Network.getInstance(this)
-//                                                .addToRequestQueue(imageRequest)
-//
-//                                            index++
-//                                        }
-//                                    },
-//                                    {
-//
-//                                    }
-//                                )
-//                                request.tag = COORDINATION_TAG
-//                                Network.getInstance(this@CoordinationActivity)
-//                                    .addToRequestQueue(request)
-//                            }
-//                        }
-//
-//                        binding.priceList.title.text = response.getString("title")
-//                        binding.productList.listTitle.visibility = View.GONE
+                        val productList = listOf(
+                            response.getInt("outerID"), response.getInt("topID"),
+                            response.getInt("bottomID"), response.getInt("skirtID"),
+                            response.getInt("setID"), response.getInt("shoesID"),
+                            response.getInt("bagID"), response.getInt("hatID")
+                        ).filter { it != 0 }
+                        val priceList = listOf(
+                            binding.priceList.product1, binding.priceList.product2,
+                            binding.priceList.product3, binding.priceList.product4,
+                            binding.priceList.product5, binding.priceList.product6,
+                            binding.priceList.product7, binding.priceList.product8,
+                        )
+
+
+                        for ((i, product) in productList.withIndex()) {
+                            val request = JsonObjectRequest(
+                                Request.Method.GET, "${Network.PRODUCT_URL}/${product}",
+                                null,
+                                { response ->
+                                    if (response.getBoolean("result")) {
+                                        priceList[i].root.visibility = View.VISIBLE
+                                        priceList[i].productName.text = response.getString("name")
+                                        priceList[i].productPrice.text = Format.currency(
+                                            response.getString("price").toIntOrNull() ?: 0
+                                        )
+                                        priceList[i].productFavoriteButton.apply {
+                                            setOnClickListener {
+                                                if (!isChecked) { // 체크 안되어있는 경우
+                                                    Network.addSimpleRequest(
+                                                        context,
+                                                        COORDINATION_TAG,
+                                                        Network.PRODUCT_FAVORITE_URL,
+                                                        product
+                                                    ) {
+                                                        isChecked = true
+                                                    }
+                                                } else { // 체크 되어있는 경우
+                                                    Network.addSimpleRequest(
+                                                        context,
+                                                        COORDINATION_TAG,
+                                                        Network.PRODUCT_UNFAVORITE_URL,
+                                                        product
+                                                    ) {
+                                                        isChecked = false
+                                                    }
+                                                }
+                                            }
+                                            Network.addSimpleRequest(
+                                                context,
+                                                COORDINATION_TAG,
+                                                Network.PRODUCT_CHECK_FAVORITE_URL,
+                                                product
+                                            ) {
+                                                isChecked = true
+                                            }
+                                        }
+
+
+                                        val imageRequest = ImageRequest(
+                                            "${Network.PRODUCT_IMAGE_URL}/${response.getString("image1ID")}",
+                                            { bitmap ->
+                                                bitmap?.run {
+                                                    priceList[i].productImage.setImageBitmap(
+                                                        bitmap
+                                                    )
+                                                }
+                                            },
+                                            0,
+                                            0,
+                                            ImageView.ScaleType.FIT_CENTER,
+                                            Bitmap.Config.RGB_565,
+                                            null
+                                        )
+
+                                        imageRequest.tag = COORDINATION_TAG
+                                        Network.getInstance(this)
+                                            .addToRequestQueue(imageRequest)
+                                    }
+                                },
+                                {
+
+                                }
+                            )
+                            request.tag = COORDINATION_TAG
+                            Network.getInstance(this@CoordinationActivity)
+                                .addToRequestQueue(request)
+                        }
                     }
 
                 },
