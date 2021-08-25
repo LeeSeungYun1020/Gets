@@ -8,16 +8,16 @@ const spawn = require('child_process').spawn
 
 module.exports = function (passport) {
 	router.get('/', function (req, res, next) {
-		console.log(req.user)
+		res.send('data')
 	});
 	
 	// 체형 정보로 어울리는 핏 예측
 	router.get('/fit', (req, res) => {
-		const gender = req.query.gender;
-		const shoulder = req.query.shoulder;
-		const waist = req.query.waist;
-		const hip = req.query.hip;
-		const thigh = req.query.thigh;
+		let gender = req.query.gender;
+		let shoulder = req.query.shoulder;
+		let waist = req.query.waist;
+		let hip = req.query.hip;
+		let thigh = req.query.thigh;
 		
 		let scriptPath = '../data/BodyShapeToFit/'
 		const process = spawn('python', [scriptPath + 'main.py', gender, shoulder, waist, hip, thigh])
@@ -42,86 +42,66 @@ module.exports = function (passport) {
 		})
 	})
 	
+	// 찜 제품 목록과 찜 코디 목록으로 선호 스타일 분석
 	router.get('/stylePreference', (req, res) => {
-		// favoriteStyleRanking -> stylePreference
+		let scriptPath = '../data/StylePreference/'
+		let scriptName = 'main.py'
+		let process
 		
 		if (req.user) {
-			//email, pw 대신 session?으로 바꾸기??
 			let email = req.user.email
 			let pw = req.user.pw
 			
-			let scriptPath = '../data/StylePreference/'
-			let scriptName = 'main.py'
-			
-			const process = spawn('python', ['-O', scriptPath + scriptName, email, pw])
-			
-			process.stdout.on('data', function(data){
-				tmp = {'data': data.toString(), 'result': true}
-				console.log(tmp)
-				res.send(tmp)
-			})
-			process.stderr.on('data', function(data){
-				console.log({'result': false})
-				res.send({'result': false})
-			})
+			process = spawn('python', ['-O', scriptPath + scriptName, email, pw])
 		} else {
-			let scriptPath = '../data/StylePreference/'
-			let scriptName = 'main.py'
-			
-			const process = spawn('python', ['-O', scriptPath + scriptName])
-			
-			process.stdout.on('data', function(data){
-				tmp = {'data': data.toString(), 'result': true}
-				console.log(tmp)
-				res.send(tmp)
-			})
-			process.stderr.on('data', function(data){
-				console.log({'result': false})
-				res.send({'result': false})
-			})
+			process = spawn('python', ['-O', scriptPath + scriptName])
 		}
+		
+		process.stdout.on('data', function(data){
+			let json = JSON.parse(data)
+			json['result'] = true
+			console.log(json)
+			res.send(json)
+		})
+		process.stderr.on('data', function(){
+			console.log({'result': false})
+			res.send({'result': false})
+		})
 	})
 	
 	router.get('/coordination/filter/gender/:gender', (req,res) => {
 		let gender = req.params.gender
 		console.log('/data/coordination/filter/gender/' + gender)
 		
-		if(gender!==1 && gender!==2){ // 남자도 여자도 아니라면
-
-			connection.query(`SELECT id, gender, fit, age, season, style FROM coordination`,
-
-				(err, result) => {
-					if (result.length === 0)
-						res.send({})
-					else if (err)
-						res.send({result: false})
-					else
-						res.send(result)
-				})
+		let query = `SELECT id, gender, fit, age, season, style FROM coordination`
+		
+		if (gender*1===1 || gender*1===2){
+			let whereClause = ` WHERE (gender & ${gender} = ${gender})`
+			query += whereClause
 		}
-		else{
-			connection.query(`select id, gender, fit, age, season, style from coordination where (gender&?)=?`,[gender, gender],
-				(err,result)=>{
-					if(result.length === 0)
-
-						res.send({})
-					else if (err)
-						res.send({result: false})
-					else
-						res.send(result)
-				})
-		}
+		
+		console.log(query)
+		connection.query(query,
+			(err, result) => {
+				if (err || result.length===0){
+					result = [{result : false}]
+				}
+				else{
+					result[0]['result'] = true
+				}
+				res.send(result)
+			})
 	})
 	
 	router.get("/coordination/all", (req, res) => {
 		connection.query(`SELECT id, gender, fit, age, season, style FROM coordination`,
 			(err, result) => {
 				if (err || result.length === 0)
-					res.send({result: false})
+					res.send([{result: false}])
 				else {
-					let tmp = {'data': result, 'result': true}
-					console.log(tmp)
-					res.send(tmp)
+					result[0]['result'] = true
+					console.log(result)
+					res.send(result)
 				}
 			})
 	})
@@ -153,7 +133,7 @@ module.exports = function (passport) {
 		
 		process.stdout.on('data', function(data){
 			console.log('process.stdout')
-			str = data.toString().trim()
+			let str = data.toString().trim()
 			console.log(str)
 			sql(str).then(function(result){
 				//console.log(result)
@@ -165,7 +145,7 @@ module.exports = function (passport) {
 			res.send({'result': false})
 		})
 	})
-  
+	
 	return router
 }
 

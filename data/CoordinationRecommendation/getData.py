@@ -1,6 +1,5 @@
 import requests
 import url as URL
-import ast
 from datetime import datetime
 from data import Age, AllStyle, AllAge, AllFit, StyleList
 from getScore import oneHotVector
@@ -49,27 +48,20 @@ def getStylePreference(session, style): # stylePreference를 구한다. ########
     if __debug__:
         print(response)
 
-    if response.get('result'):
-        result = {}
-        for t in ast.literal_eval(response.get('data')):
-            result[t[0]] = t[1]
 
-        if __debug__:
-            print(result)
-
-    else:  # TODO: 에러 처리하기
+    if not response.get('result'):  # 에러 처리하기
         if __debug__:
             print('error: getPreference()')
-        result = {}
-        for style in StyleList:
-            result[style] = 0
+        exit(1)
 
+    result = response
+    del result['result']
 
     # stylePreference에 style 정보를 적용한다. #######################
     if style == None: style = AllStyle
+
     styleVector = oneHotVector(style, len(StyleList))
-    styleCount = styleVector.count(1)
-    value = round(100 / styleCount, 1)
+    value = round(100 / (styleVector.count(1)), 1)
 
     ratio = (100 + 100) / 100
 
@@ -81,8 +73,8 @@ def getStylePreference(session, style): # stylePreference를 구한다. ########
     if __debug__:
         print(result)
 
-
     return result
+
 
 
 def getUserData(session, user):

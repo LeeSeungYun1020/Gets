@@ -5,18 +5,22 @@ import data
 # weight (합이 1)
 w_fit       = 0.3
 w_age       = 0.1
-w_season    = 0.1
-w_style     = 0.5
+w_season    = 0.2
+w_style     = 0.4
 #====================================================
 
 def oneHotVector(encoded, len):
     vector = []
+    try:
+        encoded = int(encoded)
+    except:
+        encoded = 0
+    finally:
+        for i in range(len):
+            vector.append(encoded % 2)
+            encoded = encoded >> 1
 
-    for i in range(len):
-        vector.append(encoded%2)
-        encoded = encoded >> 1
-
-    return vector
+        return vector
 
 
 def getEuclideanDistance(value, criteria):
@@ -40,12 +44,19 @@ def getFitScore(coordiFit, userFit):
     return getEuclideanDistance(coordiFit, userFit)
 
 def getStyleScore(coordiStyle, userStylePreference):
-    sum = 0
-    count = coordiStyle.count(1)
+    indexList = []
+    s = 0
     for i, style in enumerate(data.StyleList):
-        sum += coordiStyle[i] * userStylePreference[style]
+        if coordiStyle[i] == 1:
+            indexList.append(i)
+            s += userStylePreference[style]
 
-    score = sum / count # 평균
+    count = coordiStyle.count(1)
+    sum = 0
+    for i in indexList:
+        sum += userStylePreference[data.StyleList[i]]
+
+    score = (sum / count) / s * 100 # 평균의 백분율
 
     return score
 
