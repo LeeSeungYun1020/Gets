@@ -4,166 +4,93 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_title"
-        android:textSize="20sp"
+
+    <View
+        android:id="@+id/top_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/chipGrey"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/item1"
-        android:layout_width="0dp"
+    <include
+        android:id="@+id/product1"
+        layout="@layout/component_price"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:textSize="14sp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@id/price1"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title" />
-
-    <TextView
-        android:id="@+id/price1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_price"
-        android:textSize="14sp"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/item1"
-        app:layout_constraintTop_toTopOf="@id/item1" />
+        app:layout_constraintTop_toBottomOf="@id/top_divider" />
 
-    <TextView
-        android:id="@+id/item2"
-        android:layout_width="0dp"
+    <include
+        android:id="@+id/product2"
+        layout="@layout/component_price"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="14sp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@id/price2"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item1" />
-
-    <TextView
-        android:id="@+id/price2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_price"
-        android:textSize="14sp"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/item2"
-        app:layout_constraintTop_toTopOf="@id/item2" />
+        app:layout_constraintTop_toBottomOf="@id/product1" />
 
-    <TextView
-        android:id="@+id/item3"
-        android:layout_width="0dp"
+    <include
+        android:id="@+id/product3"
+        layout="@layout/component_price"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="14sp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@id/price3"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item2" />
+        app:layout_constraintTop_toBottomOf="@id/product2" />
 
-    <TextView
-        android:id="@+id/price3"
-        android:layout_width="wrap_content"
+    <include
+        android:id="@+id/product4"
+        layout="@layout/component_price"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_price"
-        android:textSize="14sp"
-        android:visibility="gone"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/item3"
-        app:layout_constraintTop_toTopOf="@id/item3" />
-
-    <TextView
-        android:id="@+id/item4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="14sp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@id/price4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item3" />
+        app:layout_constraintTop_toBottomOf="@id/product3" />
 
-    <TextView
-        android:id="@+id/price4"
-        android:layout_width="wrap_content"
+    <include
+        android:id="@+id/product5"
+        layout="@layout/component_price"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_price"
-        android:textSize="14sp"
-        android:visibility="gone"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/item4"
-        app:layout_constraintTop_toTopOf="@id/item4" />
-
-    <TextView
-        android:id="@+id/item5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="14sp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@id/price5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item4" />
+        app:layout_constraintTop_toBottomOf="@id/product4" />
 
-    <TextView
-        android:id="@+id/price5"
-        android:layout_width="wrap_content"
+    <include
+        android:id="@+id/product6"
+        layout="@layout/component_price"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_price"
-        android:textSize="14sp"
-        android:visibility="gone"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/item5"
-        app:layout_constraintTop_toTopOf="@id/item5" />
-
-    <TextView
-        android:id="@+id/item6"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="14sp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@id/price6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item5" />
+        app:layout_constraintTop_toBottomOf="@id/product5" />
 
-    <TextView
-        android:id="@+id/price6"
-        android:layout_width="wrap_content"
+    <include
+        android:id="@+id/product7"
+        layout="@layout/component_price"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_price"
-        android:textSize="14sp"
-        android:visibility="gone"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/item6"
-        app:layout_constraintTop_toTopOf="@id/item6" />
-
-    <TextView
-        android:id="@+id/item7"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="14sp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@id/price7"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item6" />
+        app:layout_constraintTop_toBottomOf="@id/product6" />
 
-    <TextView
-        android:id="@+id/price7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_price"
-        android:textSize="14sp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/item7"
-        app:layout_constraintTop_toTopOf="@id/item7" />
 </androidx.constraintlayout.widget.ConstraintLayout>
