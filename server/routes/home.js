@@ -37,7 +37,7 @@ module.exports = function (passport) {
 		
 		process.stdout.on('data', function(data){
 			console.log('process.stdout')
-			str = data.toString().trim()
+			let str = data.toString().trim()
 			console.log(str)
 			sql(str).then(function(result){
 				//console.log(result)
@@ -128,7 +128,7 @@ module.exports = function (passport) {
 	//홈화면_탑트렌드에 있는 제품을 number 수만큼표시
 	router.get("/toptrends/:number", (req, res) => {
 		connection.query(`select productID,count(productID) as cnt from favoriteProduct
-							group by productID order by cnt desc limit ${req.params.number}`,(err,result)=>{
+                          group by productID order by cnt desc limit ${req.params.number}`,(err,result)=>{
 			if(err)
 				res.send({result: false})
 			else{
