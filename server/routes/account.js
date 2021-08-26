@@ -23,7 +23,6 @@ module.exports = function (passport) {
 			{
 				successRedirect: '/account',
 				failureRedirect: '/account/signin',
-				failureFlash: true
 			}),
 		(req, res) => {
 			req.session.save(() => {
