@@ -49,16 +49,24 @@ module.exports=function(passport){
 		const month = req.body.month
 		const day = req.body.day
 		
-		bcrypt.hash(pw, 11, function(err, hash) {
-			connection.query("INSERT INTO `user` (email, pw, name, phone, birthday) VALUES (?, ?, ?, ?, ?)",
-				[email, hash, name, phone, `${year}-${month}-${day}`],
-				(err, result) => {
-					if (err)
-						res.send({result: false, isDuplicate: err.errno === 1062})
-					else
-						res.send({result: true})
-				})
-		})
+		connection.query("INSERT INTO `user` (email, pw, name, phone, birthday) VALUES (?, ?, ?, ?, ?)",
+			[email, pw, name, phone, `${year}-${month}-${day}`],
+			(err, result) => {
+				if (err)
+					res.send({result: false, isDuplicate: err.errno === 1062})
+				else
+					res.send({result: true})
+			})
+		// bcrypt.hash(pw, 11, function(err, hash) {
+		// 	connection.query("INSERT INTO `user` (email, pw, name, phone, birthday) VALUES (?, ?, ?, ?, ?)",
+		// 		[email, hash, name, phone, `${year}-${month}-${day}`],
+		// 		(err, result) => {
+		// 			if (err)
+		// 				res.send({result: false, isDuplicate: err.errno === 1062})
+		// 			else
+		// 				res.send({result: true})
+		// 		})
+		// })
 	})
 
 // 회원가입 - 추가 정보 입력

@@ -41,6 +41,7 @@ module.exports = function (passport) {
 			console.log(str)
 			sql(str).then(function(result){
 				//console.log(result)
+				result[0]["result"] = true
 				res.send(result)
 			})
 		})
