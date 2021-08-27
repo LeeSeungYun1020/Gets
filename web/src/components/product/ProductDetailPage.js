@@ -14,13 +14,12 @@ const ProductDetailPage = ({match}) => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                if(id === 1 && id === 2) {
-                    alert("존재하지 않는 페이지입니다");
-                    history.replace(link.home)
-                }
-                else {
+                if(id > 2) {
                     const response = await axios.get(`http://localhost:3000/product/${id}`, {withCredentials: true});
                     setItem(response.data);
+                }
+                else {
+                    history.push('/product')
                 }
             } catch(e) {
                 console.log(e)
