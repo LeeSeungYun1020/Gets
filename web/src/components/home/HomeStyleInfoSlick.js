@@ -95,24 +95,24 @@ const HomeStyleInfoSlick = () => {
                         <h2>{t("street")}</h2>
                         <img src={street}/>
                     </div>
-                    <div className = "style_info_img" onClick={() => onArticleClick("rock_chic")}>
-                        <h2>{t("rock_chic")}</h2>
+                    <div className = "style_info_img" onClick={() => onArticleClick("rock-chic")}>
+                        <h2>{t("rock-chic")}</h2>
                         <img src={rock_chic}/>
                     </div>
                     <div className = "style_info_img" onClick={() => onArticleClick("amekaji")}>
                         <h2>{t("amekaji")}</h2>
                         <img src={amekaji}/>
                     </div>
-                    <div className = "style_info_img" onClick={() => onArticleClick("city_boy")}>
-                        <h2>{t("city_boy")}</h2>
+                    <div className = "style_info_img" onClick={() => onArticleClick("city-boy")}>
+                        <h2>{t("city-boy")}</h2>
                         <img src={city_boy}/>
                     </div>
                     <div className="style_info_img" onClick={() => onArticleClick("office")}>
                         <h2>{t("office")}</h2>
                         <img src={office}/>
                     </div>
-                    <div className="style_info_img" onClick={() => onArticleClick("sexy_glam")}>
-                        <h2>{t("sexy_glam")}</h2>
+                    <div className="style_info_img" onClick={() => onArticleClick("sexy-glam")}>
+                        <h2>{t("sexy-glam")}</h2>
                         <img src={sexy_glam}/>
                     </div>
                     <div className="style_info_img" onClick={() => onArticleClick("feminine")}>

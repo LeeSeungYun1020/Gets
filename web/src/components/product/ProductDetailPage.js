@@ -10,23 +10,32 @@ const ProductDetailPage = ({match}) => {
     const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(false);
     const {i18n, t} = useTranslation()
+    let last;
     useEffect(() => {
-        const fetchData = async () => {
-            setLoading(true);
-            try {
-                if(id > 2) {
-                    const response = await axios.get(`http://localhost:3000/product/${id}`, {withCredentials: true});
-                    setItem(response.data);
+        axios.get('http://localhost:3000/product/number', {withCredentials: true})
+            .then(response => {
+                // console.log(response)
+                last = response.data[0].id
+                // console.log(last);
+                const fetchData = async () => {
+                    setLoading(true);
+                    // console.log(last)
+                    try {
+                        if(id > 2 && id <= last) {
+                            const response = await axios.get(`http://localhost:3000/product/${id}`, {withCredentials: true});
+                            setItem(response.data);
+                        }
+                        else {
+                            history.push('/product')
+                        }
+                    } catch(e) {
+                        console.log(e)
+                    }
+                    setLoading(false);
                 }
-                else {
-                    history.push('/product')
-                }
-            } catch(e) {
-                console.log(e)
-            }
-            setLoading(false);
-        }
-        fetchData();
+                fetchData();
+            })
+        // console.log(last)
     },[]);
 
     // 대기 중일 때
@@ -41,6 +50,6 @@ const ProductDetailPage = ({match}) => {
     return(
         <ProductDetailPageItem item={item} />
     )
-}
+};
 
 export default withRouter(ProductDetailPage)

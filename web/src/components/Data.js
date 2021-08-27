@@ -29,13 +29,13 @@ const SubCategory = {
     "jumper": 16,
     "jacket" : 32,
     "hoodzipup": 64,
-    "hood_zipup":64,
+    "hood-zipup":64,
     "fleece": 128,
     "tshirt": 1,
     "shirts": 2,
-    "shirts_blouse": 2,
+    "shirts-blouse": 2,
     "longsleeve": 4,
-    "long_sleeve": 4,
+    "long-sleeve": 4,
     "sweatshirt": 8,
     "hoodie": 16,
     "knit": 32,
@@ -44,23 +44,23 @@ const SubCategory = {
     "jeans": 1,
     "slacks": 2,
     "cotton": 4,
-    "cotton_pants" :4,
+    "cotton-pants" :4,
     "training": 8,
-    "training_pants": 8,
+    "trainin-_pants": 8,
     "jogger": 16,
-    "jogger_pants": 16,
+    "jogger-pants": 16,
     "shorts": 32,
     "leggings": 64,
     "mini": 1,
-    "mini_skirt": 1,
+    "mini-skirt": 1,
     "middle": 2,
-    "middle_skirt": 2,
+    "middle-skirt": 2,
     "long": 4,
-    "long_skirt": 4,
+    "long-skirt": 4,
     "onepiece": 1,
-    "one_piece": 1,
+    "one-piece": 1,
     "twopiece": 2,
-    "two_piece": 2,
+    "two-piece": 2,
     "suit": 4,
     "jumpsuit": 8,
     "sneakers": 1,
@@ -68,12 +68,12 @@ const SubCategory = {
     "boots": 4,
     "derby": 8,
     "heels": 16,
-    "heels_pumps": 16,
+    "heels-pumps": 16,
     "sandals": 32,
     "slippers": 64,
     "backpack": 1,
     "massenger": 2,
-    "massenger_crossbag": 2,
+    "massenger-crossbag": 2,
     "dot": 4,
     "dotbag": 4,
     "eco": 8,
@@ -94,14 +94,14 @@ const NumToStringOuter = {
     8: "blazer",
     16: "jumper",
     32: "jacket",
-    64: "hood_zipup",
+    64: "hood-zipup",
     128: "fleece"
 }
 
 const NumToStringTop = {
     1: "tshirt",
-    2: "shirts_blouse",
-    4: "long_sleeve",
+    2: "shirts-blouse",
+    4: "long-sleeve",
     8: "sweatshirt",
     16: "hoodie",
     32: "knit",
@@ -111,20 +111,20 @@ const NumToStringTop = {
 const NumToStringBottom = {
     1: "jeans",
     2: "slacks",
-    4: "cotton_pants",
-    8: "training_pants",
-    16: "jogger_pants",
+    4: "cotton-pants",
+    8: "training-pants",
+    16: "jogger-pants",
     32: "shorts",
     64: "leggings"
 }
 const NumToStringSkirt = {
-    1: "mini_skirt",
-    2: "middle_skirt",
-    4: "long_skirt"
+    1: "mini-skirt",
+    2: "middle-skirt",
+    4: "long-skirt"
 }
 const NumToStringSet = {
-    1: "one_piece",
-    2: "two_piece",
+    1: "one-piece",
+    2: "two-piece",
     4: "suit",
     8: "jumpsuit"
 }
@@ -133,13 +133,13 @@ const NumToStringShoes = {
     2: "roper",
     4: "boots",
     8: "derby",
-    16: "heels_pumps",
+    16: "heels-pumps",
     32: "sandals",
     64: "slippers"
 }
 const NumToStringBag = {
     1: "backpack",
-    2: "massenger_crossbag",
+    2: "massenger-crossbag",
     4: "dotbag",
     8: "ecobag",
     16: "leatherbag"
@@ -147,7 +147,7 @@ const NumToStringBag = {
 const NumToStringHat = {
     1: "cap",
     2: "beanie",
-    4: "bucket_hat",
+    4: "bucket-hat",
     8: "beret"
 }
 const NumToStringStyle = {
@@ -155,11 +155,11 @@ const NumToStringStyle = {
     2: "casual",
     4: "campus",
     8: "street",
-    16: "rock_chic",
+    16: "rock-chic",
     32: "amekaji",
-    64: "city_boy",
+    64: "city-boy",
     128: "office",
-    256: "sexy_glam",
+    256: "sexy-glam",
     512: "feminine",
     1024: "lovely"
 }
@@ -169,11 +169,11 @@ const StringToNumStyle = {
     "casual": 2,
     "campus": 4,
     "street": 8,
-    "rock_chic": 16,
+    "rock-chic": 16,
     "amekaji": 32,
-    "city_boy": 64,
+    "city-boy": 64,
     "office": 128,
-    "sexy_glam": 256,
+    "sexy-glam": 256,
     "feminine": 512,
     "lovely": 1024
 }
@@ -183,11 +183,11 @@ const NumToStringKrStyle = {
     2: "kr_casual",
     4: "kr_campus",
     8: "kr_street",
-    16: "kr_rock_chic",
+    16: "kr_rock-chic",
     32: "kr_amekaji",
-    64: "kr_city_boy",
+    64: "kr_city-boy",
     128: "kr_office",
-    256: "kr_sexy_glam",
+    256: "kr_sexy-glam",
     512: "kr_feminine",
     1024: "kr_lovely"
 }

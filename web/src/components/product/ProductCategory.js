@@ -19,7 +19,7 @@ const ProductCategory = (props) => {
         <AccordionPanel label={t("outer")} style={{paddingLeft: 10}} >
             <NavLink activeStyle={activeStyle} to = "/product/outer/all">
                 <Box pad="small">
-                    {t("look_all")}
+                    {t("look-all")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/outer/coat">
@@ -52,9 +52,9 @@ const ProductCategory = (props) => {
                     {t("jacket")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/outer/hood_zipup">
+            <NavLink activeStyle={activeStyle} to = "/product/outer/hood-zipup">
                 <Box pad="small">
-                    {t("hood_zipup")}
+                    {t("hood-zipup")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/outer/fleece">
@@ -66,7 +66,7 @@ const ProductCategory = (props) => {
         <AccordionPanel label={t("top")} style={{paddingLeft: 10}}>
             <NavLink activeStyle={activeStyle} to = "/product/top/all">
                 <Box pad="small">
-                    {t("look_all")}
+                    {t("look-all")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/top/tshirt">
@@ -74,14 +74,14 @@ const ProductCategory = (props) => {
                     {t("tshirt")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/top/shirts_blouse">
+            <NavLink activeStyle={activeStyle} to = "/product/top/shirts-blouse">
                 <Box pad="small">
-                    {t("shirts_blouse")}
+                    {t("shirts-blouse")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/top/long_sleeve">
+            <NavLink activeStyle={activeStyle} to = "/product/top/long-sleeve">
                 <Box pad="small">
-                    {t("long_sleeve")}
+                    {t("long-sleeve")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/top/sweatshirt">
@@ -113,7 +113,7 @@ const ProductCategory = (props) => {
         <AccordionPanel label={t("bottom")} style={{paddingLeft: 10}}>
             <NavLink activeStyle={activeStyle} to = "/product/bottom/all">
                 <Box pad="small">
-                    {t("look_all")}
+                    {t("look-all")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/bottom/jeans">
@@ -126,19 +126,19 @@ const ProductCategory = (props) => {
                     {t("slacks")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/bottom/cotton_pants">
+            <NavLink activeStyle={activeStyle} to = "/product/bottom/cotton-pants">
                 <Box pad="small">
-                    {t("cotton_pants")}
+                    {t("cotton-pants")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/bottom/training_pants">
+            <NavLink activeStyle={activeStyle} to = "/product/bottom/training-pants">
                 <Box pad="small">
-                    {t("training_pants")}
+                    {t("training-pants")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/bottom/jogger_pants">
+            <NavLink activeStyle={activeStyle} to = "/product/bottom/jogger-pants">
                 <Box pad="small">
-                    {t("jogger_pants")}
+                    {t("jogger-pants")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/bottom/shorts">
@@ -155,39 +155,39 @@ const ProductCategory = (props) => {
         <AccordionPanel label={t("skirt")} style={{paddingLeft: 10}}>
             <NavLink activeStyle={activeStyle} to = "/product/skirt/all">
                 <Box pad="small">
-                    {t("look_all")}
+                    {t("look-all")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/skirt/mini_skirt">
+            <NavLink activeStyle={activeStyle} to = "/product/skirt/mini-skirt">
                 <Box pad="small">
-                    {t("mini_skirt")}
+                    {t("mini-skirt")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/skirt/middle_skirt">
+            <NavLink activeStyle={activeStyle} to = "/product/skirt/middle-skirt">
                 <Box pad="small">
-                    {t("middle_skirt")}
+                    {t("middle-skirt")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/skirt/long_skirt">
+            <NavLink activeStyle={activeStyle} to = "/product/skirt/long-skirt">
                 <Box pad="small">
-                    {t("long_skirt")}
+                    {t("long-skirt")}
                 </Box>
             </NavLink>
         </AccordionPanel>
         <AccordionPanel label={t("set")} style={{paddingLeft: 10}}>
             <NavLink activeStyle={activeStyle} to = "/product/set/all">
                 <Box pad="small">
-                    {t("look_all")}
+                    {t("look-all")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/set/one_piece">
+            <NavLink activeStyle={activeStyle} to = "/product/set/one-piece">
                 <Box pad="small">
-                    {t("one_piece")}
+                    {t("one-piece")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/set/two_piece">
+            <NavLink activeStyle={activeStyle} to = "/product/set/two-piece">
                 <Box pad="small">
-                    {t("two_piece")}
+                    {t("two-piece")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/set/suit">
@@ -204,7 +204,7 @@ const ProductCategory = (props) => {
         <AccordionPanel label={t("shoes")} style={{paddingLeft: 10}}>
             <NavLink activeStyle={activeStyle} to = "/product/shoes/all">
                 <Box pad="small">
-                    {t("look_all")}
+                    {t("look-all")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/shoes/sneakers">
@@ -227,9 +227,9 @@ const ProductCategory = (props) => {
                     {t("derby")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/shoes/heels_pumps">
+            <NavLink activeStyle={activeStyle} to = "/product/shoes/heels-pumps">
                 <Box pad="small">
-                    {t("heels_pumps")}
+                    {t("heels-pumps")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/shoes/sandals">
@@ -246,7 +246,7 @@ const ProductCategory = (props) => {
         <AccordionPanel label={t("bag")} style={{paddingLeft: 10}}>
             <NavLink activeStyle={activeStyle} to = "/product/bag/all">
                 <Box pad="small">
-                    {t("look_all")}
+                    {t("look-all")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/bag/backpack">
@@ -254,9 +254,9 @@ const ProductCategory = (props) => {
                     {t("backpack")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/bag/massenger_crossbag">
+            <NavLink activeStyle={activeStyle} to = "/product/bag/massenger-crossbag">
                 <Box pad="small">
-                    {t("massenger_crossbag")}
+                    {t("massenger-crossbag")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/bag/dotbag">
@@ -278,7 +278,7 @@ const ProductCategory = (props) => {
         <AccordionPanel label={t("hat")} style={{paddingLeft: 10}}>
             <NavLink activeStyle={activeStyle} to = "/product/hat/all">
                 <Box pad="small">
-                    {t("look_all")}
+                    {t("look-all")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/hat/cap">
@@ -291,9 +291,9 @@ const ProductCategory = (props) => {
                     {t("beanie")}
                 </Box>
             </NavLink>
-            <NavLink activeStyle={activeStyle} to = "/product/hat/bucket_hat">
+            <NavLink activeStyle={activeStyle} to = "/product/hat/bucket-hat">
                 <Box pad="small">
-                    {t("bucket_hat")}
+                    {t("bucket-hat")}
                 </Box>
             </NavLink>
             <NavLink activeStyle={activeStyle} to = "/product/hat/beret">
