@@ -20,7 +20,7 @@ module.exports = function (passport) {
 		let thigh = req.query.thigh;
 		
 		let scriptPath = '../data/BodyShapeToFit/'
-		const process = spawn('python', [scriptPath + 'main.py', gender, shoulder, waist, hip, thigh])
+		const process = spawn('python3', [scriptPath + 'main.py', gender, shoulder, waist, hip, thigh])
 		
 		process.stdout.on('data', function(data){
 			console.log('==============================')
@@ -52,9 +52,9 @@ module.exports = function (passport) {
 			let email = req.user.email
 			let pw = req.user.pw
 			
-			process = spawn('python', ['-O', scriptPath + scriptName, email, pw])
+			process = spawn('python3', ['-O', scriptPath + scriptName, email, pw])
 		} else {
-			process = spawn('python', ['-O', scriptPath + scriptName])
+			process = spawn('python3', ['-O', scriptPath + scriptName])
 		}
 		
 		process.stdout.on('data', function(data){
@@ -119,7 +119,7 @@ module.exports = function (passport) {
 			let email = req.user.email
 			let pw = req.user.pw
 			
-			process = spawn('python', ['-O', scriptPath + scriptName, email, pw, number])
+			process = spawn('python3', ['-O', scriptPath + scriptName, email, pw, number])
 		}else{
 			console.log('signInState = false')
 			
@@ -128,7 +128,7 @@ module.exports = function (passport) {
 				style = (1 << 11) - 1 // 모든 스타일
 			}
 			
-			process = spawn('python', ['-O', scriptPath + scriptName, style, number])
+			process = spawn('python3', ['-O', scriptPath + scriptName, style, number])
 		}
 		
 		process.stdout.on('data', function(data){
