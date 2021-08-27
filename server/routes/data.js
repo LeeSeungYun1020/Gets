@@ -8,17 +8,16 @@ const spawn = require('child_process').spawn
 
 module.exports = function (passport) {
 	router.get('/', function (req, res, next) {
-		console.log(req.user)
 		res.send('data')
 	});
 	
 	// 체형 정보로 어울리는 핏 예측
 	router.get('/fit', (req, res) => {
-		const gender = req.query.gender;
-		const shoulder = req.query.shoulder;
-		const waist = req.query.waist;
-		const hip = req.query.hip;
-		const thigh = req.query.thigh;
+		let gender = req.query.gender;
+		let shoulder = req.query.shoulder;
+		let waist = req.query.waist;
+		let hip = req.query.hip;
+		let thigh = req.query.thigh;
 		
 		let scriptPath = '../data/BodyShapeToFit/'
 		const process = spawn('python', [scriptPath + 'main.py', gender, shoulder, waist, hip, thigh])
@@ -43,137 +42,135 @@ module.exports = function (passport) {
 		})
 	})
 	
+	// 찜 제품 목록과 찜 코디 목록으로 선호 스타일 분석
 	router.get('/stylePreference', (req, res) => {
-		// favoriteStyleRanking -> stylePreference
+		let scriptPath = '../data/StylePreference/'
+		let scriptName = 'main.py'
+		let process
 		
 		if (req.user) {
-			//email, pw 대신 session?으로 바꾸기??
 			let email = req.user.email
 			let pw = req.user.pw
 			
-			let scriptPath = '../data/StylePreference/'
-			let scriptName = 'main.py'
-			
-			const process = spawn('python', ['-O', scriptPath + scriptName, email, pw])
-			
-			process.stdout.on('data', function(data){
-				tmp = {'data': data.toString(), 'result': true}
-				console.log(tmp)
-				res.send(tmp)
-			})
-			process.stderr.on('data', function(data){
-				console.log({'result': false})
-				res.send({'result': false})
-			})
+			process = spawn('python', ['-O', scriptPath + scriptName, email, pw])
 		} else {
-			let scriptPath = '../data/StylePreference/'
-			let scriptName = 'main.py'
-			
-			const process = spawn('python', ['-O', scriptPath + scriptName])
-			
-			process.stdout.on('data', function(data){
-				tmp = {'data': data.toString(), 'result': true}
-				console.log(tmp)
-				res.send(tmp)
-			})
-			process.stderr.on('data', function(data){
-				console.log({'result': false})
-				res.send({'result': false})
-			})
+			process = spawn('python', ['-O', scriptPath + scriptName])
 		}
+		
+		process.stdout.on('data', function(data){
+			let json = JSON.parse(data)
+			json['result'] = true
+			console.log(json)
+			res.send(json)
+		})
+		process.stderr.on('data', function(){
+			console.log({'result': false})
+			res.send({'result': false})
+		})
 	})
 	
 	router.get('/coordination/filter/gender/:gender', (req,res) => {
 		let gender = req.params.gender
 		console.log('/data/coordination/filter/gender/' + gender)
 		
-		if(gender!==1 && gender!==2){ // 남자도 여자도 아니라면
-			connection.query(`SELECT id, gender, fit, age, weather, style FROM coordination`,
-				(err, result) => {
-					if(result.length === 0)
-						res.send({})
-					else if (err)
-						res.send({result: false})
-					else
-						res.send(result)
-				})
-		}
-		else{
-			connection.query(`select id, gender, fit, age, weather, style from coordination where (gender&?)=?`,[gender, gender],
-				(err,result)=>{
-					if(result.length === 0)
-						res.send({})
-					else if (err)
-						res.send({result: false})
-					else
-						res.send(result)
-				})
-		}
-	})
-	
-	router.get('/coordination/recommendation/:count', (req, res) => {
-		let count = req.params.count
+		let query = `SELECT id, gender, fit, age, season, style FROM coordination`
 		
-		console.log('/data/coordination/recommendation/' + count)
-		
-		let scriptPath = '../data/CoordinationRecommendation/'
-		let scriptName = 'main.py'
-		
-		if(req.user){
-			console.log('signinState = true')
-			let email = req.user.email
-			let pw = req.user.pw
-			
-			const process = spawn('python', ['-O', scriptPath + scriptName, email, pw, count])
-			
-			process.stdout.on('data', function(data){
-				res.send(data.toString())
-				//let tmp = {'data': data.toString().trim(), 'result': true}
-				//console.log(tmp)
-				//res.send(tmp)
-			})
-			process.stderr.on('data', function(data){
-				console.log({'result': false}, 1)
-				res.send({'result': false})
-			})
+		if (gender*1===1 || gender*1===2){
+			let whereClause = ` WHERE (gender & ${gender} = ${gender})`
+			query += whereClause
 		}
-		else{
-			let style = req.query.style
-			
-			if(isNaN(style)){
-				style = 1 << 11 - 1 // 모든 스타일
-			}
-			
-			console.log(style, count)
-			console.log('signinState = false')
-			
-			const process = spawn('python', ['-O', scriptPath + scriptName, style, count])
-			
-			process.stdout.on('data', function(data){
-				res.send(data.toString())
-				//tmp = {'data': data.toString().trim(), 'result': true}
-				//console.log(tmp)
-				//res.send(tmp)
+		
+		console.log(query)
+		connection.query(query,
+			(err, result) => {
+				if (err || result.length===0){
+					result = [{result : false}]
+				}
+				else{
+					result[0]['result'] = true
+				}
+				res.send(result)
 			})
-			process.stderr.on('data', function(data){
-				console.log({'result': false}, 2)
-				res.send({'result': false})
-			})
-		}
 	})
 	
 	router.get("/coordination/all", (req, res) => {
-		connection.query(`SELECT id, gender, fit, age, weather, style FROM coordination`,
+		connection.query(`SELECT id, gender, fit, age, season, style FROM coordination`,
 			(err, result) => {
 				if (err || result.length === 0)
-					res.send({result: false})
+					res.send([{result: false}])
 				else {
-					let tmp = {'data': result, 'result': true}
-					console.log(tmp)
-					res.send(tmp)
+					result[0]['result'] = true
+					console.log(result)
+					res.send(result)
 				}
 			})
 	})
 	
+	router.get('/coordination/recommendation/:number', (req, res) => {
+		let number = req.params.number
+		console.log(`/coordination/recommendation/${number}`)
+		
+		let scriptPath = '../data/CoordinationRecommendation/'
+		let scriptName = 'main.py'
+		let process
+		
+		if(req.user){
+			console.log('signInState = true')
+			let email = req.user.email
+			let pw = req.user.pw
+			
+			process = spawn('python', ['-O', scriptPath + scriptName, email, pw, number])
+		}else{
+			console.log('signInState = false')
+			
+			let style = req.query.style
+			if(isNaN(style)){
+				style = (1 << 11) - 1 // 모든 스타일
+			}
+			
+			process = spawn('python', ['-O', scriptPath + scriptName, style, number])
+		}
+		
+		process.stdout.on('data', function(data){
+			console.log('process.stdout')
+			let str = data.toString().trim()
+			console.log(str)
+			sql(str).then(function(result){
+				//console.log(result)
+				res.send(result)
+			})
+		})
+		process.stderr.on('data', function(){
+			console.log('process.stderr')
+			res.send({'result': false})
+		})
+	})
+	
 	return router
+}
+
+function sql(str){
+	console.log('sql()')
+	let idList = str.trim().split(',')
+	
+	let whereCluase = ``
+	
+	i = 0
+	for(id of idList){ // where절 생성
+		if(i++ !== 0)
+			whereCluase += ` or `
+		whereCluase += `id = ${id}`
+	}
+	
+	let query = `SELECT * FROM coordination WHERE ` + whereCluase
+	console.log(query)
+	
+	return new Promise(resolve => {
+		connection.query(query,
+			(err, result) => {
+				if(err || result.length===0)
+					result = [{result: false}]
+				resolve(result)
+			})
+	})
 }

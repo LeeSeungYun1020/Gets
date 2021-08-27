@@ -56,15 +56,30 @@ class InfoActivity : AppCompatActivity() {
 
         val sizeAdapter =
             ArrayAdapter(this, R.layout.list_item, Size.values().map { getString(it.resID) })
-        (binding.topSizeTextfield.editText as? AutoCompleteTextView)?.setAdapter(sizeAdapter)
-        (binding.bottomSizeTextfield.editText as? AutoCompleteTextView)?.setAdapter(sizeAdapter)
+        listOf(binding.topSizeTextfield.editText, binding.bottomSizeTextfield.editText).forEach {
+            (it as? AutoCompleteTextView)?.setAdapter(sizeAdapter)
+            it?.setOnClickListener {
+                (getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager)?.hideSoftInputFromWindow(
+                    binding.root.windowToken,
+                    0
+                )
+            }
+        }
 
         val bodyShapeAdapter =
             ArrayAdapter(this, R.layout.list_item, BodyShape.values().map { getString(it.resID) })
-        (binding.shoulderTextfield.editText as? AutoCompleteTextView)?.setAdapter(bodyShapeAdapter)
-        (binding.waistTextfield.editText as? AutoCompleteTextView)?.setAdapter(bodyShapeAdapter)
-        (binding.hipTextfield.editText as? AutoCompleteTextView)?.setAdapter(bodyShapeAdapter)
-        (binding.thighTextfield.editText as? AutoCompleteTextView)?.setAdapter(bodyShapeAdapter)
+        listOf(
+            binding.shoulderTextfield.editText, binding.waistTextfield.editText,
+            binding.hipTextfield.editText, binding.thighTextfield.editText
+        ).forEach {
+            (it as? AutoCompleteTextView)?.setAdapter(bodyShapeAdapter)
+            it?.setOnClickListener {
+                (getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager)?.hideSoftInputFromWindow(
+                    binding.root.windowToken,
+                    0
+                )
+            }
+        }
     }
 
     private fun initData() {
@@ -90,23 +105,29 @@ class InfoActivity : AppCompatActivity() {
                     binding.heightTextfield.editText?.setText(height.toString())
                     binding.weightTextfield.editText?.setText(weight.toString())
 
-                    binding.topSizeTextfield.editText?.setText(
-                        Size.values().filter { it.code == topSize }.map { it.resID }[0]
+                    (binding.topSizeTextfield.editText as? AutoCompleteTextView)?.setText(
+                        Size.values().filter { it.code == topSize }.map { getString(it.resID) }[0],
+                        false
                     )
-                    binding.bottomSizeTextfield.editText?.setText(
-                        Size.values().filter { it.code == bottomSize }.map { it.resID }[0]
+                    (binding.bottomSizeTextfield.editText as? AutoCompleteTextView)?.setText(
+                        Size.values().filter { it.code == bottomSize }
+                            .map { getString(it.resID) }[0], false
                     )
-                    binding.shoulderTextfield.editText?.setText(
-                        BodyShape.values().filter { it.code == shoulder }.map { it.resID }[0]
+                    (binding.shoulderTextfield.editText as? AutoCompleteTextView)?.setText(
+                        BodyShape.values().filter { it.code == shoulder }
+                            .map { getString(it.resID) }[0], false
                     )
-                    binding.waistTextfield.editText?.setText(
-                        BodyShape.values().filter { it.code == waist }.map { it.resID }[0]
+                    (binding.waistTextfield.editText as? AutoCompleteTextView)?.setText(
+                        BodyShape.values().filter { it.code == waist }
+                            .map { getString(it.resID) }[0], false
                     )
-                    binding.hipTextfield.editText?.setText(
-                        BodyShape.values().filter { it.code == hip }.map { it.resID }[0]
+                    (binding.hipTextfield.editText as? AutoCompleteTextView)?.setText(
+                        BodyShape.values().filter { it.code == hip }.map { getString(it.resID) }[0],
+                        false
                     )
-                    binding.thighTextfield.editText?.setText(
-                        BodyShape.values().filter { it.code == thigh }.map { it.resID }[0]
+                    (binding.thighTextfield.editText as? AutoCompleteTextView)?.setText(
+                        BodyShape.values().filter { it.code == thigh }
+                            .map { getString(it.resID) }[0], false
                     )
 
                     binding.styleList.run {

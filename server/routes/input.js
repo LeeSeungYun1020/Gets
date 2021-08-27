@@ -69,39 +69,41 @@ router.get("/coordination", (req, res) => {
 		.createReadStream(`./coordination/coordination.csv`)
 		.pipe(parse({}))
 		for await(const record of parser) {
-			const id = record[1]
-			const outerID = record[2] || 0
-			const outerImageID = record[3] || 0
-			const topID = record[4] || 0
-			const topImageID = record[5] || 0
-			const bottomID = record[6] || 0
-			const bottomImageID = record[7] || 0
-			const skirtID = record[8] || 0
-			const skirtImageID = record[9] || 0
-			const setID = record[10] || 0
-			const setImageID = record[11] || 0
-			const shoesID = record[12] || 0
-			const shoesImageID = record[13] || 0
-			const bagID = record[14] || 0
-			const bagImageID = record[15] || 0
-			const hatID = record[16] || 0
-			const hatImageID = record[17] || 0
-			const title = record[18]
-			const style = coordination.getStyleCode(record[19])
-			const gender = coordination.getGenderCode(record[20])
-			const age = coordination.getAgeCode(record[21])
-			const season = coordination.getSeasonCode(record[22])
-			const fit = record[23] //coordination.getFitCode(record[23])
-			const price = record[24]
-			const imageID = record[25].split(".")[0]
+			const id            = record[1]
+			const outerID       = record[2] || 0
+			const outerImageID  = record[3] || 0
+			const topID         = record[4] || 0
+			const topImageID    = record[5] || 0
+			const top2ID        = record[6] || 0
+			const top2ImageID   = record[7] || 0
+			const bottomID      = record[8] || 0
+			const bottomImageID = record[9] || 0
+			const skirtID       = record[10] || 0
+			const skirtImageID  = record[11] || 0
+			const setID         = record[12] || 0
+			const setImageID    = record[13] || 0
+			const shoesID       = record[14] || 0
+			const shoesImageID  = record[15] || 0
+			const bagID         = record[16] || 0
+			const bagImageID    = record[17] || 0
+			const hatID         = record[18] || 0
+			const hatImageID    = record[19] || 0
+			const title         = record[20]
+			const style         = coordination.getStyleCode(record[21])
+			const gender        = coordination.getGenderCode(record[22])
+			const age           = coordination.getAgeCode(record[23])
+			const season        = coordination.getSeasonCode(record[24])
+			const fit           = record[25] //coordination.getFitCode(record[23])
+			const price         = record[26]
+			const imageID       = record[27] //record[27].split(".")[0]
 			console.log(fit)
 			connection.query(`insert into coordination
-                              (id, title, outerID, outerImageID, topID, topImageID, bottomID, bottomImageID, skirtID,
-                               skirtImageID,
+                              (id, title, outerID, outerImageID, topID, topImageID, top2ID, top2ImageID,
+                               bottomID, bottomImageID, skirtID,skirtImageID,
                                setID, setImageID, shoesID, shoesImageID, bagID, bagImageID, hatID, hatImageID, style,
                                gender, age, season, fit, price, imageID)
-                              values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-				[id, title, outerID, outerImageID, topID, topImageID, bottomID, bottomImageID, skirtID, skirtImageID,
+                              values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+				[id, title, outerID, outerImageID, topID, topImageID, top2ID, top2ImageID, bottomID, bottomImageID, skirtID, skirtImageID,
 					setID, setImageID, shoesID, shoesImageID, bagID, bagImageID, hatID, hatImageID, style, gender, age, season, fit, price, imageID],
 				(err, result) => {
 					if (err) {
@@ -195,7 +197,49 @@ router.get("/article", (req, res) => {
                 "date look, girl friend", \
                 "원피스, 블라우스와 같은 풍성하면서 하늘하늘한 재질의 의류를 활용한 코디로써, 러블리한 느낌을 주는 코디 스타일링", \
                 "Coordination styling that gives a lovely feeling by coordinating clothes made of rich and airy materials such as dresses and blouses." \
-               );`.trim(), (err, result) => {
+               ); \
+		insert into articleImage values (2, 1); \
+		insert into articleImage values (2, 2); \
+		insert into articleImage values (2, 3); \
+		insert into articleImage values (2, 4); \
+		insert into articleImage values (4, 5); \
+		insert into articleImage values (4, 6); \
+		insert into articleImage values (4, 7); \
+		insert into articleImage values (4, 8); \
+		insert into articleImage values (8, 9); \
+		insert into articleImage values (8, 10); \
+		insert into articleImage values (8, 11); \
+		insert into articleImage values (8, 12); \
+		insert into articleImage values (32, 13); \
+		insert into articleImage values (32, 14); \
+		insert into articleImage values (32, 15); \
+		insert into articleImage values (64, 16); \
+		insert into articleImage values (64, 17); \
+		insert into articleImage values (64, 18); \
+		insert into articleImage values (64, 19); \
+		insert into articleImage values (16, 20); \
+		insert into articleImage values (16, 21); \
+		insert into articleImage values (16, 22); \
+		insert into articleImage values (16, 23); \
+		insert into articleImage values (128, 24); \
+		insert into articleImage values (128, 25); \
+		insert into articleImage values (128, 26); \
+		insert into articleImage values (128, 27); \
+		insert into articleImage values (1024, 28); \
+		insert into articleImage values (1024, 29); \
+		insert into articleImage values (256, 30); \
+		insert into articleImage values (256, 31); \
+		insert into articleImage values (256, 32); \
+		insert into articleImage values (256, 33); \
+		insert into articleImage values (512, 34); \
+		insert into articleImage values (512, 35); \
+		insert into articleImage values (512, 36); \
+		insert into articleImage values (512, 37); \
+		insert into articleImage values (1, 38); \
+		insert into articleImage values (1, 39); \
+		insert into articleImage values (1, 40); \
+		insert into articleImage values (1, 41); \
+	`.trim(), (err, result) => {
 		res.send(err || result)
 	})
 })
@@ -253,6 +297,8 @@ router.get("/ready", (req, res) => {
             outerImageID  INT,
             topID         INT,
             topImageID    INT,
+            top2ID		  INT,
+            top2ImageID	  INT,
             bottomID      INT,
             bottomImageID INT,
             skirtID       INT,
@@ -334,7 +380,7 @@ router.get("/coordination/clear", (req, res) => {
 })
 
 router.get("/article/clear", (req, res) => {
-	connection.query("delete from article", (err, result) => {
+	connection.query("delete from article; delete from articleImage", (err, result) => {
 		res.send(result)
 	})
 })

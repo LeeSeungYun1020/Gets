@@ -1,43 +1,37 @@
-import sys
-import requests
-import data
-
+import sys, requests, json
+import auth
 import url as URL
-from auth import signin, signout
 from get_favorite_style import getStylePreference
 
-def is_json_key_present(json, key):
-    try:
-        buf = json[key]
-    except KeyError:
-        return False
-
-    return True
 
 if __name__ == '__main__':
+    if __debug__:
+        print(sys.argv)
+
     lastIndex = len(sys.argv)-1
 
-    if lastIndex <= 1:
-        result = []
-        value = round(100/len(data.styleList), 1)
-        for style in data.styleList:
-            item = (style, value)
-            result.append(item)
+    session = requests.Session()
 
-        print(result)
+    favoriteProductList = []
+    favoriteCoordinationList = []
 
-    else:
-        # email, pw 말고 session 받아오도록..????
+    if lastIndex <= 1: # 로그인 안 했을 경우
+        if __debug__:
+            print('signInState = false')
+
+    else: # 로그인 했을 경우
+        if __debug__:
+            print('signInState = true')
+
         email = sys.argv[lastIndex - 1]
         pw = sys.argv[lastIndex]
 
-        signout()
+        auth.signout()
 
-        with requests.Session() as session:  # with문이 끝나면 session 닫아준다..?
-            with signin(session, email, pw) as response:
+        with session:
+            with auth.signin(session, email, pw) as response:
                 cookies = response.cookies
                 headers = session.headers
-
                 user = session.get(URL.user_url).json()
 
                 if __debug__:
@@ -47,26 +41,36 @@ if __name__ == '__main__':
                     print('{:<10}: {}'.format('headers', headers))
                     print('\n==============================================\n')
 
+
+        # user의 찜 제품 목록을 가져온다. ##################################
         response = session.get(URL.favorite_product_url).json()
 
-        favoriteProductList = []
-        if not 'result' in response:
+        if not 'result' in response: # 정상
             for res in response:
                 favoriteProductList.append(res['productID'])
 
+
+        # user의 찜 코디 목록을 가져온다.
         response = session.get(URL.favorite_coordination_url).json()
 
-        favoriteCoordinationList = []
-        if not 'result' in response:
+        if not 'result' in response: # 정상
             for res in response:
                 favoriteCoordinationList.append(res.get('coordinationID'))
 
-        userStylePreference = getStylePreference(favoriteProductList, favoriteCoordinationList)
 
-        print(userStylePreference)
+    # stylePrefence를 구한다. ######################################
+    userStylePreference = getStylePreference(favoriteProductList, favoriteCoordinationList)
+    result = json.dumps(userStylePreference) # json으로 변환
 
-        if __debug__:
-            print('\n===== {}\'s style ranking ====='.format(user.get('name')))
-            for i, style in enumerate(userStylePreference):
-                print('{:>3}. {:>10} ({:>5}%)'.format(i + 1, style[0], style[1]))
-            print('=================================')
+    print(result)
+
+    if __debug__:
+        if lastIndex <= 1: # 로그인 안 했을 경우
+            userName = '김깡식이'
+        else:
+            userName = user.get('name')
+
+        print('\n===== {}\'s style preference ====='.format(userName))
+        for style in userStylePreference:
+            print('{:>10} ({:>5}%)'.format(style, userStylePreference[style]))
+        print('=================================')

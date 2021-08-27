@@ -19,6 +19,7 @@
             android:exported="true" />
         <activity
             android:name=".ui.product.ProductActivity"
+            android:theme="@style/Theme.App.ProductDetail"
             android:exported="true" />
         <activity
             android:name=".ui.coordination.CoordinationActivity"

@@ -6,7 +6,7 @@ import getData
 from getScore import getCoordinationScore
 
 # 기준점 이하의 코디는 잘라버리고
-# 점수를 기반으로 랜덤 선택하도록 수정?
+# 점수를 기반으로 랜덤 선택하도록 수정하기
 
 if __name__ == '__main__':
     lastIndex = len(sys.argv) - 1
@@ -65,6 +65,8 @@ if __name__ == '__main__':
             if __debug__:
                 print('\nuserData: {}'.format(userData))
 
+    getData.getStylePreference(session, 1024)
+
 
     # 성별로 필터링하여 코디 리스트를 가져온다. ############################
     url = URL.coordination_gender_url + str(userData['gender'])
@@ -109,6 +111,7 @@ if __name__ == '__main__':
         count = len(coordinationScoreList)
     
     IDList = []
+
     for i in range(count):
         IDList.append(coordinationScoreList[i][0])
 
@@ -119,15 +122,5 @@ if __name__ == '__main__':
     if __debug__:
         print('IDList: {}'.format(IDList))
 
-
-    # ID를 사용하여 상위 {count}개의 코디 정보를 가져온다. #####################
-    result = []
-    for i, ID in enumerate(IDList):
-        res = requests.get(URL.coordination_url + str(ID)).json()
-        if __debug__:
-            print('{:>3}. {}'.format(i+1, res))
-        result.append(res)
-
-
-    # 최종 결과값
-    print(result)
+    result = '{}'.format(IDList)[1:-1]
+    print(result) # id 리스트를 반환하고 코디 정보는 node에서 mysql로 구함
