@@ -11,6 +11,7 @@ const DetailInfoCard = ({id}) => {
     const [item, setItem] = useState(null);
     const [outer, setOuter] = useState(null);
     const [top, setTop] = useState(null);
+    const [top2, setTop2] = useState(null);
     const [bottom, setBottom] = useState(null);
     const [bag, setBag] = useState(null);
     const [hat, setHat] = useState(null);
@@ -19,7 +20,7 @@ const DetailInfoCard = ({id}) => {
     const [set, setSet] = useState(null);
     const [loading, setLoading] = useState(false);
     const [style, setStyle] = useState([]);
-    const all = [outer, top, bottom, set, bag, hat, shoes, skirt]
+    const all = [outer, top, top2, bottom, set, bag, hat, shoes, skirt]
     let realAll = [];
     let last;
     const {i18n, t} = useTranslation()
@@ -37,6 +38,7 @@ const DetailInfoCard = ({id}) => {
                             const response = await axios.get(`http://localhost:3000/coordination/${id}`, {withCredentials: true});
                             setItem(response.data);
                             const response_top = await axios.get(`http://localhost:3000/product/${response.data.topID}`, {withCredentials: true});
+                            const response_top2 = await axios.get(`http://localhost:3000/product/${response.data.top2ID}`, {withCredentials: true});
                             const response_outer = await axios.get(`http://localhost:3000/product/${response.data.outerID}`, {withCredentials: true});
                             const response_bottom = await axios.get(`http://localhost:3000/product/${response.data.bottomID}`, {withCredentials: true});
                             const response_bag = await axios.get(`http://localhost:3000/product/${response.data.bagID}`, {withCredentials: true});
@@ -46,6 +48,7 @@ const DetailInfoCard = ({id}) => {
                             const response_shoes = await axios.get(`http://localhost:3000/product/${response.data.shoesID}`, {withCredentials: true});
                             const response_skirt = await axios.get(`http://localhost:3000/product/${response.data.skirtID}`, {withCredentials: true});
                             setTop(response_top);
+                            setTop2(response_top2);
                             setOuter(response_outer);
                             setBottom(response_bottom);
                             setBag(response_bag);
