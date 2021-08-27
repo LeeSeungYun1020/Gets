@@ -9,6 +9,7 @@ import {useHistory} from "react-router-dom";
 import isLogin from "../../lib/isLogin";
 const ProductDetailPageItem = ({item}) => {
     const {t, i18n} = useTranslation()
+    const history = useHistory()
     const {id, price, brand, name, color, fiber, age, style, size, season, type, detail, image1ID, gender} = item
     const [subCategory, setSubCategory] = useState('');
     const [allStyle, setAllStyle] = useState([]) // 스타일 배열에 넣자
@@ -16,7 +17,8 @@ const ProductDetailPageItem = ({item}) => {
     const [allColor, setAllColor] = useState([]) // 너도 배열로 가자!!!
     const [allFiber, setAllFiber] = useState([]) // 너도 배열로 가자!!!!!
     const [allAge, setAllAge] = useState([]) // 너도 배열로 가아아아아아아아아ㅏ아아아
-    const history = useHistory()
+    let allSize = `${size}`.split(',');
+
     const onButtonClick = () => {
         if(!isLogin()){
             history.push('/account/signin')
@@ -143,7 +145,8 @@ const ProductDetailPageItem = ({item}) => {
             <div className = "detail-module">
                 <h4 className="module-title">{t("size")}</h4>
                 <div className="detail-module-right">
-                    <h4>{size}</h4>
+                    {console.log(allSize)}
+                    {allSize.map(item => <h4>{item}</h4>) }
                 </div>
             </div>
             <div className = "detail-module">

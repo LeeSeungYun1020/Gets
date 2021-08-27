@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
-import {withRouter} from "react-router-dom";
+import {useHistory, withRouter} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import axios from "axios";
 import ProductDetailPageItem from "./ProductDetailPageItem";
+import link from "../../link";
 const ProductDetailPage = ({match}) => {
+    const history = useHistory();
     const id = match.params.id
     const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -12,9 +14,13 @@ const ProductDetailPage = ({match}) => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await axios.get(`http://localhost:3000/product/${id}`,{ withCredentials: true });
-                setItem(response.data);
-
+                if(id > 2) {
+                    const response = await axios.get(`http://localhost:3000/product/${id}`, {withCredentials: true});
+                    setItem(response.data);
+                }
+                else {
+                    history.push('/product')
+                }
             } catch(e) {
                 console.log(e)
             }
