@@ -177,6 +177,7 @@ class HomeFragment : Fragment() {
                 }
             )
             styleRequest.tag = CUSTOM_TAG
+            // styleRequest.retryPolicy = DefaultRetryPolicy(100000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
             Network.getInstance(this@HomeFragment.requireContext())
                 .addToRequestQueue(styleRequest)
         }

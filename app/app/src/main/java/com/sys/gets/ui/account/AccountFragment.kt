@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.android.volley.Request
@@ -26,6 +27,12 @@ class AccountFragment : PreferenceFragmentCompat() {
                 null,
                 { response ->
                     if (response.getBoolean("result")) {
+                        val editor = requireContext().getSharedPreferences(
+                            InfoActivity.INFO,
+                            AppCompatActivity.MODE_PRIVATE
+                        ).edit()
+                        editor.putBoolean(InfoActivity.INPUT, false)
+                        editor.apply()
                         startActivity(Intent(requireContext(), LoginActivity::class.java))
                     } else {
                         Snackbar.make(
