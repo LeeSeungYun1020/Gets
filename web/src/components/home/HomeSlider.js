@@ -36,7 +36,7 @@ const PrevArrow = (props) => {
         </div>
     );
 }
-const HomeAd = () => {
+const HomeSlider = () => {
     const {t, i18n} = useTranslation();
     const settings = {
         infinite: true,
@@ -49,24 +49,24 @@ const HomeAd = () => {
         prevArrow: <PrevArrow />
     }
     return (
-        <div className="home-ad">
-            <Slider {...settings} className="home-ad-real">
-                <div className="ad-slider-module">
+        <div className="home-slider">
+            <Slider {...settings} className="home-slider-real">
+                <div className="home-slider-module">
                     <button className="view_more">{t("view_more")}</button>
                     <div className="hover-gradient" />
                     <img src={homeimg} />
                 </div>
-                <div className="ad-slider-module">
+                <div className="home-slider-module">
                     <button className="view_more">{t("view_more")}</button>
                     <div className="hover-gradient" />
                     <img src={homeimg} />
                 </div>
-                <div className="ad-slider-module">
+                <div className="home-slider-module">
                     <button className="view_more">{t("view_more")}</button>
                     <div className="hover-gradient" />
                     <img src={homeimg} />
                 </div>
-                <div className="ad-slider-module">
+                <div className="home-slider-module">
                     <button className="view_more">{t("view_more")}</button>
                     <div className="hover-gradient" />
                     <img src={homeimg} />
@@ -76,4 +76,4 @@ const HomeAd = () => {
     )
 }
 
-export default HomeAd;
+export default HomeSlider;

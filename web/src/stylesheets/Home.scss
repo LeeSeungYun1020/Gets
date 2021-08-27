@@ -526,49 +526,49 @@ h1 {
   overflow: inherit !important;
 }
 
-.home-ad .slick-prev img {
+.home-slider .slick-prev img {
   margin-left: 10px;
   width: 51px;
 }
-.home-ad .slick-next img {
+.home-slider .slick-next img {
   margin-right: 68px;
   width: 50px;
 }
-.home-ad .slick-dots {
+.home-slider .slick-dots {
   bottom: 35px;
   visibility: hidden;
 }
-.home-ad .slick-dots li button:before {
+.home-slider .slick-dots li button:before {
   font-size: 14px;
   color: #d4d3d3;
   opacity: 1;
 }
-.home-ad .slick-dots li {
+.home-slider .slick-dots li {
   margin: 0;
 }
-.home-ad .slick-prev, .home-ad .slick-next {
+.home-slider .slick-prev, .home-slider .slick-next {
   top: 41% !important;
   visibility: hidden;
 }
 
-.home-ad .slick-prev {
+.home-slider .slick-prev {
   padding-left: 50px;
   cursor:pointer;
 }
 
-.home-ad .slick-next {
+.home-slider .slick-next {
   right: 0px;
   padding-right: 70px;
   cursor:pointer;
 }
 
-.home-ad:hover .slick-next, .home-ad:hover .slick-prev, .home-ad:hover .view_more, .home-ad:hover .hover-gradient, .home-ad:hover .slick-dots {
+.home-slider:hover .slick-next, .home-slider:hover .slick-prev, .home-slider:hover .view_more, .home-slider:hover .hover-gradient, .home-slider:hover .slick-dots {
   visibility: visible;
 }
-.ad-slider-module {
+.home-slider-module {
   position: relative;
 }
-.home-ad .view_more {
+.home-slider .view_more {
   position: absolute;
   width: 225px;
   height: 85px;
