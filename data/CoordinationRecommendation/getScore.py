@@ -11,16 +11,12 @@ w_style     = 0.4
 
 def oneHotVector(encoded, len):
     vector = []
-    try:
-        encoded = int(encoded)
-    except:
-        encoded = 0
-    finally:
-        for i in range(len):
-            vector.append(encoded % 2)
-            encoded = encoded >> 1
 
-        return vector
+    for i in range(len):
+        vector.append(encoded % 2)
+        encoded = encoded >> 1
+
+    return vector
 
 
 def getEuclideanDistance(value, criteria):
@@ -56,7 +52,10 @@ def getStyleScore(coordiStyle, userStylePreference):
     for i in indexList:
         sum += userStylePreference[data.StyleList[i]]
 
-    score = (sum / count) / s * 100 # 평균의 백분율
+    if s==0:
+        score = 0
+    else:
+        score = (sum / count) / s * 100 # 평균의 백분율
 
     return score
 

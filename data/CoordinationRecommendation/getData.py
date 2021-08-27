@@ -58,7 +58,8 @@ def getStylePreference(session, style): # stylePreference를 구한다. ########
     del result['result']
 
     # stylePreference에 style 정보를 적용한다. #######################
-    if style == None: style = AllStyle
+    if style==None or style==0:
+        style = AllStyle
 
     styleVector = oneHotVector(style, len(StyleList))
     value = round(100 / (styleVector.count(1)), 1)
