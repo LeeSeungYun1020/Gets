@@ -95,6 +95,19 @@ module.exports = function (passport) {
 		}))
 	})
 	
+	//마지막 id번호
+	router.get("/number",(req,res) => {
+		connection.query(`select id from coordination order by id desc limit 1`,
+			(err,result)=>{
+				if (err || result.length === 0)
+					res.send({result: false})
+				else{
+					console.log(result[0])
+					res.send(result)
+				}
+			})
+	})
+	
 	router.get("/:id", (req, res) => {
 		const id = req.params.id
 		connection.query(`SELECT * FROM coordination WHERE id = ?`,
