@@ -26,26 +26,31 @@ const DetailInfoCard = ({id}) => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await axios.get(`http://localhost:3000/coordination/${id}`,{ withCredentials: true });
-                setItem(response.data);
-                const response_top = await axios.get(`http://localhost:3000/product/${response.data.topID}`,{ withCredentials: true });
-                const response_outer = await axios.get(`http://localhost:3000/product/${response.data.outerID}`,{ withCredentials: true });
-                const response_bottom = await axios.get(`http://localhost:3000/product/${response.data.bottomID}`,{ withCredentials: true });
-                const response_bag = await axios.get(`http://localhost:3000/product/${response.data.bagID}`,{ withCredentials: true });
-                const response_set = await axios.get(`http://localhost:3000/product/${response.data.setID}`,{ withCredentials: true });
-                const response_style = await axios.get(`http://localhost:3000/product/${response.data.style}`,{ withCredentials: true });
-                const response_hat = await axios.get(`http://localhost:3000/product/${response.data.hatID}`,{ withCredentials: true });
-                const response_shoes = await axios.get(`http://localhost:3000/product/${response.data.shoesID}`,{ withCredentials: true });
-                const response_skirt = await axios.get(`http://localhost:3000/product/${response.data.skirtID}`,{ withCredentials: true });
-                setTop(response_top);
-                setOuter(response_outer);
-                setBottom(response_bottom);
-                setBag(response_bag);
-                setSet(response_set);
-                setStyle(response_style);
-                setHat(response_hat);
-                setShoes(response_shoes);
-                setSkirt(response_skirt);
+                if(id > 0) {
+                    const response = await axios.get(`http://localhost:3000/coordination/${id}`, {withCredentials: true});
+                    setItem(response.data);
+                    const response_top = await axios.get(`http://localhost:3000/product/${response.data.topID}`, {withCredentials: true});
+                    const response_outer = await axios.get(`http://localhost:3000/product/${response.data.outerID}`, {withCredentials: true});
+                    const response_bottom = await axios.get(`http://localhost:3000/product/${response.data.bottomID}`, {withCredentials: true});
+                    const response_bag = await axios.get(`http://localhost:3000/product/${response.data.bagID}`, {withCredentials: true});
+                    const response_set = await axios.get(`http://localhost:3000/product/${response.data.setID}`, {withCredentials: true});
+                    const response_style = await axios.get(`http://localhost:3000/product/${response.data.style}`, {withCredentials: true});
+                    const response_hat = await axios.get(`http://localhost:3000/product/${response.data.hatID}`, {withCredentials: true});
+                    const response_shoes = await axios.get(`http://localhost:3000/product/${response.data.shoesID}`, {withCredentials: true});
+                    const response_skirt = await axios.get(`http://localhost:3000/product/${response.data.skirtID}`, {withCredentials: true});
+                    setTop(response_top);
+                    setOuter(response_outer);
+                    setBottom(response_bottom);
+                    setBag(response_bag);
+                    setSet(response_set);
+                    setStyle(response_style);
+                    setHat(response_hat);
+                    setShoes(response_shoes);
+                    setSkirt(response_skirt);
+                }
+                else {
+                    history.goBack()
+                }
             } catch(e) {
                 console.log(e)
             }

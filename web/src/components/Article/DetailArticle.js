@@ -67,13 +67,13 @@ const DetailArticle = ({what}) => {
             case "amekaji":
                 styleImage = amekaji
                 break;
-            case "city_boy":
+            case "city-boy":
                 styleImage = city_boy
                 break;
             case "feminine":
                 styleImage = feminine
                 break;
-            case "rock_chic":
+            case "rock-chic":
                 styleImage = rock_chic
                 break;
             case "lovely":
@@ -82,7 +82,7 @@ const DetailArticle = ({what}) => {
             case "office":
                 styleImage = office
                 break;
-            case "sexy_glam":
+            case "sexy-glam":
                 styleImage = sexy_glam
                 break;
             case "street":
