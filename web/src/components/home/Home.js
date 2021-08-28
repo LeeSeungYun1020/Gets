@@ -1,6 +1,6 @@
 import '../../stylesheets/Home.scss';
 import {useTranslation} from 'react-i18next'
-import HomeAd from "./HomeAd";
+import HomeSlider from "./HomeSlider";
 import HomeStyleGuide from "./HomeStyleGuide";
 import HomeGetStyle from "./HomeGetStyle";
 
@@ -9,7 +9,7 @@ function Home(props) {
 
     return (
         <section className="home">
-            <HomeAd/>
+            <HomeSlider/>
             <HomeGetStyle text={t("recommend_button")}/>
             <HomeStyleGuide title = {t("style_guide")}/>
         </section>
