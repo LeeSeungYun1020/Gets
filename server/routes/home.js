@@ -15,6 +15,7 @@ module.exports = function (passport) {
 		
 		let scriptPath = '../data/CoordinationRecommendation/'
 		let scriptName = 'main.py'
+		let array
 		let process
 		
 		if(req.user){
@@ -23,7 +24,7 @@ module.exports = function (passport) {
 			let email = req.user.email
 			let pw = req.user.pw
 			
-			process = spawn('python3', ['-O', scriptPath + scriptName, email, pw, number])
+			array = ['-O', scriptPath + scriptName, email, pw, number]
 		}else{
 			console.log('signInState = false')
 			
@@ -32,8 +33,10 @@ module.exports = function (passport) {
 				style = (1 << 11) - 1 // 모든 스타일
 			}
 			
-			process = spawn('python3', ['-O', scriptPath + scriptName, style, number])
+			array = ['-O', scriptPath + scriptName, style, number]
 		}
+		
+		process = spawn('python3', array)
 		
 		process.stdout.on('data', function(data){
 			console.log('process.stdout')
