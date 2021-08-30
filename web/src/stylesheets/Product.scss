@@ -196,6 +196,7 @@
 }
 .detail-module-right {
   display: flex;
+  flex-wrap: wrap;
 }
 .detail-module-right h4 {
   margin-right: 5px;
@@ -214,6 +215,10 @@
   border: 1.5px solid #000000;
   padding: 4px 23px 4px 23px;
   margin-right: 12px;
+  height: 23px;
+  & + & {
+    margin-bottom: 10px;
+  }
 }
 
 #add-closet {
