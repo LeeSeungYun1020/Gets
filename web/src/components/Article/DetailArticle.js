@@ -97,6 +97,7 @@ const DetailArticle = ({what}) => {
             <div className = "article-info">
                 <div className="just-div">
                     <div className="just-div2">
+                        {console.log(article)}
                         <h1 className="article-name">{t(`kr_${article.name}`)}</h1>
                         <h1 className="english-article-name">{t(`${article.name}`)}</h1>
                         <div style={{marginTop: 50}}>{article.description.split("\n").map((item, index) => <p className = {`article_${article.name}`}id={`${article.name}-${index}`}>{item}</p>)}</div>
