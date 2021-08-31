@@ -96,7 +96,7 @@ router.get("/coordination", (req, res) => {
 			const fit           = record[25] //coordination.getFitCode(record[23])
 			const price         = record[26]
 			const imageID       = record[27] //record[27].split(".")[0]
-			console.log(fit)
+			//console.log(fit)
 			connection.query(`insert into coordination
                               (id, title, outerID, outerImageID, topID, topImageID, top2ID, top2ImageID,
                                bottomID, bottomImageID, skirtID,skirtImageID,
