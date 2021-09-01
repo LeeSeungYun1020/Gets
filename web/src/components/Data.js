@@ -46,7 +46,7 @@ const SubCategory = {
     "cotton": 4,
     "cotton-pants" :4,
     "training": 8,
-    "trainin-_pants": 8,
+    "training-pants": 8,
     "jogger": 16,
     "jogger-pants": 16,
     "shorts": 32,
@@ -83,7 +83,7 @@ const SubCategory = {
     "cap": 1,
     "beanie": 2,
     "bucket": 4,
-    "bucket_hat": 4,
+    "bucket-hat": 4,
     "beret": 8,
 }
 
