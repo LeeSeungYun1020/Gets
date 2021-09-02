@@ -223,6 +223,19 @@
   flex-direction: column;
 }
 
+#detail_selectbox .MuiInputBase-input {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 600;
+}
+
+#detail_selectbox .MuiSelect-select.MuiSelect-select {
+  padding-left: 20px !important;
+}
+
+//#detail_selectbox .MuiMenuItem-root {
+//  font-family: 'Noto Sans KR', sans-serif !important;
+//  font-weight: 600 !important;
+//}
 #size_div{
   display:flex;
   flex-direction: row;
