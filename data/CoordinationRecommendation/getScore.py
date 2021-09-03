@@ -3,10 +3,10 @@ import data
 
 #====================================================
 # weight (합이 1)
-w_fit       = 0.3
+w_fit       = 0.1
 w_age       = 0.1
 w_season    = 0.2
-w_style     = 0.4
+w_style     = 0.6
 #====================================================
 
 def oneHotVector(encoded, len):
