@@ -2,6 +2,7 @@ package com.sys.gets.ui.coordination
 
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -208,6 +209,13 @@ class CoordinationActivity : AppCompatActivity() {
             )
             coordinationRequest.tag = COORDINATION_TAG
             Network.getInstance(this).addToRequestQueue(coordinationRequest)
+        }
+
+        binding.virtualFittingButton.setOnClickListener {
+            val intent = packageManager.getLaunchIntentForPackage("com.sys.virtualFitting")
+            if (intent != null)
+                startActivity(intent)
+            Log.e("TAG", "$intent")
         }
     }
 
