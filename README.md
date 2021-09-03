@@ -6,7 +6,10 @@
 - 개인 맞춤형 패션 플랫폼  
 - Guess Style, Get Style
 
-맞춤 추천과 가상 피팅 기능 중점, 사용자 맞춤형 기능 제공 목표
+맞춤 추천과 가상 피팅 기능 중점, 사용자 맞춤형 기능 제공 목표  
+
+![poster](./image/final/poster.png)
+[시연 영상](./image/final/시연영상.mp4)
 
 ### 2. 구현 사항
 
@@ -23,11 +26,9 @@
     - 코디 상세 정보
     - 가상 피팅
 - 계정
-    - 로그인
+    - 로그인/로그아웃
     - 회원 가입
-    - 정보 수정
-    - 상세 정보 입력
-    - 스타일 분석
+    - 상세 정보 입력(수정)
 
 ### 3. 개발 진행 사항
 
@@ -90,15 +91,15 @@
 npm install
 ```
 
-##### 데이터베이스 설정
-- 자동 설정  
-아래 사이트로 접속
+#### python 모듈 설치
+
 ```text
-/input/ready
-/input/product
-/input/coordination
-/input/article
+pip install joblib
+pip install numpy
+pip install sklearn.utils
 ```
+
+##### 데이터베이스 설정
 - 수동 설정
 ```mysql
 create database gets;
@@ -213,6 +214,15 @@ create table articleImage
 );
 ```
 
+- 자동 설정  
+  아래 사이트로 접속
+```text
+/input/ready
+/input/product
+/input/coordination
+/input/article
+```
+
 ##### 서버 실행
 
 - server 파일에서
@@ -236,43 +246,48 @@ API:
 
 ## 발표 자료
 
-### 사업계획서
-
-![plan1](./image/plan/1.png)
-![plan2](./image/plan/2.png)
-![plan3](./image/plan/3.png)
-![plan4](./image/plan/4.png)
-![plan4](./image/plan/5.png)
-![plan4](./image/plan/6.png)
-![plan4](./image/plan/7.png)
-![plan4](./image/plan/8.png)
-![plan4](./image/plan/9.png)
-![plan4](./image/plan/10.png)
-
-
-### 해커톤
-
-![plan1](./image/hackathon/1.PNG)
-![plan1](./image/hackathon/2.PNG)
-![plan1](./image/hackathon/3.PNG)
-![plan1](./image/hackathon/4.PNG)
-![plan1](./image/hackathon/5.PNG)
-![plan1](./image/hackathon/6.PNG)
-![plan1](./image/hackathon/7.PNG)
-![plan1](./image/hackathon/8.PNG)
-![plan1](./image/hackathon/9.PNG)
-![plan1](./image/hackathon/10.PNG)
-![plan1](./image/hackathon/11.PNG)
-![plan1](./image/hackathon/12.PNG)
-![plan1](./image/hackathon/13.PNG)
-![plan1](./image/hackathon/14.PNG)
-![plan1](./image/hackathon/15.PNG)
-![plan1](./image/hackathon/16.PNG)
-![plan1](./image/hackathon/17.PNG)
-![plan1](./image/hackathon/18.PNG)
-![plan1](./image/hackathon/19.PNG)
-![plan1](./image/hackathon/20.PNG)
-![plan1](./image/hackathon/21.PNG)
-![plan1](./image/hackathon/22.PNG)
-![plan1](./image/hackathon/23.PNG)
+![plan1](./image/final/result001.png)
+![plan1](./image/final/result002.png)
+![plan1](./image/final/result003.png)
+![plan1](./image/final/result004.png)
+![plan1](./image/final/result005.png)
+![plan1](./image/final/result006.png)
+![plan1](./image/final/result007.png)
+![plan1](./image/final/result008.png)
+![plan1](./image/final/result009.png)
+![plan1](./image/final/result010.png)
+![plan1](./image/final/result011.png)
+![plan1](./image/final/result012.png)
+![plan1](./image/final/result013.png)
+![plan1](./image/final/result014.png)
+![plan1](./image/final/result015.png)
+![plan1](./image/final/result016.png)
+![plan1](./image/final/result017.png)
+![plan1](./image/final/result018.png)
+![plan1](./image/final/result019.png)
+![plan1](./image/final/result020.png)
+![plan1](./image/final/result021.png)
+![plan1](./image/final/result022.png)
+![plan1](./image/final/result023.png)
+![plan1](./image/final/result024.png)
+![plan1](./image/final/result025.png)
+![plan1](./image/final/result026.png)
+![plan1](./image/final/result027.png)
+![plan1](./image/final/result028.png)
+![plan1](./image/final/result029.png)
+![plan1](./image/final/result030.png)
+![plan1](./image/final/result031.png)
+![plan1](./image/final/result032.png)
+![plan1](./image/final/result033.png)
+![plan1](./image/final/result034.png)
+![plan1](./image/final/result035.png)
+![plan1](./image/final/result036.png)
+![plan1](./image/final/result037.png)
+![plan1](./image/final/result038.png)
+![plan1](./image/final/result039.png)
+![plan1](./image/final/result040.png)
+![plan1](./image/final/result041.png)
+![plan1](./image/final/result042.png)
+![plan1](./image/final/result043.png)
+![plan1](./image/final/result044.png)
 
