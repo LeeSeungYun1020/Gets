@@ -2,7 +2,7 @@ import sys, os
 import numpy as np
 import joblib
 
-path = os.path.dirname(__file__) + '\\'
+path = os.path.dirname(__file__) + '/'
 
 def getMaleFit(body_shape):
     saved_name = path + 'bodyShapeToFitModel_male.pkl'
