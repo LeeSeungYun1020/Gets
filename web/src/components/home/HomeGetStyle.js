@@ -17,6 +17,8 @@ import axios from "axios";
 import HomeRecommendCard from "./HomeRecommendCard";
 import { MdAdd, MdRemove } from "react-icons/md";
 import {StringToNumAge, StringToNumGender, StringToNumFit} from "../Data";
+import {Link} from "react-router-dom";
+import qs from 'query-string';
 
 const HomeGetStyle = (props) => {
     const {t, i18n} = useTranslation()
@@ -40,6 +42,8 @@ const HomeGetStyle = (props) => {
         {image: LovelyChip, text: t("lovely")},
         {image: MinimalChip, text: t("minimal")},
     ]
+    // const query = qs.parse(location && location.search);
+    // const detail = query.detail === 'true'; //
     useEffect(() => {
         if (sessionStorage.getItem("token")) { // 로그인 한 사람은 자동으로 추천코디 띄워줌
             axios.get('http://localhost:3000/home/custom/8')
@@ -79,10 +83,17 @@ const HomeGetStyle = (props) => {
     const onSubmit = useCallback(e => {
         console.log(StringToNumGender[gender], StringToNumAge[age], StringToNumFit[topFit], StringToNumFit[bottomFit], style)
         e.preventDefault();
-        axios.get('http://localhost:3000/home/custom/8')
+        let genderNumber = StringToNumGender[gender]
+        let ageNumber = StringToNumAge[age]
+        let topFitNumber = StringToNumFit[topFit]
+        let bottomFitNumber = StringToNumFit[bottomFit]
+        let query = `?gender=${genderNumber}&age=${ageNumber}&topFit=${topFitNumber}&bottomFit=${bottomFitNumber}&style=${style}`
+        axios.get('http://localhost:3000/home/custom/8' + query)
             .then(({data}) => {setRecommend(data)
                 setAns(true);
             })
+        console.log('http://localhost:3000/home/custom/8' + query)
+
     },[gender, age, topFit, bottomFit, style]);
     const iconClick = useCallback( () => {
         setModify(!modify)

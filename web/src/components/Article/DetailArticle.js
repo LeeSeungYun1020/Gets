@@ -31,6 +31,7 @@ const DetailArticle = ({what}) => {
                 const response = await axios.get(`http://localhost:3000/article/${id}`)
                 setArticle(response.data)
                 try {
+                    // console.log(id)
                     const response_2 = await axios.post(`http://localhost:3000/article/image/${id}`)
                     setImageID(response_2.data)
                 }

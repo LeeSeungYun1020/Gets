@@ -97,7 +97,7 @@ const ProductDetailPageItem = ({item}) => {
                 setAllColor(allColor => [...allColor, 2**i])
             }
         }
-        for(let i = 0; i < 9; i++) {
+        for(let i = 0; i < 19; i++) {
             if(fiber&2**i) {
                 setAllFiber(allFiber => [...allFiber, 2**i])
             }

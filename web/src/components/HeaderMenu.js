@@ -11,7 +11,7 @@ const HeaderMenu = ({login, setLogin}) => {
     const history = useHistory();
     return (
         <div id="top_menu">
-            <Link to = {link.cart}><img src={cartIcon}/><p>cart</p></Link>
+            {/*<Link to = {link.cart}><img src={cartIcon}/><p>cart</p></Link>*/}
             <Link to = {link.info}><img src={infoIcon}/><p>my page</p></Link>
 
             {login ? //토큰이 있으면 로그아웃 화면 보여줌
