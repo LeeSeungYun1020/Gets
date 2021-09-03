@@ -239,7 +239,17 @@ const NumToStringFiber = {
     32: "velvet",
     64: "corduroy",
     128: "suede",
-    256: "polyester"
+    256: "polyester",
+    512: "nylon",
+    1024: "rayon",
+    2048: "acrylic",
+    4096: "viscous",
+    8192: "wool",
+    16384:"lyosell",
+    32768: "polyurethane",
+    65536: "synthetic_leather",
+    131072: "bamboo",
+    262144: "etc"
 }
 
 const NumToStringGender = {
