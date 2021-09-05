@@ -23,7 +23,7 @@ const ProductItemList = ({category, subCategory}) => {
             setLoading(false);
         }
         fetchData();
-    }, [subCategory]);
+    }, [category,subCategory]);
 
     // 대기 중일 때
     if(loading) {

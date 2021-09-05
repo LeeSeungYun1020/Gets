@@ -44,9 +44,9 @@ const HomeGetStyle = (props) => {
     // const detail = query.detail === 'true'; //
     useEffect(() => {
         if (sessionStorage.getItem("token")) { // 로그인 한 사람은 자동으로 추천코디 띄워줌
-            axios.get('http://localhost:3000/home/custom/8')
+            axios.get('http://localhost:3000/home/custom/8', { withCredentials: true })
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     setRecommend(data)
                     setAns(true);
                 })
@@ -80,18 +80,17 @@ const HomeGetStyle = (props) => {
 
     const [recommend, setRecommend] = useState([])
     const onSubmit = useCallback(e => {
-        console.log(StringToNumGender[gender], StringToNumAge[age], StringToNumFit[topFit], StringToNumFit[bottomFit], style)
+        // console.log(StringToNumGender[gender], StringToNumAge[age], StringToNumFit[topFit], StringToNumFit[bottomFit], style)
         e.preventDefault();
         let genderNumber = StringToNumGender[gender]
         let ageNumber = StringToNumAge[age]
         let topFitNumber = StringToNumFit[topFit]
         let bottomFitNumber = StringToNumFit[bottomFit]
         let query = `?gender=${genderNumber}&age=${ageNumber}&topFit=${topFitNumber}&bottomFit=${bottomFitNumber}&style=${style}`
-        axios.get('http://localhost:3000/home/getStyle/8' + query)
+        axios.get('http://localhost:3000/home/getStyle/8' + query, { withCredentials: true })
             .then(({data}) => {setRecommend(data)
                 setAns(true);
             })
-        console.log('http://localhost:3000/home/getStyle/8' + query)
 
     },[gender, age, topFit, bottomFit, style]);
     const iconClick = useCallback( () => {
