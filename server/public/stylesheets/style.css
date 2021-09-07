@@ -44,9 +44,10 @@ body {
   font-family: 'Nanum Gothic', sans-serif; }
 
 footer {
+  height: 300px;
+  position: relative;
   background-color: #00200f;
   color: #ffffff;
-  position: absolute;
   width: 100%;
   font-family: 'Nanum Gothic', sans-serif; }
 
@@ -58,11 +59,19 @@ footer #footer_logo {
   margin-bottom: 4vh;
   margin-top: 6.5vh; }
 
+footer #footer_text {
+  margin-bottom: 4vh; }
+
 .main_card {
   padding: 16px;
   margin: 16px; }
 
 .main_container {
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 300px; }
+
+.table_container {
   display: grid;
   grid-template-columns: repeat(5, 1fr); }
 

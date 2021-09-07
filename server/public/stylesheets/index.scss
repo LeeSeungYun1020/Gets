@@ -111,7 +111,6 @@ h2{
   list-style-type: none;
   overflow-x: hidden;
   overflow-y: auto;
-  font-size: 18px;
   color: #d4d3d3;
   display: none;
   position: absolute;
@@ -144,7 +143,6 @@ h2{
 .select-ul>div{
   display: flex;
   flex-direction: column;
- // border-top : 2px solid #828282;
 }
 .select-ul>div:after{
   content : "";
@@ -173,11 +171,6 @@ ul li {
 
 .select-ul {
   margin-block-start: 0;
-  //box-shadow: 0 2px 14px 0 rgba(83, 83, 83, 0.5);
-}
-
-.select-wrap {
-  //box-shadow: 0 2px 14px 0 rgba(83, 83, 83, 0.5);
 }
 
 h1 {
