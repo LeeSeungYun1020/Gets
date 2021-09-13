@@ -29,7 +29,7 @@ a {
   margin-left: 9vw;
 }
 
-#logo>a{
+#logo > a {
   display: flex;
 }
 
@@ -60,42 +60,42 @@ footer {
   height: 300px;
   position: relative;
   background-color: #00200f;
-  color:#ffffff;
-  width:100%;
+  color: #ffffff;
+  width: 100%;
   font-family: 'Nanum Gothic', sans-serif;
 }
 
-footer #footer_layout{
+footer #footer_layout {
   margin-left: 10vw;
 }
 
-footer #footer_logo{
+footer #footer_logo {
   font-size: 3ex;
   margin-bottom: 4vh;
-  margin-top:6.5vh;
+  margin-top: 6.5vh;
 }
 
-footer #footer_text{
+footer #footer_text {
   margin-bottom: 4vh;
 }
 
-.main_card{
+.main_card {
   padding: 16px;
   margin: 16px;
 }
 
-.main_container{
-  height : auto;
+.main_container {
+  height: auto;
   min-height: 100%;
   padding-bottom: 300px;
 }
 
-.table_container{
+.table_container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }
 
-.main_card1{
+.main_card1 {
   grid-column: 2;
   grid-row: 1;
 }
