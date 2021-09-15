@@ -5,13 +5,8 @@
 
 body {
   background-color: #ffffff;
-  margin: 0px;
+  margin: 0;
 }
-
-//#main {
-//  width: 100%;
-//  height: auto;
-//}
 
 #title {
   margin-left: 57vw;
@@ -104,7 +99,7 @@ h2 {
   font-weight: bolder;
   width: 8vw;
   border: none;
-  background: #FFFFFF url("/images/home/select_nav.webp") no-repeat scroll right center;
+  background: #FFFFFF no-repeat scroll right center;
   display: block;
   overflow: hidden;
   color: #000;
@@ -122,7 +117,7 @@ h2 {
   position: absolute;
   background: #FFFFFF;
   border-top: none;
-  padding-inline-start: 0px;
+  padding-inline-start: 0;
 }
 
 #style_select {
