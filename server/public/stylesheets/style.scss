@@ -3,8 +3,7 @@
 @use "node_modules/@material/card";
 @use "node_modules/@material/card/mdc-card";
 
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900");
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&family=Roboto&display=swap');
 
 header {
   background-color: #00200f;
@@ -39,7 +38,7 @@ ul {
 ul li {
   display: inline-block;
   margin-left: 5vw;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
 }
 
 ul li a {
