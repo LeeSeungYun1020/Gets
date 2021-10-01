@@ -1,3 +1,7 @@
+/*
+* API
+* 각 API별 사용방법, 설명 표시
+* */
 const express = require('express')
 const router = express.Router()
 const path = require('path');
@@ -23,7 +27,7 @@ module.exports = function (passport) {
 		}),
 		(req, res) => {
 			res.send({user: req.user, result: true})
-	})
+		})
 	
 	router.get("/signin/fail", (req, res) => {
 		res.send({result: false})
@@ -44,7 +48,7 @@ module.exports = function (passport) {
 			res.send(user)
 		} else res.send({"result": false})
 	})
-	
+
 // 회원가입 - 이메일 중복 확인
 	router.post("/signup/check", (req, res) => {
 		const email = req.body.email
@@ -261,7 +265,7 @@ module.exports = function (passport) {
 				}
 			})
 	})
-	
+
 // 리뷰 추가
 	router.post("/review/add/:productID", (req, res) => {
 		const productID = req.params.productID
