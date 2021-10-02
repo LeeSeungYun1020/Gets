@@ -1,6 +1,7 @@
 /*
 * API
 * 각 API별 사용방법, 설명 표시
+* 하위 버전 호환용 api 제공
 * */
 const express = require('express')
 const router = express.Router()
@@ -265,88 +266,4 @@ module.exports = function (passport) {
 				}
 			})
 	})
-
-// 리뷰 추가
-	router.post("/review/add/:productID", (req, res) => {
-		const productID = req.params.productID
-		const userEmail = req.body.userEmail
-		const star = req.body.star
-		const contents = req.body.contents
-		const image1ID = req.body.image1ID
-		const image2ID = req.body.image2ID
-		const image3ID = req.body.image3ID
-		connection.query("insert into `review` (userEmail, productID, star, contents, image1ID, image2ID, image3ID) \
-      VALUES (?, ?, ?, ?, ?, ?, ?)",
-			[userEmail, productID, star, contents, image1ID, image2ID, image3ID],
-			(err, result) => {
-				if (err)
-					res.send({result: false})
-				else
-					res.send({result: true})
-			})
-	})
-
-// 리뷰 체형 맞춤 리스트 조회
-	router.post("/review/fit/:productID", (req, res) => {
-		const productID = req.params.productID
-		const userEmail = req.body.userEmail
-		const order = req.body.order ?? "date"
-		const orderOption = (req.body.isReverse ?? false) ? " ASC" : " DESC"
-		connection.query("select * from `user` where `email`=?",
-			[userEmail],
-			(err, result) => {
-				if (err || result.length === 0) {
-					res.send([{result: false, error: "userEmail"}])
-					return
-				}
-				const height = result[0].height
-				const heightMargin = 3
-				const weight = result[0].weight
-				const weightMargin = 5
-				const topSize = result[0].topSize
-				const topMargin = 5
-				const bottomSize = result[0].bottomSize
-				const bottomMargin = 2
-				if (height == null) {
-					res.send([{result: false, error: "userFitData"}])
-					return
-				}
-				connection.query("select *\
-            from review\
-            where productID = ? and \
-                  userEmail = (select email from user \
-                              where ? >= weight and weight >= ? and ? >= height and height >= ? and\
-                              ? >= topSIze and topSize >= ? and ? >= bottomSize and bottomSize >= ?) \
-            order by " + order + orderOption,
-					[productID, weight + weightMargin, weight - weightMargin, height + heightMargin, height - heightMargin,
-						topSize + topMargin, topSize - topMargin, bottomSize + bottomMargin, bottomSize - bottomMargin
-					],
-					(err, result) => {
-						if (err)
-							res.send([{result: false, error: "reviewData"}])
-						else if (result.length === 0)
-							res.send([{result: false, error: "notMatch"}])
-						else
-							res.send(result)
-					})
-			})
-		
-	})
-
-// 리뷰 리스트 조회
-	router.post("/review/:productID", (req, res) => {
-		const productID = req.params.productID
-		const order = req.body.order ?? "date"
-		const orderOption = (req.body.isReverse ?? false) ? " ASC" : " DESC"
-		connection.query("select * from `review` where `productID`=? order by " + order + orderOption,
-			[productID],
-			(err, result) => {
-				if (err || result.length === 0)
-					res.send([{result: false}])
-				else
-					res.send(result)
-			})
-	})
-	
-	return router
 }
