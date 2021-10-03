@@ -37,7 +37,7 @@ module.exports = function (passport) {
 	router.get('/signout', function (req, res, next) {
 		req.logout()
 		req.session.save(function () {
-			res.redirect('/');
+			res.send({"result": true})
 		});
 	});
 	
@@ -70,11 +70,9 @@ module.exports = function (passport) {
 		const year = req.body.year
 		const month = req.body.month
 		const day = req.body.day
-		const address = req.body.address
-		const addressDetail = req.body.addressDetail
 		
-		connection.query("INSERT INTO `user` (email, pw, name, phone, birthday, address, addressDetail) VALUES (?, ?, ?, ?, ?, ?, ?)",
-			[email, pw, name, phone, `${year}-${month}-${day}`, address, addressDetail],
+		connection.query("INSERT INTO `user` (email, pw, name, phone, birthday) VALUES (?, ?, ?, ?, ?)",
+			[email, pw, name, phone, `${year}-${month}-${day}`],
 			(err, result) => {
 				if (err)
 					res.send({result: false, isDuplicate: err.errno === 1062})
