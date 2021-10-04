@@ -83,24 +83,30 @@ module.exports = function (passport) {
 
 // 회원가입 - 추가 정보 입력
 	router.post("/signup/info", (req, res) => {
-		// console.log(req.user.email)
-		const email = req.user.email
-		const gender = req.body.gender
-		const height = req.body.height
-		const weight = req.body.weight
-		const topSize = req.body.top_size
-		const bottomSize = req.body.bottom_size
-		const style = req.body.style
-		const fit = req.body.fit
-		console.log(email)
-		connection.query("update `user` set `gender`=?, `height`=?, `weight`=?, `topSize`=?, `bottomSize`=?, `style`=?, `fit`=? where `email`=?",
-			[gender, height, weight, topSize, bottomSize, style, fit, email],
-			(err, result) => {
-				if (err)
-					res.send({result: false})
-				else
-					res.send({result: true})
-			})
+		if (req.user) {
+			const email = req.user.email
+			const gender = req.body.gender
+			const height = req.body.height
+			const weight = req.body.weight
+			const topSize = req.body.topSize ?? req.body.top_size
+			const bottomSize = req.body.bottomSize ?? req.body.bottom_size
+			const shoulder = req.body.shoulder
+			const waist = req.body.waist
+			const hip = req.body.hip
+			const thigh = req.body.thigh
+			const style = req.body.style
+			connection.query("update `user` set `gender`=?, `height`=?, `weight`=?, `topSize`=?, `bottomSize`=?, `style`=?, `shoulder`=?,`waist`=?, `hip`=?, `thigh`=? where `email`=?",
+				[gender, height, weight, topSize, bottomSize, style, shoulder, waist, hip, thigh, email],
+				(err, result) => {
+					if (err)
+						res.send({result: false})
+					else
+						res.send({result: true})
+				})
+		} else {
+			res.send({result: true, error: "signin"})
+		}
+		
 	})
 
 // 날씨
