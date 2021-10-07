@@ -163,7 +163,7 @@ module.exports = function (passport) {
 // 상품 목록 필터
 	router.post("/product/list/:page", (req, res) => {
 		const ALL = -1
-		let body = req.body[0]
+		let body = req.body[0] ?? req.body
 		const search = "%" + (body.search ?? "") + "%"
 		const type = fitCode(body.type)
 		const detail = fitCode(body.detail)
