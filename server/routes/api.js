@@ -196,7 +196,7 @@ module.exports = function (passport) {
 
 // 상품 목록 필터 (페이지 구분 X)
 	router.post("/product/list", (req, res) => {
-		let body = req.body[0]
+		let body = req.body[0] ?? req.body
 		const search = "%" + (body.search ?? "") + "%"
 		const type = fitCode(body.type)
 		const detail = fitCode(body.detail)
