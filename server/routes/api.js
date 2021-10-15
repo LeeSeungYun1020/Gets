@@ -255,14 +255,12 @@ module.exports = function (passport) {
 	})
 	
 	router.post("/article/:id", (req, res) => {
-		const id = req.params.id
-		connection.query("select * from `article` where `id`=?",
-			[id],
-			(err, result) => {
+		connection.query("select * from article where `id`= ?",
+			[req.params.id], (err, result) => {
 				if (err || result.length === 0)
-					res.send({result: false})
+					res.send({result: false, error: err})
 				else {
-					result[0].result = true
+					result[0]["result"] = true
 					res.send(result[0])
 				}
 			})
