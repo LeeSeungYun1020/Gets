@@ -230,7 +230,9 @@ module.exports = function (passport) {
 // 단일 상품 조회
 	router.get("/product/:id", (req, res) => {
 		const id = req.params.id
-		connection.query(`select * from product where product.id = ?;`,
+		connection.query(`select *
+                          from product
+                          where product.id = ?;`,
 			[id],
 			(err, result) => {
 				if (err || result.length === 0)
