@@ -7,7 +7,7 @@ const connection = require("../lib/mysql");
 const router = express.Router()
 const bcrypt = require('bcrypt');
 
-module.exports=function(passport){
+module.exports = function (passport) {
 	router.post('/signin',
 		passport.authenticate('local', {
 			session: true,
@@ -57,6 +57,7 @@ module.exports=function(passport){
 				else
 					res.send({result: true})
 			})
+		// 비밀번호 암호화 로직 원격 인공지능 사용자 연결 위해 일시해제
 		// bcrypt.hash(pw, 11, function(err, hash) {
 		// 	connection.query("INSERT INTO `user` (email, pw, name, phone, birthday) VALUES (?, ?, ?, ?, ?)",
 		// 		[email, hash, name, phone, `${year}-${month}-${day}`],
