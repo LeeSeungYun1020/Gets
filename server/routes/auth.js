@@ -5,7 +5,8 @@
 const express = require('express')
 const connection = require("../lib/mysql");
 const router = express.Router()
-const bcrypt = require('bcrypt');
+// 비밀번호 암호화 로직 원격 인공지능 사용자 연결 위해 일시해제
+// const bcrypt = require('bcrypt');
 
 module.exports = function (passport) {
 	router.post('/signin',
@@ -21,7 +22,7 @@ module.exports = function (passport) {
 		res.send({result: false})
 	})
 	
-	router.get('/signout', function (req, res, next) {
+	router.get('/signout', function (req, res) {
 		req.logout()
 		req.session.save(function () {
 			res.send({"result": true})
