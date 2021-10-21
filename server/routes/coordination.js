@@ -58,7 +58,10 @@ module.exports = function (passport) {
 	
 	router.get('/check/favorite/:coordinationID', (req, res) => {
 		if (req.user) {
-			connection.query(`select * from favoriteCoordination where userEmail=? and coordinationID=?`,
+			connection.query(`select *
+                              from favoriteCoordination
+                              where userEmail = ?
+                                and coordinationID = ?`,
 				[req.user.email, req.params.coordinationID],
 				(err, result) => {
 					if (err || result.length === 0)
@@ -70,16 +73,18 @@ module.exports = function (passport) {
 		
 	})
 	
-	router.get('/user/favorite',(req,res)=>{
-		if(req.user){
-			connection.query(`select coordinationID from favoriteCoordination where userEmail=?`,[req.user.email],
-				(err,result)=>{
+	router.get('/user/favorite', (req, res) => {
+		if (req.user) {
+			connection.query(`select coordinationID
+                              from favoriteCoordination
+                              where userEmail = ?`, [req.user.email],
+				(err, result) => {
 					if (err || result.length === 0)
 						res.send({result: false})
 					else
 						res.send(result)
 				})
-		}else res.send({result:false})
+		} else res.send({result: false})
 	})
 	
 	router.get("/image/:imageID", (req, res) => {
@@ -96,12 +101,15 @@ module.exports = function (passport) {
 	})
 	
 	//마지막 id번호
-	router.get("/number",(req,res) => {
-		connection.query(`select id from coordination order by id desc limit 1`,
-			(err,result)=>{
+	router.get("/number", (req, res) => {
+		connection.query(`select id
+                          from coordination
+                          order by id desc
+                          limit 1`,
+			(err, result) => {
 				if (err || result.length === 0)
 					res.send({result: false})
-				else{
+				else {
 					console.log(result[0])
 					res.send(result)
 				}
@@ -110,7 +118,9 @@ module.exports = function (passport) {
 	
 	router.get("/:id", (req, res) => {
 		const id = req.params.id
-		connection.query(`SELECT * FROM coordination WHERE id = ?`,
+		connection.query(`SELECT *
+                          FROM coordination
+                          WHERE id = ?`,
 			[id],
 			(err, result) => {
 				if (err || result.length === 0)
