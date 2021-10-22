@@ -5,7 +5,7 @@ const connection = require('../lib/mysql')
 const fs = require('fs')
 
 module.exports = function (passport) {
-	router.get('/', function (req, res, next) {
+	router.get('/', function (req, res) {
 		res.send("coordination")
 	});
 	
@@ -96,6 +96,7 @@ module.exports = function (passport) {
 		fs.promises.access(`${filePath}/${imageID}.png`, fs.constants.F_OK)
 		.then(() => res.sendFile(`${imageID}.png`, options))
 		.catch(() => res.sendFile(`${imageID}.jpg`, options, err => {
+			// console.log(err)
 			res.sendFile(`error.png`, options)
 		}))
 	})
