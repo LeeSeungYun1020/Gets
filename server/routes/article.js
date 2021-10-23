@@ -1,3 +1,8 @@
+/*
+* Article
+* 스타일 내용을 소개하는 기사 관련 API
+* */
+
 const express = require('express')
 const router = express.Router()
 const connection = require('../lib/mysql')
@@ -7,6 +12,7 @@ const fstring = require("../components/string_footer");
 const path = require("path");
 const fs = require("fs");
 
+// id로 기사 조회
 router.get('/:id', function (req, res, next) {
 	connection.query("select * from article where `id`= ?",
 		[req.params.id], (err, result) => {
@@ -19,6 +25,7 @@ router.get('/:id', function (req, res, next) {
 		})
 })
 
+// 기사별 기사에 포함된 이미지id 조회
 router.post('/image/:id', function (req, res, next) {
 	connection.query("select * from articleImage where `articleID`= ?",
 		[req.params.id], (err, result) => {
@@ -32,6 +39,7 @@ router.post('/image/:id', function (req, res, next) {
 		})
 })
 
+// 이미지 id로 이미지 불러오기
 router.get("/image/:imageID", (req, res) => {
 	const imageID = req.params.imageID
 	const filePath = path.join(__dirname, '../article/image')
