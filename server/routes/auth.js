@@ -9,6 +9,7 @@ const router = express.Router()
 // const bcrypt = require('bcrypt');
 
 module.exports = function (passport) {
+	// 회원가입
 	router.post('/signin',
 		passport.authenticate('local', {
 			session: true,
@@ -18,10 +19,12 @@ module.exports = function (passport) {
 			res.send({user: req.user, result: true})
 		})
 	
+	// 회원가입 실패
 	router.get("/signin/fail", (req, res) => {
 		res.send({result: false})
 	})
 	
+	// 로그아웃
 	router.get('/signout', function (req, res) {
 		req.logout()
 		req.session.save(function () {
@@ -40,7 +43,7 @@ module.exports = function (passport) {
 		})
 	})
 
-// 회원가입 - 기본 정보 입력
+	// 회원가입 - 기본 정보 입력
 	router.post("/signup/basic", (req, res) => {
 		const email = req.body.email
 		const pw = req.body.pw
@@ -71,7 +74,7 @@ module.exports = function (passport) {
 		// })
 	})
 
-// 회원가입 - 추가 정보 입력
+	// 회원가입 - 추가 정보 입력
 	router.post("/signup/info", (req, res) => {
 		if (req.user) {
 			const email = req.user.email
@@ -98,6 +101,8 @@ module.exports = function (passport) {
 		}
 		
 	})
+	
+	// 회원가입 - 주소 입력
 	router.post("/signup/address", (req, res) => {
 		if (req.user) {
 			const address = req.body.address
@@ -116,6 +121,7 @@ module.exports = function (passport) {
 		
 	})
 	
+	// 회원가입 - 비밀번호 변경
 	router.post("/signup/password", (req, res) => {
 		if (req.user) {
 			const password = req.body.password ?? req.body.pw
@@ -133,6 +139,7 @@ module.exports = function (passport) {
 		
 	})
 	
+	// 사용자 조회
 	router.get("/user", (req, res) => {
 		if (req.user) {
 			let user = req.user
