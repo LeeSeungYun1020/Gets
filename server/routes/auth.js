@@ -42,7 +42,7 @@ module.exports = function (passport) {
 				res.send({result: false}) // 이메일 있음 다른 이메일로 재확인
 		})
 	})
-
+	
 	// 회원가입 - 기본 정보 입력
 	router.post("/signup/basic", (req, res) => {
 		const email = req.body.email
@@ -73,7 +73,7 @@ module.exports = function (passport) {
 		// 		})
 		// })
 	})
-
+	
 	// 회원가입 - 추가 정보 입력
 	router.post("/signup/info", (req, res) => {
 		if (req.user) {
