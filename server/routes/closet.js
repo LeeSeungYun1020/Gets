@@ -1,3 +1,9 @@
+/*
+* Closet
+* 옷장에 포함된 제품, 코디 조회
+* 좋아요를 눌린 상품이 옷장에 포함됨
+* 사용자 로그인된 경우에만 정보 조회 가능
+* */
 const express = require('express')
 const router = express.Router()
 const connection = require('../lib/mysql')
