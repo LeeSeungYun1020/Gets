@@ -1,3 +1,8 @@
+/*
+* Coordination
+* 코디 조회, 이미지, 찜
+* 맞춤 추천 코디, 스타일별 코디, 대표 코디 등은 home 참고
+* */
 const express = require('express')
 const router = express.Router()
 const path = require('path');
