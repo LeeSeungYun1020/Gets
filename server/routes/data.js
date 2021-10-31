@@ -22,7 +22,7 @@ module.exports = function (passport) {
 		let scriptPath = '../data/BodyShapeToFit/'
 		const process = spawn('python3', [scriptPath + 'main.py', gender, shoulder, waist, hip, thigh])
 		
-		process.stdout.on('data', function(data){
+		process.stdout.on('data', function (data) {
 			console.log('==============================')
 			console.log('gender: ' + gender)
 			console.log('shoulder: ' + shoulder)
@@ -35,10 +35,10 @@ module.exports = function (passport) {
 			
 			res.send(data.toString())
 		})
-		process.stderr.on('data', function(data){
+		process.stderr.on('data', function (data) {
 			console.log({'result': false})
 			console.log(data.toString())
-			res.send({'result':false})
+			res.send({'result': false})
 		})
 	})
 	
@@ -57,25 +57,26 @@ module.exports = function (passport) {
 			process = spawn('python3', ['-O', scriptPath + scriptName])
 		}
 		
-		process.stdout.on('data', function(data){
+		process.stdout.on('data', function (data) {
 			let json = JSON.parse(data)
 			json['result'] = true
 			console.log(json)
 			res.send(json)
 		})
-		process.stderr.on('data', function(){
+		process.stderr.on('data', function () {
 			console.log({'result': false})
 			res.send({'result': false})
 		})
 	})
 	
-	router.get('/coordination/filter/gender/:gender', (req,res) => {
+	router.get('/coordination/filter/gender/:gender', (req, res) => {
 		let gender = req.params.gender
 		console.log('/data/coordination/filter/gender/' + gender)
 		
-		let query = `SELECT id, gender, fit, age, season, style FROM coordination`
+		let query = `SELECT id, gender, fit, age, season, style
+                     FROM coordination`
 		
-		if (gender*1===1 || gender*1===2){
+		if (gender * 1 === 1 || gender * 1 === 2) {
 			let whereClause = ` WHERE (gender & ${gender} = ${gender})`
 			query += whereClause
 		}
@@ -83,10 +84,9 @@ module.exports = function (passport) {
 		console.log(query)
 		connection.query(query,
 			(err, result) => {
-				if (err || result.length===0){
-					result = [{result : false}]
-				}
-				else{
+				if (err || result.length === 0) {
+					result = [{result: false}]
+				} else {
 					result[0]['result'] = true
 				}
 				res.send(result)
@@ -94,7 +94,8 @@ module.exports = function (passport) {
 	})
 	
 	router.get("/coordination/all", (req, res) => {
-		connection.query(`SELECT id, gender, fit, age, season, style FROM coordination`,
+		connection.query(`SELECT id, gender, fit, age, season, style
+                          FROM coordination`,
 			(err, result) => {
 				if (err || result.length === 0)
 					res.send([{result: false}])
