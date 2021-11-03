@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const connection = require('../lib/mysql')
 const spawn = require('child_process').spawn
-
+const log = false
 
 module.exports = function (passport) {
 	// 연결 확인
@@ -22,21 +22,25 @@ module.exports = function (passport) {
 		const process = spawn('python3', [scriptPath + 'main.py', gender, shoulder, waist, hip, thigh])
 		
 		process.stdout.on('data', function (data) {
-			console.log('==============================')
-			console.log('gender: ' + gender)
-			console.log('shoulder: ' + shoulder)
-			console.log('waist: ' + waist)
-			console.log('hip: ' + hip)
-			console.log('thigh: ' + thigh)
-			
-			console.log('=> fit: ' + data)
-			console.log('==============================')
+			if (log) {
+				console.log('==============================')
+				console.log('gender: ' + gender)
+				console.log('shoulder: ' + shoulder)
+				console.log('waist: ' + waist)
+				console.log('hip: ' + hip)
+				console.log('thigh: ' + thigh)
+				console.log('=> fit: ' + data)
+				console.log('==============================')
+			}
 			
 			res.send(data.toString())
 		})
 		process.stderr.on('data', function (data) {
-			console.log({'result': false})
-			console.log(data.toString())
+			if (log) {
+				console.log({'result': false})
+				console.log(data.toString())
+			}
+			
 			res.send({'result': false})
 		})
 	})
@@ -59,12 +63,14 @@ module.exports = function (passport) {
 		process.stdout.on('data', function (data) {
 			let json = JSON.parse(data)
 			json['result'] = true
-			console.log(json)
+			if (log)
+				console.log(json)
 			res.send(json)
 		})
 		// 실패할 경우
 		process.stderr.on('data', function () {
-			console.log({'result': false})
+			if (log)
+				console.log({'result': false})
 			res.send({'result': false})
 		})
 	})
@@ -72,7 +78,7 @@ module.exports = function (passport) {
 	// 성별에 따른 필터 적용
 	router.get('/coordination/filter/gender/:gender', (req, res) => {
 		let gender = req.params.gender
-		console.log('/data/coordination/filter/gender/' + gender)
+		
 		
 		let query = `SELECT id, gender, fit, age, season, style
                      FROM coordination`
@@ -82,7 +88,11 @@ module.exports = function (passport) {
 			query += whereClause
 		}
 		
-		console.log(query)
+		if (log) {
+			console.log('/data/coordination/filter/gender/' + gender)
+			console.log(query)
+		}
+		
 		connection.query(query,
 			(err, result) => {
 				if (err || result.length === 0) {
@@ -102,7 +112,8 @@ module.exports = function (passport) {
 					res.send([{result: false}])
 				else {
 					result[0]['result'] = true
-					console.log(result)
+					if (log)
+						console.log(result)
 					res.send(result)
 				}
 			})
