@@ -1,3 +1,9 @@
+/*
+* Data
+* 맞춤 추천 코디를 제공하는 것이 주목적
+* 이를 위해 핏 예측, 선호 스타일 분석 작업 등을 수행
+* */
+
 const express = require('express')
 const router = express.Router()
 const connection = require('../lib/mysql')
@@ -104,6 +110,7 @@ module.exports = function (passport) {
 			})
 	})
 	
+	// 오류 발생시 전체 코디 목록 출력
 	router.get("/coordination/all", (req, res) => {
 		connection.query(`SELECT id, gender, fit, age, season, style
                           FROM coordination`,
