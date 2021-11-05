@@ -12,11 +12,11 @@ module.exports = function (passport) {
 	router.get("/getStyle/:number", (req, res) => {
 		let number = req.params.number
 		
-		let gender = req.query.gender ?? (1<<2) - 1 // all gender
-		let age = req.query.age ?? (1<<5) - 1 // all age
+		let gender = req.query.gender ?? (1 << 2) - 1 // all gender
+		let age = req.query.age ?? (1 << 5) - 1 // all age
 		let topFit = req.query.topFit ?? 1 // regular
 		let bottomFit = req.query.bottomFit ?? 1 // regular
-		let style = req.query.style ?? (1<<11) - 1 // all style
+		let style = req.query.style ?? (1 << 11) - 1 // all style
 		
 		let fit = getFit(topFit, bottomFit)
 		let stylePreference = getStylePreferenceWithStyle(style)
@@ -33,24 +33,24 @@ module.exports = function (passport) {
 		array = ['-O', scriptPath + scriptName, number, data]
 		process = spawn('python3', array)
 		
-		process.stdout.on('data', function(data){
+		process.stdout.on('data', function (data) {
 			console.log('process.stdout')
 			let str = data.toString().trim()
 			console.log(str)
-			sql(str).then(function(result){
+			sql(str).then(function (result) {
 				//console.log(result)
 				result[0]["result"] = true
 				res.send(result)
 			})
 		})
-		process.stderr.on('data', function(){
+		process.stderr.on('data', function () {
 			console.log('process.stderr')
 			res.send([{result: false}])
 		})
 	})
 	
 	// 맞춤 추천 (로그인하고 +버튼 누르기 전, query 없음)
-	router.get("/custom/:number",  async (req, res) => {
+	router.get("/custom/:number", async (req, res) => {
 		let number = req.params.number
 		console.log('home/custom/' + number)
 		console.log(req.user)
@@ -61,10 +61,10 @@ module.exports = function (passport) {
 		let process
 		let data
 		
-		if(!req.user){
+		if (!req.user) {
 			console.log('signInState = false')
 			res.send([{result: false}])
-		}else{
+		} else {
 			console.log('signInState = true')
 			
 			
@@ -75,28 +75,28 @@ module.exports = function (passport) {
 			let favoriteProductList = await getFavoriteProductList(req.user.email)
 			let favoriteCoordinationList = await getFavoriteCoordinationList(req.user.email)
 			getStylePreference(favoriteProductList, favoriteCoordinationList)
-				.then(stylePreference => {
-					data = `{\"gender\": ${gender}, \"age\": ${age}, \"fit\": ${fit}, \"stylePreference\": ${stylePreference}}`
-					console.log(data)
-					
-					array = ['-O', scriptPath + scriptName, number, data]
-					process = spawn('python3', array)
-					
-					process.stdout.on('data', function(data){
-						console.log('process.stdout')
-						let str = data.toString().trim()
-						console.log(str)
-						sql(str).then(function(result){
-							//console.log(result)
-							result[0]["result"] = true
-							res.send(result)
-						})
-					})
-					process.stderr.on('data', function(){
-						console.log('process.stderr')
-						res.send([{result: false}])
+			.then(stylePreference => {
+				data = `{\"gender\": ${gender}, \"age\": ${age}, \"fit\": ${fit}, \"stylePreference\": ${stylePreference}}`
+				console.log(data)
+				
+				array = ['-O', scriptPath + scriptName, number, data]
+				process = spawn('python3', array)
+				
+				process.stdout.on('data', function (data) {
+					console.log('process.stdout')
+					let str = data.toString().trim()
+					console.log(str)
+					sql(str).then(function (result) {
+						//console.log(result)
+						result[0]["result"] = true
+						res.send(result)
 					})
 				})
+				process.stderr.on('data', function () {
+					console.log('process.stderr')
+					res.send([{result: false}])
+				})
+			})
 			
 		}
 	})
@@ -134,33 +134,70 @@ module.exports = function (passport) {
 				digit = temp.length - 1
 				for (var j = 0; j < temp.length; j++) {
 					if (temp[j] == '1') {
-						switch (2**digit) {
-							case 1: minimal.push(result[i].id); break
-							case 2: casual.push(result[i].id); break
-							case 4: campus.push(result[i].id); break
-							case 8: street.push(result[i].id); break
-							case 16: rockchic.push(result[i].id); break
-							case 32: amekaji.push(result[i].id); break
-							case 64: cityboy.push(result[i].id); break
-							case 128: office.push(result[i].id); break
-							case 256: sexyglam.push(result[i].id); break
-							case 512: feminine.push(result[i].id); break
-							default: lovely.push(result[i].id);
+						switch (2 ** digit) {
+							case 1:
+								minimal.push(result[i].id);
+								break
+							case 2:
+								casual.push(result[i].id);
+								break
+							case 4:
+								campus.push(result[i].id);
+								break
+							case 8:
+								street.push(result[i].id);
+								break
+							case 16:
+								rockchic.push(result[i].id);
+								break
+							case 32:
+								amekaji.push(result[i].id);
+								break
+							case 64:
+								cityboy.push(result[i].id);
+								break
+							case 128:
+								office.push(result[i].id);
+								break
+							case 256:
+								sexyglam.push(result[i].id);
+								break
+							case 512:
+								feminine.push(result[i].id);
+								break
+							default:
+								lovely.push(result[i].id);
 						}
 					}
 					digit--
 				}
 			}
-			for(var i=0;i<11;i++){
-				switch (i){
-					case 0: list[i]=minimal[Math.floor(Math.random() * minimal.length)]; break
-					case 1: list[i]=casual[Math.floor(Math.random() * casual.length)]; break
-					case 2: list[i]=campus[Math.floor(Math.random() * campus.length)]; break
-					case 3: list[i]=street[Math.floor(Math.random() * street.length)]; break
-					case 4: list[i]=rockchic[Math.floor(Math.random() * rockchic.length)]; break
-					case 5: list[i]=amekaji[Math.floor(Math.random() * amekaji.length)]; break
-					case 6: list[i]=cityboy[Math.floor(Math.random() * cityboy.length)]; break
-					case 7: list[i]=office[Math.floor(Math.random() * office.length)]; break
+			for (var i = 0; i < 11; i++) {
+				switch (i) {
+					case 0:
+						list[i] = minimal[Math.floor(Math.random() * minimal.length)];
+						break
+					case 1:
+						list[i] = casual[Math.floor(Math.random() * casual.length)];
+						break
+					case 2:
+						list[i] = campus[Math.floor(Math.random() * campus.length)];
+						break
+					case 3:
+						list[i] = street[Math.floor(Math.random() * street.length)];
+						break
+					case 4:
+						list[i] = rockchic[Math.floor(Math.random() * rockchic.length)];
+						break
+					case 5:
+						list[i] = amekaji[Math.floor(Math.random() * amekaji.length)];
+						break
+					case 6:
+						list[i] = cityboy[Math.floor(Math.random() * cityboy.length)];
+						break
+					case 7:
+						list[i] = office[Math.floor(Math.random() * office.length)];
+						break
 					case 8:
 						list[i] = sexyglam[Math.floor(Math.random() * sexyglam.length)];
 						break
@@ -178,17 +215,23 @@ module.exports = function (passport) {
 	
 	//홈화면_탑트렌드에 있는 제품을 number 수만큼표시
 	router.get("/toptrends/:number", (req, res) => {
-		connection.query(`select productID,count(productID) as cnt from favoriteProduct
-                          group by productID order by cnt desc limit ${req.params.number}`,(err,result)=>{
-			if(err)
+		connection.query(`select productID, count(productID) as cnt
+                          from favoriteProduct
+                          group by productID
+                          order by cnt desc
+                          limit ${req.params.number}`, (err, result) => {
+			if (err)
 				res.send({result: false})
-			else{
-				let obj=[]
-				for(let i=0;i<result.length;i++){
+			else {
+				let obj = []
+				for (let i = 0; i < result.length; i++) {
 					obj.push(result[i].productID)
 				}
 				console.log(obj)
-				connection.query(`select * from product where id in (${obj}) order by field(id,${obj})`,(err,result)=>{
+				connection.query(`select *
+                                  from product
+                                  where id in (${obj})
+                                  order by field(id, ${obj})`, (err, result) => {
 					if (err || result.length === 0)
 						res.send([{result: false}])
 					else {
@@ -202,64 +245,52 @@ module.exports = function (passport) {
 	return router
 }
 
-function sql(str){
+function sql(str) {
 	console.log('sql()')
 	let idList = str.trim().split(',')
 	
 	let whereCluase = ``
 	
 	i = 0
-	for(id of idList){ // where절 생성
-		if(i++ !== 0)
+	for (id of idList) { // where절 생성
+		if (i++ !== 0)
 			whereCluase += ` or `
 		whereCluase += `id = ${id}`
 	}
 	
-	let query = `SELECT * FROM coordination WHERE ` + whereCluase
+	let query = `SELECT *
+                 FROM coordination
+                 WHERE ` + whereCluase
 	console.log(query)
 	
 	return new Promise(resolve => {
 		connection.query(query,
 			(err, result) => {
-				if(err || result.length===0)
+				if (err || result.length === 0)
 					result = [{result: false}]
 				resolve(result)
 			})
 	})
 }
 
-function getAge(birthday){
+function getAge(birthday) {
 	let now = new Date()
 	let currentYear = (now.toString().split(' ')[3]) * 1
 	let birthYear = (birthday.toString().split(' ')[3]) * 1
 	let age = currentYear - birthYear + 1
 	
-	let tmp = parseInt(age/10)
-	if(tmp < 1) tmp = 1
-	if(tmp > 5) tmp = 5
+	let tmp = parseInt(age / 10)
+	if (tmp < 1) tmp = 1
+	if (tmp > 5) tmp = 5
 	
 	return 1 << (tmp - 1)
 }
 
-function getCoordination(id){
+function getCoordination(id) {
 	return new Promise(resolve => {
-		connection.query(`SELECT * FROM coordination WHERE id = ?`,
-			[id],
-			(err, result) => {
-				let value
-				if (err || result.length === 0)
-					value = ({result: false})
-				else {
-					result[0].result = true
-					value = (result[0])
-				}
-				resolve(value)
-			})
-	})
-}
-function getProduct(id){
-	return new Promise(resolve => {
-		connection.query(`select * from product where product.id = ?;`,
+		connection.query(`SELECT *
+                          FROM coordination
+                          WHERE id = ?`,
 			[id],
 			(err, result) => {
 				let value
@@ -274,14 +305,35 @@ function getProduct(id){
 	})
 }
 
-function getFavoriteProductList(email){
+function getProduct(id) {
 	return new Promise(resolve => {
-		connection.query(`select productID from favoriteProduct where userEmail=?`,[email],
-			(err,result)=>{
+		connection.query(`select *
+                          from product
+                          where product.id = ?;`,
+			[id],
+			(err, result) => {
+				let value
+				if (err || result.length === 0)
+					value = ({result: false})
+				else {
+					result[0].result = true
+					value = (result[0])
+				}
+				resolve(value)
+			})
+	})
+}
+
+function getFavoriteProductList(email) {
+	return new Promise(resolve => {
+		connection.query(`select productID
+                          from favoriteProduct
+                          where userEmail = ?`, [email],
+			(err, result) => {
 				let value
 				if (err || result.length === 0)
 					value = ([{result: false}])
-				else{
+				else {
 					result[0]['result'] = true
 					value = (result)
 				}
@@ -289,14 +341,17 @@ function getFavoriteProductList(email){
 			})
 	})
 }
-function getFavoriteCoordinationList(email){
+
+function getFavoriteCoordinationList(email) {
 	return new Promise(resolve => {
-		connection.query(`select coordinationID from favoritecoordination where userEmail=?`,[email],
-			(err,result)=>{
+		connection.query(`select coordinationID
+                          from favoritecoordination
+                          where userEmail = ?`, [email],
+			(err, result) => {
 				let value
 				if (err || result.length === 0)
 					value = ([{result: false}])
-				else{
+				else {
 					result[0]['result'] = true
 					value = (result)
 				}
@@ -304,15 +359,16 @@ function getFavoriteCoordinationList(email){
 			})
 	})
 }
-function getFitFromBodyShape(user){
+
+function getFitFromBodyShape(user) {
 	let gender = user.gender ?? 3
 	let shoulder = user.shouler ?? 2
 	let waist = user.waist ?? 2
 	let hip = user.hip ?? 2
 	let thigh = user.thigh ?? 2
 	
-	if(gender === 3){
-		return (1<<21) - 1 // all fit
+	if (gender === 3) {
+		return (1 << 21) - 1 // all fit
 	}
 	
 	console.log('gender: ' + gender)
@@ -325,24 +381,24 @@ function getFitFromBodyShape(user){
 	return new Promise(resolve => {
 		let process = spawn('python3', [scriptPath + 'main.py', gender, shoulder, waist, hip, thigh])
 		
-		process.stdout.on('data', function(data){
+		process.stdout.on('data', function (data) {
 			console.log('fit: ' + data.toString())
 			resolve(data.toString())
 		})
-		process.stderr.on('data', function(data){
+		process.stderr.on('data', function (data) {
 			console.log({'result': false})
 			console.log(data.toString())
-			resolve({'result':false})
+			resolve({'result': false})
 		})
 	})
 }
 
-function oneHotDecoder(fit){
+function oneHotDecoder(fit) {
 	let singleValueList = []
 	let value = 1
 	
-	while(fit>0){
-		if(fit%2===1){
+	while (fit > 0) {
+		if (fit % 2 === 1) {
 			singleValueList.push(value)
 		}
 		fit = fit >> 1
@@ -353,47 +409,47 @@ function oneHotDecoder(fit){
 }
 
 const TopFit = {
-	32 : "slim",
-	1 : "regular",
-	2 : "over"
+	32: "slim",
+	1: "regular",
+	2: "over"
 }
 const BottomFit = {
-	32 : "slim",
-	1 : "regular",
-	16 : "straight",
-	8 : "semi wide",
-	4 : "wide",
-	64 : "tapered",
-	128 : "bootcut"
+	32: "slim",
+	1: "regular",
+	16: "straight",
+	8: "semi wide",
+	4: "wide",
+	64: "tapered",
+	128: "bootcut"
 }
 
 const coordiFit = {
-	"slim_slim"         : 1<<0,
-	"slim_regular"      : 1<<1,
-	"slim_straight"     : 1<<2,
-	"slim_semi wide"    : 1<<3,
-	"slim_wide"         : 1<<4,
-	"slim_tapered"      : 1<<5,
-	"slim_bootcut"      : 1<<6,
+	"slim_slim": 1 << 0,
+	"slim_regular": 1 << 1,
+	"slim_straight": 1 << 2,
+	"slim_semi wide": 1 << 3,
+	"slim_wide": 1 << 4,
+	"slim_tapered": 1 << 5,
+	"slim_bootcut": 1 << 6,
 	
-	"regular_slim"      : 1<<7,
-	"regular_regular"   : 1<<8,
-	"regular_straight"  : 1<<9,
-	"regular_semi wide" : 1<<10,
-	"regular_wide"      : 1<<11,
-	"regular_tapered"   : 1<<12,
-	"regular_bootcut"   : 1<<13,
+	"regular_slim": 1 << 7,
+	"regular_regular": 1 << 8,
+	"regular_straight": 1 << 9,
+	"regular_semi wide": 1 << 10,
+	"regular_wide": 1 << 11,
+	"regular_tapered": 1 << 12,
+	"regular_bootcut": 1 << 13,
 	
-	"over_slim"         : 1<<14,
-	"over_regular"      : 1<<15,
-	"over_straight"     : 1<<16,
-	"over_semi wide"    : 1<<17,
-	"over_wide"         : 1<<18,
-	"over_tapered"      : 1<<19,
-	"over_bootcut"      : 1<<20
+	"over_slim": 1 << 14,
+	"over_regular": 1 << 15,
+	"over_straight": 1 << 16,
+	"over_semi wide": 1 << 17,
+	"over_wide": 1 << 18,
+	"over_tapered": 1 << 19,
+	"over_bootcut": 1 << 20
 }
 
-function getFit(topFit, bottomFit){
+function getFit(topFit, bottomFit) {
 	return coordiFit[TopFit[topFit] + '_' + BottomFit[bottomFit]]
 }
 
@@ -412,20 +468,20 @@ const Style = [
 ]
 
 function getStylePreferenceWithStyle(style) {
-	if(style===0) style = (1<<11) -1
+	if (style === 0) style = (1 << 11) - 1
 	let preferenceList = new Array(Style.length)
 	let list = oneHotDecoder(style)
 	let value = (100 / list.length).toFixed(2)
 	
-	for(let i of list){
+	for (let i of list) {
 		preferenceList[Math.log2(i)] = value
 	}
 	
 	let result = `{`
-	for (let i=0;i<Style.length;i++){
+	for (let i = 0; i < Style.length; i++) {
 		let preference = preferenceList[i] ?? 0
 		result += `\"${Style[i]}\":${preference}`
-		if(i!==Style.length-1) result += `,`
+		if (i !== Style.length - 1) result += `,`
 	}
 	result += `}`
 	
@@ -433,10 +489,10 @@ function getStylePreferenceWithStyle(style) {
 	return result
 }
 
-async function getStylePreference(favoriteProductList, favoriteCoordinationList){
+async function getStylePreference(favoriteProductList, favoriteCoordinationList) {
 	console.log('getStylePreference()...')
-	if(favoriteProductList[0]['result']===false) favoriteProductList = []
-	if(favoriteCoordinationList[0]['result']===false) favoriteCoordinationList = []
+	if (favoriteProductList[0]['result'] === false) favoriteProductList = []
+	if (favoriteCoordinationList[0]['result'] === false) favoriteCoordinationList = []
 	console.log(favoriteProductList)
 	console.log(favoriteCoordinationList)
 	
@@ -444,48 +500,47 @@ async function getStylePreference(favoriteProductList, favoriteCoordinationList)
 	let coordinationWeight = 10
 	
 	let preferenceList = new Array(Style.length)
-	for(let i=0; i<Style.length;i++) preferenceList[i] = 0
+	for (let i = 0; i < Style.length; i++) preferenceList[i] = 0
 	
 	// 찜 제품 목록에서 점수를 구한다.
-	for(let item of favoriteProductList){
+	for (let item of favoriteProductList) {
 		let product = await getProduct(item['productID'])
 		let style = product['style']
 		
-		for(let code of oneHotDecoder(style)){
+		for (let code of oneHotDecoder(style)) {
 			preferenceList[Math.log2(code)] += productWeight
 		}
 	}
 	
 	// 찜 코디 목록에서 점수를 구한다.
-	for(let item of favoriteCoordinationList){
+	for (let item of favoriteCoordinationList) {
 		let coordination = await getCoordination(item['coordinationID'])
 		let style = coordination['style']
 		
-		for(let code of oneHotDecoder(style)){
+		for (let code of oneHotDecoder(style)) {
 			preferenceList[Math.log2(code)] += coordinationWeight
 		}
 	}
 	
 	// 합이 100이 되도록 값을 변환한다.
 	let sum = 0
-	for(let i=0;i<preferenceList.length;i++)
+	for (let i = 0; i < preferenceList.length; i++)
 		sum += preferenceList[i]
 	
 	let result
-	if(sum === 0){
+	if (sum === 0) {
 		result = `{\"minimal\":9.1,\"casual\":9.1,\"campus\":9.1,\"street\":9.1,\"rock chic\":9.1,\"amekaji\":9.1,\"city boy\":9.1,\"office\":9.1,\"sexy glam\":9.1,\"feminine\":9.1,\"lovely\":9.1}`
-	}
-	else{
-		for(let i=0;i<preferenceList.length;i++){
-			preferenceList[i] = Math.round((preferenceList[i]/sum*100)*10)/10
+	} else {
+		for (let i = 0; i < preferenceList.length; i++) {
+			preferenceList[i] = Math.round((preferenceList[i] / sum * 100) * 10) / 10
 		}
 		
 		// 결과값을 반환하기 위해 형변환
 		result = `{`
-		for (let i=0;i<Style.length;i++){
+		for (let i = 0; i < Style.length; i++) {
 			let preference = preferenceList[i] ?? 0
 			result += `\"${Style[i]}\":${preference}`
-			if(i!==Style.length-1) result += `,`
+			if (i !== Style.length - 1) result += `,`
 		}
 		result += `}`
 	}
