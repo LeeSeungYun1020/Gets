@@ -4,7 +4,7 @@ const connection = require('../lib/mysql')
 const spawn = require('child_process').spawn
 
 module.exports = function (passport) {
-	router.get('/', function (req, res, next) {
+	router.get('/', function (req, res) {
 		res.send("home")
 	});
 	
@@ -27,24 +27,17 @@ module.exports = function (passport) {
 		let process
 		let data = `{\"gender\": ${gender}, \"age\": ${age}, \"fit\": ${fit}, \"stylePreference\": ${stylePreference}}`
 		
-		console.log('home/getStyle/' + number + req.query.toString())
-		console.log(data)
-		
 		array = ['-O', scriptPath + scriptName, number, data]
 		process = spawn('python3', array)
 		
 		process.stdout.on('data', function (data) {
-			console.log('process.stdout')
 			let str = data.toString().trim()
-			console.log(str)
 			sql(str).then(function (result) {
-				//console.log(result)
 				result[0]["result"] = true
 				res.send(result)
 			})
 		})
 		process.stderr.on('data', function () {
-			console.log('process.stderr')
 			res.send([{result: false}])
 		})
 	})
@@ -52,9 +45,6 @@ module.exports = function (passport) {
 	// 맞춤 추천 (로그인하고 +버튼 누르기 전, query 없음)
 	router.get("/custom/:number", async (req, res) => {
 		let number = req.params.number
-		console.log('home/custom/' + number)
-		console.log(req.user)
-		
 		let scriptPath = '../data/CoordinationRecommendation/'
 		let scriptName = 'main.py'
 		let array
@@ -62,38 +52,26 @@ module.exports = function (passport) {
 		let data
 		
 		if (!req.user) {
-			console.log('signInState = false')
 			res.send([{result: false}])
 		} else {
-			console.log('signInState = true')
-			
-			
 			let gender = req.user.gender ?? 3
 			let age = getAge(req.user.birthday)
 			let fit = await getFitFromBodyShape(req.user)
-			
 			let favoriteProductList = await getFavoriteProductList(req.user.email)
 			let favoriteCoordinationList = await getFavoriteCoordinationList(req.user.email)
 			getStylePreference(favoriteProductList, favoriteCoordinationList)
 			.then(stylePreference => {
 				data = `{\"gender\": ${gender}, \"age\": ${age}, \"fit\": ${fit}, \"stylePreference\": ${stylePreference}}`
-				console.log(data)
-				
 				array = ['-O', scriptPath + scriptName, number, data]
 				process = spawn('python3', array)
-				
 				process.stdout.on('data', function (data) {
-					console.log('process.stdout')
 					let str = data.toString().trim()
-					console.log(str)
 					sql(str).then(function (result) {
-						//console.log(result)
 						result[0]["result"] = true
 						res.send(result)
 					})
 				})
 				process.stderr.on('data', function () {
-					console.log('process.stderr')
 					res.send([{result: false}])
 				})
 			})
@@ -121,19 +99,19 @@ module.exports = function (passport) {
 	
 	//각 스타일에 맞는 코디를 대표 1개씩 표시
 	router.get("/representative/style", (req, res) => {
-		var list = []
-		var casual = [], minimal = [], campus = [], street = [], rockchic = [],
+		let list = []
+		let casual = [], minimal = [], campus = [], street = [], rockchic = [],
 			amekaji = [], cityboy = [], office = [], sexyglam = [], feminine = [], lovely = []
 		connection.query(`select id, style
                           from coordination`, (err, result) => {
 			if (err || result.length === 0)
 				res.send({result: false})
-			var temp, digit
-			for (var i = 0; i < result.length; i++) {
+			let temp, digit
+			for (let i = 0; i < result.length; i++) {
 				temp = result[i].style.toString(2)
 				digit = temp.length - 1
-				for (var j = 0; j < temp.length; j++) {
-					if (temp[j] == '1') {
+				for (let j = 0; j < temp.length; j++) {
+					if (temp[j] === '1') {
 						switch (2 ** digit) {
 							case 1:
 								minimal.push(result[i].id);
@@ -172,7 +150,7 @@ module.exports = function (passport) {
 					digit--
 				}
 			}
-			for (var i = 0; i < 11; i++) {
+			for (let i = 0; i < 11; i++) {
 				switch (i) {
 					case 0:
 						list[i] = minimal[Math.floor(Math.random() * minimal.length)];
@@ -227,7 +205,6 @@ module.exports = function (passport) {
 				for (let i = 0; i < result.length; i++) {
 					obj.push(result[i].productID)
 				}
-				console.log(obj)
 				connection.query(`select *
                                   from product
                                   where id in (${obj})
@@ -246,12 +223,11 @@ module.exports = function (passport) {
 }
 
 function sql(str) {
-	console.log('sql()')
 	let idList = str.trim().split(',')
 	
 	let whereCluase = ``
 	
-	i = 0
+	let i = 0
 	for (id of idList) { // where절 생성
 		if (i++ !== 0)
 			whereCluase += ` or `
@@ -261,7 +237,6 @@ function sql(str) {
 	let query = `SELECT *
                  FROM coordination
                  WHERE ` + whereCluase
-	console.log(query)
 	
 	return new Promise(resolve => {
 		connection.query(query,
@@ -371,23 +346,14 @@ function getFitFromBodyShape(user) {
 		return (1 << 21) - 1 // all fit
 	}
 	
-	console.log('gender: ' + gender)
-	console.log('shoulder: ' + shoulder)
-	console.log('waist: ' + waist)
-	console.log('hip: ' + hip)
-	console.log('thigh: ' + thigh)
-	
 	let scriptPath = '../data/BodyShapeToFit/'
 	return new Promise(resolve => {
 		let process = spawn('python3', [scriptPath + 'main.py', gender, shoulder, waist, hip, thigh])
 		
 		process.stdout.on('data', function (data) {
-			console.log('fit: ' + data.toString())
 			resolve(data.toString())
 		})
 		process.stderr.on('data', function (data) {
-			console.log({'result': false})
-			console.log(data.toString())
 			resolve({'result': false})
 		})
 	})
@@ -485,16 +451,12 @@ function getStylePreferenceWithStyle(style) {
 	}
 	result += `}`
 	
-	console.log(result)
 	return result
 }
 
 async function getStylePreference(favoriteProductList, favoriteCoordinationList) {
-	console.log('getStylePreference()...')
 	if (favoriteProductList[0]['result'] === false) favoriteProductList = []
 	if (favoriteCoordinationList[0]['result'] === false) favoriteCoordinationList = []
-	console.log(favoriteProductList)
-	console.log(favoriteCoordinationList)
 	
 	let productWeight = 2
 	let coordinationWeight = 10
@@ -544,8 +506,6 @@ async function getStylePreference(favoriteProductList, favoriteCoordinationList)
 		}
 		result += `}`
 	}
-	
-	console.log(result)
 	return result
 }
 
