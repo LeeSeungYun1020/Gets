@@ -1,3 +1,7 @@
+/*
+* Home
+* 맞춤 추천 코디, 스타일별 코디, 대표 코디, 인기 코디 제공
+* */
 const express = require('express')
 const router = express.Router()
 const connection = require('../lib/mysql')
