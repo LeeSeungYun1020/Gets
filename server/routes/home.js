@@ -14,69 +14,36 @@ module.exports = function (passport) {
 	
 	// 맞춤 추천 (+버튼 눌러서 옵션 선택 시, query 있음)
 	router.get("/getStyle/:number", (req, res) => {
-		let number = req.params.number
+		const number = req.params.number
+		const gender = req.query.gender ?? (1 << 2) - 1 // all gender
+		const age = req.query.age ?? (1 << 5) - 1 // all age
+		const topFit = req.query.topFit ?? 1 // regular
+		const bottomFit = req.query.bottomFit ?? 1 // regular
+		const style = req.query.style ?? (1 << 11) - 1 // all style
 		
-		let gender = req.query.gender ?? (1 << 2) - 1 // all gender
-		let age = req.query.age ?? (1 << 5) - 1 // all age
-		let topFit = req.query.topFit ?? 1 // regular
-		let bottomFit = req.query.bottomFit ?? 1 // regular
-		let style = req.query.style ?? (1 << 11) - 1 // all style
+		const fit = getFit(topFit, bottomFit)
+		const stylePreference = getStylePreferenceWithStyle(style)
 		
-		let fit = getFit(topFit, bottomFit)
-		let stylePreference = getStylePreferenceWithStyle(style)
-		
-		let scriptPath = '../data/CoordinationRecommendation/'
-		let scriptName = 'main.py'
-		let array
-		let process
-		let data = `{\"gender\": ${gender}, \"age\": ${age}, \"fit\": ${fit}, \"stylePreference\": ${stylePreference}}`
-		
-		array = ['-O', scriptPath + scriptName, number, data]
-		process = spawn('python3', array)
-		
-		process.stdout.on('data', function (data) {
-			let str = data.toString().trim()
-			sql(str).then(function (result) {
-				result[0]["result"] = true
-				res.send(result)
-			})
-		})
-		process.stderr.on('data', function () {
-			res.send([{result: false}])
+		getRecommendation(gender, age, fit, stylePreference, number).then((result) => {
+			res.send(result)
 		})
 	})
 	
 	// 맞춤 추천 (로그인하고 +버튼 누르기 전, query 없음)
 	router.get("/custom/:number", async (req, res) => {
-		let number = req.params.number
-		let scriptPath = '../data/CoordinationRecommendation/'
-		let scriptName = 'main.py'
-		let array
-		let process
-		let data
-		
 		if (!req.user) {
 			res.send([{result: false}])
 		} else {
-			let gender = req.user.gender ?? 3
-			let age = getAge(req.user.birthday)
-			let fit = await getFitFromBodyShape(req.user)
-			let favoriteProductList = await getFavoriteProductList(req.user.email)
-			let favoriteCoordinationList = await getFavoriteCoordinationList(req.user.email)
+			const number = req.params.number
+			const gender = req.user.gender ?? 3
+			const age = getAge(req.user.birthday)
+			const fit = await getFitFromBodyShape(req.user)
+			const favoriteProductList = await getFavoriteProductList(req.user.email)
+			const favoriteCoordinationList = await getFavoriteCoordinationList(req.user.email)
 			getStylePreference(favoriteProductList, favoriteCoordinationList)
 			.then(stylePreference => {
-				data = `{\"gender\": ${gender}, \"age\": ${age}, \"fit\": ${fit}, \"stylePreference\": ${stylePreference}}`
-				array = ['-O', scriptPath + scriptName, number, data]
-				process = spawn('python3', array)
-				process.stdout.on('data', function (data) {
-					let str = data.toString().trim()
-					sql(str).then(function (result) {
-						result[0]["result"] = true
-						res.send(result)
-					})
-				})
-				process.stderr.on('data', function () {
-					res.send([{result: false}])
+				getRecommendation(gender, age, fit, stylePreference, number).then((result) => {
+					res.send(result)
 				})
 			})
 			
@@ -224,6 +191,29 @@ module.exports = function (passport) {
 		})
 	})
 	return router
+}
+
+function getRecommendation(gender, age, fit, stylePreference, number) {
+	let scriptPath = '../data/CoordinationRecommendation/'
+	let scriptName = 'main.py'
+	let data = `{\"gender\": ${gender}, \"age\": ${age}, \"fit\": ${fit}, \"stylePreference\": ${stylePreference}}`
+	let array = ['-O', scriptPath + scriptName, number, data]
+	
+	return new Promise(resolve => {
+		let process = spawn('python3', array)
+		
+		process.stdout.on('data', function (data) {
+			let str = data.toString().trim()
+			sql(str).then(function (result) {
+				result[0]["result"] = true
+				resolve(result)
+			})
+		})
+		process.stderr.on('data', function () {
+			resolve([{result: false}])
+		})
+	})
+	
 }
 
 function sql(str) {
