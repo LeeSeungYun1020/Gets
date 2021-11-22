@@ -204,7 +204,7 @@ function getRecommendation(gender, age, fit, stylePreference, number) {
 		
 		process.stdout.on('data', function (data) {
 			let str = data.toString().trim()
-			sql(str).then(function (result) {
+			makeQuery(str).then(function (result) {
 				result[0]["result"] = true
 				resolve(result)
 			})
@@ -216,7 +216,7 @@ function getRecommendation(gender, age, fit, stylePreference, number) {
 	
 }
 
-function sql(str) {
+function makeQuery(str) {
 	let idList = str.trim().split(',')
 	
 	let whereCluase = ``
@@ -373,6 +373,7 @@ const TopFit = {
 	1: "regular",
 	2: "over"
 }
+
 const BottomFit = {
 	32: "slim",
 	1: "regular",
