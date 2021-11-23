@@ -331,7 +331,7 @@ function getFavoriteCoordinationList(email) {
 
 function getFitFromBodyShape(user) {
 	let gender = user.gender ?? 3
-	let shoulder = user.shouler ?? 2
+	let shoulder = user.shoulder ?? 2
 	let waist = user.waist ?? 2
 	let hip = user.hip ?? 2
 	let thigh = user.thigh ?? 2
