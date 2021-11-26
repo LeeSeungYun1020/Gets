@@ -21,7 +21,7 @@ module.exports = function (passport) {
 		const bottomFit = req.query.bottomFit ?? 1 // regular
 		const style = req.query.style ?? (1 << 11) - 1 // all style
 		
-		const fit = getFit(topFit, bottomFit)
+		const fit = getFitCode(topFit, bottomFit)
 		const stylePreference = getStylePreferenceWithStyle(style)
 		
 		getRecommendation(gender, age, fit, stylePreference, number).then((result) => {
@@ -68,7 +68,7 @@ module.exports = function (passport) {
 			})
 	})
 	
-	//각 스타일에 맞는 코디를 대표 1개씩 표시
+	// 각 스타일에 맞는 코디를 대표 1개씩 표시
 	router.get("/representative/style", (req, res) => {
 		let list = []
 		let casual = [], minimal = [], campus = [], street = [], rockchic = [],
@@ -79,7 +79,7 @@ module.exports = function (passport) {
 				res.send({result: false})
 			let temp, digit
 			for (let i = 0; i < result.length; i++) {
-				temp = result[i].style.toString(2)
+				temp = result[i].style.toString(2) // 이진수로 변환
 				digit = temp.length - 1
 				for (let j = 0; j < temp.length; j++) {
 					if (temp[j] === '1') {
@@ -162,7 +162,7 @@ module.exports = function (passport) {
 		})
 	})
 	
-	//홈화면_탑트렌드에 있는 제품을 number 수만큼표시
+	// 홈화면 - 탑트렌드에 있는 제품을 number 수만큼 표시
 	router.get("/toptrends/:number", (req, res) => {
 		connection.query(`select productID, count(productID) as cnt
                           from favoriteProduct
@@ -193,6 +193,7 @@ module.exports = function (passport) {
 	return router
 }
 
+// 추천 코디 number 수만큼 가져오기
 function getRecommendation(gender, age, fit, stylePreference, number) {
 	let scriptPath = '../data/CoordinationRecommendation/'
 	let scriptName = 'main.py'
@@ -216,6 +217,7 @@ function getRecommendation(gender, age, fit, stylePreference, number) {
 	
 }
 
+// 쿼리 생성
 function makeQuery(str) {
 	let idList = str.trim().split(',')
 	
@@ -242,6 +244,7 @@ function makeQuery(str) {
 	})
 }
 
+// 날짜 이용 나이 변환
 function getAge(birthday) {
 	let now = new Date()
 	let currentYear = (now.toString().split(' ')[3]) * 1
@@ -255,6 +258,7 @@ function getAge(birthday) {
 	return 1 << (tmp - 1)
 }
 
+// 코디 정보 가져오기
 function getCoordination(id) {
 	return new Promise(resolve => {
 		connection.query(`SELECT *
@@ -274,6 +278,7 @@ function getCoordination(id) {
 	})
 }
 
+// 제품 정보 가져오기
 function getProduct(id) {
 	return new Promise(resolve => {
 		connection.query(`select *
@@ -293,6 +298,7 @@ function getProduct(id) {
 	})
 }
 
+// 좋아요 제품 가져오기
 function getFavoriteProductList(email) {
 	return new Promise(resolve => {
 		connection.query(`select productID
@@ -311,6 +317,7 @@ function getFavoriteProductList(email) {
 	})
 }
 
+// 좋아요 코디 가져오기
 function getFavoriteCoordinationList(email) {
 	return new Promise(resolve => {
 		connection.query(`select coordinationID
@@ -329,6 +336,7 @@ function getFavoriteCoordinationList(email) {
 	})
 }
 
+// 체형으로 핏 계산
 function getFitFromBodyShape(user) {
 	let gender = user.gender ?? 3
 	let shoulder = user.shoulder ?? 2
@@ -353,6 +361,7 @@ function getFitFromBodyShape(user) {
 	})
 }
 
+// one hot decoder
 function oneHotDecoder(fit) {
 	let singleValueList = []
 	let value = 1
@@ -410,7 +419,7 @@ const coordiFit = {
 	"over_bootcut": 1 << 20
 }
 
-function getFit(topFit, bottomFit) {
+function getFitCode(topFit, bottomFit) {
 	return coordiFit[TopFit[topFit] + '_' + BottomFit[bottomFit]]
 }
 
@@ -428,6 +437,7 @@ const Style = [
 	"lovely"
 ]
 
+// 스타일로 스타일 선호도 파악 (전체 사용자 대상)
 function getStylePreferenceWithStyle(style) {
 	if (style === 0) style = (1 << 11) - 1
 	let preferenceList = new Array(Style.length)
@@ -449,6 +459,7 @@ function getStylePreferenceWithStyle(style) {
 	return result
 }
 
+// 좋아요한 목록 기반으로 스타일 선호도 파악 (로그인 사용자 대상)
 async function getStylePreference(favoriteProductList, favoriteCoordinationList) {
 	if (favoriteProductList[0]['result'] === false) favoriteProductList = []
 	if (favoriteCoordinationList[0]['result'] === false) favoriteCoordinationList = []
