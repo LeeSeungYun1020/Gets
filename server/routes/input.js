@@ -1,3 +1,7 @@
+/*
+* Input
+* 데이터베이스 초기 설정시 자동 입력 도구
+* */
 const express = require('express')
 const router = express.Router()
 const fs = require('fs')
@@ -239,9 +243,10 @@ router.get("/article", (req, res) => {
 		insert into articleImage values (1, 39); \
 		insert into articleImage values (1, 40); \
 		insert into articleImage values (1, 41); \
-	`.trim(), (err, result) => {
-		res.send(err || result)
-	})
+	`.trim(),
+		(err, result) => {
+			res.send(err || result)
+		})
 })
 
 router.get("/ready", (req, res) => {
