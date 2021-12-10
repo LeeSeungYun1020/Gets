@@ -14,11 +14,12 @@ const commonHead = require('../components/commonHead')
 const string = require('../components/string_index')
 const fstring = require('../components/string_footer')
 
-/* GET home page. */
+// 자동 입력 기능 제공 페이지
 router.get('/', function (req, res, next) {
 	res.render('input', {commonHead: commonHead, string: string[req.body.locale], fstring: fstring[req.body.locale]})
 });
 
+// 제품 데이터베이스에 자동 입력
 router.get('/product', function (req, res, next) {
 	const processFile = async () => {
 		let records = []
@@ -66,6 +67,7 @@ router.get('/product', function (req, res, next) {
 	})()
 })
 
+// 코디 데이터베이스에 자동 입력
 router.get("/coordination", (req, res) => {
 	const processFile = async () => {
 		let records = []
@@ -124,6 +126,7 @@ router.get("/coordination", (req, res) => {
 	})()
 })
 
+// 기사 데이터베이스에 자동 입력
 router.get("/article", (req, res) => {
 	connection.query(`
         insert into article \
@@ -249,6 +252,7 @@ router.get("/article", (req, res) => {
 		})
 })
 
+// 테이블 자동 생성, 기존에 있는 경우에는 생성 안함
 router.get("/ready", (req, res) => {
 	connection.query(`
         create table IF NOT EXISTS user
@@ -364,6 +368,7 @@ router.get("/ready", (req, res) => {
 	})
 })
 
+// 모든 테이블 삭제
 router.get("/clear", (req, res) => {
 	connection.query("drop table articleImage, article;" +
 		"drop table favoriteCoordination, favoriteProduct;" +
@@ -372,18 +377,21 @@ router.get("/clear", (req, res) => {
 	})
 })
 
+// 제품 목록 테이블 초기화
 router.get("/product/clear", (req, res) => {
 	connection.query("delete from product", (err, result) => {
 		res.send(result)
 	})
 })
 
+// 코디 목록 테이블 초기화
 router.get("/coordination/clear", (req, res) => {
 	connection.query("delete from coordination", (err, result) => {
 		res.send(result)
 	})
 })
 
+// 기사 목록 테이블 초기화
 router.get("/article/clear", (req, res) => {
 	connection.query("delete from article; delete from articleImage", (err, result) => {
 		res.send(result)
