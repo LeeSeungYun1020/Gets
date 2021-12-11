@@ -15,7 +15,7 @@ module.exports = function (passport) {
 			let user = req.user.email
 			let product = req.params.productID
 			connection.query(`insert into favoriteProduct(userEmail, productID)
-                          values (?, ?)`, [user, product],
+                              values (?, ?)`, [user, product],
 				(err, result) => {
 					if (err)
 						res.send({result: false, isDuplicate: err["errno"] === 1062})
@@ -44,7 +44,7 @@ module.exports = function (passport) {
 		} else res.send({"result": false})
 	})
 	
-	router.get('/count/favorite/:productID',(req,res)=>{
+	router.get('/count/favorite/:productID', (req, res) => {
 		connection.query(`select count(productID) as favorite
                           from favoriteProduct
                           where productID = ${req.params.productID}`,
@@ -60,7 +60,10 @@ module.exports = function (passport) {
 	
 	router.get('/check/favorite/:productID', (req, res) => {
 		if (req.user) {
-			connection.query(`select * from favoriteProduct where userEmail=? and productID=?`,
+			connection.query(`select *
+                              from favoriteProduct
+                              where userEmail = ?
+                                and productID = ?`,
 				[req.user.email, req.params.productID],
 				(err, result) => {
 					if (err || result.length === 0)
@@ -72,16 +75,18 @@ module.exports = function (passport) {
 		
 	})
 	
-	router.get('/user/favorite',(req,res)=>{
-		if(req.user){
-			connection.query(`select productID from favoriteProduct where userEmail=?`,[req.user.email],
-				(err,result)=>{
+	router.get('/user/favorite', (req, res) => {
+		if (req.user) {
+			connection.query(`select productID
+                              from favoriteProduct
+                              where userEmail = ?`, [req.user.email],
+				(err, result) => {
 					if (err || result.length === 0)
 						res.send({result: false})
 					else
 						res.send(result)
 				})
-		}else res.send({result:false})
+		} else res.send({result: false})
 	})
 	
 	// 단일 상품 이미지 전송
@@ -104,8 +109,8 @@ module.exports = function (passport) {
 			fix = -1
 		return fix
 	}
-
-	router.get("/category/:type/:detail",(req,res)=>{
+	
+	router.get("/category/:type/:detail", (req, res) => {
 		const type = req.params.type
 		const detail = req.params.detail ?? -1
 		connection.query(`select *
@@ -120,7 +125,7 @@ module.exports = function (passport) {
 			}
 		})
 	})
-	
+
 // 상품 목록 필터
 	router.get("/list/:page", (req, res) => {
 		const ALL = -1
@@ -156,22 +161,27 @@ module.exports = function (passport) {
 	})
 	
 	//상품 마지막 id번호
-	router.get("/number",(req,res) => {
-		connection.query(`select id from product order by id desc limit 1`,
-			(err,result)=>{
+	router.get("/number", (req, res) => {
+		connection.query(`select id
+                          from product
+                          order by id desc
+                          limit 1`,
+			(err, result) => {
 				if (err || result.length === 0)
 					res.send({result: false})
-				else{
+				else {
 					console.log(result[0])
 					res.send(result)
 				}
 			})
 	})
-	
+
 // 단일 상품 조회
 	router.get("/:id", (req, res) => {
 		const id = req.params.id
-		connection.query(`select * from product where product.id = ?;`,
+		connection.query(`select *
+                          from product
+                          where product.id = ?;`,
 			[id],
 			(err, result) => {
 				if (err || result.length === 0)
