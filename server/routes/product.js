@@ -1,3 +1,8 @@
+/*
+* Product
+* 상품 목록, 상품 조회, 이미지 조회, 상품 찜
+* */
+
 const express = require('express')
 const router = express.Router()
 const path = require('path');
