@@ -1,3 +1,8 @@
+/*
+* Template
+* 기본 템플릿 파일
+* */
+
 const express = require('express')
 const router = express.Router()
 
