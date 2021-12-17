@@ -18,7 +18,8 @@ const fstring = require('../components/string_footer')
 module.exports = function (passport) {
 	// API Center - API 설명 페이지 렌더링
 	router.get('/', function (req, res, next) {
-		res.render("api", {commonHead: commonHead, string: string[req.body.locale], fstring: fstring[req.body.locale]})
+		const loc = req.body.locale
+		res.render("api", {commonHead: commonHead, locale: loc, string: string[loc], fstring: fstring[loc]})
 	});
 	
 	// 로그인
