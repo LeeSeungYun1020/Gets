@@ -10,11 +10,11 @@
 
 <%- include('header'); -%>
 
-<div class="mdc-typography--headline1">GETs API Server</div>
+<div class="mdc-typography--headline2"><%= string.title %></div>
 <div class="main_container">
     <div class="table_container">
-        <%- include('card', {type: "main_card1", title: "API description", link: "/api"}) %>
-        <%- include('card', {type: "main_card2", title: "Auth (test)", link: "/account"}) %>
+        <%- include('card', {type: "main_card1", title: string.api_desc, link: "/api"}) %>
+        <%- include('card', {type: "main_card2", title: string.auth_test, link: "/account"}) %>
     </div>
 </div>
 
