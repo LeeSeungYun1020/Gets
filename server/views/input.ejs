@@ -3,7 +3,7 @@
 <head>
     <%- commonHead %>
 
-    <title><%= string.name_title %></title>
+    <title><%= string.title %></title>
     <script>
 		$(document).ready(() => {
 
@@ -17,14 +17,14 @@
 
 <div class="main_container">
     <div class="table_container">
-        <%- include('card', {type: "main_card1", title: "Product", link: "/input/product"}) %>
-        <%- include('card', {type: "main_card2", title: "Coordination", link: "/input/coordination"}) %>
-        <%- include('card', {type: "main_card3", title: "Article", link: "/input/article"}) %>
-        <%- include('card', {type: "main_card4", title: "Init product", link: "/input/product/clear"}) %>
-        <%- include('card', {type: "main_card5", title: "Init coordination", link: "/input/coordination/clear"}) %>
-        <%- include('card', {type: "main_card6", title: "Init article", link: "/input/article/clear"}) %>
-        <%- include('card', {type: "main_card7", title: "Ready", link: "/input/ready"}) %>
-        <%- include('card', {type: "main_card8", title: "Init ALL", link: "/input/clear"}) %>
+        <%- include('card', {type: "main_card1", title: string.product, link: "/input/product"}) %>
+        <%- include('card', {type: "main_card2", title: string.coordination, link: "/input/coordination"}) %>
+        <%- include('card', {type: "main_card3", title: string.article, link: "/input/article"}) %>
+        <%- include('card', {type: "main_card4", title: string.init_product, link: "/input/product/clear"}) %>
+        <%- include('card', {type: "main_card5", title: string.init_coordination, link: "/input/coordination/clear"}) %>
+        <%- include('card', {type: "main_card6", title: string.init_article, link: "/input/article/clear"}) %>
+        <%- include('card', {type: "main_card7", title: string.ready, link: "/input/ready"}) %>
+        <%- include('card', {type: "main_card8", title: string.init_all, link: "/input/clear"}) %>
     </div>
 </div>
 

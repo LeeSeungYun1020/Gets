@@ -11,7 +11,7 @@ const product = require('../lib/product')
 const coordination = require('../lib/coordination')
 
 const commonHead = require('../components/commonHead')
-const string = require('../components/string_index')
+const string = require('../components/string_input')
 const fstring = require('../components/string_footer')
 
 // 자동 입력 기능 제공 페이지
