@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import {useTranslation} from "react-i18next";
 import ClosetCard from "./ClosetCard";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const ClosetList = ({category}) => {
     const [item, setItem] = useState(null);

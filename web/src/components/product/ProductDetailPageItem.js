@@ -5,11 +5,11 @@ import {NumToStringSeason, NumToStringAge, NumToStringColor, NumToStringStyle, N
     NumToStringCategory, NumToStringBottom, NumToStringTop, NumToStringOuter, NumToStringSet, NumToStringSkirt, NumToStringBag, NumToStringShoes, NumToStringHat} from "../Data";
 import Favorite from "@material-ui/icons/Favorite";
 import axios from "axios";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import isLogin from "../../lib/isLogin";
 const ProductDetailPageItem = ({item}) => {
     const {t, i18n} = useTranslation()
-    const history = useHistory()
+    const navigate = useNavigate()
     const {id, price, brand, name, color, fiber, age, style, size, season, type, detail, image1ID, gender} = item
     const [subCategory, setSubCategory] = useState('');
     const [allStyle, setAllStyle] = useState([]) // 스타일 배열에 넣자
@@ -21,7 +21,7 @@ const ProductDetailPageItem = ({item}) => {
 
     const onButtonClick = () => {
         if(!isLogin()){
-            history.push('/account/signin')
+            navigate('/account/signin')
         }
         else {
             axios.get(`http://localhost:3000/product/favorite/${id}`, {withCredentials: true})

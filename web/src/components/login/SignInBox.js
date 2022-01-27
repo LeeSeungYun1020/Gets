@@ -1,12 +1,12 @@
 import React, { useState } from "react"
 import axios from "axios"
-import { useHistory } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import isLogin from "../../lib/isLogin";
 import {useTranslation} from "react-i18next";
 const SignInBox = ({login, setLogin}) => {
     const [email, SetEmail] = useState('');
     const [password, SetPassword] = useState('');
-    const history = useHistory();
+    const navigate = useNavigate();
     const {t, i18n} = useTranslation()
     const handleEmailChange = (event) => {
         SetEmail(event.target.value);
@@ -25,7 +25,7 @@ const SignInBox = ({login, setLogin}) => {
                         .then ( response => {
                             setLogin(response.data.result)
                             sessionStorage.setItem("token", response.data.email)
-                            history.goBack()
+                            navigate.goBack()
                             // window.location.replace(document.referrer)
                         })
                     // isLogin()

@@ -9,7 +9,7 @@ import axios from "axios";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Favorite from "@material-ui/icons/Favorite";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const useStyles = makeStyles({
     root: {
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 
 const HomeRecommendCard = (props) => {
     const classes = useStyles();
-    const history = useHistory();
+    const navigate = useNavigate();
     const {title, content, cost, image_id, id } = props
     const [checked, setChecked] = useState(false)
     useEffect(()=> {
@@ -42,7 +42,7 @@ const HomeRecommendCard = (props) => {
             })
     })
     const onCardClick = () => {
-        history.push({
+        navigate({
             pathname:`/closet/coordination/${id}`
         })
     }
