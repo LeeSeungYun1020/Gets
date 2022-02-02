@@ -1,8 +1,4 @@
 import React from "react";
-import 'swiper/swiper.scss';
-import 'swiper/components/navigation/navigation.scss';
-import 'swiper/components/pagination/pagination.scss';
-import 'swiper/components/scrollbar/scrollbar.scss';
 import Slider from "react-slick";
 import '../../stylesheets/Home.scss';
 import "slick-carousel/slick/slick.css";

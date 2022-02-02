@@ -2,12 +2,14 @@ import '../../stylesheets/Closet.scss';
 import React, {useEffect, useState} from "react";
 import ClosetList from "./ClosetList";
 import ClosetCategory from "./ClosetCategory";
-import {withRouter} from "react-router-dom";
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import axios from "axios";
 
-const Closet = ({match}) => {
-    // console.log(match.params)
-    const category = match.params.category || 'coordination'
+const Closet = () => {
+    const params = useParams();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const category = params.category || 'coordination'
     const [last, setLast] = useState();
     // console.log(id)
 
@@ -19,4 +21,4 @@ const Closet = ({match}) => {
     )
 }
 
-export default withRouter(Closet);
+export default Closet;

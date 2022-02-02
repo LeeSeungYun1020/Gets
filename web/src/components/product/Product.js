@@ -4,12 +4,15 @@ import ProductCategory from "./ProductCategory";
 import {useTranslation} from "react-i18next";
 import ProductItem from "./ProductItem";
 import ProductItemList from "./ProductItemList";
-import {withRouter} from 'react-router-dom'
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 
-const Product = ({match}) => {
+const Product = () => {
     const {t, i18n} = useTranslation()
-    const category = match.params.category === undefined ? 'outer' : match.params.category;
-    const subCategory = match.params.subcategory === undefined ? 'all' : match.params.subcategory;;
+    const params = useParams();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const category = params.category === undefined ? 'outer' : params.category;
+    const subCategory = params.subcategory === undefined ? 'all' : params.subcategory;
     return (
         <div className="product">
             <div id = "product_category">
@@ -23,4 +26,4 @@ const Product = ({match}) => {
     )
 }
 
-export default withRouter(Product)
+export default Product

@@ -4,12 +4,11 @@ import {useRouteMatch} from "react-router-dom";
 
 function NotFound(props) {
     const {t, i18n} = useTranslation()
-    let match = useRouteMatch();
     return (
         <div className={"not_found_box"}>
             <h1>{t("not_found_title")}</h1>
             <img src={NotFoundImage} />
-            <h2>{t("not_found_subtitle")}<br/>{match.url}</h2>
+            <h2>{t("not_found_subtitle")}<br/> ... </h2>
         </div>
     )
 }
