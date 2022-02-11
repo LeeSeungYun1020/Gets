@@ -2,7 +2,8 @@ import HomeStyleSelectBox from "./HomeStyleSelectBox";
 
 function HomeStyleSelect(props) {
     const selectAreaList = props.list.map((item) =>
-        <HomeStyleSelectBox title={item.title} index={item.index} default={item.default} list={item.list} setType={item.setType}/>
+        <HomeStyleSelectBox title={item.title} index={item.index} default={item.default} list={item.list}
+                            setType={item.setType}/>
     )
 
     return (

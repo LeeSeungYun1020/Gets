@@ -15,8 +15,8 @@ import MinimalChip from "../../images/home/Oval_minimal.webp";
 import {useTranslation} from "react-i18next";
 import axios from "axios";
 import HomeRecommendCard from "./HomeRecommendCard";
-import { MdAdd, MdRemove } from "react-icons/md";
-import {StringToNumAge, StringToNumGender, StringToNumFit} from "../Data";
+import {MdAdd, MdRemove} from "react-icons/md";
+import {StringToNumAge, StringToNumFit, StringToNumGender} from "../Data";
 
 const HomeGetStyle = (props) => {
     const {t, i18n} = useTranslation()
@@ -44,14 +44,14 @@ const HomeGetStyle = (props) => {
     // const detail = query.detail === 'true'; //
     useEffect(() => {
         if (sessionStorage.getItem("token")) { // 로그인 한 사람은 자동으로 추천코디 띄워줌
-            axios.get('http://localhost:3000/home/custom/8', { withCredentials: true })
+            axios.get('http://localhost:3000/home/custom/8', {withCredentials: true})
                 .then(({data}) => {
                     // console.log(data);
                     setRecommend(data)
                     setAns(true);
                 })
-            }
-        }, []) // 화면에 맨 처음 렌더링될 때만 실행
+        }
+    }, []) // 화면에 맨 처음 렌더링될 때만 실행
 
     const selectAreaList = [
         {title: t("gender"), index: 1, default: t("woman"), list: [t("woman"), t("man")], setType: setGender},
@@ -87,42 +87,48 @@ const HomeGetStyle = (props) => {
         let topFitNumber = StringToNumFit[topFit]
         let bottomFitNumber = StringToNumFit[bottomFit]
         let query = `?gender=${genderNumber}&age=${ageNumber}&topFit=${topFitNumber}&bottomFit=${bottomFitNumber}&style=${style}`
-        axios.get('http://localhost:3000/home/getStyle/8' + query, { withCredentials: true })
-            .then(({data}) => {setRecommend(data)
+        axios.get('http://localhost:3000/home/getStyle/8' + query, {withCredentials: true})
+            .then(({data}) => {
+                setRecommend(data)
                 setAns(true);
             })
 
-    },[gender, age, topFit, bottomFit, style]);
-    const iconClick = useCallback( () => {
+    }, [gender, age, topFit, bottomFit, style]);
+    const iconClick = useCallback(() => {
         setModify(!modify)
-    },[modify]);
+    }, [modify]);
     return (
         <div className="home_getstyle">
-            { (sessionStorage.getItem("token")&&!modify) ? <div className = "modify_option_button"><MdAdd onClick={iconClick}/></div> :
+            {(sessionStorage.getItem("token") && !modify) ?
+                <div className="modify_option_button"><MdAdd onClick={iconClick}/></div> :
                 <>
-                    { sessionStorage.getItem("token") && <div className = "modify_option_button"><MdRemove onClick={iconClick}/></div>}
+                    {sessionStorage.getItem("token") &&
+                        <div className="modify_option_button"><MdRemove onClick={iconClick}/></div>}
                     <HomeStyleSelect title={t("select_info")} list={selectAreaList}/>
                     <HomeRecommend title={t("select_style")} chips={chipList} text={t("recommend_button")} style={style}
-                    SetStyle={setStyle}/>
+                                   SetStyle={setStyle}/>
                     <div id="home_button">
                         <button id="getstyle_button" onClick={onSubmit}>{props.text}</button>
                     </div>
                     <div className="recommend_line"></div>
                 </>
             }
-            {(ans||sessionStorage.getItem("token")) && <div>
+            {(ans || sessionStorage.getItem("token")) && <div>
                 <div id="recommend_style">
-                <h1>{t("recommend_style")}</h1>
-                <p>{t("recommend_content")}</p>
+                    <h1>{t("recommend_style")}</h1>
+                    <p>{t("recommend_content")}</p>
                 </div>
             </div>}
 
-            {(ans||sessionStorage.getItem("token")) && <><div id = "recommend_card">
-                {recommend.map((recommend, index) => (
-                    <HomeRecommendCard title={recommend.title} cost={recommend.price} image_id={recommend.imageID} id ={recommend.id} />
-                ))}
-            </div>
-                <div className ="recommend_line"></div></>}
+            {(ans || sessionStorage.getItem("token")) && <>
+                <div id="recommend_card">
+                    {recommend.map((recommend, index) => (
+                        <HomeRecommendCard title={recommend.title} cost={recommend.price} image_id={recommend.imageID}
+                                           id={recommend.id}/>
+                    ))}
+                </div>
+                <div className="recommend_line"></div>
+            </>}
         </div>
     )
 };
