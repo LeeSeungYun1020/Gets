@@ -2,6 +2,7 @@ import React from "react"
 import axios from "axios"
 import link from "../../link";
 import {Link} from "react-router-dom"
+
 class FindPwEmailBox extends React.Component {
     constructor(props) {
         super(props);
@@ -42,19 +43,21 @@ class FindPwEmailBox extends React.Component {
         return (
             <div>
 
-                <div id = "select_type_info">
-                    <h3><Link className = "pw_link" to = {link.findpw}>{this.props.find_with_phone}</Link></h3>
-                    <h3 style = {{borderColor : "#000000"}}><Link className = "pw_link" to = {link.findpwemail}>{this.props.find_with_email}</Link></h3>
+                <div id="select_type_info">
+                    <h3><Link className="pw_link" to={link.findpw}>{this.props.find_with_phone}</Link></h3>
+                    <h3 style={{borderColor: "#000000"}}><Link className="pw_link"
+                                                               to={link.findpwemail}>{this.props.find_with_email}</Link>
+                    </h3>
                 </div>
                 <div>
                     {FindForm}
                 </div>
-                <div id = "select_info_line"></div>
-                <div id = "select_info_text">
-                    <div id = "select_info_text_h4">
-                        <h4 id = "text_top">{this.props.pw_info_1}</h4>
+                <div id="select_info_line"></div>
+                <div id="select_info_text">
+                    <div id="select_info_text_h4">
+                        <h4 id="text_top">{this.props.pw_info_1}</h4>
                         <h4>{this.props.pw_info_2}</h4>
-                        <h4 id = "text_bottom">{this.props.pw_info_3}</h4>
+                        <h4 id="text_bottom">{this.props.pw_info_3}</h4>
                     </div>
                     <p>{this.props.pw_info_4}</p>
                     <p>{this.props.pw_info_5}</p>

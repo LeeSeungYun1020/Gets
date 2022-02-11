@@ -1,12 +1,12 @@
 import React, {useState} from "react"
 import axios from "axios"
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import  { useHistory } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 const GetsCheckbox = withStyles({
     root: {

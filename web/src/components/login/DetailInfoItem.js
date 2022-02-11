@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useCallback, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
@@ -16,7 +16,6 @@ import LovelyChip from "../../images/home/Oval_lovely.webp";
 import MinimalChip from "../../images/home/Oval_minimal.webp";
 import OutlineSelectBox from "./OutlineSelectBox";
 import OutlineSelectShapeBox from "./OutlineSelectShapeBox";
-import link from "../../link";
 
 const DetailInfoItem = props => {
     const {t, i18n} = useTranslation()
@@ -45,36 +44,36 @@ const DetailInfoItem = props => {
     const [hipSize, setHipSize] = useState('');
     const [thighSize, setThighSize] = useState('');
 
-    const handleHeightChange = useCallback( (e) => {
+    const handleHeightChange = useCallback((e) => {
         SetHeight(e.target.value);
-    },[]);
-    const handleWeightChange = useCallback( (e) => {
+    }, []);
+    const handleWeightChange = useCallback((e) => {
         SetWeight(e.target.value);
-    },[]);
-    const handleManClick = useCallback( () => {
+    }, []);
+    const handleManClick = useCallback(() => {
         SetGender(1);
-    },[]);
+    }, []);
     const handleWomanClick = useCallback(() => {
         SetGender(2);
-    },[]);
+    }, []);
     const handleTopSizeClick = useCallback((e) => {
         SetTopSize(e.target.value);
-    },[]);
+    }, []);
     const handleBottomSizeClick = useCallback((e) => {
         SetBottomSize(e.target.value);
-    },[]);
+    }, []);
     const handleShoulderClick = useCallback((e) => {
         setShoulderSize(e.target.value);
-    },[]);
+    }, []);
     const handleWaistClick = useCallback((e) => {
         setWaistSize(e.target.value);
-    },[]);
+    }, []);
     const handleHipClick = useCallback((e) => {
         setHipSize(e.target.value);
-    },[]);
+    }, []);
     const handleThighClick = useCallback((e) => {
         setThighSize(e.target.value);
-    },[]);
+    }, []);
     const onSubmit = (e) => {
         e.preventDefault();
         axios.post('http://localhost:3000/auth/signup/info', {
@@ -88,7 +87,7 @@ const DetailInfoItem = props => {
             waist: waistSize,
             hip: hipSize,
             thigh: thighSize
-        },{ withCredentials: true })
+        }, {withCredentials: true})
             .then(function (response) {
                 history.replace('/')
             })
@@ -97,7 +96,7 @@ const DetailInfoItem = props => {
             })
     }
     return (
-        <div id = "detail_info_item">
+        <div id="detail_info_item">
             <form onSubmit={onSubmit}>
                 <label>
                     <div className="info">
@@ -105,8 +104,14 @@ const DetailInfoItem = props => {
                         <h4>{props.gender}</h4>
                     </div>
                     <div className="detail_gender">
-                        <input type="button" id={"man"} value = {t("man")} style = {{backgroundColor : gender === 1 ? "#7eb693" :"#ffffff", color : gender === 1 ? "#ffffff" : "#000000" }} onClick={handleManClick} />
-                        <input type="button" name={"woman"} value = {t("woman")} style = {{backgroundColor : gender === 2 ? "#7eb693" :"#ffffff", color : gender === 2 ? "#ffffff" : "#000000" }} onClick={handleWomanClick} />
+                        <input type="button" id={"man"} value={t("man")} style={{
+                            backgroundColor: gender === 1 ? "#7eb693" : "#ffffff",
+                            color: gender === 1 ? "#ffffff" : "#000000"
+                        }} onClick={handleManClick}/>
+                        <input type="button" name={"woman"} value={t("woman")} style={{
+                            backgroundColor: gender === 2 ? "#7eb693" : "#ffffff",
+                            color: gender === 2 ? "#ffffff" : "#000000"
+                        }} onClick={handleWomanClick}/>
                     </div>
                 </label>
 
@@ -116,7 +121,7 @@ const DetailInfoItem = props => {
                         <h4>{props.height}</h4>
                     </div>
                     <input type="number" name={"height"} value={height} onChange={handleHeightChange}
-                            required/>
+                           required/>
                 </label>
 
                 <label>
@@ -125,40 +130,48 @@ const DetailInfoItem = props => {
                         <h4>{props.weight}</h4>
                     </div>
                     <input type="number" name={"weight"} value={weight} onChange={handleWeightChange}
-                            required/>
+                           required/>
                 </label>
 
                 <label>
-                    <div className="info" style={{flexDirection:"column"}}>
-                        <div id = "size_div">
-                            <h4 className = "essential" style={{marginBottom: "0", marginTop: "0"}}>{props.essential}</h4>
+                    <div className="info" style={{flexDirection: "column"}}>
+                        <div id="size_div">
+                            <h4 className="essential" style={{marginBottom: "0", marginTop: "0"}}>{props.essential}</h4>
                             <h4 style={{marginBottom: "0", marginTop: "0"}}>{props.size}</h4>
                         </div>
-                        <div id = "detail_selectbox">
-                            <div className= "detailbox_div">
-                                <OutlineSelectBox info={t("top_size")} event={handleTopSizeClick} value = {topSize} />
-                                <OutlineSelectBox info={t("bottom_size")} event={handleBottomSizeClick} value = {bottomSize} />
+                        <div id="detail_selectbox">
+                            <div className="detailbox_div">
+                                <OutlineSelectBox info={t("top_size")} event={handleTopSizeClick} value={topSize}/>
+                                <OutlineSelectBox info={t("bottom_size")} event={handleBottomSizeClick}
+                                                  value={bottomSize}/>
                             </div>
-                            <div className= "detailbox_div">
-                                <OutlineSelectShapeBox info = {t("shoulder")} event={handleShoulderClick} value = {shoulderSize}/>
-                                <OutlineSelectShapeBox info = {t("waist")} event={handleWaistClick} value = {waistSize}/>
+                            <div className="detailbox_div">
+                                <OutlineSelectShapeBox info={t("shoulder")} event={handleShoulderClick}
+                                                       value={shoulderSize}/>
+                                <OutlineSelectShapeBox info={t("waist")} event={handleWaistClick} value={waistSize}/>
                             </div>
-                            <div className= "detailbox_div">
-                                <OutlineSelectShapeBox info = {t("hip")} event={handleHipClick} value = {hipSize}/>
-                                <OutlineSelectShapeBox info = {t("thigh")} event={handleThighClick} value = {thighSize}/>
+                            <div className="detailbox_div">
+                                <OutlineSelectShapeBox info={t("hip")} event={handleHipClick} value={hipSize}/>
+                                <OutlineSelectShapeBox info={t("thigh")} event={handleThighClick} value={thighSize}/>
                             </div>
                         </div>
                     </div>
                 </label>
                 <label>
                     <div className="info">
-                        <div id = "prefer_style">
+                        <div id="prefer_style">
                             <div id="prefer_info">
                                 <h4 className="essential" style={{marginBottom: "0px"}}>{props.essential}</h4>
                                 <h4 style={{marginBottom: "0px"}}>{props.prefer_style}</h4>
-                                <h5 style={{marginBottom: "0px", marginRight: "0px", marginLeft: "auto", color:"#d4d3d3"}}>{props.selectable}</h5>
+                                <h5 style={{
+                                    marginBottom: "0px",
+                                    marginRight: "0px",
+                                    marginLeft: "auto",
+                                    color: "#d4d3d3"
+                                }}>{props.selectable}</h5>
                             </div>
-                        <HomeRecommend chips={chipList} text={t("recommend_button")} style={style} SetStyle={SetStyle}/>
+                            <HomeRecommend chips={chipList} text={t("recommend_button")} style={style}
+                                           SetStyle={SetStyle}/>
                         </div>
                     </div>
                 </label>
