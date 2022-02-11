@@ -1,12 +1,12 @@
 import React from "react";
 import {useTranslation} from "react-i18next";
-import {useNavigate} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import '../../stylesheets/Register.scss';
 import DetailInfoItem from "./DetailInfoItem";
 
 const DetailInfo = () => {
     const {t, i18n} = useTranslation()
-    const navigate = useNavigate()
+    const history = useHistory()
 
     return(
         <div>

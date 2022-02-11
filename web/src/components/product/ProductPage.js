@@ -1,13 +1,11 @@
 import React from "react";
 import Product from "./Product";
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
-const ProductPage= () => {
-    const params = useParams();
-    const location = useLocation();
-    const navigate = useNavigate();
+import {withRouter} from 'react-router-dom'
+const ProductPage= ({match}) => {
+    console.log(match.params)
     return (
         <Product />
     )
 }
 
-export default ProductPage;
+export default withRouter(ProductPage);

@@ -2,9 +2,9 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useTranslation} from "react-i18next";
 import {StringToNumStyle} from "../Data";
-import {useNavigate} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 const DetailArticleList = ({id}) => {
-    const navigate = useNavigate()
+    const history = useHistory()
     const [item, setItem] = useState(null)
     const [loading, setLoading] = useState(false);
     const {t, i18n} = useTranslation()
@@ -30,7 +30,7 @@ const DetailArticleList = ({id}) => {
     }
 
     const onCardClick = (e) => {
-        navigate({
+        history.push({
             pathname:`/closet/coordination/${e}`
         })
     }

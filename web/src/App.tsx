@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {
     BrowserRouter as Router,
-    Routes,
+    Switch,
     Route,
     Link
 } from "react-router-dom";
@@ -37,10 +37,10 @@ export default function App() {
             <div className="App">
                 <Header login={login} setLogin={setLogin}/>
                 <ScrollToTop />
-                <Routes>
+                <Switch>
                     {/*publicRoute : 권한없으면 못들어감 restricted가 있으면 로그인했을때 못들어감 없으면 그냥 다 들어갈 수 있음 홈으로 리다이렉트 */}
                     {/*privateRoute : 로그인 안했을 때 못들어감*/}
-                    <PublicRoute restricted={false} element={<Home/>} exact path={link.home} component={undefined} />
+                    <PublicRoute restricted = {false} component = {Home} exact path={link.home} />
                     <PrivateRoute component={Closet} exact path={link.closet}/>
                     <PrivateRoute component={Closet} exact path={link.defaultcloset} />
                     <PublicRoute restricted = {false} component = {Product} exact path={link.product} />
@@ -85,7 +85,7 @@ export default function App() {
                     <Route path="*">
                         <NotFound />
                     </Route>
-                </Routes>
+                </Switch>
                 <Footer />
             </div>
         </Router>

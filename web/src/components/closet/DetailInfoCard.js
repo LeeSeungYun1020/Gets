@@ -2,12 +2,12 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useTranslation} from "react-i18next";
 import ClosetCard from "./ClosetCard";
-import {useNavigate} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import {MdFavorite} from "react-icons/md";
 import isLogin from "../../lib/isLogin";
 
 const DetailInfoCard = ({id}) => {
-    const navigate = useNavigate();
+    const history = useHistory();
     const [item, setItem] = useState(null);
     const [outer, setOuter] = useState(null);
     const [top, setTop] = useState(null);
@@ -59,7 +59,7 @@ const DetailInfoCard = ({id}) => {
                             setSkirt(response_skirt);
                         }
                         else {
-                            navigate.goBack()
+                            history.goBack()
                         }
                     } catch(e) {
                         console.log(e)
@@ -81,13 +81,13 @@ const DetailInfoCard = ({id}) => {
         realAll = all.filter(item => item.data.result !== false)
     }
     const onCardClick = (e) => {
-        navigate({
+        history.push({
             pathname: `/product/${e}`
         })
     }
     const onCoordiClick = () => {
         if (!isLogin()) {
-            navigate('/account/signin')
+            history.push('/account/signin')
         } else {
             axios.get(`http://localhost:3000/coordination/favorite/${id}`, {withCredentials: true})
                 .then(response => {

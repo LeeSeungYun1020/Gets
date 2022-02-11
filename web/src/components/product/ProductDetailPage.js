@@ -1,14 +1,12 @@
 import React, {useEffect, useState} from "react";
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import {useHistory, withRouter} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import axios from "axios";
 import ProductDetailPageItem from "./ProductDetailPageItem";
 import link from "../../link";
-const ProductDetailPage = () => {
-    const params = useParams();
-    const location = useLocation();
-    const navigate = useNavigate();
-    const id = params.id
+const ProductDetailPage = ({match}) => {
+    const history = useHistory();
+    const id = match.params.id
     const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(false);
     const {i18n, t} = useTranslation()
@@ -28,7 +26,7 @@ const ProductDetailPage = () => {
                             setItem(response.data);
                         }
                         else {
-                            navigate('/product')
+                            history.push('/product')
                         }
                     } catch(e) {
                         console.log(e)
@@ -54,4 +52,4 @@ const ProductDetailPage = () => {
     )
 };
 
-export default ProductDetailPage
+export default withRouter(ProductDetailPage)

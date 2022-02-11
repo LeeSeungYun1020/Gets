@@ -10,7 +10,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import { MdFavorite } from "react-icons/md";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 const useStyles = makeStyles({
     root: {
         marginRight: 25,
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 });
 
 const ProductCard = ({item}) => {
-    const navigate = useNavigate();
+    const history = useHistory();
     const classes = useStyles();
     const { brand, name, price, image1ID, id } = item;
     const [favorite, setFavorite] = useState(0);
@@ -66,7 +66,7 @@ const ProductCard = ({item}) => {
         }
     }
     const onCardClick = () => {
-        navigate({
+        history.push({
             pathname: `/product/${id}`
         })
     }

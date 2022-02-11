@@ -14,7 +14,7 @@ import feminine from "../../images/home/feminine.png"
 import sexy_glam from "../../images/home/sexy_glam.png"
 import leftArrow from "../../images/home/elements-point-small-left.svg"
 import rightArrow from "../../images/home/elements-point-small-right.svg"
-import {useNavigate} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 const NextArrow = (props) => {
@@ -43,7 +43,7 @@ const PrevArrow = (props) => {
     );
 }
 const HomeStyleInfoSlick = () => {
-    const navigate = useNavigate();
+    const history = useHistory();
     const { t } = useTranslation();
     const settings = {
         infinite: false,
@@ -78,7 +78,7 @@ const HomeStyleInfoSlick = () => {
         ]
     };
     const onArticleClick = (e) => {
-        navigate(`/article/${e}`)
+        history.push(`/article/${e}`)
     }
     return (
         <div id ="style_info">

@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useNavigate} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import axios from "axios";
 import HomeRecommend from "../home/HomeRecommend";
 import CasualChip from "../../images/home/Oval_casual.webp";
@@ -20,7 +20,7 @@ import link from "../../link";
 
 const DetailInfoItem = props => {
     const {t, i18n} = useTranslation()
-    const navigate = useNavigate()
+    const history = useHistory()
     const chipList = [
         {image: CasualChip, text: t("casual")},
         {image: CampusChip, text: t("campus")},
@@ -90,7 +90,7 @@ const DetailInfoItem = props => {
             thigh: thighSize
         },{ withCredentials: true })
             .then(function (response) {
-                navigate.replace('/')
+                history.replace('/')
             })
             .catch(function (error) {
                 console.log(error)

@@ -4,11 +4,11 @@ import infoIcon from "../images/header/my_page.webp"
 import signinIcon from "../images/header/log_in.webp"
 import logoutIcon from "../images/header/log_out.webp"
 import axios from "axios";
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {useEffect, useState} from "react";
 import isLogin from "../lib/isLogin";
 const HeaderMenu = ({login, setLogin}) => {
-    const navigate = useNavigate();
+    const history = useHistory();
     return (
         <div id="top_menu">
             {/*<Link to = {link.cart}><img src={cartIcon}/><p>cart</p></Link>*/}

@@ -8,7 +8,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import axios from "axios";
 import { Menu, MenuItem} from "@material-ui/core";
 import {useTranslation} from "react-i18next";
-import {Link, Route, Switch, useNavigate} from 'react-router-dom';
+import {Link, Route, Switch, useHistory} from 'react-router-dom';
 const useStyles = makeStyles({
     root: {
         width: 310,
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 const ClosetCard = ({item, onRemove, category}) => {
     const classes = useStyles();
     const {t, i18n} = useTranslation();
-    const navigate = useNavigate();
+    const history = useHistory();
     const [anchorEl, setAnchorEl] = useState(null);
     const {id, price} = item
     const [imageId, setImageId] = useState(`${id}`);
@@ -37,12 +37,12 @@ const ClosetCard = ({item, onRemove, category}) => {
     const onCardClick = () => {
         if(id !== undefined) {
             if(category === 'product') {
-                navigate({
+                history.push({
                     pathname: `/product/${id}`
                 })
             }
             else {
-                navigate({
+                history.push({
                     pathname:`/closet/coordination/${id}`
                 })
             }

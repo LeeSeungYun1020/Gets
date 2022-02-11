@@ -6,7 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import  { useNavigate } from 'react-router-dom';
+import  { useHistory } from 'react-router-dom';
 
 const GetsCheckbox = withStyles({
     root: {
@@ -33,7 +33,7 @@ const RegisterBox = props => {
     const [checkId, SetCheckId] = useState("");
     const [checkId_bool, SetCheckId_bool] = useState(false);
     const [checkPw, SetCheckPw] = useState("");
-    const navigate = useNavigate();
+    const history = useHistory();
     const handleNameChange = event => {
         SetName(event.target.value);
     }
@@ -130,7 +130,7 @@ const RegisterBox = props => {
                 day: day
             })
                 .then(function (response) {
-                    navigate("/account/afterregister")
+                    history.push("/account/afterregister")
                 })
                 .catch(function (error) {
                     console.log(error)
