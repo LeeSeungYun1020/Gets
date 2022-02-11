@@ -33,7 +33,7 @@ const DetailInfoCard = ({id}) => {
                 const fetchData = async () => {
                     setLoading(true);
                     try {
-                        if(id > 0 && id <= last) {
+                        if (id > 0 && id <= last) {
                             // console.log(last)
                             const response = await axios.get(`http://localhost:3000/coordination/${id}`, {withCredentials: true});
                             setItem(response.data);
@@ -57,27 +57,26 @@ const DetailInfoCard = ({id}) => {
                             setHat(response_hat);
                             setShoes(response_shoes);
                             setSkirt(response_skirt);
-                        }
-                        else {
+                        } else {
                             history.goBack()
                         }
-                    } catch(e) {
+                    } catch (e) {
                         console.log(e)
                     }
                     setLoading(false);
                 }
-                fetchData();})
-    },[]);
+                fetchData();
+            })
+    }, []);
 
     // 대기 중일 때
-    if(loading) {
+    if (loading) {
         return <div><h3>로딩 중 ...</h3></div>
     }
     // 아직 item이 설정되지 않았을 때
     if (!item) {
         return null;
-    }
-    else {
+    } else {
         realAll = all.filter(item => item.data.result !== false)
     }
     const onCardClick = (e) => {
@@ -103,19 +102,21 @@ const DetailInfoCard = ({id}) => {
         }
     }
     return (
-        <div className = "coordi_card">
+        <div className="coordi_card">
             <h1>{item.title}</h1>
-            <div className= "detail-div">
-                <div className = "detail_coordi_card">
+            <div className="detail-div">
+                <div className="detail_coordi_card">
                     {/*{console.log(realAll)}*/}
-                    <div className = "item_list">
+                    <div className="item_list">
                         {realAll.map(all => (
                             <div className="item_info">
-                                <img onClick={() => onCardClick(all.data.id)} className = "detail_item_img" src = {`http://localhost:3000/product/image/${all.data.image1ID}`}/>
+                                <img onClick={() => onCardClick(all.data.id)} className="detail_item_img"
+                                     src={`http://localhost:3000/product/image/${all.data.image1ID}`}/>
                                 <h3>{all.data.name}</h3>
-                                <p style = {{
-                                    color: '#828282'}}>{all.data.brand}</p>
-                                <p style = {{
+                                <p style={{
+                                    color: '#828282'
+                                }}>{all.data.brand}</p>
+                                <p style={{
                                     display: 'flex',
                                     flexDirection: 'row-reverse'
                                 }}>{all.data.price.toLocaleString()}</p>
@@ -123,12 +124,13 @@ const DetailInfoCard = ({id}) => {
                         ))}
                     </div>
                 </div>
-                <div className = "coordi_img">
-                    <img style={{width: 455, height: 455}} src = {`http://localhost:3000/coordination/image/${item.id}`} />
+                <div className="coordi_img">
+                    <img style={{width: 455, height: 455}} src={`http://localhost:3000/coordination/image/${item.id}`}/>
                 </div>
             </div>
             <div className="add-button-div">
-                <button className="virtualFitting-button" onClick = {onCoordiClick}><MdFavorite/>{t("inmycloset2")}</button>
+                <button className="virtualFitting-button" onClick={onCoordiClick}><MdFavorite/>{t("inmycloset2")}
+                </button>
                 <button className="virtualFitting-button">{t("virtual_fitting")}</button>
             </div>
         </div>
