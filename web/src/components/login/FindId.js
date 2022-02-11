@@ -13,6 +13,6 @@ function FindId() {
             </div>
         </div>
     )
-};
+}
 
 export default FindId
