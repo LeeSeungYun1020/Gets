@@ -1,12 +1,15 @@
 # 리액트 빨리 보기
+
 ## 클래스 컴포넌트 랜더링
+
 ```typescript jsx
 // 클래스 컴포넌트 - 대문자 필수 (소문자는 DOM 태그) <>안에는 prop, states 순으로 들어간다.
-class Welcome extends React.Component<{name: String}, {}> {
+class Welcome extends React.Component<{ name: String }, {}> {
     render() {
         return <h1>Hello, {this.props.name}</h1>
     }
 }
+
 // 컴포넌트 합성 - 여러 개의 컴포넌트 참조(사용) 가능
 ReactDOM.render(
     <React.StrictMode>
@@ -18,13 +21,16 @@ ReactDOM.render(
 ```
 
 ## State와 생명 주기
+
 ```typescript jsx
-class Clock extends React.Component<{}, {date: Date}> {
+class Clock extends React.Component<{}, { date: Date }> {
     private timerID: NodeJS.Timeout;
+
     constructor(props) {
         super(props);
         this.state = {date: new Date()};
     }
+
     // 랜더링 이후 실행
     componentDidMount() {
         this.timerID = setInterval(
@@ -55,14 +61,15 @@ class Clock extends React.Component<{}, {date: Date}> {
 
 ReactDOM.render(
     <React.StrictMode>
-        <Clock />
-        <Clock />
+        <Clock/>
+        <Clock/>
     </React.StrictMode>,
     document.getElementById('root')
 );
 ```
 
 ## 이벤트 처리
+
 ```typescript jsx
 // 
 // 3-1. 별도 처리
@@ -76,6 +83,7 @@ function App() {
         <button type={"submit"}>submit</button>
     </form>
 }
+
 // 3-2. 컴포넌트로 처리 (클래스로 만듬)
 class LoggingButton extends React.Component {
     handleClick = () => {
@@ -97,7 +105,9 @@ function App() {
 ```
 
 ## 조건부 렌더링
+
 ### 조건문 사용
+
 ```typescript jsx
 function UserGreeting(props) {
     return <h1>Welcome back!</h1>;
@@ -110,59 +120,63 @@ function GuestGreeting(props) {
 function Greeting(props) {
     const isLoggedIn = props.isLoggedIn;
     if (isLoggedIn) {
-        return <UserGreeting />;
+        return <UserGreeting/>;
     }
-    return <GuestGreeting />;
+    return <GuestGreeting/>;
 }
 
 function App() {
     return (
         <div className="App">
-            <Greeting isLoggedIn={true} />
+            <Greeting isLoggedIn={true}/>
         </div>
     )
 }
 ```
 
 ### && 사용
+
 ```typescript jsx
 function Mailbox(props) {
-  const unreadMessages = props.unreadMessages;
-  return (
-    <div>
-      <h1>Hello!</h1>
-      {unreadMessages.length > 0 &&
-        <h2>
-          You have {unreadMessages.length} unread messages.
-        </h2>
-      }
-    </div>
-  );
+    const unreadMessages = props.unreadMessages;
+    return (
+        <div>
+            <h1>Hello!</h1>
+            {unreadMessages.length > 0 &&
+                <h2>
+                    You have {unreadMessages.length} unread messages.
+                </h2>
+            }
+        </div>
+    );
 }
 
 const messages = ['React', 'Re: React', 'Re:Re: React'];
 ReactDOM.render(
-  <Mailbox unreadMessages={messages} />,
-  document.getElementById('root')
+    <Mailbox unreadMessages={messages}/>,
+    document.getElementById('root')
 );
 ```
 
 ## 리스트
+
 ```typescript jsx
 const numbers = [1, 2, 3, 4, 5];
 const listItems = numbers.map((number) =>
-  <li>{number}</li>
+    <li>{number}</li>
 );
 ```
 
 ### 키
-리스트 항목 구분을 위해 필요  
+
+리스트 항목 구분을 위해 필요
+
 ```typescript jsx
 const numbers = [1, 2, 3, 4, 5];
 const listItems = numbers.map((number) =>
-  <li key={number.toString()}>
-    {number}
-  </li>
+    <li key={number.toString()}>
+        {number}
+    </li>
 );
 const todoItems = todos.map((todo) =>
     <li key={todo.id}>
@@ -170,67 +184,70 @@ const todoItems = todos.map((todo) =>
     </li>
 );
 ```
+
 ```typescript jsx
 function ListItem(props) {
-  // 여기에는 key를 지정할 필요가 없음
-  return <li>{props.value}</li>;
+    // 여기에는 key를 지정할 필요가 없음
+    return <li>{props.value}</li>;
 }
 
 function NumberList(props) {
-  const numbers = props.numbers;
-  const listItems = numbers.map((number) =>
-    // 배열 안에 key를 지정해야 함
-    <ListItem key={number.toString()} value={number} />
-  );
-  return (
-    <ul>
-      {listItems}
-    </ul>
-  );
+    const numbers = props.numbers;
+    const listItems = numbers.map((number) =>
+        // 배열 안에 key를 지정해야 함
+        <ListItem key={number.toString()} value={number}/>
+    );
+    return (
+        <ul>
+            {listItems}
+        </ul>
+    );
 }
 
 const numbers = [1, 2, 3, 4, 5];
 ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
+    <NumberList numbers={numbers}/>,
+    document.getElementById('root')
 );
 ```
 
 ## 폼
+
 ```typescript jsx
 class NameForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
+    constructor(props) {
+        super(props);
+        this.state = {value: ''};
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
+    handleChange(event) {
+        this.setState({value: event.target.value});
+    }
 
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
+    handleSubmit(event) {
+        alert('A name was submitted: ' + this.state.value);
+        event.preventDefault();
+    }
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label>
+                    Name:
+                    <input type="text" value={this.state.value} onChange={this.handleChange}/>
+                </label>
+                <input type="submit" value="Submit"/>
+            </form>
+        );
+    }
 }
 ```
 
 ## state 끌어올리기
+
 ```javascript
 import React from 'react';
 
@@ -281,7 +298,7 @@ class TemperatureInput extends React.Component {
             <fieldset>
                 <legend>Enter temperature in {scaleNames[scale]}:</legend>
                 <input value={temperature}
-                       onChange={this.handleChange} />
+                       onChange={this.handleChange}/>
             </fieldset>
         );
     }
@@ -314,13 +331,13 @@ class Calculator extends React.Component {
                 <TemperatureInput
                     scale="c"
                     temperature={celsius}
-                    onTemperatureChange={this.handleCelsiusChange} />
+                    onTemperatureChange={this.handleCelsiusChange}/>
                 <TemperatureInput
                     scale="f"
                     temperature={fahrenheit}
-                    onTemperatureChange={this.handleFahrenheitChange} />
+                    onTemperatureChange={this.handleFahrenheitChange}/>
                 <BoilingVerdict
-                    celsius={parseFloat(celsius)} />
+                    celsius={parseFloat(celsius)}/>
             </div>
         );
     }
@@ -330,13 +347,14 @@ export default Calculator
 ```
 
 ## 합성
+
 ```javascript
 function FancyBorder(props) {
-  return (
-    <div className={'FancyBorder FancyBorder-' + props.color}>
-      {props.children}
-    </div>
-  );
+    return (
+        <div className={'FancyBorder FancyBorder-' + props.color}>
+            {props.children}
+        </div>
+    );
 }
 
 function WelcomeDialog() {
@@ -354,25 +372,26 @@ function WelcomeDialog() {
 ```
 
 ### 특수화
+
 ```javascript
 function Dialog(props) {
-  return (
-    <FancyBorder color="blue">
-      <h1 className="Dialog-title">
-        {props.title}
-      </h1>
-      <p className="Dialog-message">
-        {props.message}
-      </p>
-    </FancyBorder>
-  );
+    return (
+        <FancyBorder color="blue">
+            <h1 className="Dialog-title">
+                {props.title}
+            </h1>
+            <p className="Dialog-message">
+                {props.message}
+            </p>
+        </FancyBorder>
+    );
 }
 
 function WelcomeDialog() {
-  return (
-    <Dialog
-      title="Welcome"
-      message="Thank you for visiting our spacecraft!" />
-  );
+    return (
+        <Dialog
+            title="Welcome"
+            message="Thank you for visiting our spacecraft!"/>
+    );
 }
 ```
