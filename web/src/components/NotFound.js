@@ -8,7 +8,7 @@ function NotFound(props) {
     return (
         <div className={"not_found_box"}>
             <h1>{t("not_found_title")}</h1>
-            <img src={NotFoundImage} />
+            <img src={NotFoundImage}/>
             <h2>{t("not_found_subtitle")}<br/>{match.url}</h2>
         </div>
     )
