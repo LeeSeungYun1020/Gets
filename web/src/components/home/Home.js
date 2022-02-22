@@ -11,7 +11,7 @@ function Home(props) {
         <section className="home">
             <HomeSlider/>
             <HomeGetStyle text={t("recommend_button")}/>
-            <HomeStyleGuide title = {t("style_guide")}/>
+            <HomeStyleGuide title={t("style_guide")}/>
         </section>
     )
 }

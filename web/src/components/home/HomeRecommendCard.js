@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
@@ -28,36 +28,34 @@ const useStyles = makeStyles({
 const HomeRecommendCard = (props) => {
     const classes = useStyles();
     const history = useHistory();
-    const {title, content, cost, image_id, id } = props
+    const {title, content, cost, image_id, id} = props
     const [checked, setChecked] = useState(false)
-    useEffect(()=> {
-        axios.get(`http://localhost:3000/coordination/check/favorite/${id}`, { withCredentials: true })
-            .then( response => {
+    useEffect(() => {
+        axios.get(`http://localhost:3000/coordination/check/favorite/${id}`, {withCredentials: true})
+            .then(response => {
                 if (response.data.result) {
                     setChecked(true);
-                }
-                else {
+                } else {
                     setChecked(false);
                 }
             })
     })
     const onCardClick = () => {
         history.push({
-            pathname:`/closet/coordination/${id}`
+            pathname: `/closet/coordination/${id}`
         })
     }
     const onFavoriteChange = (e) => {
         console.log(e.target.checked)
-        if(e.target.checked) {
-            axios.get(`http://localhost:3000/coordination/favorite/${id}`, { withCredentials: true })
-                .then( response => {
+        if (e.target.checked) {
+            axios.get(`http://localhost:3000/coordination/favorite/${id}`, {withCredentials: true})
+                .then(response => {
                     setChecked(true);
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-        }
-        else {
+        } else {
             axios.get(`http://localhost:3000/coordination/unfavorite/${id}`, {withCredentials: true})
                 .then(response => {
                     setChecked(false);
@@ -70,11 +68,14 @@ const HomeRecommendCard = (props) => {
     return (
         <Card elevation={8} className={classes.root}>
             <CardActionArea>
-                <div className = "coordi_favorit">
+                <div className="coordi_favorit">
                     <FormControlLabel
-                        control={<Checkbox icon={<Favorite />} checkedIcon={<Favorite />} name="checkedH" onChange = {onFavoriteChange} checked={checked}
-                                           style = {{ position:"absolute", zIndex: 1, right: 9, top: 9, borderRadius: "50%",
-                                               background: "#ffffff"}}/> }
+                        control={<Checkbox icon={<Favorite/>} checkedIcon={<Favorite/>} name="checkedH"
+                                           onChange={onFavoriteChange} checked={checked}
+                                           style={{
+                                               position: "absolute", zIndex: 1, right: 9, top: 9, borderRadius: "50%",
+                                               background: "#ffffff"
+                                           }}/>}
                     />
                 </div>
                 <CardMedia
@@ -82,10 +83,10 @@ const HomeRecommendCard = (props) => {
                     image={`http://localhost:3000/coordination/image/${image_id}`}
                     title={title}
                     onClick={onCardClick}
-                    style = {{
+                    style={{
                         position: 'relative'
                     }}
-                    >
+                >
                 </CardMedia>
                 <CardContent>
                     <Typography gutterBottom variant="h6" component="h6">

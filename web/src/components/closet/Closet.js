@@ -14,7 +14,7 @@ const Closet = ({match}) => {
     return (
         <div className="closet">
             <ClosetCategory category={category}/>
-            <ClosetList category={category} />
+            <ClosetList category={category}/>
         </div>
     )
 }

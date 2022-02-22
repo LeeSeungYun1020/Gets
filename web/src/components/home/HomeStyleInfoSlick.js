@@ -17,41 +17,42 @@ import rightArrow from "../../images/home/elements-point-small-right.svg"
 import {useHistory} from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 const NextArrow = (props) => {
-    const { className, style, onClick } = props;
+    const {className, style, onClick} = props;
     return (
         <div
             className={className}
-            style={{ ...style}}
+            style={{...style}}
             onClick={onClick}
         >
-            <img src = {rightArrow} />
+            <img src={rightArrow}/>
         </div>
     );
 }
 
 const PrevArrow = (props) => {
-    const { className, style, onClick } = props;
+    const {className, style, onClick} = props;
     return (
         <div
             className={className}
-            style={{ ...style}}
+            style={{...style}}
             onClick={onClick}
         >
-            <img src = {leftArrow} />
+            <img src={leftArrow}/>
         </div>
     );
 }
 const HomeStyleInfoSlick = () => {
     const history = useHistory();
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     const settings = {
         infinite: false,
         speed: 500,
         slidesToShow: 6,
         draggable: true,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
+        nextArrow: <NextArrow/>,
+        prevArrow: <PrevArrow/>,
         responsive: [
             {
                 breakpoint: 1024,
@@ -81,52 +82,52 @@ const HomeStyleInfoSlick = () => {
         history.push(`/article/${e}`)
     }
     return (
-        <div id ="style_info">
+        <div id="style_info">
             <Slider {...settings}>
-                    <div className = "style_info_img" onClick={() => onArticleClick("casual")} >
-                        <h2>{t("casual")}</h2>
-                        <img src={casual}/>
-                    </div>
-                    <div className = "style_info_img" onClick={() => onArticleClick("campus")}>
-                        <h2>{t("campus")}</h2>
-                        <img src={campus}/>
-                    </div>
-                    <div className = "style_info_img" onClick={() => onArticleClick("street")}>
-                        <h2>{t("street")}</h2>
-                        <img src={street}/>
-                    </div>
-                    <div className = "style_info_img" onClick={() => onArticleClick("rock-chic")}>
-                        <h2>{t("rock-chic")}</h2>
-                        <img src={rock_chic}/>
-                    </div>
-                    <div className = "style_info_img" onClick={() => onArticleClick("amekaji")}>
-                        <h2>{t("amekaji")}</h2>
-                        <img src={amekaji}/>
-                    </div>
-                    <div className = "style_info_img" onClick={() => onArticleClick("city-boy")}>
-                        <h2>{t("city-boy")}</h2>
-                        <img src={city_boy}/>
-                    </div>
-                    <div className="style_info_img" onClick={() => onArticleClick("office")}>
-                        <h2>{t("office")}</h2>
-                        <img src={office}/>
-                    </div>
-                    <div className="style_info_img" onClick={() => onArticleClick("sexy-glam")}>
-                        <h2>{t("sexy-glam")}</h2>
-                        <img src={sexy_glam}/>
-                    </div>
-                    <div className="style_info_img" onClick={() => onArticleClick("feminine")}>
-                        <h2>{t("feminine")}</h2>
-                        <img src={feminine}/>
-                    </div>
-                    <div className="style_info_img" onClick={() => onArticleClick("lovely")}>
-                        <h2>{t("lovely")}</h2>
-                        <img src={lovely}/>
-                    </div>
-                    <div className="style_info_img" onClick={() => onArticleClick("minimal")}>
-                        <h2>{t("minimal")}</h2>
-                        <img src={minimal}/>
-                    </div>
+                <div className="style_info_img" onClick={() => onArticleClick("casual")}>
+                    <h2>{t("casual")}</h2>
+                    <img src={casual}/>
+                </div>
+                <div className="style_info_img" onClick={() => onArticleClick("campus")}>
+                    <h2>{t("campus")}</h2>
+                    <img src={campus}/>
+                </div>
+                <div className="style_info_img" onClick={() => onArticleClick("street")}>
+                    <h2>{t("street")}</h2>
+                    <img src={street}/>
+                </div>
+                <div className="style_info_img" onClick={() => onArticleClick("rock-chic")}>
+                    <h2>{t("rock-chic")}</h2>
+                    <img src={rock_chic}/>
+                </div>
+                <div className="style_info_img" onClick={() => onArticleClick("amekaji")}>
+                    <h2>{t("amekaji")}</h2>
+                    <img src={amekaji}/>
+                </div>
+                <div className="style_info_img" onClick={() => onArticleClick("city-boy")}>
+                    <h2>{t("city-boy")}</h2>
+                    <img src={city_boy}/>
+                </div>
+                <div className="style_info_img" onClick={() => onArticleClick("office")}>
+                    <h2>{t("office")}</h2>
+                    <img src={office}/>
+                </div>
+                <div className="style_info_img" onClick={() => onArticleClick("sexy-glam")}>
+                    <h2>{t("sexy-glam")}</h2>
+                    <img src={sexy_glam}/>
+                </div>
+                <div className="style_info_img" onClick={() => onArticleClick("feminine")}>
+                    <h2>{t("feminine")}</h2>
+                    <img src={feminine}/>
+                </div>
+                <div className="style_info_img" onClick={() => onArticleClick("lovely")}>
+                    <h2>{t("lovely")}</h2>
+                    <img src={lovely}/>
+                </div>
+                <div className="style_info_img" onClick={() => onArticleClick("minimal")}>
+                    <h2>{t("minimal")}</h2>
+                    <img src={minimal}/>
+                </div>
             </Slider>
         </div>
     )

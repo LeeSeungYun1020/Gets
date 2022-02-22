@@ -1,0 +1,15 @@
+<div class="mdc-card main_card <%= type %>">
+    <div class="mdc-card__primary-action">
+        <div class="mdc-card__media mdc-card__media--square">
+            <div class="mdc-card__media-content mdc-typography--headline3"
+                 onclick="location.href = '<%= link %>';"><%= title %></div>
+        </div>
+        <div class="mdc-card__ripple"></div>
+    </div>
+    <div class="mdc-card__actions">
+        <button class="mdc-button mdc-card__action mdc-card__action--button" onclick="location.href = '<%= link %>';">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">Move</span>
+        </button>
+    </div>
+</div>

@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import axios from "axios";
-import { Menu, MenuItem} from "@material-ui/core";
+import {Menu, MenuItem} from "@material-ui/core";
 import {useTranslation} from "react-i18next";
 import {Link, Route, Switch, useHistory} from 'react-router-dom';
+
 const useStyles = makeStyles({
     root: {
         width: 310,
@@ -26,28 +27,25 @@ const ClosetCard = ({item, onRemove, category}) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const {id, price} = item
     const [imageId, setImageId] = useState(`${id}`);
-    useEffect(()=> {
+    useEffect(() => {
         if (category === 'product') {
             setImageId(`${id}_1`)
-        }
-        else {
+        } else {
             setImageId(`${id}`)
         }
     })
     const onCardClick = () => {
-        if(id !== undefined) {
-            if(category === 'product') {
+        if (id !== undefined) {
+            if (category === 'product') {
                 history.push({
                     pathname: `/product/${id}`
                 })
-            }
-            else {
+            } else {
                 history.push({
-                    pathname:`/closet/coordination/${id}`
+                    pathname: `/closet/coordination/${id}`
                 })
             }
-        }
-        else {
+        } else {
             alert("내 옷장에 코디를 추가하고 상세정보를 확인해보세요!")
         }
     }
@@ -59,7 +57,7 @@ const ClosetCard = ({item, onRemove, category}) => {
         setAnchorEl(null);
     }
     const handleDeleteClick = () => {
-        if(id !== undefined) {
+        if (id !== undefined) {
             axios.get(`http://localhost:3000/${category}/unfavorite/${id}`, {withCredentials: true})
                 .then(response => {
                     setAnchorEl(null);
@@ -70,8 +68,7 @@ const ClosetCard = ({item, onRemove, category}) => {
                 .catch(function (error) {
                     console.log(error);
                 });
-        }
-        else {
+        } else {
             alert("내 옷장에 코디를 추가하고 상세정보를 확인해보세요!")
         }
     }
@@ -79,18 +76,20 @@ const ClosetCard = ({item, onRemove, category}) => {
         <div className="closet_card">
             <Card className={classes.root}>
                 <CardActionArea>
-                    <IconButton aria-label="settings" style = {{ color: "black", position:"absolute", zIndex: 1, right: 0 }} onClick = {handleClick}>
-                        <MoreVertIcon />
+                    <IconButton aria-label="settings"
+                                style={{color: "black", position: "absolute", zIndex: 1, right: 0}}
+                                onClick={handleClick}>
+                        <MoreVertIcon/>
                     </IconButton>
                     <Menu
-                        id = "option_menu"
+                        id="option_menu"
                         anchorEl={anchorEl}
                         keepMounted
                         open={Boolean(anchorEl)}
                         onClose={handleClose}
 
                     >
-                        <MenuItem onClick = {handleDeleteClick} style = {{
+                        <MenuItem onClick={handleDeleteClick} style={{
                             fontFamily: 'Noto Sans KR',
                             fontSize: '1.25rem'
                         }}>{t("delete")}</MenuItem>
@@ -99,11 +98,11 @@ const ClosetCard = ({item, onRemove, category}) => {
                     <CardMedia
                         className={classes.media}
                         image={`http://localhost:3000/${category}/image/${imageId}`}
-                        onClick = {onCardClick}
-                        style = {{
+                        onClick={onCardClick}
+                        style={{
                             position: 'relative'
                         }}
-                        >
+                    >
                     </CardMedia>
                 </CardActionArea>
             </Card>

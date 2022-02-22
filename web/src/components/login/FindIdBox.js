@@ -22,6 +22,7 @@ class SignInBox extends React.Component {
     handlePhoneNumberChange(event) {
         this.setState({phoneNumber: event.target.value});
     }
+
     handleInfo(event) {
         alert(`name=${this.state.name}, phoneNumber=${this.state.phoneNumber}`)
         axios.post('http://localhost:3000/api/signin', {
@@ -39,19 +40,21 @@ class SignInBox extends React.Component {
     render() {
         let FindForm
         FindForm = (
-            <div id = "find_id_form">
+            <div id="find_id_form">
                 <form onSubmit={this.handleInfo}>
                     <label>
-                        <input type="text" name={"name"} value={this.state.name} placeholder={this.props.name} onChange={this.handleNameChange}
+                        <input type="text" name={"name"} value={this.state.name} placeholder={this.props.name}
+                               onChange={this.handleNameChange}
                                required/>
                     </label>
 
                     <label>
-                        <input type="number" name={"phoneNumber"} placeholder={this.props.enter_phone} value={this.state.phoneNumber}
+                        <input type="number" name={"phoneNumber"} placeholder={this.props.enter_phone}
+                               value={this.state.phoneNumber}
                                onChange={this.handlePhoneNumberChange} required/>
                         {/*<button type ="submit">{this.props.request}</button>*/}
                     </label>
-                    <input id = "submit" type="submit" value={this.props.enter}/>
+                    <input id="submit" type="submit" value={this.props.enter}/>
                 </form>
             </div>
         )

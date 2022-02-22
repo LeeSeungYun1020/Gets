@@ -3,6 +3,7 @@ import axios from "axios";
 import {useTranslation} from "react-i18next";
 import {StringToNumStyle} from "../Data";
 import {useHistory} from "react-router-dom";
+
 const DetailArticleList = ({id}) => {
     const history = useHistory()
     const [item, setItem] = useState(null)
@@ -20,8 +21,8 @@ const DetailArticleList = ({id}) => {
             setLoading(false);
         }
         fetchData();
-    },[id])
-    if(loading) {
+    }, [id])
+    if (loading) {
         return <div><h3>로딩 중 ...</h3></div>
     }
     // 아직 item이 설정되지 않았을 때
@@ -31,12 +32,13 @@ const DetailArticleList = ({id}) => {
 
     const onCardClick = (e) => {
         history.push({
-            pathname:`/closet/coordination/${e}`
+            pathname: `/closet/coordination/${e}`
         })
     }
     return (
         <div className="style-coordi-card-list">
-            {item.map(item => <div onClick = {() => onCardClick(item.id)} className = "style-coordi-card"><img src={`http://localhost:3000/coordination/image/${item.id}`}/></div>)}
+            {item.map(item => <div onClick={() => onCardClick(item.id)} className="style-coordi-card"><img
+                src={`http://localhost:3000/coordination/image/${item.id}`}/></div>)}
         </div>
     )
 };

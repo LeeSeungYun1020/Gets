@@ -1,7 +1,7 @@
 import HeaderTab from './HeaderTab'
 import HeaderLogo from "./HeaderLogo";
-import HeaderMenu from "./HeaderMenu";
 import HeaderContainer from "./HeaderContainer";
+
 function Header({login, setLogin}) {
     return (
         <header>
@@ -10,7 +10,7 @@ function Header({login, setLogin}) {
             {/* 탭 */}
             <HeaderTab/>
             {/* 메뉴 */}
-            <HeaderContainer />
+            <HeaderContainer/>
         </header>
     )
 }

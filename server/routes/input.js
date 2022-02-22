@@ -1,3 +1,7 @@
+/*
+* Input
+* 데이터베이스 초기 설정시 자동 입력 도구
+* */
 const express = require('express')
 const router = express.Router()
 const fs = require('fs')
@@ -7,14 +11,15 @@ const product = require('../lib/product')
 const coordination = require('../lib/coordination')
 
 const commonHead = require('../components/commonHead')
-const string = require('../components/string_index')
+const string = require('../components/string_input')
 const fstring = require('../components/string_footer')
 
-/* GET home page. */
+// 자동 입력 기능 제공 페이지
 router.get('/', function (req, res, next) {
 	res.render('input', {commonHead: commonHead, string: string[req.body.locale], fstring: fstring[req.body.locale]})
 });
 
+// 제품 데이터베이스에 자동 입력
 router.get('/product', function (req, res, next) {
 	const processFile = async () => {
 		let records = []
@@ -62,6 +67,7 @@ router.get('/product', function (req, res, next) {
 	})()
 })
 
+// 코디 데이터베이스에 자동 입력
 router.get("/coordination", (req, res) => {
 	const processFile = async () => {
 		let records = []
@@ -69,37 +75,37 @@ router.get("/coordination", (req, res) => {
 		.createReadStream(`./coordination/coordination.csv`)
 		.pipe(parse({}))
 		for await(const record of parser) {
-			const id            = record[1]
-			const outerID       = record[2] || 0
-			const outerImageID  = record[3] || 0
-			const topID         = record[4] || 0
-			const topImageID    = record[5] || 0
-			const top2ID        = record[6] || 0
-			const top2ImageID   = record[7] || 0
-			const bottomID      = record[8] || 0
+			const id = record[1]
+			const outerID = record[2] || 0
+			const outerImageID = record[3] || 0
+			const topID = record[4] || 0
+			const topImageID = record[5] || 0
+			const top2ID = record[6] || 0
+			const top2ImageID = record[7] || 0
+			const bottomID = record[8] || 0
 			const bottomImageID = record[9] || 0
-			const skirtID       = record[10] || 0
-			const skirtImageID  = record[11] || 0
-			const setID         = record[12] || 0
-			const setImageID    = record[13] || 0
-			const shoesID       = record[14] || 0
-			const shoesImageID  = record[15] || 0
-			const bagID         = record[16] || 0
-			const bagImageID    = record[17] || 0
-			const hatID         = record[18] || 0
-			const hatImageID    = record[19] || 0
-			const title         = record[20]
-			const style         = coordination.getStyleCode(record[21])
-			const gender        = coordination.getGenderCode(record[22])
-			const age           = coordination.getAgeCode(record[23])
-			const season        = coordination.getSeasonCode(record[24])
-			const fit           = record[25] //coordination.getFitCode(record[23])
-			const price         = record[26]
-			const imageID       = record[27] //record[27].split(".")[0]
+			const skirtID = record[10] || 0
+			const skirtImageID = record[11] || 0
+			const setID = record[12] || 0
+			const setImageID = record[13] || 0
+			const shoesID = record[14] || 0
+			const shoesImageID = record[15] || 0
+			const bagID = record[16] || 0
+			const bagImageID = record[17] || 0
+			const hatID = record[18] || 0
+			const hatImageID = record[19] || 0
+			const title = record[20]
+			const style = coordination.getStyleCode(record[21])
+			const gender = coordination.getGenderCode(record[22])
+			const age = coordination.getAgeCode(record[23])
+			const season = coordination.getSeasonCode(record[24])
+			const fit = record[25] //coordination.getFitCode(record[23])
+			const price = record[26]
+			const imageID = record[27] //record[27].split(".")[0]
 			//console.log(fit)
 			connection.query(`insert into coordination
                               (id, title, outerID, outerImageID, topID, topImageID, top2ID, top2ImageID,
-                               bottomID, bottomImageID, skirtID,skirtImageID,
+                               bottomID, bottomImageID, skirtID, skirtImageID,
                                setID, setImageID, shoesID, shoesImageID, bagID, bagImageID, hatID, hatImageID, style,
                                gender, age, season, fit, price, imageID)
                               values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -120,6 +126,7 @@ router.get("/coordination", (req, res) => {
 	})()
 })
 
+// 기사 데이터베이스에 자동 입력
 router.get("/article", (req, res) => {
 	connection.query(`
         insert into article \
@@ -239,11 +246,13 @@ router.get("/article", (req, res) => {
 		insert into articleImage values (1, 39); \
 		insert into articleImage values (1, 40); \
 		insert into articleImage values (1, 41); \
-	`.trim(), (err, result) => {
-		res.send(err || result)
-	})
+	`.trim(),
+		(err, result) => {
+			res.send(err || result)
+		})
 })
 
+// 테이블 자동 생성, 기존에 있는 경우에는 생성 안함
 router.get("/ready", (req, res) => {
 	connection.query(`
         create table IF NOT EXISTS user
@@ -297,8 +306,8 @@ router.get("/ready", (req, res) => {
             outerImageID  INT,
             topID         INT,
             topImageID    INT,
-            top2ID		  INT,
-            top2ImageID	  INT,
+            top2ID        INT,
+            top2ImageID   INT,
             bottomID      INT,
             bottomImageID INT,
             skirtID       INT,
@@ -359,6 +368,7 @@ router.get("/ready", (req, res) => {
 	})
 })
 
+// 모든 테이블 삭제
 router.get("/clear", (req, res) => {
 	connection.query("drop table articleImage, article;" +
 		"drop table favoriteCoordination, favoriteProduct;" +
@@ -367,18 +377,21 @@ router.get("/clear", (req, res) => {
 	})
 })
 
+// 제품 목록 테이블 초기화
 router.get("/product/clear", (req, res) => {
 	connection.query("delete from product", (err, result) => {
 		res.send(result)
 	})
 })
 
+// 코디 목록 테이블 초기화
 router.get("/coordination/clear", (req, res) => {
 	connection.query("delete from coordination", (err, result) => {
 		res.send(result)
 	})
 })
 
+// 기사 목록 테이블 초기화
 router.get("/article/clear", (req, res) => {
 	connection.query("delete from article; delete from articleImage", (err, result) => {
 		res.send(result)

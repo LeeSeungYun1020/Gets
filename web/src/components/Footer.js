@@ -2,13 +2,13 @@ import {useTranslation} from 'react-i18next'
 import FooterDetail from "./FooterDetail";
 import link from "../link";
 import FooterLogo from "./FooterLogo";
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import i18next from 'i18next';
 import React from "react";
-import { Select, Box, Grommet } from 'grommet';
-import { CaretDownFill } from 'grommet-icons';
+import {Box, Grommet, Select} from 'grommet';
+import {CaretDownFill} from 'grommet-icons';
 import FooterAddress from "./FooterAddress";
-import { hpe } from 'grommet-theme-hpe';
+import {hpe} from 'grommet-theme-hpe';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -25,8 +25,8 @@ function changeLang(lang) {
 
 function Footer(props) {
     const options = [
-        { label: '한국어', value: 'ko' },
-        { label: 'English', value: 'en'}
+        {label: '한국어', value: 'ko'},
+        {label: 'English', value: 'en'}
     ];
     // const [value, setValue] = React.useState('ko');
     const {t, i18n} = useTranslation()
@@ -62,7 +62,7 @@ function Footer(props) {
                                 placeholder={t("korean")}
                                 labelKey='label'
                                 valueKey='value'
-                                onChange={({ option }) => {
+                                onChange={({option}) => {
                                     changeLang(option.value);
                                 }}
                                 alignSelf='start'
@@ -72,7 +72,7 @@ function Footer(props) {
 
                                 icon={
                                     <Box>
-                                        <CaretDownFill size="medium" color="#d4d3d3" />
+                                        <CaretDownFill size="medium" color="#d4d3d3"/>
                                     </Box>
                                 }>
 

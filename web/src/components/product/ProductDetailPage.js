@@ -3,7 +3,7 @@ import {useHistory, withRouter} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import axios from "axios";
 import ProductDetailPageItem from "./ProductDetailPageItem";
-import link from "../../link";
+
 const ProductDetailPage = ({match}) => {
     const history = useHistory();
     const id = match.params.id
@@ -21,14 +21,13 @@ const ProductDetailPage = ({match}) => {
                     setLoading(true);
                     // console.log(last)
                     try {
-                        if(id > 2 && id <= last) {
+                        if (id > 2 && id <= last) {
                             const response = await axios.get(`http://localhost:3000/product/${id}`, {withCredentials: true});
                             setItem(response.data);
-                        }
-                        else {
+                        } else {
                             history.push('/product')
                         }
-                    } catch(e) {
+                    } catch (e) {
                         console.log(e)
                     }
                     setLoading(false);
@@ -36,10 +35,10 @@ const ProductDetailPage = ({match}) => {
                 fetchData();
             })
         // console.log(last)
-    },[]);
+    }, []);
 
     // 대기 중일 때
-    if(loading) {
+    if (loading) {
         return <div><h3>로딩 중 ...</h3></div>
     }
     // 아직 item이 설정되지 않았을 때
@@ -47,8 +46,8 @@ const ProductDetailPage = ({match}) => {
         return null;
     }
 
-    return(
-        <ProductDetailPageItem item={item} />
+    return (
+        <ProductDetailPageItem item={item}/>
     )
 };
 

@@ -1,9 +1,9 @@
 import React from "react";
-import {Route, Redirect, useHistory} from "react-router-dom";
+import {Route, useHistory} from "react-router-dom";
 import isLogin from "./isLogin";
 import link from "../link";
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({component: Component, ...rest}) => {
     const history = useHistory();
     return (
         // Show the component only when the user is logged in

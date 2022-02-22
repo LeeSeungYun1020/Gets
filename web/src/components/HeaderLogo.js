@@ -5,7 +5,7 @@ import link from "../link";
 function HeaderLogo() {
     return (
         <section id="logo">
-            <Link to={link.home} rel="stylesheet" ><img src={logo} height="50px"/></Link>
+            <Link to={link.home} rel="stylesheet"><img src={logo} height="50px"/></Link>
         </section>
     )
 }

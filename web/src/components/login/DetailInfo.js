@@ -8,16 +8,17 @@ const DetailInfo = () => {
     const {t, i18n} = useTranslation()
     const history = useHistory()
 
-    return(
+    return (
         <div>
-            <div id = "info">
+            <div id="info">
                 <h1>{t("detail_info_input1")}</h1>
                 <h1>{t("detail_info_input2")}</h1>
             </div>
             <div className="black_line"></div>
-            <DetailInfoItem essential = {t("essential")} gender={t("gender")} man={t("man")} woman={t("woman")}
-            height = {t("height")} weight = {t("weight")} size = {t("size")} prefer_style = {t("prefer_style")} price = {t("price")}
-            add_info = {t("add_myinfo_real")} selectable = {t("selectable")}/>
+            <DetailInfoItem essential={t("essential")} gender={t("gender")} man={t("man")} woman={t("woman")}
+                            height={t("height")} weight={t("weight")} size={t("size")} prefer_style={t("prefer_style")}
+                            price={t("price")}
+                            add_info={t("add_myinfo_real")} selectable={t("selectable")}/>
         </div>
     )
 };

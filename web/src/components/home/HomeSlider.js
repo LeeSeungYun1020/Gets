@@ -11,28 +11,29 @@ import rightArrow from "../../images/article/right.webp";
 import leftArrow from "../../images/article/left.webp";
 import homeimg from "../../images/home/main_image.png";
 import {useTranslation} from "react-i18next";
+
 const NextArrow = (props) => {
-    const { className, style, onClick } = props;
+    const {className, style, onClick} = props;
     return (
         <div
             className={className}
-            style={{ ...style}}
+            style={{...style}}
             onClick={onClick}
         >
-            <img src = {rightArrow} />
+            <img src={rightArrow}/>
         </div>
     );
 }
 
 const PrevArrow = (props) => {
-    const { className, style, onClick } = props;
+    const {className, style, onClick} = props;
     return (
         <div
             className={className}
-            style={{ ...style}}
+            style={{...style}}
             onClick={onClick}
         >
-            <img src = {leftArrow} />
+            <img src={leftArrow}/>
         </div>
     );
 }
@@ -45,31 +46,31 @@ const HomeSlider = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />
+        nextArrow: <NextArrow/>,
+        prevArrow: <PrevArrow/>
     }
     return (
         <div className="home-slider">
             <Slider {...settings} className="home-slider-real">
                 <div className="home-slider-module">
                     <button className="view_more">{t("view_more")}</button>
-                    <div className="hover-gradient" />
-                    <img src={homeimg} />
+                    <div className="hover-gradient"/>
+                    <img src={homeimg}/>
                 </div>
                 <div className="home-slider-module">
                     <button className="view_more">{t("view_more")}</button>
-                    <div className="hover-gradient" />
-                    <img src={homeimg} />
+                    <div className="hover-gradient"/>
+                    <img src={homeimg}/>
                 </div>
                 <div className="home-slider-module">
                     <button className="view_more">{t("view_more")}</button>
-                    <div className="hover-gradient" />
-                    <img src={homeimg} />
+                    <div className="hover-gradient"/>
+                    <img src={homeimg}/>
                 </div>
                 <div className="home-slider-module">
                     <button className="view_more">{t("view_more")}</button>
-                    <div className="hover-gradient" />
-                    <img src={homeimg} />
+                    <div className="hover-gradient"/>
+                    <img src={homeimg}/>
                 </div>
             </Slider>
         </div>

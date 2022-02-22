@@ -1,13 +1,18 @@
+/*
+* Data
+* 맞춤 추천 코디를 제공하는 것이 주목적
+* 이를 위해 핏 예측, 선호 스타일 분석 작업 등을 수행
+* */
+
 const express = require('express')
 const router = express.Router()
-const path = require('path')
 const connection = require('../lib/mysql')
-const fs = require('fs')
 const spawn = require('child_process').spawn
-
+const log = false
 
 module.exports = function (passport) {
-	router.get('/', function (req, res, next) {
+	// 연결 확인
+	router.get('/', function (req, res) {
 		res.send('data')
 	});
 	
@@ -22,23 +27,27 @@ module.exports = function (passport) {
 		let scriptPath = '../data/BodyShapeToFit/'
 		const process = spawn('python3', [scriptPath + 'main.py', gender, shoulder, waist, hip, thigh])
 		
-		process.stdout.on('data', function(data){
-			console.log('==============================')
-			console.log('gender: ' + gender)
-			console.log('shoulder: ' + shoulder)
-			console.log('waist: ' + waist)
-			console.log('hip: ' + hip)
-			console.log('thigh: ' + thigh)
-			
-			console.log('=> fit: ' + data)
-			console.log('==============================')
+		process.stdout.on('data', function (data) {
+			if (log) {
+				console.log('==============================')
+				console.log('gender: ' + gender)
+				console.log('shoulder: ' + shoulder)
+				console.log('waist: ' + waist)
+				console.log('hip: ' + hip)
+				console.log('thigh: ' + thigh)
+				console.log('=> fit: ' + data)
+				console.log('==============================')
+			}
 			
 			res.send(data.toString())
 		})
-		process.stderr.on('data', function(data){
-			console.log({'result': false})
-			console.log(data.toString())
-			res.send({'result':false})
+		process.stderr.on('data', function (data) {
+			if (log) {
+				console.log({'result': false})
+				console.log(data.toString())
+			}
+			
+			res.send({'result': false})
 		})
 	})
 	
@@ -56,51 +65,62 @@ module.exports = function (passport) {
 		} else {
 			process = spawn('python3', ['-O', scriptPath + scriptName])
 		}
-		
-		process.stdout.on('data', function(data){
+		// 성공할 경우
+		process.stdout.on('data', function (data) {
 			let json = JSON.parse(data)
 			json['result'] = true
-			console.log(json)
+			if (log)
+				console.log(json)
 			res.send(json)
 		})
-		process.stderr.on('data', function(){
-			console.log({'result': false})
+		// 실패할 경우
+		process.stderr.on('data', function () {
+			if (log)
+				console.log({'result': false})
 			res.send({'result': false})
 		})
 	})
 	
-	router.get('/coordination/filter/gender/:gender', (req,res) => {
+	// 성별에 따른 필터 적용
+	router.get('/coordination/filter/gender/:gender', (req, res) => {
 		let gender = req.params.gender
-		console.log('/data/coordination/filter/gender/' + gender)
 		
-		let query = `SELECT id, gender, fit, age, season, style FROM coordination`
 		
-		if (gender*1===1 || gender*1===2){
+		let query = `SELECT id, gender, fit, age, season, style
+                     FROM coordination`
+		
+		if (gender * 1 === 1 || gender * 1 === 2) {
 			let whereClause = ` WHERE (gender & ${gender} = ${gender})`
 			query += whereClause
 		}
 		
-		console.log(query)
+		if (log) {
+			console.log('/data/coordination/filter/gender/' + gender)
+			console.log(query)
+		}
+		
 		connection.query(query,
 			(err, result) => {
-				if (err || result.length===0){
-					result = [{result : false}]
-				}
-				else{
+				if (err || result.length === 0) {
+					result = [{result: false}]
+				} else {
 					result[0]['result'] = true
 				}
 				res.send(result)
 			})
 	})
 	
+	// 오류 발생시 전체 코디 목록 출력
 	router.get("/coordination/all", (req, res) => {
-		connection.query(`SELECT id, gender, fit, age, season, style FROM coordination`,
+		connection.query(`SELECT id, gender, fit, age, season, style
+                          FROM coordination`,
 			(err, result) => {
 				if (err || result.length === 0)
 					res.send([{result: false}])
 				else {
 					result[0]['result'] = true
-					console.log(result)
+					if (log)
+						console.log(result)
 					res.send(result)
 				}
 			})

@@ -1,3 +1,8 @@
+/*
+* Product
+* 상품 목록, 조회, 이미지 조회, 찜
+* */
+
 const express = require('express')
 const router = express.Router()
 const path = require('path');
@@ -9,13 +14,13 @@ module.exports = function (passport) {
 		res.send("product")
 	});
 	
-	//상품 찜하기, 찜삭제하기
+	// 상품 찜하기
 	router.get('/favorite/:productID', (req, res) => {
 		if (req.user) {
 			let user = req.user.email
 			let product = req.params.productID
 			connection.query(`insert into favoriteProduct(userEmail, productID)
-                          values (?, ?)`, [user, product],
+                              values (?, ?)`, [user, product],
 				(err, result) => {
 					if (err)
 						res.send({result: false, isDuplicate: err["errno"] === 1062})
@@ -26,6 +31,7 @@ module.exports = function (passport) {
 		} else res.send({"result": false})
 	})
 	
+	// 상품 찜 취소하기
 	router.get('/unfavorite/:productID', (req, res) => {
 		if (req.user) {
 			let user = req.user.email
@@ -44,7 +50,8 @@ module.exports = function (passport) {
 		} else res.send({"result": false})
 	})
 	
-	router.get('/count/favorite/:productID',(req,res)=>{
+	// 제품에 대한 찜(좋아요)수 계산
+	router.get('/count/favorite/:productID', (req, res) => {
 		connection.query(`select count(productID) as favorite
                           from favoriteProduct
                           where productID = ${req.params.productID}`,
@@ -58,9 +65,13 @@ module.exports = function (passport) {
 			})
 	})
 	
+	// 사용자가 특정 상품을 찜했는지 확인 (로그인 필요)
 	router.get('/check/favorite/:productID', (req, res) => {
 		if (req.user) {
-			connection.query(`select * from favoriteProduct where userEmail=? and productID=?`,
+			connection.query(`select *
+                              from favoriteProduct
+                              where userEmail = ?
+                                and productID = ?`,
 				[req.user.email, req.params.productID],
 				(err, result) => {
 					if (err || result.length === 0)
@@ -72,16 +83,19 @@ module.exports = function (passport) {
 		
 	})
 	
-	router.get('/user/favorite',(req,res)=>{
-		if(req.user){
-			connection.query(`select productID from favoriteProduct where userEmail=?`,[req.user.email],
-				(err,result)=>{
+	// 사용자가 찜한 제품 모아보기
+	router.get('/user/favorite', (req, res) => {
+		if (req.user) {
+			connection.query(`select productID
+                              from favoriteProduct
+                              where userEmail = ?`, [req.user.email],
+				(err, result) => {
 					if (err || result.length === 0)
 						res.send({result: false})
 					else
 						res.send(result)
 				})
-		}else res.send({result:false})
+		} else res.send({result: false})
 	})
 	
 	// 단일 상품 이미지 전송
@@ -104,8 +118,9 @@ module.exports = function (passport) {
 			fix = -1
 		return fix
 	}
-
-	router.get("/category/:type/:detail",(req,res)=>{
+	
+	// 카테고리별 상품 목록 조회
+	router.get("/category/:type/:detail", (req, res) => {
 		const type = req.params.type
 		const detail = req.params.detail ?? -1
 		connection.query(`select *
@@ -120,8 +135,8 @@ module.exports = function (passport) {
 			}
 		})
 	})
-	
-// 상품 목록 필터
+
+	// 상품 목록 필터
 	router.get("/list/:page", (req, res) => {
 		const ALL = -1
 		let body = req.body[0] ?? req.body
@@ -155,23 +170,28 @@ module.exports = function (passport) {
 			})
 	})
 	
-	//상품 마지막 id번호
-	router.get("/number",(req,res) => {
-		connection.query(`select id from product order by id desc limit 1`,
-			(err,result)=>{
+	// 일부 제품 리스트 표시용 - 마지막 상품의 id 조회
+	router.get("/number", (req, res) => {
+		connection.query(`select id
+                          from product
+                          order by id desc
+                          limit 1`,
+			(err, result) => {
 				if (err || result.length === 0)
 					res.send({result: false})
-				else{
+				else {
 					console.log(result[0])
 					res.send(result)
 				}
 			})
 	})
-	
-// 단일 상품 조회
+
+	// 단일 상품 조회
 	router.get("/:id", (req, res) => {
 		const id = req.params.id
-		connection.query(`select * from product where product.id = ?;`,
+		connection.query(`select *
+                          from product
+                          where product.id = ?;`,
 			[id],
 			(err, result) => {
 				if (err || result.length === 0)
@@ -182,7 +202,6 @@ module.exports = function (passport) {
 				}
 			})
 	})
-	
 	
 	return router
 }

@@ -1,3 +1,8 @@
+/*
+* Index
+* 메인 페이지
+* */
+
 const express = require('express');
 const router = express.Router();
 // components
@@ -7,7 +12,7 @@ const fstring = require('../components/string_footer')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', {commonHead: commonHead, string: string[req.body.locale], fstring: fstring[req.body.locale]})
+	res.render('index', {commonHead: commonHead, string: string[req.body.locale], fstring: fstring[req.body.locale]})
 });
 
 module.exports = router;

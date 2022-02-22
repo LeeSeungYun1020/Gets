@@ -1,3 +1,8 @@
+/*
+* API
+* 각 API별 사용방법, 설명 표시
+* 하위 버전 호환용 api 제공
+* */
 const express = require('express')
 const router = express.Router()
 const path = require('path');
@@ -11,11 +16,13 @@ const string = require('../components/string_api')
 const fstring = require('../components/string_footer')
 
 module.exports = function (passport) {
-// API Center
+	// API Center - API 설명 페이지 렌더링
 	router.get('/', function (req, res, next) {
-		res.render("api", {commonHead: commonHead, string: string[req.body.locale], fstring: fstring[req.body.locale]})
+		const loc = req.body.locale
+		res.render("api", {commonHead: commonHead, locale: loc, string: string[loc], fstring: fstring[loc]})
 	});
 	
+	// 로그인
 	router.post('/signin',
 		passport.authenticate('local', {
 			session: true,
@@ -23,19 +30,22 @@ module.exports = function (passport) {
 		}),
 		(req, res) => {
 			res.send({user: req.user, result: true})
-	})
+		})
 	
+	// 로그인 실패
 	router.get("/signin/fail", (req, res) => {
 		res.send({result: false})
 	})
 	
+	// 로그아웃
 	router.get('/signout', function (req, res, next) {
 		req.logout()
 		req.session.save(function () {
-			res.redirect('/');
+			res.send({"result": true})
 		});
 	});
 	
+	// 사용자 조회
 	router.get("/sign/user", (req, res) => {
 		if (req.user) {
 			let user = req.user
@@ -44,8 +54,8 @@ module.exports = function (passport) {
 			res.send(user)
 		} else res.send({"result": false})
 	})
-	
-// 회원가입 - 이메일 중복 확인
+
+	// 회원가입 - 이메일 중복 확인
 	router.post("/signup/check", (req, res) => {
 		const email = req.body.email
 		connection.query("select `email` from `user` where `email`=?", [email], (err, result) => {
@@ -56,7 +66,7 @@ module.exports = function (passport) {
 		})
 	})
 
-// 회원가입 - 기본 정보 입력
+	// 회원가입 - 기본 정보 입력
 	router.post("/signup/basic", (req, res) => {
 		const email = req.body.email
 		const pw = req.body.pw
@@ -65,11 +75,9 @@ module.exports = function (passport) {
 		const year = req.body.year
 		const month = req.body.month
 		const day = req.body.day
-		const address = req.body.address
-		const addressDetail = req.body.addressDetail
 		
-		connection.query("INSERT INTO `user` (email, pw, name, phone, birthday, address, addressDetail) VALUES (?, ?, ?, ?, ?, ?, ?)",
-			[email, pw, name, phone, `${year}-${month}-${day}`, address, addressDetail],
+		connection.query("INSERT INTO `user` (email, pw, name, phone, birthday) VALUES (?, ?, ?, ?, ?)",
+			[email, pw, name, phone, `${year}-${month}-${day}`],
 			(err, result) => {
 				if (err)
 					res.send({result: false, isDuplicate: err.errno === 1062})
@@ -78,29 +86,35 @@ module.exports = function (passport) {
 			})
 	})
 
-// 회원가입 - 추가 정보 입력
+	// 회원가입 - 추가 정보 입력
 	router.post("/signup/info", (req, res) => {
-		// console.log(req.user.email)
-		const email = req.user.email
-		const gender = req.body.gender
-		const height = req.body.height
-		const weight = req.body.weight
-		const topSize = req.body.top_size
-		const bottomSize = req.body.bottom_size
-		const style = req.body.style
-		const fit = req.body.fit
-		console.log(email)
-		connection.query("update `user` set `gender`=?, `height`=?, `weight`=?, `topSize`=?, `bottomSize`=?, `style`=?, `fit`=? where `email`=?",
-			[gender, height, weight, topSize, bottomSize, style, fit, email],
-			(err, result) => {
-				if (err)
-					res.send({result: false})
-				else
-					res.send({result: true})
-			})
+		if (req.user) {
+			const email = req.user.email
+			const gender = req.body.gender
+			const height = req.body.height
+			const weight = req.body.weight
+			const topSize = req.body.topSize ?? req.body.top_size
+			const bottomSize = req.body.bottomSize ?? req.body.bottom_size
+			const shoulder = req.body.shoulder
+			const waist = req.body.waist
+			const hip = req.body.hip
+			const thigh = req.body.thigh
+			const style = req.body.style
+			connection.query("update `user` set `gender`=?, `height`=?, `weight`=?, `topSize`=?, `bottomSize`=?, `style`=?, `shoulder`=?,`waist`=?, `hip`=?, `thigh`=? where `email`=?",
+				[gender, height, weight, topSize, bottomSize, style, shoulder, waist, hip, thigh, email],
+				(err, result) => {
+					if (err)
+						res.send({result: false})
+					else
+						res.send({result: true})
+				})
+		} else {
+			res.send({result: true, error: "signin"})
+		}
+		
 	})
 
-// 날씨
+	// 날씨 정보 조회
 	router.post("/weather", (req, res) => {
 		const key = 'QlJXfpDq9oWm1PKEG0hZBbX06NXjih1QpY1ZqHXEWqx4aJQ2eqbU1dx4spZGGCR%2FLWwjq9RSXKM0UHFgGjeNTw%3D%3D'
 		const today = new Date()
@@ -130,7 +144,7 @@ module.exports = function (passport) {
 		})();
 	})
 
-// 단일 상품 이미지 전송
+	// 단일 상품 이미지 전송
 	router.get("/product/image/:imageID", (req, res) => {
 		const imageID = req.params.imageID
 		const filePath = path.join(__dirname, '../product/image')
@@ -151,10 +165,10 @@ module.exports = function (passport) {
 		return fix
 	}
 
-// 상품 목록 필터
+	// 상품 목록 필터
 	router.post("/product/list/:page", (req, res) => {
 		const ALL = -1
-		let body = req.body[0]
+		let body = req.body[0] ?? req.body
 		const search = "%" + (body.search ?? "") + "%"
 		const type = fitCode(body.type)
 		const detail = fitCode(body.detail)
@@ -185,9 +199,9 @@ module.exports = function (passport) {
 			})
 	})
 
-// 상품 목록 필터 (페이지 구분 X)
+	// 상품 목록 필터 (페이지 구분 X)
 	router.post("/product/list", (req, res) => {
-		let body = req.body[0]
+		let body = req.body[0] ?? req.body
 		const search = "%" + (body.search ?? "") + "%"
 		const type = fitCode(body.type)
 		const detail = fitCode(body.detail)
@@ -218,10 +232,12 @@ module.exports = function (passport) {
 			})
 	})
 
-// 단일 상품 조회
+	// 단일 상품 조회
 	router.get("/product/:id", (req, res) => {
 		const id = req.params.id
-		connection.query("select * from `product` where `id`=?",
+		connection.query(`select *
+                          from product
+                          where product.id = ?;`,
 			[id],
 			(err, result) => {
 				if (err || result.length === 0)
@@ -233,114 +249,29 @@ module.exports = function (passport) {
 			})
 	})
 	
+	// 기사 목록 조회 - 기사가 스타일별 설명 형태로 변경됨에 따라 api 교체가 권장됨
 	router.get("/article/list", (req, res) => {
-		connection.query("select `title`,`imageID` from `article` LIMIT 5",
-			(err, result) => {
-				if (err || result.length === 0)
-					res.send({result: false})
-				else {
-					let i
-					for (i = 0; i < 5; i++) {
-						result[i].status = true
-					}
-					res.send(result)
-				}
-			})
-	})
-	
-	router.post("/article/:id", (req, res) => {
-		const id = req.params.id
-		connection.query("select * from `article` where `id`=?",
-			[id],
-			(err, result) => {
-				if (err || result.length === 0)
-					res.send({result: false})
-				else {
-					result[0].result = true
-					res.send(result[0])
-				}
-			})
-	})
-	
-// 리뷰 추가
-	router.post("/review/add/:productID", (req, res) => {
-		const productID = req.params.productID
-		const userEmail = req.body.userEmail
-		const star = req.body.star
-		const contents = req.body.contents
-		const image1ID = req.body.image1ID
-		const image2ID = req.body.image2ID
-		const image3ID = req.body.image3ID
-		connection.query("insert into `review` (userEmail, productID, star, contents, image1ID, image2ID, image3ID) \
-      VALUES (?, ?, ?, ?, ?, ?, ?)",
-			[userEmail, productID, star, contents, image1ID, image2ID, image3ID],
-			(err, result) => {
-				if (err)
-					res.send({result: false})
-				else
-					res.send({result: true})
-			})
-	})
-
-// 리뷰 체형 맞춤 리스트 조회
-	router.post("/review/fit/:productID", (req, res) => {
-		const productID = req.params.productID
-		const userEmail = req.body.userEmail
-		const order = req.body.order ?? "date"
-		const orderOption = (req.body.isReverse ?? false) ? " ASC" : " DESC"
-		connection.query("select * from `user` where `email`=?",
-			[userEmail],
-			(err, result) => {
-				if (err || result.length === 0) {
-					res.send([{result: false, error: "userEmail"}])
-					return
-				}
-				const height = result[0].height
-				const heightMargin = 3
-				const weight = result[0].weight
-				const weightMargin = 5
-				const topSize = result[0].topSize
-				const topMargin = 5
-				const bottomSize = result[0].bottomSize
-				const bottomMargin = 2
-				if (height == null) {
-					res.send([{result: false, error: "userFitData"}])
-					return
-				}
-				connection.query("select *\
-            from review\
-            where productID = ? and \
-                  userEmail = (select email from user \
-                              where ? >= weight and weight >= ? and ? >= height and height >= ? and\
-                              ? >= topSIze and topSize >= ? and ? >= bottomSize and bottomSize >= ?) \
-            order by " + order + orderOption,
-					[productID, weight + weightMargin, weight - weightMargin, height + heightMargin, height - heightMargin,
-						topSize + topMargin, topSize - topMargin, bottomSize + bottomMargin, bottomSize - bottomMargin
-					],
-					(err, result) => {
-						if (err)
-							res.send([{result: false, error: "reviewData"}])
-						else if (result.length === 0)
-							res.send([{result: false, error: "notMatch"}])
-						else
-							res.send(result)
-					})
-			})
-		
-	})
-
-// 리뷰 리스트 조회
-	router.post("/review/:productID", (req, res) => {
-		const productID = req.params.productID
-		const order = req.body.order ?? "date"
-		const orderOption = (req.body.isReverse ?? false) ? " ASC" : " DESC"
-		connection.query("select * from `review` where `productID`=? order by " + order + orderOption,
-			[productID],
+		connection.query("select * from `article`",
 			(err, result) => {
 				if (err || result.length === 0)
 					res.send([{result: false}])
-				else
+				else {
+					result[0]["result"] = true
 					res.send(result)
+				}
+			})
+	})
+	
+	// 기사 단일 항목 조회
+	router.post("/article/:id", (req, res) => {
+		connection.query("select * from article where `id`= ?",
+			[req.params.id], (err, result) => {
+				if (err || result.length === 0)
+					res.send({result: false, error: err})
+				else {
+					result[0]["result"] = true
+					res.send(result[0])
+				}
 			})
 	})
 	

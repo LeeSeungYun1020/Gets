@@ -3,8 +3,7 @@
 @use "node_modules/@material/card";
 @use "node_modules/@material/card/mdc-card";
 
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900");
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&family=Roboto&display=swap');
 
 header {
   background-color: #00200f;
@@ -27,9 +26,12 @@ a {
   display: inline-block;
   font-size: 30px;
   margin-left: 9vw;
+  img {
+    height: 50px;
+  }
 }
 
-#logo>a{
+#logo > a {
   display: flex;
 }
 
@@ -39,7 +41,7 @@ ul {
 ul li {
   display: inline-block;
   margin-left: 5vw;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
 }
 
 ul li a {
@@ -57,69 +59,80 @@ body {
 }
 
 footer {
+  height: 300px;
+  position: relative;
   background-color: #00200f;
-  color:#ffffff;
-  position:absolute;
-  width:100%;
+  color: #ffffff;
+  width: 100%;
   font-family: 'Nanum Gothic', sans-serif;
 }
 
-footer #footer_layout{
+footer #footer_layout {
   margin-left: 10vw;
 }
 
-footer #footer_logo{
+footer #footer_logo {
   font-size: 3ex;
   margin-bottom: 4vh;
-  margin-top:6.5vh;
+  margin-top: 6.5vh;
 }
 
-.main_card{
+footer #footer_text {
+  margin-bottom: 4vh;
+}
+
+.main_card {
   padding: 16px;
   margin: 16px;
 }
 
-.main_container{
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+.main_container {
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 300px;
 }
 
-.main_card1{
-  grid-column: 2;
+.table_container {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(300px, 1fr));
+}
+
+.main_card1 {
+  grid-column: 1;
   grid-row: 1;
 }
 
 .main_card2 {
-  grid-column: 3;
+  grid-column: 2;
   grid-row: 1;
 }
 
 .main_card3 {
-  grid-column: 4;
+  grid-column: 3;
   grid-row: 1;
 }
 
 .main_card4 {
-  grid-column: 2;
+  grid-column: 1;
   grid-row: 2;
 }
 
 .main_card5 {
-  grid-column: 3;
+  grid-column: 2;
   grid-row: 2;
 }
 
 .main_card6 {
-  grid-column: 4;
+  grid-column: 3;
   grid-row: 2;
 }
 
 .main_card7 {
-  grid-column: 5;
+  grid-column: 4;
   grid-row: 1;
 }
 
 .main_card8 {
-  grid-column: 5;
+  grid-column: 4;
   grid-row: 2;
 }
