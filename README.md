@@ -7,6 +7,12 @@
 - 개인 맞춤형 패션 플랫폼
 - Guess Style, Get Style
 
+
+
+https://user-images.githubusercontent.com/34941061/155335379-8a6949b3-dd18-4944-b3f8-c6e96553c900.mp4
+
+
+
 맞춤 추천과 가상 피팅 기능 중점, 사용자 맞춤형 기능 제공
 
 ![poster](./image/final/poster.png)
