@@ -251,13 +251,13 @@ node ./bin/www
 - web 파일에서
 
 ```text
-node start
+npm start
 ```
 
 ##### 서버 접속
 
 메인페이지:
-[http://localhost:4000](http://localhost:4000)  
+[http://localhost](http://localhost)  
 API:
 [http://localhost:3000/api](http://localhost:3000/api)
 
