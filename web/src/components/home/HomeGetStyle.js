@@ -17,6 +17,7 @@ import axios from "axios";
 import HomeRecommendCard from "./HomeRecommendCard";
 import {MdAdd, MdRemove} from "react-icons/md";
 import {StringToNumAge, StringToNumFit, StringToNumGender} from "../Data";
+import link from "../../link"
 
 const HomeGetStyle = (props) => {
     const {t, i18n} = useTranslation()
@@ -44,7 +45,7 @@ const HomeGetStyle = (props) => {
     // const detail = query.detail === 'true'; //
     useEffect(() => {
         if (sessionStorage.getItem("token")) { // 로그인 한 사람은 자동으로 추천코디 띄워줌
-            axios.get('http://localhost:3000/home/custom/8', {withCredentials: true})
+            axios.get(link.base + '/home/custom/8', {withCredentials: true})
                 .then(({data}) => {
                     // console.log(data);
                     setRecommend(data)
@@ -87,7 +88,7 @@ const HomeGetStyle = (props) => {
         let topFitNumber = StringToNumFit[topFit]
         let bottomFitNumber = StringToNumFit[bottomFit]
         let query = `?gender=${genderNumber}&age=${ageNumber}&topFit=${topFitNumber}&bottomFit=${bottomFitNumber}&style=${style}`
-        axios.get('http://localhost:3000/home/getStyle/8' + query, {withCredentials: true})
+        axios.get(link.base + '/home/getStyle/8' + query, {withCredentials: true})
             .then(({data}) => {
                 setRecommend(data)
                 setAns(true);

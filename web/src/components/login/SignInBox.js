@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import axios from "axios"
 import {useHistory} from "react-router-dom"
 import {useTranslation} from "react-i18next";
+import link from "../../link"
 
 const SignInBox = ({login, setLogin}) => {
     const [email, SetEmail] = useState('');
@@ -15,13 +16,13 @@ const SignInBox = ({login, setLogin}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/auth/signin', {
+        axios.post(link.base + '/auth/signin', {
             email: email,
             pw: password
         }, {withCredentials: true})
             .then(response => {
                 if (response.data.result) {
-                    axios.get('http://localhost:3000/auth/user', {withCredentials: true})
+                    axios.get(link.base + '/auth/user', {withCredentials: true})
                         .then(response => {
                             setLogin(response.data.result)
                             sessionStorage.setItem("token", response.data.email)

@@ -16,6 +16,7 @@ import LovelyChip from "../../images/home/Oval_lovely.webp";
 import MinimalChip from "../../images/home/Oval_minimal.webp";
 import OutlineSelectBox from "./OutlineSelectBox";
 import OutlineSelectShapeBox from "./OutlineSelectShapeBox";
+import link from "../../link"
 
 const DetailInfoItem = props => {
     const {t, i18n} = useTranslation()
@@ -76,7 +77,7 @@ const DetailInfoItem = props => {
     }, []);
     const onSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/auth/signup/info', {
+        axios.post(link.base + '/auth/signup/info', {
             gender: gender,
             height: height,
             weight: weight,

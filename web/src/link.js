@@ -1,4 +1,5 @@
 const link = {
+    base: 'http://49.50.164.23',
     home: '/',
     defaultcloset: '/closet',
     closet: '/closet/:category',

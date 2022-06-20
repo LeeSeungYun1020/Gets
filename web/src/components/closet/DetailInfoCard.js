@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useTranslation} from "react-i18next";
-import ClosetCard from "./ClosetCard";
 import {useHistory} from "react-router-dom";
 import {MdFavorite} from "react-icons/md";
 import isLogin from "../../lib/isLogin";
+import link from "../../link"
 
 const DetailInfoCard = ({id}) => {
     const history = useHistory();
@@ -25,7 +25,7 @@ const DetailInfoCard = ({id}) => {
     let last;
     const {i18n, t} = useTranslation()
     useEffect(() => {
-        axios.get('http://localhost:3000/coordination/number', {withCredentials: true})
+        axios.get(link.base + '/coordination/number', {withCredentials: true})
             .then(response => {
                 // console.log(response)
                 last = response.data[0].id

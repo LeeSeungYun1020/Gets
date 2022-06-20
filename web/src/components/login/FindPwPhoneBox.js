@@ -20,7 +20,7 @@ class FindPwPhoneBox extends React.Component {
 
     handlePhoneNumber(event) {
         alert(`phone=${this.state.phoneNumber}`)
-        axios.post('http://localhost:3000/api/signin', {
+        axios.post(link.base + '/api/signin', {
             phone: this.state.phoneNumber
         })
     }
