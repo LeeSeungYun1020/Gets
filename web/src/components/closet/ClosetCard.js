@@ -8,7 +8,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import axios from "axios";
 import {Menu, MenuItem} from "@material-ui/core";
 import {useTranslation} from "react-i18next";
-import {Link, Route, Switch, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
+import link from "../../link";
 
 const useStyles = makeStyles({
     root: {
@@ -58,7 +59,7 @@ const ClosetCard = ({item, onRemove, category}) => {
     }
     const handleDeleteClick = () => {
         if (id !== undefined) {
-            axios.get(`http://localhost:3000/${category}/unfavorite/${id}`, {withCredentials: true})
+            axios.get(`${link.base}/${category}/unfavorite/${id}`, {withCredentials: true})
                 .then(response => {
                     setAnchorEl(null);
                     {
@@ -97,7 +98,7 @@ const ClosetCard = ({item, onRemove, category}) => {
                     </Menu>
                     <CardMedia
                         className={classes.media}
-                        image={`http://localhost:3000/${category}/image/${imageId}`}
+                        image={`${link.base}/${category}/image/${imageId}`}
                         onClick={onCardClick}
                         style={{
                             position: 'relative'

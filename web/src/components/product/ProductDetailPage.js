@@ -23,7 +23,7 @@ const ProductDetailPage = ({match}) => {
                     // console.log(last)
                     try {
                         if (id > 2 && id <= last) {
-                            const response = await axios.get(`http://localhost:3000/product/${id}`, {withCredentials: true});
+                            const response = await axios.get(`${link.base}/product/${id}`, {withCredentials: true});
                             setItem(response.data);
                         } else {
                             history.push('/product')

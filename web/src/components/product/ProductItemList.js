@@ -3,6 +3,7 @@ import axios from "axios";
 import {useTranslation} from "react-i18next";
 import ProductCard from "./ProductCard";
 import {Category, SubCategory} from "../Data";
+import link from "../../link";
 
 const ProductItemList = ({category, subCategory}) => {
     const [item, setItem] = useState(null);
@@ -14,7 +15,7 @@ const ProductItemList = ({category, subCategory}) => {
             try {
                 const query_1 = `${category}`;
                 const query_2 = `${subCategory}`;
-                const response = await axios.get(`http://localhost:3000/product/category/${Category[query_1]}/${SubCategory[query_2]}`, {withCredentials: true})
+                const response = await axios.get(`${link.base}/product/category/${Category[query_1]}/${SubCategory[query_2]}`, {withCredentials: true})
                 ;
                 setItem(response.data);
             } catch (e) {
