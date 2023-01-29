@@ -15,6 +15,7 @@ import office from "../../images/article/office.png";
 import rock_chic from "../../images/article/rock_chic.png";
 import sexy_glam from "../../images/article/sexy_glam.png";
 import street from "../../images/article/street.png";
+import link from "../../link";
 
 const DetailArticle = ({what}) => {
     const {t, i18n} = useTranslation()
@@ -28,11 +29,11 @@ const DetailArticle = ({what}) => {
             setLoading(true);
             try {
                 const id = `${StringToNumStyle[what]}`;
-                const response = await axios.get(`http://localhost:3000/article/${id}`)
+                const response = await axios.get(`${link.base}/article/${id}`)
                 setArticle(response.data)
                 try {
                     // console.log(id)
-                    const response_2 = await axios.post(`http://localhost:3000/article/image/${id}`)
+                    const response_2 = await axios.post(`${link.base}/article/image/${id}`)
                     setImageID(response_2.data)
                 } catch (e) {
                     console.log(e)

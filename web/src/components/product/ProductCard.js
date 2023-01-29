@@ -11,6 +11,7 @@ import Favorite from '@material-ui/icons/Favorite';
 import {MdFavorite} from "react-icons/md";
 import axios from "axios";
 import {useHistory} from "react-router-dom";
+import link from "../../link";
 
 const useStyles = makeStyles({
     root: {
@@ -31,7 +32,7 @@ const ProductCard = ({item}) => {
     const [favorite, setFavorite] = useState(0);
     const [checked, setChecked] = useState(false);
     useEffect(() => {
-        axios.get(`http://localhost:3000/product/check/favorite/${id}`, {withCredentials: true})
+        axios.get(`${link.base}/product/check/favorite/${id}`, {withCredentials: true})
             .then(response => {
                 if (response.data.result) {
                     setChecked(true);
@@ -41,7 +42,7 @@ const ProductCard = ({item}) => {
             })
     })
     useEffect(() => {
-        axios.get(`http://localhost:3000/product/count/favorite/${id}`, {withCredentials: true})
+        axios.get(`${link.base}/product/count/favorite/${id}`, {withCredentials: true})
             .then(response => {
                 setFavorite(response.data.favorite)
             })
@@ -49,14 +50,14 @@ const ProductCard = ({item}) => {
     const onFavoriteChange = (e) => {
         // console.log(e.target.checked)
         if (e.target.checked) {
-            axios.get(`http://localhost:3000/product/favorite/${id}`, {withCredentials: true})
+            axios.get(`${link.base}/product/favorite/${id}`, {withCredentials: true})
                 .then(response => {
                 })
                 .catch(function (error) {
                 });
             setFavorite(favorite + 1);
         } else {
-            axios.get(`http://localhost:3000/product/unfavorite/${id}`, {withCredentials: true})
+            axios.get(`${link.base}/product/unfavorite/${id}`, {withCredentials: true})
                 .then(response => {
                 })
                 .catch(function (error) {
@@ -82,7 +83,7 @@ const ProductCard = ({item}) => {
                 <CardMedia
                     className={classes.media}
                     title={name}
-                    image={`http://localhost:3000/product/image/${image1ID}`}
+                    image={`${link.base}/product/image/${image1ID}`}
                     onClick={onCardClick}
                     style={{
                         position: 'relative'

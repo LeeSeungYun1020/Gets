@@ -10,6 +10,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Favorite from "@material-ui/icons/Favorite";
 import {useHistory} from "react-router-dom";
+import link from "../../link";
 
 const useStyles = makeStyles({
     root: {
@@ -31,7 +32,7 @@ const HomeRecommendCard = (props) => {
     const {title, content, cost, image_id, id} = props
     const [checked, setChecked] = useState(false)
     useEffect(() => {
-        axios.get(`http://localhost:3000/coordination/check/favorite/${id}`, {withCredentials: true})
+        axios.get(`${link.base}/coordination/check/favorite/${id}`, {withCredentials: true})
             .then(response => {
                 if (response.data.result) {
                     setChecked(true);
@@ -48,7 +49,7 @@ const HomeRecommendCard = (props) => {
     const onFavoriteChange = (e) => {
         console.log(e.target.checked)
         if (e.target.checked) {
-            axios.get(`http://localhost:3000/coordination/favorite/${id}`, {withCredentials: true})
+            axios.get(`${link.base}/coordination/favorite/${id}`, {withCredentials: true})
                 .then(response => {
                     setChecked(true);
                 })
@@ -56,7 +57,7 @@ const HomeRecommendCard = (props) => {
                     console.log(error);
                 });
         } else {
-            axios.get(`http://localhost:3000/coordination/unfavorite/${id}`, {withCredentials: true})
+            axios.get(`${link.base}/coordination/unfavorite/${id}`, {withCredentials: true})
                 .then(response => {
                     setChecked(false);
                 })
@@ -80,7 +81,7 @@ const HomeRecommendCard = (props) => {
                 </div>
                 <CardMedia
                     className={classes.media}
-                    image={`http://localhost:3000/coordination/image/${image_id}`}
+                    image={`${link.base}/coordination/image/${image_id}`}
                     title={title}
                     onClick={onCardClick}
                     style={{

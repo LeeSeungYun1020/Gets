@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import {useTranslation} from "react-i18next";
 import ClosetCard from "./ClosetCard";
-import {useHistory} from "react-router-dom";
+import link from "../../link";
 
 const ClosetList = ({category}) => {
     const [item, setItem] = useState(null);
@@ -19,7 +19,7 @@ const ClosetList = ({category}) => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await axios.get(`http://localhost:3000/closet/${category}`, {withCredentials: true})
+                const response = await axios.get(`${link.base}/closet/${category}`, {withCredentials: true})
                 ;
                 setItem(response.data);
             } catch (e) {

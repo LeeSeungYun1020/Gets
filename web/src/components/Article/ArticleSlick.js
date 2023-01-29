@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import leftArrow from "../../images/article/left.webp";
 import rightArrow from "../../images/article/right.webp";
+import link from "../../link";
 
 const NextArrow = (props) => {
     const {className, style, onClick} = props;
@@ -44,7 +45,7 @@ const ArticleSlick = ({imageID}) => {
             <Slider {...settings} className="article-slider-real">
                 {imageID.map((item) => (
                     <div className="slider-module" style={{display: 'flex', justifyContent: 'center'}}>
-                        <img src={`http://localhost:3000/article/image/${item.imageID}`}
+                        <img src={`${link.base}/article/image/${item.imageID}`}
                              style={{marginLeft: 15, marginRight: 15}}/>
                     </div>
                 ))}

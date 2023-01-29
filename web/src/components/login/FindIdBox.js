@@ -1,5 +1,6 @@
 import React from "react"
 import axios from "axios"
+import link from "../../link"
 
 class SignInBox extends React.Component {
     constructor(props) {
@@ -25,7 +26,7 @@ class SignInBox extends React.Component {
 
     handleInfo(event) {
         alert(`name=${this.state.name}, phoneNumber=${this.state.phoneNumber}`)
-        axios.post('http://localhost:3000/api/signin', {
+        axios.post(link.base + '/api/signin', {
             name: this.state.name,
             phone: this.state.phoneNumber
         })

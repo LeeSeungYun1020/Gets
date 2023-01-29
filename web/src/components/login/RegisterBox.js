@@ -7,6 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import {useHistory} from 'react-router-dom';
+import link from "../../link"
 
 const GetsCheckbox = withStyles({
     root: {
@@ -40,7 +41,7 @@ const RegisterBox = props => {
 
     const handleEmailChange = event => {
         SetEmail(event.target.value);
-        axios.post('http://localhost:3000/auth/signup/check', {
+        axios.post(link.base + '/auth/signup/check', {
             email: event.target.value
         })
             .then(function (response) {
@@ -120,7 +121,7 @@ const RegisterBox = props => {
         } else if (!check_1 || !check_2) {
             alert("필수 이용약관에 동의해주세요")
         } else {
-            axios.post('http://localhost:3000/auth/signup/basic', {
+            axios.post(link.base + '/auth/signup/basic', {
                 email: email,
                 pw: password,
                 name: name,

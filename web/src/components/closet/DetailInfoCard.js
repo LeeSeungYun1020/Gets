@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useTranslation} from "react-i18next";
-import ClosetCard from "./ClosetCard";
 import {useHistory} from "react-router-dom";
 import {MdFavorite} from "react-icons/md";
 import isLogin from "../../lib/isLogin";
+import link from "../../link"
 
 const DetailInfoCard = ({id}) => {
     const history = useHistory();
@@ -25,7 +25,7 @@ const DetailInfoCard = ({id}) => {
     let last;
     const {i18n, t} = useTranslation()
     useEffect(() => {
-        axios.get('http://localhost:3000/coordination/number', {withCredentials: true})
+        axios.get(link.base + '/coordination/number', {withCredentials: true})
             .then(response => {
                 // console.log(response)
                 last = response.data[0].id
@@ -35,18 +35,18 @@ const DetailInfoCard = ({id}) => {
                     try {
                         if (id > 0 && id <= last) {
                             // console.log(last)
-                            const response = await axios.get(`http://localhost:3000/coordination/${id}`, {withCredentials: true});
+                            const response = await axios.get(`${link.base}/coordination/${id}`, {withCredentials: true});
                             setItem(response.data);
-                            const response_top = await axios.get(`http://localhost:3000/product/${response.data.topID}`, {withCredentials: true});
-                            const response_top2 = await axios.get(`http://localhost:3000/product/${response.data.top2ID}`, {withCredentials: true});
-                            const response_outer = await axios.get(`http://localhost:3000/product/${response.data.outerID}`, {withCredentials: true});
-                            const response_bottom = await axios.get(`http://localhost:3000/product/${response.data.bottomID}`, {withCredentials: true});
-                            const response_bag = await axios.get(`http://localhost:3000/product/${response.data.bagID}`, {withCredentials: true});
-                            const response_set = await axios.get(`http://localhost:3000/product/${response.data.setID}`, {withCredentials: true});
-                            const response_style = await axios.get(`http://localhost:3000/product/${response.data.style}`, {withCredentials: true});
-                            const response_hat = await axios.get(`http://localhost:3000/product/${response.data.hatID}`, {withCredentials: true});
-                            const response_shoes = await axios.get(`http://localhost:3000/product/${response.data.shoesID}`, {withCredentials: true});
-                            const response_skirt = await axios.get(`http://localhost:3000/product/${response.data.skirtID}`, {withCredentials: true});
+                            const response_top = await axios.get(`${link.base}/product/${response.data.topID}`, {withCredentials: true});
+                            const response_top2 = await axios.get(`${link.base}/product/${response.data.top2ID}`, {withCredentials: true});
+                            const response_outer = await axios.get(`${link.base}/product/${response.data.outerID}`, {withCredentials: true});
+                            const response_bottom = await axios.get(`${link.base}/product/${response.data.bottomID}`, {withCredentials: true});
+                            const response_bag = await axios.get(`${link.base}/product/${response.data.bagID}`, {withCredentials: true});
+                            const response_set = await axios.get(`${link.base}/product/${response.data.setID}`, {withCredentials: true});
+                            const response_style = await axios.get(`${link.base}/product/${response.data.style}`, {withCredentials: true});
+                            const response_hat = await axios.get(`${link.base}/product/${response.data.hatID}`, {withCredentials: true});
+                            const response_shoes = await axios.get(`${link.base}/product/${response.data.shoesID}`, {withCredentials: true});
+                            const response_skirt = await axios.get(`${link.base}/product/${response.data.skirtID}`, {withCredentials: true});
                             setTop(response_top);
                             setTop2(response_top2);
                             setOuter(response_outer);
@@ -88,7 +88,7 @@ const DetailInfoCard = ({id}) => {
         if (!isLogin()) {
             history.push('/account/signin')
         } else {
-            axios.get(`http://localhost:3000/coordination/favorite/${id}`, {withCredentials: true})
+            axios.get(`${link.base}/coordination/favorite/${id}`, {withCredentials: true})
                 .then(response => {
                     if (response.data.result) {
                         alert("내 옷장에 추가되었습니다!")
@@ -111,7 +111,7 @@ const DetailInfoCard = ({id}) => {
                         {realAll.map(all => (
                             <div className="item_info">
                                 <img onClick={() => onCardClick(all.data.id)} className="detail_item_img"
-                                     src={`http://localhost:3000/product/image/${all.data.image1ID}`}/>
+                                     src={`${link.base}/product/image/${all.data.image1ID}`}/>
                                 <h3>{all.data.name}</h3>
                                 <p style={{
                                     color: '#828282'
@@ -125,7 +125,7 @@ const DetailInfoCard = ({id}) => {
                     </div>
                 </div>
                 <div className="coordi_img">
-                    <img style={{width: 455, height: 455}} src={`http://localhost:3000/coordination/image/${item.id}`}/>
+                    <img style={{width: 455, height: 455}} src={`${link.base}/coordination/image/${item.id}`}/>
                 </div>
             </div>
             <div className="add-button-div">
