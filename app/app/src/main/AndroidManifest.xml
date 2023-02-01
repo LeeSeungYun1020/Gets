@@ -45,23 +45,18 @@
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.Gets.ActionBar" />
 
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name" />
+        <activity android:name=".MainActivity" />
 
         <activity
             android:name=".ui.article.ArticleActivity"
-            android:exported="true"
             android:theme="@style/Theme.App.StyleGuide" />
 
         <activity
             android:name=".ui.product.ProductActivity"
-            android:exported="true"
             android:theme="@style/Theme.App.ProductDetail" />
 
-        <activity
-            android:name=".ui.coordination.CoordinationActivity"
-            android:exported="true" />
+        <activity android:name=".ui.coordination.CoordinationActivity" />
+
         <activity
             android:name=".ui.account.PasswordActivity"
             android:label="@string/msg_change_password"
