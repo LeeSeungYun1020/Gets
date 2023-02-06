@@ -37,8 +37,8 @@ android {
 
 dependencies {
     //implementation 'com.android.volley:volley:1.2.0'
-    implementation project(":volley")
     //implementation files('./lib/volley-1.2.0.aar')
+    implementation project(":volley")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'
