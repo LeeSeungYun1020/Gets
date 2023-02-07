@@ -1,7 +1,11 @@
 package com.sys.gets.ui.account
 
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
@@ -65,6 +69,20 @@ class InfoActivity : AppCompatActivity() {
                 )
             }
         }
+        binding.topSizeTextfieldRe.apply {
+            adapter = sizeAdapter
+            onItemSelectedListener = object: OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                    Log.d("LSYD", "onItemSelected: $pos($id)")
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    Log.d("LSYD", "onNothingSelected: ")
+                }
+
+            }
+        }
+
 
         val bodyShapeAdapter =
             ArrayAdapter(this, R.layout.list_item, BodyShape.values().map { getString(it.resID) })
