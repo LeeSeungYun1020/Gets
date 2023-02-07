@@ -93,6 +93,19 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <EditText
+            android:id="@+id/height_textfield_re"
+            android:background="@drawable/custom_textfield_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="27dp"
+            android:layout_marginTop="7dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/height_textfield"
+            android:inputType="number"
+            android:textSize="14sp"/>
+
         <TextView
             android:id="@+id/weight_text"
             android:layout_width="wrap_content"
@@ -102,7 +115,7 @@
             android:text="@string/hint_weight"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/height_textfield" />
+            app:layout_constraintTop_toBottomOf="@id/height_textfield_re" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/weight_textfield"
