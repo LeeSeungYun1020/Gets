@@ -6,10 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class SignupViewModel: ViewModel() {
-    private val _isPhoneCheckFieldVisible: MutableLiveData<Boolean> = MutableLiveData(true)
+    private val _isPhoneCheckFieldVisible: MutableLiveData<Boolean> = MutableLiveData(false)
     val isPhoneCheckFieldVisible: LiveData<Boolean> = _isPhoneCheckFieldVisible
 
-    private val _isPhoneCheckButtonVisible: MutableLiveData<Boolean> = MutableLiveData(true)
+    private val _isPhoneCheckButtonVisible: MutableLiveData<Boolean> = MutableLiveData(false)
     val isPhoneCheckButtonVisible: LiveData<Boolean> = _isPhoneCheckFieldVisible
 
     private val _phoneFieldError: MutableLiveData<String?> = MutableLiveData(null)
@@ -37,8 +37,8 @@ class SignupViewModel: ViewModel() {
 
     fun validatePhoneNumber(phoneNumber: String, errorMessage: String, callback: () -> Unit) {
         if (phoneNumber.length in 10..16 && Patterns.PHONE.matcher(phoneNumber).matches()) {
-            hidePhoneCheckField()
-            hidePhoneCheckButton()
+            showPhoneCheckField()
+            showPhoneCheckButton()
             callback()
         } else {
             setPhoneFieldError(errorMessage)
