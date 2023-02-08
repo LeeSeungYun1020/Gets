@@ -10,6 +10,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.android.volley.Request
@@ -33,6 +34,25 @@ class SignupActivity : AppCompatActivity() {
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val viewModel: SignupViewModel by viewModels()
+        viewModel.isPhoneCheckFieldVisible.observe(this) { isVisiable ->
+            binding.phoneCheckField.visibility = if (isVisiable) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
+        }
+        viewModel.isPhoneCheckButtonVisible.observe(this) { isVisiable ->
+            binding.phoneCheckButton.visibility = if (isVisiable) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
+        }
+        viewModel.phoneFieldError.observe(this) { message ->
+            binding.phoneField.error = message
+        }
+
         supportActionBar?.setWhiteCenterTitle(R.string.button_signup)
 
         setSpan()
@@ -46,13 +66,11 @@ class SignupActivity : AppCompatActivity() {
             setPasswordCheck()
 
             phoneSendButton.setOnClickListener {
-                val phone = phoneField.editText?.text.toString()
-                if (phone.length in 10..16 && Patterns.PHONE.matcher(phone).matches()) {
-                    phoneCheckField.visibility = View.VISIBLE
-                    phoneCheckButton.visibility = View.VISIBLE
+                viewModel.validatePhoneNumber(
+                    phoneNumber = phoneField.editText?.text.toString(),
+                    errorMessage = getString(R.string.msg_phone_format_error)
+                ) {
                     sendMessage()
-                } else {
-                    phoneField.error = getString(R.string.msg_phone_format_error)
                 }
             }
 
