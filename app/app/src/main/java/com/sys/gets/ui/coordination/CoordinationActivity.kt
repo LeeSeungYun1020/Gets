@@ -1,5 +1,6 @@
 package com.sys.gets.ui.coordination
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.sys.gets.data.Format
 import com.sys.gets.databinding.ActivityCoordinationBinding
 import com.sys.gets.network.Network
+import com.sys.gets.ui.product.ProductActivity
 
 const val COORDINATION_TAG = "coordination"
 
@@ -136,6 +138,12 @@ class CoordinationActivity : AppCompatActivity() {
                                 { response ->
                                     if (response.getBoolean("result")) {
                                         priceList[i].root.visibility = View.VISIBLE
+                                        priceList[i].root.setOnClickListener {
+                                            Intent(it.context, ProductActivity::class.java).apply {
+                                                putExtra(ProductActivity.EXTRA_ID, product)
+                                                it.context.startActivity(this)
+                                            }
+                                        }
                                         priceList[i].productName.text = response.getString("name")
                                         priceList[i].productPrice.text = Format.currency(
                                             response.getString("price").toIntOrNull() ?: 0
