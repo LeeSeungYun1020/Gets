@@ -31,7 +31,7 @@ data class CardItem(
 )
 
 class CardListAdapter(val type: String, val tag: String, val list: MutableList<CardItem>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    RecyclerView.Adapter<CardListViewHolder>() {
     private val imageURL = when (type) {
         PRODUCT_TAG -> Network.PRODUCT_IMAGE_URL
         else -> Network.COORDINATION_IMAGE_URL
@@ -70,9 +70,9 @@ class CardListAdapter(val type: String, val tag: String, val list: MutableList<C
     }
 
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CardListViewHolder, position: Int) {
         val data = list[position]
-        (holder as? CardListViewHolder)?.apply {
+        holder.apply {
 
             if (type == PRODUCT_TAG) {
                 root.setOnClickListener {
