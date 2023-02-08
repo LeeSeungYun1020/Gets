@@ -87,7 +87,7 @@ class SignupActivity : AppCompatActivity() {
 
     private fun setBirthDropdown() {
         binding.apply {
-            val year = 2021.downTo(1900).toList()
+            val year = Calendar.getInstance().get(Calendar.YEAR).downTo(1900).toList()
             val month = (1..12).toList()
             val date = (1..31).toList()
             val yearAdapter = ArrayAdapter(this@SignupActivity, R.layout.list_item, year)
