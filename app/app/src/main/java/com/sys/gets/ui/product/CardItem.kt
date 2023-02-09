@@ -3,6 +3,7 @@ package com.sys.gets.ui.product
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Rect
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,10 +25,11 @@ import com.sys.gets.ui.coordination.CoordinationActivity
 
 data class CardItem(
     val id: Int,
-    var imageID: String,
+    val imageID: String,
     val title: String,
     val brand: String,
-    val price: Int
+    val price: Int,
+    var image: Bitmap? = null,
 )
 
 class CardListAdapter(val type: String, val tag: String, val list: MutableList<CardItem>) :
@@ -96,25 +98,26 @@ class CardListAdapter(val type: String, val tag: String, val list: MutableList<C
             brandView.text = data.brand
             priceView.text = Format.currency(data.price)
 
-
-            val imageRequest = ImageRequest(
-                "$imageURL/${data.imageID}",
-                { bitmap ->
-                    bitmap?.run {
-                        imageView.setImageBitmap(bitmap)
-                        // notifyItemChanged(position)
-                    }
-                },
-                0,
-                0,
-                ImageView.ScaleType.FIT_CENTER,
-                Bitmap.Config.RGB_565,
-                null
-            )
-
-            imageRequest.tag = this@CardListAdapter.tag
-            Network.getInstance(imageView.context)
-                .addToRequestQueue(imageRequest)
+            if (data.image == null) {
+                Log.d("LSYD", "onBindViewHolder: image null pos: $position id: ${data.id}")
+                val imageRequest = ImageRequest(
+                    "$imageURL/${data.imageID}",
+                    { bitmap ->
+                        bitmap?.also {
+                            imageView.setImageBitmap(it)
+                            data.image = it
+                        }
+                    },
+                    0,
+                    0,
+                    ImageView.ScaleType.FIT_CENTER,
+                    Bitmap.Config.RGB_565,
+                    null
+                )
+                imageRequest.tag = this@CardListAdapter.tag
+                Network.getInstance(imageView.context)
+                    .addToRequestQueue(imageRequest)
+            }
 
             val favoriteRequest = JsonObjectRequest(
                 Request.Method.GET, "$countFavoriteURL/${data.id}",
