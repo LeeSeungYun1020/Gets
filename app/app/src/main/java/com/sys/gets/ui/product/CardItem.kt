@@ -117,6 +117,8 @@ class CardListAdapter(val type: String, val tag: String, val list: MutableList<C
                 imageRequest.tag = this@CardListAdapter.tag
                 Network.getInstance(imageView.context)
                     .addToRequestQueue(imageRequest)
+            } else {
+                imageView.setImageBitmap(data.image)
             }
 
             val favoriteRequest = JsonObjectRequest(
