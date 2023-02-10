@@ -1,5 +1,6 @@
 package com.sys.gets.ui.coordination
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -10,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.JsonObjectRequest
+import com.google.android.material.snackbar.Snackbar
+import com.sys.gets.R
 import com.sys.gets.data.Format
 import com.sys.gets.databinding.ActivityCoordinationBinding
 import com.sys.gets.network.Network
@@ -221,8 +224,15 @@ class CoordinationActivity : AppCompatActivity() {
 
         binding.virtualFittingButton.setOnClickListener {
             val intent = packageManager.getLaunchIntentForPackage("com.sys.virtualFitting")
-            if (intent != null)
-                startActivity(intent)
+            if (intent != null) {
+                try {
+                    startActivity(intent)
+                } catch (_: ActivityNotFoundException) {
+                    Snackbar.make(binding.virtualFittingButton, R.string.msg_virtual_fitting_not_found, Snackbar.LENGTH_LONG).show()
+                }
+            } else {
+                Snackbar.make(binding.virtualFittingButton, R.string.msg_virtual_fitting_not_found, Snackbar.LENGTH_LONG).show()
+            }
             Log.e("TAG", "$intent")
         }
     }

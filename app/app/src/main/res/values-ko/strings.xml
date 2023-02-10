@@ -233,4 +233,5 @@
     <string name="age">연령</string>
     <string name="style">스타일</string>
     <string name="msg_add_closet">내 옷장 담기</string>
+    <string name="msg_virtual_fitting_not_found">가상 피팅 앱을 찾을 수 없습니다.</string>
 </resources>
