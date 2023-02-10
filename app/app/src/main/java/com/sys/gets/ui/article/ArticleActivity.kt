@@ -78,10 +78,9 @@ class ArticleActivity : AppCompatActivity() {
                         binding.chipGroup.addView(Chip(this).apply {
                             text = it
                         })
-
-                        binding.mainDescription.text =
-                            response.getString(getString(R.string.article_description))
                     }
+                    binding.mainDescription.text =
+                        response.getString(getString(R.string.article_description))
                 }
             }, null
         )
