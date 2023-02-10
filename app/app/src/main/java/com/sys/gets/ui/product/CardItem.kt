@@ -166,8 +166,7 @@ class CardListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             isChecked = false
             setOnClickListener {
                 if (!isChecked) { // 체크 안되어있는 경우
-                    Network.addSimpleRequest(
-                        context,
+                    Network.getInstance(context).addSimpleRequest(
                         tag,
                         favoriteURL,
                         cardItem.id
@@ -177,8 +176,7 @@ class CardListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                             ((favoriteView.text.toString().toIntOrNull() ?: 0) + 1).toString()
                     }
                 } else { // 체크 되어있는 경우
-                    Network.addSimpleRequest(
-                        context,
+                    Network.getInstance(context).addSimpleRequest(
                         tag,
                         unfavoriteURL,
                         cardItem.id
@@ -193,8 +191,7 @@ class CardListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                     }
                 }
             }
-            Network.addSimpleRequest(
-                context,
+            Network.getInstance(context).addSimpleRequest(
                 tag,
                 checkFavoriteURL,
                 cardItem.id

@@ -137,8 +137,7 @@ class HomeFragment : Fragment() {
                                 target.favoriteButton.apply {
                                     setOnClickListener {
                                         if (!isChecked) { // 체크 안되어있는 경우
-                                            Network.addSimpleRequest(
-                                                requireContext(),
+                                            Network.getInstance(requireContext()).addSimpleRequest(
                                                 CUSTOM_TAG,
                                                 Network.COORDINATION_FAVORITE_URL,
                                                 id
@@ -146,8 +145,7 @@ class HomeFragment : Fragment() {
                                                 isChecked = true
                                             }
                                         } else { // 체크 되어있는 경우
-                                            Network.addSimpleRequest(
-                                                requireContext(),
+                                            Network.getInstance(requireContext()).addSimpleRequest(
                                                 CUSTOM_TAG,
                                                 Network.COORDINATION_UNFAVORITE_URL,
                                                 id
@@ -156,8 +154,7 @@ class HomeFragment : Fragment() {
                                             }
                                         }
                                     }
-                                    Network.addSimpleRequest(
-                                        requireContext(),
+                                    Network.getInstance(requireContext()).addSimpleRequest(
                                         CUSTOM_TAG,
                                         Network.COORDINATION_CHECK_FAVORITE_URL,
                                         id
@@ -381,8 +378,7 @@ class HomeFragment : Fragment() {
                                 target.cardImage.favoriteButton.apply {
                                     setOnClickListener {
                                         if (!isChecked) { // 체크 안되어있는 경우
-                                            Network.addSimpleRequest(
-                                                requireContext(),
+                                            Network.getInstance(requireContext()).addSimpleRequest(
                                                 TREND_TAG,
                                                 Network.PRODUCT_FAVORITE_URL,
                                                 id
@@ -393,8 +389,7 @@ class HomeFragment : Fragment() {
                                                         .toIntOrNull() ?: 0) + 1).toString()
                                             }
                                         } else { // 체크 되어있는 경우
-                                            Network.addSimpleRequest(
-                                                requireContext(),
+                                            Network.getInstance(requireContext()).addSimpleRequest(
                                                 TREND_TAG,
                                                 Network.PRODUCT_UNFAVORITE_URL,
                                                 id
@@ -406,8 +401,7 @@ class HomeFragment : Fragment() {
                                             }
                                         }
                                     }
-                                    Network.addSimpleRequest(
-                                        requireContext(),
+                                    Network.getInstance(requireContext()).addSimpleRequest(
                                         TREND_TAG,
                                         Network.PRODUCT_CHECK_FAVORITE_URL,
                                         id

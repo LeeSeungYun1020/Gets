@@ -84,8 +84,7 @@ class CoordinationActivity : AppCompatActivity() {
                                 isChecked = false
                                 setOnClickListener {
                                     if (!isChecked) { // 체크 안되어있는 경우
-                                        Network.addSimpleRequest(
-                                            context,
+                                        Network.getInstance(context).addSimpleRequest(
                                             COORDINATION_TAG,
                                             Network.COORDINATION_FAVORITE_URL,
                                             id
@@ -96,8 +95,7 @@ class CoordinationActivity : AppCompatActivity() {
                                                     ?: 0) + 1).toString()
                                         }
                                     } else { // 체크 되어있는 경우
-                                        Network.addSimpleRequest(
-                                            context,
+                                        Network.getInstance(context).addSimpleRequest(
                                             COORDINATION_TAG,
                                             Network.COORDINATION_UNFAVORITE_URL,
                                             id
@@ -109,8 +107,7 @@ class CoordinationActivity : AppCompatActivity() {
                                         }
                                     }
                                 }
-                                Network.addSimpleRequest(
-                                    context,
+                                Network.getInstance(context).addSimpleRequest(
                                     COORDINATION_TAG,
                                     Network.COORDINATION_CHECK_FAVORITE_URL,
                                     id
@@ -154,8 +151,7 @@ class CoordinationActivity : AppCompatActivity() {
                                         priceList[i].productFavoriteButton.apply {
                                             setOnClickListener {
                                                 if (!isChecked) { // 체크 안되어있는 경우
-                                                    Network.addSimpleRequest(
-                                                        context,
+                                                    Network.getInstance(context).addSimpleRequest(
                                                         COORDINATION_TAG,
                                                         Network.PRODUCT_FAVORITE_URL,
                                                         product
@@ -163,8 +159,7 @@ class CoordinationActivity : AppCompatActivity() {
                                                         isChecked = true
                                                     }
                                                 } else { // 체크 되어있는 경우
-                                                    Network.addSimpleRequest(
-                                                        context,
+                                                    Network.getInstance(context).addSimpleRequest(
                                                         COORDINATION_TAG,
                                                         Network.PRODUCT_UNFAVORITE_URL,
                                                         product
@@ -173,8 +168,7 @@ class CoordinationActivity : AppCompatActivity() {
                                                     }
                                                 }
                                             }
-                                            Network.addSimpleRequest(
-                                                context,
+                                            Network.getInstance(context).addSimpleRequest(
                                                 COORDINATION_TAG,
                                                 Network.PRODUCT_CHECK_FAVORITE_URL,
                                                 product

@@ -170,8 +170,7 @@ class ArticleActivity : AppCompatActivity() {
                             target.favoriteButton.apply {
                                 setOnClickListener {
                                     if (!isChecked) { // 체크 안되어있는 경우
-                                        Network.addSimpleRequest(
-                                            this@ArticleActivity,
+                                        Network.getInstance(this@ArticleActivity).addSimpleRequest(
                                             ARTICLE_TAG,
                                             Network.COORDINATION_FAVORITE_URL,
                                             id
@@ -179,8 +178,7 @@ class ArticleActivity : AppCompatActivity() {
                                             isChecked = true
                                         }
                                     } else { // 체크 되어있는 경우
-                                        Network.addSimpleRequest(
-                                            this@ArticleActivity,
+                                        Network.getInstance(this@ArticleActivity).addSimpleRequest(
                                             ARTICLE_TAG,
                                             Network.COORDINATION_UNFAVORITE_URL,
                                             id
@@ -189,8 +187,7 @@ class ArticleActivity : AppCompatActivity() {
                                         }
                                     }
                                 }
-                                Network.addSimpleRequest(
-                                    this@ArticleActivity,
+                                Network.getInstance(this@ArticleActivity).addSimpleRequest(
                                     ARTICLE_TAG,
                                     Network.COORDINATION_CHECK_FAVORITE_URL,
                                     id
