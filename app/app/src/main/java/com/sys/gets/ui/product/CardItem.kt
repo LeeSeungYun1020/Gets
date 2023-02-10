@@ -77,7 +77,7 @@ class CardListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private set
 
     fun initCardItem(cardItem: CardItem, type: String, tag: String, onFavoriteCanceled: () -> Unit) {
-        if (this.cardItem != null) return
+        if (this.cardItem?.id == cardItem.id) return
         this.cardItem = cardItem
 
         val imageURL = when (type) {
