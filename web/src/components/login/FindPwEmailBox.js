@@ -21,7 +21,7 @@ class FindPwEmailBox extends React.Component {
 
     handleEmail(event) {
         alert(`email=${this.state.email}`)
-        axios.post('http://localhost:3000/api/signin', {
+        axios.post(link.base + '/api/signin', {
             email: this.state.email
         })
     }

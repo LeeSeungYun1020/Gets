@@ -14,7 +14,7 @@ const HeaderMenu = ({login, setLogin}) => {
 
             {login ? //토큰이 있으면 로그아웃 화면 보여줌
                 <div id="logout"><img onClick={() => {
-                    axios.get('http://localhost:3000/auth/signout', {withCredentials: true})
+                    axios.get(link.base + '/auth/signout', {withCredentials: true})
                         .then(function (response) {
                             if (response.data.result) {
                                 sessionStorage.clear();

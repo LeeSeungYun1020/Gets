@@ -1,5 +1,7 @@
 package com.sys.gets.ui.coordination
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
@@ -9,9 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.JsonObjectRequest
+import com.google.android.material.snackbar.Snackbar
+import com.sys.gets.R
 import com.sys.gets.data.Format
 import com.sys.gets.databinding.ActivityCoordinationBinding
 import com.sys.gets.network.Network
+import com.sys.gets.ui.product.ProductActivity
 
 const val COORDINATION_TAG = "coordination"
 
@@ -79,8 +84,7 @@ class CoordinationActivity : AppCompatActivity() {
                                 isChecked = false
                                 setOnClickListener {
                                     if (!isChecked) { // 체크 안되어있는 경우
-                                        Network.addSimpleRequest(
-                                            context,
+                                        Network.getInstance(context).addSimpleRequest(
                                             COORDINATION_TAG,
                                             Network.COORDINATION_FAVORITE_URL,
                                             id
@@ -91,8 +95,7 @@ class CoordinationActivity : AppCompatActivity() {
                                                     ?: 0) + 1).toString()
                                         }
                                     } else { // 체크 되어있는 경우
-                                        Network.addSimpleRequest(
-                                            context,
+                                        Network.getInstance(context).addSimpleRequest(
                                             COORDINATION_TAG,
                                             Network.COORDINATION_UNFAVORITE_URL,
                                             id
@@ -104,8 +107,7 @@ class CoordinationActivity : AppCompatActivity() {
                                         }
                                     }
                                 }
-                                Network.addSimpleRequest(
-                                    context,
+                                Network.getInstance(context).addSimpleRequest(
                                     COORDINATION_TAG,
                                     Network.COORDINATION_CHECK_FAVORITE_URL,
                                     id
@@ -136,6 +138,12 @@ class CoordinationActivity : AppCompatActivity() {
                                 { response ->
                                     if (response.getBoolean("result")) {
                                         priceList[i].root.visibility = View.VISIBLE
+                                        priceList[i].root.setOnClickListener {
+                                            Intent(it.context, ProductActivity::class.java).apply {
+                                                putExtra(ProductActivity.EXTRA_ID, product)
+                                                it.context.startActivity(this)
+                                            }
+                                        }
                                         priceList[i].productName.text = response.getString("name")
                                         priceList[i].productPrice.text = Format.currency(
                                             response.getString("price").toIntOrNull() ?: 0
@@ -143,8 +151,7 @@ class CoordinationActivity : AppCompatActivity() {
                                         priceList[i].productFavoriteButton.apply {
                                             setOnClickListener {
                                                 if (!isChecked) { // 체크 안되어있는 경우
-                                                    Network.addSimpleRequest(
-                                                        context,
+                                                    Network.getInstance(context).addSimpleRequest(
                                                         COORDINATION_TAG,
                                                         Network.PRODUCT_FAVORITE_URL,
                                                         product
@@ -152,8 +159,7 @@ class CoordinationActivity : AppCompatActivity() {
                                                         isChecked = true
                                                     }
                                                 } else { // 체크 되어있는 경우
-                                                    Network.addSimpleRequest(
-                                                        context,
+                                                    Network.getInstance(context).addSimpleRequest(
                                                         COORDINATION_TAG,
                                                         Network.PRODUCT_UNFAVORITE_URL,
                                                         product
@@ -162,8 +168,7 @@ class CoordinationActivity : AppCompatActivity() {
                                                     }
                                                 }
                                             }
-                                            Network.addSimpleRequest(
-                                                context,
+                                            Network.getInstance(context).addSimpleRequest(
                                                 COORDINATION_TAG,
                                                 Network.PRODUCT_CHECK_FAVORITE_URL,
                                                 product
@@ -213,8 +218,15 @@ class CoordinationActivity : AppCompatActivity() {
 
         binding.virtualFittingButton.setOnClickListener {
             val intent = packageManager.getLaunchIntentForPackage("com.sys.virtualFitting")
-            if (intent != null)
-                startActivity(intent)
+            if (intent != null) {
+                try {
+                    startActivity(intent)
+                } catch (_: ActivityNotFoundException) {
+                    Snackbar.make(binding.virtualFittingButton, R.string.msg_virtual_fitting_not_found, Snackbar.LENGTH_LONG).show()
+                }
+            } else {
+                Snackbar.make(binding.virtualFittingButton, R.string.msg_virtual_fitting_not_found, Snackbar.LENGTH_LONG).show()
+            }
             Log.e("TAG", "$intent")
         }
     }

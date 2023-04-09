@@ -21,6 +21,7 @@ import Favorite from "@material-ui/icons/Favorite";
 import axios from "axios";
 import {useHistory} from "react-router-dom";
 import isLogin from "../../lib/isLogin";
+import link from "../../link";
 
 const ProductDetailPageItem = ({item}) => {
     const {t, i18n} = useTranslation()
@@ -38,7 +39,7 @@ const ProductDetailPageItem = ({item}) => {
         if (!isLogin()) {
             history.push('/account/signin')
         } else {
-            axios.get(`http://localhost:3000/product/favorite/${id}`, {withCredentials: true})
+            axios.get(`${link.base}/product/favorite/${id}`, {withCredentials: true})
                 .then(response => {
                     // console.log(response)
                     if (response.data.result) {
@@ -126,7 +127,7 @@ const ProductDetailPageItem = ({item}) => {
                     <h4>{subCategory}</h4>
                 </div>
                 <div id="detail-product-img">
-                    <img src={`http://localhost:3000/product/image/${image1ID}`}/>
+                    <img src={`${link.base}/product/image/${image1ID}`}/>
                 </div>
             </div>
             <div className="detail-info">

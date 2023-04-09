@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useTranslation} from "react-i18next";
-import {StringToNumStyle} from "../Data";
 import {useHistory} from "react-router-dom";
+import link from "../../link";
 
 const DetailArticleList = ({id}) => {
     const history = useHistory()
@@ -13,7 +13,7 @@ const DetailArticleList = ({id}) => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await axios.get(`http://localhost:3000/home/style/${id}/8`)
+                const response = await axios.get(`${link.base}/home/style/${id}/8`)
                 setItem(response.data)
             } catch (e) {
                 console.log(e)
@@ -38,7 +38,7 @@ const DetailArticleList = ({id}) => {
     return (
         <div className="style-coordi-card-list">
             {item.map(item => <div onClick={() => onCardClick(item.id)} className="style-coordi-card"><img
-                src={`http://localhost:3000/coordination/image/${item.id}`}/></div>)}
+                src={`${link.base}/coordination/image/${item.id}`}/></div>)}
         </div>
     )
 };

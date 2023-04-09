@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <queries>
         <package android:name="com.sys.virtualFitting" />
     </queries>
@@ -16,29 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gets"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".ui.article.ArticleActivity"
-            android:theme="@style/Theme.App.StyleGuide"
-            android:exported="true" />
-        <activity
-            android:name=".ui.product.ProductActivity"
-            android:theme="@style/Theme.App.ProductDetail"
-            android:exported="true" />
-        <activity
-            android:name=".ui.coordination.CoordinationActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.account.PasswordActivity"
-            android:label="@string/msg_change_password"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.Gets.ActionBar" />
-        <activity
-            android:name=".ui.account.InfoActivity"
-            android:label="@string/title_info_detail"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.Gets.ActionBar" />
+
         <activity
             android:name=".SplashActivity"
+            android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,17 +28,40 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".sign.LoginActivity"
+            android:theme="@style/Theme.Gets.Sign" />
+
         <activity
             android:name=".sign.SignupActivity"
             android:label="@string/button_signup"
             android:parentActivityName=".sign.LoginActivity"
             android:theme="@style/Theme.Gets.ActionBar" />
+
         <activity
-            android:name=".sign.LoginActivity"
-            android:theme="@style/Theme.Gets.Sign" />
+            android:name=".ui.account.InfoActivity"
+            android:label="@string/title_info_detail"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.Gets.ActionBar" />
+
+        <activity android:name=".MainActivity" />
+
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name" />
+            android:name=".ui.article.ArticleActivity"
+            android:theme="@style/Theme.App.StyleGuide" />
+
+        <activity
+            android:name=".ui.product.ProductActivity"
+            android:theme="@style/Theme.App.ProductDetail" />
+
+        <activity android:name=".ui.coordination.CoordinationActivity" />
+
+        <activity
+            android:name=".ui.account.PasswordActivity"
+            android:label="@string/msg_change_password"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.Gets.ActionBar" />
     </application>
 
 </manifest>

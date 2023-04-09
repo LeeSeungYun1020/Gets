@@ -90,8 +90,7 @@ class ProductActivity : AppCompatActivity() {
 
                         binding.favoriteButton.setOnClickListener {
                             if (!isChecked) { // 체크 안되어있는 경우
-                                Network.addSimpleRequest(
-                                    this,
+                                Network.getInstance(this).addSimpleRequest(
                                     PRODUCT_ACTIVITY_TAG,
                                     Network.PRODUCT_FAVORITE_URL,
                                     id
@@ -105,8 +104,7 @@ class ProductActivity : AppCompatActivity() {
                                     )
                                 }
                             } else { // 체크 되어있는 경우
-                                Network.addSimpleRequest(
-                                    this,
+                                Network.getInstance(this).addSimpleRequest(
                                     PRODUCT_ACTIVITY_TAG,
                                     Network.PRODUCT_UNFAVORITE_URL,
                                     id
@@ -123,8 +121,7 @@ class ProductActivity : AppCompatActivity() {
                             Log.e("TAG", "$isChecked ${binding.favoriteIcon.backgroundTintList}")
                         }
 
-                        Network.addSimpleRequest(
-                            this,
+                        Network.getInstance(this).addSimpleRequest(
                             PRODUCT_ACTIVITY_TAG,
                             Network.PRODUCT_CHECK_FAVORITE_URL,
                             id

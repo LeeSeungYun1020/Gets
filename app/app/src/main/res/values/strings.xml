@@ -244,4 +244,5 @@
     <string name="age">Age</string>
     <string name="style">Style</string>
     <string name="msg_add_closet">Add to my closet</string>
+    <string name="msg_virtual_fitting_not_found">Can\'t find virtural fitting app</string>
 </resources>

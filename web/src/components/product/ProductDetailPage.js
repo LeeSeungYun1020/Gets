@@ -3,6 +3,7 @@ import {useHistory, withRouter} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import axios from "axios";
 import ProductDetailPageItem from "./ProductDetailPageItem";
+import link from "../../link"
 
 const ProductDetailPage = ({match}) => {
     const history = useHistory();
@@ -12,7 +13,7 @@ const ProductDetailPage = ({match}) => {
     const {i18n, t} = useTranslation()
     let last;
     useEffect(() => {
-        axios.get('http://localhost:3000/product/number', {withCredentials: true})
+        axios.get(link.base + '/product/number', {withCredentials: true})
             .then(response => {
                 // console.log(response)
                 last = response.data[0].id
@@ -22,7 +23,7 @@ const ProductDetailPage = ({match}) => {
                     // console.log(last)
                     try {
                         if (id > 2 && id <= last) {
-                            const response = await axios.get(`http://localhost:3000/product/${id}`, {withCredentials: true});
+                            const response = await axios.get(`${link.base}/product/${id}`, {withCredentials: true});
                             setItem(response.data);
                         } else {
                             history.push('/product')

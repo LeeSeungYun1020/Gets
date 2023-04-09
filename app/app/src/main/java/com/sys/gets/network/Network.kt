@@ -12,7 +12,7 @@ import java.net.CookieHandler
 import java.net.CookieManager
 
 
-class Network(context: Context) {
+class Network private constructor(context: Context) {
     companion object {
         @Volatile
         private var INSTANCE: Network? = null
@@ -23,7 +23,7 @@ class Network(context: Context) {
                 }
             }
 
-        const val BASE_URL = "http://52.231.193.69:3000" // "http://10.0.2.2:3000"
+        const val BASE_URL = "http://10.0.2.2:3000"
         const val API_URL = "$BASE_URL/api"
         const val SIGN_IN_URL = "$BASE_URL/auth/signin"
         const val SIGN_OUT_URL = "$BASE_URL/auth/signout"
@@ -59,29 +59,6 @@ class Network(context: Context) {
 
         const val ARTICLE_READ_URL = "$BASE_URL/article"
         const val ARTICLE_IMAGE_URL = "$BASE_URL/article/image"
-
-        fun addSimpleRequest(
-            context: Context,
-            tag: String,
-            url: String,
-            id: Int,
-            callback: () -> Unit
-        ) {
-            val jsonObjectRequest = JsonObjectRequest(
-                Request.Method.GET, "$url/$id",
-                null,
-                { response ->
-                    if (response.getBoolean("result")) {
-                        callback()
-                    }
-                },
-                {
-
-                }
-            )
-            jsonObjectRequest.tag = tag
-            getInstance(context).addToRequestQueue(jsonObjectRequest)
-        }
     }
 
     val imageLoader: ImageLoader by lazy {
@@ -104,5 +81,27 @@ class Network(context: Context) {
 
     fun <T> addToRequestQueue(req: Request<T>) {
         requestQueue.add(req)
+    }
+
+    fun addSimpleRequest(
+        tag: String,
+        url: String,
+        id: Int,
+        callback: () -> Unit
+    ) {
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET, "$url/$id",
+            null,
+            { response ->
+                if (response.getBoolean("result")) {
+                    callback()
+                }
+            },
+            {
+
+            }
+        )
+        jsonObjectRequest.tag = tag
+        addToRequestQueue(jsonObjectRequest)
     }
 }
